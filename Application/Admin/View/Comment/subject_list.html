@@ -1,0 +1,68 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	           	   <nav class="navbar navbar-default">	     
+				      <div class="collapse navbar-collapse">
+	    				<div class="navbar-form form-inline">
+				            <div class="form-group">
+				            	<p class="text-success margin blod">投诉管理:</p>
+				            </div>
+				             <div class="form-group">
+                                 <a class="btn btn-default" href="{:U('Comment/complain_list')}">投诉列表</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Comment/subject_list')}" >投诉主题</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Comment/subject_info')}" >添加主题</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a class="btn btn-default" href="{:U('Comment/complain_list')}">投诉设置</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				            </div>	
+				          </div>
+				       </div>
+	    		 	</nav>
+	             </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable">
+		                 <thead>
+		                   <tr role="row">
+                               <th>投诉主题</th>
+                               <th>投诉主题描述</th>
+		                  	   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="lists" item="vo" key="k" >
+                             <tr role="row">    
+                             <td>{$vo.subject_content}</td>
+                             <td>{$vo.subject_desc}</td>
+		                     <td class="text-center">
+		                      	<a class="btn btn-danger" onclick="delfunc(this)" href="javascript:;" data-id="{$vo['subject_id']}" data-url="{:U('Comment/subject_del')}">删除</a>
+				     		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left">
+              	    	<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+              	    </div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+</div>
+<script>
+</script>
+</body>
+</html>

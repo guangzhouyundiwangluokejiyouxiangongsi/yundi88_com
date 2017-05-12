@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>收货地址-{$tpshop_config['shop_info_store_title']}</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+
+<!-- <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+
+<link href="/Public/pc/css/public.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common2.css"/>
+
+<link href="__PUBLIC__/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/Public/js/jquery-1.10.2.min.js"></script>
+<script src="/Public/js/global.js"></script>
+
+
+<style type="text/css">
+#aa-list>ul:nth-of-type(odd){background:#f8f8f8;}
+</style>
+</head>
+<body style="background:none;"> 
+<!-- 头部-s -->
+<!-- 头部-e -->  
+<script src="__PUBLIC__/js/layer/layer.js"></script><!-- 弹窗js 参考文档 http://layer.layui.com/-->
+<script src="__PUBLIC__/js/jquery-1.9.0.min.js"></script>
+
+<div class="wrap" style="width:97%;margin:30px auto;">
+  
+  <!--菜单--> 
+  <!--菜单-->     
+  <!--侧边导航栏结束-->
+  <div class="col_main" id="J_address" style="width:100%;">
+    <div class="main address_management" style="width:100%;border:1px solid #ccc;padding:0px;min-height: 200px;"> 
+      <!-- themes star -->
+      <div class="themes_title" style="border-bottom: 1px solid #ddd;height:40px;line-height: 40px;padding:0;margin:0;background:#f8f8f8;">
+        <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;font-size:16px;font-weight:500;font-family:'微软雅黑';color:#000;"><i class="fa fa-user" style="padding-left: 14px;padding-right: 6px;"></i>地址管理</h3>
+		<h2 style="border-left: 1px solid #D2D2D2;padding-left: 10px;"><a onclick="address_edit()" class="co-red"><span>+添加地址</span></a><img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 14px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);"></h2>
+      </div>
+      <!-- themes end --> 
+      <div class="address-adc" style="width:98%;margin:0 auto;">
+        <div class="aa-title fixed" style="background:none;margin-top: 10px;">
+          <ul>
+            <li class="th-01">收货人</li>
+            <li class="th-02">收货地址</li>
+            <li class="th-03">联系电话</li>
+            <li class="th-04"></li>
+            <li class="th-05">操作</li>
+          </ul>
+        </div>
+        <!-- 地址列表go -->
+        <div id="aa-list" class="aa-list" >
+         <volist name="lists" id="list">
+          <ul class="fixed list-on" style="height:50px;line-height: 50px;">
+            <li class="td-01" data-add="username" style="height:50px;line-height: 50px;">{$list.consignee}</li>
+            <li class="td-02" style="height:50px;line-height: 50px;"> 
+            	<span class="ini" style ="line-height: 25px;"> 
+                	<span data-add="mlsa01">
+                    {$region_list[$list['province']]['name']}，{$region_list[$list['city']]['name']}，{$region_list[$list['district']]['name']}，{$region_list[$list['twon']]['name']}{$list.address}
+                    </span> 
+                    <span data-add="useraddr"></span> 
+                </span> 
+            </li>
+            <li class="td-03" style="padding-top: 15px;">
+              <p><span data-add="usercell">{$list.mobile}</span></p>              
+            </li>
+            <li class="td-04" style="height:50px;line-height: 50px;"><a href="{:U('/seller/Userinfo/set_default',array('id'=>$list['address_id']))}"  data-act="set" >设为默认收货地址</a></li>
+            <li class="td-05" style="height:50px;line-height: 50px;">        
+            	<a href="javascript:address_edit({$list['address_id']})" data-act="edit" class="target_no glyphicon glyphicon-pencil" target="" style="font-size:30px;background:#3c8dbc;width:32px;height:30px;text-align: center;display:inline-block;color:#fff;font-size:18px;line-height: 30px;border-radius: 2px;">
+               <img src="__PUBLIC__/images/hjbi.png" style="padding-top: 8px;">
+                
+              </a> 
+            	<a href="{:U('Userinfo/del_address',array('id'=>$list['address_id']))}" class="J_delete target_no" data-act="del" target="" style="font-size:30px;background:#f22d02;width:32px;height:30px;text-align: center;display:inline-block;color:#fff;font-size:18px;line-height: 30px;border-radius: 2px;"> 
+              <img src="__PUBLIC__/images/hjdel.png" style="padding-top: 8px;"></a> 
+            </li>
+          </ul>
+        </volist>  
+        </div>         
+
+      </div>
+      
+       <!--  <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+      <!-- Address Management end --> 
+    </div>
+  </div>
+</div>
+ 
+<div style="clear: both;"></div>
+</body>
+<script>
+ 
+    /**
+     * 新增修改收货地址
+     * id 为零 则为新增, 否则是修改
+     *  使用 公共的 layer 弹窗插件  参考官方手册 http://layer.layui.com/
+     */
+    function address_edit(id)
+    {
+        if(id > 0)
+            var url = "/index.php?m=seller&c=Userinfo&a=edit_address&scene=1&call_back=call_back_fun&id="+id; // 修改地址  '/index.php/Home/User/add_address/scene/1/call_back/call_back_fun/id/id' //iframe的url /index.php/Home/User/add_address
+        else
+            var url = "/index.php?m=seller&c=Userinfo&a=add_address&scene=1&call_back=call_back_fun";	// 新增地址
+        layer.open({
+            type: 2,
+            title: '添加收货地址',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['880px', '580px'],
+            content: url,
+        });
+    }
+    // 添加修改收货地址回调函数
+    function call_back_fun(v){
+        layer.closeAll(); // 关闭窗口
+        location.href = location.href;
+    }
+</script>
+
+
+</html>

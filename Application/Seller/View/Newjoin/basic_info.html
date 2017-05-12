@@ -1,0 +1,1021 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="background:none;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我要入驻-初始协议</title>
+<link href="__PUBLIC__/css/qt_style.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/common.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/css-1.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
+<link href="__PUBLIC__/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+
+<!--字体图标-->
+<link href="__PUBLIC__/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<include file="Public/min2-header"/>
+<!-- <include file="Public/breadcrumb"/> -->
+
+<style type="text/css">
+.input260{height:35px;line-height: 35px;}
+.input260:focus{border:1px solid blue;}
+.input453:focus{border:1px solid blue;}
+#store_person_identity:focus{border:1px solid blue;}
+#idcard:focus{border:1px solid blue;}
+
+#setpp{width:40%;margin:10px auto;text-align: center;font-weight:800;color:#000;font-size:16px;font-family: '微软雅黑';}
+
+.myorder_history{float: right;width: 40px;margin-top: -10px;height: 40px;border-left: 1px solid #d2d2d2;text-align: center;cursor: pointer;}
+.myorder_history>img{width: 16px;height: 16px;margin-top: 10px;}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:1200px) and (max-width:1400px){    
+ #setpp{width:20%;}
+
+}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:600px) and (max-width:1200px){
+#setpp{width:20%;}
+    
+}
+
+
+</style>
+</head>
+<body style="background:none;">
+<div class="gome-layout-area pb50" style="width:97%;margin-top: 30px;background:#fff;">
+        
+        <div class="settled-agreement-table pb50" style="width:100%;">
+            <div class="themes_title gaigeren" style="height:40px;border-bottom:1px solid #ccc;background:#f5f5f5;padding-bottom: 10px;">
+                <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;font-size:16px;font-weight:500;font-family:'微软雅黑';color:#000;"><i class="fa fa-bell" style="padding-left: 14px;padding-right: 6px;"></i>企业信息</h3>
+
+                 <div class="myorder_history" style="padding-top: 10px;height:50px;" onclick="history.go(-1);">
+                    <img src="__PUBLIC__/images/gerenfanhui.png">
+                  </div>
+                  
+                <!-- 
+                    <img src="/Public/images/gerenfanhui.png" style="float:right;margin-right: 12px;cursor:pointer;" onclick="history.go(-1);"> -->
+             </div>
+
+            <!-- <div class="agreement-title"><span>填写公司信息</span></div> -->
+            <div class="cont-tle1 clearfix">
+            <php>if ($apply['apply_state'] === null){</php>
+            <div style="width:8%;float:left;height:30px;line-height:1px; padding-left:20px;font-size:14px;border-right:1px solid #ccc;margin-top:15px; font-family:'宋体'">审核结果</div>
+                <div style="background:none;margin-top: 8px;"><img src="__PUBLIC__/images/seller/shiming1.png" alt=""><span style="color:#5e5e5e;font-family:'宋体';font-size:12px;">您未提交审核，请填写下面信息并提交审核！</span></div>
+                </div>
+            <php>}</php>
+
+            <php>if ($apply['apply_state'] === 0){</php>
+            <div style="width:8%;float:left;height:50px;line-height:8px; padding-left:20px;font-size:14px;border-right:1px solid #ccc;margin-top:15px; font-family:'宋体'">审核结果</div>
+                <div style="background:none;margin-top: 8px;"><img src="__PUBLIC__/images/seller/shiming1.png" alt=""><span style="color:#5e5e5e;font-family:'宋体';font-size:12px;">正在审核中，请耐心等待审核结果。</span></div>
+                </div>
+            <php>}</php>
+            
+            <php>if ($apply['apply_state'] == 1){</php>
+            <div style="width:8%;float:left;height:28px;line-height:8px; padding-left:20px;font-size:14px;border-right:1px solid #ccc;margin-top:15px; font-family:'宋体'">审核结果</div>
+                <div style="background:none;margin-top: 8px;"><img src="__PUBLIC__/images/seller/shiming2.png" alt=""><span style="color:#5e5e5e;font-family:'宋体';font-size:12px;">恭喜您，审核已通过。</span></div>
+                </div>
+            <php>}</php>
+            
+            <php>if ($apply['apply_state'] > 1){</php>
+            <div style="width:8%;float:left;height:28px;line-height:8px; padding-left:20px;font-size:14px;border-right:1px solid #ccc;margin-top:15px; font-family:'宋体'">审核结果</div>
+                <div style="background:none;margin-top: 8px;"><img src="__PUBLIC__/images/seller/shiming3.png" alt=""><span style="color:#5e5e5e;font-family:'宋体';font-size:12px;">很遗憾，审核结果未通过，请确保您填写的信息真实有效并重新提交审核。</span></div>
+                </div>
+            <php>}</php>
+
+            <php>if ($apply['apply_state'] === null){</php>
+                <form action="{:U('Newjoin/basic_info')}" id="queryForm" method="post" enctype="multipart/form-data">
+            <php>} else {</php>
+                <form action="{:U('Newjoin/basicedit')}" id="queryForm" method="post" enctype="multipart/form-data">
+            <php>}</php>
+            <h3  id="setpp">填写企业信息</h3>
+            <div class="table-part clearfix" style="width:764px;margin:0 auto;">
+                <div class="table-part-title">公司信息</div>
+                <table cellpadding="0" cellspacing="0" border="0" class="information-table1">
+                    <tbody>
+                    <tr style="display: none;">
+                        <th><em class="em-red">*</em>联系人姓名：
+                        </th><td width="495"><input maxlength="20" type="text" id="contacterName" name="contacts_name" class="input260 fl" value="{$apply.contacts_name}" onblur="checkEmptys(this.value,'contacterName','联系人姓名','');"><span id="contacterNameSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 50%;line-height: 35px;"></span></td>
+                    </tr >
+                    <tr style="display: none;">
+                        <th><em class="em-red">*</em>联系人手机：
+                        </th><td><input maxlength="11" type="text" id="contacterMobile" name="contacts_mobile" class="input260 fl" value="{$apply.contacts_mobile}" onblur="checkEmptys(this.value,'contacterMobile','联系人手机','mobile');"><span id="contacterMobileSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 50%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr style="display: none;">
+                        <th><em class="em-red">*</em>联系人电子邮箱：
+                        </th><td><input maxlength="32" type="text" id="email" name="contacts_email" class="input260 fl" value="{$apply.contacts_email}" onblur="checkEmptys(this.value,'email','联系人电子邮箱','email');"><span id="emailSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 50%;line-height: 35px;"></span></td>
+                    </tr>
+                    <!-- 公司信息 -->
+                    <tr>
+                        <th><em class="em-red">*</em>公司名称：</th>
+                        <td><input type="text" maxlength="35" id="corpName" name="company_name" placeholder="请输入公司名称" style="text-indent: 4px;"
+                        <if condition="$apply[company_name]">
+                         value="{$apply.company_name}"
+                        <else />
+                         value="{$store_name}"
+                        </if>
+                          class="input260" err_msg="0" ><span id="corpNameSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 50%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                     <th><em class="em-red">*</em>公司性质：</th>
+                        <td>
+                            <select id="corpType" name="company_type" class="input145" style="width:260px;height:35px;">
+                                <foreach name="company_type" item="v" key="k">
+                                    <option value="{$k}" <if condition="$apply[company_type] eq $k">selected</if>>{$v}</option>
+                                </foreach>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>公司官网地址：</th>
+                        <td><input type="text" maxlength="30" placeholder="请输入官网地址" name="company_website" style="text-indent: 4px;" value="{$apply.company_website}" class="input260"></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>固定电话：</th>
+                        <td><input type="text" maxlength="32" id="contacterPhoneNumber" placeholder="请输入固定电话" style="text-indent: 4px;" name="company_telephone" class="input260" value="{$apply.company_telephone}" onblur="checkEmpty(this.value,'contacterPhoneNumber','固定电话','phone');" ><span id="contacterPhoneNumberSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 43%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>电子邮箱：</th>
+                        <td><input type="text" maxlength="32" id="email2" name="company_email" style="text-indent: 4px;" placeholder="请输入电子邮箱" class="input260" value="{$apply.company_email}" onblur="checkEmpty(this.value,'email2','电子邮箱','email2');"><span id="email2Span" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 43%;line-height: 35px;" class=""></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>传真：</th>
+                        <td><input type="text" maxlength="16" id="fax" name="company_fax" style="text-indent: 4px;" placeholder="请输入传真号" class="input260" value="{$apply.company_fax}" onblur="checkEmpty(this.value,'fax','传真','phone');"><span id="faxSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 43%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>邮政编码：</th>
+                        <td><input type="text" maxlength="10" id="zipCode" style="text-indent: 4px;" name="company_zipcode" placeholder="请输入邮政编码" class="input260" value="{$apply.company_zipcode}" onblur="checkEmpty(this.value,'zipCode','邮政编码','zip');"><span id="zipCodeSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 43%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>公司所在地：</th>
+                        <td>
+                            <select id="provinces" name="company_province" onchange="get_city(this)" class="input145 mr10" style="height:35px;">
+                                <option value="">请选择</option>       
+                                <volist name="province" id="vo">
+                                    <option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_province]">selected</if>>{$vo.name}</option>
+                                </volist>
+                            </select>
+
+                            <select onchange="get_area(this)" id="city" name="company_city" class="input145 mr10" style="height:35px;">
+                                <option value="">请选择</option>
+                                <volist name="city" id="vo">
+                                     <option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_city]">selected</if>>{$vo.name}</option>
+                                 </volist>
+                            </select>
+                            <select id="district" name="company_district" class="input145 mr10" style="height:35px;">
+                                <option value="">请选择</option>
+                                <volist name="district" id="vo">
+                                   <option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_district]">selected</if>>{$vo.name}</option>
+                                </volist>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>公司详细地址：</th>
+                        <td><input type="text" maxlength="35" id="corpAddress" placeholder="请输入公司详细地址" style="height:35px;width:458px;text-indent: 4px;" name="company_address" class="input453" value="{$apply.company_address}" onblur="checkEmpty(this.value,'corpAddress','公司详细地址','');"><span id="corpAddressSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 38%;line-height: 35px;"></span></td>
+                    </tr>
+                
+                </tbody></table>
+            </div>
+            <div class="table-part clearfix" style="width:764px;margin:0 auto;">
+                <div class="table-part-title bt pt30 j-tabclick"><span>营业执照信息<b class="micon-down"></b></span></div>
+                <table cellpadding="0" cellspacing="0" border="0" class="information-table1 j-information-table">
+                    <tbody>
+                    <tr>
+                        <th><em class="em-red">*</em>一证一码商家：</th>
+                        <td>
+                            <input style="width: 16px; height: 14px;" type="radio" onclick="tabchange(1)" <if condition="$apply[threeinone] eq 1">checked</if> name="threeinone" value="1">是
+                            <input style="width: 16px; height: 14px;" type="radio" onclick="tabchange(0)" <if condition="$apply[threeinone] eq 0">checked</if> name="threeinone" value="0">否
+                        </td>
+                    </tr>
+                     <!-- 企业信息 -->
+                    <!-- <tr>
+                        <th><em class="em-red">*</em>企业名称：</th>
+                        <td><input type="text" maxlength="40"  id="shopName" placeholder="请输入企业名称" style="text-indent:4px;" name="store_name" value="{$apply.store_name}" class="input260" err_msg="0"> -->
+                        <!-- <span id="shopNameSpan">点击查看企业命名规则</span> -->
+                     <!--    </td>
+                    </tr> -->
+                    <tr>
+                        <th><em class="em-red">*</em>法定代表人姓名：</th>
+                        <td><input type="text" maxlength="20" id="legal_person" name="legal_person" style="text-indent:4px;" placeholder="请输入法定代表人姓名" class="input260" value="{$apply.legal_person}" onblur="checkEmpty(this.value,'legal_person','法定代表人姓名','');"><span id="legal_personSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th style="width:170px;"><em class="em-red">*</em>注册资金/万元(人民币)：</th>
+                        <td><input type="text" maxlength="13" id="regCapital" name="reg_capital" style="text-indent:4px;" placeholder="请输入注册资金" class="input260" value="{$apply.reg_capital}" onblur="checkEmpty(this.value,'regCapital','注册资本','money1');">
+                        <span style="line-height:24px;padding-left:5px;"></span>
+                        <span id="regCapitalSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                   <tr>
+                        <th><em class="em-red">*</em>
+                            <span id="threeinone"><if condition="$apply[threeinone] eq 0">营业执照注册号：<else/>统一社会信用代码：</if></span>
+                        </th>
+                        <td><input type="text" maxlength="32" id="corpLicenceNumber" style="text-indent:4px;" placeholder="请输入18位的统一社会信用代码" name="business_licence_number" class="input260" value="{$apply.business_licence_number}" onblur="checkEmpty(this.value,'corpLicenceNumber','营业执照注册号','corpLicence');"><span id="corpLicenceNumberSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span>
+                        <span id="licence_number_note" style="line-height:24px;padding-left:5px;"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th><em class="em-red">*</em>营业执照有效期：</th>
+                        <td>
+                            <input type="text" id="business_date_start" name="business_date_start"  placeholder="2017-01-02" value="{$apply.business_date_start}" class="fl" style="height:35px;line-height: 35px;width:143px;border:1px solid #ccc;text-indent:4px;">
+                            <label class="fl label_line ml10 mr10" style="height:35px;line-height: 35px;">-</label>
+                            <input type="text" id="business_date_end" name="business_date_end" placeholder="2018-01-02" value="{$apply.business_date_end}"  class="fl" style="height:35px;line-height: 35px;width:143px;border:1px solid #ccc;text-indent:4px;">
+                            <span id="business_date_startSpan" style="display:none" class=""></span>
+                            <span id="business_date_endSpan" style="display:none" class=""></span>
+                            <label class="fl label_line ml10 mr10" for="3"><input style="height:30px;line-height: 30px;" type="checkbox" hidefocus="ture" name="supplier[business_permanent]" value="" class="inputcheck" id="3" <php>if ($apply !='' and $apply['business_date_end'] ==''){
+                            echo 'checked';
+                            }</php> onclick="changeBusinessDate();">长期</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ver-t"><em class="em-red">*</em>营业执照经营范围：</th>
+                        <td><textarea maxlength="100" id="business_scope" name="business_scope" placeholder="请输入营业执照经营范围" autocomplete="off" class="input370" onblur="checkEmpty(this.value,'business_scope','营业执照经营范围','');">{$apply.business_scope}</textarea><span id="business_scopeSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr class="threeinone" <if condition="$apply[threeinone] eq 1"></if>>
+                        <th><em class="em-red"></em>组织机构代码：</th><!--提示边框的话去掉id后面的s-->
+                        <td><input type="text" maxlength="32" id="orgnizationCodes" style="text-indent:4px;" placeholder="请输入组织机构代码" name="orgnization_code" class="input260" value="{$apply.orgnization_code}" onblur="checkEmpty(this.value,'orgnizationCode','组织机构代码','');"><!-- <span id="orgnizationCodeSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span> --></td>
+                    </tr>
+                    <tr class="threeinone" <if condition="$apply[threeinone] eq 1"></if>>
+                        <th><em class="em-red"></em>税务登记号码：</th><!--提示边框的话去掉id后面的s-->
+                        <td><input maxlength="18" type="text" id="attachedTaxNumbers" style="text-indent:4px;" placeholder="请输入税务登记号码" name="attached_tax_number" value="{$apply.attached_tax_number}" class="input260" onblur="checkEmpty(this.value,'attachedTaxNumber','纳税人识别号','');"><!-- <span id="attachedTaxNumberSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span> --></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>纳税人类型：</th>
+                        <td>
+                            <select id="taxpayer" name="taxpayer" class="input145 mr10" style="width:248px;height:30px;text-indent:4px;">
+                                <option value="">请选择</option>
+                                <option value="1" selected>一般纳税人</option>
+                                <option value="2">小规模纳税人</option>
+                                <option value="3">非增值税纳税人</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>纳税类型税码：</th>
+                        <td>
+                            <select id="tax_rate" name="tax_rate" class="input145 mr10" style="width:248px;height:30px;text-indent:4px;">
+                                <option value="">请选择</option>
+                                <foreach name="rate_list" item="vo" key="k">
+                                    <option value="{$k}" <if condition="$apply[tax_rate] eq $k">selected</if>>{$vo}%</option>
+                                </foreach>
+                            </select>
+                        </td>
+                    </tr>
+                   
+                    <tr style="display: none;">
+                        <th><em class="em-red">*</em>企业登录主账号：</th>
+                        <td><input type="text" maxlength="20" id="seller_name" style="text-indent:4px;"  name="seller_name" autocomplete="off" value="{$apply.seller_name}" class="input260"  err_msg="0" ><span id="mainAccountSpan" class="" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>企业主营大类：</th>
+                        <td>
+                            <select id="supplier_ctgy_id" name="sc_id"  class="input270 mr10" onchange="javascript:$('#sc_name').val($('#supplier_ctgy_id option:selected').text())" style="width:248px;height:30px;">
+                            <option value="">请选择</option>
+                                <foreach name="store_class" item="vo" key="k">
+                                    <option value="{$k}" <if condition="$k eq $apply[sc_id]">selected</if>>{$vo}</option>   
+                                </foreach>
+                            </select>
+                            <input type="hidden" id="sc_name" name="sc_name" value="{$apply.sc_name}"/>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <th><em class="em-red">*</em>企业性质：</th>
+                        <td>
+                            <select id="shopType" name="store_type" value="" class="input200">
+                                <option value="0">请选择</option>
+                                <option value="1" <if condition="$apply['store_type'] eq '1'"> selected</if>>旗舰店</option>
+                                <option value="2" <if condition="$apply['store_type'] eq '2'"> selected</if>>专卖店</option>
+                                <option value="3" <if condition="$apply['store_type'] eq '3'"> selected</if>>专营店</option>
+                            </select>
+                        </td>
+                    </tr> -->
+
+                    <tr>
+                        <th><em class="em-red">*</em>企业负责人姓名：</th>
+                        <td><input type="text" maxlength="64" id="contactPersonName" style="text-indent:4px;"  placeholder="请输入企业负责人姓名" name="store_person_name" value="{$apply.store_person_name}" class="input260" onblur="checkEmpty(this.value,'contactPersonName','企业负责人姓名','');"><span id="contactPersonNameSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>负责人手机号码：</th> 
+                        <td><input type="text" maxlength="11" id="contactPersonPhone" style="text-indent:4px;"  placeholder="请输入负责人手机号码" name="store_person_mobile" value="{$apply.store_person_mobile}" class="input260" onblur="checkEmpty(this.value,'contactPersonPhone','手机号码','mobile');"><span id="contactPersonPhoneSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>负责人QQ号码：</th>
+                        <td><input type="text" maxlength="11" id="contactPersonQq" style="text-indent:4px;"  placeholder="请输入负责人QQ号码" name="store_person_qq" value="{$apply.store_person_qq}" class="input260" onblur="checkEmpty(this.value,'contactPersonQq','qq号码','qq');"><span id="contactPersonQqSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>企业电子邮箱：</th>
+                        <td><input type="text" maxlength="32" id="shop_email" style="text-indent:4px;"  placeholder="请输入企业电子邮箱" name="store_person_email" value="{$apply.store_person_email}" class="input260" onblur="checkEmpty(this.value,'shop_email','电子邮箱','shop_email');"><span id="shop_emailSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>企业详细地址：</th>
+                        <td><input type="text" maxlength="100" id="storeAddress" style="height:35px;line-height: 35px;"  placeholder="请输入企业详细地址" name="store_address" class="input453" value="{$apply.store_address}" onblur="checkEmpty(this.value,'storeAddress','企业详细地址','');"><span id="storeAddressSpan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 39%;line-height: 35px;"></span></td>
+                    </tr>
+
+                </tbody></table>
+            </div>
+            <!-- 最后一步 -->
+            <div class="table-part pb50 clearfix" style="width:764px;margin:0 auto;" id="lastsss">
+                <div class="table-part-title">基本资质</div>
+
+                <div class="update-part clearfix width985" style="height:74px;line-height: 74px;">
+                    <div class="update-til width985" style="height:74px;line-height: 74px;">
+                        <p class="fl" style="width:248px;text-align: right;"><em class="em-red">*</em>企业营业执照/三证合一 副本复印件：</p>
+                        <div class="update-btn width-170 fl" style="width:120px;height:75px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                        <if condition="$apply['business_licence_cert']" onclick="GetUploadify2(1,'business_licence_cert','business_licence_cert','add_business_licence_cert')" id="preview" style="display:block;cursor:pointer;width: 120px" >
+                            <img src="{$apply['business_licence_cert']}" onclick="GetUploadify2(1,'business_licence_cert','business_licence_cert','add_business_licence_cert')" id="preview" style="display:block;cursor:pointer;width: 120px" >
+                        <else />
+                            <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'business_licence_cert','business_licence_cert','add_business_licence_cert')" id="preview" style="display:block;cursor:pointer;width: 120px" >
+                        </if>
+                             <input type="hidden" name="business_licence_cert" id="business_licence_cert" value="{$apply.business_licence_cert}" /></div>
+                        <a href="javascript:;" onclick="chakan1()" class="blue fl mr10" style="display: inline-block;height:75px;line-height: 75px;margin-left:14px;">查看范本</a>
+                    </div>
+                        <ul class="update-con ml30 mt4 clearfix">
+                        </ul>
+                </div>
+
+                <input type="hidden" id="yyobj" value="{$apply.business_licence_cert}"/>
+                <div class="update-part width985" style="height:74px;line-height: 74px;">
+                    <div class="update-til width985" style="height:74px;line-height: 74px;">
+                        <p class="fl" style="width:248px;text-align: right;"><em class="em-red">&nbsp;</em>税务登记证复印件（国税、地税）：</p>                      
+                        <div class="update-btn width-170 fl" style="width:120px;height:75px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                        <if condition="$apply['taxpayer_cert']">
+                            <img src="{$apply['taxpayer_cert']}" onclick="GetUploadify2(1,'taxpayer_cert','taxpayer_cert','add_taxpayer_cert')" id="preview2" style="display:block;cursor:pointer;width: 120px" >
+                        <else />
+                            <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'taxpayer_cert','taxpayer_cert','add_taxpayer_cert')" id="preview2" style="display:block;cursor:pointer;width: 120px" >
+                        </if>
+                        <input type="hidden" name="taxpayer_cert" id="taxpayer_cert" value="{$apply.taxpayer_cert}"/></div>
+                         <a  href="javascript:;" onclick="chakan2()" class="blue fl mr10" style="display: inline-block;height:75px;line-height: 75px;margin-left:14px;">查看范本</a>
+                    </div>
+                    
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                    
+                </div>
+                <div class="update-part width985" style="height:74px;line-height: 74px;">
+                    <div class="update-til width985" style="height:74px;line-height: 74px;">
+                        <p class="fl" style="width:248px;text-align: right;"><em class="em-red">&nbsp;</em>组织机构代码证复印件：</p>     
+                        <div class="update-btn width-170 fl" style="width:120px;height:75px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                            <if condition="$apply['orgnization_cert']">
+                            <img src="{$apply['orgnization_cert']}" onclick="GetUploadify2(1,'orgnization_cert','orgnization_cert','add_orgnization_cert')" id="preview3" style="display:block;cursor:pointer;width: 120px" >
+                            <else />
+                            <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'orgnization_cert','orgnization_cert','add_orgnization_cert')" id="preview3" style="display:block;cursor:pointer;width: 120px" >
+                            </if>
+                            <input type="hidden" name="orgnization_cert" id="orgnization_cert" value="{$apply['orgnization_cert']}"/></div>
+                            <a  href="javascript:;" onclick="chakan3()" class="blue fl mr10" style="display: inline-block;height:75px;line-height: 75px;margin-left:14px;">查看范本</a>
+                    </div>
+                    
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                    
+                </div>
+
+                 <div class="update-part width985" >
+                    <div class="update-til width985">
+                        <p class="fl" style="width:248px;text-align:right;"><em class="em-red">*</em>身份证/护照号码：</p>
+                        <input type="text" maxlength="18" name="legal_identity" value="{$apply.legal_identity}" id="idcard" placeholder="请输入身份证/护照号码" style="text-indent:4px;width:256px;height:35px;" class="input145 fl mr10" /><span id="idcardspan" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 47%;line-height: 35px;display:none;color:red;">请输入正确身份证号</span>
+                        <div class="update-btn width-170 fl"><!-- <input type="file" name="legal_identity_cert" id="file_upload_4" data-val="{$apply.legal_identity_cert}"/> --></div>
+                    </div>                   
+                        <ul class="update-con ml30 mt4 clearfix">                           
+                        </ul>                   
+                </div>
+                
+                <script type="text/javascript">
+                        $("#idcard").blur(function(){
+                            var idcard=$("#idcard").val();
+                            var idspan=$("#idcardspan");
+                            // alert(idcard);
+                            var bo=/^(\d{6})(18|19|20)?(\d{2})([01]\d)([0123]\d)(\d{3})(\d|X)?$/.test(idcard);
+                            var year = idcard. substr(6,4);
+                            var month = idcard. substr(10,2);
+                            var day = idcard. substr(12,2);
+                            if(bo==false||month>12||day>31){
+                                $("#idcard").addClass("warning");
+                                 $("#idcardspan").show();
+                                return false;
+                            }
+                            else{
+                            $("#idcard").removeClass("warning");
+                            $("#idcardspan").hide();
+                            }
+                            });
+                </script>
+                <div class="update-part width985" style="height:74px;line-height: 74px;">
+                    <div class="update-til width985" style="height:74px;line-height: 74px;">
+                        <p class="fl" style="width:248px;text-align:right;"><em class="em-red">*</em>法人身份证正反面复印件或护照：</p>
+
+                        <!-- <p class="fl">身份证/护照号码：</p> -->
+                         <div class="update-btn width-170 fl" style="width:120px;height:75px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                        <if condition="$apply['legal_identity_cert']">
+                        <img src="{$apply['legal_identity_cert']}" onclick="GetUploadify2(1,'legal_identity_cert','legal_identity_cert','add_legal_identity_cert')" id="preview4" style="display:block;cursor:pointer;width: 120px" >
+                        <else />
+                        <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'legal_identity_cert','legal_identity_cert','add_legal_identity_cert')" id="preview4" style="display:block;cursor:pointer;width: 120px" >
+                        </if>
+                         <input type="hidden" name="legal_identity_cert" id="legal_identity_cert" value="{$apply.legal_identity_cert}"/></div>
+                         <a  href="javascript:;" onclick="chakan4()" class="blue fl mr10" style="margin-left: 15px;">查看范本</a>                     
+                    </div>                   
+                        <ul class="update-con ml30 mt4 clearfix">                            
+                        </ul>                    
+                </div>
+
+                <input type="hidden" id="yeobj" value="{$apply.legal_identity_cert}"/>
+                <div class="update-part width985">
+                    <div class="update-til width985">
+                        <p class="fl" style="width:248px;text-align: right;"><em class="em-red">*</em>身份证号码：</p>
+                        <!-- <a href="javascript:;" onclick="chakan4()" class="blue fl mr10 ">查看范本</a><p class="fl">身份证号码：</p> -->
+                        <input type="text" maxlength="18" id="store_person_identity"  placeholder="请输入身份证号" style="text-indent:4px;width:256px;height:35px;" name="store_person_identity" value="{$apply.store_person_identity}" class="input145 fl mr10" /><span id="storepros" style="display: inline-block;float: right;margin:0;padding:0;text-align:left;min-width: 47%;display:none;line-height: 35px;color:red;">请输入正确身份证号</span>
+                        <!-- <div class="update-btn width-170 fl"><input type="file" name="store_person_cert" id="file_upload_5" data-val="{$apply.store_person_cert}"/></div>
+                    </div> -->
+                        <ul class="update-con ml30 mt4 clearfix">
+                        </ul>
+                </div>
+                  <script type="text/javascript">
+                        $("#store_person_identity").blur(function(){
+                            var idcard=$("#store_person_identity").val();
+                            var idspan=$("#storepros");
+                            // alert(idcard);
+                            var bo=/^(\d{6})(18|19|20)?(\d{2})([01]\d)([0123]\d)(\d{3})(\d|X)?$/.test(idcard);
+                            var year = idcard. substr(6,4);
+                            var month = idcard. substr(10,2);
+                            var day = idcard. substr(12,2);
+                            if(bo==false||month>12||day>31){
+                                $("#store_person_identity").addClass("warning");
+                                 $("#storepros").show();
+                                return false;
+                            }
+                            else{
+                            $("#store_person_identity").removeClass("warning");
+                            $("#storepros").hide();
+                            }
+                            });
+                </script>
+
+                </div>
+                <div class="update-til width985" style="height:74px;line-height: 74px;">
+                    <p class="fl" style="width:248px;text-align: right;float:left;margin-top: 30px;"><em class="em-red">*</em>企业负责人身份证正反面复印件：</p>
+                        <!-- <p class="fl">身份证号码：</p> -->
+                       <!--  <input type="text" maxlength="18" id="store_person_identity" name="store_person_identity" value="{$apply.store_person_identity}" class="input145 fl mr10" /> -->
+                        <div class="update-btn width-170 fl" style="width:120px;height:75px;margin-top: 30px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                        <if condition="$apply['store_person_cert']">
+                        <img src="{$apply['store_person_cert']}" onclick="GetUploadify2(1,'store_person_cert','store_person_cert','add_store_person_cert')" id="preview5" style="display:block;cursor:pointer;width: 120px" >
+                        <else />
+                        <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'store_person_cert','store_person_cert','add_store_person_cert')" id="preview5" style="display:block;cursor:pointer;width: 120px" >
+                        </if>
+                        <input type="hidden" name="store_person_cert" id="store_person_cert" value="{$apply.store_person_cert}"/>
+                    </div><a href="javascript:;" onclick="chakan4()" class="blue fl mr10 " style="margin-top: 30px;margin-left: 15px;">查看范本</a>
+                        <ul class="update-con ml30 mt4 clearfix">
+                        </ul>
+                </div>
+
+                <input type="hidden" id="ysobj" value="{$apply.store_person_identity}"/>
+                 <div class="update-part width985" style="height:74px;line-height: 74px;">
+                    <div class="update-til width985" style="height:74px;line-height: 74px;">
+                        <p class="fl" style="width:248px;text-align: right;">&nbsp;&nbsp;&nbsp;其他证件：</p>
+                        <div class="update-btn width-170 fl" style="width:120px;height:75px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                        <if condition="$apply['other_certificate']">
+                        <img src="{$apply['other_certificate']}" onclick="GetUploadify2(1,'other_certificate','other_certificate','add_other_certificate')" id="preview6" style="display:block;cursor:pointer;width: 120px" >
+                        <else />
+                        <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'other_certificate','other_certificate','add_other_certificate')" id="preview6" style="display:block;cursor:pointer;width: 120px" >
+                        </if>
+                        <input type="hidden" name="other_certificate" id="other_certificate" value="{$apply.other_certificate}"/></div>
+                    </div>
+                        <ul class="update-con ml30 mt4 clearfix">
+                        </ul>
+                </div>
+
+                <div class="update-part width985" style="height:74px;line-height: 74px;">
+                    <div class="update-til width985" style="height:74px;line-height: 74px;">
+                        <p class="fl" style="width:248px;text-align: right;">&nbsp;&nbsp;&nbsp;其他证件：</p>
+                        <div class="update-btn width-170 fl" style="width:120px;height:75px;overflow:hidden;background:#f5f5f5;position:relative;cursor:pointer;text-align: center;">
+                        <if condition="$apply['other_certificate2']">
+                        <img src="{$apply['other_certificate2']}" onclick="GetUploadify2(1,'other_certificate2','other_certificate2','add_other_certificate2')" id="preview7" style="display:block;cursor:pointer;width: 120px" >
+                        <else />
+                        <img src="__PUBLIC__/images/seller/fileset110.png" onclick="GetUploadify2(1,'other_certificate2','other_certificate2','add_other_certificate2')" id="preview7" style="display:block;cursor:pointer;width: 120px" >
+                        </if>
+                        <input type="hidden" name="other_certificate2" id="other_certificate2" value="{$apply.other_certificate2}"/></div>
+                    </div>
+                        <ul class="update-con ml30 mt4 clearfix">
+                        </ul>
+                </div>
+            </div>
+            
+            </form>
+<script>
+    function add_other_certificate2(str){
+        var other_certificate2 = $('#other_certificate2').val();
+        $('#other_certificate2').val(str);
+        $('#preview7').attr('src',str);
+    }
+    
+
+    function add_other_certificate(str){
+        var legal_identity_cert = $('#other_certificate').val();
+        $('#other_certificate').val(str);
+        $('#preview6').attr('src',str);
+    }
+
+    function add_store_person_cert(str){
+        var store_person_cert = $('#store_person_cert').val();
+        $('#store_person_cert').val(str);
+        $('#preview5').attr('src',str);
+    }
+    function add_legal_identity_cert(str){
+        var legal_identity_cert = $('#legal_identity_cert').val();
+        $('#legal_identity_cert').val(str);
+        $('#preview4').attr('src',str);
+    }
+    function add_orgnization_cert(str){
+        var orgnization_cert = $('#orgnization_cert').val();
+        $('#orgnization_cert').val(str);
+        $('#preview3').attr('src',str);
+    }
+    function add_taxpayer_cert(str){
+        var taxpayer_cert = $('#taxpayer_cert').val();
+        $('#taxpayer_cert').val(str);
+        $('#preview2').attr('src',str);
+    }
+    function add_business_licence_cert(str){
+        var business_licence_cert = $('#business_licence_cert').val();
+        $('#business_licence_cert').val(str);
+        $('#preview').attr('src',str);
+    }
+</script>
+            <if condition="$apply['apply_state'] eq 2">
+                 <div class="tips">
+                    <p><img src="__STATIC__/images/icon01.gif">{$apply.review_msg}</p>
+                </div>
+            </if>
+           
+           
+            <div class="gome-btn pt30">
+            <php>if ($apply['apply_state'] == ''){</php>
+            <a href="javascript:nextStep();" class="gome-btn-red">提交审核</a>
+            <php>} else {</php>
+                <a href="javascript:nextStep();" class="gome-btn-red">修改并重新提交审核</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <a href="javascript:void(0)" class="gome-btn-red" onclick="location.reload()">返回上一层</a> -->
+            <php>}</php>
+            </div>
+        </div>
+    </div>
+    <div>
+    <img src="__PUBLIC__/images/fanben/5.jpg" alt="" id="shouchi1" style="display:none;" />
+    <img src="__PUBLIC__/images/fanben/6.jpg" alt="" id="shouchi2" style="display:none;" />
+    <img src="__PUBLIC__/images/fanben/7.jpg" alt="" id="shouchi3" style="display:none;" />
+    <img src="__PUBLIC__/images/fanben/8.jpg" alt="" id="shouchi4" style="display:none;" />
+    <img src="__PUBLIC__/images/fanben/9.jpg" alt="" id="shouchi5" style="display:none;" />
+    </div>
+<input type="hidden" id="mobileRegex" value="^(13[0-9]{9})|(14[57][0-9]{8})|(15[012356789][0-9]{8})|(170[0-9]{8})|(18[0-9]{9})$"/>
+
+<script>
+function get_province(){
+    var url = '/index.php?m=Home&c=Api&a=getRegion&level=1&parent_id=0';
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+            v = '<option value="0">选择省份</option>'+ v;          
+            $('#province').empty().html(v);
+        }
+    });
+}
+
+function preStep(){
+    window.location.href = "{:U('Newjoin/contact')}";
+}
+//$.datetimepicker.setLocale('ch');//语言选择中文
+
+$('#business_date_start,#business_date_end').datetimepicker({         
+    format:"Y-m-d",      //格式化日期
+    timepicker:false,
+});
+
+$(function(){
+    if ($("#city").val() == null || $("#city").val() == ""){
+        get_province();
+    }
+
+    var v = document.getElementById("3");
+    if (v.value=="Y") {
+        v.checked==true;
+        document.getElementById("business_date_start").value="";
+        document.getElementById("business_date_start").realvalue="";
+        document.getElementById("business_date_start").disabled = true;
+        document.getElementById("business_date_end").value="";
+        document.getElementById("business_date_end").realvalue="";
+        document.getElementById("business_date_end").disabled = true;
+    } else {
+        v.checked==false;
+        document.getElementById("business_date_start").disabled = false;
+        document.getElementById("business_date_end").disabled = false;
+    }
+});
+
+function tabchange(v){
+    if(v==1){
+        $('.threeinone').hide();
+        $('#threeinone').html(' 统一社会信用代码：');
+        // $('#licence_number_note').html('请输入18位数字或字母组成的统一社会信用代码');
+    }else{
+        $('.threeinone').show();
+        $('#threeinone').html('营业执照注册号：');
+        // $('#licence_number_note').html('请输入数字组成的营业执照号，长度为不超过20个字符');
+    }
+}
+/**
+* 检测非空
+*/
+var ret = 0;
+function checkEmpty(value, id, msg, type) {
+    var _email = /^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    var _phone= /^((\+?[0-9]{2,4}\-[0-9]{3,4}\-)|([0-9]{3,4}\-))?([0-9]{7,8})(\-[0-9]+)?$/;
+    var _zip= /^[0-9][0-9]{5}$/;
+    var _mobile = new RegExp(document.getElementById("mobileRegex").value);
+    var _positiveInteger = /^[0-9]*[1-9][0-9]*$/;
+    var _money = /^[1-9]{1}\d*(\.\d{1,2})?$/;
+    var _money1 = /^(?!0)\d{1,6}$|^(?!0)\d{1,6}[.]\d{1,6}$|^0[.]\d{1,6}$/;
+
+
+    if(value == "" ||  ($.trim(value)).length == 0){
+        var v = document.getElementById(id+"Span");
+        v.innerHTML = "请填写" + msg;
+        v.className="warning-text1";
+        v.style.display="block";
+        //输入框样式添加warning
+        // alert(id);
+        $("#"+id).addClass("warning");
+    }
+
+
+    if(value == "" ||  ($.trim(value)).length == 0){
+        var v = document.getElementById(id+"Span");
+        // v.innerHTML = "请填写" + msg;
+        v.className="warning-text1";
+        v.style.display="block";
+        //输入框样式添加warning
+        // alert(id);
+        $("#"+id).addClass("warning");
+    }  else {
+        if ((type == "email" && !(_email.test(value))) || (type == "phone" && !(_phone.test(value))) || (type == "mobile" && !(_mobile.test(value))) || (type == "zip" && !(_zip.test(value))) || (type == "positiveInteger" && !(_positiveInteger.test(value))) || (type == "money" && !(_money.test(value)))  || (type == "money1" && (!(value > 0) || !(_money1.test(value))))) {
+            var v = document.getElementById(id+"Span");
+            if (type == "positiveInteger") {
+                msg = msg + "(正整数)";
+            } else if (type == "money") {
+                msg = msg + "(金额)";
+            } else if (type == "money1") {
+                msg = msg + "(6位整数6位小数的金额)";
+            }
+            v.innerHTML = "格式错误，请正确填写" + msg;
+            v.className="warning-text2";
+            v.style.display="block";
+            $("#"+id).addClass("warning");
+        } else {
+            document.getElementById(id+"Span").className="";
+            document.getElementById(id+"Span").innerHTML="";
+            document.getElementById(id+"Span").style.display="none";
+            $("#"+id).removeClass("warning");
+            ret = 1;
+        }
+    }
+    return ret;
+}
+
+function changeBusinessDate(){
+    var v = document.getElementById("3");
+    if (v.checked==true) {
+        document.getElementById("3").value="Y";
+        document.getElementById("business_date_start").value="";
+        document.getElementById("business_date_start").realvalue="";
+        document.getElementById("business_date_start").disabled = true;
+        document.getElementById("business_date_end").value="";
+        document.getElementById("business_date_end").realvalue="";
+        document.getElementById("business_date_end").disabled = true;
+    } else {
+        document.getElementById("3").value="N";
+        document.getElementById("business_date_start").disabled = false;
+        document.getElementById("business_date_end").disabled = false;
+    }
+}
+
+/**
+* 下一步
+*/
+function nextStep() {
+    // 判断所有的checkSpan都是隐藏的
+
+    if ($("#corpName").attr('err_msg') == 1) {
+        alert("公司名称，填写有误");
+        $("#corpName").focus();
+        return;
+    }
+    if (checkEmpty($("#corpAddress").val(),'corpAddress','公司详细地址','') != 1) {
+        alert("公司详细地址，填写有误");
+        $("#corpAddress").focus();
+        return;
+    }
+    if (checkEmpty($("#contacterPhoneNumber").val(),'contacterPhoneNumber','固定电话','phone') != 1) {
+        alert("固定电话，填写有误");
+        $("#contacterPhoneNumber").focus();
+        return;
+    }
+    if (checkEmpty($("#email").val(),'email','电子邮箱','email') != 1) {
+        alert("电子邮箱，填写有误");
+        $("#email").focus();
+        return;
+    }
+    // if (checkEmpty($("#fax").val(),'fax','传真','phone') != 1) {
+    //  alert("传真，填写有误");
+    //  $("#fax").focus();
+    //  return;
+    // }
+    // if (checkEmpty($("#zipCode").val(),'zipCode','邮政编码','zip') != 1) {
+    //  alert("邮政编码，填写有误");
+    //  $("#zipCode").focus();
+    //  return;
+    // }
+    
+    // if($("input[type='radio']:checked").val()==0){
+    //     if (checkEmpty($("#orgnizationCode").val(),'orgnizationCode','组织机构代码','') != 1) {
+    //         alert("组织机构代码，填写有误");
+    //         $("#orgnizationCode").focus();
+    //         return;
+    //     }
+    //     if (checkEmpty($("#attachedTaxNumber").val(),'attachedTaxNumber','纳税人识别号','') != 1) {
+    //         alert("纳税人识别号，填写有误");
+    //         $("#attachedTaxNumber").focus();
+    //         return;
+    //     }
+    // }
+
+    if (checkEmpty($("#regCapital").val(),'regCapital','注册资本','money1') != 1) {
+        alert("注册资本，填写有误");
+        $("#regCapital").focus();
+        return;
+    }
+    if (checkEmpty($("#corpLicenceNumber").val(),'corpLicenceNumber','营业执照注册号','corpLicence') != 1) {
+        alert("营业执照注册号，填写有误");
+        $("#corpLicenceNumber").focus();
+        return;
+    }
+    if (checkEmpty($("#legal_person").val(),'legal_person','法定代表人姓名','') != 1) {
+        alert("法定代表人姓名，填写有误");
+        $("#legal_person").focus();
+        return;
+    }
+    if (checkEmpty($("#business_scope").val(),'business_scope','营业执照经营范围','') != 1) {
+        alert("营业执照经营范围，填写有误");
+        $("#busine_scope").focus();
+        return;
+    }
+    if($('#store_person_identity').val().length != 18){
+        alert("请填写正确的身份证号");
+        $("#store_person_identity").focus();
+        return;
+    }
+    // $('input[type="file"]').each(function(i,o){
+    //     if (i == 0 && !o.value && !$("#yyobj").val()){
+    //         alert('请上传营业执照或三证合一');
+    //         return false;
+    //     }
+    //     if (i == 3 && !o.value && !$("#yeobj").val()){
+    //         alert('请上传法人身份证正反面');
+    //         return false;
+    //     }
+    //     if (i == 4 && !o.value && !$("#yyobj").val()){
+    //         alert('请上传企业负责人身份证正反面');
+    //         return false;
+    //     }
+    // });
+
+    // 判断营业执照有效期
+    var v = document.getElementById("3");
+    if (v.checked == true) {
+        document.getElementById("3").value="Y";
+    }
+    if (v.checked == false) {
+        document.getElementById("3").value="N";
+        var business_date_start = document.getElementById("business_date_start");
+        if ((business_date_start.value == undefined || business_date_start.value == "") && business_date_start.realvalue != undefined && business_date_start.realvalue != "") {
+            business_date_start.value = business_date_start.realvalue;
+        }
+        var business_date_end = document.getElementById("business_date_end");
+        if ((business_date_end.value == undefined || business_date_end.value == "") && business_date_end.realvalue != undefined && business_date_end.realvalue != "") {
+            business_date_end.value = business_date_end.realvalue;
+        }
+        if(business_date_start.value == undefined || business_date_start.value == "" || business_date_end.value == undefined || business_date_end.value == ""){
+            alert("营业执照有效期，填写有误");
+            return;
+        } else if (business_date_start.value > business_date_end.value) {
+            alert("营业执照有效期开始日期不能晚于结束日期，填写有误");
+            return;
+        }
+    }
+    // 检查下拉框
+    if ($("#corpType").val()=="") {
+        alert("请选择 公司性质");
+        $("#corpType").focus();
+        return;
+    }
+
+    if ($("#tax_rate").val()=="") {
+        alert("请选择 纳税类型税码");
+        $("#tax_rate").focus();
+        return;
+    }
+    if ($("#provinces").val()=="") {
+        alert("请选择 公司所在地省份");
+        $("#provinces").focus();
+        return;
+    }
+    // if ($("#city").val()=="") {
+    //  alert("请选择 公司所在地城市");
+    //  $("#city").focus();
+    //  return;
+    // }
+    if ($("#provinces").val()=="") {
+        alert("请选择 企业所在地省份");
+        $("#provinces").focus();
+        return;
+    }
+    // if ($("#city").val()=="") {
+    //     alert("请选择企业所在地城市");
+    //     $("#city").focus();
+    //     return;
+    // }
+    // if($("#storeAddress").val() == ''){
+    //     alert("请填写企业详细地址");
+    //     $("#storeAddress").focus();
+    //     return;
+    // }
+    // if($("#seller_name").val() == ''){
+    //     alert("请填写企业登陆账号");
+    //     $("#seller_name").focus();
+    //     return;
+    // }
+    if($('#store_person_identity').val().length != 18){
+        alert("请填写正确的身份证号");
+        $("#store_person_identity").focus();
+        return;
+    }
+    if (checkEmpty($("#contactPersonName").val(),'contactPersonName','企业负责人姓名','') != 1) {
+        alert("企业负责人姓名，填写有误");
+        $("#contactPersonName").focus();
+        return;
+    }
+    if (checkEmpty($("#contactPersonPhone").val(),'contactPersonPhone','手机号码','mobile') != 1) {
+        alert("手机号码，填写有误");
+        $("#contactPersonPhone").focus();
+        return;
+    }
+    if (checkEmpty($("#contactPersonQq").val(),'contactPersonQq','qq','qq') != 1) {
+        alert("企业负责人QQ");
+        $("#contactPersonQq").focus();
+        return;
+    }
+    // if (checkEmpty($("#shop_email").val(),'email','电子邮箱','email') != 1) {
+    //     alert("电子邮箱，填写有误");
+    //     $("#shop_email").focus();
+    //     return;
+    // }
+    // if ($("#shopType").val()=="") {
+    //     alert("请选择 企业性质");
+    //     $("#shopType").focus();
+    //     return;
+    // }
+    document.getElementById('queryForm').submit();
+}
+
+/**
+ * 获取城市
+ * @param t  省份select对象
+ */
+function get_city(t){
+    var parent_id = $(t).val();
+    if(!parent_id > 0){
+        return;
+    }
+    $('#twon').empty().css('display','none');
+    var url = '/index.php?m=Home&c=Api&a=getRegion&level=2&parent_id='+ parent_id;
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+            v = '<option value="0">选择城市</option>'+ v;          
+            $('#city').empty().html(v);
+        }
+    });
+}
+
+function get_area(t){
+    var parent_id = $(t).val();
+    if(!parent_id > 0){
+        return;
+    }
+    $('#twon').empty().css('display','none');
+    var url = '/index.php?m=Home&c=Api&a=getRegion&level=2&parent_id='+ parent_id;
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+            v = '<option value="0">选择城市</option>'+ v;          
+            $('#district').empty().html(v);
+        }
+    });
+}
+
+function checkCompany(obj){
+    var url = "{:U('Newjoin/check_company')}";
+    $.ajax({
+        type : "POST",
+        url  : url,
+        data :{'company_name':$(obj).val()},
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return false;
+        },
+        success: function(res) {
+            if(res == 'success'){
+                $(obj).attr('err_msg',0);
+            }else{
+                $(obj).attr('err_msg',1);
+            }
+        }
+    });
+}
+
+function chakan1(){
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      area: "390px",
+      skin: 'layui-layer-nobg', //没有背景色
+      shadeClose: true,
+      content: $('#shouchi1')
+    });
+}
+function chakan2(){
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      area: "600px",
+      skin: 'layui-layer-nobg', //没有背景色
+      shadeClose: true,
+      content: $('#shouchi2')
+    });
+}
+function chakan3(){
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      area: "600px",
+      skin: 'layui-layer-nobg', //没有背景色
+      shadeClose: true,
+      content: $('#shouchi3')
+    });
+}
+function chakan4(){
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      area: "315px",
+      skin: 'layui-layer-nobg', //没有背景色
+      shadeClose: true,
+      content: $('#shouchi4')
+    });
+}
+// function chakan5(){
+//     layer.open({
+//       type: 1,
+//       title: false,
+//       closeBtn: 0,
+//       area: "315px",
+//       skin: 'layui-layer-nobg', //没有背景色
+//       shadeClose: true,
+//       content: $('#shouchi5')
+//     });
+// }
+</script>
+</body>
+</html>

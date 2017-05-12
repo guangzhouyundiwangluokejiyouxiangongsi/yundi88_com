@@ -1,0 +1,78 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+                <a onclick="get_help(this)" data-url="http://www.tp-shop.cn/Doc/Indexbbc/article/id/1073/developer/user.html" class="btn btn-default" href="javascript:;"><i class="fa fa-question-circle"></i> 帮助</a>                                
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list" style="padding-right: 6px;"></i>快递公司</h3>
+                </div>
+                <div class="panel-body">
+                    
+                    <!--表单数据-->
+                    <form method="post" id="addEditGoodsForm">
+                        <div class="tab-content">                          
+                            <!-- 物流插件-->
+                            <div class="tab-pane" id="tab_shipping" style="display:inherit;">
+                                <div class="row">
+                                    <volist name="shipping" id="l">
+                                        <div class="col-sm-2"  style="width:260px;">
+                                            <div class="thumbnail">
+                                                <img style="width:150px; height:60px;" src="/plugins/shipping/{$l.code}/{$l.icon}">
+                                                <div class="caption">
+                                                    <h4>{$l.name}</h4>
+                                                    <p>{$l.desc}</p>
+                                                    <if condition="$l.status eq 0">
+                                                        <p><a href="#" class="btn btn-primary" role="button">平台未开放此物流</a> </p>
+                                                        <else />
+                                                        <p>
+                                                            <a href="{:U('Plugin/shipping_list',array('type'=>'shipping','code'=>$l['code']))}" class="btn btn-primary" role="button">配置</a>
+                                                            <if condition="$l.is_close eq 0">
+                                                                <a href="{:U('Plugin/shipping_close_or_open',array('type'=>'shipping','code'=>$l['code'],'is_close'=>1))}" class="btn btn-primary" role="button">启动</a>
+                                                                <else />
+                                                                <a href="{:U('Plugin/shipping_close_or_open',array('type'=>'shipping','code'=>$l['code'],'is_close'=>0))}" class="btn btn-primary" role="button">关闭</a>
+                                                            </if>
+                                                        </p>
+                                                    </if>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                </div>
+                            </div>
+                            <!-- 物流插件-->                                                     
+                        </div>
+                    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+    <!-- /.content -->
+</div>
+<script>
+    //插件安装(卸载)
+    function installPlugin(type,code,type2){
+
+        var url = '/index.php?m=Admin&c=Plugin&a=install&type='+type+'&code='+code+'&install='+type2;
+
+        $.get(url,function(data){
+            var obj = JSON.parse(data);
+            alert(obj.msg);
+            //layer.alert(obj.msg, {icon: 2});  
+            if(obj.status == 1){
+                parent.location.reload();
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta charset="utf-8"> 
+<title>云狄登录页面</title>
+<link href="__PUBLIC__/pc/css/mainreg.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src='__PUBLIC__/pc/js/user.js'></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+
+<style>
+.btn_1{border:5px solid #008BB9;background-color: #008BB9;color: white;}
+.btn_2 a:hover{font-size: 16.8px}
+.de{margin-top:20px}
+.de a:hover{color: red}
+</style>
+</head>
+<body>
+<div class="warp">
+  <header class="head">
+     <ul class="login">
+       <li><a href="/index/index" target="_blank">云狄官网</a></li><span>|</span>
+       <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$tpshop_config['shop_info_qq3']}&amp;site=qq&amp;menu=yes" target="_blank">帮助</a></li><span>|</span>
+       <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$tpshop_config['shop_info_qq2']}&amp;site=qq&amp;menu=yes" target="_blank">客服</a></li><span>|</span>
+     </ul>
+  </header>
+  <section class="logo">
+   <img src="__PUBLIC__/pc/images/logo.jpg" width="145" height="43"  alt=""/> 
+   <p>护航中小型企业</p>
+  </section>
+  <div style="text-align: center; font-size: 16px;" class="btn_2">
+  <a href="{:U('User/reg')}" class="btn_1">个人注册</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('User/regstore')}" >商家注册</a>
+  <span></span>
+  </div>
+  <section class="de">
+     <form id="reg_form2" onsubmit=" return check_submit(this)" method="post" action="{:U('User/regstore')}"> 
+      <!-- <span>请正确输入账号</span> -->
+        <input type="text" placeholder="账号(6-16位数)" name="sellername" id='sellername' class="deng" autocomplete="off" onblur="checkseller()" />
+        &nbsp;<br />
+        <!-- <span>请正确输入账号</span> -->
+       <input type="text" placeholder="手机号(11位数)" name="username" id='username' class="deng2" autocomplete="off" onblur="checkusername()" />
+        &nbsp;<br />
+        <!-- <span>请正确输入账号</span> -->
+       <input type="password" id = 'password' name="password" placeholder="设置密码(6-20位数)" class="deng1"    onblur="checkpassword()" />
+        &nbsp;<br />
+       <!-- <input type="password" id = 'password2' name="password2" placeholder="确认密码" class="deng1" onblur="checkpassword2()" />
+       &nbsp;<br /> -->
+        <!-- <div> -->
+          <input  type="text"  id="code" name="code" placeholder="验证码" class="code" />
+          <button type="button"  id="button" onclick="codes('{:U('User/send_sms_reg_code')}');"  style='width:120px;height:40px;position: relative;top:-45px;left:205px;cursor:pointer;'>验证码</button>
+        <!-- </div> -->
+                      &nbsp;<br />
+       <input class="cheak" type="checkbox" id="ids" checked name="ids"/>&nbsp;&nbsp;&nbsp;<span>同意云狄<a href="/article/detail/article_id/52.html" target="_blank" style="color:#0065CB"> 《服务协议》</a>||<a href="/article/detail/article_id/51.html" target="_blank" style="color:#0065CB">《法律声明》</a></span> <a href="{:U('/User/login')}" target="_blank" style="float:right; text-decoration:underline;">已有账号</a>
+                      <p>&nbsp;<br /></p>
+       <input  type="submit" value="注册" class="but" onclick="return checksubmit()"/>   
+     </form>
+                      &nbsp;<br />
+  </section>
+  <footer>
+     {$copyright}<br />
+     {$record_no}
+ </footer>
+</div>
+</body>
+</html>

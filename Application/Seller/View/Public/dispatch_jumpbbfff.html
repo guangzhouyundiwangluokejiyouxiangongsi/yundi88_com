@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>云狄网 | 后台登陆</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.4 -->
+    <link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="__PUBLIC__/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="__PUBLIC__/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+    <style>
+    	#imgVerify{width: 120px;margin: 0 auto; text-align: center;display: block;}
+    	.login-box-body{border: 1px solid #cccccc;border-radius: 10px;padding:30px 0 0 0;font-family: Microsoft YaHei;}
+    	.login-box-msg{padding: 0 20px;}
+    	.login-box-msg{font-weight: bolder;}    
+    	.glyphicon-ok:before{content: '';}
+    	.l-btn{border-top:1px solid #cccccc;font-size: 16px; }
+    	.l-btn a{display: inline-block;width: 176px;text-align: center;}
+    	.l-btn a{border-right:1px solid #cccccc;line-height: 54px; }
+    	.l-btn a+a{border-right-color: #ffffff;}
+  	</style>
+  </head>
+  <body >
+    <div>
+    <?php $waitSecond = 5;?>
+<?php if(isset($message)) {?>    
+      <!--处理成功-->
+      <div  style="width:98%;margin:0 auto;">
+
+  <div  style="border-bottom: 1px solid #f8f8f8;box-shadow: 1px 1px 1px 1px rgba(0,0,0,.5);margin-top: 20px;">
+      <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;"><img src="__PUBLIC__/images/gerenxinxi.png" style="width:20px;margin-left: 20px;padding-right:10px;">安全设置</h3>
+        <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 10px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);">
+    <div style="clear:both;"></div>
+    </div>
+
+      <div class="steps-nav fixed " style="margin-left: 217px;height: 100px;width: 60%;margin: 0 auto;text-align: center;margin-top: 50px;">
+            <!-- <p class="step-nav step-nav-1 go" style="width:199px;margin-left: -12px;background:#fff;"><img src="__PUBLIC__/images/hjshuru.png"><i></i></p> -->
+            <p class="step-nav step-nav-2 go" style="width:294px;margin-left: 170px;background:none;float:left;"><img src="__PUBLIC__/images/hjyanzhenok.png"><i></i></p>
+            <p class="step-nav step-nav-3 go" style="width:294px;margin-left: -13px;background:none;float:left;"><img src="__PUBLIC__/images/hjyanzhenoks.png"></p>
+          </div>
+
+        <h4 class="login-box-msg ver_cm"><span class="glyphicon glyphicon-ok ver_cm"></span> <?php echo($message); ?></h4>
+        <div style="text-align: center;margin:30px 20px 30px;font-size: 16px;"> 
+        	<a id="href" href="<?php echo($jumpUrl); ?>">页面自动跳转</a> 
+        	等待时间： <b id="wait"><?php echo($waitSecond); ?></b>
+        </div>
+        <div  style="width: 60%;text-align: center;margin: 0 auto;">
+            <a href="/Store/index/store_id/<?php echo($_SESSION['store_id']); ?>.html" target="_blank">官网前台</a>
+            <a href="/Seller/Store/store_setting">管理官网</a>
+        </div> 
+      </div>      
+<?php }else{?>     
+      <!--处理失败-->
+       <div class="login-box-body">
+        <h4 class="login-box-msg ver_cm"><span class="glyphicon glyphicon-remove ver_cm"></span> <?php echo($error); ?></h4>
+          <a href="javascript:void(0);">页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b></a><br /><br />
+          <div class="l-btn" style="width: 60%;text-align: center; margin: 0 auto;border:none;">
+	          <a href="/Store/index/store_id/<?php echo($_SESSION['store_id']); ?>.html" target="_blank">网站前台</a>
+	          <a href="/index.php?m=Seller&c=Index&a=index" target="_parent">管理员后台</a>
+          </div> 
+      </div>
+<?php }?>      
+	    <!-- <div class="margin text-center">
+	            2016-2025 &copy; <a target="_blank" href="http://{$_SERVER['HTTP_HOST']}">云狄网</a>
+	            <br/>
+	            <a target="_blank" href="http://{$_SERVER['HTTP_HOST']}">广州云狄网络有限公司</a>
+	        </div> -->
+	    </div>
+    </div><!-- /.login-box -->
+
+<!-- <script type="text/javascript">
+
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+
+</script>   -->  
+  </body>
+</html>

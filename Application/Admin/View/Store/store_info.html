@@ -1,0 +1,206 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+    <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+      	<div class="box">
+           <nav class="navbar navbar-default">	     
+		      <div class="collapse navbar-collapse">
+	   				<div class="navbar-form form-inline">
+			            <div class="form-group">
+			            	<p class="text-success margin blod">店铺:</p>
+			            </div>
+			             <div class="form-group">
+	                           <a class="btn btn-default" href="{:U('Store/store_list')}">管理</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+	                           <a class="btn btn-default" href="{:U('Store/apply_list')}" >开店申请</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+	                           <a class="btn btn-default" href="{:U('Store/reopen_list')}" >签约申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	                           <a class="btn btn-default" href="{:U('Store/apply_class_list')}">经营类目申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			            </div>
+			            <div class="form-group pull-right">
+			            	 <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+			            </div>			          
+			          </div>
+			       </div>
+           </nav>
+   
+        <!--新订单列表 基本信息-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">公司及联系人信息</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>公司名称</td>
+                        <td>{$apply.company_name}</td>
+                        <td>公司性质:</td>
+                         <td></td>
+                        <td>公司网址:</td>
+                         <td>{$apply.company_website}</td>
+                    </tr>
+                    <tr><td>公司所在地:</td>
+                    	<td></td>
+                        <td>公司详细地址:</td>
+                        <td>{$apply.company_address}</td>
+                        <td>固定电话</td><td>{$apply.company_telephone}</td>
+                    </tr>
+                    <tr><td>邮政编码:</td><td>{$apply.company_zipcode}</td>
+                        <td>电子邮箱:</td><td>{$apply.company_email}</td>
+                        <td>传真:</td><td>{$apply.company_fax}</td>
+                    </tr>
+                    <tr>
+                        <td>联系人姓名:</td><td>{$apply.contacts_name}</td>
+                        <td>联系人电话:</td><td>{$apply.contacts_mobile}</td>
+                        <td>联系人邮箱:</td><td>{$apply.contacts_email}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--新订单列表 收货人信息-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">营业执照信息（副本）</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+					<td>营业执照号:</td><td>{$apply.business_licence_number}</td>
+					<td>营业执照有效期:</td><td>{$apply.business_date_start}=>{$apply.business_date_end}</td>
+					<td>法定经营范围:</td><td>{$apply.business_scope}</td>
+                    </tr>
+                    <tr>
+   					<td>注册资本:</td><td>{$apply.reg_capital}</td>
+					<td>组织机构代码:</td><td>{$apply.orgnization_code}</td>
+			 		<td>一般纳税人证明:</td><td>{$apply.reg_capital}</td>
+                    </tr>
+                    <tr>
+   					<td>法人代表姓名:</td><td>{$apply.legal_person}</td>
+					<td>纳税类型码:</td><td>{$apply.tax_rate}</td>
+			 		<td>税务登记号码:</td><td>{$apply.attached_tax_number}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--新订单列表 商品信息-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">结算账号信息 </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <td class="text-left">银行开户名</td>
+                        <td class="text-left">公司银行账号：</td>
+                        <td class="text-right">开户银行支行名称：</td>
+                        <td class="text-right">支行联行号：</td>
+                        <td class="text-right">开户银行所在地：</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">{$apply.bank_account_name}</td>
+                            <td class="text-left">{$apply.bank_account_number}</td>
+                            <td class="text-right">{$apply.bank_branch_name}</td>
+                            <td class="text-right">{$apply.bank_province}</td>
+                            <td class="text-right">{$apply.bank_city}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--新订单列表 费用信息-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">店铺经营信息</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="text-right">卖家账号:</td><td>{$apply.seller_name}</td>
+                        <td class="text-right">店铺名称:</td><td>{$apply.store_name}</td>
+                        <td class="text-right">店铺等级:</td><td></td>
+                        </tr>  
+         				<tr>
+                        <td class="text-right">店铺负责人:</td><td>{$apply.store_person_name}</td>
+                         <td class="text-right">负责人手机号码:</td><td>{$apply.store_person_mobile}</td>
+                         <td class="text-right">负责人QQ号码:</td><td>{$apply.store_person_qq}</td>
+                        </tr>
+                        <tr>
+                        <td class="text-right">店铺分类:</td><td>{$apply.sc_name}</td>
+                        <td class="text-right">负责人邮箱:</td><td>{$apply.store_person_email}</td>
+                        <td class="text-right">审核意见:</td><td></td>
+                  		</tr>
+                  		<tr>
+                        <td class="text-right">经营类目:</td>
+                        <td colspan="5">
+	                        <table class="table table-bordered">
+					               <thead>
+				                    <tr>
+				                        <th>分类1</th>
+				                        <th>分类2</th>
+				                        <th>分类3</th>
+				                        <th>比例</th>
+				                    </tr>
+					               </thead>
+				                   <tbody>
+				                   <foreach name="bind_class_list" item="vo">
+				                   	<tr>
+				                        <td>{$vo.class_1_name}</td>
+				                        <td>{$vo.class_2_name}</td>
+				                        <td>{$vo.class_3_name}</td>
+				                        <td>{$vo.commis_rate}%</td>
+				                    </tr>
+				                    </foreach>
+				                   </tbody>
+				        	</table>
+                        </td>
+         				</tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">证件信息</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <td class="text-left">企业营业执照副本：</td>
+                        <td class="text-left">税务登记证复印件：</td>
+                        <td class="text-right">织机构代码证复印件：</td>
+                        <td class="text-right">法人身份证：</td>
+                        <td class="text-right">店铺负责人身份证：</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left"><a href="{$apply.business_licence_cert}" target="_blank"><img src="{$apply.business_licence_cert}" height="60"></a></td>
+                            <td class="text-left"><a href="{$apply.taxpayer_cert}" target="_blank"><img src="{$apply.taxpayer_cert}" height="60"></a></td>
+                            <td class="text-right"><a href="{$apply.orgnization_cert}" target="_blank"><img src="{$apply.orgnization_cert}" height="60"></a></td>
+                            <td class="text-right"><a href="{$apply.legal_identity_cert}" target="_blank"><img src="{$apply.legal_identity_cert}" height="60"></a></td>
+                            <td class="text-right"><a href="{$apply.store_person_cert}" target="_blank"><img src="{$apply.store_person_cert}" height="60"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       </div>
+	  </div>
+    </div> 
+   </section>
+</div>
+</body>
+<script>
+</script>
+</html>

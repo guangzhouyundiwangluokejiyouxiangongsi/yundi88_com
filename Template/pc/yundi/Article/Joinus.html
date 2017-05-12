@@ -1,0 +1,616 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云商会-加入优势</title> 
+
+<!-- ie使用最高版本打开 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/yshanghui.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/animate.min.css">
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+<!-- <script type="text/javascript" src="__PUBLIC__/pc/jquery-1.7.1.min.js"></script> -->
+<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+<script type="text/javascript" src="__PUBLIC__/pc/js/wow.min.js"></script>
+
+</head> 
+<style type="text/css">
+    *{padding: 0;margin: 0;}
+    a{text-decoration: none;}
+    .pop_ups_con{position: fixed;width: 440px;bottom: 25%;left: 37%;background-color: white;z-index: 10000;border-radius: 10px;overflow: hidden;display: none;}
+    .tankuang{width: 100%;height: 110px;background: url(__PUBLIC__/images/tangkuangbg.png) no-repeat;}
+    .tankuang>a{display: block;width: 30px;height: 30px;background: none;text-align: right;margin: 2px;float: right;}
+    h2{margin: 10px  0 0 20px;font-size: 16px;font-weight: 500;font-family: "微软雅黑";color: #333;text-align: left;}
+    h3{margin: 5px 0 0 20px;font-size: 14px;font-weight: 500;font-family: "微软雅黑";color: #333;text-align: left;}
+    .pop_ups_form{margin: 5px  30px 0 10px;}
+    .company_form{margin: 5px  29px;width: 372px;}
+    .company_form:after{clear: both;display: block;content: "";}
+    .company_form>p{float: left;line-height: 25px;font-family: "微软雅黑";font-size: 12px;color: #333;width: 60px;}
+    .company_form>input{float: left;width: 300px;padding-left: 10px;height: 25px;outline: none;border: 1px solid #999;}
+    input::-webkit-input-placeholder{font-size: 12px;}
+    .company_form>input:hover{border: 1px solid #0fa9fd;}
+    .gender{margin: 5px  29px;width: 372px;}
+    .gender:after{clear: both;display: block;content: "";}
+    .gender>p{float: left;line-height: 25px;font-family: "微软雅黑";font-size: 12px;color: #333;width: 60px;}
+    .gender>input{float: left;margin: 7px 10px;}
+    .gender>i{float: left; font-family: "微软雅黑";font-size: 12px;font-style: normal;line-height: 25px;}
+    .ver_code{margin: 5px  29px;width: 372px;}
+    .ver_code:after{clear: both;display: block;content: "";}
+    .ver_code>p{float: left;line-height: 25px;font-family: "微软雅黑";font-size: 12px;color: #333;letter-spacing: 3px;width: 60px;}
+    .ver_code>input{float: left;width: 200px;height: 25px;border: 1px solid #999;outline: none;padding-left: 10px;}
+    .ver_code>input:hover{border: 1px solid #0fa9fd;}
+    /*.ver_code>i{font-style: normal;float: left;width: 100px;height: 27px;font-family: "微软雅黑";font-size: 12px;color: #fff;background-color: #0fa9fd;text-align: center;line-height: 27px;cursor: pointer;}*/
+    .ver_code_click{border: none;float: left;width: 100px;height: 25px;font-family: "微软雅黑";font-size: 12px;color: #fff;background-color: #0fa9fd;text-align: center;line-height: 25px;cursor: pointer;outline: none;}
+    /*.ver_code>i>img{width: 100%;height: 100%;}*/
+    .refer{margin: 10px  auto 15px auto;width: 236px;position: relative;}
+    .refer:after{clear: both;display: block;content: "";}
+    .refer>button{float: left;width: 120px;height: 30px;font-family: "微软雅黑";color: #fff;line-height: 30px;border: none;outline: none;background: #4fbefa;text-align: center;border-radius: 30px;cursor: pointer;}
+    .refer>button:hover{background: #0fa9fd;}
+    .jump_login{float: left;line-height: 30px;margin: 0 10px;font-family: "微软雅黑";color: #333;font-size: 12px;}
+    .jump_login>a{font-family: "微软雅黑";color: #4fbefa;font-size: 12px;}
+    .jump_login>a:hover{color: #0fa9fd;}
+    .pop_ups_form span{display: block;clear: both; font-family: "微软雅黑";font-size: 12px;color: #ff0000;padding-left: 65px;padding-top: 10px;display: none;}
+
+    .button{margin: 35% auto 0 auto;width: 100px;height: 27px;}
+    .button>button{width: 100px;height: 27px;text-align: center;line-height: 27px;font-family: "微软雅黑";font-size: 12px;color: #fff;border: none;background: #0fa9fd;border-radius: 25px;cursor: pointer;outline: none;}
+
+    /* @media screen and (max-width:1920px;) and (min-width: 1400px;){
+		.pop_ups_con{bottom: auto;bottom:25%;}
+		}*/
+	@media only screen and (max-width: 1400px) and (min-width: 1000px){
+  		.pop_ups_con {bottom: 8%;left: 31%;}
+  	}
+
+  </style>
+<body  > 
+
+<!-- 使用动画效果必须加上实例化 -->
+<script type="text/javascript">
+  $(function(){
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+      new WOW().init();
+    };
+  });
+
+var store = false;
+var mobile = false;
+var seller = false;
+var pass2 = false;
+var code = false;
+var nickname = false;
+  $(function(){
+      $(".tankuang>a").click(function(){
+        $("body").css("background","none");
+        $(".pop_ups_con").hide();
+        $("#fade").hide();
+
+        $("input[type=reset]").trigger("click");
+        $('.acc_num_code').hide();
+        $('.con_info_code').hide();
+        $('.com_name_code').hide();
+        
+      })
+    })
+  
+
+  $(function(){
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+      new WOW().init();
+    };
+  });
+
+  $(function(){
+
+      var comName = /^[a-zA-Z\u4E00-\u9FA5]{4,32}$/;/*输入内容为中文*/
+      // var comName = /^[\u4E00-\u9FA5]{5,16}$/;/*输入内容为中文*/
+      var accNum=/^[a-zA-Z][a-zA-Z_\$0-9\#]{5,15}/;/*验证账号*/
+      // var accNum = /^[a-zA-Z0-9_]{5,16}$/;/*输入内容不为中文且没有特殊字符*/
+      var conInfo = /^(13[0-9]|15[0|3|6|7|8|9]|18[0|1|6|8|9])\d{8}$/;/*手机号码*/
+      // var pass = /^[A-Za-z0-9]{6,20}$/;//密码
+      var pass = /(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{6,}/;//密码
+     var navname = /^[a-zA-Z\u4E00-\u9FA5]{2,}$/;/*验证昵称*/
+       // var navname =/^\d+$/;
+
+      $(".company_name input").blur(function(){/*企业名称*/
+        if (!$(".company_name input[type=text]").val()){
+           $('.com_name_code').html('企业名称不能为空');
+          $(".com_name_code").show();
+          store = false;
+          return false;
+        }
+        if(!comName.test($(".company_name input[type=text]").val())){
+          $(".com_name_code").show();
+          $('.com_name_code').html('请正确输入 例如：广州XX有限公司');
+          store = false;
+          return false;
+        }else{
+          $(".com_name_code").hide();
+        }
+        $.ajax({
+          type:'post',
+          url:"/User/ajax_store",
+          data:'storename='+$(".company_name input[type=text]").val(),
+          success:function(res){
+            if (res){
+               $('.com_name_code').html('企业名称已存在');
+               $(".com_name_code").show();
+               store = false;
+            } else {
+              store = true;
+            }
+          }
+        })
+      })
+
+      
+      $(".account_num input").blur(function(){/*账号*/
+        if (!$(".account_num input[type=text]").val()){
+
+          $('.acc_num_code').html('账号不能为空');
+          $(".acc_num_code").show();
+          seller = false;
+          return false;
+        }
+        if(!accNum.test($(".account_num input[type=text]").val())){
+          $(".acc_num_code").show();
+          $('.acc_num_code').html('请输入以字母开头6-16位数字和英文');
+          seller = false;
+          return false;
+        }else{
+          $(".acc_num_code").hide();
+        }
+        $.ajax({
+          type:'post',
+          url:"/User/ajax_seller",
+          data:'sellername='+$(".account_num input[type=text]").val(),
+          success:function(res){
+            if(res){
+              $('.acc_num_code').html('账号已存在');
+              $(".acc_num_code").show();
+              seller = false;
+            } else {
+              seller = true
+            }
+          }
+        })
+      })
+
+      $(".account_pass input").blur(function(){/*密码*/
+        if (!$(".account_pass input[type=password]").val()){
+          $('.acc_pass_code').html('密码不能为空');
+          $(".acc_pass_code").show();
+          pass2 = false;
+          return false;
+        }
+
+        if(!pass.test($(".account_pass input[type=password]").val())){
+          $('.acc_pass_code').html('请正确输入密码 6-16位数字或英文');
+          $(".acc_pass_code").show();
+          pass2 = false;
+          return false;
+        }else{
+          $(".acc_pass_code").hide();
+          pass2 = true;
+        }
+      })
+
+      $(".nick_name input").blur(function(){
+        if (!$(".nick_name input[type=text]").val()){
+            $('.nick_name_code').html('昵称不能为空');
+            $(".nick_name_code").show();
+            nickname = false;
+            return false;
+          }
+          if(!navname.test($(".nick_name input[type=text]").val())){
+          $(".nick_name_code").show();
+          $('.nick_name_code').html('请输入中文名或英文名');
+          nickname = false;
+          return false;
+        }
+         else {
+            $(".nick_name_code").hide();
+            nickname = true;
+          }
+      })
+      $(".contact_info input").blur(function(){/*联系方式*/
+        if (!$(".contact_info input[type=text]").val()){
+          $(".con_info_code").show();
+          $('.con_info_code').html('手机号不能为空');
+          mobile = false;
+          return false;
+        }
+        if(!conInfo.test($(".contact_info input[type=text]").val())){
+          $(".con_info_code").show();
+          $('.con_info_code').html('请正确填写11位手机号');
+          mobile = false;
+          return false;
+        }else{
+          $(".con_info_code").hide();
+        }
+        $.ajax({
+          type:'post',
+          url:"/User/ajax_mobile",
+          data:'mobile='+$(".contact_info input[type=text]").val(),
+          success:function(res){
+            if(res){
+              $('.con_info_code').html('手机号码已存在');
+              $(".con_info_code").show();
+              mobile = false;
+              return false;
+            } else {
+              mobile = true;
+            }
+          }
+        })
+      })
+      $(".ver_code input").blur(function(){/*验证码不为空*/
+        if($(".ver_code input[type=text]").val()==""){
+          $(".ver_code_code").show();
+        }else{
+          $(".ver_code_code").hide();
+          code = true;
+        }
+      })
+      $(".refer button[type=submit]").click(function(){/*提交*/
+        if (!store){
+          $('.com_name_code').html('企业名称格式错误或已被注册');
+          $(".com_name_code").show();
+          return false;
+        }
+        if (!seller){
+          $('.acc_num_code').html('账号格式错误或已被注册');
+          $(".acc_num_code").show();
+          return false;
+        }
+
+        if (!pass2){
+          $(".acc_pass_code").html('请正确输入密码');
+          $(".acc_pass_code").show();
+          return false;
+        }
+
+        if(!nickname){
+          $(".nick_name_code").show();
+          return false;
+        } 
+
+        if (!mobile){
+          $('.con_info_code').html('手机号码格式错误或已被注册');
+          $(".con_info_code").show();
+          return false;
+        }
+
+        if (!code){
+          $(".ver_code_code").show();
+          return false;
+        } 
+
+        $.post('/user/regstore',$('#userform').serialize(),function(res){
+          if (res){
+            top.location.href = "{:U('Seller/Commerce/index')}?shanghui=123";
+          } else {
+            alert('验证码错误');
+          }
+        })
+        
+      })
+
+      var i;
+      $(".ver_code_click").click(function(){
+        if (i>0){
+          alert('60秒内不能重复获取验证码');
+          return false;
+        }
+        if(!conInfo.test($(".contact_info input[type=text]").val())){
+          alert("请输入正确的手机号码");
+          return false;
+        }else{
+          $.post('/User/send_sms_reg_code',{'mobile':$(".contact_info input[type=text]").val()},function(res){
+            var obj = eval('('+res+')');
+            times();
+            alert(obj['msg']);
+            })
+        }
+      })
+      
+
+      function times(){
+        i = 60;
+        var time = setInterval(function(){
+           $('.ver_code_click').html( i +'秒中后重新获取');
+        i--;
+        if(i < 0){clearInterval(time); $('#button').html('重新获取');$('#button').removeAttr('disabled');}else{$('#button').attr({'disabled':"disabled"});}
+        },1000);
+      }
+    })
+
+
+    function ajax_jump(){
+      $.post('/user/ajax_jump',function(res){
+        if (res){
+          document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';
+        }else{
+          chicked();
+        }
+      })
+    }
+
+</script>
+
+
+<include file="Article/header" />
+
+ <script type="text/javascript">
+        $(function(){
+          $('.navs>a').bind('mouseover',function(){
+          $('.navs>a').each(function(){
+            $($(this).attr('i')).css('display','none');       
+            $($(this).attr('i')).hide('aa');
+          })
+          $($(this).attr('i')).show('aa');
+
+        })
+
+        });
+    </script>
+
+  </header><!--顶部结束-->
+  <div class="pop_ups_con">
+    <div class="tankuang">
+      <a href="javascript:void(0)"><img src="__PUBLIC__/images/joinover.png"></a>
+    </div>
+    <h2>欢迎您加入企业联盟云商会！</h2>
+    <h3>填写好以下资料，我们将安排客服专员一对一进行服务。</h3>
+    <div class="pop_ups_form">
+      <form id="userform">
+        <div class="company_name company_form">
+          <p>企业名称：</p>
+          <input type="text"  placeholder="请填写企业名称与营业执照一致" value="" name="storename" nkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"></input>
+          <span class="com_name_code">请输入正确名称</span>
+        </div>
+        
+        <div class="account_num company_form">
+          <p>账　　号：</p>
+          <input type="text"  placeholder="5-16位数字和英文" name="sellername"></input>
+          <span class="acc_num_code">请输入正确账号</span>
+        </div>
+
+        <div class="account_pass company_form">
+          <p>密　　码：</p>
+          <input type="password"  placeholder="6-16位数字和英文" name="password"></input>
+          <span class="acc_pass_code">密码格式不对</span>
+        </div>
+        <div class="gender">
+          <p>称　　呼：</p>
+          <input type="radio"  name="sex" value="1" checked="true"></input>
+          <i>先生</i>
+          <input type="radio" name="sex" value="2"></input>
+          <i>女士</i>
+        </div>
+        <div class="nick_name company_form">
+          <p>昵　　称：</p>
+          <input type="text"  placeholder="请输入昵称" name="nickname"></input>
+          <span class="nick_name_code">请输入昵称</span>
+        </div>
+        <div class="contact_info company_form">
+          <p>手机号码：</p>
+          <input type="text"  placeholder="请输入手机号码" name="username" ></input>
+          <span class="con_info_code">手机号码不正确</span>
+        </div>
+        <div class="ver_code">
+          <p>验证码：</p>
+          <input type="text" placeholder="请输入验证码" name="code"></input>
+          <botton class="ver_code_click">点击获取验证码</botton>
+          <span class="ver_code_code">请输入验证码</span>
+        </div>
+        <div class="refer">
+          <button type="submit">提交</button>
+          <div class="jump_login">已有账号？<a target="_blank" href="/user/login">去登陆</a></div>
+        </div>
+        <input type="reset" name="reset"  style="display: none;" />
+      </form>
+    </div>
+  </div>
+
+	<main class="ymain">
+  <!-- benner部分 -->
+    <div class="benner">
+      <div class="yjiaru">
+      
+      <a href="javascript:" onclick="ajax_jump()"><img src="__PUBLIC__/pc/images/ann.png" ></a>
+      
+      </div>
+      <img src="__PUBLIC__/pc/images/banner.png" class="ybenner">   
+    </div>
+
+<!-- 为什么总是无法突破？ -->
+  <div class="always">
+    <div class="alwaysa">
+      <h2 class="wow zoomIn">为什么总是无法突破？</h2>
+    <img src="__PUBLIC__/pc/images/b1.png">
+    </div>
+    <div class="alwaysb">
+        <p class="ap1 wow zoomIn">您的企业可能还在互联网运营中摸着石头过河？</p>
+        <p class="ap2 wow zoomIn">您的企业可能还在为不知道怎么去运营互联网而苦恼？</p>
+        <p class="ap3 wow zoomIn">您的企业可能还在为打造自己的网络运营团队而担忧？</p>
+        <p class="ap4 wow zoomIn">您的企业还在做传统的生意，越做越窄，越做越难做？</p>
+        <p class="ap5 wow zoomIn">您还在为做品牌推广而付出庞大的资金，回报不大而担心？</p>
+    </div>
+
+  </div>
+  
+    <div class="alwaysc">
+    <h3>现在立即加入企业联盟云商会、只需1688元/年，<br><h3>立即拥有<font style="font-size:72px;">10</font>  大优势！</h3></h3>  
+    <img src="__PUBLIC__/pc/images/jiantou.png"> 
+    <h2>01</h2>
+    </div>
+
+
+  <!-- 权威认证 -->
+  <div class="Authoritative wow zoomIn">
+    <div class="Authoritatives wow zoomIn" >
+      <h4 class="wow zoomIn">权威认证</h4>
+      <p class=" wow zoomIn">【商会标志】已加入企业联盟商会会员,《权威企业》身份象征，并为消费者及商家提供100%安全保障及服务!彰显企业独特性！不是所有企业都是商会成员哦</p>
+    <img src="__PUBLIC__/pc/images/line.png" class="wow slideInDown">
+    </div>
+  </div>
+
+  <!-- 网站建设部分 -->
+  <div class="website">
+      <div class="websites">
+        <div class="websitel">
+          <h2 class="wow zoomIn" style="color:#fff;font-weight:200;"><font style="font-size: 36px;font-weight:200;">02</font> . 网站建设</h2>
+            <p class="wow zoomIn">首年入会会员将免费获得由云狄网提供的一站式网站建设服务，为您的企业搭
+      建好PC站、手机站、微商城网站服务。根据您企业的特性为您打造独一无二
+      的官网，让您做甩手老板，解决一切建站问题，减少企业运营支出，全程保姆式服务！</p>
+          <p class="wow zoomIn">服务流程：<br />
+        1、提供相关资料如：联系方式、座机、手机、微信、QQ、邮箱等其他方式。<br />
+        2、云狄网售后一对一对接服务，享受贴心，为您省心！<br />
+        3、提供相关产品原图或者设计图。<br />
+        4、资深设计师为您首年设计10张banner图作为官网展示。<br />
+        5、7个工作日为您搭建三站项目。</p>
+        </div>
+        <div class="websiter">
+            <img src="__PUBLIC__/pc/images/image.png" class="wow bounceInLeft">
+        </div>
+      </div>
+    <div class="cl"></div>
+  </div>
+
+  <!-- 优化推广 -->
+    <div class="Optimize" >
+      <div class="Optimizea wow slideInDown">
+       <h2>03</h2>
+        <h3 class=" wow zoomIn" style="font-weight:800;">免费优化推广</h3>
+        <p class=" wow zoomIn">让您的企业官网优化达到极致，全力输出SEO网站优化</p>
+        <!-- <img src="__PUBLIC__/pc/images/line.png" class=" wow zoomIn"> -->
+        <!-- 网站优化 -->
+          <div class="optimization  wow slideInRight">
+            <h3 class=" wow zoomIn">网站优化</h3>
+            <img src="__PUBLIC__/pc/images/youhua.png" style="display:inline-block;margin-bottom: 30px;margin-top: 30px;">
+            <p style="margin-left: 24px;">全程优化网站代码及调整，如：网站标题策划，关键词设置，创意描述编写，营销广告语等。让您的企业官网优化达到极致，全力输出SEO网站优化。</p>
+          </div>
+         <!-- 网络推广 -->
+          <div class="promotion wow slideInRight">
+            <h3 class=" wow zoomIn">网络推广</h3>
+            <img src="__PUBLIC__/pc/images/tuiguang.png" style="display:inline-block;margin-bottom: 40px;margin-top: 38px;">
+            <p class=" wow zoomIn" style="margin-left: 24px;text-align: justify;">在平台/官网发布出来的文章信息或产品信息，免费推送至各大搜索引擎及云狄网收录排名。并所在云狄网信息搜索及产品搜索优先展示信息和产品。</p>
+          </div>
+      </div>
+      <div class="zhanshi wow swing" data-wow-iteration="1" data-wow-duration="2s">
+        <h2>04</h2>
+        <h3>免费金牌商家展示企业</h3>
+        <p>云狄网平台以金牌商家区免费推荐展示位</p>
+        <img src="__PUBLIC__/pc/images/image1.png">
+     </div>
+      </div>
+    </div>
+
+  <!-- 整合资源 -->
+  <div class="resources">
+      <div class="resourcesa">
+        <div class="resourcesl wow slideInLeft" data-wow-delay="0.15s">
+          <h3 class=" wow zoomIn" style="color:#fff;"><font style="font-size: 36px;font-weight:200;">05 </font>. 免费参加定期企业联盟云商研讨会</h3>
+            <p class=" wow zoomIn">企业联盟云商会定期开办互联网企业研讨会，并邀约互联网行业内佼佼者及知名企业家，一起来探讨对网络推广、营销系统、企业管理、精英人才、仓储等系统的运营之道。企业联盟云商会开办研讨会的目的就是整合资源协助企业打造属于您的互联网/营销团队</p>
+        </div>
+        <div class="resourcesr wow slideInRight" data-wow-delay="0.15s">
+            <img src="__PUBLIC__/pc/images/image2.png" >
+        </div>
+      </div>
+    <div class="cl"></div>
+  </div>
+
+
+  <div class="free">
+      <h2>06</h2>
+      <h3>免费拥有苹果、安卓企业APP（市场价值<font style="font-size:24px;">6800元</font>）</h3>
+      <p>赠送企业APP（含IOS/Android）供用户下载关注，<br>增加企业的用户粘度，提高用户转化！</p>
+      <div class="freesl"><img src="__PUBLIC__/pc/images/sj.png"></div>
+      <div class="freesr">
+      <a href="javascript:" style="cursor:default;"><img src="__PUBLIC__/pc/images/iPhone.png"></a>
+      <a href="javascript:" style="cursor:default;"><img src="__PUBLIC__/pc/images/Android.png"></a></div>
+    <div class="cl"></div>
+</div>
+
+<div class="seven">
+  <h2>07</h2>
+  <h3>首年免费为企业出版黄页杂志并冠名信息+广告位</h3>
+  <p>企业联盟云商会针对每次研讨会的主题或者是内容都会出版书刊的形式同步<br>到线上线下，其出版的书刊会冠名所参会企业名称及相关信息，在<br>出版后15个工作日寄送给商会成员。</p>
+  <img src="__PUBLIC__/pc/images/shu.png">
+</div>
+
+ <!-- 整合资源 -->
+  <div class="resources">
+      <div class="resourcesa">
+        <div class="resourcesl wow slideInLeft" data-wow-delay="0.15s">
+          <h3 class=" wow zoomIn" style="color:#fff;"><font style="font-size: 36px;font-weight:200;">08</font> . 免费推送杂志到各大高端场所</h3>
+            <p class=" wow zoomIn">企业联盟云商会辅助各企业线下推广方式如：高铁站/高铁、机场/飞机上、咖啡厅等场所上架杂志（杂志以参会企业为冠名或分享经验发布）供阅读者浏览/阅读。</p>
+        </div>
+        <div class="resourcesr wow slideInRight" data-wow-delay="0.15s">
+            <img src="__PUBLIC__/pc/images/image55.png" >
+        </div>
+      </div>
+    <div class="cl"></div>
+  </div>
+
+<div class="nine">
+  <h2>09</h2>
+  <h3>免费协助企业曝光新媒体100篇软文</h3>
+  <p>首年企业联盟云商会成员，云狄网协助每位成员在各大新媒体曝光企业信息，如：（腾讯、新浪、网易）<br>等平台发布上100篇软文进行品牌口碑推广，为企业创建互联网品牌形象，彰显企业实力！</p>
+  <img src="__PUBLIC__/pc/images/wagnyi.png" alt="">
+</div>
+
+<div class="ten">
+<h2>10</h2>
+      <h3>免费为会员推送营销杂志到全国3000万企业手里</h3>
+      <p>另外企业联盟云商会为增加市场宣传曝光率，特制出版营销黄页（商会成员可以申请黄页版面广告位）免费推广到全国<br>3000万企业手里。让您的信息即是广告也是珍品！备注：营销黄页是每个大行业的总<br>称，其分类行业能分上百种类，如：电子照明、五金机电等等...</p>
+</div>
+
+  
+    <div class="yunmap wow zoomIn">
+      <img src="__PUBLIC__/pc/images/image666.png" >
+      <h3>还在等什么，入会费只需1688元/年、赶紧加入我们吧！</h3>
+      
+      <a href="javascript:void(0)" onclick="ajax_jump()">一起共建共享共赢！</a>
+      
+    </div>
+
+   <div id="light" class="white_content"> 
+      <div class="tankuang">
+        <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="__PUBLIC__/pc/images/joinover.png"></a>       
+      </div>
+      <h3>尊敬的用户您好！</h3>
+      <p style="height:40px;line-height: 40px;">首年1688元加入企业联盟云商会享有的主要服务内容如下：</p>
+      <p>1.获得PC+手机网站+微商城+APP应用软件<br>
+      2.一站式为您设计好官网及店铺页面，并完善您的信息<br>
+      3.资深设计师为您首年设计10张banner图作为官网展示<br>
+      4.产品信息优先推送收录并全网推广<br>
+      5.享有全年云狄网金牌商家展示服务<br>
+      6.成为优选供应商，享有商城至尊版最高级别推广服务<br>
+      7.协助会员发布新媒体100篇软文，曝光品牌服务<br>
+      8.定期出版商会杂志，冠名企业信息彰显实力<br>
+      9.出版营销黄页免费推广到全国3000万企业手里<br>
+      10.定期邀约会员参与企业联盟研讨大会，共建共享经济！<br></p>
+        <button onclick="window.open('{:U('Seller/Commerce/index')}')">确定</button>
+     </div>
+
+  <div id="fade" class="black_overlay"></div> 
+
+    <div class="cl"></div>
+<include file="Article/footer" />
+
+
+  </main>	
+
+</body> 
+<script>
+  function chicked(){
+        // $("body").css("background","rgba(0,0,0,0.8)");
+        $(".pop_ups_con").show();
+        $("#fade").show();
+        $('#inner-editor').innerHTML='';
+        
+      }
+</script>
+</html>

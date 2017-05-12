@@ -1,0 +1,90 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content" style="padding:0px 15px;">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">           
+                <div class="panel-body ">   
+                   	<ul class="nav nav-tabs">
+						<li class="active"><a href="javascript:void(0)"  data-toggle="tab">店铺装修</a></li> 
+					</ul>
+                    <!--表单数据-->
+                    <form method="post" id="handlepost" action="">                    
+                        <!--通用信息-->
+                    <div class="tab-content" style="padding:20px 0px;">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody> 
+                                <tr><td>启用店铺装修：</td>
+                                	<td><input type="radio" name="store_decoration_switch" value="{$decoration.decoration_id}" <if condition="$store.store_decoration_switch gt 0">checked</if>>是<i>&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                                		<input type="radio" name="store_decoration_switch" value="0" <if condition="$store.store_decoration_switch eq 0">checked</if>>否
+                                	<br/><br/>
+                                	<p class="text-warning">选择是否使用店铺装修模板；
+									如选择“是”，店铺首页背景、头部、导航以及上方区域都将根据店铺装修模板所设置的内容进行显示；
+									如选择“否”根据 “店铺主题” 所选中的系统预设值风格进行显示。</p>
+                                	</td>
+                                </tr>
+                                <tr><td>仅显示装修内容：</td>
+                                	<td><input type="radio" name="store_decoration_only" value="1" <if condition="$store.store_decoration_only eq 1">checked</if>>是<i>&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                                		<input type="radio" name="store_decoration_only" value="0" <if condition="$store.store_decoration_only eq 0">checked</if>>否
+                                	<br/><br/>
+                                	<p class="text-warning">该项设置如选择“是”，则店铺首页仅显示店铺装修所设定的内容；
+										如选择“否”则按标准默认风格模板延续显示页面下放内容，即左侧店铺导航、销售排行，右侧轮换广告、最新商品、推荐商品等相关店铺信息。</p>
+                                	</td>
+
+                                </tr>
+                                <tr>
+                                    <td>店铺装修：</td>
+                                    <td><a href="{:U('Decoration/decoration_edit',array('decoration_id'=>$decoration[decoration_id]))}" target="_blank" class="btn btn-info">装修页面</a><i>&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                                    	<a href="{:U('/Store/decoration_preview',array('decoration_id'=>$decoration[decoration_id],'store_id'=>$store[store_id]))}" target="_blank" class="btn btn-warning">预览页面</a>
+                                    	<br/><br/>
+                                    	<p class="text-warning">
+                                    	点击“装修页面”按钮，在新窗口对店铺首页进行装修设计；
+										预览效果满意后，点击“生成页面”按钮则可将预览效果保存为您的“店铺装修”风格模板。</p>
+                                    </td>
+                                </tr>   
+            
+                                </tbody> 
+                                <tfoot>
+                                	<tr>
+                                	<td></td>
+                                	<td class="text-center">
+                                		<input class="btn btn-success" type="button" onclick="adsubmit()" value="保存">
+                                	</td>
+                                	</tr>
+                                </tfoot>                               
+                                </table>
+                        </div>                           
+                    </div>              
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+function adsubmit(){
+	$('#handlepost').submit();
+}
+
+function goset(obj){
+	window.location.href = $(obj).attr('data-url');
+}
+
+function callback1(img_str){
+	$('input[name="store_logo"]').val(img_str);
+	$('#store_logo').attr('src',img_str);
+}
+
+function callback2(img_str){
+	$('input[name="store_banner"]').val(img_str);
+	$('#store_banner').attr('src',img_str);
+}
+</script>
+</body>
+</html>

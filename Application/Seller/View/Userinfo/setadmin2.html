@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>修改密码-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+
+</head>
+<style type="text/css">
+.favorites_title ul li,.favorites .favorites_content .clearfix li{width:19.8%}
+.favorites_title ul li, .favorites .favorites_content .clearfix li:last-child{border:0}
+.btn_1{border:5px solid #008BB9;background-color: #008BB9;color: white}
+.btn_2 button:hover{font-size: 13.5px}
+
+#hjnext{background:#3c8dbc;cursor:pointer;color:#fff;font-size:16px;}
+#hjnext:hover{background:#3389bb;}
+
+</style>
+<body> 
+<!-- 头部-s -->
+<!-- 头部-e -->
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/css/favorite.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/security_set.css"/>
+
+<div class="wrap" style="width:98%;background:#fff;margin:0 auto;height:550px;border:1px solid #d2d2d2;">
+  
+  <!--菜单--> 
+  <!--菜单-->     
+  <!--侧边导航栏结束-->
+    <div class="col_main">
+  <div class="main security_passwd">
+    <div class="themes_title" style="border-bottom: 1px solid #d2d2d2;">
+      <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;"><img src="__PUBLIC__/images/gerenxinxi.png" style="width:20px;margin-left: 20px;padding-right:10px;">安全设置</h3>
+      <span style="float:right;display:inline-block;width:40px;border-left: 1px solid #ccc;height:40px;">
+        <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 10px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);"></span>
+    <div style="clear:both;"></div>
+    </div>
+    <section class="security_passwd">
+      <div class="wrapper-3" style="margin-top: 50px;">
+        <div id="step" class="pub-step" style="width:815px;">
+          <div class="steps-nav fixed " style="margin-left: 200px;">
+            <p class="step-nav step-nav-1 go" style="width:195px;margin-left: -12px;background:none;"><img src="__PUBLIC__/images/setadmin21.png"><i></i></p>
+            <p class="step-nav step-nav-2 go" style="width:195px;margin-left: -12px;background:none;"><img src="__PUBLIC__/images/hjsetadmin22.png"><i></i></p>
+            <p class="step-nav step-nav-3 go" style="width:195px;margin-left: -14px;background:none;"><img src="__PUBLIC__/images/setadmin23.png"></p>
+          </div>
+          <form action="" method="post">
+          <div id="stepBlock2" class="steps-con block-02" style="border:none;">
+            <div class="step-col fn-form captcha_row" data-fn-verify="">
+              <ul style="display: block;" class="pub-ul verify-captcha-sms">
+                <li style="margin-bottom:10px;"> <span class="title">设置密码：</span><input type="password" placeholder="请输入新的密码" id="password" name="password" onblur = "checkpassword()"></li>
+                <li style="margin-bottom:30px;"> <span class="title">确认密码：</span><input type="password" placeholder="请确认您的密码" id="password2" name="password2" onblur = "checkpassword2()"></li>
+                <div style="width:340px;margin:0 auto;text-align: center;">
+                  <button  type="submit" style="width:110px;border-radius:5px;border:none;outline: none;height:30px;" onclick="return onnsubmit()" id="hjnext"> 提交 </button>
+                </div>
+              </ul>
+            </div>
+          </div>
+          </form>          
+        </div>
+      </div>
+    </section>
+  </div>
+</div> 
+</div>
+ 
+<div style="clear: both;"></div>
+
+<script>
+var password3 = false;
+var password4 = false;
+function checkpassword(){
+      var password = document.getElementById("password").value;
+      var pass   = /^[A-Za-z0-9]{6,20}$/;
+      if(password == ''){
+        password3 = '';
+        return false;
+      }
+      if (!pass.test(password)) {
+        password3 = false;
+        layer.msg('密码格式错误',{icon:2,time:2000});
+      } else {
+        password3 = true;
+      }
+    }
+
+    function checkpassword2(){
+      var password = document.getElementById("password").value;
+      var password2 = document.getElementById("password2").value;
+      if(password !== password2){
+        password4 = false;
+        layer.msg('两次密码不一致',{icon:2,time:2000});
+      } else {
+        password4 = true;
+      }
+    }
+
+    function onnsubmit(){
+        if (!password3){
+            layer.msg('密码格式错误',{icon:2,time:2000});
+            return false;
+        }
+
+        if (!password4){
+            layer.msg('两次密码不一致',{icon:2,time:2000})
+            return false;
+        }
+        return;
+    }
+</script>
+</body>
+</html>

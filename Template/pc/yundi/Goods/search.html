@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+                        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta charset="utf-8">
+<title>搜索页面-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<link href="__PUBLIC__/pc/css/main2.css" rel="stylesheet" type="text/css">		
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/js.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/nav.js"></script>
+<style type="text/css">
+.myq{color:#f00;}
+.thr div span:hover{color: #ff9416  !important}
+.thrr  span:hover{color: #ff9416  !important}
+.there  a:hover{color: #ff9416  !important}
+</style>
+</head>
+
+<body>
+<div class="warp">
+  <include file="Goods/header" /> 
+
+  <!--导航结束-->
+  <section class="prod">
+		<h6><a href="#" target="_blank">全部</a> >    找到<span>{$page->totalRows}</span>件相关产品</h6>
+        <div class="group">
+
+
+		<if condition="$filter_brand neq null">
+<!-- 品牌 -->
+            <div class="row J_Row row-first" id="J_NavCommonRowItems_0" >
+        <div class="head1">
+          <h5><span class="title" title="品牌">品牌</span>:</h5>
+        </div>
+        <div class="body">
+          <div class="items">
+            <foreach name="filter_brand" item="v" key="k">
+              <a href="{$v[href]}" data-val='{$v[id]}' class="item" title="{$v[name]}">
+                <input class="bginput" type="checkbox" name="{$v[name]}" vlaue='{$v[id]}'>
+                <span class="text">{$v[name]}</span>
+              </a>
+           </foreach>
+          <div style="clear:both"></div>
+        </div>
+          <div class="btns">
+            <span class="submit" onClick="submitMoreFilter('brand',this);" >提交</span>
+            <span class="cancel">取消</span>            
+          </div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="foot">
+          <span class="mollch"><a href="javascript:void(0)" >多选</a></span>
+          <span class="molls"><a href="javascript:void(0)">&nbsp;</a><img class="mollch moll" src="__PUBLIC__/pc/images/161104143402.png"></span>
+          <span class="back">收起</span>
+        </div>
+      </div>
+    <!-- 品牌 -->
+  </if>
+
+    <foreach name="filter_spec" item="v" key="k">
+      <!--规格-->
+			<div class="row has-overlay" id="J_NavCommonRowItems_4">
+				<div class="head1">
+					<h5><span class="title" title="{$v.name}">{$v.name}</span>:</h5>
+				</div>
+				                           
+				<div class="body">
+           <foreach name="v[item]" item="v2" key="k2">
+					<a href="{$v2[href]}" class="item" data-key='{$v2[key]}' data-val='{$v2[val]}'>
+						<input class="bginput4" type="checkbox" name="{$v2[item]}" value='{$v2[val]}'>
+						<span>{$v2[item]}</span>
+					</a>  
+          </foreach>
+					<div style="clear:both"></div>
+					<div class="btns4">
+						<span class="submit4" onclick='submitMoreFilter("spec",this)'>提交</span>
+						<span class="cancel4">取消</span>
+					</div>
+
+				</div>
+				<div class="foot">
+					<span class="mollch4"><a href="javascript:void(0)">多选</a></span>
+					<span class="molls4"><a href="javascript:void(0)">&nbsp;</a><img class="mollch4 moll" src="__PUBLIC__/pc/images/161104143402.png"></span>
+					<span class="back4">收起</span>
+				</div>
+			</div>	
+      </foreach>
+
+
+       <foreach name="filter_attr" item="v" key="k">
+      <!--属性-->
+      <div class="row has-overlay" id="J_NavCommonRowItems_4">
+        <div class="head1">
+          <h5><span class="title" title="{$v.name}">{$v.name}</span>:</h5>
+        </div>
+                                   
+        <div class="body">
+           <foreach name="v[item]" item="v2" key="k2">
+          <a href="{$v2[href]}" class="item" data-key='{$v2[key]}' data-val='{$v2[val]}'>
+            <input class="bginput4" type="checkbox" name="{$v2[item]}" value='{$v2[val]}'>
+            <span>{$v2[item]}</span>
+          </a>  
+          </foreach>
+          <div style="clear:both"></div>
+          <div class="btns4">
+            <span class="submit4" onClick='submitMoreFilter("attr",this)'>提交</span>
+            <span class="cancel4">取消</span>
+          </div>
+
+        </div>
+        <div class="foot">
+          <span class="mollch4"><a href="javascript:void(0)">多选</a></span>
+          <span class="molls4"><a href="javascript:void(0)">&nbsp;</a><img class="mollch4 moll" src="__PUBLIC__/pc/images/161104143402.png"></span>
+          <span class="back4">收起</span>
+        </div>
+      </div>  
+      </foreach>
+    
+    <if condition="$filter_price neq null">
+      <!--属性-->
+      <div class="row has-overlay" id="J_NavCommonRowItems_4">
+        <div class="head1">
+          <h5><span class="title" title="价格">价格</span>:</h5>
+        </div>
+                                   
+        <div class="body">
+           <foreach name="filter_price" item="v" key="k">
+          <a href="{$v[href]}" class="item">
+            <input class="bginput4" type="checkbox" name="{$v[value]}" value='{$v[value]}'>
+            <span>{$v[value]}</span>
+          </a>  
+          </foreach>
+           <div style="margin:14px 20px 9px 0;float:left;" class="thrr">
+            <form action="<?php echo urldecode(U("/Goods/search",$filter_param,''));?>" method="post" id="price_form">
+                    <input name="q" value="{$q}" type="hidden" />
+                    <input type="text" class="u-pri-start" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" name="start_price" id="start_price" />
+                    -
+                    <input type="text" class="u-pri-end" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"  name="end_price" id="end_price" />
+                    <span style="cursor:pointer;" class="z-btn ensure03 u-btn-pri" href="javascript:;" onClick="if($('#start_price').val() !='' && $('#end_price').val() !='' ) $('#price_form').submit();">确认</span>
+              </form> 
+          </div>
+        </div>
+      </div>  
+      </if>
+
+
+			</div>
+
+  </section><!--多选区域-->
+  <section class="product">
+     <div class="left">
+        <ul style="overflow: hidden;">
+          <foreach name="goods_list" item="v" key="k">
+          <li>
+            <figure><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
+            <div class="one">
+              	<p>￥{$v[shop_price]}元</p>
+            </div>
+            <h1 style='min-height:36px;' class="there"><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank">{:zfgetsubstr($v[goods_name],0,30,I(q))}</a></h1>
+            <div class="two">
+              <h2><!-- 已成交{$v[sales_sum]}笔 --></h2>
+            </div>
+            <div class="thr">
+            	<div style="cursor:pointer;" onclick="window.open('{:U('Store/index',array('store_id'=>$v[store_id]))}')"><span>{:getSubstr($v[store_name],0,15)}</span></div>
+                
+                <figure>
+                	 <a href="javascript:void(0);">
+                   <php>if($apply_state[$v['user_id']] == 1){</php>
+                   <span class="certification" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
+                     <img  src="__PUBLIC__/renzheng/renzheng3.png" width="30" height="30"  alt=""/>
+                     <span class="tip" >
+                        <img src="__PUBLIC__/renzheng/renzheng3.png" width="100" height="100"  alt=""/>
+                        <span>已认证企业/个体，杜绝一切虚假商家。</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
+                      </span>
+                    </span>
+                   <php>}else{</php>
+                    <span class="certifications" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
+                      <img src="__PUBLIC__/renzheng/renzheng2.png" width="30" height="30"  alt=""/>
+                      <span class="tips">
+                        <img src="__PUBLIC__/renzheng/renzheng2.png" width="100" height="100"  alt=""/>
+                        <span style="margin:0 0 0 10px;">未验证！</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
+                      </span>
+                    </span>
+                   <php>}</php>
+                  </a>
+               
+                  <php>if($v['commerce_state']){</php>
+                  <a href="javascript:void(0);">
+                    <span class="certificationt" onclick="window.open('{:C('DOMAIN')}{:U('/article/newsmember')}?store_id={$v[store_id]}')">
+                      <img src="__PUBLIC__/renzheng/yunshanghui.png" width="30" height="30"  alt=""/>
+                      <span class="tipt" >
+                        <img src="__PUBLIC__/renzheng/yunshanghui.png" width="100" height="100"  alt=""/>
+                        <span>企业联盟商会会员,《权威企业》身份象征为消费者及商家提供100%安全保障,便捷服务(详细查看)!</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                      </span>
+                    </span>
+                  </a>
+                  <php>}else{</php>
+                  <a href="javascript:void(0);">
+                    <span class="certificationt" onclick="window.open('{:C('DOMAIN')}{:U('/article/yun_shop')}')">
+                      <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="30" height="30"  alt=""/>
+                      <span class="tipt" >
+                        <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="100" height="100"  alt=""/>
+                        <span style="margin:0 0 0 10px;">未加入！</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                      </span>
+                    </span>
+                  </a>
+
+                  <php>}</php>
+                  <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$v['store_presales']['qq'][0]}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" target="_blank">
+                    <img src="__PUBLIC__/pc/images/product5.jpg" width="27" height="25"  alt=""/>
+                  </a>
+
+          <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$v['store_presales']['ww'][0]}&amp;s=2" target="_blank" class="flow-qq">
+                    <img src="/Template/pc/yundi/Static/images/T1B7m.XeXuXXaHNz_X-16-16.gif" width="25" height="25" border="0" alt="旺旺">
+                </a>
+                </figure>
+            </div>
+           
+          </li>
+          </foreach>
+        </ul>
+        <p><div class="page-box">
+            <div class="page-clear">
+              {$page->show()}
+              <div class="pagination-form">
+                <div class="page-total">
+                  <span>共</span>
+                  <em style="font-style:normal;">{$count}</em>
+                  <span>页</span>
+                </div>
+                <div class="page-number">
+                  <span>到</span>
+                  <input type="text" id="val" maxlength="5" onkeyup="value=value.replace(/[^\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                  <span>页</span>
+                </div>
+                <div class="page-btn">
+                  <button onclick="page();">确定</button>
+                  <script type="text/javascript">
+                      function page()
+                      {
+
+                        var p = $('#val').val();
+                        if(!p){return false;}
+                        if(p > {$count}){ p = {$count};}
+                        if(p < 1){ p = 1;}
+                        var r = /p\/[1-9]\d*/;
+                        var str = "{$_SERVER['REDIRECT_URL']}";
+                        var s = str.replace(r,'p/'+p);
+                        window.location.href="http://{$_SERVER['HTTP_HOST']}"+s;
+                      }
+
+                  </script>
+                </div>
+              </div>  
+            </div>
+          </div></p>	    
+     </div><!--产品左边-->
+     <div class="right">
+       <h1>优质供应商</h1>
+       <span class="there"><a href="/index/street?nav_id=3" target="_blank">更多</a></span>
+       <div class="cl"></div>	
+       <div class="one">
+        <tpshop sql="select * from `__PREFIX__store` where  store_state = 1  and deleted =0 and store_recommend = 1 order by rand() limit 10" item="v" key="k">
+         <dl>
+           <dt class="there"><a href="{:U('Store/index')}?store_id={$v[store_id]}" target="_blank">{:getSubstr($v[store_name],0,14)}</a></dt>
+           <dd>主营：{$v.store_zy|getSubstr=0,14}</dd>
+           <dd>地址：{:getSubstr($v[store_address],0,14)} </dd>
+         </dl>
+        </tpshop>
+       </div>
+      <h2 style="font-size: 100%;font-weight: 500;">热门推荐</h2>
+      <div class="cl"></div>	
+      <ul class="two two-hot ">
+        <tpshop sql="select * from `__PREFIX__goods` where  recommend = 1" item="v" key="k">
+        <li><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=238,218}" alt="{$v[goods_name]}"/></a></li>
+        </tpshop> 
+      </ul>
+   
+     <h3 style="font-size: 100%;font-weight: 500;">相关产品</h3>
+     <div class="thr">
+      <foreach name='goods_about' item='g' key='i'>
+       <dl <if condition='(($i+1)%3) eq 0'>style='margin:0'</if> >
+         <dd><a href="{:U('/Goods/goodsInfo',array('id'=>$g[goods_id]))}" target="_blank"><img src="{$g.goods_id|goods_thum_images=66,66}" alt=""/></a></dd>
+         <dt><a href="{:U('/Goods/goodsInfo',array('id'=>$g[goods_id]))}" target="_blank">{$g[goods_name]}</a></dt>
+       </dl>
+      </foreach>
+     </div>
+   
+
+
+
+     <!-- <h4>相关搜索</h4>
+     <div class="four">
+       <ul>
+        <foreach name="tpshop_config.hot_keywords" item="wd" key="k">
+        <li><a href="{:U('/Goods/search',array('q'=>$wd))}" <if condition="$wd eq I('q')">class="ht"</if>>{$wd}</a></li>
+          </foreach>
+       </ul>
+     </div> -->
+   </div><!--产品右边-->
+     <div class="cl"></div>
+
+  </section><!--产品结束-->
+  <include file='Public/footer' /><!--尾部结束-->
+</div>
+<script type="text/javascript">
+//page 输入框分页数目控制
+   $('.page-number input').blur(function(){
+    var num = parseInt($(this).val());  
+      var pagenum=$('.pagination-form .page-total em').html();
+     if(num==0||isNaN(num)){
+        num = '';
+      }
+       if (num>pagenum) {
+        $(this).val(pagenum);
+      }
+      else{
+        $(this).val(num);
+      }
+    });
+//热门推荐 num li个数
+function linum(num){
+    var hotlen=$('.two-hot li').length;
+    if(hotlen>num){
+      for (var i = hotlen - 1 ; i > num - 1; i--) {
+        $('.two-hot li').eq(i).remove();
+      }
+    }
+  }
+  linum(8);
+//热门推荐 num li个数限制
+  function positionis(num){
+    for (var i = num; i >0; i--) {
+      var lheight=$('.product .left >ul').height();
+      var rheight=$('.product .right').height();
+      if(rheight-50>lheight){
+        $('.product .right .two li:last').remove();
+      }
+      else{
+        break;
+      }
+    }
+    var lilen=$('.product .right .two li').length;
+    if(lilen==0){
+      $('.product .right h2').remove();
+    }
+    var dllen=$('.product .right .thr dl').length;
+    if(lilen==0){
+      $('.product .right h3').remove();
+    }
+  }
+  positionis(8);
+
+
+  //############   点击多选确定按钮      ############
+// t 为类型  是品牌 还是 规格 还是 属性
+// btn 是点击的确定按钮用于找位置
+ get_parment = <?php echo json_encode($_GET); ?>; 
+function submitMoreFilter(t,btn)
+{
+  // 没有被勾选的时候
+ /* if(!$(btn).hasClass("u-confirm01"))
+    return false;*/
+    
+  // 获取现有的get参数   
+  var key = ''; // 请求的 参数名称
+  var val = new Array(); // 请求的参数值
+
+  $(btn).parent().prev().children('a').children('.bginput').each(function(){
+    if($(this).is(":checked")){
+       key = $(this).attr('vlaue');
+       val.push($(this).attr('vlaue'));
+     }
+  });
+    
+  // 品牌
+  if(t == 'brand')
+  {
+    get_parment.brand_id = val.join('_');
+  }
+  // 规格
+  if(t == 'spec')
+  {
+    if(get_parment.hasOwnProperty('spec'))    
+    {   
+      get_parment.spec += '@'+key+'_'+val.join('_');
+    }   
+    else  
+    {   
+      get_parment.spec = key+'_'+val.join('_');
+    }   
+  }
+  // 属性
+  if(t == 'attr')
+  {
+    if(get_parment.hasOwnProperty('attr'))    
+    {   
+      get_parment.attr += '@'+key+'_'+val.join('_');
+    }   
+    else  
+    {   
+      get_parment.attr = key+'_'+val.join('_');
+    }   
+  }
+   // 组装请求的url  
+  var url = '';
+  for ( var k in get_parment )
+  { 
+    url += "&"+k+'='+get_parment[k];
+  } 
+
+  location.href ="/index.php?m=Home&c=Goods&a=search"+url;
+}
+
+</script>
+</body>
+</html>
+

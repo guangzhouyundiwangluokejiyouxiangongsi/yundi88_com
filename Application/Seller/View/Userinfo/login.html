@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta charset="utf-8">
+<title>云狄登录页面</title>
+<link href="__PUBLIC__/pc/css/main.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+</head>
+<style>
+.mid a:hover{color: red}
+.left a:hover{color: red}
+.btn_1{margin: 30px 0 0 250px}
+.btn_1 a:hover{color: red}
+.de a:hover{color: red}
+</style>
+<body>
+<div class="warp">
+  <header class="head">
+     <ul class="login">
+       <li><a href="/" target="_blank">云狄官网</a></li><span>|</span>
+       <li><a href="#" target="_blank">帮助</a></li><span>|</span>
+       <li><a href="#" target="_blank">客服</a></li><span>|</span>
+     </ul>
+  </header>
+  <section class="logo">
+   <img src="__PUBLIC__/pc/images/logo.jpg" width="145" height="43"  alt=""/> 
+   <p>护航中小型企业</p>
+  </section>
+  <section class="de">
+     <form id="login-form" method="post"> 
+        <input type="text" class="deng" value="" placeholder="账号或手机号码" name="username" id="username" autocomplete="off">
+        <p>&nbsp;<br /></p>
+       <input type="password" class="deng1" placeholder="密码"  name="password" id="password" autocomplete="off">
+                      <p>&nbsp;<br /></p>
+        <input type="text" placeholder="不区分大小写" name="verify_code" id="verify_code" class="deng" style="width:180px;"/>
+        <img  onclick="this.src ='{:U('/Userinfo/verify')}?'+Math.random()" width="140" height="42" src="{:U('/Userinfo/verify')}" id="verify_code_img" class="po-ab to0">
+                      <p>&nbsp;<br /></p>
+      <label>
+            <input type="hidden" name="referurl" id="referurl" value="{$referurl}">
+            <input type="checkbox" class=""  name="remember">自动登录</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <!-- <a href="{:U('User/forget_pwd')}">忘记密码</a> -->
+                      <p>&nbsp;<br /></p>
+       <input type="button" onclick='checkSubmit()' value="登陆" class="but"/>   
+     </form>
+                      <p>&nbsp;<br /></p>
+     <div class="left"></div>
+     <!-- <div class="mid"><a href="{:U('/User/reg')}" target="_blank">新用户注册</a></div> -->
+     <div class="left"></div>
+  </section>
+  <footer>
+     广州云狄网络科技有限公司 版权所有<br />
+     粤ICP备09116842号
+ </footer>
+</div>
+<script type="text/javascript">
+  function checkSubmit()
+  {
+    var username = $.trim($('#username').val());
+    var password = $.trim($('#password').val());
+    var referurl = $('#referurl').val();
+    var verify_code = $.trim($('#verify_code').val());
+    if(username == ''){
+      alert('用户名不能为空!');
+      return false;
+    }
+    // if(!checkMobile(username)){
+    //   alert('账号格式不匹配!');
+    //   return false;
+    // }
+    if(password == ''){
+      alert('密码不能为空!');
+      return false;
+    }
+    if(verify_code == ''){
+      alert('验证码不能为空!');
+      return false;
+    }
+    var src = "{:U('/User/verify')}";
+    // $('#login-form').submit();
+    $.ajax({
+      type : 'post',
+      url : '{:U('/userinfo/do_login/')}?t='+Math.random(),
+      data : {username:username,password:password,referurl:referurl,verify_code:verify_code}, 
+      dataType : 'json',
+      success : function(res){
+        if(res.status == 1){
+          window.location.href = 'http://b.ydwzjs.cn/seller';
+        }else{
+          alert(res.msg);
+        }
+
+      $('#verify_code_img').attr({'src':src});
+      },
+      error : function(XMLHttpRequest, textStatus, errorThrown) {
+        // alert('网络失败，请刷新页面后重试');
+        
+        
+    $('#verify_code_img').attr({'src':src});
+      }
+    })
+    
+  }
+  
+    function checkMobile(tel) {
+        var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+        if (reg.test(tel)) {
+            return true;
+        }else{
+            return false;
+        };
+    }
+</script>
+</body>
+</html>

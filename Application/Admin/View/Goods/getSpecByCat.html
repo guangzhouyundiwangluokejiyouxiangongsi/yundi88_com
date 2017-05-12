@@ -1,0 +1,11 @@
+<foreach name="goods_category_list" item="v" key="k" >
+    <ul>
+        <h5 id="categoryId{$v[id]}"><strong>{$v[name]}</strong></h5>
+        <foreach name="list" item="v2" key="k2" >
+             <if condition="$v[id] eq $v2['cat_id1']" >
+                 <li><input type="checkbox" name="spec_id[]" value="{$v2['id']}" <if condition="$type_id heq $v2['type_id']"> checked="checked"</if> />&nbsp;&nbsp;{$v2['name']}</li>
+             </if>
+        </foreach>
+    </ul>
+</foreach>
+

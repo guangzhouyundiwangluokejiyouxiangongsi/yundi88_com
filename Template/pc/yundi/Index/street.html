@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+                        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta charset="utf-8">
+  <title>{$title}</title>
+<meta http-equiv="keywords" content="{$keywords}" />
+<meta name="description" content="{$description}" />
+  <link rel="stylesheet" href="__STATIC__/css/stores.css">
+<!--   <link rel="stylesheet" href="__STATIC__/css/Common.css"> -->
+  <link rel="stylesheet" href="__STATIC__/css/page.css">
+  <style type="text/css">.myq{color:#f00;}</style>
+</head>
+<body>
+<include file="Public/header"/>
+<div class="margin-w1210">
+  <div class="flow">
+    <!-- <div class="cate_attr clearfix">
+      <div class="nav-tag">
+        <h5 class="filter-label-ab">分类</h5>
+        <div class="cate_attr_con">
+          <div class="filter-all-ab"> <a class="selected" target="_self" href="{:U('/Index/street')}"><span>全部</span></a> </div>
+          <div class="district-tab">
+            <volist name="store_class" id="sc">
+              <a target="_self" href="{:U('/Index/street',array('sc_id'=>$sc['sc_id']))}"><span>{$sc['sc_name']}</span></a>
+            </volist>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="flow-wrap">
+      <volist name="store_list" id="scl">
+        <div class="flow-item first">
+          <a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" class="flow-datu" title="L&amp;L">
+            <img title="L&amp;L" width="150" height="150" alt="" src="{:templogo($scl['store_id'],150,150)}">
+          </a>
+          <div class="flow-content">
+            <h4 class="flow-title" > <a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="{$scl['store_name']}"><span style="color:#000;">{:zfgetsubstr($scl['store_name'],0,30,$_GET['company'])}</span></a><span class="flow_title_phone"><img src="__STATIC__/images/phonessss.png">{$scl['store_phone']}</span>
+              <!-- <span class="guanzhu" id="favoriteStore" data-id={$scl['store_id']}>关注</span> -->
+            </h4>
+            <!-- <p class="flow-logo">
+              <a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" style="float:none; display:inline-block;">
+                <img id="j_logo_5" alt="" width="90" height="45" src="{$scl['store_banner']|default='__STATIC__/images/57c7ed6bcc96f.jpg'}">
+              </a>
+            </p> -->
+            <p class="flow_zhuying"><a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="{$scl['store_name']}">主营商品：{$scl['store_zy']}</a></p>
+            <!-- <p class="flow-desc"> <span>卖家：</span>
+              <a href="supplier.php?suppId=5" title="{$scl['store_name']}管理员" target="_blank"></a>
+              <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$scl['store_aftersales']['qq_account']}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" class="flow-qq">
+                <img src="__STATIC__/images/button_old_41.gif" height="16" border="0" alt="QQ"> </a>
+              <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$scl['store_aftersales']['ww_account']}&amp;s=2" target="_blank" class="flow-qq">
+                <img src="__STATIC__/images/T1B7m.XeXuXXaHNz_X-16-16.gif" width="16" height="16" border="0" alt="淘宝旺旺">
+              </a>
+            </p> -->
+            <div style="clear:both;margin-bottom: 6px;"></div>
+
+            <p class="flow-desc"> <span>地址：</span>{$scl['province_name']},{$scl['city_name']},{$scl['district_name']} </p>
+            <div class="flow_renzheng">
+            <if condition="$scl[apply_state]">
+            <a target="_blank" href="/Index/certification.html?store_id={$scl[store_id]}" title="已认证企业/个体，杜绝一切虚假商家">
+              <img src="__PUBLIC__/renzheng/renzheng3.png" style="padding-top: 2px;">
+            </a>
+            <else />
+            <a target="_blank" href="/Index/certification.html?store_id={$scl[store_id]}" title="未认证！">
+              <img src="__PUBLIC__/renzheng/renzheng2.png" style="padding-top: 2px;">
+            </a>
+            </if>
+            <if condition="$scl[commerce_state]">
+            <a target="_blank" href="/article/yun_shop" title="《权威企业》身份象征为消费者及商家提供100%安全保障">
+              <img src="__PUBLIC__/renzheng/yunshanghui.png">
+            </a>
+            <else />
+            <a target="_blank" href="/article/yun_shop" title="未加入！">
+              <img src="__PUBLIC__/renzheng/yunshanghui2.png">
+            </a>
+            </if>
+            </div>
+            <!-- <p class="flow-desc"> <a href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="进入店铺，查看所有的商品">共<strong>{$scl['goods_array']['goods_count']}</strong>件宝贝&gt;&gt;</a> </p> -->
+          </div>
+          <div class="flow-score">
+            <h3>企业动态评分</h3>
+            <p>综合描述：<span>{$scl['store_desccredit']}</span></p>
+            <p>服务态度：<span>{$scl['store_servicecredit']}</span></p>
+            <p>权威认证：<span><a title="云狄网建议您优先选择云商会会员">
+            <if condition="$scl[commerce_state] eq 1"><img src="__STATIC__/images/huangguan.png"></if>
+            <if condition="$scl[commerce_state] eq 2"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"></if>
+            <if condition="$scl[commerce_state] eq 3"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"></if>
+            <if condition="$scl[commerce_state] eq 4"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"></if>
+            <if condition="$scl[commerce_state] eq 5"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"><img src="__STATIC__/images/huangguan.png"></if>
+            </a></span></p>
+          </div>
+          <div class="flow-main flow-main1">
+            <div class="picMarquee-left">
+              <div class="bda">
+                <div class="picListta">
+                  <ul>
+                    <volist name="scl['goods_array']['goods_list']" id="goods">
+                      <li>
+                        <a href="{:U('/Goods/goodsInfo',array('id'=>$goods['goods_id']))}"
+                           title="{$goods['goods_name']}" target="_blank" class="img">
+                          <img src="{$goods['goods_id']|goods_thum_images=112,112}"> <span>￥{$goods['shop_price']}</span>
+                        </a>
+                        <a href="{:U('/Goods/goodsInfo',array('id'=>$goods['goods_id']))}" title="{$goods['goods_name']}" target="_blank" class="name">{$goods['goods_name']}</a>
+                      </li>
+                    </volist>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </volist>
+	<!--<div class="mui-page">
+	        <div class="mui-page-wrap">
+		        <div class="operating fixed" id="bottom">
+		            <div class="fn_page clearfix">
+		              {$page}
+		            </div>
+		        </div>
+	        </div>
+	    </div>
+	-->
+		<div class="page-box">
+    		<div class="page-clear">
+    			{$page}
+		        <div class="pagination-form">
+		       		<div class="page-total">
+		       			<span>共</span>
+		       			<em style="font-style:normal;">{$count}</em>
+		       			<span>页</span>
+		       		</div>
+		       		<div class="page-number">
+		       			<span>到</span>
+		       			<input type="text" id="val" maxlength="5" onkeyup="value=value.replace(/[^\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+		       			<span>页</span>
+		       		</div>
+		       		<div class="page-btn">
+		       			<button onclick="page();">确定</button>
+                <script type="text/javascript">
+                      function page()
+                      {
+
+                        var p = $('#val').val();
+                        if(!p){return false;}
+                        if(p > {$count}){ p = {$count};}
+                        if(p < 1){ p = 1;}
+                        var r = /p\/[1-9]\d*/;
+                        var str = "{$_SERVER['REDIRECT_URL']}";
+                        var s = str.replace(r,'p/'+p);
+                        window.location.href="http://{$_SERVER['HTTP_HOST']}"+s;
+                      }
+
+                  </script>
+		       		</div>
+		        </div>	
+        	</div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<include file="Public/footer"/>
+<script type="text/javascript">
+//page 输入框分页数目控制
+   $('.page-number input').blur(function(){
+    var num = parseInt($(this).val());  
+      var pagenum=$('.pagination-form .page-total em').html();
+      if(num==0||isNaN(num)){
+        num = '';
+      }
+       if (num>pagenum) {
+        $(this).val(pagenum);
+      }
+      else{
+        $(this).val(num);
+      }
+    });
+
+  //收藏店铺
+  $('.guanzhu').click(function () {
+    if (getCookie('user_id') == '') {
+      pop_login();
+    } else {
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        data: {store_id: $(this).attr('data-id')},
+        url: "{:U('/Store/collect_store')}",
+        success: function (res) {
+          if (res.status == 1) {
+            layer.msg('成功添加至收藏夹', {icon: 1});
+          } else {
+            layer.msg(res.msg, {icon: 3});
+          }
+        }
+      });
+    }
+  });
+  function pop_login(){
+    layer.open({
+      type: 2,
+      title: '<b>登陆云狄网</b>',
+      skin: 'layui-layer-rim',
+      shadeClose: true,
+      shade: 0.5,
+      area: ['490px', '460px'],
+      content: "{:U('/User/pop_login')}",
+    });
+  }
+
+  $(window).load(function(){
+      $("#tab .tabList ul li").eq(1).addClass("cur").siblings().removeClass("cur");
+      $(".search1 #tab .tabCon .cur").eq(1).show().siblings().hide();
+   });
+</script>
+</html>

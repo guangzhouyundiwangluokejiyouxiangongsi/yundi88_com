@@ -1,0 +1,426 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 店铺管理</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_store" data-toggle="tab">店铺信息</a></li>
+                        <li><a href="#tab_info" data-toggle="tab">注册信息</a></li>                                        
+                    </ul>
+                    <!--表单数据-->
+                    <form method="post" id="store_info">
+                    <div class="tab-content">                 	  
+                        <div class="tab-pane active" id="tab_store">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="col-md-2">店铺账号：</td>
+                                    <td>{$store.seller_name}</td>
+                                </tr>
+                                <tr>
+                                    <td>店铺名称：</td>
+                                    <td>
+	                                    <input type="text" value="{$store.store_name}" name="store[store_name]" class="form-control" style="width:250px;"/>
+                                        <span id="err_goods_remark" style="color:#F00; display:none;"></span>
+                                        <input type="hidden" name="store[user_id]" value="{$store.user_id}">
+                                    </td>                                                                        
+                                </tr>
+                                <tr>
+                                    <td>开店时间：</td>                                                                       
+                                    <td>{$store.store_time|date="Y-m-d H:i:s",###}</td>
+                                    <span id="err_goods_sn" style="color:#F00; display:none;"></span>
+                                </tr>                              
+                                <tr>
+                                    <td>所属分类:</td>
+                                    <td>
+                                      <select name="store[sc_id]" class="form-control" style="width:200px;">
+                                        <option value="0">请选择分类</option>                                      
+                                             <foreach name="store_class" item="v" key="k" >                                                                                          
+                                               <option value="{$k}" <if condition="$k eq $store['sc_id']">selected="selected"</if>>
+                                               	{$v}
+                                               </option>
+                                             </foreach>
+                                      </select>                         
+                                    </td>
+                                </tr>                                                                
+                                <tr>
+                                    <td>所属等级:</td>
+                                    <td>
+									<select name="store[grade_id]" id="grade_id" class="form-control" style="width:200px;">
+                                       		<option value="0">选择等级</option>
+                                            <foreach name="store_grade" item="v" key="k" >
+                                               <option value="{$k}" <if condition="$k eq $store['grade_id'] ">selected="selected"</if>>
+                                               	{$v}
+                                               </option>
+                                        	</foreach>
+                                      </select>                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>店铺保障服务开关:</td>
+                                    <td>
+				                       <div class="row">
+				                       		<div class="col-md-2">
+				                       			<button type="button" rel="1" data-id="ensure" class="btn <if condition="$store[ensure] eq 1">btn-info<else/>btn-default</if> btn-flat">保障</button>
+				                       			<button type="button" rel="0" data-id="ensure" class="btn <if condition="$store[ensure] eq 0">btn-info<else/>btn-default</if> btn-flat">图标</button>
+				                       			<input type="hidden" id="ensure" name="store[ensure]" value="{$store.ensure}">
+				                       		</div>
+				                       		<div class="col-md-2">
+				                       			<button type="button" data-id="deposit_icon" rel="1" class="btn <if condition="$store[deposit_icon] eq 1">btn-info<else/>btn-default</if> btn-flat">保证金</button>
+				                       			<button type="button" data-id="deposit_icon" rel="0" class="btn <if condition="$store[deposit_icon] eq 0">btn-info<else/>btn-default</if> btn-flat">图标</button>
+				                       			<input type="hidden" id="deposit_icon" name="store[deposit_icon]" value="{$store.deposit_icon}">
+				                       		</div>
+				                       		<div class="col-md-2 input-group">
+				                       			<input type="text" name="store[deposit]" placeholder="保证金额" value="{$store.deposit}" class="form-control">
+				                       			<span class="input-group-addon">元</span>
+				                       		</div>
+				                       </div>                 
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td>保障内容开关:</td>
+                                    <td>
+				                        <div class="row">
+					                        <div class="col-xs-2">
+					                            <button type="button"  rel="1"  data-id="certified" class="btn <if condition="$store[certified] eq 1">btn-info<else/>btn-default</if> btn-flat">正品</button>
+				                       			<button type="button"  rel="0"  data-id="certified" class="btn <if condition="$store[certified] eq 0">btn-info<else/>btn-default</if> btn-flat">保障</button>
+				                       			<input type="hidden" id="certified" name="store[certified]" value="{$store.certified}">
+					                        </div>
+					                        <div class="col-xs-2">
+					                            <button type="button" rel="1" data-id="qitian" class="btn <if condition="$store[qitian] eq 1">btn-info<else/>btn-default</if> btn-flat">七天</button>
+				                       			<button type="button" rel="0" data-id="qitian" class="btn <if condition="$store[qitian] eq 0">btn-info<else/>btn-default</if> btn-flat">退换</button>
+				                       			<input type="hidden" id="qitian" name="store[qitian]" value="{$store.qitian}">
+					                        </div>
+					                        <div class="col-xs-2">
+					                            <button type="button" rel="1" data-id="returned" class="btn <if condition="$store[returned] eq 1">btn-info<else/>btn-default</if> btn-flat">退换</button>
+				                       			<button type="button" rel="0" data-id="returned" class="btn <if condition="$store[returned] eq 0">btn-info<else/>btn-default</if> btn-flat">承诺</button>
+				                       			<input type="hidden" id="returned" name="store[returned]" value="{$store.returned}">
+					                        </div>
+					                        <div class="col-xs-2">
+					                            <button type="button" rel="1" data-id="two_hour" class="btn <if condition="$store[two_hour] eq 1">btn-info<else/>btn-default</if> btn-flat">2H</button>
+				                       			<button type="button" rel="0" data-id="two_hour" class="btn <if condition="$store[two_hour] eq 0">btn-info<else/>btn-default</if> btn-flat">发货</button>
+				                       			<input type="hidden" id="two_hour" name="store[two_hour]" value="{$store.two_hour}">
+					                        </div>
+					                        <div class="col-xs-2">
+					                            <button type="button" rel="1" data-id="cod" class="btn <if condition="$store[cod] eq 1">btn-info<else/>btn-default</if> btn-flat">货到</button>
+				                       			<button type="button" rel="0" data-id="cod" class="btn <if condition="$store[cod] eq 0">btn-info<else/>btn-default</if> btn-flat">付款</button>
+				                       			<input type="hidden" id="cod" name="store[cod]" value="{$store.cod}">
+					                        </div>
+				                        </div>              
+                                    </td>
+                                </tr>
+                                <tr>
+		                            <td>商品是否需要审核：</td>
+		                            <td><input type="radio" name="store[goods_examine]" value="1" <if condition="$store[goods_examine] eq 1">checked</if>>是
+		                            	<input type="radio" name="store[goods_examine]" value="0" <if condition="$store[goods_examine] eq 0">checked</if>>否
+		                            </td>
+		                        </tr>                                
+                                <tr>
+		                            <td>状态：</td>
+		                            <td><input type="radio" name="store[store_state]" value="1" onclick="$('#close_reason').hide();" <if condition="$store[store_state] eq 1">checked</if>>开启
+		                            	<input type="radio" name="store[store_state]" onclick="$('#close_reason').show();" value="0" <if condition="$store[store_state] eq 0">checked</if>>关闭
+		                            </td>
+		                        </tr>                             
+		                        <tr id="close_reason" <if condition="$store[store_state]  eq 1">style="display:none;"</if>>
+		                        	<td>关闭原因：</td>
+		                        	<td><textarea name="store[store_close_info]" rows="3" cols="30">{$store.store_close_info}</textarea></td>
+		                        </tr> 
+                             </tbody>                                
+                           </table>
+                        </div>
+
+                        <div class="tab-pane margin" id="tab_info">
+				        <div class="panel panel-default">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">公司及联系人信息</h3>
+				            </div>
+				            <div class="panel-body">
+				                <table class="table table-bordered">
+				                    <tbody>
+				                    <tr>
+				                        <td>公司名称</td><td><input name="company_name" value="{$apply.company_name}" class="form-control"></td>
+				                        <td>公司性质:</td><td><input name="company_type" value="{$apply.company_type}" class="form-control"></td>
+				                        <td>公司网址:</td><td><input name="company_website" value="{$apply.company_website}" class="form-control"></td>
+				                    </tr>
+				                    <tr><td>公司所在地:</td>
+				                    	<td> <div class="form-group ">
+                                    	<div class="col-xs-3">
+                                        <select onchange="get_city(this)" id="province" name="company_province" class="form-control">
+                                            <option value="0">选择省份</option>
+                                            <volist name="province" id="vo">
+                                                <option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_province]">selected</if>>{$vo.name}</option>
+                                            </volist>
+                                        </select>
+                                         </div>   
+                                        <div class="col-xs-3">                                        
+                                        <select onchange="get_area(this)" id="city" name="company_city" class="form-control">
+                                            <option value="0">选择城市</option>
+                                            <volist name="city" id="vo">
+                                                <option value="{$vo.id}">{$vo.name}</option>
+                                            </volist>
+                                        </select>
+                                        </div>   
+                                        <div class="col-xs-3">                                        
+                                        <select id="district" name="company_district" class="form-control">
+                                            <option value="0">选择区域</option>
+                                            <volist name="area" id="vo">
+                                                <option value="{$vo.id}">{$vo.name}</option>
+                                            </volist>
+                                        </select>
+                                         </div>   
+                                         </div> 
+                                        </td>
+				                        <td>公司详细地址:</td>
+				                        <td><input name="company_address" value="{$apply.company_address}" class="form-control"></td>
+				                        <td>固定电话</td><td><input name="company_telephone" value="{$apply.company_telephone}" class="form-control"></td>
+				                    </tr>
+				                    <tr><td>邮政编码:</td><td><input name="company_zipcode" value="{$apply.company_zipcode}" class="form-control"></td>
+				                        <td>电子邮箱:</td><td><input name="company_email" value="{$apply.company_email}" class="form-control"></td>
+				                        <td>传真:</td><td><input name="company_fax" value="{$apply.company_fax}" class="form-control"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>联系人姓名:</td><td><input name="contacts_name" value="{$apply.contacts_name}" class="form-control"></td>
+				                        <td>联系人电话:</td><td><input name="contacts_mobile" value="{$apply.contacts_mobile}" class="form-control"></td>
+				                        <td>联系人邮箱:</td><td><input name="contacts_email" value="{$apply.contacts_email}" class="form-control"></td>
+				                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+				        </div>
+				        <!--新订单列表 收货人信息-->
+				        <div class="panel panel-default">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">营业执照信息（副本）</h3>
+				            </div>
+				            <div class="panel-body">
+				                <table class="table table-bordered">
+				                    <tbody>
+				                    <tr>
+										<td>营业执照号:</td><td><input name="business_licence_number" value="{$apply.business_licence_number}" class="form-control"></td>
+										<td>营业执照有效期:</td><td><input name="business_date_end" value="{$apply.business_date_start}=>{$apply.business_date_end}" class="form-control"></td>
+										<td>法定经营范围:</td>
+										<td><textarea rows="3" cols="40" name="business_scope">{$apply.business_scope}</textarea></td>
+				                    </tr>
+				                    <tr>
+				   					<td>注册资本:</td><td><input name="reg_capital" value="{$apply.reg_capital}" class="form-control"></td>
+									<td>组织机构代码:</td><td><input name="orgnization_code" value="{$apply.orgnization_code}" class="form-control"></td>
+							 		<td>一般纳税人证明:</td><td>{$apply.taxpayer_cert}</td>
+				                    </tr>
+				                    <tr>
+				   					<td>法人代表姓名:</td><td><input name="legal_person" value="{$apply.legal_person}" class="form-control"></td>
+									<td>纳税类型码:</td>
+									<td>{$apply.tax_rate}</td>
+							 		<td>税务登记号码:</td><td><input name="attached_tax_number" value="{$apply.attached_tax_number}" class="form-control"></td>
+				                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+				        </div>
+				        <!--新订单列表 商品信息-->
+				        <div class="panel panel-default">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">结算账号信息 </h3>
+				            </div>
+				            <div class="panel-body">
+				                <table class="table table-bordered">
+				                    <thead>
+				                    <tr>
+				                        <td class="text-left">银行开户名</td>
+				                        <td class="text-left">公司银行账号：</td>
+				                        <td class="text-right">开户银行支行名称：</td>
+				                        <td class="text-right">支行联行号：</td>
+				                        <td class="text-right">开户银行所在地：</td>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+				                        <tr>
+				                            <td class="text-left"><input name="bank_account_number" value="{$apply.bank_account_name}" class="form-control"></td>
+				                            <td class="text-left"><input name="bank_account_name" value="{$apply.bank_account_number}" class="form-control"></td>
+				                            <td class="text-right"><input name="bank_branch_name" value="{$apply.bank_branch_name}" class="form-control"></td>
+				                            <td class="text-right"><input name="bank_province" value="{$apply.bank_province}" class="form-control"></td>
+				                            <td class="text-right"><input name="bank_city" value="{$apply.bank_city}" class="form-control"></td>
+				                        </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+				        </div>
+				        <!--新订单列表 费用信息-->
+				        <div class="panel panel-default">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">店铺负责人信息</h3>
+				            </div>
+				            <div class="panel-body">
+				                <table class="table table-bordered">
+				                    <tbody>
+				         				<tr>
+				                         <td class="text-right">店铺负责人:</td><td><input name="store_person_name" value="{$apply.store_person_name}" class="form-control"></td>
+				                         <td class="text-right">负责人手机号码:</td><td><input name="store_person_mobile" value="{$apply.store_person_mobile}" class="form-control"></td>
+				                    	</tr>
+				                    	<tr>			                        				                         
+				                         <td class="text-right">负责人QQ号码:</td><td><input name="store_person_qq" value="{$apply.store_person_qq}" class="form-control"></td>
+				                    	 <td class="text-right">负责人邮箱：</td><td><input type="text" name="store_person_email" value="{$apply.store_person_email}" class="form-control"></td>
+				                    	</tr>
+				                    </tbody>
+				                </table>
+				
+				            </div>
+				        </div>
+				        <div class="panel panel-default">
+				            <div class="panel-heading">
+				                <h3 class="panel-title">证件信息</h3>
+				            </div>
+				            <div class="panel-body">
+				                <table class="table table-bordered">
+				                    <thead>
+				                    <tr>
+				                        <td class="text-left">企业营业执照副本：</td>
+				                        <td class="text-left">税务登记证复印件：</td>
+				                        <td class="text-right">织机构代码证复印件：</td>
+				                        <td class="text-right">法人身份证：</td>
+				                        <td class="text-right">店铺负责人身份证：</td>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+				                        <tr>
+				                            <td>
+				                            	<div class="text-center">
+				                            		<a href="{$apply.business_licence_cert}" target="_blank">
+													<if condition="$apply[business_licence_cert] eq ''">
+				                            			<img id="business_licence_cert" src="__PUBLIC__/images/not_adv.jpg" height="120">
+				                            		<else/>
+				                            			<img id="business_licence_cert" src="{$apply.business_licence_cert}" height="120">
+				                            		</if>
+				                            		</a>
+				                            	</div>
+				                            	<div class="text-center">
+				                            		<input type="hidden" name="business_licence_cert" value="{$apply.business_licence_cert}">
+				                            		<input type="button" class="btn btn-default" onClick="upload_img('business_licence_cert')"  value="上传图片"/>
+				                            	</div>
+				                            </td>
+              				                <td>
+				                            	<div class="text-center">
+				                            		<a href="{$apply.taxpayer_cert}" target="_blank">
+				                            		<if condition="$apply[taxpayer_cert] eq ''">
+				                            			<img id="taxpayer_cert" src="__PUBLIC__/images/not_adv.jpg" height="120">
+				                            		<else/>
+				                            			<img id="taxpayer_cert" src="{$apply.taxpayer_cert}" height="120">
+				                            		</if>
+				                            		</a>
+				                            	</div>
+				                            	<div class="text-center">
+				                            		<input type="hidden" name="taxpayer_cert" value="{$apply.taxpayer_cert}">
+				                            		<input type="button" class="btn btn-default" onClick="upload_img('taxpayer_cert')"  value="上传图片"/>
+				                            	</div>
+				                            </td>
+				                            <td>
+				                            	<div class="text-center">
+				                            		<a href="{$apply.orgnization_cert}" target="_blank">
+				                            		<if condition="$apply[orgnization_cert] eq ''">
+				                            			<img id="orgnization_cert" src="__PUBLIC__/images/not_adv.jpg" height="120">
+				                            		<else/>
+				                            			<img id="orgnization_cert" src="{$apply.orgnization_cert}" height="120">
+				                            		</if>
+				                            		</a>
+				                            	</div>
+				                            	<div class="text-center">
+				                            		<input type="hidden" name="orgnization_cert" value="{$apply.orgnization_cert}">
+				                            		<input type="button" class="btn btn-default" onClick="upload_img('orgnization_cert')"  value="上传图片"/>
+				                            	</div>
+				                            </td>
+				                            <td>
+				                            	<div class="text-center">
+				                            		<a href="{$apply.legal_identity_cert}" target="_blank">
+				                            		<if condition="$apply[legal_identity_cert] eq ''">
+				                            			<img id="legal_identity_cert" src="__PUBLIC__/images/not_adv.jpg" height="120">
+				                            		<else/>
+				                            			<img id="legal_identity_cert" src="{$apply.legal_identity_cert}" height="120">
+				                            		</if>
+				                            		</a>
+				                            	</div>
+				                            	<div class="text-center">
+				                            		<input type="hidden" name="legal_identity_cert" value="{$apply.legal_identity_cert}">
+				                            		<input type="button" class="btn btn-default" onClick="upload_img('legal_identity_cert')"  value="上传图片"/>
+				                            	</div>
+				                            </td>
+				                            <td>
+				                            	<div class="text-center">
+				                            		<a href="{$apply.store_person_cert}" target="_blank">
+				                            		<if condition="$apply[store_person_cert] eq ''">
+				                            			<img id="store_person_cert" src="__PUBLIC__/images/not_adv.jpg" height="120">
+				                            		<else/>
+				                            			<img id="store_person_cert" src="{$apply.store_person_cert}" height="120">
+				                            		</if>
+				                            		</a>
+				                            	</div>
+				                            	<div class="text-center">
+				                            		<input type="hidden" name="store_person_cert" value="{$apply.store_person_cert}">
+				                            		<input type="button" class="btn btn-default" onClick="upload_img('store_person_cert')"  value="上传图片"/>
+				                            	</div>
+				                            </td>
+				                        </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+				        </div>
+                        </div>
+                    </div>              
+                    <div class="pull-right">
+                        <input type="hidden" name="store_id" value="{$store.store_id}">
+                        <button class="btn btn-primary" onclick="actsubmit()" title="" type="button">保存</button>
+                    </div>
+			    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+$(document).ready(function(){
+	$('.btn-flat').click(function(){
+		if(!$(this).hasClass('btn-info')){
+			$(this).removeClass('btn-default');
+			$(this).addClass('btn-info');
+			$(this).siblings().addClass('btn-default');
+			$(this).siblings().removeClass('btn-info');
+			$('#'+$(this).attr('data-id')).val($(this).attr('rel'));
+		}
+	})
+})
+
+
+var flag = true;
+function actsubmit(){
+	if($('input[name=store_name]').val() == ''){
+		layer.msg("店铺名称不能为空", {icon: 2,time: 2000});
+		return;
+	}
+	if(flag){
+		$('#store_info').submit();
+	}else{
+		layer.msg("请检查店铺名称和卖家账号", {icon: 2,time: 2000});
+	}
+}
+
+var tmp_type = '';
+function upload_img(cert_type){
+	tmp_type = cert_type;
+	GetUploadify(1,'store','cert','callback');
+}
+
+function callback(img_str){
+	$('#'+tmp_type).attr('src',img_str);
+	$('input[name='+tmp_type+']').val(img_str);
+}
+</script>
+</body>
+</html>

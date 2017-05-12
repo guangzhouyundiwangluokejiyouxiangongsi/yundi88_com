@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>手机验证-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<script>
+
+    // 表单提交验证
+    function check_form()
+    {
+        var old_mobile = $('#old_mobile').val();        
+        // var new_mobile = $('#new_mobile').val();
+        //原邮箱不为空的情况下 验证格式
+        if(old_mobile != '' && typeof(old_mobile) != 'undefined'){
+            if(!checkMobile(old_mobile)){
+                alert('手机格式错误', {icon: 2});// alert('原手机格式错误');
+                return false;
+            }
+        }
+        
+        
+        if($.trim($('#new_code').val()) == '')  
+        {
+            alert('验证码不能为空', {icon: 2});//alert('验证码不能为空');            
+            return false;           
+        }
+        return true;
+    }
+
+    function sendCode(obj,input_id){
+        var id = $(obj).attr('id');
+        var input = $('#'+input_id).val();
+        var old_mobile = $('#old_mobile').val();
+        //原邮箱不为空的情况下 验证格式
+        if(old_mobile != '' && typeof(old_mobile) != 'undefined'){
+            if(!checkMobile(old_mobile)){
+                alert('手机格式错误', {icon: 2});//alert('原手机格式错误');
+                return false;
+            }
+        }
+         if(!checkMobile(old_mobile)){
+            alert('新手机格式错误', {icon: 2});//alert('新手机格式错误');
+            return false;
+        }    
+        if(input_id == 'old_mobile')
+            var url = "/index.php?m=Seller&c=Userinfo&a=send_validate_code&step=1&type=mobile&send="+input;
+        $.ajax({
+            type : "GET",
+            url  : url,
+            dataType : 'json',
+            error: function(request) {
+                alert('服务器繁忙, 请联系管理员!', {icon: 2});//alert("服务器繁忙, 请联系管理员!");
+                return;
+            },
+            success: function(res) {
+                if(res.status == 1){
+                    jsInnerTimeout(id);
+                }else{
+                    alert(res.msg,{icon: 2});//alert('发送失败');
+                }
+            }
+        });
+    }
+
+    //倒计时函数
+    function jsInnerTimeout(id)
+    {
+        var codeObj=$("#"+id);
+        var intAs=parseInt(codeObj.attr("IntervalTime"));
+
+        intAs--;
+        codeObj.attr("disabled","disabled");
+        if(intAs<=-1)
+        {
+            codeObj.removeAttr("disabled");
+            codeObj.attr("IntervalTime",120);
+            codeObj.val("获取验证码");
+            return true;
+        }
+
+        codeObj.val(intAs+'s后再次获取');
+        codeObj.attr("IntervalTime",intAs);
+
+        setTimeout("jsInnerTimeout('"+id+"')",1000);
+    }; 
+</script>
+</head>
+<style type="text/css">
+.favorites_title ul li,.favorites .favorites_content .clearfix li{width:19.8%}
+.favorites_title ul li, .favorites .favorites_content .clearfix li:last-child{border:0}
+.btn_1{border:5px solid #008BB9;background-color: #008BB9;color: white}
+.btn_2 button:hover{font-size: 13.5px}
+</style>
+<body> 
+<!-- 头部-s -->
+<!-- 头部-e -->
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/css/favorite.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/security_set.css"/>
+
+<div class="wrap" style="width:98%;background:#fff;margin:0 auto;height:550px;">
+  
+  <!--菜单--> 
+  <!--菜单-->     
+  <!--侧边导航栏结束-->
+    <div class="col_main">
+  <div class="main security_passwd">
+    <div class="themes_title" style="border-bottom: 1px solid #f8f8f8;box-shadow: 1px 1px 1px 1px rgba(0,0,0,.5);">
+      <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;"><img src="__PUBLIC__/images/gerenxinxi.png" style="width:20px;margin-left: 20px;padding-right:10px;">安全设置</h3>
+        <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 10px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);">
+    <div style="clear:both;"></div>
+    </div>
+    <section class="security_passwd">
+      <div class="wrapper-3" style="margin-top: 50px;">
+        <div id="step" class="pub-step">
+          <div class="steps-nav fixed " style="margin-left: 200px;">
+            <!-- <p class="step-nav step-nav-1 go" style="width:199px;margin-left: -12px;background:#fff;"><img src="__PUBLIC__/images/hjshuru.png"><i></i></p> -->
+            <p class="step-nav step-nav-2 go" style="width:294px;margin-left: -14px;background:#fff;"><img src="__PUBLIC__/images/hjyanzheng.png"><i></i></p>
+            <p class="step-nav step-nav-3 go" style="width:294px;margin-left: -18px;background:#fff;"><img src="__PUBLIC__/images/hjchenggong.png"></p>
+          </div>
+          <form action="" method="post" onSubmit="return check_form();">
+          <div id="stepBlock2" class="steps-con block-02" style="border:none;">
+            <div class="step-col fn-form captcha_row" data-fn-verify="">
+              <ul style="display: block;" class="pub-ul verify-captcha-sms">
+                <li> <span class="title">手机：</span>
+                  <div class="con verify-group">
+                    <input type="text" class="it-01 verify-ctrl my_chkpwd" value="{$user_info['mobile']}" id="old_mobile" name="mobile" 
+                        <php>if ($user_info['mobile'] != ''){</php>   
+                        readonly="readonly" style="cursor: not-allowed;color:#999" />
+                        <php>}</php>
+                    <span style="display: block" class="v-tips verify-tips" id="span_tips"> 
+                    	<i class="icon" id="showForPwdtip"></i> 
+                        <span class="txt" id="showForPwd"></span> 
+                    </span> 
+                  </div>
+                </li>
+                <!-- <li> <span class="title">新手机：</span>
+                  <div class="con verify-group">
+                    <input type="text" class="it-01 verify-ctrl my_chkpwd" value="" id="new_mobile" name="mobile" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" />
+                    <span style="display: block;" class="v-tips verify-tips"> <i class="icon" id="rightTip"></i> <span id="errorEmail" class="txt"></span> </span> </div>
+                </li> -->
+                <li> <span class="title">验证码：</span>
+                  <div class="con verify-group">
+                    <input type="text" class="msg-code ie-01 verify-ctrl left" name="code" id="new_code">&nbsp;&nbsp;
+                    <input type="button" intervaltime="{$time}" value="获取验证码 " id="btnemailAuthCode2" onClick="sendCode(this,'old_mobile')" style="width:120px;"  />
+                   </div>                   
+                </li>                 
+                <li class="btn_2">
+                  <button class="btn_120 verify-ctrl btn_1" type="submit" style="width:110px;border-radius:5px;"> 提&nbsp;交 </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          </form>          
+        </div>
+      </div>
+    </section>
+  </div>
+</div> 
+</div>
+ 
+<div style="clear: both;"></div>
+
+
+</body>
+</html>

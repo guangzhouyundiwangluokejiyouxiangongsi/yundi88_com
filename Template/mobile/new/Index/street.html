@@ -1,0 +1,272 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta name="Generator" content="TPshop v1.1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>云狄网</title>
+    <meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+    <meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/ecsmart.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css">
+    <link rel="stylesheet" href="__STATIC__/css/stores.css">
+    <link rel="stylesheet" href="__STATIC__/css/public.css">
+    <script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+    <style>
+        @media screen {
+            * {
+                -webkit-tap-highlight-color: transparent;
+                /*overflow: hidden*/
+            }
+
+            .goods_nav {
+                width: 30%;
+                float: right;
+                right: 5px;
+                overflow: hidden;
+                position: fixed;
+                margin-top: -20px;
+                z-index: 9999999
+            }
+        }
+    </style>
+</head>
+<body style=" background:#F5F5F5">
+<!-- <span class="sanjiao"></span> -->
+<header>
+    <div class="tab_nav">
+        <header id="header">
+            <span href="javascript:void(0)" class="logo">{$tpshop_config['shop_info_store_name']}</span>
+            <include file="Public/menu"/>
+            <!-- <div class="h-mid">云狄网</div>
+            <div class="h-right">
+                <aside class="top_bar">
+                    <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a
+                            href="javascript:;"></a></div>
+                </aside>
+            </div> -->
+        </header>
+    </div>
+</header>
+<include file="Public/menu"/>
+
+<!-- <div class="Packages">
+    <div class="all"><a class="sele" target="_self" href="stores.php" style="color:#FFF"><span>全部</span></a></div>
+    <div class="page_guide_slider">
+        <div class="page_guide_balloon" style=" display:none">
+            <div class="page_guide_bar">
+                <div class="page_guide_progress">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="page_guide_container" onMouseDown="pageGuideMousedown(this,event)"
+             onMouseMove="pageGuideMousemove(this,event)" onMouseUp="pageGuideMouseup(this,event)"
+             onMouseOut="pageGuideMouseout(this,event)" ontouchstart="pageGuideTouchstart(this,event)"
+             ontouchmove="pageGuideTouchmove(this,event)" ontouchend="pageGuideTouchend(this,event)">
+
+            <div class="page_guide_items" style=" position:relative">
+
+                <div class="page_guide_item">
+                    <div class="page_guide_item_text">
+                        <a class="" target="_self" href="javascript:setCat_id(0)">精选</a></div>
+                </div>
+                <volist name="store_class" id="sc">
+                    <div class="page_guide_item">
+                        <div class="page_guide_item_text">
+                            <a class="" target="_self" href="javascript:setCat_id({$sc['sc_id']})">{$sc['sc_name']}</a></div>
+                    </div>
+                    <div id="street_cat{$sc['sc_id']}"></div>
+                </volist>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+<div id="fake-search" class="index_search" style="padding: 20px 0 20px;margin: 0;">
+  <div class="index_search_mid" style="width: 95%;float: none;margin: 0 auto;">
+  <span><img src="__STATIC__/images/xin/icosousuo.png"></span>
+    <input  type="text" id="search_text" class="search_text" value="请输入关键字"/>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(function(){
+    $(".tabList>ul>li").click(function(){
+      $(this).addClass("cur").siblings("li").removeClass("cur");
+      var cur = $(this).index();
+      $(".tabCon>.cur").eq(cur).show().siblings(".cur").hide();
+    })
+  })
+</script>
+
+
+<div id="search_hide" class="search_hide">
+  <h2> <span class="close"><img src="__STATIC__/images/close.png"></span>关键搜索</h2>
+  <div id="mallSearch" class="search_mid">
+       <div class="tabList">
+        <ul>
+            <li class="cur">产品</li>
+              <li >公司</li>
+            <li >信息</li>
+        </ul>
+      </div>
+      
+      <div class="tabCon">
+       <div class="cur" style="display: block;">
+           <form name="sourch_form" id="sourch_form" method="post" action="{:U("Goods/search")}">
+             <input  class="ssk" type="text" data-role="input-search" autocomplete="off" name="q" id="q" value="<?php echo I('q'); ?>" placeholder="搜索产品关键字"  />
+             <input type="submit" value="" class="but" onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();" />
+            </form>
+            <!-- 暂时注释
+            <dl>
+               <dd><a href="#" target="_blank" style="color:#008cba">连衣裙</a></dd>
+               <dd><a href="#" target="_blank">卫衣</a></dd>
+               <dd><a href="#" target="_blank">长袖T恤 </a></dd>
+               <dd><a href="#" target="_blank">斜跨包  </a></dd>
+               <dd><a href="#" target="_blank">秋季套装  </a></dd>
+               <dd><a href="#" target="_blank"> 牛仔短裙  </a></dd>
+               <dd><a href="#" target="_blank">打底裤  </a></dd>
+                  </dl> -->
+        </div>
+
+        <div class="cur">
+             <form id="sourch_form_com" method="get" action="{:U('index/search')}">
+              <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="name" id="q_com" value="" placeholder="搜索公司关键字"/>
+               <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
+             </form>
+        </div>
+       
+           
+         <div class="cur">
+             <form id="sourch_form_info" method="get" action="{:U('Info/search')}">
+              <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="<?php echo I('info'); ?>" placeholder="搜索信息关键字" />
+               <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
+              </form>
+          </div>
+      </div>
+      <ul class="tab-search-box" id="tab-search-box">
+        
+      </ul>
+
+
+  </div>
+</div>                   
+<script type="text/javascript">
+$(function() {
+    $('#search_text').click(function(){
+        $(".showpage").children('div').hide();
+        $("#search_hide").css('position','fixed').css('top','0px').css('width','100%').css('z-index','99999').show();
+    })
+    $('#get_search_box').click(function(){
+        $(".showpage").children('div').hide();
+        $("#search_hide").css('position','fixed').css('top','0px').css('width','100%').css('z-index','99999').show();
+    })
+    $("#search_hide .close").click(function(){
+        $(".showpage").children('div').show();
+        $("#search_hide").hide();
+    })
+});
+</script>
+<script>
+$('.search-type li').click(function() {
+    $(this).addClass('cur').siblings().removeClass('cur');
+    $('#searchtype').val($(this).attr('num'));
+});
+$('#searchtype').val($(this).attr('0'));
+</script>
+<script src="__PUBLIC__/js/jqueryUrlGet.js"></script><!--获取get参数插件-->
+<script> 
+//set_first_leader();
+</script>
+
+<div id="store_list">
+</div>
+<script type="text/javascript">
+    $(function () {
+        getStreetList();
+    });
+
+    var page = 1;//页数
+    var cat_id = '';//店铺分类id
+    /**
+     * 加载分类店铺
+     */
+    function setCat_id(id) {
+        $("#store_list").html('');
+        page = 1;
+        cat_id = id;
+        getStreetList();
+    }
+    /**
+     * 加载店铺
+     */
+    function getStreetList() {
+        $('.get_more').show();
+        $.ajax({
+            type: "get",
+            url: "/index.php?m=Mobile&c=Index&a=ajaxStreetList&p=" + page + "&sc_id=" + cat_id,
+            dataType: 'html',
+            success: function (data) {
+                if (data) {
+                    $("#store_list").append(data);
+                    page++;
+                    $('.get_more').hide();
+                } else {
+                    $('.get_more').hide();
+                    $('#getmore').remove();
+                }
+            }
+        });
+    }
+</script>
+<div class="floor_body2">
+    <div id="J_ItemList">
+        <ul class="product single_item info">
+        </ul>
+        <a href="javascript:;" class="get_more" style="text-align:center; display:block;">
+            <img src='__STATIC__/images/category/loader.gif' width="12" height="12"> </a>
+    </div>
+    <div id="getmore" style="font-size:.24rem;text-align: center;color:#888;padding:.25rem .24rem .4rem;">
+        <a href="javascript:void(0)" onClick="getStreetList()">点击加载更多</a>
+    </div>
+</div>
+<!--<div style="height:100px; line-height:50px; clear:both;"></div>-->
+<!-- <div class="footer">
+    <div class="links" id="TP_MEMBERZONE">
+        <if condition="$user_id gt 0">
+            <a href="{:U('User/index')}"><span>{$user.nickname}</span></a><a href="{:U('User/logout')}"><span>退出</span></a>
+            <else/>
+            <a href="{:U('User/login')}"><span>登录</span></a><a href="{:U('User/reg')}"><span>注册</span></a>
+        </if>
+        <a href="#"><span>反馈</span></a><a href="javascript:window.scrollTo(0,0);"><span>回顶部</span></a>
+    </div>
+    <ul class="linkss">
+        <li>
+            <a href="#">
+                <i class="footerimg_1"></i>
+                <span>客户端</span></a></li>
+        <li>
+            <a href="javascript:;"><i class="footerimg_2"></i><span class="gl">触屏版</span></a></li>
+        <li><a href="{:U('Index/index')}" class="goDesktop"><i class="footerimg_3"></i><span>电脑版</span></a></li>
+    </ul>
+    <p class="mf_o4">备案号:{$tpshop_config['shop_info_record_no']}<br/>&copy;广州云狄科网络技有限公司 版权所有，并保留所有权利。</p>
+</div> -->
+
+<include file="Public/footer_nav"/>
+<script>
+    function goTop() {
+        $('html,body').animate({'scrollTop': 0}, 600);
+    }
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="__STATIC__/images/topup.png"></a>
+<script type="text/javascript">
+    // reg_package();
+</script>
+<script src="__STATIC__/js/slider.js" type="text/javascript"></script>
+
+</body>
+</html>

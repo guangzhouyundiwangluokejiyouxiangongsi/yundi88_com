@@ -1,0 +1,80 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <include file="Public/breadcrumb"/>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i> 系统消息</h3>
+        </div>
+        <div class="panel-body">    
+		<div class="navbar">  
+                 <div class="callout callout-info">
+					<p>1. 管理员可以看见全部消息。</p>
+			        <p>2、只有管理员可以删除消息，删除后其他账户的该条消息也将被删除。</p>
+	            </div>                 
+        </div>
+        <form id="op" action="{:U('index/store_msg_batch')}" method="post">             
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="sorting text-left">
+		                <input type="checkbox" onclick="$('input[name*=\'sm_id[]\']').prop('checked', this.checked);">
+                    </th>                
+                    <th class="sorting text-left">消息内容</th>
+                    <th class="sorting text-left">发送时间</th>
+                    <th class="sorting text-left">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="msg_list" id="list">
+                    <tr>
+                        <td class="text-left"><input type="checkbox" name="sm_id[]" value="{$list.sm_id}"></td>                    
+                        <td class="text-left content_{$list.sm_id}">
+                        	{$list.content}
+                        </td>
+                        <td class="text-left">{$list.addtime|date='Y-m-d H:i',###}</td>
+                        <td class="text-left">
+	                        <a href="javascript:void(0);" onclick="showMsg('content_{$list.sm_id}');" class="btn btn-primary" ><i class="fa fa-eye"></i></a>
+                            <a href="javascript:void(0);" data-href="{:U('index/del_store_msg',array('sm_id'=>$list[sm_id]))}" onclick="del('{$list[sm_id]}',this)" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <select name="action" id="action">
+                <option value="0">操作选择</option>
+                <option value="open">标记已读</option>
+                <option value="del">删除</option>
+            </select>
+            <button type="submit">确定</button>
+        </div>   
+    </form>            
+	    <div class="row">
+	        <div class="col-sm-6 text-left"></div>
+	        <div class="col-sm-6 text-right">{$page}</div>
+	    </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+
+    // 显示消息
+ 	function showMsg(content_id)
+	{		 			  
+		 layer.msg($('.'+content_id).html(), {time: 5000, icon:6});
+			 
+	}
+    // 删除操作
+    function del(id,t)
+    {
+        if(!confirm('确定要删除吗?'))
+            return false;
+        location.href = $(t).data('href');
+    }
+</script>
+</body>
+</html>

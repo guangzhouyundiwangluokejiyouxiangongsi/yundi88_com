@@ -1,0 +1,129 @@
+<include file="Public/min-header"/>
+
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	           	<div class="box-header">
+	               <nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('Store/navigation_list')}" method="post">
+				            <div class="form-group">
+				              	<!-- <input type="text" name="keywords" class="form-control" placeholder="搜索"> -->
+				            </div>
+				            <!-- <button type="submit" class="btn btn-default">提交</button> -->
+				            <div class="form-group pull-right">
+					            <a href="{:U('Store/navigation')}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> 新增导航</a>
+				            </div>		          
+				          </form>		
+				      	</div>
+	    			</nav>               
+	            </div>	    
+	             <!-- /.box-header -->
+	             <div class="box-body">	             
+	           		<div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+		                 <thead>
+		                   <tr role="row">
+			                   <th class="sorting" tabindex="0">排序</th>
+			                   <th class="sorting" tabindex="0">导航名称</th>
+			                   <th class="sorting" tabindex="0">父分类</th>
+			                   <th class="sorting" tabindex="0">是否显示</th>
+			                   <th class="sorting" tabindex="0">新窗口打开</th>
+			                   <th class="sorting" tabindex="0">操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+							<foreach name="products" item="vv" key="kk">
+							<tr role="row" align="center">
+		                     <td>0</td>
+		                     <td>{$vv}</td>
+		                     <td>顶级分类</td>
+		                     <td>是</td>
+		                     <td>关闭</td>
+		                     <td>
+		                      <a class="btn btn-primary" href="javascript:;" onclick="edit_products({$kk})"><i class="fa fa-pencil"></i></a>
+		                      <!-- <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('/Seller/Store/navigationHandle')}" data-id="{$vo.sn_id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a> -->
+							</td>
+		                   </tr>
+		                   </foreach>
+						  <foreach name="list" item="vo" key="k" >
+						  	<tr role="row" align="center">
+		                     <td>{$vo.sn_sort}</td>
+		                     <td>{$vo.sn_title}</td>
+		                     <td>{$class[$vo['sn_pid']]|default='顶级分类'}</td>
+		                     <td>{$vo.sn_is_show}</td>
+		                     <td>{$vo.sn_new_open}</td>
+		                     <td>
+		                      <a style="margin: 2px 0;" class="btn btn-primary" href="{:U('Store/navigation',array('sn_id'=>$vo['sn_id']))}"><i class="fa fa-pencil"></i></a>
+		                      <a style="margin: 2px 0;" class="btn btn-danger" href="javascript:void(0)" data-url="{:U('/Seller/Store/navigationHandle')}" data-id="{$vo.sn_id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
+							</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	        </div><!-- /.box -->
+       	</div>
+       </div>
+       <div style="display: none;">
+       		<div id="tong">
+       			<form action="">
+       				<input type="text" name="name" value="供应产品">
+       				<input type="submit" name="提交" >
+       			</form>
+       		</div>
+       </div>
+   </section>
+</div>
+<script>
+function edit_products(t){
+	layer.open({
+        type: 2,
+        title: '修改名称',
+        shadeClose: true,
+        shade: 0.2,
+        area: ['400px', '200px'],
+        content: "{:U('Store/edit_products')}?id="+t, 
+    });
+}
+function delfun(obj){
+	if(confirm('确认删除!')){		
+		$.ajax({
+			type : 'post',
+			url : $(obj).attr('data-url'),
+			data : {'act':'del','sn_id':$(obj).attr('data-id')},
+			dataType : 'json',
+			success : function(data){
+				if(data){
+					$(obj).parent().parent().remove();
+				}else{
+					layer.alert('删除失败', {icon: 2});  //alert('删除失败');
+				}
+			}
+		})
+	}
+	return false;
+}
+
+function check_success(){
+	layer.alert('修改成功',{icon: 1});
+} 
+
+function check_error(){
+	layer.alert('修改失败',{icon: 2});
+}
+</script>  
+</body>
+</html>

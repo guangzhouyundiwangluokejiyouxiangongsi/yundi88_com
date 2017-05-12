@@ -1,0 +1,130 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+  <section class="content">
+    <div class="row">
+	        <div class="col-xs-3" style="padding-left: 0px;padding-right: 0px;"> 
+	             <select name="cat_id" id="cat_id" onchange="get_category2(this.value,'cat_id_2','0');" class="form-control" style="width:220px;">
+	               <option value="0">请选择商品分类</option>                                      
+	                    <foreach name="cat_list" item="v" key="k" >                                                                                          
+	                      <option  value="{$v['id']}" <if condition="$v['id'] eq $level_cat['1']">selected="selected"</if>>
+	                      		{$v['name']}
+	                      </option>
+	                    </foreach>
+	             </select>
+	        </div>
+	        <div class="col-xs-3" style="padding-left: 0px;padding-right: 0px;">
+	             <select name="cat_id_2"  id="cat_id_2" onchange="get_category3(this.value,'cat_id_3','0');" class="form-control" style="width:220px;">
+	               	<option value="0" >请选择商品分类</option>
+	             </select>  
+	        </div>
+	        <div class="col-xs-3" style="padding-left: 0px;padding-right: 0px;">                        
+	             <select name="cat_id_3" id="cat_id_3" class="form-control" style="width:220px;">
+	               <option value="0" id="op3">请选择商品分类</option>
+	             </select> 
+	        </div>  <br><br><br>
+	         &nbsp;&nbsp;&nbsp;&nbsp;分类名称：<input type="text" name="category" value="" placeholder="搜索分类"  
+             id="category" style="width: 150px;height: 30px" onchange="chacheck()">
+             <input type="submit" name="" value="搜索">
+    </div>
+    <style>
+    	.category-radios li{list-style: none;color:#000;width:100%;line-height:30px;}
+    </style>
+    <div class="row">
+    	<ul class="col-xs-5 category-radios" style="width:100%;">
+    		<!-- <li>
+    			<label>
+    				<input type="radio" name="cat" value="" id="chk">
+    				<span id="span" style="font-size: 14px;font-weight: 100;" >服装</span>
+    			</label>
+    		</li> -->
+    	</ul>
+    	<div  style="width:100px;margin:0 auto;">
+    		<a href="javascript:void(0)" onclick="gosubmit()" class="btn btn-info margin">提交</a>
+    	</div>
+    </div><br>
+  </section>
+</div>
+<script>
+function checkdd(obj){
+    $('.aaa').css('background-color','');
+    $(obj).css('background-color','#01C0EF');
+    var name = $(obj).html().split('@');
+    var bid = $(obj).attr('value').split('@');
+    $('#cat_id option:selected').html(name[0]);
+    $('#cat_id option:selected').val(bid[0]);
+    if (typeof(bid['1']) == 'undefined' || typeof(name['1']) == 'undefined'){
+        get_category2(bid['0'],'cat_id_2','0');
+    }
+
+    $('#cat_id_2 option:selected').html(name[1]);
+    $('#cat_id_2 option:selected').val(bid[1]);
+
+    if (typeof(bid['2']) == 'undefined' || typeof(name['2']) == 'undefined'){
+        get_category3(bid['1'],'cat_id_3','0');
+    }
+    $('#cat_id_3 option:selected').html(name[2]);
+    $('#cat_id_3 option:selected').val(bid[2]);
+    return;
+
+    
+}
+
+
+function chacheck(){
+	var cad = document.getElementById('category').value;
+    // var span = document.getElementById('span').value;
+    if (cad != ''){
+    	$.ajax({
+    		type:'post',
+    		url:'{:U("store/ajax_category")}',
+    		data:'category='+cad,
+    		dataType:'json',
+    		success:function(res){
+                if (res == ''){
+                    alert('对不起,你搜索的分类不存在');
+                    return false;
+                }
+                var str = '';
+                $.each(res.name,function(key,v){
+                     str += "<li class='aaa' style='cursor:pointer;' onclick='checkdd(this)' value='"+res.id[key]+"'>"+v+"</li>";
+                })
+                var ul=document.getElementsByTagName("ul")[0];
+                ul.innerHTML=""+str;
+                return;
+    		},error(){
+    			alert('获取数据失败,请刷新页面重新搜索!');
+    		}
+    	})
+    } else {
+        return false;
+    }
+
+}
+
+function gosubmit(){
+	var cat_id = $('#cat_id').val();
+	var cat_id2 = $('#cat_id_2').val();
+	var cat_id3 = $('#cat_id_3').val();
+	// 
+	if(cat_id == 0 || cat_id2 == 0 || cat_id3 == 0){
+		layer.msg('请选择完整分类', {icon: 2});
+		return false;
+	}
+	$.ajax({
+		type:'post',
+		url:"{:U('Store/get_bind_class')}",
+		data:{class_1:cat_id,class_2:cat_id2,class_3:cat_id3},
+		dataType : 'json',
+		success : function(data){
+			if(data.stat=='ok'){
+				layer.msg('操作成功', {icon: 3});
+				window.parent.location.reload();
+			}else{
+				layer.alert(data.msg, {icon: 2});
+			}
+		}
+	});
+}
+</script>
+</body>
+</html>

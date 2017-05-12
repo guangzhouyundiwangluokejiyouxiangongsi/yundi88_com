@@ -1,0 +1,38 @@
+<include file="Article/public_header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/tuiguan.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<body  > 
+	<style>
+		.mianfei{display: block;}
+	</style>
+	<main class="tgmain">
+		<include file="Article/tuiguang_common" />
+	<style>
+		.mianfei{display:show;}
+	</style>
+		</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.tgnavssm >ul li').bind('click',function(){
+					$('.tgnavssm > ul li').each(function(){				
+						$($(this).attr('i')).css('display','none');				
+						$($(this).attr('i')).hide();	
+						$(this).removeClass('active');	
+						$('.xiangxixingxi').hide();	
+						$('.tgpages').hide();
+					})
+				$(this).addClass('active');
+				$($(this).attr('i')).show();
+				});
+		})
+
+	</script>
+</main>
+
+<div class="cl"></div>
+
+<include file="Public/footer" />
+
+
+</body> 
+</html>

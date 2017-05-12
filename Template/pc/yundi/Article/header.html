@@ -1,0 +1,55 @@
+<header class="head">
+    <!-- <div class="left">Hi，你好  kky</div> -->
+    <nav class="nav">
+      	<img src="__PUBLIC__/pc/images/LOGO.png">
+        <div class="navs">
+          <a href="/article/yun_shop.html" <?php if(ACTION_NAME == yun_shop) echo 'style="color:#f00"'; ?> >首页</a>
+          <a href="/article/aboutyun.html" i=".fengcai" <?php if(ACTION_NAME == aboutyun || ACTION_NAME == elegant) echo 'style="color:#f00"'; ?>>关于商会</a>
+          <a href="/article/demeanour.html" i=".zixun" <?php if(ACTION_NAME == demeanour || ACTION_NAME == demeanour || ACTION_NAME == demeanourmoll || ACTION_NAME == gonggao) echo 'style="color:#f00"'; ?>>商会资讯</a>
+          <a href="/article/Joinus.html" <?php if(ACTION_NAME == Joinus) echo 'style="color:#f00"'; ?>>加入优势</a>
+          <a href="/article/Contactus.html"  <?php if(ACTION_NAME == Contactus ) echo 'style="color:#f00"'; ?>>联系我们</a>
+          <div class="Contactusa fengcai"><p onclick="javascript:window.location.href='/article/elegant.html'">商会风采</p></div>
+          <div class="Contactusas zixun">
+            <p onclick="javascript:window.location.href='/article/demeanour.html'">最新资讯</p>
+            <p onclick="javascript:window.location.href='/article/demeanourmoll.html'">最新动态</p>
+            <p onclick="javascript:window.location.href='/article/gonggao.html'">公告</p>
+          </div>
+        </div>
+    </nav>
+  </header><!--顶部结束-->
+  <script type="text/javascript">
+        $(function(){
+          $('.navs>a').bind('mouseover',function(){
+
+          $('.navs>a').each(function(){
+
+            $($(this).attr('i')).css('display','none');       
+            $($(this).attr('i')).hide();
+          })
+
+          $($(this).attr('i')).show();
+
+        });
+
+          $('.navs>a').bind('mouseout',function(){
+
+              $($(this).attr('i')).hide();
+          });
+
+
+          $('.Contactusa').bind('mouseover',function(){
+            $(this).show();
+          });
+          $('.Contactusas').bind('mouseover',function(){
+            $(this).show();
+          });
+
+
+          $('.Contactusa').bind('mouseout',function(){
+            $(this).hide();
+          });
+          $('.Contactusas').bind('mouseout',function(){
+            $(this).hide();
+          });
+});
+    </script>

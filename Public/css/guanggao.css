@@ -1,0 +1,58 @@
+*{margin:0;padding:0;}
+a{text-decoration: none;}
+ul,ol li{list-style:none;}
+.cl{clear:both;}
+/*广告页开始*/
+.gaugngaoheader{width:1200px;margin:20px auto;}
+.gaugngaoheader img{display: inline-block;float:left;}
+.gaugngaoheader	.ggtitle{display: inline-block;height:40px;margin-top: 10px;border-left: 1px solid #ccc;line-height: 40px;padding-left: 20px;margin-left:20px;color:#21acd4;font-size:24px;}
+
+.guanggao{background:url(../images/ggbenner.png)no-repeat center center;width:100%;height:520px;}
+/*广告合作频道*/
+.gghezuo{width:1200px;margin: 0 auto;text-align:center;}
+.gghezuo h3{font-family:'宋体';font-size: 24px;font-weight: 800;color:#333;margin-top:30px;margin-bottom: 20px;}
+.gghezuo p{font-family:'Arial';font-size:14px;color:#999;}
+.gghezuo ul{width:96%;margin: 0 auto;}
+.gghezuo ul li{width:20%;float:left;border-radius:10px;height:210px;cursor:pointer;margin-bottom: 40px;font-size:18px;color:#333;font-weight:800;margin-left: 30px;margin-right: 20px;margin-top: 30px;}
+.gghezuo ul .ggcpyy{background:#adec89;text-align: center;padding-top: 20px;border-radius:10px;height:150px;margin-bottom: 20px;}
+.gghezuo ul .ggcpyy:hover{background:#95c978;}
+
+.gghezuo ul .ggcaigou{background:#79bdf7;text-align: center;padding-top: 20px;border-radius:10px;height:150px;margin-bottom: 20px;}
+.gghezuo ul .ggcaigou:hover{background:#6aa6da;}
+
+.gghezuo ul .ggyuyue{background:#e45a35;text-align: center;padding-top: 20px;border-radius:10px;height:150px;margin-bottom: 20px;}
+.gghezuo ul .ggyuyue:hover{background:#ce5130;}
+
+.gghezuo ul .ggshouji{background:#64bbb2;text-align: center;padding-top: 20px;border-radius:10px;height:150px;margin-bottom: 20px;}
+.gghezuo ul .ggshouji:hover{background:#58a49c;}
+/*广告合作服务*/
+.ggfuwu{width:100%;background:#f7f7f7;min-height: 500px;}
+.ggfuwu	.ggfuwumain{width:1200px;margin: 0 auto;text-align: center;}
+.ggfuwu	.ggfuwumain h3{padding-top: 50px;font-size:24px;font-family: '宋体';color:#333;font-weight: 800;margin-bottom:20px;}
+.ggfuwu	.ggfuwumain .ggfuwup1{font-family:'Arial';font-size:14px;color:#999;margin-bottom: 20px;}
+.ggfuwu	.ggfuwumain	.ggfuwup2{font-size:16px;color:#333;font-family:'宋体';line-height: 24px;margin-bottom: 40px;}
+.ggfuwu	.ggfuwumain .ggfuwumainl{width:30%;float:left;}
+.ggfuwu	.ggfuwumain .ggfuwumainl h4{font-size: 16px;font-family: '宋体';color:#333;}
+
+.ggfuwu	.ggfuwumain .ggfuwumainl p{height:30px;line-height: 30px;margin-top: 10px;text-align: left;padding-left: 70px;}
+.ggfuwu	.ggfuwumain .ggfuwumainl p a img{float:right;margin-right: 32px;margin-left: -35px;}
+.ggfuwu	.ggfuwumain .ggfuwumainm{width:30%;padding-top: 30px;margin-left:30px;float:left;text-align:left;line-height: 30px;font-family: '宋体';font-size:16px;}
+
+/*广告合作优势*/
+.ggyoushi{width:1200px;margin:0 auto;text-align:center;}
+.ggyoushi h3{padding-top: 50px;font-size:24px;font-family: '宋体';color:#333;font-weight: 800;margin-bottom:20px;}
+.ggyoushi p{font-family:'Arial';font-size:14px;color:#999;margin-bottom: 20px;}
+.ggyoushi ul{margin-left: 65px;}
+.ggyoushi ul li{width:18%;float:left;padding:20px;margin:10px;height:343px;overflow:hidden;}
+.ggyoushi ul li h4{font-size:20px;font-family: '微软雅黑';color:#333;height:60px;line-height: 60px;}
+.ggyoushi ul li p{text-align:justify;}
+
+/*注意事项*/
+.ggzhuyi{width:1100px;margin:0 auto;line-height: 24px;}
+
+.ggzhuyi h4{color:red;}
+
+
+
+
+

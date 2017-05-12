@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+                        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="zh-cn" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+<meta http-equiv="Cache-control" content="public" max-age="no-cache" />
+<title>详情-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/help.css"/>
+ 
+<!--[if lt IE 9]>
+        <script src="js/html5.js"></script>
+        <script src="js/ie9.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/ie.css"/>
+        <![endif]-->
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="User/header" />
+<!--------头部结束--------------> 
+<!--E头部-->
+<div style="clear: both; height:45px"></div>
+<div id="pageContent" class="pageContent">
+  <div class="hc-warp" id="page">  
+    <div class="hc-crumbs"><a class="p-fb" href="" target="_blank"></a> <a></a> </div>
+    <div class="hc-column">
+    <!-- <tpshop sql="select * from `__PREFIX__article_cat` where parent_id=2" key="k" item='v'> -->
+      <div class="hc-column-box">
+      <notempty name="parents">
+        <h2><a href="javascript:;" target="_self">{$parents}</a></h2>
+        </notempty>
+        <ul class="title">
+         <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]" key="k2" item='v2'>
+          <li><a href="">{$cat_name}</a></li>
+         </tpshop>
+        </ul>
+        <ul class="tabs">
+          <foreach name="parentss" item="vv">
+          <if condition="$vv['article_id'] eq $article['article_id']">
+          <li class="on">
+          <php>if ($vv['link'] != ''){</php>
+          <a target="_blank" href="{$vv[link]}"><span>{$vv.title}</span><i>></i></a>
+          <php>} else {</php>
+          <a href="{:U('/Article/detail',array('article_id'=>$vv[article_id]))}"><span>{$vv.title}</span><i>></i></a>
+          <php>}</php>
+          </li>
+          <else />
+          <php>if ($vv['link'] != ''){</php>
+         	<li><a target="_blank" href="{$vv[link]}"><span>{$vv.title}</span><i>></i>
+          <php>} else {</php>
+          <li><a href="{:U('/Article/detail',array('article_id'=>$vv[article_id]))}"><span>{$vv.title}</span><i>></i>
+          <php>}</php>
+          </a></li>
+          </if>
+          </foreach>
+        </ul>
+      </div>
+  	<!-- </tpshop> -->
+    </div>
+        <!--可编辑区域开始-->
+    <div id="content"> <!--可编辑区域开始-->
+		    
+      <div style="width: 1020px;  font-family: Verdana,Helvetica; float: right;">
+       		
+        <div class="content-message">
+        	<style type="text/css">
+        		#content .content-message{border: 1px solid rgb(233, 234, 236); margin-bottom: 25px;}
+        	
+        	</style>
+     
+            <div style="padding: 20px 30px; color: rgb(60, 60, 60); font-size: 14px;">
+			         {$article.content|htmlspecialchars_decode}
+            </div>
+            
+        </div>
+      </div>
+      <!--可编辑区域结束--> </div>
+    <!--可编辑区域结束-->  
+    </div>
+</div>
+<div style="clear: both;"></div>
+<include file="User/footer" /> 
+</body>
+</html>

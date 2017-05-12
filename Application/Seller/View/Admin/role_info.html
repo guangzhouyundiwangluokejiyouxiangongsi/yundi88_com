@@ -1,0 +1,190 @@
+<include file="Public/min-header"/>
+<style>
+.ncsc-form-default{margin:0 auto;}
+.ncsc-account-container {
+    line-height: 20px;
+    display: block;
+    min-height: 20px;
+    padding: 10px 0;
+    border-top: dotted 1px #CCC;
+}
+.ncsc-account-container h4 {
+    font-size: 14px;
+    font-weight: 600;
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+    border-right: dotted 1px #CCC;
+    margin: 0 1%;
+}
+.ncsc-account-container-list {
+    font-size: 0;
+    vertical-align: top;
+    display: inline-block;
+    width: 84%;
+}
+.ncsc-account-container-list li {
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    width: 20%;
+    height: 24px;
+}
+.ncsc-account-container-list li span{
+	display: inline-block;
+	vertical-align: middle;
+}
+.ncsc-form-default dl {
+    font-size: 0;
+    line-height: 20px;
+    clear: both;
+    padding: 0;
+    margin: 0;
+    border-bottom: dotted 1px #E6E6E6;
+    overflow: hidden;
+}
+.ncsc-form-default dl dt {
+    font-size: 13px;
+    line-height: 32px;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-align: right;
+    display: inline-block;
+    width: 10%;
+    padding: 10px 1% 10px 0;
+    margin: 0;
+}
+.ncsc-form-default dl dd {
+    font-size: 12px;
+    line-height: 32px;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    width: 79%;
+    padding: 10px 0 10px 0;
+}
+.ncsc-account-container .checkbox {
+    vertical-align: middle;
+    margin-right: 4px;
+	padding:0;
+	width:16px;
+	height:16px;
+	display:inline-block;
+}
+.hint {
+    font-size: 12px;
+    line-height: 16px;
+    color: #BBB;
+    margin-top: 10px;
+}
+</style>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+	<section class="content">
+	<div class="row">
+		<div class="col-sm-12 ">		        	
+		<form action="{:U('Admin/roleSave')}" id="roleform" method="post">
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th width="100px;">组名称:</th>
+					<td>
+					<input type="text" class="form-control" name="group_name" id="group_name" value="{$detail.group_name}" style="width:250px;">
+					<p class="hint">设定权限组名称，方便区分权限类型。</p>
+					</td>
+				</tr>
+			</table>
+			<div class="ncsc-form-default">
+			<dl id="function_list">
+		      <dt><i class="required">*</i>权限</dt>
+		      <dd>
+		        <div class="ncsc-account-all">
+		          <input id="btn_select_all" name="btn_select_all" style="display:inline-block" class="checkbox" type="checkbox" />
+		          <label for="btn_select_all">全选</label>
+		        </div>
+		        <foreach name="menu_list" item="vo" key="key" >
+		        <div class="ncsc-account-container">
+			          <h4>
+			            <input id="{$key}" type="checkbox" class="checkbox" nctype="btn_select_module"/>
+			            <label for="{$key}">{$vo['name']}</label>
+			          </h4>
+			          <ul class="ncsc-account-container-list">
+			            <foreach name="vo.child" item="vv">
+				            <li>
+				              	<input id="{$vv['f']}" <php> if(stripos($detail['act_limits'],$vv['f'])) echo 'checked';</php> type="checkbox" class="checkbox" name="act_limits[]" value="{$vv['f']}" />
+				            	<label for="{$vv['f']}">{$vv['name']}</label>
+				            </li>
+			           </foreach>
+			          </ul>
+		        </div>
+		        </foreach>
+		        <p class="hint"></p>
+		      </dd>
+		    </dl>
+		    <dl>
+		      <dt><i class="required"></i>消息接收权限</dt>
+		      <dd>
+		        <div class="ncsc-account-all">
+		          <input id="smt_select_all" class="checkbox" type="checkbox" style="display:inline-block" />
+		          <label for="smt_select_all">全选</label>
+		        </div>
+		        <div class="ncsc-account-container">
+		          <ul class="ncsc-account-container-list" style="width: 99%; padding-left: 1%;">
+		            <foreach name="smt_list" item="val">
+		            <li style="width: 20%;">
+		              <input id="{$val['smt_code']}" class="checkbox" type="checkbox" <in name="val[smt_code]" value="$detail.smt_limits">checked</in> name="smt_limits[]" value="{$val['smt_code']}" />
+		              <label for="{$val['smt_code']}">{$val['smt_name']}</label>
+		            </li>
+		           </foreach>
+		          </ul>
+		        </div>
+		        <p class="hint">如需设置消息接收权限，请设置该权限组允许查看“系统消息”。</p>
+		      </dd>
+		    </dl>
+			</div>
+			<div class="page-bar" style="text-align:center;">
+				<input type="hidden" name="group_id" value="{$detail.group_id}" />
+				<a href="javascript:void(0)" onclick="roleSubmit()" class="btn btn-info">提交设置</a>			
+			</div>
+		</form>
+		</div>
+	</div></section>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#btn_select_all').on('click', function() {
+	    if($(this).prop('checked')) {
+	        $(this).parents('dd').find('input:checkbox').prop('checked', true);
+	    } else {
+	        $(this).parents('dd').find('input:checkbox').prop('checked', false);
+	    }
+	});
+	
+	$('[nctype="btn_select_module"]').on('click', function() {
+	    if($(this).prop('checked')) {
+	        $(this).parents('.ncsc-account-container').find('input:checkbox').prop('checked', true);
+	    } else {
+	        $(this).parents('.ncsc-account-container').find('input:checkbox').prop('checked', false);
+	    }
+	});
+	
+	$('#smt_select_all').click(function(){
+		var vt = $(this).is(':checked');
+		$(this).parents('dd').find('input:checkbox').prop('checked', vt);
+	})
+});
+
+function roleSubmit(){
+	if($('#group_name').val() == '' ){
+		layer.alert('角色名称不能为空', {icon: 2});  //alert('少年，角色名称不能为空');
+		return false;
+	}
+	$('#roleform').submit();
+}
+</script>
+</body>
+</html>

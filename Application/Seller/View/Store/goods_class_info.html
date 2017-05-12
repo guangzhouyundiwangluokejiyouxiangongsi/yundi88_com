@@ -1,0 +1,123 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+     <form method="post" id="handlepost" action="{:U('Store/goodd_class_save')}">
+      <div class="tab-content">                 	  
+          <div class="tab-pane active" id="tab_tongyong">                           
+	        <table class="table table-bordered">
+	            <tbody>
+	            <tr>
+	                <td class="col-sm-2">分类名称：</td>
+	                <td>
+	                    <input type="text" class="form-control" name="cat_name" value="{$info.cat_name}">                                                         
+	                </td>
+	            </tr> 
+	            <tr>
+	            <td>上级分类：</td>
+	            <td>			
+					<select name="parent_id" id="parent_id" value="{$menu.parent_id}" class="input-sm">	
+						<option value="0">顶级菜单</option>		
+						<foreach name="parent" item="v">
+							<option value="{$v.cat_id}" <if condition="$v[cat_id] eq $info[parent_id]"> selected="selected"</if>>&nbsp;&nbsp;|--{$v.cat_name}</option>
+						</foreach>
+					</select>                       
+	            </td>
+	            </tr>
+	            <tr>
+	            	<td>首页此类商品显示数量：</td>
+	            	<td><input type="text" class="input-sm" name="show_num" value="{$info.show_num}" placeholder="默认4个"></td>
+	            </tr>
+	            <tr>
+	                <td>是否显示：</td>
+	                <td>
+	                	<input name="is_show" type="radio" value="1" <if condition="$info[is_show] eq 1">checked</if>>是
+	                	<input name="is_show" type="radio" value="0" <if condition="$info[is_show] eq 0">checked</if>>否
+					</td>
+	            </tr>
+	            <tr>
+	                <td>是否导航显示：</td>
+	                <td>
+	                	<input name="is_nav_show" type="radio" value="1" <if condition="$info[is_nav_show] eq 1">checked</if>>是
+	                	<input name="is_nav_show" type="radio" value="0" <if condition="$info[is_nav_show] eq 0">checked</if>>否
+					</td>
+	            </tr>
+	            <tr>
+	                <td>是否首页推荐：</td>
+	                <td>
+	                	<input name="is_recommend" type="radio" value="1" <if condition="$info[is_recommend] eq 1">checked</if>>是
+	                	<input name="is_recommend" type="radio" value="0" <if condition="$info[is_recommend] eq 0">checked</if>>否
+					</td>
+	            </tr>
+	            <tr>
+	                <td>关键词：</td>
+	                <td>
+	                	<input name="keyword" type="text" value="{$info[keyword]}">
+					</td>
+	            </tr>
+	            <tr>
+	                <td>描述：</td>
+	                <td>
+	                	<textarea name="description" value="1">{$info[description]}</textarea>
+					</td>
+	            </tr>
+	            <tr>
+	                <td>banner图：</td>
+	                <td>
+	                	<img style="width:500px;" src="{$info.img}" id="img" alt="">
+                        <input type="hidden" name="img" value="{$info.img}">
+
+                        <input type="button" class="form-control" style="width:100px;" name="" value="上传banner" onClick="GetUploadify(1,'img','seller','callback2')" >
+					</td>
+	            </tr>
+	             <tr>
+
+                                    <td>banner图片是否显示：</td>
+                                    <td>
+                                        <input type="radio" class="" name="banner_show" value="1"  <if condition="$info[banner_show] eq 1"> checked="checked"</if>>是
+                                        <input type="radio" class="" name="banner_show" value="0"  <if condition="$info[banner_show] eq 0"> checked="checked"</if>>否    
+                                    </td>
+                                   
+                                </tr>
+	            <tr>
+	                <td>排序：</td>
+	                <td><input type="text" name="cat_sort" value="{$info.cat_sort}" class="form-control" /></td>
+	            </tr>
+	            </tbody> 
+	            <tfoot>
+	            	<tr>
+	            	<td  colspan="2" style="text-align:center;">
+	            		<input type="hidden" name="cat_id" value="{$info.cat_id}">
+	            		<input class="btn btn-primary" type="button" onclick="dataSave()" value="保存"></td>
+	            	</tr>
+	            </tfoot>                               
+	          </table>
+	          </div>                           
+	      </div>              
+</form>
+</div>
+<script type="text/javascript">
+	function dataSave(){
+		if($('input[name="cat_name"]').val() == ''){
+			layer.msg('分类名称不能为空', {icon: 3});
+			return;
+		}
+		$.ajax({
+			url : "{:U('Store/goods_class_save')}",
+			data : $('#handlepost').serialize(),
+			type : 'post',
+			dataType : 'json',
+			success :function(data){
+				if(data.stat=='ok'){
+					window.parent.call_back(1);	
+				}else{
+					window.parent.call_back(0);
+				}						
+			}			
+		});		
+	}
+	function callback2(img_str){
+	$('input[name="img"]').val(img_str);
+	$('#img').attr('src',img_str);
+}
+</script>
+</body>
+</html>

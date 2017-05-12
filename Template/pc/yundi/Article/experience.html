@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+	<meta charset="UTF-8">
+	<title>用户体验</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/tiyan.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/tiyan2.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/idangerous.swiper.css">
+</head> 
+<script>
+	function success(){
+     Sbg.style.display="block";
+     sbgBtn.onclick=function(){
+     	Sbg.style.display="none";
+     }
+     sbClose.onclick=function(){
+     	Sbg.style.display="none";
+     }
+}
+</script>
+<body>
+	<header>
+		<form action=""  method="post" onsubmit="return mysubmit()">
+		<div class="public-container clearfix">
+			<div class="logo">
+				<a href="/index/index"><img src="__PUBLIC__/images/logo.png" alt=""></a>
+			</div>
+			<div class="line"><img src="__PUBLIC__/images/line.png" alt=""></div>
+			<div class="he-tle">欢迎加入云狄网用户体验计划</div>
+		</div>
+	</header>
+	<div class="Main-box clearfix">
+		<div class="Mb-l">
+			<div class="Mbl-tle">
+				<h1>尊敬的云狄网用户:</h1>
+				<p>“用户体验计划”是云狄网长期开展的一项邀请用户
+共同参与的活动。通过您的反馈，我们能更深入地了解您
+的需求和喜好，从而为您提升现有产品的使用体验。</p>
+			</div>
+			<div class="Mbl-pic">
+              <div class="device">
+    <a class="arrow-left" href="#"></a> 
+    <a class="arrow-right" href="#"></a>
+    <div class="swiper-container" style="border-radius:16px;">
+      <div class="swiper-wrapper">
+      <foreach name="lunbo[tiyan_lunbo]" item="vv" key="kk">
+      <if condition="$vv">
+    
+        <div class="swiper-slide"><a target="_blank" href="{$lunbo['tiyan_jump'][$kk]}"><img src="{$vv}"></a></div>  
+
+      </if>
+      </foreach>
+      </div>
+    </div>
+    <div class="pagination"></div>
+  </div>
+			
+              
+			</div>
+		</div>
+		<div class="Mb-r">
+			<div class="Mbr-t">
+			<div class="Mbr-tle">我给云狄网打个分</div>
+			<div class="Mbr-box clearfix">
+				<div class="Mbr-item clearfix">
+					<div class="item-n">
+						美观度:
+					</div>
+                    <div class="item-start">
+                    	<ul>
+						  <li class="light"><a href="javascript:;">1</a></li>
+						  <li><a href="javascript:;">2</a></li>
+						  <li><a href="javascript:;">3</a></li>
+						  <li><a href="javascript:;">4</a></li>
+						  <li><a href="javascript:;">5</a></li>
+						  <li><a href="javascript:;">6</a></li>
+						  <li><a href="javascript:;">7</a></li>
+						  <li><a href="javascript:;">8</a></li>
+						  <li><a href="javascript:;">9</a></li>
+						  <li><a href="javascript:;">10</a></li>
+ 						</ul>
+                    </div>
+				</div>
+
+				<div class="Mbr-item clearfix">
+					<div class="item-n">
+						操作便捷:
+					</div>
+                    <div class="item-start">
+                    	<ul>
+						  <li class="light"><a href="javascript:;">1</a></li>
+						  <li><a href="javascript:;">2</a></li>
+						  <li><a href="javascript:;">3</a></li>
+						  <li><a href="javascript:;">4</a></li>
+						  <li><a href="javascript:;">5</a></li>
+						   <li><a href="javascript:;">6</a></li>
+						  <li><a href="javascript:;">7</a></li>
+						  <li><a href="javascript:;">8</a></li>
+						  <li><a href="javascript:;">9</a></li>
+						  <li><a href="javascript:;">10</a></li>
+ 						</ul>
+                    </div>
+				</div>
+
+				<div class="Mbr-item clearfix">
+					<div class="item-n">
+						成交效果:
+					</div>
+                    <div class="item-start">
+                    	<ul>
+						  <li class="light"><a href="javascript:;">1</a></li>
+						  <li><a href="javascript:;">2</a></li>
+						  <li><a href="javascript:;">3</a></li>
+						  <li><a href="javascript:;">4</a></li>
+						  <li><a href="javascript:;">5</a></li>
+						   <li><a href="javascript:;">6</a></li>
+						  <li><a href="javascript:;">7</a></li>
+						  <li><a href="javascript:;">8</a></li>
+						  <li><a href="javascript:;">9</a></li>
+						  <li><a href="javascript:;">10</a></li>
+ 						</ul>
+                    </div>
+				</div>
+			</div>
+			</div>
+			<div class="Mbr-b">
+				<div class="Mbr-text">
+					<textarea name="message" id="" cols="30" rows="10" placeholder="我还想对云狄网说..."></textarea>
+				</div>
+
+				<div class="Mbr-vcode clearfix">
+					<div class="vc-input"><input type="text" placeholder="请输入验证码" name="yzm" id="yzm"></div>
+					<div class="vc-img"><img src="{:U('article/yzm')}" onclick="this.src='{:U('article/yzm')}?'+Math.random()" style="border:1px solid #ccc" /></div>
+				</div>
+ 
+				<div class="Mb-btn">
+					<input type="submit" value="提交" />
+					
+				</div> 
+			</div>
+		</div>
+	</div>
+
+    <div class="value-s clearfix" style="display: none;">
+		<input type="text" name="beautiful" value="1">
+		<input type="text" name="operation" value="1">
+		<input type="text" name="trading" 	value="1">
+	</div>
+	</form>
+
+	<include file="Public/public_footer"/>
+
+
+
+	 <div id="Sbg">
+    	<div class="sbg-b">
+    	<div id="sb-close"><img src="__PUBLIC__/images/close.png" alt=""></div>
+    		<div class="sbg-tle">
+    			<img src="__PUBLIC__/images/good.png"><span>感谢您的留言</span>
+    			
+    		</div>
+    		<a href="/"><div id="sbg-btn">确定</div></a>
+    	</div> 
+    </div>
+     <script src="__PUBLIC__/js/jquery-1.10.1.min.js"></script>
+  <script src="__PUBLIC__/js/idangerous.swiper.min.js"></script> 
+  <script>
+  var mySwiper = new Swiper('.swiper-container',{
+    pagination: '.pagination',
+    loop:true,
+    grabCursor: true,
+    paginationClickable: true
+  })
+  $('.arrow-left').on('click', function(e){
+    e.preventDefault()
+    mySwiper.swipePrev()
+  })
+  $('.arrow-right').on('click', function(e){
+    e.preventDefault()
+    mySwiper.swipeNext()
+  })
+  setInterval("mySwiper.swipeNext()",3000)     
+  </script>
+	 <script>
+var itemStart=document.getElementsByClassName("item-start");
+var value=document.getElementsByClassName("value-s")[0];
+var valueS=value.getElementsByTagName("input");
+var num=finalnum = tempnum= 0;
+var itemStart=document.getElementsByClassName("item-start");
+var lis = document.getElementsByTagName("li");
+var lis1=itemStart[0].getElementsByTagName("li");
+var lis2=itemStart[1].getElementsByTagName("li");
+var lis3=itemStart[2].getElementsByTagName("li");
+var Sbg=document.getElementById("Sbg");
+var MbBtn=document.getElementById("Mb-btn");
+var sbgBtn=document.getElementById("sbg-btn");
+var sbClose=document.getElementById("sb-close");
+
+function success(){
+     Sbg.style.display="block";
+     sbgBtn.onclick=function(){
+     	Sbg.style.display="none";
+     	window.location.href="/";
+     }
+     sbClose.onclick=function(){
+     	Sbg.style.display="none";
+     	window.location.href="/";
+     }
+}
+
+function fnShow1(num) {  
+ finalnum= num || tempnum;
+ for (var i = 0; i < lis1.length; i++) {
+  lis1[i].className = i < finalnum? "light" : "";//
+ }
+}
+
+for (var i = 1; i <= lis1.length; i++) {
+ lis1[i - 1].index = i;
+ lis1[i - 1].onmouseover = function() { 
+  fnShow1(this.index);
+  var va1=this.index;
+  valueS[0].value=va1;
+ }
+ lis1[i - 1].onmouseout = function() { 
+  fnShow1(this.index);
+  var va11=this.index;
+   valueS[0].value=va11;
+ }
+ 
+}
+
+for (var i = 1; i <= lis2.length; i++) {
+ lis2[i - 1].index = i;
+ lis2[i - 1].onmouseover = function() { 
+  fnShow2(this.index);
+  var va2=this.index;
+  valueS[1].value=va2;
+ }
+ lis2[i - 1].onmouseout = function() { 
+  fnShow2(this.index);
+  var va22=this.index;
+   valueS[1].value=va22;
+ }
+
+}
+  
+function fnShow2(num) {  
+ finalnum= num || tempnum;
+ for (var i = 0; i < lis2.length; i++) {
+  lis2[i].className = i < finalnum? "light" : "";//
+ }
+}
+  
+for (var i = 1; i <= lis3.length; i++) {
+ lis3[i - 1].index = i;
+ lis3[i - 1].onmouseover = function() { 
+  fnShow3(this.index);
+  var va3=this.index;
+  valueS[2].value=va3;
+ }
+ lis3[i - 1].onmouseout = function() { 
+  fnShow3(this.index); var va33=this.index;
+  valueS[2].value=va33;
+ }
+
+}
+
+function fnShow3(num) {  
+ finalnum= num || tempnum;
+ for (var i = 0; i < lis3.length; i++) {
+  lis3[i].className = i < finalnum? "light" : "";//
+ }
+}
+
+	function mysubmit(){	
+		var yzm = document.getElementById("yzm").value;
+		if (yzm == ''){
+			alert('请输入验证码');
+			return false;
+		}
+	}
+
+
+</script>
+</body>
+</html>

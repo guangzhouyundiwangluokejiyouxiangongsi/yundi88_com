@@ -1,0 +1,410 @@
+<include file="Public/min-header"/>
+<style>
+     *{padding:0;margin:0;}
+     input:focus,button:focus,textarea:focus{outline:none;border:1px solid #0182de;} 
+    .Main-commodity{width:584px;height:95px;border: 1px solid gray;}
+    .Main-commodity>.Mc-list{width:98%;height:87px;padding:3px 1%;overflow:hidden;}
+    .Main-commodity>.Mc-list>.Mc-item>.inp{float: left;border:1px solid #d2d6de;margin-bottom:5px;padding-left:3px;padding-right:15px;margin-right: 10px;width:94px;height:24px;line-height: 24px;text-align:left;overflow:hidden;}
+            
+    .Mc-btn{width:72px;float:left;height:24px;line-height:24px;text-align:center;overflow: hidden;color:red;border:1px solid red;cursor: pointer;margin-right: 2%;}
+    .Remove-btn{float:left;width:13px;height:14px;background:url(__PUBLIC__/images/seller/cancel.png)no-repeat center;margin-top:5px;margin-left:-24px;}
+    .Mc-item{float: left;width:97px;height:24px;}
+    /**/ 
+.Main-commodityy{width:584px;height:95px;border: 1px solid gray;}
+    .Main-commodityy>.Mc-listt{width:98%;height:87px;padding:3px 1%;overflow:hidden;}
+    .Main-commodityy>.Mc-listt>.Mc-itemm>.inpp{float: left;border:1px solid #d2d6de;margin-bottom:5px;padding-left:3px;padding-right:15px;margin-right: 10px;width:94px;height:24px;line-height: 24px;text-align:left;overflow:hidden;}
+    .inpp:focus{border:1px solid #F00;}
+            
+    .Mc-btnn{width:72px;float:left;height:24px;line-height:24px;text-align:center;overflow: hidden;color:red;border:1px solid red;cursor: pointer;margin-right: 2%;}
+    .Remove-btnn{float:left;width:13px;height:14px;background:url(__PUBLIC__/images/seller/cancel.png)no-repeat center;margin-top:5px;margin-left:-24px;}
+    .Mc-itemm{float: left;width:97px;height:24px;}
+    #tab_tongyong input{outline: none;}
+                .inpp{border:1px solid focus;}
+    #addemail{border:1px solid #d2d6de;}
+    #addemail:focus{border:1px solid #0182de;}
+    #addphone{border:1px solid #d2d6de;}
+    #addphone:focus{border:1px solid #0182de;}
+    #addphones{border:1px solid #d2d6de;}
+    #addphones:focus{border:1px solid #0182de;}
+
+
+
+</style> 
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content" style="padding:0px 15px;">
+        <!-- Main content -->
+        <div class="container-fluid">       
+            
+            <div class="panel panel-default" style="margin:20px auto;"> 
+
+              <div  style="width:100%;height:40px;line-height:40px;background:#f1f1f1;border-bottom: 1px solid rgb(221, 221, 221);">
+
+             <a style="width:500px;float:left;padding:0;margin:0;line-height: 35px;"><img src="__PUBLIC__/images/hjshezhi.jpg" style="width:25px;margin-left: 25px;padding-right:10px;">首页编辑</a>
+         <span style="float:right;display:inline-block;border-left: 1px solid #ccc;padding-left: 10px;height:40px;">
+         <img src="__PUBLIC__/images/gerenfanhui.png" style="margin-right: 20px;cursor:pointer;line-height: 30px;padding-top: 10px;" onclick="history.go(-1);"></span>
+
+
+                <!-- <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a> -->
+                <!-- <a onclick="get_help(this)" data-url="" class="btn btn-default" href="javascript:;"><i class="fa fa-question-circle"></i> 帮助</a> -->
+            </div>
+
+
+                <div class="panel-body ">   
+                    
+                    <include file="store_setting_navtabs"/>
+                    <!--表单数据-->
+                    <form method="post" id="handlepost" action="{:U('Store/setting_save')}">                    
+                        <!--通用信息-->
+                    <div class="tab-content" style="padding:0px 0px;border-top: none;">                       
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody> 
+                                <!-- <tr><td>官网等级：</td>
+                                    <td style="width:60%;">{$store.grade_name}</td>
+                                    <td></td>
+                                </tr> -->
+                                <tr><td style="width:12%;height:30px;line-height: 80px;">官网名称：</td>
+                                    <td style="padding:0;line-height: 95px;width:60%;">
+                                    <input placeholder="请输入官网名称" type="text" name="store_name" value="{$store.store_name}" id="store_name" onchange="check_store()" style="height:60px;width:100%;line-height: 60px;text-indent: 20px;"></td>
+                                    <td class="text-warning" style="color:#ff0000;">如：广州XX设备有限公司。</td>
+                                </tr>
+                                <tr><td style="width:12%;height:30px;line-height: 80px;">标题：</td>
+                                    <td style="padding:0;line-height: 95px;width:60%;"><input placeholder="网站标题" type="text" name="store_title" value="{$store.store_title}"   style="height:60px;width:100%;line-height: 60px;text-indent: 20px;"></td>
+                                    <td class="text-warning" style="color:#ff0000;">SEO网站标题，便于搜索引擎推广您的网站。（对于不懂网站优化的您，建议填写企业名称，如：广州XX设备有限公司。</td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 80px;">主营商品：</td>
+                                    <td class="Main-commodity">
+                                        <div class="Mc-list">
+                                        <foreach name="store['store_zy']" item="vv" key="kk">
+                                        <div class="Mc-item">
+                                        <input type="text" class="inp" name="zyy[]" value="{$vv}" >
+                                        <span class="Remove-btn" ></span>
+                                        </div>
+                                        </foreach>
+                                    <span class="Mc-btn" style="color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;">点击增加</span></div>
+                                    </td>
+                                    <td class="text-warning" style="color:#ff0000;">每个框填写一个关键词，限于6个字内，利于搜索引擎优化推广以及让您的客户更加容易找到产品。</td>
+                                </tr>
+            <script>
+                var McBtn=document.getElementsByClassName('Mc-btn')[0];
+                var McList=document.getElementsByClassName('Mc-list')[0];
+                var McItem=document.getElementsByClassName('Mc-item')[0]; 
+                McBtn.onclick=function(){
+                    if ($('.Mc-item').length > 9){
+                        alert('不能再多了');
+                        return;
+                    }
+                    var cancelBtn=document.createElement("span");     
+                    var myElement =document.createElement("input");
+                    var McItem=document.createElement("div"); 
+                    myElement.type="text";
+                    myElement.name="zyy[]";
+                    myElement.value="";
+                    McItem.setAttribute("class","Mc-item");
+                    cancelBtn.setAttribute("class","Remove-btn");  
+                    myElement.setAttribute("class", "inp");
+                    McItem.insertBefore(cancelBtn,McItem.childNodes[0]);
+                    McItem.insertBefore(myElement,McItem.childNodes[0]);
+                    McList.insertBefore(McItem,McList.childNodes[0]);
+                    
+                    var RemoveBtn=document.querySelectorAll('.Remove-btn');
+                    
+                    for (var i = 0; i < RemoveBtn.length; i++) {
+                        RemoveBtn[i].index=i;
+                        RemoveBtn[i].onclick=function(){
+                        var McItem = document.querySelectorAll('.Mc-item');
+                            for (var i = 0; i < McItem.length; i++) {
+                                McItem[i].addEventListener('click', function(){
+                                  this.parentNode.removeChild(this);
+                                }, false);
+                            }
+                        }
+                    }
+                    
+                }
+                var RemoveBtn=document.getElementsByClassName('Remove-btn');
+                 for (var i = 0; i < RemoveBtn.length; i++) {
+                        RemoveBtn[i].index=i;
+                        RemoveBtn[i].onclick=function(){
+                        var McItem = document.querySelectorAll('.Mc-item');
+                            for (var i = 0; i < McItem.length; i++) {
+                                McItem[i].addEventListener('click', function(){
+                                  this.parentNode.removeChild(this);
+                                }, false);
+                            }
+                        }
+                    }
+            </script>
+                                <!--   
+                                <tr>
+                                    <td>官网二维码：</td>
+                                    <td>                            
+                                        <img src="" height="100px" title="">
+                                    </td>
+                                    <td class="text-warning">保存后，生成新的二维码</td>
+                                </tr>  
+                                -->                             
+                                <tr>
+                                    <td>官网LOGO：</td>
+                                    <td><div style="width: 400px;height: 80px;">
+                                             <img height="80" id="store_logo" src="<empty name='store.store_logo'>/Public/images/logo2.jpg<else/>{$store.store_logo}</empty>" nc_type="store_label" style="float:left;">
+                                         
+                                         <input type="hidden" name="store_logo" value="{$store.store_logo}">
+                                        <input type="button" class="button" onClick="GetUploadify(1,'store_logo','seller','callback1')"  value="上传  logo" style="float:left;margin-left: 20px;margin-top: 30px;background:#f22e00;height:30px;line-height: 30px;width:80px;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;"/>
+                                        </div>
+                                   </td>
+                                    <td  class="text-warning" style="color:#ff0000;">每个企业拥有独特性标志。建议使用200KB大小文件，宽度200*高度60的GIF或PNG格式图片，提交后网站前台/全站生效（点击提交生效）</td>
+                                </tr>                                    
+                             <!--    <tr>
+                                    <td>官网banner：</td>
+                                    <td><div style="height:100px;">
+                                             <img style="width:80%;height:100px;float:left;"  id="store_banner" src="<empty name='store.store_banner'>__PUBLIC__/images/banner2.jpg<else/>{$store.store_banner}</empty>" nc_type="store_label">
+                                              <p style="margin: 10px 0;width:100px;float:left;"><input type="button" class="button" onClick="GetUploadify(1,'store_banner','seller','callback2')"  value="上传banner" style="float:left;margin-left: 20px;margin-top: 30px;background:#f22e00;height:30px;line-height: 30px;width:80px;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;"/></p>
+                                         </div>
+                                         <input type="hidden" name="store_banner" value="{$store.store_banner}">
+
+                                     </td>
+                                    <td >
+                                        <span class="text-warning" style="color:#ff0000;">网站每个主题页面的广告图片。建议使用宽1920像素*高120像素的图片不超过1M大小；点击下方"提交"按钮后生效。（保存后可到前台首页预览效果）</span> -->
+                                       
+                                        <!--   
+                                        <p>banner背景颜色<input class="form-control" name="bgcolor" type="color" value="{$info.bgcolor}" style="width:200px;"/></p>
+                                        -->
+                               <!--      </td>
+                                </tr> -->
+                                
+                                 <tr>
+                                    <td>联系人：</td>
+                                    <td><input type="text"  placeholder="联系人姓名" class="input-sm"  name="people" value="{$store.people}" id="addphones"></td><td class="text-warning" style="color:#ff0000;">联系人姓名
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>官网电话：</td>
+                                    <td><input type="text" id="addphone"  pattern="^\d{1,}$" title="只能输入数字"  class="input-sm" name="store_phone"   value="{$store.store_phone}"></td><td class="text-warning" style="color:#ff0000;">格式(区号+电话号码)如020-00000000或400-00000000）</td>
+                                </tr>
+                                <tr>
+                                    <td>手机：</td>
+                                    <td><input type="text"  pattern="^\d{1,}$" title="只能输入数字" placeholder="请输入手机号" class="input-sm"  name="mobile" value="{$store.mobile}" id="addphones"></td><td class="text-warning" style="color:#ff0000;"> 格式(11位数)：如13800000000
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td>客服QQ：</td>
+                                    <td colspan="2"><input type="number" name="store_qq" class="input-sm" value="{$store.store_qq}"></td>
+                                </tr>
+                                <tr>
+                                    <td>阿里旺旺：</td>
+                                    <td colspan="2"><input type="text" name="store_aliwangwang" class="input-sm" value="{$store.store_aliwangwang}"></td>
+                                </tr> -->
+                                <tr>
+                                    <td>邮箱：</td>
+                                    <td><input type="text" id="addemail" name="email" class="input-sm" value="{$store.email}" placeholder="请输入你的邮箱"  ></td><td class="text-warning" style="color:#ff0000;">格式：用户名@邮箱网站.com</td>
+                                </tr>
+                                 <tr>
+                                    <td>二维码：</td>
+                                    <td><div style="width: 500px;height: 80px;">
+                                             <img style="float:left;" height="80" id="store_erweima" src="<empty name='store.store_erweima'><else/>{$store.store_erweima}</empty>" nc_type="store_label">
+
+                                             <input type="hidden" name="store_erweima" value="{$store.store_erweima}">
+                                        <input type="button" class="button" onClick="GetUploadify(1,'store_erweima','seller','callback3')"  value="上传二维码" style="float:left;margin-left: 20px;margin-top: 30px;background:#f22e00;height:30px;line-height: 30px;width:80px;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;"/>
+                                         </div>
+                                         
+                                   </td>
+                                    <td  class="text-warning" style="color:#ff0000;">建议使用宽200像素-高60像素内200KB内的GIF或PNG格式图片；显示在网站右边客服区或是底部信息区域，点击下方"提交"按钮后生效</td>
+                                </tr>   
+                                <tr>
+                                    <td>公司地址：</td>
+                                    <td colspan="5">
+                                       <div style="margin: 2px 0;" class="col-xs-2">
+                                        <select onchange="get_city(this)" id="province" name="province_id" class="form-control" style="margin-left:-15px;">
+                                            <option  value="0">选择省份</option>
+                                            <volist name="province" id="vo">
+                                                <option value="{$vo.id}" <if condition="$store[province_id] eq $vo[id]">selected</if>>{$vo.name}</option>
+                                            </volist>
+                                        </select>
+                                        </div>   
+                                        <div style="margin: 2px 0;" class="col-xs-2">                                        
+                                        <select onchange="get_area(this)" id="city" name="city_id" class="form-control">
+                                            <option value="0">选择城市</option>
+                                            <volist name="city" id="vo">
+                                                <option value="{$vo.id}" <if condition="$store[city_id] eq $vo[id]">selected</if>>{$vo.name}</option>
+                                            </volist>
+                                        </select>
+                                        </div>   
+                                        <div style="margin: 2px 0;" class="col-xs-2">                                        
+                                        <select id="district" name="district" class="form-control">
+                                            <option value="0">选择区域</option>
+                                            <volist name="area" id="vo">
+                                                <option value="{$vo.id}" <if condition="$store[district] eq $vo[id]">selected</if>>{$vo.name}</option>
+                                            </volist>
+                                        </select>
+                                        </div> 
+                                        <div style="margin: 2px 0;" class="col-xs-6">
+                                            <input type="text" placeholder="详细地址" class="form-control" name="store_address" value="{$store.store_address}" >
+                                        </div>      
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td>满多少免运费：</td>
+                                    <td><input type="text" class="form-control" name="store_free_price" value="{$store.store_free_price}" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" style="width: 100px;"></td>
+                                    <td class="text-warning" style="color:#ff0000;">超出该金额免运费，大于0才表示该值有效</td>
+                                </tr> -->
+                                <tr>
+                                    <td>SEO关键字：</td>
+                                    <td class="Main-commodityy">
+                                        <div class="Mc-listt" style="padding-left:0;">
+                                        <foreach name="store['seo_keywords']" item="vvv" key="kkk">
+                                        <div class="Mc-itemm">
+                                        <input type="text" class="inpp" name="seo[]" value="{$vvv}">
+                                         <span class="Remove-btnn" ></span>
+                                        </div>
+                                        </foreach>
+                                    <span class="Mc-btnn" style="color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;">点击增加</span></div>
+                                    </td>
+                                    <td class="text-warning" style="color:#ff0000;">每个框填写一个关键词，限于6个字内，点击可增加，最多可以添加10个，作用利于搜索引擎优化推广。</td>
+                                    
+                                </tr>  
+    <style>
+    
+    </style>
+    <script>
+    var McBtnn=document.getElementsByClassName('Mc-btnn')[0];
+    var McListt=document.getElementsByClassName('Mc-listt')[0];
+    var McItemm=document.getElementsByClassName('Mc-itemm')[0]; 
+    McBtnn.onclick=function(){
+        if ($('.Mc-itemm').length > 9){
+            alert('不能再多了');
+            return;
+        }
+        var cancelBtnn=document.createElement("span");     
+        var myElementt =document.createElement("input");
+        var McItemm=document.createElement("div"); 
+        myElementt.type="text";
+        myElementt.name="seo[]";
+        myElementt.value="";
+        McItemm.setAttribute("class","Mc-itemm");
+        cancelBtnn.setAttribute("class","Remove-btnn");  
+        myElementt.setAttribute("class", "inpp");
+        McItemm.insertBefore(cancelBtnn,McItemm.childNodes[0]);
+        McItemm.insertBefore(myElementt,McItemm.childNodes[0]);
+        McListt.insertBefore(McItemm,McListt.childNodes[0]);
+        
+        var RemoveBtnn=document.querySelectorAll('.Remove-btnn');
+        
+        for (var i = 0; i < RemoveBtnn.length; i++) {
+            RemoveBtnn[i].index=i;
+            RemoveBtnn[i].onclick=function(){
+            var McItem1 = document.querySelectorAll('.Mc-itemm');
+                for (var i = 0; i < McItem1.length; i++) {
+                    McItem1[i].addEventListener('click', function(){
+                      this.parentNode.removeChild(this);
+                    }, false);
+                }
+            }
+        }
+        
+    }
+ 
+      var RemoveBtnn=document.getElementsByClassName('Remove-btnn');
+                 for (var i = 0; i < RemoveBtnn.length; i++) {
+                        RemoveBtnn[i].index=i;
+                        RemoveBtnn[i].onclick=function(){
+                        var McItem1 = document.querySelectorAll('.Mc-itemm');
+                            for (var i = 0; i < McItem1.length; i++) {
+                                McItem1[i].addEventListener('click', function(){
+                                  this.parentNode.removeChild(this);
+                                }, false);
+                            }
+                        }
+                    }  
+
+    </script>
+                                <tr>
+
+                                    <td>SEO官网描述：</td>
+                                    <td>
+                                        <textarea rows="4" cols="80" name="seo_description" style="outline:none;resize: none;" placeholder="请输入官网描述" >{$store.seo_description}</textarea>
+                                    </td>
+                                    <td class="text-warning" style="color:#ff0000;">请详细描述网站相关，编写小技巧，可围绕您企业的核心关键词来描述长尾关键词或品牌词，长度建议在80个字内，不要超出200个字符</td>
+                                </tr>   
+            
+                                 <tr>
+                                    <td>版权信息：</td>
+                                    <td><input type="text" class="form-control" name="copyright" placeholder="请输入您的版权"  value="{$store.copyright}"></td>
+                                    <td class="text-warning" style="color:#ff0000;">只会在独立网站显示</td>
+                                    
+                                </tr>  
+                                <tr>
+                                    <td>备案号：</td>
+                                    <td><input type="text" class="form-control" name="record" placeholder="请输入您的备案号" value="{$store.record}"></td>
+                                    <td class="text-warning" style="color:#ff0000;">只会在独立网站显示</td>
+                                    
+                                </tr>      
+                                </tbody> 
+                                <tfoot>
+                                    <tr>
+                                    <td colspan="3" style="margin:0 auto;width:100%;text-align: center;"><input type="hidden" name="store_id" value="{$store.store_id}">
+                                        <input class="btn btn-primary" type="button" onclick="adsubmit()" style="width:100px;height:30px;text-align: center;color:#fff;" value="提交"></td>
+                                   <!--  <td class="text-right"></td> -->
+                                    </tr>
+                                </tfoot>                               
+                                </table>
+                        </div>                           
+                    </div>              
+                    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    var check_name = true;
+    function check_store(){
+        var store_name = document.getElementById('store_name').value;
+        if (store_name == ''){
+            alert('官网名不能为空');
+            check_name = false;
+            return;
+        } else {
+            $.post('{:U("store/ajax_store")}','store_name='+store_name,function(res){
+                if (res){
+                    // alert('官网名字已存在,请更换');
+                    check_name = false;
+                    return;
+                } else {
+                    check_name = true;
+                }
+            })
+        }
+    }
+function adsubmit(){
+    if (check_name != false){
+       $('#handlepost').submit();
+    } else {
+        alert('官网名已存在');
+    }
+}
+
+function goset(obj){
+    window.location.href = $(obj).attr('data-url');
+}
+
+function callback1(img_str){
+    $('input[name="store_logo"]').val(img_str);
+    $('#store_logo').attr('src',img_str);
+}
+
+function callback2(img_str){
+    $('input[name="store_banner"]').val(img_str);
+    $('#store_banner').attr('src',img_str);
+}
+function callback3(img_str){
+    $('input[name="store_erweima"]').val(img_str);
+    $('#store_erweima').attr('src',img_str);
+}
+
+</script>
+</body>
+</html>

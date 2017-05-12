@@ -1,0 +1,153 @@
+<include file="Public/min-header"/>
+<style>
+.picture {
+    line-height: 0;
+    background-color: #FFF;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    border: solid 1px #F5F5F5;
+    overflow: hidden;
+}
+.picture img {
+    /*max-width: 160px;*/
+    width: 100%;
+    max-height: 100px;
+    margin-top: expression(100-this.height/2);
+}
+.col-md-2 {
+    width: 17.66666667%;
+}
+
+#hjpclbt{margin:0px 8%;}
+#hjdelt{display: inline-block;width:75px;height:33px;text-align:center;background:#f4f4f4;line-height: 33px; border-radius: 4px; border: 1px solid #ddd; margin-left: 8px; color: #000;}
+#hjdelt:hover{border:1px solid #adadad;background:#e6e6e6}
+
+#hjlbtsz{background:#3c8dbc;width:120px;}
+#hjlbtsz:hover{background:#499dcd;}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:600px) and (max-width:1345px){
+
+ #hjpclbt{margin:0px 1%;}
+ #hjlbtdel{width:75px;}
+ #hjlbtsc{width:75px;}
+
+
+ }
+
+
+
+
+
+</style>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content" style="padding:0px 15px;">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <!-- <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a> -->
+                <!-- <a onclick="get_help(this)" data-url="http://www.tp-shop.cn/Doc/Indexbbc/article/id/1064/developer/user.html" class="btn btn-default" href="javascript:;"><i class="fa fa-question-circle"></i> 帮助</a>                 -->
+            </div>
+            <div class="panel panel-default">  
+
+                 <div  style="width:100%;height:30px;background:#f1f1f1;">
+
+             <a style="width:500px;float:left;padding:0;margin:0;line-height: 35px;"><img src="__PUBLIC__/images/hjshezhi.jpg" style="width:25px;margin-left: 25px;padding-right:10px;">首页编辑</a>
+         <span style="float:right;display:inline-block;border-left: 1px solid #ccc;padding-left: 10px;height:30px;">
+         <img src="__PUBLIC__/images/gerenfanhui.png" style="margin-right: 20px;cursor:pointer;line-height: 30px;padding-top: 10px;" onclick="history.go(-1);"></span>
+
+            </div>
+
+                <div class="panel-body ">   
+                    <include file="store_setting_navtabs"/>
+                    <!--表单数据-->
+                    <form method="post" id="handlepost">                    
+                    <!--通用信息-->
+                    <div class="tab-content" style="padding:20px 0px;" >                       
+                        <div class="tab-pane active" id="tab_tongyong"> 
+                            <div class="callout callout-inro">
+                                <p>1. 最多可上传5张幻灯片图片。</p>
+                                <p>2. 支持jpg、jpeg、gif、png格式上传，建议图片宽度1920px、高度在300px到440px之间、大小1.00M以内的图片。提交2~5张图片可以进行幻灯片播放，一张图片没有幻灯片播放效果。</p>
+                                <p>3. 操作完成以后，按“提交”按钮，可以在当前页面进行幻灯片展示。</p>
+                                <p>4. 跳转链接必须带有<b style="color:red;">“http://”</b></p>
+                            </div>
+                        </div>  
+                        <div class="row" style="margin:20px auto;text-align:center;max-width:800px;" >
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                <foreach name="store_slide" item="vo" key="k">
+                                 <if condition="$vo neq ''">
+                                    <li data-target="#carousel-example-generic" data-slide-to="{$k}" class=" <if condition='$k eq 0'>active</if>"></li>
+                                 </if>
+                                </foreach>
+                                </ol>
+                                <div class="carousel-inner">
+                                <foreach name="store_slide" item="vo" key="k">
+                                  <if condition="$vo neq ''">
+                                  <div class="item <if condition='$k eq 0'>active</if>">
+                                    <img height="250" src="{$vo}" alt="First slide">
+                                    <div class="carousel-caption">
+                                    </div>
+                                  </div>
+                                  </if>
+                                </foreach>
+                                </div>
+                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                  <span class="fa fa-angle-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                  <span class="fa fa-angle-right"></span>
+                                </a>
+                          </div>
+                      </div> 
+                         
+                     <div class="row col-md-12"  id="hjpclbt">
+                        <for start="0" end="5">
+                        <div class="col-sm-4 col-md-3 col-lg-2">
+                          <div class="thumbnail">
+                            <div class="picture"><img  id="srcpath_{$i}"  <empty name="store_slide[$i]">src="__PUBLIC__/images/not_adv.jpg"<else />src="{$store_slide[$i]}"</empty>>
+                            <input type="hidden" id="imgpath_{$i}" name="store_slide[]" value="{$store_slide[$i]}">
+                            </div>
+                            <div class="caption">
+                            <p>跳转URL...<br/><input type="text"  name="store_slide_url[]" class="form-control" value="<empty name="store_slide_url[$i]">http://<else />{$store_slide_url[$i]}</empty>"></p>
+                            <p style="height:35px;"><input type="button" id="hjlbtsc" class="btn btn-default" onClick="upload_img('{$i}')"  value="上传图片" style="float:left"/><a href="{:U('Store/del_slide')}?store_slide={$store_slide[$i]}&store_slide_url={$store_slide_url[$i]}" id="hjdelt">&nbsp;删除</a></p>
+                            </div>
+                          </div>
+                        </div>
+                        </for>
+                      </div> 
+                     <div class="row" style="text-align:center;"><a href="javascript:void(0)" onclick="adsubmit()" class="btn btn-info margin" id="hjlbtsz" >提交设置</a></div>         
+                    </div>              
+                    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+function adsubmit(){
+    $('#handlepost').submit();
+}
+
+function goset(obj){
+    window.location.href = $(obj).attr('data-url');
+}
+var turn = 0;
+function upload_img(i){
+    turn = i;
+    GetUploadify(1,'store_logo','seller','callback');
+}
+
+function callback(img_str){
+    $('#imgpath_'+turn).val(img_str);
+    $('#srcpath_'+turn).attr('src',img_str);
+}
+</script>
+</body>
+</html>

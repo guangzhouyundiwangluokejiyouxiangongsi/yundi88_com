@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+	<title>测试账户</title>
+</head>
+<form action="{:U('add')}" method="post">
+添加测试账户:<input type="text" name="userid" placeholder="填写测试账户id" onkeyup="value=value.replace(/[^\d]/g,'')" onchange="value=value.replace(/[^\d]/g,'')"/>
+<input type="submit" value="添加"/>
+</form>
+<hr>
+<style type="text/css">
+table{border:1px solid #000;width:99%;}
+
+
+td{width:4.5%;border:1px solid #000;text-align:center;}</style>
+<body border=1>
+	<div style="">
+	<table>
+		<tr>
+			<td>1</td>
+		<php>$i = 1;</php>
+		<foreach name="data" item="v" key="k">
+			<td>{$v['id']}=>{$v['userid']}</td>
+		<php>$kk = $k + 1; if($kk % 20 == 0){
+		$i++; echo "</tr><tr><td>$i</td>";}</php>
+		</foreach>
+	</table>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<include file="Public/min-header"/>
+<!--字体图标-->
+<link href="__PUBLIC__/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	<style>			
+		*{margin:0;padding:0;}
+		body,button,input,select,textarea{font:14px/2 Verdana, 微软雅黑, Helvetica, sans-serif;}
+		h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;margin: 0px;}
+		address,cite,dfn,em,var,i{font-style:normal;}	
+		ul,ol{list-style:none;}
+		a{cursor: pointer;text-decoration: none!important;outline: none;border: 0;star:expression(this.onFocus=this.blur());}				
+		.myorder{width: 100%;margin: 24px 0 0 20px;}
+		.myorder_title{width: 98%; height: 40px;background: #f8f8f8;border: 1px solid #d2d2d2}
+		.myorder_title>h3{display: inline-block;float: left;height: 40px;margin: 0;padding: 0;line-height: 40px;}
+		.myorder_title>h3>img{width: 21px;height: 14px;margin-right: 7px;margin-left: 20px;}
+
+		.myorder_history{float: right;width: 40px;height: 39px;border-left: 1px solid #d2d2d2;text-align: center;cursor: pointer;}
+		.myorder_history>img{width: 16px;height: 16px;margin-top: 10px;}
+
+		.myorder_bor{width: 98%;border-left: 1px solid #d2d2d2;border-right: 1px solid #d2d2d2;background: #fff;}
+		.sorting{text-align: center;background: #fff;font-family: "微软雅黑";}
+		.table>tbody>tr>td{line-height: 2.428571;}
+		.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{padding: 8px 2px;}
+		.table>tbody>tr>td>a:hover{color: #ff0000;}
+		.table>tbody>tr{background: #fff;font-family: "微软雅黑";}
+		.table>tbody>tr:nth-child(odd){background: #f9f9f9;}
+		.page{background: none;}
+		.dataTables_paginate{text-align: center;}
+		@media only screen and (min-width: 959px) and (max-width: 1199px) {
+			.myorder{width: 98%;}	
+		}
+		@media only screen and (min-width: 700px) and (max-width: 958px) {
+			.myorder{width: 98%;}	
+		}
+		@media only screen and (max-width: 699px) {
+			.myorder{width: 97%;}	
+		}
+	</style>
+	<body>
+		<div class="myorder">
+			<div class="myorder_main">
+				<div class="myorder_title">
+					<h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;font-size:16px;font-weight:500;font-family:'微软雅黑';color:#000;"><i class="fa fa-user" style="padding-left: 14px;padding-right: 6px;"></i>我的订单</h3>
+					<div class="myorder_history" onclick="history.go(-1);">
+						<img src="__PUBLIC__/images/gerenfanhui.png">
+					</div>
+				</div>
+				<div class="myorder_bor" style="padding-top: 18px;">
+					<div class="row" style="margin: 0 18px;padding-bottom: 20px;">
+						<div class="rol-sm-12">
+							<table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+								<thead>
+									<tr role="row">
+										<th class="sorting" tabindex="0">订单号</th>
+										<th class="sorting" tabindex="0" >产品</th>
+										<th class="sorting" tabindex="0">下单时间</th>
+										<th class="sorting" tabindex="0">金额/元</th>
+										<th class="sorting" tabindex="0">优惠价/元</th>
+										<th class="sorting" tabindex="0">订单状态</th>
+										<th class="sorting" tabindex="0">操作</th>
+									</tr>
+								</thead>
+								<tbody>
+								<notempty name="records">
+								<foreach name="records" item="vv">
+									<tr role="row" align="center" id="id{$vv.order_id}">
+										<td>{$vv.order_id}</td>
+										<td>{$vv.name}</td>
+										<td>{:date('Y-m-d H:i:s',$vv['addtime'])}</td>
+										<td>{$vv.allprice}</td>
+										<td>{$vv.price}</td>
+										<if condition="$vv[status]">
+										<td>已付款</td>
+										<else />
+										<td>未付款</td>
+										</if>
+										<if condition="$vv[status]">
+										<td><a href="javascript:;">订单明细</a>/<a href="jacascript:;" onclick="delyun('{$vv.order_id}')">删除</a></td>
+										<else />
+										<td><a target="_blank" href="{:U('Seller/Commerce/index')}">立即购买</a>/<a href="jacascript:;" onclick="delyun('{$vv.order_id}')">删除</a></td>
+										</if>
+									</tr>
+								</foreach>
+								<foreach name="domain" item="vo">
+									<tr role="row" align="center" id="id{$vo.order}">
+										<td>{$vo.order}</td>
+										<td>域名购买{$vo.domain}</td>
+										<td>{:date('Y-m-d H:i:s',$vo['time'])}</td>
+										<td>{$vo.price}</td>
+										<td></td>
+										<php>if ($vo['status'] == 0){</php><td>未付款</td>
+										<td><a target="_blank" href="/Seller/Domain/info?order={$vo.order}">立即购买</a>/<a href="jacascript:;" onclick="deldomain('{$vo.order}')">删除</a></td><php>}</php>
+
+										<php>if ($vo['status'] == 1){</php><td>已付款</td>
+										<td><a target='rightContent' href="{:U('domain/domain_register')}" id='rightContent'>填写资料</a>/<a href="jacascript:;" onclick="deldomain('{$vo.order}')">删除</a></td><php>}</php>
+
+										<php>if ($vo['status'] == 2){</php><td>购买成功/<a href="jacascript:;" onclick="deldomain('{$vo.order}')">删除</a></td>
+										<td><a target="_blank" href="javascript:;">订单明细</a></td><php>}</php>
+
+										<php>if ($vo['status'] == 3){</php><td>购买失败</td>
+										<td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3404902361&site=qq&menu=yes">联系客服</a></td><php>}</php>
+									</tr>
+								</foreach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="page">{$page}</div>
+			</div>
+		</div>
+		<php>if (!$domain && !$records){</php>
+		<style type="text/css">
+			.replace{background: #ecf0f5;width: 100%;height: 100%;position: fixed;top: 0;left: 0;}
+			.replace_con{margin: 100px auto 0 30%;text-align: center;width: 540px;}
+			.replace_img{display: inline-block;width: 108px;height: 122px;}
+			.replace_img>img{width: 100%;height: 100%;}
+			.replace_con>h3{font-weight: normal;font-family: "微软雅黑";font-size: 18px;line-height: 72px;color: #ccc;}
+			.replace_con>p{font-family: "微软雅黑";font-size: 18px;color: #333;line-height: 36px;text-align: left;}			
+			.replace_con>p>a{font-family: "微软雅黑";font-size: 18px;color: #3c8dbc;}
+			.replace_con>p>a:hover{color: #f00;}
+		</style>
+		<div class="replace">
+			<div class="replace_con">
+				<span class="replace_img"><img src="__PUBLIC__/images/myorder_cart.png"></span>
+				<h3>您的订单为空</h3>
+				<p>赶紧加入企业联盟云商会首年只需1688元即可体验6888元尊享服<br />务一站式服务帮您解决营销问题。<a target="_blank" href="/article/yun_shop">点击查看>></a></p>
+			</div>
+		</div>
+
+
+		<php>}</php>
+	</body>
+	<script>
+		function delyun(uid){
+			if(confirm('你确定要删除吗?')){
+				id = 'id'+uid;
+				var tid = document.getElementById(id);
+				$.post('/seller/userinfo/delyun',{'order_id':uid},function(data){
+					if(data){
+						if (data['status'] != 1){
+							layer.msg(data['msg'],{icon:2})
+						} else {
+							layer.msg(data['msg'],{icon:1})
+							tid.parentNode.removeChild(tid);
+						}
+					}else{
+						layer.msg('网络故障',{icon:2})
+					}
+				})
+			}else{
+				return false;
+			}
+		}
+
+		function deldomain(oid){
+			if(confirm('你确定要删除吗?')){
+				$.post('/seller/userinfo/deldomain',{'order':oid},function(data){
+					if (data){
+						if (data['status'] == 1){
+							layer.msg(data['msg'],{icon:1})
+							var id = 'id'+oid;
+							$('#'+id).remove();
+						}else{
+							layer.msg(data['msg'],{icon:2})
+						}
+					}else{
+						layer.msg('网络故障',{icon:2});
+					}
+				})
+			}else{
+				return false;
+			}
+
+		}
+	</script>
+</html>

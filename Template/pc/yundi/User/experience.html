@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/tiyan.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/tiyan2.css">
+</head>
+<body>
+	<header>
+		<div class="public-container clearfix">
+			<div class="logo">
+				<img src="__PUBLIC__/images/logo.png" alt="">
+			</div>
+			<div class="line"><img src="__PUBLIC__/images/line.png" alt=""></div>
+			<div class="he-tle">欢迎加入云狄网用户体验计划</div>
+		</div>
+	</header>
+	<div class="Main-box clearfix">
+		<div class="Mb-l">
+			<div class="Mbl-tle">
+				<h1>尊敬的云狄网用户:</h1>
+				<p>“用户体验计划”是云狄网长期开展的一项邀请用户
+共同参与的活动。通过您的反馈，我们能更深入地了解您
+的需求和喜好，从而为您提升现有产品的使用体验。</p>
+			</div>
+			<div class="Mbl-pic">
+				<img src="__PUBLIC__/images/pic.png" alt="">
+			</div>
+		</div>
+		<div class="Mb-r">
+			<div class="Mbr-t">
+			<div class="Mbr-tle">我给云狄网打个分</div>
+			<div class="Mbr-box clearfix">
+				<div class="Mbr-item clearfix">
+					<div class="item-n">
+						美观度:
+					</div>
+                    <div class="item-start">
+                    	<ul>
+						  <li class="light"><a href="javascript:;">1</a></li>
+						  <li><a href="javascript:;">2</a></li>
+						  <li><a href="javascript:;">3</a></li>
+						  <li><a href="javascript:;">4</a></li>
+						  <li><a href="javascript:;">5</a></li>
+						  <li><a href="javascript:;">6</a></li>
+						  <li><a href="javascript:;">7</a></li>
+						  <li><a href="javascript:;">8</a></li>
+						  <li><a href="javascript:;">9</a></li>
+						  <li><a href="javascript:;">10</a></li>
+ 						</ul>
+                    </div>
+				</div>
+
+				<div class="Mbr-item clearfix">
+					<div class="item-n">
+						操作便捷:
+					</div>
+                    <div class="item-start">
+                    	<ul>
+						  <li class="light"><a href="javascript:;">1</a></li>
+						  <li><a href="javascript:;">2</a></li>
+						  <li><a href="javascript:;">3</a></li>
+						  <li><a href="javascript:;">4</a></li>
+						  <li><a href="javascript:;">5</a></li>
+						   <li><a href="javascript:;">6</a></li>
+						  <li><a href="javascript:;">7</a></li>
+						  <li><a href="javascript:;">8</a></li>
+						  <li><a href="javascript:;">9</a></li>
+						  <li><a href="javascript:;">10</a></li>
+ 						</ul>
+                    </div>
+				</div>
+
+				<div class="Mbr-item clearfix">
+					<div class="item-n">
+						成交效果:
+					</div>
+                    <div class="item-start">
+                    	<ul>
+						  <li class="light"><a href="javascript:;">1</a></li>
+						  <li><a href="javascript:;">2</a></li>
+						  <li><a href="javascript:;">3</a></li>
+						  <li><a href="javascript:;">4</a></li>
+						  <li><a href="javascript:;">5</a></li>
+						   <li><a href="javascript:;">6</a></li>
+						  <li><a href="javascript:;">7</a></li>
+						  <li><a href="javascript:;">8</a></li>
+						  <li><a href="javascript:;">9</a></li>
+						  <li><a href="javascript:;">10</a></li>
+ 						</ul>
+                    </div>
+				</div>
+			</div>
+			</div>
+			<div class="Mbr-b">
+				<div class="Mbr-text">
+					<textarea name="" id="" cols="30" rows="10" placeholder="我还想对云狄说..."></textarea>
+				</div>
+
+				<div class="Mbr-vcode clearfix">
+					<div class="vc-input"><input type="text" placeholder="请输入验证码"></div>
+					<div class="vc-img"><img src="images/" alt=""></div>
+				</div>
+
+				<div class="Mb-btn">
+					<input type="button" value="提交">
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="value-s clearfix" style="display: none">
+		<input type="text" name="beautiful">
+		<input type="text" name="operation">
+		<input type="text" name="trading">
+	</div>
+
+	<footer>
+		<div>广州云狄建站科技有限公司 版权所有</div>
+		<div>粤ICP备09116842号</div>
+	</footer>
+	
+	 <script>
+var itemStart=document.getElementsByClassName("item-start");
+var value=document.getElementsByClassName("value-s")[0];
+var valueS=value.getElementsByTagName("input");
+var num=finalnum = tempnum= 0;
+var itemStart=document.getElementsByClassName("item-start");
+var lis = document.getElementsByTagName("li");
+var lis1=itemStart[0].getElementsByTagName("li");
+var lis2=itemStart[1].getElementsByTagName("li");
+var lis3=itemStart[2].getElementsByTagName("li");
+
+function fnShow1(num) {  
+ finalnum= num || tempnum;
+ for (var i = 0; i < lis1.length; i++) {
+  lis1[i].className = i < finalnum? "light" : "";//
+ }
+}
+
+for (var i = 1; i <= lis1.length; i++) {
+ lis1[i - 1].index = i;
+ lis1[i - 1].onmouseover = function() { 
+  fnShow1(this.index);
+  var va1=this.index;
+  valueS[0].value=va1;
+ }
+ lis1[i - 1].onmouseout = function() { 
+  fnShow1(this.index);
+   valueS[0].value='this.index';
+ }
+ 
+}
+
+for (var i = 1; i <= lis2.length; i++) {
+ lis2[i - 1].index = i;
+ lis2[i - 1].onmouseover = function() { 
+  fnShow2(this.index);
+  var va2=this.index;
+  valueS[1].value=va2;
+ }
+ lis2[i - 1].onmouseout = function() { 
+  fnShow2(this.index); valueS[1].value='this.index';
+ }
+
+}
+  
+function fnShow2(num) {  
+ finalnum= num || tempnum;
+ for (var i = 0; i < lis2.length; i++) {
+  lis2[i].className = i < finalnum? "light" : "";//
+ }
+}
+  
+for (var i = 1; i <= lis3.length; i++) {
+ lis3[i - 1].index = i;
+ lis3[i - 1].onmouseover = function() { 
+  fnShow3(this.index);
+  var va3=this.index;
+  valueS[2].value=va3;
+ }
+ lis3[i - 1].onmouseout = function() { 
+  fnShow3(this.index); valueS[2].value='this.index';
+ }
+
+}
+
+function fnShow3(num) {  
+ finalnum= num || tempnum;
+ for (var i = 0; i < lis3.length; i++) {
+  lis3[i].className = i < finalnum? "light" : "";//
+ }
+}
+
+</script>
+</body>
+</html>

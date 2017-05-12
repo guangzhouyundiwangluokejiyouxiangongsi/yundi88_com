@@ -1,0 +1,196 @@
+<html>
+	<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+		<meta charset="UTF-8">
+		<title>
+			YDshop管理后台
+		</title>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport">
+		<!-- Bootstrap 3.3.4 -->
+		<link href="__PUBLIC__/Domain/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/Domain/css/font-awesome.min.css">
+		<link href="__PUBLIC__/Domain/css/domainsearch.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="__PUBLIC__/Domain/js/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Domain/js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="__PUBLIC__/Domain/js/domainsearch.js"></script>
+	</head>
+	<body style="background-color:#ecf0f5;">
+		<div class="wrapper">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<ol class="breadcrumb">
+					<li>
+						<a href="javascript:void();">
+							<i class="fa fa-home">
+							</i>
+							&nbsp;&nbsp;后台首页
+						</a>
+					</li>
+				</ol>
+			</div>
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-list">
+								</i>
+								我的购物车								
+							</h3>
+						</div>
+<php>if($cart2){</php>
+						<div class="panel-body">
+							<div id="ajax_return">
+								<div class="panel-body-company">
+							
+
+									<form method="get" action="{:U('domain_register')}" onsubmit="return mysubmit();" id="form-order">
+										<div class="order">
+											<p class="title">订单详情</p>
+											<div class="table-responsive">
+												<table class="table table-bordered table-hover">
+													<thead>
+														<tr>
+															<td class="text-center">
+																商品名称
+															</td>
+															<td class="text-center">
+																价格
+															</td>
+															<td class="text-center">
+																数量
+															</td>
+															<!-- <td class="text-center">
+																小计
+															</td> -->
+															<td class="text-center">
+																操作
+															</td>
+														</tr>
+													</thead>
+													<tbody id="mytbody">
+													<!-- <foreach name="cart" item="v" key="k">
+														<tr>
+															<td class="text-center">
+																ydzjs.com
+															</td>
+															<td class="text-center">
+																68元/年
+															</td>
+															<td class="text-center">
+																1年
+															</td>
+															<td class="text-center blue">
+																￥68
+															</td>
+															<td class="text-center">
+																<a href="javascript:delcart();">删除</a>
+															</td>
+														</tr>
+														</foreach> -->
+														<foreach name="cart2" item="vv" key="kk">
+														<php>$id = str_replace('.', '_',$kk);</php>
+														<tr id="{$id}">
+															<td class="text-center">
+																{$kk}
+															</td>
+															<td class="text-center">
+																{$vv}元/年
+															</td>
+															<td class="text-center">
+																<select onchange="price();" name="{$id}">
+																	<option value="1">{$vv*1}元1年</option>
+																	<option value="2">{$vv*2}元2年</option>
+																	<option value="3">{$vv*3}元3年</option>
+																	<option value="4">{$vv*4}元4年</option>
+																	<option value="5">{$vv*5}元5年</option>
+																	<option value="6">{$vv*6}元6年</option>
+																	<option value="7">{$vv*7}元7年</option>
+																	<option value="8">{$vv*8}元8年</option>
+																	<option value="9">{$vv*9}元9年</option>
+																	<option value="10">{$vv*10}元10年</option>
+																</select>
+															</td>
+															<!-- <td class="text-center blue">
+																￥68
+															</td> -->
+															<td class="text-center">
+																<a href="javascript:delcart('{$kk}');">删除</a>
+															</td>
+														</tr>
+														</foreach>
+													</tbody>
+												</table>
+											</div>
+											<div class="amount">
+												<p>应付金额：￥<span class="blue" id="price">0</span>元</p>
+												<input class="btn btn-primary" type="submit" value="提交订单">
+												<!-- <a  class="btn btn-primary" href="{:U('domain_register')}">提交订单</a> -->
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<php>}else{</php>
+						<div style="width:200px;margin:0 auto;">购物车中是空的！</div>
+						<php>}</php>
+					</div>
+				</div>
+				<!-- /.row -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</body>
+
+	<script type="text/javascript">
+	function price()
+	{
+		var v = 0;
+		for(var i = 0;i < $("select option:selected").length;i++){
+
+			v += parseInt($("select option:selected").eq(i).html());
+		}
+		$('#price').html(v);
+	}
+price();
+
+
+
+
+
+
+	function delcart(k)
+	{
+		// alert(k)
+		if(confirm('确定要删除吗？')){
+
+		$.post('/Seller/Domain/delcart',{'k':k},function(res){
+
+			if(res){
+				$('#'+res).remove();
+				price();
+			}
+		})
+		}
+	}
+
+if(!"{$cart2}"){
+	window.location.reload();
+}
+
+
+	function mysubmit()
+	{
+		var te = $('#mytbody tr').text();
+
+		if(!te){
+			alert('购物车是空的！');
+			return false;
+		}
+	}
+	</script>
+
+</html>

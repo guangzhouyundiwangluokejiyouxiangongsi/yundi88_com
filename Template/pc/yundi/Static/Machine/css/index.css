@@ -1,0 +1,81 @@
+/*公共样式*/
+*{margin: 0;padding: 0;font-family: "微软雅黑";}
+a{text-decoration:none;outline:none;}
+img{border:none;outline:none;}
+textarea{outline:none;}
+li{list-style: none;}
+/*头部*/
+.header{background: #008bb9;width: 100%;height: 60px;min-width: 1200px;}
+.mg{width: 1200px;margin: 0 auto;color: #ffffff;}
+.header .mg{padding: 5px 0;}
+.header .mg a{display:block;float: left;}
+.header .mg a img{width: 162px;height: 47px;display: block;}
+.header .mg span{font-size: 18px;line-height: 50px;border-left: 1px solid #fff;padding: 6px 10px;margin-left:10px; }
+.header ul{float: right;overflow: hidden;}
+.header ul li{float: left;line-height: 50px;margin: 0 6px;}
+.header ul li a{color: #fff;font-size: 14px;}
+.header ul li a:hover{text-decoration: underline;}
+
+.con_left{float: left;}
+/*对话框*/
+.message_box{width: 898px;border-left: 1px solid #dfdfdf;border-right: 1px solid #dfdfdf;overflow-y: auto;}
+.message_box>div{background: url(../img/yunjqr.png) no-repeat center bottom;background-size:23%;padding: 20px; }
+/*智能提示*/
+.message_box .message_tip{background: #f5f4e6;border-radius: 5px;padding:  14px 20px;border: 1px solid #e6d3a6;color: #000000;font-size: 16px;}
+/*机器人*/
+.robot{overflow: hidden;margin: 10px 0;position: relative;}
+.robot .title{position: absolute;left: 68px;} 
+.robot .robot_img{float: left;width: 50px;height: 50px;display: block;background: #eeeeee;border-radius:50%;margin-right: 16px;overflow: hidden;}
+.robot .robot_img img{width: 36px;margin-left: 8px;margin-top: 2px;}
+.robot .message{float: left;margin-top: 30px;}
+/*用户*/
+.user{overflow: hidden;margin: 10px 0;position: relative;}
+.user .title{position: absolute;right: 68px;} 
+.user .user_img{float: right;width: 50px;height: 50px;display: block;background: #eeeeee;border-radius:50%;margin-left: 16px;overflow: hidden;}
+.user .user_img img{width: 100%;}
+.user .message{float: right;margin-top: 30px;}
+/*机器人与用户公用头部及文本*/
+.message_box .title{color: #008bb9;font-size: 14px;margin-bottom: 10px;}
+.message_box .title .time{margin:0 10px;}
+.message_box .txt{border-radius:5px;background: #eeeeee;padding: 10px 20px;max-width: 300px;}
+.message_box .txt ul li{ padding: 4px 0;cursor: pointer;}
+.message_box .txt ul li a{color: #008bb9;font-size: 12px;}   
+.message_box .txt ul li span{background: #0196e6;background: #0196e6;width: 18px;color: #008bb9;display: inline-block;border-radius: 50%;text-align: center;color: #fff;font-size: 12px;}
+.message_box .txt p{font-size: 14px;color: #333333;line-height: 24px;}
+
+/*输入框*/ 
+.message_footer {background: #eeeeee;width: 900px;}
+.message_footer form{padding: 10px;}
+.message_btn {overflow: hidden;width: 280px;margin: 10px auto;}
+.message_btn .message_close{float:left;text-align:center;width: 98px;height: 38px;line-height:38px;font-size: 18px;color: #999999;border: 1px solid #e0e0e0;display: block;background: #f8f8f8;cursor:pointer;}
+.message_btn .message_sent{float:left;text-align:center;width: 98px;height: 38px;line-height:38px;font-size: 18px;color: #FFFFFF;border: 1px solid #008bb9;display:block;background: #008bb9;margin-left: 80px; cursor:pointer;}
+.message_footer textarea{width: 860px;height: 90px; border-radius: 10px;resize: none;padding: 10px;border: none;}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+.message_box::-webkit-scrollbar{width: 8px;height: 8px;background-color: #F5F5F5;}  
+/*定义滚动条轨道 内阴影+圆角*/  
+.message_box::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);border-radius: 10px;background-color: #F5F5F5;}
+/*定义滑块 内阴影+圆角*/  
+.message_box::-webkit-scrollbar-thumb{border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: #555;}  
+/*定义滑块 内阴影+圆角*/  
+textarea::-webkit-scrollbar-thumb{border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: #555;}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+textarea::-webkit-scrollbar{width: 6px;height: 6px;background-color: #F5F5F5;}  
+/*定义滚动条轨道 内阴影+圆角*/  
+textarea::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);border-radius: 10px;background-color: #F5F5F5;}  
+ /*定义滑块 内阴影+圆角*/  
+.con_right_top::-webkit-scrollbar-thumb{border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: #555;}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+.con_right_top::-webkit-scrollbar{width: 6px;height: 6px;background-color: #F5F5F5;}  
+/*定义滚动条轨道 内阴影+圆角*/  
+.con_right_top::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);border-radius: 10px;background-color: #F5F5F5;} 
+
+/*提示导航*/
+.con_right{float: right;width: 240px;border: 1px solid #dfdfdf;padding: 20px;} 
+.con_right .con_right_top{height: 420px;overflow-y:auto;}
+.con_right .con_right_title{color: #333333;font-size: 18px;padding-top: 20px;margin:0 0 30px 0;display: block;}
+.con_right .ad_img img{display: block;height: 200px;width: 240px;}
+.con_right ul li{margin: 10px 0;}
+.con_right ul li a {display: block;color: #222;font-size: 16px;line-height: 20px;}
+.con_right ul li a:hover{color:#008bb9; }
+.con_right ul li a i{float: left;display: block;width: 20px;height:20px;margin-right: 10px; }
+.con_right ul li a i img{display: block;width: 16px;height: 16px;padding: 2px;}

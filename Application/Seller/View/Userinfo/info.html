@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta charset="UTF-8">
+<title>个人信息-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<link href="__PUBLIC__/css/personal.css" rel="stylesheet" type="text/css" />  
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+
+<!--字体图标-->
+<link href="__PUBLIC__/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+<!-- 头部-s -->
+
+<!-- 头部-e -->
+<style type="text/css">
+	.next,.prev,i.icon{background:none}
+	.prev:after{ content:"<"}
+	.next:after{ content:">"}
+	.daterangepicker{border:1px solid #dedede;}
+	.personal_info_image .name{margin-top:26px;}
+	ul,ol li{list-style: none;}
+  .btn_1{border:5px solid #008BB9;background-color: #008BB9;color: white}
+
+/*改写样式*/
+.cl{clear:both;}
+a:hover{text-decoration: none;}
+.gaigeren{width:98%;background:#f8f8f8;height:40px;margin: 0 auto;border-top: 1px solid #ccc;border:1px solid #ccc;border-bottom: none;}
+.gaigeren h3{display: inline-block;float:left;height:40px;margin:0;padding:0;line-height: 40px;}
+
+#gaigeremm{background:#fff;width:98%;margin-left: 16px;}
+
+#hjxiugaim{padding:0;color:#fff;text-decoration: none;border-radius:5px;width:70px;height:26px;display: inline-block;line-height: 26px;background:#008BB9;}
+
+/*#hjbangding{position:absolute;left:15%;}*/
+
+/*#sex{height: 30px;margin: 0;padding: 0;position: absolute;left: 7%;top: -56%;}
+
+#hjinfo{left:13%;}
+*/
+
+.myorder_history{float: right;width: 40px;height: 40px;border-left: 1px solid #d2d2d2;text-align: center;cursor: pointer;}
+.myorder_history>img{width: 16px;height: 16px;margin-top: 10px;}
+
+#hjxiugaim:hover{background:#337ab7;border:1px solid 1px solid #2e6da4;}
+
+.personal .personal_info_content .detail{width:185px;height:100px;overflow:hidden;}
+.personal .personal_info_eamil{font-size:12px;color:#666;padding-left: 77px;float:left;}
+.personal .personal_info_eamil ul li{height:20px;line-height: 20px;}
+.personal .personal_info_btn{padding:0;}
+/*.personal .personal_info_image .detail img{width:100px;height:auto;}*/
+
+#sex{height: 30px;margin: 0;padding: 0;width:300px;}
+#sex ul{padding:0;margin:0;}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:1200px) and (max-width:1500px){	
+  #gaigeremm{background:#fff;width:98%;margin-left:9px;}
+ /* #hjbangding{left:17%;}
+  #hjinfo{left:8%;width:955px;}*/
+
+}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:900px) and (max-width:1200px){
+
+  #gaigeremm{background:#fff;width:98%;margin-left:10px;}
+   /*#hjbangding{left:17%;}
+   #sex{left:12%;}
+   #hjinfo{left:0;width:931px;}*/
+   
+}
+
+</style>
+<body style="overflow:hidden;">
+<div class="wrap" > 
+ 
+  <!-- col main star -->
+  <div class="col_main">
+    <div class="main personal clearfix"> 
+      <!-- themes star -->
+      <div class="themes_title gaigeren" style="margin-top:30px;">
+        <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;font-size:16px;font-weight:500;font-family:'微软雅黑';"><i class="fa fa-user" style="padding-left: 14px;padding-right: 6px;"></i>个人信息</h3>
+        <div class="myorder_history" onclick="history.go(-1);">
+            <img src="__PUBLIC__/images/gerenfanhui.png">
+          </div>
+           <!--  <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 10px;margin-top: 10px;cursor:pointer;" onclick="history.go(-1);"> -->
+      </div>
+      <!-- themes end -->
+    <div class="personal_info clearfix" style="float:none;">
+      <form action="" method="post" id="personal_info_form">
+        <div class="personal_info_content clearfix gaigeremm" id="gaigeremm" style="position:relative;">
+        <div style="width:47%;min-height: 500px;position:relative;margin:0 auto;">
+          <div class="personal_info_image" style="">
+            <div class="name"> <span>头像：</span> </div>
+            <div class="detail J_edit_photos" style="border:none;border-radius: 5px;width:100px;">             
+              <img class="btn_upload" id="preview" src="{$user.head_pic|default='__PUBLIC__/images/headPic.jpg'}" onClick="GetUploadify2(1,'head_pic','head_pic','add_img')" style='cursor:pointer;'/>
+              <div class="edit J_btn_upload"> <a href="javascript:void(0);">编辑头像</a>
+				<input type="hidden" name="head_pic" id="head_pic" value="{$user.head_pic}">
+              </div>
+            </div>
+            <div class="mytip" onClick="GetUploadify2(1,'head_pic','head_pic','add_img')" style="cursor:pointer;"><span>点击图片上传头像</span></div>
+          </div>
+          <div class="personal_info_nickname" s>
+            <div class="name"> <span>*昵称：</span> </div>
+            <div class="detail">
+              <input type="text" name="nickname" id="nickname" value="{$user.nickname}"  maxlength="10" />
+              <span class="red"></span> </div>
+          </div>
+          <div class="personal_info_truename" >
+            <div class="name"> <span>QQ：</span> </div>
+            <div class="detail">
+              <input type="text" name="qq" id="userInfo_nickName" value="{$user.qq}"maxlength="20" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" />
+              <span class="red"></span> </div>
+          </div>          
+          <div class="personal_info_truename" >
+            <div class="name"> <span>生日：</span> </div>
+            <div class="detail" > 
+	              <input type="text" name="birthday" id="birthday" value="{$user.birthday|date="y-m-d",###}" />
+            </div>
+          </div>       
+		  <div class="personal_info_sex" >
+            <div class="name"> <span>*称呼：</span> </div>
+            <div class="detail" id="sex" >
+              <ul>
+                <li style="width:67px;">
+                  <input type="radio" name="sex" checked="checked" id="gd_secret" <if condition="$user['sex'] eq '0'">checked</if> value="0">
+                  <label for="male">保密</label>
+                </li>              
+                <li  style="width:67px;">
+                  <input type="radio" name="sex" id="gd_mile" style="margin-left:10px;" <if condition="$user['sex'] eq '1'">checked</if> value="1">
+                  <label for="male">先生</label>
+                </li>
+                <li  style="width:67px;">
+                  <input type="radio" name="sex" id="gd_femile" style="margin-left:10px;" <if condition="$user['sex'] eq '2'">checked</if> value="2">
+                  <label for="female">女士</label>
+                </li>
+              </ul>
+            </div>
+          </div>   
+          <div  class="personal_info_eamil" >
+            <div class="bind"  id="hjbangding">
+               <ul>
+                <li class="mobile" style="float:none;width:100%;">
+                  <span><i class="icon_phone"></i>手机：{$user[mobile]}</span>
+                  <a class="change target_no" href="/Seller/Userinfo/mobile_validate/type/mobile/step/1">
+                  <if condition="$user[mobile]">解绑<else />立即绑定</if></a>
+                </li>
+                <li class="mail" style="float:none;width:100%;">
+                  <span><i class="icon_email"></i>邮箱：{$user[email]}</span>
+                    <a class="null target_no" href="/Seller/Userinfo/hjemail1/type/email/step/1">
+                    <if condition="$user[email]">解绑<else />立即绑定</if></a>
+                </li>
+                <div class="cl"></div>
+              </ul>
+            </div>
+
+           <div class="tips" style="text-align: center;width:150px;padding:0;float:left;"> 
+               <a href="/Seller/Userinfo/setadmin1" id="hjxiugaim" style="width:120px;height:28px;padding-top:2px;display:inline-block;text-align:center;border-radius: 5px;text-decoration: none;font-size:17px;">修改密码</a>
+            </div>
+             <div class="tips" style="text-align: center;width:150px;padding:0;float:left;"> 
+               <a href="javascript:void(0);" onClick="$('#personal_info_form').submit();"  id="hjxiugaim" style="width:120px;height:28px;padding-top:2px;display:inline-block;text-align:center;border-radius: 5px;text-decoration: none;font-size:17px;">确认保存</a>
+            </div>
+
+        </div>
+
+         
+        </form>
+      </div>
+    <div class="cl"></div>
+    </div>
+  </div>
+  <!-- col main end --> 
+</div>
+<div style="clear: both;"></div>
+<!--导入用户中心的底部-->
+</body>
+
+<link type="text/css" rel="stylesheet" href="/Public/plugins/daterangepicker/daterangepicker-bs3.css">
+<script type="text/javascript" src="/Public/plugins/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/Public/plugins/daterangepicker/daterangepicker.js"></script>
+<style>
+.daterangepicker{ display:none;}
+</style>
+
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script>
+$(document).ready(function() {
+	
+	// 生日时间
+	$('#birthday').daterangepicker({
+		singleDatePicker: true,
+		showDropdowns: true,
+		minDate:'1900-01-01',
+    maxDate:moment(),
+    startDate:moment(),
+        format : 'YYYY-MM-DD', //控件中from和to 显示的日期格式		
+	    locale : {
+            applyLabel : '确定',
+            cancelLabel : '取消',
+            fromLabel : '起始时间',
+            toLabel : '结束时间',
+            customRangeLabel : '自定义',
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            firstDay : 1
+        }
+	});						
+		
+		
+});
+    function delimg(file,t){
+        $.get(
+                "/index.php?m=Admin&c=Uploadify&a=delupload",{action:"del", filename:file},function(){}
+        );
+        $('#head_pic').val('');
+        $('#preview').attr('src','');
+        $(t).remove();
+    }
+    function add_img(str){
+		 
+        var head_pic = $('#head_pic').val();
+        $('#head_pic').val(str);
+        $('#preview').attr('src',str);
+        $('img[class="headpic"]').attr('src',str);
+//        if(!$('#delimg')){
+//            $('#img_box').append('<button id="delimg" type="button" onclick="delimg('+"'"+str+"'"+',this)">删除图片</button>');
+//        }else{
+//            $('#delimg').attr('onclick','delimg('+"'"+str+"'"+',this)');
+//        }
+        if(!head_pic){
+            $('#img_box').append('<button id="delimg" type="button" onclick="delimg('+"'"+str+"'"+',this)">删除图片</button>');
+        }else{
+            $('#delimg').attr('onclick','delimg('+"'"+str+"'"+',this)');
+        }
+
+        $.post('{:U("userinfo/ajax_head_pic")}',{'head_pic':str},function(res){
+          if (res){
+            layer.msg('修改成功',{icon:1});
+          } else {
+            layer.msg('修改失败',{icon:2});
+          } 
+        })
+
+    }
+</script>
+</html>

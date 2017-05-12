@@ -1,0 +1,100 @@
+<include file="Public/min-header"/>
+<style>
+</style>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	              <nav class="navbar navbar-default">	     
+					<div class="collapse navbar-collapse">
+		                <div class="navbar-form  margin">
+		                      <a href="{:U('Store/bind_class_list')}" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="编辑">经营类目</a>
+		                      <!-- <a href="{:U('Store/store_info')}" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="编辑">店铺信息</a> -->
+		                      <a href="javascript:;" style="margin-left:20px" onclick="get_goods_class()" data-toggle="tooltip" title="" class="btn btn-success pull-right" data-original-title="返回">申请新的经营类目</a>
+		                      <a href="/seller/goods/addEditGoods" data-toggle="tooltip" title="" class="btn btn-success pull-right" data-original-title="返回">去发布产品</a>
+		               </div>
+		            </div>
+		           </nav>             
+	             </div><!-- /.box-header -->
+	           <div class="box-body">
+	           <div class="row">
+	            <div class="col-sm-12">
+	              <table id="list-table" class="table table-bordered table-striped">
+	                 <thead>
+	                   <tr role="row">
+		                   <th>经营类目</th>
+		                   <!-- <th>分佣比例</th> -->
+		                   <th>状态</th>
+		                   <th>操作</th>
+	                   </tr>
+	                 </thead>
+					<tbody>
+					  <foreach name="bind_class_list" item="vo" key="k" >
+					  	<tr role="row" align="left">
+                         <td>	
+                         		<span class="col-xs-3">{$vo.class_1_name}</span>
+                         		<span class="col-xs-2"><i class="fa fa-angle-double-right"></i>{$vo.class_2_name}</span>
+                         		<span class="col-xs-2"><i class="fa fa-angle-double-right"></i>{$vo.class_3_name}</span>
+                         </td>
+                         <!-- <td>{$vo.commis_rate}</td> -->
+	                 	 <td><if condition="$vo[state] eq 1">已审核<else/>审核中</if></td>
+	                     <td>
+	                         <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Store/bind_class_del')}" data-id="{$vo.bid}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
+						</td>
+	                   </tr>
+	                  </foreach>
+	                   </tbody>
+	               </table></div>
+	               </div>
+	             </div>
+	           </div>
+       		</div>
+       </div>
+</div>
+<script type="text/javascript">
+function delfun(obj){
+	if(confirm('确认删除')){		
+		$.ajax({
+			type : 'post',
+			url : $(obj).attr('data-url'),
+			data : {act:'del',bid:$(obj).attr('data-id')},
+			dataType : 'json',
+			success : function(data){
+				if(data.stat=='ok'){
+					$(obj).parent().parent().remove();
+				}else{
+					layer.alert(data, {icon: 2});  //alert(data);
+				}
+			}
+		})
+	}
+	return false;
+}
+
+function get_goods_class(){
+    layer.open({
+        type: 2,
+        title: '申请经营新的类目',
+        shadeClose: true,
+        shade: 0.2,
+        area: ['700px', '400px'],
+        content: "{:U('Store/get_bind_class')}", 
+    });
+}
+
+//回调函数
+function call_back(msg){
+	if(msg>0){
+		layer.msg('操作成功', {icon: 1});
+		layer.closeAll('iframe');
+		window.location.reload();
+	}else{
+		layer.msg('操作失败', {icon: 3});
+		layer.closeAll('iframe');
+	}
+}
+</script>
+</body>
+</html>

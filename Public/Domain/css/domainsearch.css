@@ -1,0 +1,49 @@
+.breadcrumb>li a:hover{text-decoration: none;}
+.panel-body-company{display: none;}
+.panel-body-personal{display: none;}
+
+.panel-title .btn-primary {color: #ffffff;}
+.information {font-family: Microsoft YaHei;}
+.information .tab-pane>p{color:#fd0000;font-size: 14px;}
+.information .tab-pane>div.text-center{margin-top: 40px;}
+.information .tab-pane>div.navbar{margin-bottom: 0;text-align: center;line-height: 50px;font-weight: bolder;font-size: 16px;}
+.information .table-bordered{font-size: 14px;}
+.information .table>tbody>tr>td{padding: 4px;}
+.information .table{margin-bottom: 0}
+.information .width{width: 100px;text-align: center;    line-height: 34px;}
+.information .form-control{min-width: 100px;border: none;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0);box-shadow: inset 0 1px 1px rgba(0,0,0,0);}
+.information select{margin-top: 5px;}
+
+.order .blue{color: #068dba !important;}
+.order .amount{text-align: right;}
+.order .amount span{font-size: 20px;}
+.order{border-top:1px solid #ddd;font-family: Microsoft YaHei;}
+.order>p{border-left:3px solid #3c8dbc;padding-left:6px;margin: 20px 0 20px 6px;font-size: 16px;font-weight: bolder;font-family: Microsoft YaHei;}
+.order{font-family: Microsoft YaHei;}
+.order .table-bordered>tbody>tr{border-top:1px solid #ddd;}
+.order .table-bordered>tbody>tr>td{border: none;width: 20%;color: #9a9a9a;}
+.order .table-bordered>thead>tr>td{border: none;width: 20%;}
+.order .table-bordered>tbody>tr>td>a{color: #9a9a9a;}
+.order .panel-search {padding: 50px 0;text-align: center;}
+.order .panel-search>div{display: inline-block;}
+.order .panel-search > div:first-child{line-height: 40px;font-size: 18px;}
+.order .panel-search > div:nth-child(2){width: 40%;margin: 0 20px;}
+.order .panel-search > div:nth-child(2)>input{width: 100%;border: 1px solid #3c8dbc;height:40px;padding: 0 18px;font-size: 16px; }
+.order .panel-search > div:nth-child(3)>a{font-size: 18px;text-decoration:none ;color: #ffffff;display: block;width: 100px;line-height: 40px;text-align: center;background: #3c8dbc;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

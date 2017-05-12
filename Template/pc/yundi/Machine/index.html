@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
+	<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+	<title>云云</title>
+	<script type="text/javascript" src="__STATIC__/Machine/js/jquery-1.7.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/Machine/css/index.css">
+	<script src="__PUBLIC__/js/global.js"></script>
+</head>
+
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<div class="mg">
+			<a href="{:U('/seller/index/index')}"><img src="__STATIC__/Machine/img/logo-2.png"></a>
+			<span>云云</span>
+			<ul>
+				<li>
+					<a href="{:U('/user/reg')}" class='nologin' >注册</a>
+					<a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+					
+		        </li>
+				<li>|
+		        </li>
+		        <li>
+		        	<a href="{:U('/user/login')}" class='nologin' >登录</a>
+		        	<a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a>
+		        </li>
+			</ul>
+		</div>
+	</div>
+
+	<div style="margin: 0 auto;width: 1200px;overflow: hidden;">
+		<div class="con_left">
+			<div class="message_box">
+				<div>
+					<div class="message_tip">您好，我是智能机器人云云，很高兴见到您，请输入您遇到的问题或者问题关键词，云云会以迅雷不及掩耳之势为您献上答案并帮助到您！</div>
+					<!-- 机器人 -->
+					<div class="robot">
+						<a class="robot_img" >
+							<img src="__STATIC__/Machine/img/yunjqr.png">
+						</a>
+						<div class="title">
+							<span>云云</span>
+							<span class="time">{:date('Y-m-d :H:i:s',time())}</span>
+						</div>
+
+						<div class="message">
+							
+							<div class="txt">
+								<p>您是不是咨询下面的问题？</p>
+								<ul>
+								<foreach name="data" item="v" key="k">
+									<li onclick="ajaxdata('{$k}')">
+										<span>{$k}</span>
+										<a >{$v.title}</a>
+									</li>
+								</foreach>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+					<span class="content"></span>
+					<!-- 用户 -->
+					<!-- <div class="user">
+						<a class="user_img" >
+							<img src="__STATIC__/Machine/img/yunjqr.png">
+						</a>
+						<div class="title">
+							<span class="time">17:03:48</span>
+							<span>我</span>
+						</div>
+						<div class="message">
+							
+							<div class="txt">
+								<p>1</p>
+							</div>
+						</div>
+					</div> -->
+					
+				</div>	
+			</div>
+			<!-- 输入框 -->
+			<div class="message_footer">
+				<form >
+					<textarea placeholder="请提出你的疑问!支持 shift + enter换行" id="val"></textarea>
+					<div class="message_btn">
+						<a class="message_close" onclick="window.close();">结束对话</a>
+						<a class="message_sent"   >发送</a>
+						<!-- <input type="submit" value="发送"> -->
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- 提示导航 -->
+		<div class="con_right">
+			<div class="con_right_top">
+				<a class="con_right_title" >服务与支持</a>
+				<ul>
+					<li class="new"><a href="#"><i><img src="__STATIC__/Machine/img/yunyun_icon_1.png" ></i>新手学堂</a></li>
+					<li class="help"><a href="#"><i><img src="__STATIC__/Machine/img/yunyun_icon_3.png" ></i>帮助与文档</a></li>
+					<li class="yun"><a href="/article/yun_shop"><i><img src="__STATIC__/Machine/img/yunyun_icon_2.png"></i>云商会</a></li>
+				</ul>
+			</div>
+			<div class="ad_img">
+				<a href="/user/reg.html"><img src="__STATIC__/Machine/img/ad.jpg"></a>
+			</div>
+				
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+var uname= getCookie('uname');
+	if (uname){
+		$('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+	}
+	else{
+			$('.islogin').remove();
+	      	$('.nologin').show();
+	    }
+
+function sent(){
+
+    textarea=$.trim($('.message_footer textarea').val())
+    if(textarea.length !==0){
+        var myDate = new Date();
+        var hour=myDate.getHours();
+        var minutes=myDate.getMinutes();
+        var seconds=myDate.getSeconds();
+        if(hour<10){
+            hour='0'+hour;
+        }
+        if(minutes<10){
+            minutes='0'+minutes;
+        }   
+        if(seconds<10){
+            seconds='0'+seconds;
+        }
+        var time = hour + ":" + minutes + ":" + seconds;
+        $('.message_box>div').append("<div class='user'><a class='user_img' ><img src='{$icon}'></a><div class='title'><span class='time'>"+ time +"</span><span>我</span></div><div class='message'><div class='txt'><p>"+ textarea +"</p></div></div></div>")
+        // 清空输入框
+        $('.message_footer textarea').val("");
+        // 滚动div
+        var height=$('.message_box>div').height();
+        $('.message_box').animate({scrollTop:height},600);
+	    ajaxdata(textarea);
+          
+    }
+    
+}
+function clicksent(val){
+
+    textarea=val
+    if(textarea.length !==0){
+        var myDate = new Date();
+        var hour=myDate.getHours();
+        var minutes=myDate.getMinutes();
+        var seconds=myDate.getSeconds();
+        if(hour<10){
+            hour='0'+hour;
+        }
+        if(minutes<10){
+            minutes='0'+minutes;
+        }   
+        if(seconds<10){
+            seconds='0'+seconds;
+        }
+        var time = hour + ":" + minutes + ":" + seconds;
+        $('.message_box>div').append("<div class='user'><a class='user_img' ><img src='{$icon}'></a><div class='title'><span class='time'>"+ time +"</span><span>我</span></div><div class='message'><div class='txt'><p>"+ textarea +"</p></div></div></div>")
+        // 滚动div
+        var height=$('.message_box>div').height();
+        $('.message_box').animate({scrollTop:height},600); 
+    }
+    
+}
+	$(function(){
+
+			$('.robot .txt ul li').click(function(){
+	            var spanval=$(this).find('span').html();
+	             clicksent(spanval)
+	        })	
+
+			if (window.innerHeight)
+			winHeight = window.innerHeight;
+			else if ((document.body) && (document.body.clientHeight))
+			winHeight = document.body.clientHeight;
+			var txtboxheight=$('.message_box').height();
+			var headerheight=$('.header').height();
+			var footerheight=$('.message_footer').height();
+			txtboxheight=winHeight-headerheight-footerheight
+			$('.message_box').height(txtboxheight);
+
+			var right_tophei=$('.con_right_top').height();
+			var ad_imghei=$('.ad_img').height();
+			var right_padT= parseInt($('.con_right').css('paddingTop') );
+			var right_padB= parseInt($('.con_right').css('paddingBottom') );
+			right_tophei=winHeight-headerheight-ad_imghei-right_padB-right_padT-2;
+			$('.con_right_top').height(right_tophei);
+
+
+			//shift+enter换行
+	        $('.message_footer textarea').focus(function(){
+	            $('.message_footer textarea').keyup(function(event){
+	                
+	                if(event.shiftKey && event.which==13 || event.which == 10){
+	                
+	                }
+	                else if(event.keyCode == 13){
+	                        sent();
+	                } 
+	            })
+	        })
+
+	        $('.message_sent').click(function(){
+	            sent();
+	        })
+	
+	})
+	$(window).resize(function () {          //当浏览器大小变化时
+		  if (window.innerHeight)
+			winHeight = window.innerHeight;
+			else if ((document.body) && (document.body.clientHeight))
+			winHeight = document.body.clientHeight;
+			var txtboxheight=$('.message_box').height();
+			var headerheight=$('.header').height();
+			var footerheight=$('.message_footer').height();
+			txtboxheight=winHeight-headerheight-footerheight
+			$('.message_box').height(txtboxheight);
+
+			var right_tophei=$('.con_right_top').height();
+			var ad_imghei=$('.ad_img').height();
+			var right_padT= parseInt($('.con_right').css('paddingTop') );
+			var right_padB= parseInt($('.con_right').css('paddingBottom') );
+			right_tophei=winHeight-headerheight-ad_imghei-right_padB-right_padT-2;
+			$('.con_right_top').height(right_tophei);
+	});
+
+	function ajaxdata(vals){
+	if(!vals){
+		vals = $('#val').val();
+	}
+	$.post('/Machine/ajaxdata' ,{'val':vals} ,function(res){
+		var str = '<div class="robot"><a class="robot_img" ><img src="__STATIC__/Machine/img/yunjqr.png"></a><div class="title"><span>云云</span><span class="time">'+res.time+'</span></div><div class="message"><div class="txt"><p>'+res.content+'</p><ul></ul></div></div></div>';
+		$('.message_box>div').append(str);
+
+
+		
+	});
+}
+
+</script>
+</html>

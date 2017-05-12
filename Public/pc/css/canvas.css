@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+div{ width: 300px; height: 200px; background:#008BB9;text-overflow:ellipsis; white-space:nowrap; overflow:hidden; border-radius:5px; box-shadow: 10px 10px 5px #888888; border-image: url("images/b1.jpg") 33 33 round}
+fieldset{ width: 500px; height: 200px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

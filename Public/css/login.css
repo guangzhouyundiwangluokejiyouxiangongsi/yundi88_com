@@ -1,0 +1,160 @@
+*{margin:0;padding:0;}
+.cl{clear:both;}
+a{text-decoration: none;}
+ul,ol li{list-style: none;}
+
+.navss{width:1200px;margin:10px auto;}
+.navss .navsslogo{width:500px;float:left;}
+.navss .navsslogo img{float:left;}
+.navss .navsslogo h4{text-align: left;float:left;width:200px;font-weight:200;font-size:14px;color:#959595;margin-left:15px;border-left: 1px solid #ccc;height:24px;line-height: 24px;padding-left: 15px;margin-top: 20px;}
+.navss .navssphone{width:135px;float:right;height:52px;line-height: 52px;}
+.navss .navssphone img{float:left;margin-top: 10px;margin-right: 5px;}
+.navss .navssphone p{font-size:14px;}
+
+/*登录*/
+.navssbenner{background:url(../images/user/bg.png)no-repeat center center; width:100%;height:450px;}
+.navssbenner .navssbenmain{width:1200px;margin:0 auto;}
+.navssbenner .navssbenmain .navsssbennerl{width:640px;float:left;text-align: center;margin-top: 135px;}
+.navssbenner .navssbenmain .navsssbennerr{width:340px;float:left;background:#fff;height:360px;margin-top: 40px;margin-left: 120px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin{width:90%;margin:45px  auto;position:relative;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin p{color:red;font-size:14px;margin-bottom: 4px;position:absolute;top:-20px;display:black;}
+
+
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navinp{width:100%;height:40px;position:relative;line-height: 40px;border:1px solid #cfcfcf;margin-bottom: 10px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navinp input{border:none;outline: none;width:230px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navinp img{width:14px;display:inline-block;margin-left: 20px;margin-right: 20px;float:left;margin-top: 13px;}
+
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzheng{width:62%;height:40px;line-height: 40px;border:1px solid #cfcfcf;margin-bottom: 10px;float:left;margin-right: 5px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzheng input{border:none;outline: none;width:80px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzheng img{display:inline-block;margin-left: 20px;margin-right: 20px;float:left;margin-top: 13px;}
+
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzhenma{width:35%;height:40px;line-height: 40px;background:#ccc;margin-bottom: 10px;float:left;margin-left: 2px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzhenma img{width:100%;height:100%;}
+
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru{font-size:12px;margin-top: 10px;padding-top: 4px;color:#848484;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru a{text-align: right;font-size:12px;display: inline-block;float:right;text-decoration:underline;color:#848484;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru a:hover{color:red;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru input{float:left;margin-right: 5px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navsslog{width:100%;height:40px;background:#008cba;text-align: center;line-height: 40px;margin-top: 20px;cursor:pointer;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navsslog a{display: block;width:100%;height:100%;color:#fff;text-decoration:none;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navsslog:hover{background:#0198ca;}
+
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssres{width:100%;height:40px;line-height: 40px;background:url(../images/user/loginline.png) 0  20px no-repeat;text-align: center;margin-top: 10px;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssres a{text-decoration: none;font-size:14px;color:#848484;}
+.navssbenner .navssbenmain .navsssbennerr .navsslogin .navssres a:hover{color:red;}
+/*注册*/
+.registeredbenner{background:url(../images/user/bgss.png)no-repeat center center; width:100%;height:520px;position:relative;}
+
+
+.registeredbenner .navssbenmain{width:1200px;margin:0 auto;}
+.registeredbenner .navssbenmain .navsssbennerl{width:640px;float:left;text-align: center;margin-top: 135px;}
+
+.registeredbenner .navssbenmain .navsssbennerr{width:340px;right:20%;background:#fff;height:476px;border:1px solid #eee;margin-left: 120px;position:absolute;z-index: 3;}
+
+.registeredbenner .navssbenmain .navssyingying{position:absolute;right:19.2%;bottom:5%;}
+@media screen  and  (min-width:1200px) and (max-width: 1500px) {
+
+    .registeredbenner .navssbenmain .navsssbennerr{right:10%;}
+
+    .registeredbenner .navssbenmain .navssyingying{right:9%;}
+}
+
+/*个人注册*/
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin{width:90%;margin:20px   auto;position:relative;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin p{color:red;font-size:14px;margin-bottom: 4px;position:absolute;top:-20px;display:black;}
+
+.registeredbenner .navssbenmain .navsssbennerr .peopre{border-bottom:1px solid #ccc;margin:15px auto;padding-bottom: 15px;}
+.registeredbenner .navssbenmain .navsssbennerr .peopre ul li{float:left;width:48%;height:20px;line-height: 20px;text-align: center;font-size:18px;font-family:'微软雅黑';cursor:pointer;}
+.registeredbenner .navssbenmain .navsssbennerr .peopre ul .peopers{border-right: 1px solid #ccc;}
+.registeredbenner .navssbenmain .navsssbennerr .peopre ul .peoperss{color:#008cba;}
+
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navinp{width:100%;height:38px;line-height: 38px;border:1px solid #cfcfcf;margin-bottom: 18px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navinp input{border:none;outline: none;width:230px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navinp img{display:inline-block;margin-left: 20px;margin-right: 20px;float:left;margin-top: 10px;}
+
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzheng{width:56%;height:38px;line-height: 38px;border:1px solid #cfcfcf;margin-bottom: 18px;float:left;margin-right: 5px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzheng input{border:none;outline: none;width:80px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzheng img{display:inline-block;margin-left: 20px;margin-right: 20px;float:left;margin-top: 10px;}
+
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzhenma{width:41%;height:37px;text-align:center;cursor:pointer;line-height: 33px;background:#eee;margin-bottom: 10px;float:left;margin-left: 2px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssyanzhenma input{width:100%;height:100%;cursor:pointer;}
+
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru{font-size:12px;padding-top: 4px;color:#848484;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru a{text-align: left;font-size:12px;color:#0066cc;display: inline-block;text-decoration:none;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru a:hover{color:red;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru input{float:left;margin-right: 5px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssjiaru  .memberok{float:right;display:inline-block;color:#333333;text-decoration: underline;}
+
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navsslog{width:100%;height:38px;background:#008cba;text-align: center;line-height: 38px;margin-top: 20px;cursor:pointer;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navsslog a{display: block;width:100%;height:100%;color:#fff;text-decoration:none;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navsslog input:hover{background:#0198ca;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navsslog input{border:none;outline: none;color:#fff;width:100%;height:100%;background:#008cba;cursor:pointer;}
+
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssres{width:100%;height:38px;line-height: 38px;background:url(../images/user/loginline.png) 0  20px no-repeat;text-align: center;margin-top: 10px;}
+.registeredbenner .navssbenmain .navsssbennerr .navsslogin .navssres a{text-decoration: none;font-size:14px;color:#848484;}
+
+/*企业注册*/
+.registeredbenner .navssbenmain .navsssbennerr .peopreb{display:none;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise{width:90%;margin:10px  auto;position:relative;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise p{color:red;font-size:14px;margin-bottom: 4px;position:absolute;top:-20px;display:black;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise 	.named{margin-bottom: 18px;font-size:14px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise 	.named input{margin-left:5px;}
+
+
+.registeredbenner .navssbenmain .navsssbennerr .peopre{border-bottom:1px solid #ccc;margin:15px auto;padding-bottom: 15px;}
+.registeredbenner .navssbenmain .navsssbennerr .peopre ul li{float:left;width:48%;height:20px;line-height: 20px;text-align: center;font-size:18px;font-family:'微软雅黑';cursor:pointer;}
+.registeredbenner .navssbenmain .navsssbennerr .peopre ul .peopers{border-right: 1px solid #ccc;}
+.registeredbenner .navssbenmain .navsssbennerr .peopre ul .peoperss{color:#008cba;}
+
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navinp{width:100%;height:35px;line-height: 35px;border:1px solid #cfcfcf;margin-bottom: 18px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navinp input{border:none;outline: none;width:230px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navinp img{display:inline-block;margin-left: 20px;margin-right: 20px;float:left;margin-top: 10px;}
+
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssyanzheng{width:56%;height:35px;line-height: 35px;border:1px solid #cfcfcf;margin-bottom: 18px;float:left;margin-right: 5px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssyanzheng input{border:none;outline: none;width:80px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssyanzheng img{width:14px;display:inline-block;margin-left: 20px;margin-right: 20px;float:left;margin-top: 13px;}
+
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssyanzhenma{width:41%;height:37px;text-align:center;cursor:pointer;line-height: 33px;background:#eee;margin-bottom: 10px;float:left;margin-left: 2px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssyanzhenma input{width:100%;height:100%;cursor:pointer;}
+
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssjiaru{font-size:12px;padding-top: 4px;color:#848484;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssjiaru a{text-align: left;font-size:12px;color:#0066cc;display: inline-block;text-decoration:none;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssjiaru a:hover{color:red;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssjiaru input{float:left;margin-right: 5px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssjiaru  .memberok{float:right;display:inline-block;color:#333333;text-decoration: underline;}
+
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navsslog{width:100%;height:35px;background:#008cba;text-align: center;line-height: 35px;margin-top: 20px;cursor:pointer;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navsslog a{display: block;width:100%;height:100%;color:#fff;text-decoration:none;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navsslog:hover{background:#0198ca;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navsslog input:hover{background:#0198ca;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navsslog input{border:none;outline: none;color:#fff;width:100%;height:100%;background:#008cba;cursor:pointer;}
+
+
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssres{width:100%;height:35px;line-height: 35px;background:url(../images/user/loginline.png) 0  20px no-repeat;text-align: center;margin-top: 10px;}
+.registeredbenner .navssbenmain .navsssbennerr .Enterprise .navssres a{text-decoration: none;font-size:14px;color:#848484;}
+
+/*个人报错处理*/
+#formall .baocuo{font-size: 12px;color:#f00;position:absolute;height:20px;line-height: 20px;left:0;}
+#formall .baocuo1{top:-20px;display:none;}
+#formall .baocuo2{top:38px;display:none;}
+#formall .baocuo3{top:96px;display:none;}
+#formall .baocuo4{top:155px;display:none;}
+
+/*企业报错处理*/
+#formall2 .baocuos{font-size: 12px;color:#f00;position:absolute;height:20px;line-height: 20px;left:0;}
+#formall2 .baocuos1{top:18px;display:none;}
+#formall2 .baocuos2{top:74px;display:none;}
+#formall2 .baocuos3{top:128px;display:none;}
+#formall2 .baocuos4{top:183px;display:none;}
+#formall2 .baocuos5{top:238px;display:none;}
+
+
+
+footer{width:700px;margin:30px auto;text-align:center;}
+footer ul{margin-top: 80px;margin-bottom: 20px;}
+footer ul li{float:left;width:15%;height:30px;line-height: 30px;}
+footer ul li a{color:#333;font-family:'微软雅黑';}
+footer ul li a:hover{color:red;}
+footer p{margin-top: 10px;font-family:'微软雅黑';}
+
+

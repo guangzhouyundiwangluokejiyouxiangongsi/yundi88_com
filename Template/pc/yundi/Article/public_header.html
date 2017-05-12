@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>广州云狄网络科技有限公司</title>
+<meta http-equiv="keywords" content="免费建站">
+<meta name="description" content="免费建站">
+<link href="__PUBLIC__/pc/css/public.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/css/rezhen.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/lists.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/common.min.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/main.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/wangzhandaohan.css">
+<style>.fn-clear .words{ line-height:1.5}.m-top-nav a{color:#000;}</style>
+<header class="head">
+    <!-- <div class="left">Hi，你好  kky</div> -->
+    <nav class="nav nav2">
+      <ul> 
+          <li><a href="{:U('/user/reg')}" class='nologin' >注册</a><a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+          </li>
+          <span>|</span>
+          <li><a href="{:U('/user/login')}" class='nologin' >登录</a><a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+          <span>|</span>
+          <li><img src="__PUBLIC__/pc/images/index1.jpg" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="{:U('/Cart/cart')}" target="_blank">购物车</a></li><span>|</span>
+          <li><a href="{:U('/User/order_list')}" target="_blank">我的订单</a></li>
+      </ul>
+      <p>您好，欢迎来到云狄网！股票代码：366130</p>
+      <ul>   
+        <li><a href="{:U('/User/info')}" target="_blank">个人中心</a></li><span>|</span>
+          <li><a href="{:U('/user/login')}" target="_blank">免费发布信息</a></li><span>|</span>
+          <li><a href="#" target="_blank">网站导航</a>
+            <div class="navss">
+              <dl>
+                <dd><a href="/goods/goodsList2.html">万千产品</a></dd>
+                <dd><a href="/Info/index.html?nav_id=6">海量信息</a></dd>
+                <dd><a href="/seller/index/index.html?nav=product">产品推广</a></dd>
+                <dd><a href="/seller/index/index.html?nav=article">信息推广</a></dd>
+                <dd><a href="/Info/index.html?nav_id=6">企业信息</a></dd>
+                <dd><a href="/article/promote.html">免费推广</a></dd>
+                <dd><a href="/article/yun_shop">云商会</a></dd>
+                <dd><a href="/index/certification2">商城入驻</a></dd>
+                <dd><a href="/article/detail/article_id/54.html">联系我们</a></dd>
+              <div class="cl"></div>
+              </dl>
+            </div>
+          </li> 
+
+      </ul>
+
+    </nav>
+  </header><!--顶部结束-->
+  <script type="text/javascript">
+   $(document).ready(function(){
+
+      var uname= getCookie('uname');
+      if(uname == ''){
+        $('.islogin').remove();
+        $('.nologin').show();
+      }else{
+        $('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+      }
+       
+    });
+  </script>

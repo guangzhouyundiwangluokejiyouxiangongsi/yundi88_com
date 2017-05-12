@@ -1,0 +1,46 @@
+<footer class="footer">
+<div class="top-back" style="display: none;">
+  <a class="top" href="javascript:;">︿</a>
+  <a class="txt" href="javascript:;">回到顶部</a>
+</div>
+
+<script type="text/javascript">
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 300) {
+      $('.top-back').show(300);
+    }
+    else
+    {
+      $('.top-back').hide(300);
+    }
+  });
+  $(".top-back").click(function(){
+    $('body,html').animate({scrollTop:0},1000);
+     return false;
+  });
+</script>
+
+<style>
+.pr a:hover{color: red}
+.pr {text-align: center;}
+</style>
+    <div class="pr" style="text-align: center;">
+	      <div class="yushangfooter" style="text-align: center;">
+              <ul>
+                <li><a href="/article/yun_shop.html">首页</a></li>
+                <li><a href="/article/aboutyun.html">关于商会</a></li>
+                <li><a href="/article/demeanour.html">商会资讯</a></li>
+                <li><a href="/article/Joinus.html">加入优势</a></li>
+                <li><a href="/article/Contactus.html">联系我们</a></li>
+                <div class="cl"></div>
+              </ul>
+             <div class="yunshangyoulian">
+          友情链接：<tpshop sql="select * from `__PREFIX__friend_link` where is_show = 1 order by orderby" key="k3" item="v3">
+     <a href="{$v3[link_url]}" <php> if ($v3[target] == 1){</php>
+      target="_blank" <php>}</php>
+      > {$v3[link_name]}</a>
+     </tpshop>
+             </div>  
+             <div class="yunshangdizhi">地址：广东省广州市天河区科韵路科韵大厦7楼</div>                  
+    </div>
+</footer>

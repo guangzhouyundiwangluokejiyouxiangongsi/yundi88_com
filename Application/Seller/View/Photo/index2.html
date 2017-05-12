@@ -1,0 +1,55 @@
+<include file="Public/min-header"/>
+<style>
+.shangchuang {border: 1px solid ;color:#06f;}
+.form_1{position: relative;}
+</style>
+
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+        <div class="container-fluid">
+        <table  width="100%" align="center">
+        <tr>
+            <th align="center" style="text-align:left;">标题</th>
+            <th style="text-align:center;">是否显示</th>
+            <th style="text-align:center;">在首页展示</th>
+            <th style="text-align:center;">导航展示</th>
+            <th style="text-align:center;">操作</th>
+        </tr>
+            <foreach name="photo" item="v">
+            <tr style="height:50px;border-bottom:1px solid #B7B7B7">
+                <td>{$v.title}</td>
+                <td style="text-align:center;"><button value="{$v['status']}" onclick="status(this,'status','{$v['id']}')"><php>echo ($v['status'])?'是':'否';</php></button></td>
+                <td style="text-align:center;"><button value="{$v['home']}" onclick="status(this,'home','{$v['id']}')"><php>echo ($v['home'])?'是':'否';</php></button></td>
+                <td style="text-align:center;"><button value="{$v['is_nav']}" onclick="status(this,'is_nav','{$v['id']}')"><php>echo ($v['is_nav'])?'是':'否';</php></button></td>
+                <td style="text-align:center;">
+                <button type="button">
+                <a href="{:U('Photo/addphoto',array('id'=>$v['id']))}">编辑/查看</a>
+                </button>
+                <button>
+                <a onclick="if(confirm('你确定要删除吗？')){return true;}else{return false;}" href="{:U('Photo/delete',array('id'=>$v['id']))}">删除</a>
+                </button>
+                </td>
+            </tr>
+           </foreach>
+        </table>
+        </div>
+    </section>    
+</body>
+</html>
+
+<script>
+function status(obj,field,id)
+{
+    $.post("{:U('Photo/status')}",{'val':$(obj).val(),'field':field,'id':id} ,function(res){
+        if(res['res']){
+            $(obj).html(res['msg']);
+            $(obj).val(res['status']);
+        }else{
+            alert('操作失败！');
+        }
+    })
+}
+
+
+</script>

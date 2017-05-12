@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta name="Generator" content="tpshop" />
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="minimal-ui=yes,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>优惠活动-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/activity.css">   
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/mobile_common.js"></script>
+</head>
+<body style="cursor: auto;">
+<div class="tab_nav">
+  <div class="header">
+    <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+    <div class="h-mid">优惠活动</div>
+    <div class="h-right">
+      <aside class="top_bar">
+        <div onclick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<include file="Public/menu"/>
+
+<div id="J_ItemList">
+	<foreach name="prom_list" item="vo">	
+	  <ul class="single_item info" id="more_element_3">
+	  <div class="huodong">
+	   <a href="{:U('Activity/discount_goods_list')}">
+	  	<div class="activity_name"><i></i><strong>[自营商品]{$vo.name}</strong><span>网站自营</span></div>
+	  	<em><span>优惠结束时间：{$vo.end_time|date='Y-m-d',###}</span><img src="{$vo.prom_img}"></em>
+	   </a>
+	  </div>
+	  </ul>
+   </foreach>
+  <div class="more_loader_spinner" style="display: block;"><div class="jiazai"><em></em><span>亲，已经没有东西了哦！</span><em></em></div></div>
+</div>
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="__STATIC__/images/topup.png"></a> 
+<div style="height:50px; line-height:50px; clear:both;"></div>
+<include file="Public/footer"/>
+<include file="Public/footer_nav"/>
+<script>
+</script>
+</body>
+</html>

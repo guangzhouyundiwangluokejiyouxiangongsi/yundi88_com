@@ -1,0 +1,98 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云商会-联系我们</title> 
+
+<!-- ie使用最高版本打开 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/yshanghui.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/animate.min.css">
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/wow.min.js"></script>
+
+<!-- <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true" ></script> -->
+
+</head> 
+
+<body  > 
+
+<!-- 使用动画效果必须加上实例化 -->
+<script type="text/javascript">
+  $(function(){
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+      new WOW().init();
+    };
+  });
+</script>
+
+
+<include file="Article/header" />
+
+ <script type="text/javascript">
+        $(function(){
+          $('.navs>a').bind('mouseover',function(){
+          $('.navs>a').each(function(){
+            $($(this).attr('i')).css('display','none');       
+            $($(this).attr('i')).hide('aa');
+          })
+          $($(this).attr('i')).show('aa');
+
+        });
+});
+    </script>
+
+  </header><!--顶部结束-->
+
+  <main class="ymain">
+  <!-- benner部分 -->
+    <div class="benner">
+      <div class="ayjiaru">
+        <img src="__PUBLIC__/pc/images/Contact.png" class="wow slideInLeft">
+        <img src="__PUBLIC__/pc/images/Contactus.png" class="wow slideInRight"></div>
+      <img src="__PUBLIC__/pc/images/aboutben.png" class="ybenner">   
+    </div>
+    
+    <div class="Contactm">
+    <!-- 地址部分 -->
+      <div class="Contactml">
+          <h2>广州云狄网络科技有限公司</h2>
+          <br>
+          <p>地址：广州市天河区科韵路科韵大厦7层</p>
+          <br>
+          <p>电话：020-81000500</p>
+         <!--  <br>
+          <br>
+          <p class="Contactmla">商务合作：</p>
+          <p>座机：020-81000500</p>
+          <br>
+          <br>
+          <p class="Contactmla">意见反馈：</p>
+          <p>座机：020-81000500</p> -->
+      </div>
+    <!-- 地图部分 -->
+
+
+
+    <div class="Contactmr">
+      <div style="width:800px;height:450px;border:#ccc solid 1px;position:absolute;" id="dituContent"></div>
+    </div>
+   
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+  <script type="text/javascript" src="__PUBLIC__/pc/js/ditu.js"></script>
+    <div class="cl"></div>
+    </div>
+    
+  </main> 
+
+<div class="cl"></div>
+
+<include file="Article/footer" />
+
+</body> 
+</html>

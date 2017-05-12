@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="/Template/pc/yundi/Static/css/bookmark.css">
+<style type="text/css">
+  .flow .cate_attr .nav-tag a{width: 180px;}
+</style>
+<include file="Order/header" />
+
+                <div class="wrap">
+                    <!--菜单-->
+                    <include file="Order/menu" />
+                    <div class="flow">
+                      <div class="themes_title" style="margin-top: 10px">
+                        <h3>我的收藏</h3>
+                      </div>
+                      <div class="ui_tab">
+                        <ul class="ui_tab_nav">
+                          <li class="<if condition="$_GET['type'] eq null">active</if>"><a class="target_no" href="{:U('/Seller/order/goods_collect')}">商品收藏</a></li>
+                          <li class="<if condition="$_GET['type'] neq null">active</if>"><a class="target_no" href="{:U('/Seller/order/goods_collect',array('type'=>2))}">店铺收藏</a></li>
+                        </ul>
+                      </div>
+                      <div class="cate_attr clearfix">
+                        <div class="nav-tag">
+                          <h5 class="filter-label-ab">分类</h5>
+                          <div class="cate_attr_con">
+                            <div class="filter-all-ab"> <a class="selected" target="_self" href="{:U('/Seller/order/goods_collect',array('type'=>2))}"><span>全部</span></a> </div>
+                            <div class="district-tab">
+                              <volist name="store_class" id="sc">
+                              <a target="_self" href="{:U('/Seller/order/goods_collect',array('type'=>2,'sc_id'=>$sc['sc_id']))}"><span>{$sc['sc_name']}</span></a>
+                              </volist>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flow-wrap">
+                        <volist name="store_collect_list" id="scl">
+                        <div class="flow-item first">
+                          <a href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" class="flow-datu" title="L&amp;L">
+                            <img title="L&amp;L" width="150" height="150" alt="" src="{$scl['store_logo']}">
+                          </a>
+                          <div class="flow-content">
+                            <h4 class="flow-title"> <a href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="{$scl['store_name']}"><span>{$scl['store_name']}</span></a>
+                              <span class="guanzhu" onclick="cancelCollect({$scl['log_id']});">取消</span>
+                            </h4>
+                            <p class="flow-logo">
+                              <a href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" style="float:none; display:inline-block;">
+                                <img id="j_logo_5" alt="" width="90" height="45" src="{$scl['store_avatar']}">
+                              </a>
+                            </p>
+                            <!-- <p class="flow-desc"> <span>卖家：</span> -->
+                              <!-- <a href="supplier.php?suppId=5" title="{$scl['store_name']}管理员" target="_blank"></a> -->
+                              <!-- <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$scl['store_qq']}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" class="flow-qq"> -->
+                                <!-- <img src="__PUBLIC__/images/button_old_41.gif" height="16" border="0" alt="QQ"> </a> -->
+                              <!-- <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$scl['store_phone']}&amp;s=2" target="_blank" class="flow-qq"> -->
+                                <!-- <img src="__PUBLIC__/images/T1B7m.XeXuXXaHNz_X-16-16.gif" width="16" height="16" border="0" alt="淘宝旺旺"> -->
+                              <!-- </a> -->
+                            <!-- </p> -->
+                            <p class="flow-desc"> <span>所在地：</span>{$scl['province_name']},{$scl['city_name']},{$scl['district_name']} </p>
+                            <p class="flow-desc"> <a href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="进入店铺，查看所有的商品">共<strong>{$scl['goods_array']['goods_count']}</strong>件宝贝&gt;&gt;</a> </p>
+                          </div>
+                          <div class="flow-score">
+                            <h3>店铺动态评分</h3>
+                            <p>描述相符：<span>{$scl['store_desccredit']}</span></p>
+                            <p>服务态度：<span>{$scl['store_servicecredit']}</span></p>
+                            <p>发货速度：<span>{$scl['store_deliverycredit']}</span></p>
+                          </div>
+                          <div class="flow-main flow-main1">
+                            <div class="picMarquee-left">
+                              <div class="bda">
+                                <div class="picListta">
+                                  <ul>
+                                    <volist name="scl['goods_array']['goods_list']" id="goods">
+                                      <li>
+                                        <a href="{:U('/Seller/order/goodsInfo',array('id'=>$goods['goods_id']))}"
+                                           title="{$goods['goods_name']}" target="_blank" class="img">
+                                          <img src="{$goods['goods_id']|goods_thum_images=112,112}"> <span>￥{$goods['shop_price']}</span>
+                                        </a>
+                                        <a href="{:U('/Seller/order/goodsInfo',array('id'=>$goods['goods_id']))}" title="{$goods['goods_name']}" target="_blank" class="name">{$goods['goods_name']}</a>
+                                      </li>
+                                    </volist>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </volist>
+                    <div class="mui-page">
+                            <div class="mui-page-wrap">
+                                <b class="mui-page-num"> 
+                                 <a href="stores.php?id=0&amp;page=1" class="j_PageChange" style="border-left: 1px solid #E5E5E5;">&lt;</a> <a href="stores.php?id=0&amp;page=1" class="j_PageChange" data-page="1">1</a> <a class="mui-page-next  j_PageChange " data-page="1" href="stores.php?id=0&amp;page=1">&gt;</a> </b> <b class="mui-page-skip">
+                                <form method="get" onsubmit="return btn_page()">
+                                  <input type="hidden" name="id" value="0">
+                                  <input type="text" value="1" size="3" class="mui-page-skipTo j_PageChangeInput" name="page">
+                                  页
+                                  <button class="mui-btn-s mui-page-skipBtn j_PageChangeBtn" type="submit">确定</button>
+                                </form>
+                                </b> 
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </section>
+</div>
+</body>
+<script type="text/javascript">
+    function cancelCollect(log_id){
+      window.location.href="/index.php/Home/User/del_store_collect/log_id/"+log_id;
+    }
+</script>
+</html>

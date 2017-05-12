@@ -1,0 +1,99 @@
+<include file="Public/min-header"/>
+<style type="text/css">
+	select.form-control{display: initial;float: left;}
+</style>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+                <a onclick="get_help(this)" data-url="http://www.tp-shop.cn/Doc/Indexbbc/article/id/1072/developer/user.html" class="btn btn-default" href="javascript:;"><i class="fa fa-question-circle"></i> 帮助</a>                
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 商品规格</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_tongyong" data-toggle="tab">商品规格</a></li>
+                    </ul>
+                    <!--表单数据-->
+                    <form method="post" id="addEditSpecForm">                    
+                        <!--通用信息-->
+                    <div class="tab-content">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">
+                           
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td>规格名称：</td>
+                                    <td>
+                                        <input type="text" value="{$spec.name}" name="name"  class="form-control" style="width:250px;"/>
+                                        <span id="err_name" style="color:#F00; display:none;"></span>                                        
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td>所属分类：</td>
+                                    <td>
+                                        <select name="cat_id1" id="cat_id1" onchange="get_category(this.value,'cat_id2','0');" class="form-control" style="width:250px;">
+	                                        <option value="0">请选择分类</option>                                        
+                                            <foreach name="cat_list" item="v" >                                            
+                                                <option value="{$v[id]}"  <if condition="$v[id] eq $spec[cat_id1]"> selected="selected" </if>>{$v[name]}</option>
+                                            </foreach>											
+                                         </select>
+	                                      <select name="cat_id2" id="cat_id2" onchange="get_category(this.value,'cat_id3','0');"  class="form-control" style="width:250px;">
+	                                        <option value="0">请选择分类</option>
+	                                      </select>
+	                                      <select name="cat_id3" id="cat_id3"  class="form-control" style="width:250px;">
+	                                        <option value="0">请选择分类</option>
+	                                      </select>                                                                                   
+                                    </td>
+                                </tr>  
+                                
+                                <tr style="display:none;">
+                                    <td>能否进行检索：</td>
+                                    <td>
+                                        <input type="radio" value="0" name="search_index" <if condition="$spec[search_index] eq 0">checked="checked"</if>  .>不需要检索
+                                        <input type="radio" value="1" name="search_index" <if condition="($spec[search_index] eq 1) or ($spec[search_index] eq NULL)">checked="checked"</if>  />关键字检索
+                                        <!--<input type="radio" value="2" name="search_index" <if condition="$spec[search_index] eq 2">checked="checked"</if>  />范围检索-->
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td>排序：</td>
+                                    <td>
+                                        <input type="text" value="{$spec.order|default='50'}" name="order"  class="form-control" style="width:250px;"/>
+                                        <span id="err_order" style="color:#F00; display:none;"></span>                                        
+                                    </td>
+                                </tr>                                                           
+                                </tbody>                                
+                                </table>
+                        </div>                           
+                    </div>              
+                    <div class="pull-right">
+                        <input type="hidden" name="id" value="{$spec.id}">
+                        <button class="btn btn-primary" title="" data-toggle="tooltip" type="button" onclick="ajax_submit_form('addEditSpecForm','{:U('Goods/addEditSpec?is_ajax=1')}');" data-original-title="保存"><i class="fa fa-save"></i></button>
+                    </div>
+			    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+</div>
+<script>
+ 
+
+window.onload = function(){ 	
+	<if condition="$spec['cat_id2'] gt 0">
+		 // 商品分类第二个下拉菜单
+		 get_category('{$spec[cat_id1]}','cat_id2','{$spec[cat_id2]}');	
+	</if>
+	<if condition="$spec['cat_id3'] gt 0">
+		// 商品分类第二个下拉菜单
+		 get_category('{$spec[cat_id2]}','cat_id3','{$spec[cat_id3]}');	 
+	</if>   	
+}
+</script>
+</body>
+</html>

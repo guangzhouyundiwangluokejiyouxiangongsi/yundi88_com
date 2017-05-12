@@ -1,0 +1,376 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="zh-cn" http-equiv="content-language">
+<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+<meta http-equiv="Cache-control" content="public" max-age="no-cache" />
+<title>{$tpshop_config['shop_info_store_title']} </title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+ <script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<link href="__PUBLIC__/pc/css/main.css" rel="stylesheet" type="text/css">   
+<script type="text/javascript" src="__PUBLIC__/pc/js/js.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<style type="text/css">.xuanzhong{background-color: #EDEDED}</style>
+
+
+</head>
+
+<body>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/wangzhandaohan.css">
+<div class="warp">
+  <header class="head">
+    <nav class="nav nav2">
+      <ul> 
+          <li><a href="{:U('/user/reg')}" class='nologin' >注册</a><a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+          </li>
+          <span>|</span>
+          <li><a href="{:U('/user/login')}" class='nologin' >登录</a><a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+          <span>|</span>
+          <li><img src="__PUBLIC__/pc/images/index1.jpg" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="{:U('/Cart/cart')}" target="_blank">购物车</a></li><span>|</span>
+          <li><a href="{:U('/User/order_list')}" target="_blank">我的订单</a></li>
+      </ul>
+      <p>您好，欢迎来到云狄网！股票代码：366130</p>
+      <ul>   
+        <li><a href="{:U('/User/info')}" target="_blank">个人中心</a></li><span>|</span>
+          <li><a href="{:U('/user/login')}" target="_blank">免费发布信息</a></li><span>|</span>
+          <li><a href="/index/index_nav" target="_blank">网站导航</a>
+            <div class="navss">
+              <dl>
+                <dd><a href="/goods/goodsList2.html" target="_blank">万千产品</a></dd>
+                <dd><a href="/Info/index.html?nav_id=6" target="_blank">海量信息</a></dd>
+                <dd><a href="/seller/index/index.html?nav=product" target="_blank">产品推广</a></dd>
+                <dd><a href="/seller/index/index.html?nav=article" target="_blank">信息推广</a></dd>
+                <dd><a href="/Info/index.html?nav_id=6" target="_blank">企业信息</a></dd>
+                <dd><a href="/article/promote.html" target="_blank">免费推广</a></dd>
+                <dd><a href="/article/yun_shop" target="_blank">云商会</a></dd>
+                <dd><a href="/index/certification2" target="_blank">商城入驻</a></dd>
+                <dd><a href="/article/detail/article_id/54.html" target="_blank">联系我们</a></dd>
+              <div class="cl"></div>
+              </dl>
+            </div>
+      </li> 
+      </ul>
+
+    </nav>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+       var uname= getCookie('uname');
+          if(uname == ''){
+          $('.islogin').remove();
+          $('.nologin').show();
+        }else{
+          $('.nologin').remove();
+          $('.islogin').show();
+          $('.userinfo').html(decodeURIComponent(uname));
+        }
+    /* 搜索信息 */
+      $("#q").focus(function(){
+       $('.tab-search-box').show();
+    });
+    $("#q").blur(function(){
+       $('.tab-search-box').fadeOut(200);
+    });
+    $("#q_com").focus(function(){
+       $('.tab-search-box').show();
+    });
+    $("#q_com").blur(function(){
+       $('.tab-search-box').fadeOut(200);
+    });
+    /* 搜索选项卡 */
+    $('#tab .tabCon .cur').hide();
+    $('#tab .tabCon .cur').eq(0).show();
+    $('#tab .tabList ul li').click(function(){
+      var q_txt='';
+      var i =$(this).index();
+      
+      $(this).addClass('cur').siblings().removeClass('cur');
+      $('#tab .tabCon .cur').hide();
+      $('#tab .tabCon .cur').eq(i).show();
+      
+        
+      if($('#q').val() != '' || $('#q_com').val() != '' || $('#q_info').val() != '')
+      { 
+        if($('#q').val() != ''){
+          q_txt=$('#q').val();
+        }
+        else if($('#q_com').val() != ''){
+          q_txt=$('#q_com').val();
+        }
+        else{
+          q_txt=$('#q_info').val();
+        }
+
+        $("#tab .tabCon input[ type='text' ] ").val('');
+      }
+      $('#tab .tabCon div').eq(i).find('.ssk').val(q_txt);
+      
+      
+    })
+    var search=function(){
+      if($.trim($('#q').val()) != '') $('#sourch_form').submit();
+    }
+
+  });
+
+  </script>
+  </header>
+  <section class="logo">
+       <a href="/index/index"><img src="__PUBLIC__/pc/images/logo.jpg" width="145" height="43"  alt=""/></a>
+       <p>护航中小型企业</p>
+      </section>
+  <section class="search">
+   <div id="tab">
+      <div class="tabList">
+        <ul>
+            <li class="cur">产品</li>
+              <li >公司</li>
+            <li >信息</li>
+        </ul>
+      </div>
+      
+      <div class="tabCon">
+        <div class="cur">
+           <form name="sourch_form" id="sourch_form" method="post" action="{:U('/Goods/search')}">
+             <input  class="ssk" type="text" data-role="input-search" autocomplete="off" name="q" id="q" value="<?php echo I('q'); ?>" placeholder="搜索产品关键字"  onfocus="getdata(this);" oninput="getdata(this);" />
+             <input type="submit" value="" class="but" onclick="search()" />
+            </form>
+            <!-- 暂时注释
+            <dl>
+               <dd><a href="#" target="_blank" style="color:#008cba">连衣裙</a></dd>
+               <dd><a href="#" target="_blank">卫衣</a></dd>
+               <dd><a href="#" target="_blank">长袖T恤 </a></dd>
+               <dd><a href="#" target="_blank">斜跨包  </a></dd>
+               <dd><a href="#" target="_blank">秋季套装  </a></dd>
+               <dd><a href="#" target="_blank"> 牛仔短裙  </a></dd>
+               <dd><a href="#" target="_blank">打底裤  </a></dd>
+                  </dl> -->
+        </div>
+        <div class="cur">
+             <form id="sourch_form_com" method="get" action="{:U('/index/searchstreet')}">
+              <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="company" id="q_com" value="<?php echo I('company'); ?>" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this);"/>
+               <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
+              </form>
+          </div>
+
+           <div class="cur" >
+             <form id="sourch_form_info" method="get" action="{:U('/Info/search')}">
+              <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="<?php echo I('info'); ?>" placeholder="搜索信息关键字" />
+               <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
+              </form>
+          </div>
+      </div>
+      <ul class="tab-search-box" id="tab-search-box">
+        
+      </ul>
+  </div>
+  </section>
+   <script type="text/javascript">
+
+function getdata(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Goods/ajaxdata" ,{'val': val} ,function(data){
+ 
+    $.each(data, function(k,v){
+
+      str += "<li><a href='/Goods/search/q/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+function getdata2(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Index/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Index/searchstreet/company/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+     var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+  </script>
+  <section class="side">
+    <div class="side1">
+     <dl class="left">
+      <dt><a href="products.html" target="_blank"></a></dt>
+
+
+     <adv limit="1" item="v" pid="1000">
+       <dd><a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="186" height="310" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a></dd>            
+      </adv>
+
+       <adv limit="1" item="v" pid="1001">
+       <dd><a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="186" height="310" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a></dd>            
+      </adv>
+
+       <adv limit="1" item="v" pid="1002">
+       <dd><a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="186" height="310" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a></dd>            
+      </adv>
+
+      
+
+        <dd>
+       <adv limit="1" item="v" pid="1003">
+            <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="136" height="146" src="{$v[ad_code]}" title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
+        </adv>
+            <p></p>
+       <adv limit="1" item="v" pid="1004">
+            <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="136" height="146" src="{$v[ad_code]}" title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
+      </adv>
+            </dd>
+
+
+    <adv limit="1" item="v" pid="1005">
+       <dd><a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="186" height="310" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a></dd>            
+      </adv>
+
+       <adv limit="1" item="v" pid="1006">
+       <dd><a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="186" height="310" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a></dd>            
+      </adv>
+
+       <adv limit="1" item="v" pid="1007">
+       <dd><a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="186" height="310" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a></dd>            
+      </adv>
+
+      
+
+        <dd>
+       <adv limit="1" item="v" pid="1008">
+            <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="136" height="146" src="{$v[ad_code]}" title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
+        </adv>
+            <p></p>
+       <adv limit="1" item="v" pid="1010">
+            <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="136" height="146" src="{$v[ad_code]}" title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
+      </adv>
+            </dd>
+    </dl>
+     <div class="right">
+       <div class="title">资讯</div>
+       <ul>
+       <adv limit="1" item="v" pid="1011">
+         <li >
+            <a href="{$v.ad_link}" title="{$v['ad_name']}"  <if condition="$v['target'] eq 1">target="_blank"</if> >
+            <img src="{$v[ad_code]}" width="360" height="210" title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
+            <a href="{$v.ad_link}"  class="a1" <if condition="$v['target'] eq 1">target="_blank"</if>>{:getSubstr($v['ad_name'],0,15)}</a>
+            <a href="{$v.ad_link}"  class="a2" <if condition="$v['target'] eq 1">target="_blank"</if>>{:getSubstr($v['describe'],0,65)}</a> 
+            <time></time>
+         </li>
+         </adv>
+
+         <adv limit="1" item="v" pid="1012">
+         <li >
+            <a href="{$v.ad_link}" title="{$v['ad_name']}"  <if condition="$v['target'] eq 1">target="_blank"</if> >
+            <img src="{$v[ad_code]}" width="360" height="210" title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
+            <a href="{$v.ad_link}"  class="a1" <if condition="$v['target'] eq 1">target="_blank"</if>>{:getSubstr($v['ad_name'],0,15)}</a>
+            <a href="{$v.ad_link}"  class="a2" <if condition="$v['target'] eq 1">target="_blank"</if>>{:getSubstr($v['describe'],0,65)}</a> 
+            <time></time>
+         </li>
+         </adv>
+       </ul>
+     </div>
+    </div>
+  </section>
+  <style>
+    .btn_1{width:75px;margin-left: 20px}
+    .btn_2{font-size: 15px;}
+    .btn_2 a:hover{color: red}
+  </style>
+  <footer>
+  <div class="btn_2">
+    <ul>
+      <li>
+          <a onclick="this.style.behavior='url(#default#homepage)';this.setHomepage('/')" target="_blank" href="/index/sethome.html">设为首页</a>
+          <a target="_blank" href="/article/detail/article_id/26.html" target="_blank" class="btn_1">关于云狄</a> 
+          <a target="_blank" href="/article/detail/article_id/53.html" class="btn_1" target="_blank">商务合作</a>
+          <a target="_blank" href="/article/detail/article_id/54.html" class="btn_1" target="_blank">联系我们</a>
+          <a href="/index/index_nav" class="btn_1" target="_blank">网站地图</a> 
+          <a target="_blank" href="/Article/experience" class="btn_1" target="_blank">用户体验反馈</a>
+      </li>
+    </ul>
+  </div>
+     {$copyright['value']}<br />
+     {$record_no['value']}
+ </footer>
+</div> 
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+$('#tab .tabCon .ssk').keyup(function(event){ 
+
+  if(event.keyCode == 40){
+    var obj = $('.tab-search-box .xuanzhong');
+    if($(obj).text()){
+      $(obj).removeClass('xuanzhong');
+      $(obj).next().addClass('xuanzhong');
+      var text = $('.tab-search-box .xuanzhong').text();
+      if(!text){
+        $('.tab-search-box li').eq(0).addClass('xuanzhong');
+        var text = $('.tab-search-box .xuanzhong').text();
+
+      }
+    }else{
+
+      $('.tab-search-box li').eq(0).addClass('xuanzhong');
+      var text = $('.tab-search-box .xuanzhong').text();
+
+    }
+  $('input[name=company]').val(text);
+  $('input[name=q]').val(text);
+    
+  }else if(event.keyCode == 38){
+    var l = $('.tab-search-box li').length;
+    var obj = $('.tab-search-box .xuanzhong');
+    if($(obj).text()){
+      $(obj).removeClass('xuanzhong');
+      $(obj).prev().addClass('xuanzhong');
+      var text = $('.tab-search-box .xuanzhong').text();
+      if(!text){
+        
+        $('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+        var text = $('.tab-search-box .xuanzhong').text();
+
+      }
+    }else{
+
+      $('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+      var text = $('.tab-search-box .xuanzhong').text();
+
+    }
+  $('input[name=company]').val(text);
+  $('input[name=q]').val(text);
+
+  }
+}); 
+
+
+</script>

@@ -1,0 +1,93 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content" style="padding:0px 15px;">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+                <a onclick="get_help(this)" data-url="http://www.tp-shop.cn/Doc/Indexbbc/article/id/1064/developer/user.html" class="btn btn-default" href="javascript:;"><i class="fa fa-question-circle"></i> 帮助</a>                
+            </div>
+            <div class="panel panel-default">           
+                <div class="panel-body ">   
+                   	<include file="store_setting_navtabs"/>
+                    <!--表单数据-->
+                    <form method="post" id="handlepost" action="{:U('System/handle')}">                    
+                        <!--通用信息-->
+                    <div class="tab-content" style="padding:20px 0px;">
+                    	<div class="row">
+                    		<div class="col-xs-4"><img src="{$static_path}/style/{$store.store_theme}/images/preview.jpg" id="current_theme_img"></div>
+                    		<div class="col-xs-4">
+                    			<p>店铺模版名称：{$store.store_theme}</p>
+                    			<p>店铺风格名称：{$template[$store[store_theme]][truename]}</p>
+                    			<p>店铺名称：{$store.store_name}</p>
+                    			<p><a href="{:U('/Store/index',array('store_id'=>$store[store_id]))}" target="blank" class="btn btn-default">店铺首页</a></p>
+                    		</div>
+                    	</div>
+                        <div class="callout"><h3>可用主题</h3></div>             	  
+       					<div class="row">
+       						<foreach name="template" item="vo" key="k">
+	       						<div class="col-sm-2 col-md-3">
+	       							<div class="thumbnail">
+		 								<div><a href="javascript:void(0)" onclick="see_theme(this);" data-img="/style/{$k}/screenshot.jpg">
+							          	<img id="themeimg_{$k}" src="{$static_path}/style/{$k}/images/preview.jpg"></a></div>
+		 								<div class="caption">
+		 								  <h3>模版名称：{$vo.truename}</h3>
+		 								  <p>风格名称：{$k}</p>
+		 								  <p>
+		 								  	 <a href="javascript:;" onclick="use_theme('{$k}');" class="btn btn-default"><i class="fa fa-gears"></i> 使用</a>
+		 								  	 <a href="javascript:;" onclick="see_theme(this);" data-img="{$static_path}/style/{$k}/screenshot.jpg" class="btn btn-default"><i class="fa fa-eye-slash"></i> 预览</a>
+		 								  </p>
+		 								</div>
+							        </div>
+	       						</div>
+							</foreach>
+       					</div>
+       				</div></form><!--表单数据-->
+                 </div>            
+            </div>
+        </div>
+    </section>
+</div>
+<input type="hidden" id="themepath" value="{$static_path}">
+<script>
+function adsubmit(){
+	$('#handlepost').submit();
+}
+
+function goset(obj){
+	window.location.href = $(obj).attr('data-url');
+}
+
+
+function use_theme(style){
+	$.ajax({
+		url : "{:U('Store/setting_save')}",
+  		type:'post',
+  		data:{store_theme:style,act:'update',themepath:$('#themepath').val()},
+  		dataType:'json',
+  		success:function(res){
+			if(res.stat=='ok'){
+				layer.msg('设置成功', {icon: 3});
+				window.location.reload();
+			}else{
+				layer.alert(res.msg, {icon: 2});
+			}
+  		}
+  	})
+}
+
+function see_theme(obj){
+	layer.open({
+	  type: 1,
+	  title: "效果预览",
+	  closeBtn: 1,
+	  area: ['1080', '90%'],
+	  skin: 'layui-layer-nobg', //没有背景色
+	  shadeClose: true,
+	  content: "<img src='"+$(obj).attr('data-img')+"'>"
+	});
+}
+</script>
+</body>
+</html>

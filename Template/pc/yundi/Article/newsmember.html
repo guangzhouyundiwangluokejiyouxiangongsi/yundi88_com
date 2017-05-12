@@ -1,0 +1,114 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云商会-商会资讯</title> 
+
+<!-- ie使用最高版本打开 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/yshanghui.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/animate.min.css">
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/wow.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/gundongs.js"></script>
+
+</head> 
+
+<body  > 
+
+<!-- 使用动画效果必须加上实例化 -->
+<script type="text/javascript">
+  $(function(){
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+      new WOW().init();
+    };
+  });
+</script>
+
+
+<include file="Article/header" />
+
+ <script type="text/javascript">
+        $(function(){
+          $('.navs>a').bind('mouseover',function(){
+          $('.navs>a').each(function(){
+            $($(this).attr('i')).css('display','none');       
+            $($(this).attr('i')).hide('aa');
+          })
+          $($(this).attr('i')).show('aa');
+
+        });
+});
+    </script>
+
+  </header><!--顶部结束-->
+
+  <main class="ymain">
+  <!-- benner部分 -->
+    <div class="benner">
+      <div class="ayjiaru">
+        <img src="__PUBLIC__/pc/images/ruzhuhuiyuan1.png" class="wow slideInLeft">
+        <img src="__PUBLIC__/pc/images/ruzhuhuiyuan2.png" class="wow slideInRight"></div>
+      <img src="__PUBLIC__/pc/images/aboutben.png" class="ybenner">   
+    </div>
+    
+    <div class="Contactusb">
+      <p>当前位置：<a href="/article/demeanour">商会资讯</a> > <a href="#">入驻会员</a></p>
+      <div class="newmemberm">
+          <h2>{$store.store_name}简介 </h2>
+      </div>
+
+      <div class="newmember"> 
+          <div class="newmemberl">
+              <img src="{:templogo($store[store_id],190,90)}" alt="">
+          </div>
+
+          <div class="nememberr">
+            <p>{$store.store_profile}</p>
+            <if condition="!$store['store_profile']"><p>该公司暂未添加简介</p></if>
+          <p><font color="#333;">公司地址：</font>
+          <tpshop sql="select name from __REGION__ where id=$store[province_id] limit 1" item="v">
+          {$v['name']}  <!-- 省 -->
+          </tpshop>
+          <tpshop sql="select name from __REGION__ where id=$store[city_id] limit 1" item="v">
+          {$v['name']} <!-- 市 -->
+          </tpshop>
+          <tpshop sql="select name from __REGION__ where id=$store[district] limit 1" item="v">
+          {$v['name']} <!-- 区 -->
+          </tpshop>{$store.store_address}
+          </p>
+          <tpshop sql="select company_website from __PREFIX__store_apply where user_id = $store[user_id]" key="key" item="val">
+          </tpshop>
+          <p><a href="http://{$store.domain}">{$store.domain}</a></p>
+          </div>
+  
+
+      <div class="cl"></div>
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+   
+  </main> 
+
+<div class="cl"></div>
+<include file="Article/footer" />
+
+
+</body> 
+</html>

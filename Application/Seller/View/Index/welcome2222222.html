@@ -1,0 +1,255 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+     <include file="Public/breadcrumb"/>
+     <section class="content">
+		<div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-bell"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">待处理订单</span>
+                  <span class="info-box-number">{$count.handle_order}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">商品数量</span>
+                  <span class="info-box-number">{$count.goods_sum}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12" style="display:none">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">文章数量</span>
+                  <span class="info-box-number">{$count.article}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-cny"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">今日销售总额</span>
+                  <span class="info-box-number"><if condition="$count['total_amount'] gt 0">{$count.total_amount}<else/>0</if></span>
+                </div>
+              </div>
+            </div>
+         </div>
+          <div class="row">
+          	     <div class="col-md-12">
+			       	 <div class="box  box-primary">
+                        <div class="box-body">
+                            <div class="info-box">                 
+           						<div class="row">
+           							<div class="col-md-3">
+           								<div><img alt="" height="80" src="<empty name='store.store_logo'>__PUBLIC__/images/not_adv.jpg<else/>{$store.store_logo}</empty>">
+           									<br/>
+           									<a href="{:U('Store/store_setting')}"><i></i>编辑店铺设置</a>
+           								</div>
+           							</div>
+           							<div class="col-md-3">
+           								<p><b>{$seller.seller_name}</b>(用户名:{$seller.user_name})</p>
+           								<p>管理权限：管理员</p>
+           								<p>店铺名称：<a href="{:U('/Store/index',array('store_id'=>$store[store_id]))}" target="_blank">{$store.store_name}</a></p>
+           							</div>
+           							<div class="col-md-3">
+           							    <p>最后登录：{$seller.last_login_time|date='Y-m-d H:i',###}</p>
+           								<p>店铺等级：默认等级</p>
+           								<p>有限期：<if condition="$store[store_state] eq 0">已关闭<else/>不限制</if></p>
+           							</div>
+           						</div>
+                            </div>
+                        </div>
+                    </div>
+			    </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4">
+              <div class="box box-solid">
+                <div class="box-header with-border  bg-aqua">
+                  <i class="fa fa-text-width"></i>
+                  <h3 class="box-title">待处理</h3>
+                </div>
+                <div class="box-body">
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="{:U('Goods/goodsList',array('goods_state'=>0))}">待审核商品</a></h4>
+			                   <a href="javascript:;">{$count.verify_goods}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">未处理佣金</a></h4>
+			                   <a href="javascript:;">0个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="{:U('Comment/ask_list')}">待回复咨询</a></h4>
+			                   <a href="javascript:;">{$count.consult}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="{:U('Comment/index')}">新增商品评论</a></h4>
+			                   <a href="javascript:;">{$count.comment}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+                </div>
+              </div>
+            </div>            
+            <div class="col-md-4">
+              <div class="box box-solid">
+                <div class="box-header with-border  bg-aqua">
+                  <i class="fa fa-text-width"></i>
+                  <h3 class="box-title">商品{$count.goods_sum}件</h3>
+                </div>
+                <div class="box-body">
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="{:U('Goods/goodsList',array('goods_state'=>1))}">审核通过商品</a></h4>
+			                   <a href="javascript:;">{$count.pass_goods}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">库存警告商品数</a></h4>
+			                   <a href="javascript:;">{$count.warning_goods}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">新品推荐数</a></h4>
+			                   <a href="javascript:;">{$count.new_goods}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">促销商品数</a></h4>
+			                   <a href="javascript:;">{$count.prom_goods}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+	                 <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">已下架商品数</a></h4>
+			                   <a href="javascript:;">{$count.off_sale_goods}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="{:U('Goods/goodsList',array('goods_state'=>2))}">审核未通过商品数</a></h4>
+			                   <a href="javascript:;">{$count.below_goods}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+                </div>
+              </div>
+            </div>           
+            <div class="col-md-4">
+              <div class="box box-solid">
+                <div class="box-header with-border  bg-aqua">
+                  <i class="fa fa-text-width"></i>
+                  <h3 class="box-title">订单{$count.order_sum}笔</h3>
+                </div>
+                <div class="box-body">
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">待发货订单</a></h4>
+			                  <a href="javascript:;">{$count.wait_shipping}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">待支付订单</a></h4>
+			                  <a href="javascript:;">{$count.wait_pay}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">待确认订单</a></h4>
+			                  <a href="javascript:;">{$count.wait_confirm}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">退款申请</a></h4>
+			                   <a href="javascript:;">{$count.refund_pay}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+	                  <div class="row" style="margin-top:20px;">
+	                    <div class="col-xs-6">
+			              <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">部分发货订单</a></h4>
+			                  <a href="javascript:;">{$count.part_shipping}个</a>
+			                </div>
+			              </div>
+	                    </div>
+	                    <div class="col-xs-6">                   
+			               <div class="small-box">
+			                <div class="inner text-center">
+			                  <h4><a href="#">退货申请</a></h4>
+			                   <a href="javascript:;">{$count.refund_goods}个</a>
+			                </div>
+			              </div>
+	              		</div>
+	                  </div>
+                </div>
+              </div>
+            </div>
+            
+         </div>
+          <div class="callout callout-inro">
+            <p> <b></b>版权所有 © 2016-2017 广州云狄网络科技有限公司，并保留所有权利。 </p>
+          </div>
+     </section>
+ </div>
+ </body>
+ </html>

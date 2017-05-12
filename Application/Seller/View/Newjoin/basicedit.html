@@ -1,0 +1,702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我要入驻-初始协议</title>
+<link href="__PUBLIC__/css/qt_style.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/common.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
+<link href="__PUBLIC__/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+<div class="gome-layout-area pb50">
+    	
+        <div class="settled-agreement-table pb50">
+        	<div class="agreement-title"><span>填写公司信息</span></div>
+        	<form action="{:U('Newjoin/basic_info')}"  id="queryForm" method="post" enctype="multipart/form-data">
+            <div class="table-part clearfix">
+            	<div class="table-part-title">公司信息</div>
+                <table cellpadding="0" cellspacing="0" border="0" class="information-table1">
+                    <tbody>
+                    <tr>
+                        <th><em class="em-red">*</em>联系人姓名：
+                        </th><td width="495"><input maxlength="20" type="text" id="contacterName" name="contacts_name" class="input260 fl" value="{$apply.contacts_name}" onblur="checkEmpty(this.value,'contacterName','联系人姓名','');"><span id="contacterNameSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>联系人手机：
+                        </th><td><input maxlength="11" type="text" id="contacterMobile" name="contacts_mobile" class="input260 fl" value="{$apply.contacts_mobile}" onblur="checkEmpty(this.value,'contacterMobile','联系人手机','mobile');"><span id="contacterMobileSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>联系人电子邮箱：
+                        </th><td><input maxlength="32" type="text" id="email" name="contacts_email" class="input260 fl" value="{$apply.contacts_email}" onblur="checkEmpty(this.value,'email','联系人电子邮箱','email');"><span id="emailSpan" style="display:none"></span></td>
+                    </tr>
+                    <!-- 公司信息 -->
+                    <tr>
+                        <th><em class="em-red">*</em>公司名称：</th>
+                        <td><input type="text" maxlength="35" id="corpName" name="company_name" value="{$apply.company_name}" class="input260" err_msg="0" onchange="checkCompany(this)"><span id="corpNameSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                     <th><em class="em-red">*</em>公司性质：</th>
+                        <td>
+                        	<select id="corpType" name="company_type" class="input145">
+                        		<foreach name="company_type" item="v" key="k">
+                        			<option value="{$k}" <if condition="$apply[company_type] eq $k">selected</if>>{$v}</option>
+           						</foreach>
+                        	</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>公司官网地址：</th>
+                        <td><input type="text" maxlength="30" name="company_website" value="{$apply.company_website}" class="input260"></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>公司所在地：</th>
+                        <td>
+                        	<select id="provinces" name="company_province" onchange="get_city(this)" class="input145 mr10">
+								<option value="">请选择</option>		
+								<volist name="province" id="vo">
+                                	<option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_province]">selected</if>>{$vo.name}</option>
+                            	</volist>
+							</select>
+
+							<select onchange="get_area(this)" id="city" name="company_city" class="input145 mr10">
+								<option value="">请选择</option>
+	                        	<volist name="city" id="vo">
+                                     <option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_city]">selected</if>>{$vo.name}</option>
+                                 </volist>
+							</select>
+							<select id="district" name="company_district" class="input145 mr10">
+								<option value="">请选择</option>
+                                <volist name="district" id="vo">
+                                   <option value="{$vo.id}" <if condition="$vo[id] eq $apply[company_district]">selected</if>>{$vo.name}</option>
+                                </volist>
+							</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>公司详细地址：</th>
+                        <td><input type="text" maxlength="35" id="corpAddress" name="company_address" class="input453" value="{$apply.company_address}" onblur="checkEmpty(this.value,'corpAddress','公司详细地址','');"><span id="corpAddressSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>固定电话：</th>
+                        <td><input type="text" maxlength="32" id="contacterPhoneNumber" name="company_telephone" class="input260" value="{$apply.company_telephone}" onblur="checkEmpty(this.value,'contacterPhoneNumber','固定电话','phone');"><span id="contacterPhoneNumberSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>电子邮箱：</th>
+						<td><input type="text" maxlength="32" id="email2" name="company_email" class="input260" value="{$apply.company_email}" onblur="checkEmpty(this.value,'email2','电子邮箱','email2');"><span id="email2Span" style="display:none" class=""></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>传真：</th>
+                        <td><input type="text" maxlength="16" id="fax" name="company_fax" class="input260" value="{$apply.company_fax}" onblur="checkEmpty(this.value,'fax','传真','phone');"><span id="faxSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>邮政编码：</th>
+                        <td><input type="text" maxlength="10" id="zipCode" name="company_zipcode" class="input260" value="{$apply.company_zipcode}" onblur="checkEmpty(this.value,'zipCode','邮政编码','zip');"><span id="zipCodeSpan" style="display:none"></span></td>
+                    </tr>
+                </tbody></table>
+			</div>
+            <div class="table-part clearfix">
+            	<div class="table-part-title bt pt30 j-tabclick"><span>营业执照信息<b class="micon-down"></b></span></div>
+                <table cellpadding="0" cellspacing="0" border="0" class="information-table1 j-information-table">
+                	<tbody>
+                	<tr>
+                        <th><em class="em-red">*</em>一证一码商家：</th>
+                        <td>
+                        	<input style="width: 16px; height: 14px;" type="radio" onclick="tabchange(1)" <if condition="$apply[threeinone] eq 1">checked</if> name="threeinone" value="1">是
+                        	<input style="width: 16px; height: 14px;" type="radio" onclick="tabchange(0)" <if condition="$apply[threeinone] eq 0">checked</if> name="threeinone" value="0">否
+                        </td>
+                    </tr>
+                	<tr>
+                        <th><em class="em-red">*</em>注册资金：</th>
+                        <td><input type="text" maxlength="13" id="regCapital" name="reg_capital" class="input260" value="{$apply.reg_capital}" onblur="checkEmpty(this.value,'regCapital','注册资本','money1');">
+                        <span style="line-height:24px;padding-left:5px;">万元(人民币)</span>
+                        <span id="regCapitalSpan" style="display:none"></span></td>
+                    </tr>
+                   <tr>
+                        <th><em class="em-red">*</em>
+                        	<span id="threeinone"><if condition="$apply[threeinone] eq 0">营业执照注册号:<else/>统一社会信用代码：</if></span>
+                        </th>
+                        <td><input type="text" maxlength="32" id="corpLicenceNumber" name="business_licence_number" class="input260" value="{$apply.business_licence_number}" onblur="checkEmpty(this.value,'corpLicenceNumber','营业执照注册号','corpLicence');"><span id="corpLicenceNumberSpan" style="display:none"></span>
+                        <span id="licence_number_note" style="line-height:24px;padding-left:5px;">请输入18位数字或字母组成的统一社会信用代码</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>法定代表人姓名：</th>
+                        <td><input type="text" maxlength="20" id="legal_person" name="legal_person" class="input260" value="{$apply.legal_person}" onblur="checkEmpty(this.value,'legal_person','法定代表人姓名','');"><span id="legal_personSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>营业执照有效期：</th>
+                        <td>
+                        	<input type="text" id="business_date_start" name="business_date_start" value="{$apply.business_date_start}" class="input-time145 fl">
+                        	<label class="fl label_line ml10 mr10">-</label>
+                        	<input type="text" id="business_date_end" name="business_date_end" value="{$apply.business_date_end}"  class="input-time145 fl">
+                    		<span id="business_date_startSpan" style="display:none" class=""></span>
+                    		<span id="business_date_endSpan" style="display:none" class=""></span>
+                    		<label class="fl label_line ml10 mr10" for="3"><input type="checkbox" hidefocus="ture" name="supplier[business_permanent]" value="" class="inputcheck" id="3" onclick="changeBusinessDate();">长期</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ver-t"><em class="em-red">*</em>营业执照经营范围：</th>
+                        <td><textarea maxlength="100" id="business_scope" name="business_scope" autocomplete="off" class="input370" onblur="checkEmpty(this.value,'business_scope','营业执照经营范围','');">{$apply.business_scope}</textarea><span id="business_scopeSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr class="threeinone" <if condition="$apply[threeinone] eq 1">style="display:none"</if>>
+                        <th><em class="em-red">*</em>组织机构代码：</th>
+                        <td><input type="text" maxlength="32" id="orgnizationCode" name="orgnization_code" class="input260" value="{$apply.orgnization_code}" onblur="checkEmpty(this.value,'orgnizationCode','组织机构代码','');"><span id="orgnizationCodeSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr class="threeinone" <if condition="$apply[threeinone] eq 1">style="display:none"</if>>
+                        <th><em class="em-red">*</em>税务登记号码：</th>
+                        <td><input maxlength="18" type="text" id="attachedTaxNumber" name="attached_tax_number" value="{$apply.attached_tax_number}" class="input260" onblur="checkEmpty(this.value,'attachedTaxNumber','纳税人识别号','');"><span id="attachedTaxNumberSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>纳税人类型：</th>
+                        <td>
+                        	<select id="taxpayer" name="taxpayer" class="input145 mr10">
+                        		<option value="">请选择</option>
+                        		<option value="1" selected>一般纳税人</option>
+                        		<option value="2">小规模纳税人</option>
+                        		<option value="3">非增值税纳税人</option>
+                        	</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>纳税类型税码：</th>
+                        <td>
+                        	<select id="tax_rate" name="tax_rate" class="input145 mr10">
+                        		<option value="">请选择</option>
+                        		<foreach name="rate_list" item="vo" key="k">
+                        			<option value="{$k}" <if condition="$apply[tax_rate] eq $k">selected</if>>{$vo}%</option>
+                        		</foreach>
+                        	</select>
+                        </td>
+                    </tr>
+                    <!-- 店铺信息 -->
+                    <tr>
+                        <th><em class="em-red">*</em>店铺名称：</th>
+                        <td><input type="text" maxlength="40"  id="shopName" name="store_name" value="{$apply.store_name}" class="input260" err_msg="0" onchange="checkStore(this)">
+                        <!-- <span id="shopNameSpan">点击查看店铺命名规则</span> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>店铺登录主账号：</th>
+                        <td><input type="text" maxlength="20" id="seller_name" name="seller_name" autocomplete="off" value="{$apply.seller_name}" class="input260"  err_msg="0" onchange="checkSeller(this)"><span id="mainAccountSpan" class="" style="display: none;"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>店铺主营大类：</th>
+                        <td>
+                            <select id="supplier_ctgy_id" name="sc_id" class="input270 mr10" onchange="javascript:$('#sc_name').val($('#supplier_ctgy_id option:selected').text())">
+                            <option value="">请选择</option>
+                                <foreach name="store_class" item="vo" key="k">
+                                    <option value="{$k}" <if condition="$k eq $apply[sc_id]">selected</if>>{$vo}</option>   
+                                </foreach>
+                            </select>
+                            <input type="hidden" id="sc_name" name="sc_name" value="{$apply.sc_name}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>店铺性质：</th>
+                        <td>
+                            <select id="shopType" name="store_type" value="" class="input200">
+                                <option value="0">请选择</option>
+                                <option value="1">旗舰店</option>
+                                <option value="2">专卖店</option>
+                                <option value="3">专营店</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><em class="em-red">*</em>店铺负责人姓名：</th>
+                        <td><input type="text" maxlength="64" id="contactPersonName" name="store_person_name" value="{$apply.store_person_name}" class="input260" onblur="checkEmpty(this.value,'contactPersonName','店铺负责人姓名','');"><span id="contactPersonNameSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>负责人手机号码：</th>
+                        <td><input type="text" maxlength="11" id="contactPersonPhone" name="store_person_mobile" value="{$apply.store_person_mobile}" class="input260" onblur="checkEmpty(this.value,'contactPersonPhone','手机号码','mobile');"><span id="contactPersonPhoneSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>负责人QQ号码：</th>
+                        <td><input type="text" maxlength="11" id="contactPersonQq" name="store_person_qq" value="{$apply.store_person_qq}" class="input260" onblur="checkEmpty(this.value,'contactPersonQq','qq号码','qq');"><span id="contactPersonQqSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>电子邮箱：</th>
+                        <td><input type="text" maxlength="32" id="shop_email" name="store_person_email" value="{$apply.store_person_email}" class="input260" onblur="checkEmpty(this.value,'shop_email','电子邮箱','shop_email');"><span id="shop_emailSpan" style="display:none"></span></td>
+                    </tr>
+                    <tr>
+                        <th><em class="em-red">*</em>店铺详细地址：</th>
+                        <td><input type="text" maxlength="100" id="storeAddress" name="store_address" class="input453" value="{$apply.store_address}" onblur="checkEmpty(this.value,'storeAddress','店铺详细地址','');"><span id="storeAddressSpan" style="display:none"></span></td>
+                    </tr>
+
+                </tbody></table>
+            </div>
+            <!-- 最后一步 -->
+            <div class="table-part pb50 clearfix">
+                <div class="table-part-title">基本资质</div>
+                <div class="update-part clearfix width985">
+                    <div class="update-til width985">
+                        <p class="fl">企业营业执照副本复印件（需加盖红章）</p>
+                        <a href="http://www.tp-shop.cn/Public/images/not_adv.jpg" target="_blank" class="blue fl mr10">查看范本</a>
+                        <div class="update-btn width-170 fl"><input type="file" name="business_licence_cert" id="file_upload_0" data-val="{$apply.business_licence_cert}"/></div>
+                    </div>
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                </div>
+                <div class="update-part width985">
+                    <div class="update-til width985">
+                        <p class="fl">税务登记证复印件（国税、地税）（需加盖红章）</p>
+                        <a href="http://www.tp-shop.cn/Public/images/not_adv.jpg" target="_blank" class="blue fl mr10">查看范本</a>
+                        <div class="update-btn width-170 fl"><input type="file" name="taxpayer_cert" id="file_upload_1" data-val="{$apply.taxpayer_cert}"/></div>
+                    </div>
+                    
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                    
+                </div>
+                <div class="update-part width985">
+                    <div class="update-til width985">
+                        <p class="fl">织机构代码证复印件（需加盖红章）</p>
+                        <a href="http://www.tp-shop.cn/Public/images/not_adv.jpg" target="_blank" class="blue fl mr10">查看范本</a>
+                        <div class="update-btn width-170 fl"><input type="file" name="orgnization_cert" id="file_upload_2" data-val="{$apply.orgnization_cert}"/></div>
+                    </div>
+                    
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                    
+                </div>
+                <div class="update-part width985">
+                    <div class="update-til width985">
+                        <p class="fl">法人身份证正反面复印件或护照（需加盖红章）</p>
+                        <a href="http://www.tp-shop.cn/Public/images/not_adv.jpg" target="_blank" class="blue fl mr10">查看范本</a><p class="fl">身份证/护照号码：</p>
+                        <input type="text" maxlength="18" name="legal_identity" value="{$apply.legal_identity}" class="input145 fl mr10" />
+                        <div class="update-btn width-170 fl"><input type="file" name="legal_identity_cert" id="file_upload_4" data-val="{$apply.legal_identity_cert}"/></div>
+                    </div>
+                    
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                    
+                </div>
+                <div class="update-part width985">
+                    <div class="update-til width985">
+                        <p class="fl">店铺负责人身份证正反面复印件（需加盖红章）</p>
+                        <a href="http://www.tp-shop.cn/Public/images/not_adv.jpg" target="_blank" class="blue fl mr10 ">查看范本</a><p class="fl">身份证号码：</p>
+                        <input type="text" maxlength="18" id="store_person_identity" name="store_person_identity" value="{$apply.store_person_identity}" class="input145 fl mr10" />
+                        <div class="update-btn width-170 fl"><input type="file" name="store_person_cert" id="file_upload_5" data-val="{$apply.store_person_cert}"/></div>
+                    </div>
+                    
+                        <ul class="update-con ml30 mt4 clearfix">
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+            
+            </form>
+            <a href="javascript:nextStep();" class="gome-btn-red">提交信息</a>
+            <if condition="$apply['apply_state'] eq 2">
+                 <div class="tips">
+                    <p><img src="__STATIC__/images/icon01.gif">{$apply.review_msg}</p>
+                </div>
+            </if>
+           
+           
+            <div class="gome-btn pt30">
+                <!-- <a href="javascript:preStep();" class="gome-btn-gray">上一步</a> -->
+                <!-- <a href="javascript:nextStep();" class="gome-btn-red">提交信息</a> -->
+                
+            </div>
+        </div>
+    </div>
+<input type="hidden" id="mobileRegex" value="^(13[0-9]{9})|(14[57][0-9]{8})|(15[012356789][0-9]{8})|(170[0-9]{8})|(18[0-9]{9})$"/>
+
+<script>
+function get_province(){
+    var url = '/index.php?m=Home&c=Api&a=getRegion&level=1&parent_id=0';
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+            v = '<option value="0">选择省份</option>'+ v;          
+            $('#province').empty().html(v);
+        }
+    });
+}
+
+function preStep(){
+	window.location.href = "{:U('Newjoin/contact')}";
+}
+//$.datetimepicker.setLocale('ch');//语言选择中文
+
+$('#business_date_start,#business_date_end').datetimepicker({         
+    format:"Y-m-d",      //格式化日期
+	timepicker:false,
+});
+
+$(function(){
+	if ($("#city").val() == null || $("#city").val() == ""){
+		get_province();
+	}
+
+	var v = document.getElementById("3");
+	if (v.value=="Y") {
+		v.checked==true;
+   		document.getElementById("business_date_start").value="";
+   		document.getElementById("business_date_start").realvalue="";
+   		document.getElementById("business_date_start").disabled = true;
+   		document.getElementById("business_date_end").value="";
+   		document.getElementById("business_date_end").realvalue="";
+   		document.getElementById("business_date_end").disabled = true;
+   	} else {
+   		v.checked==false;
+   		document.getElementById("business_date_start").disabled = false;
+   		document.getElementById("business_date_end").disabled = false;
+   	}
+});
+
+function tabchange(v){
+	if(v==1){
+		$('.threeinone').hide();
+		$('#threeinone').html(' 统一社会信用代码：');
+		$('#licence_number_note').html('请输入18位数字或字母组成的统一社会信用代码');
+	}else{
+		$('.threeinone').show();
+		$('#threeinone').html('营业执照注册号：');
+		$('#licence_number_note').html('请输入数字组成的营业执照号，长度为不超过20个字符');
+	}
+}
+/**
+* 检测非空
+*/
+var ret = 0;
+function checkEmpty(value, id, msg, type) {
+	var _email = /^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	var _phone= /^((\+?[0-9]{2,4}\-[0-9]{3,4}\-)|([0-9]{3,4}\-))?([0-9]{7,8})(\-[0-9]+)?$/;
+	var _zip= /^[0-9][0-9]{5}$/;
+	var _mobile = new RegExp(document.getElementById("mobileRegex").value);
+	var _positiveInteger = /^[0-9]*[1-9][0-9]*$/;
+	var _money = /^[1-9]{1}\d*(\.\d{1,2})?$/;
+	var _money1 = /^(?!0)\d{1,6}$|^(?!0)\d{1,6}[.]\d{1,6}$|^0[.]\d{1,6}$/;
+	if(value == "" ||  ($.trim(value)).length == 0){
+		var v = document.getElementById(id+"Span");
+		v.innerHTML = "请填写" + msg;
+		v.className="warning-text1";
+		v.style.display="block";
+		//输入框样式添加warning
+		$("#"+id).addClass("warning");
+	}  else {
+		if ((type == "email" && !(_email.test(value))) || (type == "phone" && !(_phone.test(value))) || (type == "mobile" && !(_mobile.test(value))) || (type == "zip" && !(_zip.test(value))) || (type == "positiveInteger" && !(_positiveInteger.test(value))) || (type == "money" && !(_money.test(value)))  || (type == "money1" && (!(value > 0) || !(_money1.test(value))))) {
+			var v = document.getElementById(id+"Span");
+			if (type == "positiveInteger") {
+				msg = msg + "(正整数)";
+			} else if (type == "money") {
+				msg = msg + "(金额)";
+			} else if (type == "money1") {
+				msg = msg + "(6位整数6位小数的金额)";
+			}
+			v.innerHTML = "格式错误，请正确填写" + msg;
+			v.className="warning-text2";
+			v.style.display="block";
+			$("#"+id).addClass("warning");
+		} else {
+			document.getElementById(id+"Span").className="";
+			document.getElementById(id+"Span").innerHTML="";
+			document.getElementById(id+"Span").style.display="none";
+			$("#"+id).removeClass("warning");
+			ret = 1;
+		}
+	}
+	return ret;
+}
+
+function changeBusinessDate(){
+	var v = document.getElementById("3");
+	if (v.checked==true) {
+		document.getElementById("3").value="Y";
+		document.getElementById("business_date_start").value="";
+		document.getElementById("business_date_start").realvalue="";
+		document.getElementById("business_date_start").disabled = true;
+		document.getElementById("business_date_end").value="";
+		document.getElementById("business_date_end").realvalue="";
+		document.getElementById("business_date_end").disabled = true;
+	} else {
+		document.getElementById("3").value="N";
+		document.getElementById("business_date_start").disabled = false;
+		document.getElementById("business_date_end").disabled = false;
+	}
+}
+
+/**
+* 下一步
+*/
+function nextStep() {
+	// 判断所有的checkSpan都是隐藏的
+
+	if ($("#corpName").attr('err_msg') == 1) {
+		alert("公司名称，填写有误");
+		$("#corpName").focus();
+		return;
+	}
+	if (checkEmpty($("#corpAddress").val(),'corpAddress','公司详细地址','') != 1) {
+		alert("公司详细地址，填写有误");
+		$("#corpAddress").focus();
+		return;
+	}
+	if (checkEmpty($("#contacterPhoneNumber").val(),'contacterPhoneNumber','固定电话','phone') != 1) {
+		alert("固定电话，填写有误");
+		$("#contacterPhoneNumber").focus();
+		return;
+	}
+	if (checkEmpty($("#email").val(),'email','电子邮箱','email') != 1) {
+		alert("电子邮箱，填写有误");
+		$("#email").focus();
+		return;
+	}
+	if (checkEmpty($("#fax").val(),'fax','传真','phone') != 1) {
+		alert("传真，填写有误");
+		$("#fax").focus();
+		return;
+	}
+	if (checkEmpty($("#zipCode").val(),'zipCode','邮政编码','zip') != 1) {
+		alert("邮政编码，填写有误");
+		$("#zipCode").focus();
+		return;
+	}
+	
+	if($("input[type='radio']:checked").val()==0){
+		if (checkEmpty($("#orgnizationCode").val(),'orgnizationCode','组织机构代码','') != 1) {
+			alert("组织机构代码，填写有误");
+			$("#orgnizationCode").focus();
+			return;
+		}
+		if (checkEmpty($("#attachedTaxNumber").val(),'attachedTaxNumber','纳税人识别号','') != 1) {
+			alert("纳税人识别号，填写有误");
+			$("#attachedTaxNumber").focus();
+			return;
+		}
+	}
+
+	if (checkEmpty($("#regCapital").val(),'regCapital','注册资本','money1') != 1) {
+		alert("注册资本，填写有误");
+		$("#regCapital").focus();
+		return;
+	}
+	if (checkEmpty($("#corpLicenceNumber").val(),'corpLicenceNumber','营业执照注册号','corpLicence') != 1) {
+		alert("营业执照注册号，填写有误");
+		$("#corpLicenceNumber").focus();
+		return;
+	}
+	if (checkEmpty($("#legal_person").val(),'legal_person','法定代表人姓名','') != 1) {
+		alert("法定代表人姓名，填写有误");
+		$("#legal_person").focus();
+		return;
+	}
+	if (checkEmpty($("#business_scope").val(),'business_scope','营业执照经营范围','') != 1) {
+		alert("营业执照经营范围，填写有误");
+		$("#busine_scope").focus();
+		return;
+	}
+    if($('#store_person_identity').val().length != 18){
+        alert("请填写正确的身份证号");
+        $("#store_person_identity").focus();
+        return;
+    }
+    var flag = true
+    $('input[type="file"]').each(function(i,o){
+        if($(o).val() == '' && $(o).attr('data-val') == ''){
+            flag = false;
+        }
+    });
+    if(flag == false){
+        alert("请上传必要证件");
+        return;
+    }
+    if (checkEmpty($("#contacterName").val(),'contacterName','联系人姓名','') != 1) {
+        alert("联系人姓名，填写有误");
+        $("#contacterName").focus();
+        return;
+    }
+    if (checkEmpty($("#contacterMobile").val(),'contacterMobile','联系人手机','mobile') != 1) {
+        alert("联系人手机，填写有误");
+        $("#contacterMobile").focus();
+        return;
+    }
+    if (checkEmpty($("#email").val(),'email','联系人电子邮箱','email') != 1) {
+        alert("联系人电子邮箱，填写有误");
+        $("#email").focus();
+        return;
+    }
+
+	// 判断营业执照有效期
+	var v = document.getElementById("3");
+	if (v.checked == true) {
+		document.getElementById("3").value="Y";
+	}
+	if (v.checked == false) {
+		document.getElementById("3").value="N";
+		var business_date_start = document.getElementById("business_date_start");
+		if ((business_date_start.value == undefined || business_date_start.value == "") && business_date_start.realvalue != undefined && business_date_start.realvalue != "") {
+			business_date_start.value = business_date_start.realvalue;
+		}
+		var business_date_end = document.getElementById("business_date_end");
+		if ((business_date_end.value == undefined || business_date_end.value == "") && business_date_end.realvalue != undefined && business_date_end.realvalue != "") {
+			business_date_end.value = business_date_end.realvalue;
+		}
+		if(business_date_start.value == undefined || business_date_start.value == "" || business_date_end.value == undefined || business_date_end.value == ""){
+			alert("营业执照有效期，填写有误");
+			return;
+		} else if (business_date_start.value > business_date_end.value) {
+			alert("营业执照有效期开始日期不能晚于结束日期，填写有误");
+			return;
+		}
+	}
+	// 检查下拉框
+	if ($("#corpType").val()=="") {
+		alert("请选择 公司性质");
+        $("#corpType").focus();
+		return;
+	}
+
+	if ($("#tax_rate").val()=="") {
+		alert("请选择 纳税类型税码");
+        $("#tax_rate").focus();
+		return;
+	}
+	if ($("#provinces").val()=="") {
+		alert("请选择 公司所在地省份");
+		$("#provinces").focus();
+		return;
+	}
+	if ($("#city").val()=="") {
+		alert("请选择 公司所在地城市");
+		$("#city").focus();
+		return;
+	}
+    if ($("#provinces").val()=="") {
+        alert("请选择 店铺所在地省份");
+        $("#provinces").focus();
+        return;
+    }
+    if ($("#city").val()=="") {
+        alert("请选择店铺所在地城市");
+        $("#city").focus();
+        return;
+    }
+    if($("#storeAddress").val() == ''){
+        alert("请填写店铺详细地址");
+        $("#storeAddress").focus();
+        return;
+    }
+    if($("#seller_name").val() == ''){
+        alert("请填写店铺登陆账号");
+        $("#seller_name").focus();
+        return;
+    }
+    if($('#store_person_identity').val().length != 18){
+        alert("请填写正确的身份证号");
+        $("#store_person_identity").focus();
+        return;
+    }
+    if (checkEmpty($("#contactPersonName").val(),'contactPersonName','店铺负责人姓名','') != 1) {
+        alert("店铺负责人姓名，填写有误");
+        $("#contactPersonName").focus();
+        return;
+    }
+    if (checkEmpty($("#contactPersonPhone").val(),'contactPersonPhone','手机号码','mobile') != 1) {
+        alert("手机号码，填写有误");
+        $("#contactPersonPhone").focus();
+        return;
+    }
+    if (checkEmpty($("#contactPersonQq").val(),'contactPersonQq','qq','qq') != 1) {
+        alert("店铺负责人QQ");
+        $("#contactPersonQq").focus();
+        return;
+    }
+    if (checkEmpty($("#shop_email").val(),'email','电子邮箱','email') != 1) {
+        alert("电子邮箱，填写有误");
+        $("#shop_email").focus();
+        return;
+    }
+    if ($("#shopType").val()=="") {
+        alert("请选择 店铺性质");
+        $("#shopType").focus();
+        return;
+    }
+	document.getElementById('queryForm').submit();
+}
+
+/**
+ * 获取城市
+ * @param t  省份select对象
+ */
+function get_city(t){
+    var parent_id = $(t).val();
+    if(!parent_id > 0){
+        return;
+    }
+    $('#twon').empty().css('display','none');
+    var url = '/index.php?m=Home&c=Api&a=getRegion&level=2&parent_id='+ parent_id;
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+            v = '<option value="0">选择城市</option>'+ v;          
+            $('#city').empty().html(v);
+        }
+    });
+}
+
+function get_area(t){
+    var parent_id = $(t).val();
+    if(!parent_id > 0){
+        return;
+    }
+    $('#twon').empty().css('display','none');
+    var url = '/index.php?m=Home&c=Api&a=getRegion&level=2&parent_id='+ parent_id;
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+            v = '<option value="0">选择城市</option>'+ v;          
+            $('#district').empty().html(v);
+        }
+    });
+}
+
+function checkCompany(obj){
+    var url = "{:U('Newjoin/check_company')}";
+    $.ajax({
+        type : "POST",
+        url  : url,
+        data :{'company_name':$(obj).val()},
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return false;
+        },
+        success: function(res) {
+			if(res == 'success'){
+				$(obj).attr('err_msg',0);
+			}else{
+				$(obj).attr('err_msg',1);
+			}
+        }
+    });
+}
+</script>
+</body>
+</html>

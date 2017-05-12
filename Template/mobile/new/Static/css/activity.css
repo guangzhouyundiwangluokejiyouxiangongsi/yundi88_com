@@ -1,0 +1,111 @@
+
+/*=========index-top========*/
+.huodong{ width:100%; overflow:hidden; position:relative;}
+.huodong_mid{ width:93%; float:right;border-left:2px solid #CCC; overflow:hidden;padding-bottom:50px;}
+.h_right{ width:90%; overflow:hidden; float:right;font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif; margin-right:8px;}
+
+.h_right p{ font-size:16px; line-height:30px; color:#333; width:100%; height:30px; margin:0px; margin-bottom:10px;}
+.h_right p img{ display:inline-block; height:30px;}
+
+.img{ width:100%; overflow:hidden; position:relative;}
+.img img{width:100% !important; height:auto !important;}
+.img span{ display:block; position:absolute; width:100%;background-color:rgba(28,27,26,0.8); bottom:0px; font-size:12px; line-height:25px; color:#ccc; text-indent:10px;}
+
+.h_right ul{ width:100%; overflow:hidden; margin-top:10px;}
+.h_right ul li{ width:100%; height:20px; font-size:12px; line-height:20px; color:#666}
+.h_right ul li strong{ display:inline-block; font-size:13px; line-height:20px; color:#333; }
+.h_right ul li a{font-size:13px; line-height:20px; color:#dc411b;text-decoration: none;}
+
+.h_right .xin{ width:100%; overflow:hidden; margin-top:10px;}
+.h_right .xin h4{ font-size:14px; line-height:20px; color:#333; margin-bottom:5px;}
+.h_right .xin h4 em{ color:#dc411b}
+.h_right .xin dl{ height:80px; margin-top:10px;}
+.h_right .xin dl dt{ width:30%;float:left;}
+.h_right .xin dl dt img{margin:auto; display:block; height:80px; float:left}
+.h_right .xin dl dd{ width:68%;float:left;  height:87px;}
+.h_right .xin dl dd .hui_name{ display: -webkit-box;  
+  -webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+ overflow:hidden; }
+ .hui1_name{ overflow:hidden;
+text-overflow:ellipsis;
+-o-text-overflow:ellipsis;
+white-space:nowrap;
+width:100%;height:20px; line-height:20px; overflow:hidden;
+ overflow:hidden;}
+.h_right .xin dl dd .f6{   color:#333;  padding-left:5px;  height:50px; line-height:25px; display:block;}
+.h_right .xin dl dd strong{ color:#dc411b; line-height:40px; font-size:14px;padding-left:5px; font-weight:normal;}
+
+.fanwei{ width:100%; overflow:hidden;  line-height:20px;}
+.fanwei dt{ float:left; font-size:13px; color:#333;font-weight:bold; width:66px;}
+.fanwei dd{ float:left; font-size:12px; color:#666;  width:68%}
+.fanwei dd a{ display:block; width:100%;font-size:12px; color:#0f7fe8; overflow:hidden;}
+
+.fanwei{width:100%; overflow:hidden; padding-bottom:10px;}
+.fanwei dt{width:100%; height:30px; font-size:16px; line-height:30px; color:#333}
+.fanwei dt i{display:block; width:2px; height:20px; background:#E71F19; float:left}
+.fanwei dt span{ display:block;font-size:16px; line-height:20px; color:#333; text-indent:10px; float:left}
+.fanwei dd span{display:block; width:25%; overflow:hidden; float:left; margin-bottom:5px;}
+.fanwei dd span .fenwei_goods{ display:block; width:100%; overflow:hidden}
+.fenwei_goods img{ display:block; width:90%; margin:auto; border:1px solid #eeeeee}
+.fenwei_name{display:block; float:left; padding-left:10px; padding-right:10px; height:25px; font-size:14px; color:#666; line-height:25px;border-radius:4px;}
+
+
+.dengji{ width:100%; overflow:hidden;}
+.dengji dt{ float:left; font-size:14px; line-height:20px; color:#333;text-height:20px; font-weight:bold}
+.dengji dd{ float:left; font-size:12px; color:#666; line-height:20px; }
+.dengji dd a{ display:inline-block;font-size:12px; color:#0f7fe8; white-space: nowrap;}
+.dengji dd span{ display:inline-block; padding-right:5px;color:#eb1913; line-height:20px;}
+
+.dengji{ width:100%; overflow:hidden; padding-bottom:10px;}
+.dengji dt{ width:100%; height:30px; font-size:16px; line-height:30px; color:#333} 
+.dengji dt i{display:block; width:2px; height:20px; background:#E71F19; float:left}
+.dengji dt span{ display:block;font-size:16px; line-height:20px; color:#333; text-indent:10px; float:left}
+.dengji dd span{ display:block; float:left; padding-left:10px; padding-right:10px; height:25px; font-size:14px; color:#666; line-height:25px;border-radius:4px;}
+
+.h_left{ position:absolute; width:30px; height:30px;-webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; margin-left:-20px; background:url(../images/hui1.png); border:2px solid #FFF; overflow:hidden; text-align:center; font-size:20px; line-height:30px; color:#fff}
+
+/*=========index-top========*/
+.huodong{ width:100%; overflow:hidden;margin-bottom:10px;}
+.huodong .activity_name{ width:100%; height:40px; position:relative}
+.huodong .activity_name i{ width:3px; height:20px; margin-top:10px; background:#E71F19; display:block; float:left}
+.huodong .activity_name strong { display:block; float:left; margin-left:8px; font-weight:normal;font-size:16px; line-height:40px; color:#333}
+.huodong .activity_name span{ display:block; position:absolute; right:-10px; padding-left:10px; padding-right:20px;height:20px; font-size:12px; color:#FFF; line-height:20px; background:#E71F19; bottom:10px; border-radius:20px; text-align:center}
+.huodong .activity_name span a{ font-size:12px; color:#FFF; line-height:20px; }
+.huodong em{ display:block; width:100%; overflow:hidden; margin:auto; position:relative}
+.huodong em i{ display:block; overflow:hidden; right:0; top:0px; position:absolute; width:20%;}
+.huodong em i img{ display:block; width:100%; height:auto; }
+.huodong em span{ display:block; height:20px; background:#000; font-size:12px; line-height:20px; color:#FFF; left:0; bottom:10px; position:absolute; padding-left:10px; padding-right:10px;}
+.huodong em img{ width:100%; height:100%; padding:0px;}
+/*购物车、商品属性选择弹出框样式start*/
+.f_block{width:100%; overflow:hidden; background:#FFF}
+.f_mask {background-color: #000;opacity: 0.4;height: 100%; width: 100%;position: absolute;top: 0;left: 0;z-index: 111;display: none;}
+#choose_attr{position:fixed; bottom:0; left:0; height:0px; z-index:99999999; }
+
+.activ{ width:95%; overflow:hidden; margin:auto;}
+.top_title{ width:100%; overflow:hidden; overflow:hidden; background:#fff; padding-top:15px; padding-bottom:10px; border-bottom:1px solid #ccc}
+.top_title dl{ width:100%; overflow:hidden}
+.top_title dl dt{ width:80%; overflow:hidden; float:left}
+.top_title dl dt h2{ width:100%; height:20px;}
+.top_title dl dt h2 i{ display:block; width:2px; height:20px; background:#E71F19; float:left}
+.top_title dl dt h2 span{ display:block;font-size:16px; line-height:20px; color:#333; text-indent:10px; float:left}
+.top_title dl dt p{ width:100%; font-size:12px; line-height:20px; color:#999; text-indent:12px;} 
+.top_title dl dd{ width:20%; overflow:hidden; float:left}
+.c_close_attr {background: url(../images/flow/c_cancel.png) center no-repeat; background-size: 16px 16px; width:30px;height:40px;float:right;margin: 0; top:0; right:10px; }
+
+.activ ul{ width:100%; overflow:hidden; margin-top:10px; padding-bottom:10px;}
+.activ ul li{ width:100%; overflow:hidden;font-size:14px; color:#333; line-height:180%;}
+.activ ul li i{display:block; width:2px; height:20px; background:#E71F19; float:left}
+.activ ul li span{ display:block;font-size:16px; line-height:20px; color:#333; text-indent:10px; float:left}
+
+.xin{ width:100%; overflow:hidden; padding-bottom:10px;}
+.xin h4{ width:100%; height:20px; font-size:14px; line-height:20px; color:#333; font-weight:normal; margin-bottom:10px;}
+.xin h4 i{display:block; width:2px; height:20px; background:#E71F19; float:left}
+.xin h4 span{ display:block;font-size:16px; line-height:20px; color:#333; text-indent:10px; float:left}
+
+.xin dl{ width:25%; overflow:hidden; float:left; position:relative; margin-bottom:5px;}
+.xin dl dt{ width:100%; overflow:hidden; margin:auto}
+.xin dl dt img{ display:block; width:90%; height:auto; margin:auto; border:1px solid #eeeeee}
+.xin dl dd{ position:absolute; top:0; left:5%; height:18px; font-size:12px; line-height:18px; color:#FFF; padding-left:5px; padding-right:5px; background:#E71F19}
+
+/*购物车、商品属性选择弹出框样式 end*/

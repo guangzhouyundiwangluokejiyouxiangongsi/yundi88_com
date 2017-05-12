@@ -1,0 +1,39 @@
+.breadcrumb>li a:hover{text-decoration: none;}
+.table-bordered {font-family: Microsoft YaHei;}
+.table-bordered>tbody>tr>td:first-child{width: 4%}
+.table-bordered>tbody>tr>td{border: none;width: 24%;}
+.table-bordered>thead>tr>td:first-child{width: 4%}
+.table-bordered>thead>tr>td{border: none;font-weight: bold;width: 24%;}
+.table-bordered>tbody>tr{border-top:1px solid #ddd;}
+.table-bordered .red{color: red;}
+.table-bordered .green{color: green;}
+.panel-search {padding: 40px 0;text-align: center;}
+.panel-search>div>div{display: inline-block;}
+.panel-search >div> div:first-child{line-height: 40px;font-size: 16px;}
+.panel-search >div> div:nth-child(2){width: 40%;margin: 0 20px;}
+.panel-search >div> div:nth-child(2)>input{width:70%;border: 1px solid #3c8dbc;height:40px;padding: 0 18px;font-size: 16px; }
+.panel-search >div> div:nth-child(2)>select{width:18%;border: 1px solid #3c8dbc;height:40px;padding: 0 18px;font-size: 16px; }
+.panel-search >div> div:nth-child(3)>button{font-size: 16px;text-decoration:none ;color: #ffffff;display: block;width: 100px;text-align: center;}
+.panel-search .check{margin-top:20px;margin-left: 28%;}
+.panel-search .check label{margin-right: 10px;}
+
+.panel-body-f{font-family: Microsoft YaHei;display: none;}
+.panel-body-s{font-family: Microsoft YaHei;display: none;}
+.panel-body-s .panel-search{text-align: left;margin-left: 25%;}
+.panel-body-s .tip{font-size: 16px;margin-bottom: 20px;}
+.panel-body-s .panel-search{padding: 100px 0 200px;}
+
+.panel-heading .panel-title a{cursor: pointer;text-decoration:none; display: inline-block;line-height: 36px;width: 110px;text-align: center;}
+.panel-heading {padding: 0;}
+.panel-heading .on{background: #367fa9;color: #ffffff;}
+
+
+
+
+
+
+
+
+
+
+

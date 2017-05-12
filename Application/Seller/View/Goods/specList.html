@@ -1,0 +1,134 @@
+<include file="Public/min-header"/>
+<style type="text/css">
+	#spec_item_table .table-bordered tr td input{display:initial;}
+</style>
+<div class="wrapper"> 
+  <include file="Public/breadcrumb"/>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i> 商品规格</h3>
+        </div>
+        <form action="{:U('Goods/batchAddSpecItem')}" id="search-form2" class="navbar-form form-inline" method="post" >        
+        <div class="panel-body">
+          <div class="navbar navbar-default">
+               <div class="form-group"> 
+                  <select name="cat_id1" id="cat_id1" onchange="get_category(this.value,'cat_id2','0');"  class="form-control">
+                    <option value="">所有分类</option>
+                        <foreach name="cat_list" item="v" key="k" >
+                           <option value="{$v['id']}">{$v['name']}</option>
+			            </foreach>
+                   </select> 
+                  <select name="cat_id2" id="cat_id2" onchange="get_category(this.value,'cat_id3','0');" class="form-control" style="width:250px;">
+                    <option value="0">请选择商品分类</option>
+                  </select>
+                  <select name="cat_id3" id="cat_id3" class="form-control" style="width:250px;">
+                    <option value="0">请选择商品分类</option>
+                  </select>	                     
+ 				</div>
+                <button type="button" id="button-filter2" class="btn btn-primary pull-right">
+                 <i class="fa fa-plus"></i> 添加规格
+                </button>
+          </div>
+          <div id="ajax_return"></div>
+          </form>
+          <p class="text-warning">
+          需要平台在对应的分类下添加绑定了规格名, 卖家这里才可以添加规格值.
+          <a onclick="get_help(this)" id="get_help" data-url="http://www.tp-shop.cn/Doc/Indexbbc/article/id/1072/developer/user.html" href="javascript:;"><i class="fa fa-question-circle"></i>查看使用说明</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+  <!-- /.content --> 
+</div>
+<!-- /.content-wrapper --> 
+<script>
+    $(document).ready(function(){		
+	 
+			 
+    });
+
+/**
+* ajax 请求加载下面列表
+*/
+function ajax_get_data(spec_id){
+		 $.ajax({
+                type : "GET",
+                url:"/index.php?m=Seller&c=goods&a=ajaxSpecList&cat_id3="+$("#cat_id3").val()+"&spec_id="+spec_id,//+tab,                 
+                success: function(data){
+                    $("#ajax_return").html('');
+                    $("#ajax_return").append(data);
+                }
+            });	
+} 		 	
+	 
+// 商品类型切换时 ajax 调用  返回不同的属性输入框
+$("#cat_id3").change(function(){
+	ajax_get_data(0);
+});
+/**
+* 添加一个规格项
+*/ 
+$(document).on("click","#button-filter2",function(){
+
+		if($('#spec_item_table > tbody').length == 0)
+		{
+			var msg = '需要平台在对应的分类绑定规格名, 卖家才可以添加规格值.';
+			layer.msg(msg, {
+				  icon: 2,   // 成功图标
+				  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+				});						
+			return false;
+		}
+
+		var str = '<tr>'+
+						'<td class="text-left">新增</td>'+
+						'<td class="text-right">'+
+						'<input type="text" class="form-control input-sm"  name="item[]" style="width:300px;"/>'+
+						'<span style="color:#F00; display:none;">请填写内容</span>'+
+						'</td>'+
+						'<td class="text-right">'+
+					    '<a href="javascript:void(0);"  class="btn btn-danger delItem2"><i class="fa fa-trash-o"></i></a>'+
+						'</td>'+
+					'</tr>';
+		$('#spec_item_table > tbody').append(str);
+					
+});
+	
+/**
+* 删除一个已有的规格项
+*/
+$(document).on("click",".delItem",function(){
+	if(!confirm('你确定要删除吗?'))
+	    return false;
+	
+	 var spec_item_id = $(this).data('spec_item_id');
+     var del = $(this);  // 先把当前对象保存起来
+	 $.ajax({
+			type : "GET",
+//            data:{spec_id:spec_id, spec_item:spec_item},
+			dataType : 'json',			
+			url:"/index.php?m=Seller&c=goods&a=delSpecItem&spec_item_id="+spec_item_id,//+tab,                 
+			success: function(data){
+			   if(data.status < 0)
+			   {
+				   layer.alert(data.msg, {icon: 2}); 
+			   }else{
+					del.parent().parent().remove();
+			   }				
+			}
+		});		
+});
+/**
+* 删除一个 未保存的规格项
+*/
+$(document).on("click",".delItem2",function(){
+	$(this).parent().parent().remove();
+});
+</script> 
+</body>
+</html>

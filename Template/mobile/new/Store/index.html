@@ -1,0 +1,161 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta name="Generator" content="TPSHOP v1.2.8" />
+<meta charset="UTF-8">
+<meta name="Keywords" content="{$store.seo_keywords}" />
+<meta name="Description" content="{$store.seo_description}" />
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title> {$store.store_name} </title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="{$store.store_name}" href="" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/dianpu.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css"/>
+<script src="__PUBLIC__/js/global.js"></script>
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/js/TouchSlide.1.1.js"></script>
+</head>
+<body style=" background:#F5F5F5">
+<header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">
+          <form id="searchForm" name="searchForm" method="get" action="{:U('Store/goods_list')}">
+	 	  <input type='hidden' name='store_id' value='{$store.store_id}'>
+          <input type="text" name="keywords" id="keyword" class="dianp_search" placeholder="搜索本店商品">
+          <input type="submit" class="icon_search" id="btsearch" value="" />
+        </form>
+          </div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+</header>
+<include file="Public/menu"/>
+<div class="dianpu_main">
+	<dl>
+	<p><a href="javascript:;" id="favoriteStore" data-id="{$store['store_id']}" style=" color:#FFF">收藏</a></p>
+	<dt><img src="{$store['store_logo']|default='__STATIC__/images/v-shop/logo.png'}" alt="{$store.store_name}"></dt>
+	<dd><span>{$store.store_name}</span>
+	</dd>
+	</dl>
+	<ul>
+	<li class="bian"><a href="{:U('Store/goods_list',array('store_id'=>$store[store_id]))}"><span>全部宝贝</span><strong>{$total_goods}</strong></a></li>
+	<li class="bian"><a href="#"><span>商家描述</span><strong>{$store.store_desccredit}</strong></a></li>
+	<li class="bian"><span>服务态度</span><strong>{$store.store_servicecredit}</strong></li>
+	<li><span>物流速度</span><strong>{$store.store_deliverycredit}</strong></li>
+	</ul>
+</div>
+
+<div id="scrollimg" class="scrollimg">
+	<div class="bd">
+		<ul>
+		<foreach name="store.mb_slide" key="key" item="vimg">
+		 <notempty name="vimg">
+          <li><a href="{$store[mb_slide_url][$key]}"><img src="{$vimg}" width="100%" /></a></li>
+         </notempty> 
+		</foreach>
+     	</ul>
+	</div>
+	<div class="hd">
+		<ul></ul>
+	</div>
+</div>
+<script type="text/javascript">
+	TouchSlide({ 
+		slideCell:"#scrollimg",
+		titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell:".bd ul", 
+		effect:"leftLoop", 
+		autoPage:true,//自动分页
+		autoPlay:true //自动播放
+	});
+</script>
+  
+   <div class="product_value">
+  		<h2>店长推荐</h2>
+  		<ul>
+    	      <foreach name="recomend_goods" item="vo">
+	        <li> 
+	        <a href="{:U('Goods/goodsInfo',array('id'=>$vo[goods_id]))}"> <span> 
+	        <img src="{$vo.goods_id|goods_thum_images=200,200}" srcset="{$vo.goods_id|goods_thum_images=200,200}" srcd="{$vo.goods_id|goods_thum_images=200,200}" loaded="no"> </span> 
+	        <span class="p_info">{$vo.goods_name|getSubstr=0,16}</span> 
+	        <span class="price"> ￥{$vo.shop_price}元  </span> </a> 
+	        </li>
+	      </foreach>
+    	</ul>
+  </div>
+
+    <div class="product_value">
+		<h2>热卖单品 精挑细选</h2>
+	      <ul>
+	      <foreach name="hot_goods" item="vo">
+	        <li> 
+	        <a href="{:U('Goods/goodsInfo',array('id'=>$vo[goods_id]))}"> <span> 
+	        <img src="{$vo.goods_id|goods_thum_images=200,200}" srcset="{$vo.goods_id|goods_thum_images=200,200}" srcd="{$vo.goods_id|goods_thum_images=200,200}" loaded="no"> </span> 
+	        <span class="p_info">{$vo.goods_name|getSubstr=0,16}</span> 
+	        <span class="price"> ￥{$vo.shop_price}元  </span> </a> 
+	        </li>
+	      </foreach>
+		  </ul>
+     </div>
+    <div class="product_value">
+      <h2>新品上市 尝鲜价</h2>
+      <ul>
+	      <foreach name="new_goods" item="vo">
+	        <li> 
+	        <a href="{:U('Goods/goodsInfo',array('id'=>$vo[goods_id]))}"> <span> 
+	        <img src="{$vo.goods_id|goods_thum_images=200,200}" srcset="{$vo.goods_id|goods_thum_images=200,200}" srcd="{$vo.goods_id|goods_thum_images=200,200}" loaded="no"> </span> 
+	        <span class="p_info">{$vo.goods_name|getSubstr=0,16}</span> 
+	        <span class="price"> ￥{$vo.shop_price}元  </span> </a> 
+	        </li>
+	      </foreach>
+      </ul>
+    </div>
+ 
+<div style=" height:40px;"></div>
+<div class="bottm_nav">
+	 <ul>
+	 <li class="bian"><a href="{:U('Store/store_goods_class',array('store_id'=>$store[store_id]))}">店铺分类</a></li>
+	 <li class="bian"><a href="{:U('Store/about',array('store_id'=>$store[store_id]))}">店铺简介</a></li>
+	 <li><a href="tel:{$store['store_phone']}">联系卖家</a></li>
+	 </ul>
+</div>
+<script>
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+
+//收藏店铺
+$('#favoriteStore').click(function () {
+  if (getCookie('user_id') == '') {
+	  if(confirm('请先登录')){
+		  window.location.href = "{:U('Mobile/User/login')}"; 
+	  }                     	
+  } else {
+    $.ajax({
+      type: 'post',
+      dataType: 'json',
+      data: {store_id: $(this).attr('data-id')},
+      url: "{:U('Home/Store/collect_store')}",
+      success: function (res) {
+        if (res.status == 1) {
+          layer.open({content:'成功添加至收藏夹',time:2});
+        } else {
+          layer.open({content:res.msg,time:2});
+        }
+      }
+    });
+  }
+});
+</script>
+<a href="javascript:goTop();" class="gotop"><img src="__STATIC__/images/topup.png"></a> 
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!doctype html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta charset="utf-8">
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keywords}" />
+<meta name="description" content="{$description}" />
+<link href="__PUBLIC__/pc/css/main2.css" rel="stylesheet" type="text/css">    
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/js.js"></script>
+<script type="text/javascript">
+     $(function(){
+      $('.foot').children('.mollch4').children('a').click(function(){
+        var bd = $(this).parent().parent().prev('.body');
+        bd.children('.btns4').css({'display':'table'});
+        bd.children('a').children('input[type=checkbox]').css({'display':'table'});
+        $('.cancel').click(function() {
+          bd.children('.btns4').css({'display':'none'});
+          bd.children('a').children('input[type=checkbox]').css({'display':'none'});
+        });
+      })     
+   
+  });
+
+
+     $(window).load(function(){
+        $("#tab .tabList ul li").eq(2).addClass("cur").siblings().removeClass("cur");
+        $(".search1 #tab .tabCon .cur").eq(2).show().siblings().hide();
+     });
+</script>
+</head>
+<style>
+.there a:hover{color: #ff9416  !important}
+.jingjiabootm a:hover{color: #ff9416  !important}
+</style>
+<body>
+<div class="warp">
+  <include file="Goods/header" /> 
+  <!--导航结束-->
+  <section class="prod">
+		<h6><a href="" target="_blank">全部</a> &gt; 找到<span>{$counts}</span>相关信息</h6>
+      
+  </section><!--多选区域-->
+
+  <section class="product">
+    <div class="left">
+     <!--  <ul class="jingjia">
+      <foreach name="biddinglist" item="v">
+        <li>
+          <div class="jingjiaTop">
+            <img class="jingjialogo" src="{$v['store_logo']}">
+              <h3><a title="{$v['title']}" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{:getsubstr($v['title'],0,25)}</a></h3>
+              <p>{:getsubstr($v['description'],0,150)}</p>
+              <div style="clear:both;"></div>
+            </div>
+          <div class="jingjiaimg">
+              <a href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$v['newsimg']}"></a>
+              <foreach name="v['content']" item="vv">
+              <a href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$vv['src']}"></a>
+             </foreach>
+          </div>
+          <div class="jingjiabootm">
+            <a href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">http://{:$_SERVER['HTTP_HOST']}</a>
+
+            <php>if($v['certification']){</php>
+            <a href="javascript:vid(0);" class="jingjiasb">
+            <img src="/Public/renzheng/renzheng3.png" class="jinjiasm">
+            <span class="jinjiabig">
+              <img src="/Public/renzheng/renzheng3.png" style="margin:0;">
+              <img src="/Public/pc/img/tip_arrow.png" class="jiantou"><p>已认证企业/个体，杜绝一切虚假商家。</p></span>
+            </a>
+            <php>}else{</php>
+            <a href="javascript:vid(0);" class="jingjiasb">
+            <img src="/Public/renzheng/renzheng2.png" class="jinjiasm">
+            <span class="jinjiabig">
+              <img src="/Public/renzheng/renzheng2.png" style="margin:0;">
+              <img src="/Public/pc/img/tip_arrow.png" class="jiantou"><p>未认证。</p></span>
+              </a>
+            <php>}</php>
+            <a href="javascript:vid(0);" class="jingjiasb">
+            <img src="/Public/pc/img/yunshanghui.png" class="jinjiasm">
+            <span class="hide">
+            <img src="/Public/pc/img/yunshanghui.png" style="margin:0;">
+            <img src="/Public/pc/img/tip_arrow.png" class="jiantou">
+            <p>云商会员从千万家企业中脱颖而出，已经平台权威认证并给您带来更多信任和优质的服务！</p>
+            </span></a>
+          </div>
+        </li>  
+        </foreach>       
+      <div style="clear:both;"></div>
+      </ul> -->
+
+<!-- 非竞价 -->
+      <ul class="tuiguang">       
+         <foreach name="articlelist" item="v">
+        <li>
+          <div class="jingjiaTop">
+            <img class="jingjialogo" src="{:templogo($v['store'],95,95)}">
+              <h3 class="there"><a title="{$v['title']}" target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{:getsubstr($v['title'],0,40)}</a></h3>
+              <p>{:getsubstr($v['description'],0,150)}</p>
+              <div style="clear:both;"></div>
+            </div>
+          <div class="jingjiaimg">
+              <notempty name="v['newsimg']">
+              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$v['newsimg']}"></a>
+              </notempty>
+              <foreach name="v['content']" item="vv">
+              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$vv['src']}"></a>
+             </foreach>
+          </div>
+          <div class="jingjiabootm">
+            <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}" style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;">{$v['domain']|default=$_SERVER['HTTP_HOST']}</a>
+            <php>if($v['certification'] == 1){</php>
+            <a style="position: relative;" target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="/Public/renzheng/renzheng3.png" class="jinjiasm">
+            <span class="jinjiabig">
+              <img src="/Public/renzheng/renzheng3.png" style="margin:0;">
+              <img src="/Public/pc/img/tip_arrow.png" class="jiantou"><p>已认证企业/个体，杜绝一切虚假商家。</p></span>
+            </a>
+            <php>}else{</php>
+            <a style="position: relative;" target="_blank"  href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="/Public/renzheng/renzheng2.png" class="jinjiasm">
+            <span class="jinjiabig">
+              <img src="/Public/renzheng/renzheng2.png" style="margin:0;">
+              <img src="/Public/pc/img/tip_arrow.png" class="jiantou"><p style="color: red;margin:0 0 0 10px;">未认证。</p></span>
+              </a>
+            <php>}</php>
+
+            <php>if($v['commerce_state']){</php>
+            <a style="position: relative;" target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('/article/yun_shop')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="/Public/pc/img/yunshanghui.png" class="jinjiasm">
+            <span class="hide">
+            <img src="/Public/pc/img/yunshanghui.png" style="margin:0;">
+            <img src="/Public/pc/img/tip_arrow.png" class="jiantou">
+            <p style="color: #666666;">企业联盟商会会员,《权威企业》身份象征为消费者及商家提供100%安全保障,便捷服务!</p>
+            </span></a>
+            <php>}else{</php>
+            <a style="position: relative;" target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('/article/yun_shop')}')" class="jingjiasb">
+            <img src="/Public/renzheng/yunshanghui2.png" class="jinjiasm">
+            <span class="hide">
+            <img src="/Public/renzheng/yunshanghui2.png" style="margin:0;">
+            <img src="/Public/pc/img/tip_arrow.png" class="jiantou">
+            <p style="color: #666666;margin:0 0 0 10px;">未加入！</p>
+            </span></a>
+            <php>}</php>
+            <p style="float: right;line-height: 30px;margin-left: 10px;color: #a0a0a0;">浏览次数 : <span>{$v[pc_click]}</span></p>
+             <p style="float: right;line-height: 30px;margin-left: 10px;color: #a0a0a0;">{$v[timer]|date="Y-m-d",###}</p>
+          </div>
+        </li>  
+        </foreach>           
+      <div style="clear:both;"></div>
+      </ul>
+    </div>
+  <!-- 商标显示隐藏 -->
+    <script type="text/javascript">
+        $(function(){
+        $(".jinjiasm").hover(function(){
+                $(this).next("span").show();
+        },function(){
+                $(this).next("span").hide();
+        });
+      }); 
+    </script>   
+      <!--产品左边-->
+     
+     <div class="right">
+       <h1>优质供应商</h1>
+       <span class="there"><a href="/index/street?nav_id=3" target="_blank">更多</a></span>
+       <div class="cl"></div> 
+       <div class="one">
+        <tpshop sql="select * from `__PREFIX__store` where  store_state = 1  and deleted =0 and store_recommend = 1 order by rand() limit 10" item="v" key="k">
+         <dl>
+           <dt><a onmouseenter="this.style.color='#ff9416'" onmouseleave="this.style.color='#666666'" target="_blank" href="{:U('Store/index')}?store_id={$v[store_id]}" target="_blank">{:getSubstr($v[store_name],0,14)}</a></dt>
+           <dd>主营：{$v.store_zy|getSubstr=0,14}</dd>
+           <dd>地址：{:getSubstr($v[store_address],0,14)} </dd>
+         </dl>
+        </tpshop>
+       </div>
+      <h2 style="font-size: 100%;font-weight: 500;">热门推荐</h2>
+     
+      <div class="cl"></div>  
+      <ul class="two two-hot">
+        <tpshop sql="select * from `__PREFIX__goods` where  recommend = 1" item="v" key="k">
+        <li><a target="_blank" href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=238,218}" alt="{$v[goods_name]}"/></a></li>
+        </tpshop> 
+      </ul>
+     <!-- <h4>相关搜索</h4>
+     <div class="four">
+       <ul>
+        <foreach name="tpshop_config.hot_keywords" item="wd" key="k">
+        <li><a target="_blank" href="{:U('/Goods/search',array('q'=>$wd))}" <if condition="$wd eq I('q')">class="ht"</if>>{$wd}</a></li>
+          </foreach>
+       </ul>
+     </div> -->
+   </div>
+   <!--产品右边-->
+       <div class="page-box">
+            <div class="page-clear">
+              {$page->show()}
+              <div class="pagination-form">
+                <div class="page-total">
+                  <span>共</span>
+                  <em style="font-style:normal;">{$count}</em>
+                  <span>页</span>
+                </div>
+                <div class="page-number">
+                  <span>到</span>
+                  <input type="text" id="val" maxlength="5" onkeyup="value=value.replace(/[^\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                  <span>页</span>
+                </div>
+                <div class="page-btn">
+                  <button onclick="page();">确定</button>
+                  <script type="text/javascript">
+                      function page()
+                      {
+
+                        var p = $('#val').val();
+                        if(!p){return false;}
+                        if(p > {$count}){ p = {$count};}
+                        if(p < 1){ p = 1;}
+                        var r = /p\/[1-9]\d*/;
+                        var str = "{$_SERVER['REDIRECT_URL']}";
+                        var s = str.replace(r,'p/'+p);
+                        window.location.href="http://{$_SERVER['HTTP_HOST']}"+s;
+                      }
+                  </script>
+                </div>
+              </div>  
+            </div>
+          </div>
+     <div class="cl"></div>
+  </section><!--产品结束-->
+  
+</div>
+
+ <include file="Goods/footer" />
+<script type="text/javascript">
+//page 输入框分页数目控制
+	 $('.page-number input').blur(function(){
+	 	var num = parseInt($(this).val());	
+    	var pagenum=$('.pagination-form .page-total em').html();
+      if(num==0||isNaN(num)){
+        num = '';
+      }
+       if (num>pagenum) {
+        $(this).val(pagenum);
+      }
+      else{
+        $(this).val(num);
+      }
+    });
+//热门推荐 num li个数
+function linum(num){
+    var hotlen=$('.two-hot li').length;
+    if(hotlen>num){
+      for (var i = hotlen - 1 ; i > num - 1; i--) {
+        $('.two-hot li').eq(i).remove();
+      }
+    }
+  }
+  linum(8);
+//热门推荐 num li个数限制
+  function positionis(num){
+    for (var i = num; i >0; i--) {
+      var lheight=$('.product .left').height();
+      var rheight=$('.product .right').height();
+      if(rheight>lheight){
+        $('.product .right .two li:last').remove();
+      }
+      else{
+        break;
+      }
+    }
+    var lilen=$('.product .right .two li').length;
+    if(lilen==0){
+      $('.product .right h2').remove();
+    }
+  }
+  positionis(8);
+
+  //############   点击多选确定按钮      ############
+// t 为类型  是品牌 还是 规格 还是 属性
+// btn 是点击的确定按钮用于找位置
+ get_parment = <?php echo json_encode($_GET); ?>; 
+function submitMoreFilter(t,btn)
+{
+  // 没有被勾选的时候
+ /* if(!$(btn).hasClass("u-confirm01"))
+    return false;*/
+    
+  // 获取现有的get参数   
+  var key = ''; // 请求的 参数名称
+  var val = new Array(); // 请求的参数值
+
+  $(btn).parent().parent().children('a').each(function(){
+    $(this).children('input[type=checkbox]').each(function(){
+
+    if($(this).is(":checked")){
+       key = $(this).attr('name');
+       val.push($(this).attr('value'));
+     }
+
+    })
+  });
+    
+  // 品牌
+  if(t == 'brand')
+  {
+    get_parment.brand_id = val.join('_');
+  }
+  // 规格
+  if(t == 'spec')
+  {
+    if(get_parment.hasOwnProperty('spec'))    
+    {   
+      get_parment.spec += '@'+key+'_'+val.join('_');
+    }   
+    else  
+    {   
+      get_parment.spec = key+'_'+val.join('_');
+    }   
+  }
+  // 属性
+  if(t == 'attr')
+  {
+    if(get_parment.hasOwnProperty('attr'))    
+    {   
+      get_parment.attr += '@'+key+'_'+val.join('_');
+    }   
+    else  
+    {   
+      get_parment.attr = key+'_'+val.join('_');
+    }   
+  }
+   // 组装请求的url  
+  var url = '';
+  for ( var k in get_parment )
+  { 
+    url += "&"+k+'='+get_parment[k];
+  } 
+  location.href ="/index.php?m=Home&c=Goods&a=goodsList"+url;
+}
+
+</script>
+</body>
+</html>

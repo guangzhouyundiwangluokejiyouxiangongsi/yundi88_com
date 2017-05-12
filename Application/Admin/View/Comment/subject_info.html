@@ -1,0 +1,73 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <!-- Content Header (Page header) -->
+   <include file="Public/breadcrumb"/>
+    <section class="content">
+    <!-- Main content -->
+    <!--<div class="container-fluid">-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 添加投诉主题</h3>
+            </div>
+            <div class="panel-body">
+                <form action="" method="post" onsubmit="return checkUserUpdate(this);">
+                    <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="col-sm-2">投诉主题:</td>
+                        <td><input type="text" class="form-control" style="width:300px;" name="subject_content" value=""></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>投诉主题描述:</td>
+                        <td><textarea rows="4" cols="50" id="subject_desc" name="subject_desc"></textarea> </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-info">
+                                <i class="ace-icon fa fa-check bigger-110"></i> 保存
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </form>
+
+            </div>
+        </div>
+ 	  </div> 
+    </div>    <!-- /.content -->
+   </section>
+</div>
+<script>
+    function checkUserUpdate(){
+        var subject_content = $('input[name="subject_content"]').val();
+        var subject_desc = $('#subject_desc').val();
+        var error ='';
+        if(subject_content == ''){
+            error += "投诉主题不能为空\n";
+        }
+        
+        if(subject_desc == ''){
+        	 error += "投诉主题描述不能为空\n";
+        }
+        
+        if(error){
+            layer.alert(error, {icon: 2});  //alert(error);
+            return false;
+        }
+        return true;
+
+    }
+</script>
+
+</body>
+</html>

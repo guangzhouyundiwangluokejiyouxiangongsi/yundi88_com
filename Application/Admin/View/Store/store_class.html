@@ -1,0 +1,67 @@
+<include file="Public/min-header"/>
+
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	           	<div class="box-header">
+	               <nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('Store/store_class')}" method="post">
+				            <div class="form-group">
+				              	<input type="text" name="keywords" class="form-control" placeholder="搜索">
+				            </div>
+				            <button type="submit" class="btn btn-default">提交</button>
+				            <div class="form-group pull-right">
+					            <a href="{:U('Store/class_info')}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增等级</a>
+				            </div>		          
+				          </form>		
+				      	</div>
+	    			</nav>               
+	            </div>	    
+	             <!-- /.box-header -->
+	             <div class="box-body">	             
+	           		<div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+		                 <thead>
+		                   <tr role="row">
+			                   <th class="sorting" tabindex="0">排序</th>
+			                   <th class="sorting" tabindex="0">分类名称</th>
+			                   <th class="sorting" tabindex="0">保证金额度</th>
+			                   <th class="sorting" tabindex="0">操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+						  <foreach name="list" item="vo" key="k" >
+						  	<tr role="row" align="center">
+		                     <td>{$vo.sc_sort}</td>
+		                     <td>{$vo.sc_name}</td>
+		                     <td>{$vo.sc_bail}</td>
+		                     <td>
+		                      <a class="btn btn-primary" href="{:U('Store/class_info',array('sc_id'=>$vo['sc_id']))}"><i class="fa fa-pencil"></i></a>
+		                      <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Store/class_info_save')}" data-id="{$vo.sc_id}" onclick="delfunc(this)"><i class="fa fa-trash-o"></i></a>
+							</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div><!-- /.box-body -->
+	        </div><!-- /.box -->
+       	</div>
+       </div>
+   </section>
+</div>
+</body>
+</html>

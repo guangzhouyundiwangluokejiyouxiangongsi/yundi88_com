@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>云狄网-用户登陆</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css">
+	<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+	<script type="text/javascript" src='__PUBLIC__/pc/js/user.js'></script>
+</head>
+<body>
+	<header class="navss">
+			<div class="navsslogo"><a href="/index/index" target="_blank">
+				<img src="__PUBLIC__/images/user/logo.png"></a>
+				<h4>用户登录</h4>
+			</div>
+			<div class="navssphone"><img src="__PUBLIC__/images/user/navssphone.png"><p>{$phone}</p></div>			
+			<div class="cl"></div>
+	</header>
+	
+	<div class="navssbenner">
+		<div class="navssbenmain">
+			<div class="navsssbennerl">
+				<img src="__PUBLIC__/images/user/bennermainl.png">
+			</div>
+			<div class="navsssbennerr">
+				<form action="/user/do_login" method="post"  class="navsslogin" id="formall">
+					<p id="waring"></p>
+					<div class="navinp"><img src="__PUBLIC__/images/user/loginpeo.png"><input type="text" name="username" placeholder="用户名/手机号" id="username"></div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/navssloginpass.png"><input type="password" name="password" placeholder="密码" id="password"></div>
+					<div class="navssyanzheng"><img src="__PUBLIC__/images/user/navssyangzheng.png"><input type="text" name="verify_code" placeholder="不区分大小写" id="verify_code"></div>
+					<div class="navssyanzhenma"><img onclick="this.src ='{:U('/User/verify')}?'+Math.random()" src="{:U('/User/verify')}" alt="" id="verify_code_img"></div>
+					<div class="cl"></div>
+					<!-- <input type="hidden" name="referurl" id="referurl" value="{$referurl}"> -->
+					<div class="navssjiaru"><input type="checkbox" name="referurl"  id="referurl">两周内自动登陆<a href="{:U('User/forget_pwd')}">忘记密码</a></div>
+					<div class="navsslog"><a onclick="onnsubmit()">登录</a></div>
+					<div class="navssres"><a href="{:U('/User/reg')}">新用户注册</a></div>
+				</form>
+			</div>
+
+			<div class="cl"></div>
+		</div>
+	</div>
+
+	<include  file="Public/public_footer"/>
+
+</body>
+
+  <script> 
+      document.onkeyup = function(e){
+      	if(e.keyCode===13){
+      		onnsubmit();
+      	}			
+	};
+   </script> 
+
+<script>
+
+	function onnsubmit(){
+		if (!$('#username').val()){
+			$('#waring').html('用户名不能为空');
+			return false;
+		}
+		if (!$('#password').val()){
+			$('#waring').html('密码不能为空');
+			return false;
+		}
+		if (!$('#verify_code').val()){
+			$('#waring').html('验证码不能为空');
+			return false;
+		}
+		if ($('#referurl').is(':checked')){
+			$('#referurl').val(1);
+		} else {
+			$('#referurl').val(0);
+		}
+		var src = "{:U('/User/verify')}";
+		$.ajax({
+	      type : 'post',
+	      url : '{:U('/user/do_login/')}?t='+Math.random(),
+	      data : {username:$('#username').val(),password:$('#password').val(),referurl:$('#referurl').val(),verify_code:$('#verify_code').val()}, 
+	      dataType : 'json',
+	      success : function(res){
+	        if(res.status == 1){
+	          window.location.href = "{:C('DOMAIN')}/seller";
+	        }else{
+	          $('#waring').html(res.msg);
+	        }
+
+	      $('#verify_code_img').attr({'src':src});
+	      },
+	      error : function(XMLHttpRequest, textStatus, errorThrown) {
+	        // alert('网络失败，请刷新页面后重试');
+	        
+	        
+		    $('#verify_code_img').attr({'src':src});
+	      }
+	  	})
+		}
+</script>
+</html>

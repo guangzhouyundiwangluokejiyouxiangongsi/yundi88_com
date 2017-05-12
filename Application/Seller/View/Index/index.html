@@ -1,0 +1,53 @@
+<include file="Public/header" />
+
+<include file="Public:left" />
+
+<section class="content-wrapper right-side" id="riframe" style="margin:0px;padding:0px;margin-left:230px;">
+    <iframe id='rightContent' name='rightContent' src="{:U('Seller/Index/welcome')}" width='100%' frameborder="0"></iframe>
+</section>
+
+<include file="Public:footer" />
+	
+	<!-- 前端启动模板 -->
+<script>
+if("{$_GET['hometpl']}" == '1'){
+	top.location = '/Seller/index/index?hometpl=2';
+}
+if("{$_GET['hometpl']}" == '2'){
+	// top.location = '/Seller/Store/store_setting';
+	window.open("/Seller/Store/store_setting","rightContent");
+}
+if("{$_GET['nav']}" == 'product'){
+	window.open("/Seller/Goods/addEditGoods","rightContent");
+}else if("{$_GET['nav']}" == 'article'){
+	window.open("/Seller/News/addNews","rightContent");
+}else if("{$_GET['nav']}" == 'pc'){
+	window.open("/Seller/Store/store_tpl?t=pc&tpl=fuzhuang&layer=1","rightContent");
+}else if("{$_GET['nav']}" == 'mobile'){
+	window.open("/Seller/Store/store_mtpl","rightContent");
+}else if("{$_GET['nav']}" == 'mobile2'){
+	window.open("/Seller/Store/store_weixin","rightContent");
+}else if("{$_GET['nav']}" == 'config'){
+	window.open("/Seller/Store/store_setting","rightContent");
+}else if("{$_GET['nav']}" == 'index'){
+	window.open("/Seller/Store/store_mod","rightContent");
+}else if("{$_GET['nav']}" == 'nav'){
+	window.open("/Seller/Store/navigation_list","rightContent");
+}else if("{$_GET['nav']}" == 'productlist'){
+	window.open("/Seller/Goods/goodsList/goods_state/1","rightContent");
+}else if("{$_GET['nav']}" == 'productclass'){
+	window.open("/Seller/Store/goods_class","rightContent");
+}else if("{$_GET['nav']}" == 'articleclass'){
+	window.open("/Seller/News/newslist","rightContent");
+}else if("{$_GET['nav']}" == 'order_list'){
+	window.open("/Seller/Userinfo/order_list","rightContent");
+}else if("{$_GET['nav']}" == 'renzheng'){
+	window.open("/Seller/Newjoin/basic_info","rightContent");
+}else if("{$_GET['nav']}" == 'order'){
+	window.open("/seller/order/indexbuy","rightContent");
+}else if("{$_GET['nav']}" == 'userinfo'){
+	window.open("/Seller/Userinfo/info","rightContent");
+}
+
+
+</script>

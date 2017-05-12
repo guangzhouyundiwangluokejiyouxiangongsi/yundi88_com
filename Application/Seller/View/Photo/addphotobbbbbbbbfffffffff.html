@@ -1,0 +1,106 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 相册发布</h3>
+                </div>
+                <div class="panel-body">
+                  
+                    <!--表单数据-->
+                    <form method="post" id="addEditBrandForm" action="{:U('Photo/addphoto')}" onsubmit="return checkName();">             
+                        <!--通用信息-->
+                    <div class="tab-content">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">
+                           
+                            <table class="table table-bordered">
+                                <tbody>
+                                
+                                <tr>
+                                    <td width="150px;">相册标题:</td>
+                                    <td>
+                                        <input type="text" value="{$photo.title}" name="title" class="form-control" style="width:60%;"/>
+                                        <span id="err_name" style="color:#F00; display:none;">相册标题不能为空</span>                                        
+                                    </td>
+                                </tr>     
+                                <tr>
+                                    <td width="150px;">是否显示:</td>
+                                    <td>
+                                      <input type="radio" name="status" value="1" checked /> 是                                   
+                                      <input type="radio" name="status" value="0" <?php if(!$photo['status'])echo 'checked';?>/>  否                                     
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td width="150px;">是否在首页显示:</td>
+                                    <td>
+                                      <input type="radio" name="home" value="1" checked /> 是                                    
+                                      <input type="radio" name="home" value="0"  <?php if(!$photo['home'])echo 'checked';?>/>  否                                                 
+                                    </td>
+                                </tr>                                   
+                                                     
+                                <tr>
+                                    <td>相册图片:</td>
+                                    <td>  
+                                    	<div class="col-sm-3">                                                                              
+                                        	<input type="hidden" value="{$photo.img}" name="img" id="img" class="form-control" style="width:350px;margin-left:-15px;"/>
+                                        </div>
+                                        <div class="col-sm-3">
+                                        	<input onclick="GetUploadify(10,'img','brand');" type="button" class="btn btn-default" value="上传图片"/>
+                                        </div>
+                                    </td>
+                                </tr> 
+                                                          
+                                </tbody>                                
+                                </table>
+                        </div>                           
+                    </div>              
+                    <div class="pull-right">
+                        <input type="hidden" name="id" value="{$photo.id}">
+                        <button class="btn btn-primary" data-toggle="tooltip" type="submit" data-original-title="保存">保存</button>
+                    </div>
+			    </form><!--表单数据-->
+                    <foreach name="photo['photoimg']" item="vv">
+                    <span id="span_{$vv.id}">
+                    <img src="{$vv.img}" alt="" style="height:100px;margin-left:5px;">
+                    <span style="cursor:pointer;" onclick="deleteimgssss('{$vv['id']}','{$vv['photoid']}','{$vv['img']}')">删除</span>
+                    </span>
+                    </foreach>
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+</div>
+<script>
+// 判断输入框是否为空
+function checkName(){
+	var name = $("#addEditBrandForm").find("input[name='title']").val();
+    if($.trim(name) == '')
+	{
+		$("#err_name").show();
+		return false;
+	}
+	return true;
+}
+
+
+function deleteimgssss(imgid,pid,imgurl)
+{
+        $.post("{:U('Photo/deleteimg')}" ,{'imgid':imgid,'pid':pid,'imgurl':imgurl} ,function(res){
+
+            if(res == 1){
+                $('#span_'+imgid).remove();
+            }else{
+                alert(res);
+            }
+        })
+}
+
+</script>
+</body>
+</html>

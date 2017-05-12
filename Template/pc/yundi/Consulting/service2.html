@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
+	<title>咨询</title>
+	<script type="text/javascript" src="__STATIC__/consulting/js/jquery-1.7.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/consulting/css/service.css">
+</head>
+
+<body>
+	<div class="chat-box">
+		<div class="chat-header">
+			<div class="hleft">
+				<div class="img">
+					<img src="">
+				</div>
+				
+				<div>
+					<p>壹輩ふ呮湜溡簡洏巳(869688800)</p>
+					<span>[undefined]</span>
+				</div>
+			</div>
+			<div class="hright">
+				<span>志籽 </span>
+				<a>换个帐号</a>
+			</div>
+		</div>
+		<div class="chat-body">
+			<div class="bleft">
+				<div class="message_box">
+					<div>
+						<p class="tip"><img src="__STATIC__/consulting/img/tip-icon.png">交谈中请勿轻信汇款、中奖信息、陌生电话，勿使用外挂软件。</p>
+						<span id="msgs">
+						<foreach name="receive" item="vv">
+							<div class="robot">
+							<div class="title">
+							<span>{$nickname2}</span><span class="time">{:date('Y-m-d :H:i:s',$vv['addtime'])}</span>
+							</div><div class="message">
+							<div class="txt"><p>{$vv.msg}</p>
+							</div></div></div>
+							</foreach>
+						</span>
+
+
+						<!-- 用户 -->
+						<foreach name="send" item="v">
+						<div class="user">
+							<div class="title">
+								<span class="time">{:date('Y-m-d :H:i:s',$v['addtime'])}</span>
+								<span>{$v['nickname']}</span>
+							</div>
+							<div class="message">
+								
+								<div class="txt">
+									<p>{$v.msg}</p>
+								</div>
+							</div>
+						</div>
+						</foreach>
+					</div>
+				</div>
+
+			<!-- 	<div class="bg"  onclick="javascript:window.open('http://www.baidu.com','','height=490,width=602,top=300,left=300,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')"></div> -->
+				<div class="bg"  ></div>
+				<form>
+					<div class="chat-txt">
+						<textarea></textarea>
+					</div>
+
+					<div class="bottom_bg">
+						<span>按shift+Enter键发送消息</span>
+						<a class="close"  onclick="window.close();">关闭</a>
+						<a class="sent">发送</a>
+					</div>
+				</form>
+			</div>
+			<div class="bright">
+				<img src="">
+				<img src="">
+			</div>
+		</div>
+	</div>
+	
+
+</body>
+<script type="text/javascript" src="__STATIC__/consulting/js/service.js"></script>
+
+<script type="text/javascript" src="http://cdn.goeasy.io/goeasy.js"></script>
+ <script type="text/javascript">
+
+                          var goEasy = new GoEasy({
+                              appkey: 'BC-29a841417c044bca90cd3ef179b01585'
+                          });
+
+                          goEasy.subscribe({
+                            channel: "{$_GET['receive']}",
+                            onMessage: function(message){
+                               
+                            	var msgstr = '<div class="robot"><div class="title"><span>{$nickname2}</span><span class="time">{:date('Y-m-d :H:i:s',time())}</span></div><div class="message"><div class="txt"><p>'+message.content+'</p></div></div></div>';
+
+                            	$('#msgs').append(msgstr);
+
+
+
+
+                            }
+                          });
+
+function submitmsg(msg)
+{
+	$.post("/Consulting/addmsg2.html", {'send':"<?php echo $_GET['send']; ?>",'receive':"<?php echo $_GET['receive']; ?>",'msg':msg},function(res){
+
+		// alert(res)
+
+	});
+
+   goEasy.publish({
+        channel: "{$_GET['send']}",
+        message: msg
+  });
+}
+
+
+ // 输出文本框方法
+function sent(){
+
+    textarea=$.trim($('.chat-txt textarea').val())
+    if(textarea.length !==0){
+        var myDate = new Date();
+        var hour=myDate.getHours();
+        var minutes=myDate.getMinutes();
+        var seconds=myDate.getSeconds();
+        if(hour<10){
+            hour='0'+hour;
+        }
+        if(minutes<10){
+            minutes='0'+minutes;
+        }   
+        if(seconds<10){
+            seconds='0'+seconds;
+        }
+        var time = hour + ":" + minutes + ":" + seconds;
+        $('.message_box>div').append("<div class='user'><div class='title'><span class='time'>{$itme}</span><span>{$nickname}</span></div><div class='message'><div class='txt'><p>"+ textarea +"</p></div></div></div>")
+        // 清空输入框
+        $('.chat-txt textarea').val("");
+        // 滚动div
+        var height=$('.message_box>div').height();
+        $('.message_box').animate({scrollTop:height},600);
+          
+
+    }
+    
+}
+
+$(function(){
+    //发送信息
+    $('.sent').click(function(){
+        sent();
+        submitmsg(textarea);
+    })
+    //shift+enter换行
+    $('.chat-txt textarea').focus(function(){
+        $('.chat-txt  textarea').keyup(function(event){
+            
+            if(event.shiftKey && event.which==13 || event.which == 10){
+                sent();
+                submitmsg(textarea);
+            }
+            else if(event.keyCode == 13){
+                    
+            } 
+        })
+    })
+})
+
+
+ </script>
+
+</html>
+
+
+

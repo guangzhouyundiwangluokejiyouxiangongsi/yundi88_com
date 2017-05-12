@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复制模板</title>
+</head>
+    <style type="text/css">  
+        body{overflow:hidden;}  
+        #divMain{width:100%; height:100%; background-color:#ffffff;}  
+        #divMessage{border:1px solid #ccc; border-radius:8px;position:absolute; left:50%; top:50%; height:300px; width:400px; margin:0px; margin-top:-170px; margin-left:-200px;border-radius: 8px;}  
+        #divMessage table{width:100%; height:100%; margin:0px; padding:0px;border-radius: 8px;}  
+    </style>  
+<body>  
+<div id="divMain">  
+</div>  
+<div id="divMessage">  
+<table cellpadding="0" cellspacing="0" style="background:#fff">  
+<tr>  
+        <td height="100%" style="text-align:center">{$msg}{$stat}-{$end}</td>  
+</tr>  
+</table>  
+</div>  
+</body>  
+<script>
+    window.location.href = '/admin/admin/{$url}?stat={$stat}&end={$end}';
+</script>
+</html>  

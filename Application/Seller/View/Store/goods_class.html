@@ -1,0 +1,105 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	             	<nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				            <div class="navbar-form row">
+					            <a href="javascript:;" onclick="go_class_info(this)" data-url="{:U('Store/goods_class_info')}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> 新增分类</a>
+				            </div>
+				      	</div>
+	    			</nav> 	               
+	             </div><!-- /.box-header -->
+	           <div class="box-body">
+	           <div class="row">
+	            <div class="col-sm-12">
+	              <table id="list-table" class="table table-bordered table-striped">
+	                 <thead>
+	                   <tr role="row">
+		                   <th><input type="checkbox" onclick="javascript:$('input[name*=\'category\']').prop('checked', this.checked);">全选&nbsp;&nbsp;&nbsp;&nbsp;分类名称</th>
+		                   <th>是否显示</th>
+		                   <th>是否导航显示</th>
+		                   <th>排序</th>
+		                   <th>操作</th>
+	                   </tr>
+	                 </thead>
+					<tbody>
+					  <foreach name="cat_list" item="vo" key="k" >
+					  	<tr role="row" align="left">
+					     <td><input type="checkbox" name="category[]" value="{$vo.cat_id}">&nbsp;&nbsp;<if condition="$vo[deep] eq 2">&nbsp;&nbsp;&nbsp;&nbsp;</if>{$vo.cat_name}&nbsp;&nbsp;
+					     <if condition="$vo[deep] eq 1"><a class="btn btn-default" data-url="{:U('Store/goods_class_info',array('parent_id'=>$vo['cat_id']))}" href="javascript:;" onclick="go_class_info(this)">新增下级</a></if>
+					     </td>
+	                     <td>
+                             <if condition="$vo[is_show] eq 1"> 是     <else /> 否</if>
+                         </td>
+                         <td>
+                             <if condition="$vo[is_nav_show] eq 1"> 是     <else /> 否</if>
+                         </td>
+	                 	 <td>                         
+                            <input type="text"  class="input-sm" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onchange="updateSort2('store_goods_class','cat_id','{$vo.cat_id}','cat_sort',this)" size="4" value="{$vo.cat_sort}" />
+                         </td>
+	                     <td>
+	                       <a style="margin: 2px 0;" class="btn btn-primary" data-url="{:U('Store/goods_class_info',array('cat_id'=>$vo['cat_id']))}" href="javascript:;" onclick="go_class_info(this)"><i class="fa fa-pencil"></i></a>
+	                       <a style="margin: 2px 0;" class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Store/goods_class_save')}" data-id="{$vo.cat_id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
+						</td>
+	                   </tr>
+	                  </foreach>
+	                   </tbody>
+	               </table></div>
+	               </div>
+	             </div>
+	           </div>
+       		</div>
+       </div>
+     </section>
+</div>
+<script type="text/javascript">
+function delfun(obj){
+	if(confirm('确认删除')){		
+		$.ajax({
+			type : 'post',
+			url : $(obj).attr('data-url'),
+			data : {act:'del',cat_id:$(obj).attr('data-id')},
+			dataType : 'json',
+			success : function(data){
+				if(data.stat=='ok'){
+					$(obj).parent().parent().remove();
+				}else{
+					layer.alert(data, {icon: 2});  //alert(data);
+				}
+			}
+		})
+	}
+	return false;
+}
+
+function go_class_info(o){
+    var url = $(o).attr('data-url');
+    layer.open({
+        type: 2,
+        title: '编辑分类',
+        shadeClose: true,
+        shade: 0.2,
+        area: ['60%', '70%'],
+        content: url, 
+    });
+}
+
+//回调函数
+function call_back(msg){
+	if(msg>0){
+		layer.msg('操作成功', {icon: 1});
+		layer.closeAll('iframe');
+		window.location.reload();
+	}else{
+		layer.msg('操作失败', {icon: 3});
+		layer.closeAll('iframe');
+	}
+}
+</script>
+</body>
+</html>

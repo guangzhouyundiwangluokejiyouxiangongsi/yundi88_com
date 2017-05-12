@@ -1,0 +1,37 @@
+@charset "utf-8";
+.nav_c{ width: 100%; height:40px; line-height: 40px; background: #21acd4;position: relative; z-index: 999;}
+.nav_c ul{ width: 1200px;margin:0 auto;}
+.nav_c ul li{ height: 40px ;float: left; width: 120px; text-align: center; cursor:pointer;font-family: "微软雅黑"; font-size: 16px; font-weight: bold;}
+.nav_c ul li a{ color: #fff; display:block; }
+.nav_c ul li:hover{ background: #0086AC;}
+.bgc{ background: #0086AC}
+#triangle-down { float: right; border-left: 5px solid transparent; margin-top: -25px; margin-right: 15px; border-right: 5px solid transparent; border-top: 10px solid #fff;}
+.nav_c ul .sp .dyj{ height: 160px; width: 120px; background: #21acd4; display: none; font-size: 12px;}
+#dyj{ font-size: 12px}
+.nav_c ul .sp .dyj li:hover{background: #0086AC;}
+.nav_c ul .sp:hover .dyj{ display: block;}
+.cbanner{ width: 1920px; height: 400px; margin: 0 auto;}
+/*头部导航和海报*/
+.canpany{ width: 1200px;margin: 50px auto;}
+.canpany ul{ border-bottom: 1px solid #cfcfcf; height: 35px;}
+.canpany ul li{color: #656565; float: left; height: 30px;line-height: 30px;}
+.canpany ul li a{color: #656565; padding: 0 15px;}
+.canpany #qb a{ font-size: 16px; color:#666666; margin-top: -10px;}
+.canpany dl{border-shadow:5px 5px 5px  #ccc; width: 220px; float: left; margin-right: 20px; margin-bottom: 10px;}
+.canpany .title{ width: 500px; margin: 0 auto; height:85px; background:url(../images/brief.jpg) no-repeat center;}
+.canpany .title p{ text-align: center; font-size:24px; color: #333333;}
+.canpany .title #yw{ font-size: 14px;}
+.canpany aside{ width:620px; height: 450px; float: left; }
+.canpany article{ width: 550px; float: right; font-size: 14px; color: #333333; text-indent: 2em; line-height: 24px;}
+.canpany .one{ width: 220px; height: 330px; border: 1px solid #CFCFCF; float: left; margin-right: 20px;}
+.canpany .one .bt{ text-align: center; line-height: 70px; color: #21acd4; font-size: 18px;}
+.canpany .dd{text-align: center; vertical-align: middle;}
+.iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+
+
+
+
+
+
+

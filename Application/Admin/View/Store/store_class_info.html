@@ -1,0 +1,135 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	           	   <nav class="navbar navbar-default">	     
+				      <div class="collapse navbar-collapse">
+	    				<div class="navbar-form form-inline">
+				            <div class="form-group">
+				            	<p class="text-success margin blod">店铺:</p>
+				            </div>
+				             <div class="form-group">
+                                 <a class="btn btn-default" href="{:U('Store/store_list')}">管理</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/apply_list')}" >开店申请</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/reopen_list')}" >签约申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a class="btn btn-default" href="{:U('Store/apply_class_list')}">经营类目申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				            </div>
+				          </div>
+				       </div>
+	    		 	</nav>
+			        <div class="row navbar-collapse">
+                       	<div class="callout callout-inro">
+							<p>1. 删除店铺的经营类目会造成相应商品下架，请谨慎操作</p>
+					        <p>2. 所有修改即时生效</p>
+			            </div>
+			      	</div>    		
+	             </div>
+				<div class="box-body">
+                  <button class="btn btn-default btn-block"><p class="pull-left">店铺名称：{$store.store_name}</p></button>
+                </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable">
+		                 <thead>
+		                   <tr role="row">
+                               <th>分类1</th>
+                               <th>分类2</th>
+			                   <th>分类3</th>	
+			                   <th>分佣比例</th>	                   
+		                  	   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="bind_class_list" item="vo" key="k" >
+                             <tr role="row">    
+                             <td>{$vo.class_1_name}</td>
+                             <td>{$vo.class_2_name}</td>
+		                     <td>{$vo.class_3_name}</td>	                    
+		                     <td>{$vo.commis_rate}</td>
+		                     <td class="text-center">
+		                      	<a class="btn btn-danger" onclick="delfunc(this)" data-url="{:U('Store/apply_class_save')}" data-id="{$vo.bid}">删除</a>
+				     		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	          <div class="box-body">
+                  <button class="btn btn-default btn-block"><p class="pull-left">添加经营类目</p></button>
+               </div>
+               <div class="box-body">
+               		<form method="post" id="class_info">
+               		<table class="table  table-bordered">
+               			<tr>
+               				<td class="col-md-2">选择分类:</td>
+               				<td>
+               					<div class="col-md-3">
+				  	            <select name="class_1" id="cat_id" onchange="get_category(this.value,'cat_id_2','0');" class="form-control">
+					               <option value="0">选择分类</option>                                      
+					                    <foreach name="cat_list" item="v" key="k" >                                                                                          
+					                      <option value="{$v['id']}" <if condition="$v['id'] eq $level_cat['1']">selected="selected"</if> >
+					                      		{$v['name']}
+					                      </option>
+					                    </foreach>
+					             </select>
+               					</div>
+               					<div class="col-md-3">
+	             	             <select name="class_2" id="cat_id_2" onchange="get_category(this.value,'cat_id_3','0');" class="form-control">
+					               	<option value="0">选择分类</option>
+					             </select>  
+               					</div>
+               					 <div class="col-md-3">
+						             <select name="class_3" id="cat_id_3" onchange="push_commis_rate(this)" class="form-control">
+						               <option value="0">选择分类</option>
+						             </select> 
+               					</div>
+               				</td>
+               				<td></td>
+               			</tr>
+               			<tr>
+               				<td>分佣比例：</td>
+            				<td><div class="col-md-3 input-group">
+	                       			<input type="text" name="commis_rate" placeholder="5" class="form-control">
+	                       			<span class="input-group-addon">%</span>
+	                       		</div>
+				            </td>
+               				<td class="col-md-2">必须为0-100的整数</td>
+               			</tr>
+               			<tr>
+							<td colspan="3" class="text-center">
+								<input type="hidden" name="store_id" value="{$store.store_id}">
+								<input class="btn btn-primary" type="button" onclick="actsubmit()" value="确认添加">
+							</td>
+                        </tr>
+               		</table>
+               		</form>
+               </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+<script>
+function push_commis_rate(obj){
+	//$('input[name="commis_rate"]').val($(obj).val());
+}
+
+function actsubmit(){
+	$('#class_info').submit();
+}
+</script>
+</div>
+</body>
+</html>   

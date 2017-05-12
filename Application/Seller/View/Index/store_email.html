@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>客户留言-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+<!--字体图标-->
+<link href="__PUBLIC__/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+<style type="text/css">
+*{margin:0;padding:0;}
+.favorites_title ul li,.favorites .favorites_content .clearfix li{width:19.8%}
+.favorites_title ul li, .favorites .favorites_content .clearfix li:last-child{border:0}
+.btn_1{border:5px solid #008BB9;background-color: #008BB9;color: white}
+.btn_2 button:hover{font-size: 13.5px}
+
+#hjnext{background:#3c8dbc;cursor:pointer;color:#fff;font-size:16px;}
+#hjnext:hover{background:#3389bb;}
+
+#hjliuyan ul li{list-style: none;width:100%;min-height:40px;text-align: center;border-bottom: 1px solid #d2d2d2;}
+#hjliuyan ul li span{display:inline-block;width:11%;line-height: 40px;border-right: 1px solid #d2d2d2;font-size:14px;overflow:hidden;margin-bottom: -4px;}
+#hjliuyan ul li span:nth-last-child(1){border-right: none;}
+#hjliuyan ul .hjlium span{display:inline-block;width:11%;line-height: 80px;border-right: 1px solid #d2d2d2;font-size:14px;overflow:hidden;height:80px;margin-bottom: -4px;}
+#hjliuyan ul .hjlium span a{display: inline-block;margin-top: 8px;margin-left: 5px;}
+#hjliuyan ul  li:nth-child(even){background:#f9f9f9;}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:600px) and (max-width:1245px){
+
+ #hjsa{width:100%;}
+
+
+ }
+
+
+</style>
+<body> 
+<!-- 头部-s -->
+<!-- 头部-e -->
+   
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/css/favorite.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/security_set.css"/>
+
+<div class="wrap" style="width:97%;background:#fff;margin:20px auto;min-height:150px;border:1px solid #ccc;">
+  
+  <!--菜单--> 
+  <!--菜单-->     
+  <!--侧边导航栏结束-->
+    <div class="col_main">
+  <div class="main security_passwd">
+    <div class="themes_title" style="border-bottom: 1px solid #d2d2d2;background:#f5f5f5;">
+      <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;font-size:16px;font-weight:500;font-family:'微软雅黑';color:#000;"><i class="fa fa-comments" style="padding-left: 14px;padding-right: 6px;"></i>客户留言</h3>
+      <span style="float:right;display:inline-block;width:40px;border-left: 1px solid #ccc;height:40px;">
+        <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 10px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);"></span>
+    <div style="clear:both;"></div>
+    </div>
+    <section class="security_passwd" style="margin-bottom: 30px;">
+      <div class="wrapper-3" style="margin-top: 30px;text-align: center;">
+            <div style="width:98%;min-height:36px;border:1px solid #d2d2d2;margin:0 auto;" id="hjliuyan">
+                <ul>
+                    <li><span>姓名</span><span>电话</span><span style="width:14%;">邮箱</span><span>Q Q</span><span style="width:14%;">留言时间</span><span style="width:25%">内容</span><span>操作</span></li>
+                    <foreach name="messages" item="message">
+                    <li class="hjlium" id="li{$message['id']}">
+                        <span>{$message['username']}</span><span >{$message['tel']}</span><span style="width:14%;">{$message['email']}</span><span>{$message['qq']}</span><span style="width:14%;">{$message['addtime']|date='Y-m-d H:i:s',###}</span><span style="width:25%;line-height:20px;overflow: auto;">{$message['text']}</span><span><a href="javascript:;" onclick="return ondelete({$message['id']});" title="删除留言"><img src="__PUBLIC__/images/hjliuyan2.png"></a></span></li>
+                    </foreach>
+                <div style="clear:both;"></div>
+                </ul>
+           </div>
+        </div>
+    </section>
+  </div>
+</div> 
+</div>
+<div style="text-align: center;">
+      {$show}
+</div>
+<div style="clear: both;"></div>
+</body>
+<script>
+	function ondelete(uid){
+		var t = 'li'+uid;
+		var t2 = document.getElementById(t);
+		$.post('{:U("Index/message_delete")}',{'id':uid},function(res){
+			if (res){
+				layer.msg('删除成功',{icon:1});
+				t2.parentNode.removeChild(t2)
+			} else {
+				layer.msg('删除失败',{icon:2})
+			}
+		})
+	}
+</script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>安全中心-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+</head>
+<body> 
+<!-- 头部-s -->
+<!-- 头部-e -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/security_code.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/security_set.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common2.css"/>
+<div class="wrap"  id="hjsa">
+  
+
+  <style type="text/css">
+
+.security_center_top .rat .rat_01.on{background:#f12e02;}
+.security_center_top .tips{color:#f12e02;}
+
+#hjsa{width:98%;}
+#hjyanzheng{width:70%;margin:0 auto;}
+/*当屏幕宽带在1200*/
+@media screen and (min-width:600px) and (max-width:1245px){
+
+ #hjsa{width:100%;}
+ #hjyanzheng{width:100%;margin:0 auto;}
+
+ }
+   
+
+
+  </style>
+  <!--菜单--> 
+  <!--菜单-->     
+  <!--侧边导航栏结束-->
+<div class="col_main" style="width:100%;">
+    <div class="main shop_red" style="min-height:600px;"> 
+          <!-- themes star -->
+          <div class="themes_title">
+        <h3><img src="__PUBLIC__/images/gerenxinxi.png" style="width:20px;margin-left: 20px;padding-right:10px;">安全设置</h3>
+        <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 5px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);">
+      </div>
+          <!-- themes end --> 
+          <!-- Security Center star -->
+          <div class="security_center" id="hjyanzheng">
+        <div class="security_center_top" style="background: #fff;border:none;width:70%;margin:0 auto;"> <a href="" class="personal_head target_no"> <img height="100" width="100" src="{$user.head_pic|default='__PUBLIC__/images/headPic.jpg'}" alt=""> </a>
+         <div class="pers_info">
+            <h3 class="name">{$user['nickname']}</h3>
+            <p class="rat"> 
+            	<span class='rat_00 <if condition="($user['email'] eq '') and ($user['mobile'] eq '')"> on </if>'>低</span>
+                <span class='rat_01 <if condition="($user['email'] neq '') or ($user['mobile'] neq '')"> on </if>'>中</span>
+                <span class='rat_02 <if condition="($user['mobile'] neq '') and ($user['email'] neq '')"> on </if>'>较高</span>
+             </p>
+            <p class="tips">本平台能保障你账户资金安全。</p>
+          </div>
+            </div>
+        <div class="security_center_list">
+          <ul>
+            <li class="list_name"><span style="display: inline-block;width:45px;font-size: 12px;height:30px;position:relative;padding-top: 15px;"><img src="__PUBLIC__/images/hjphone.png" style="position:absolute;top:-5px;left:20px;">已设置</span> <i class="<if condition="$user['password'] eq ''">icon_big_warning<else/>icon_correct</if>"></i>登录密码 </li>
+            <li class="list_des">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</li>
+            <li class="list_opear"> <a id="target_no" href="{:U('Userinfo/password')}"  class="edit">修改</a> </li>
+          </ul>               
+          <ul>
+            <li class="list_name"> <span style="display: inline-block;width:45px;font-size: 12px;height:30px;position:relative;padding-top: 15px;"><img src="__PUBLIC__/images/hjdeng.png" style="position:absolute;top:-5px;left:20px;">未验证</span> <i class="<if condition="$user['mobile'] eq ''">icon_big_warning<else/>icon_correct</if>"></i>手机验证 </li>
+            <li class="list_des">您验证的手机：若已丢失或停用，请立即更换，避免账户被盗。</li>
+            <li class="list_opear">
+                <a id="target_no" href="{:U('Userinfo/mobile_validate',array('type'=>'mobile','step'=>1))}" class="edit">
+	                 <if condition="$user['mobile'] eq ''">未验证(点击验证)<else/>解绑(手机丢失请联系客服)</if>
+                </a> 
+            </li>
+          </ul>
+          <ul>
+            <li class="list_name"><span style="display: inline-block;width:45px;font-size: 12px;height:30px;position:relative;padding-top: 15px;"><img src="__PUBLIC__/images/hjphone.png" style="position:absolute;top:-5px;left:20px;">已验证</span>  <i class="<if condition="$user['email'] eq ''">icon_big_warning<else/>icon_correct</if>"></i>邮箱验证 </li>
+            <li class="list_des">邮箱,互联网账号存在被盗风险，建议您立即绑定以保护账户安全。 </li>
+            <li class="list_opear"> 
+            	<a id="target_no" class="target_no" href="{:U('Userinfo/email_validate',array('type'=>'email','step'=>1))}">
+	                <if condition="$user['email'] eq ''">未验证(点击验证)<else/>解绑(邮箱丢失请联系客服)</if>
+                </a> 
+            </li>
+          </ul>
+            </div>
+      </div>
+          <!-- Security Center end --> 
+        </div>
+  </div>    
+</div>
+ 
+<div style="clear: both;"></div>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<html>
+	<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+		<meta charset="UTF-8">
+		<title>
+			YDshop管理后台
+		</title>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport">
+		<!-- Bootstrap 3.3.4 -->
+		<link href="/Public/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/Domain/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!--<link rel="stylesheet" href="__PUBLIC__/Domain/css/font-awesome.min.css" type="text/css">-->
+		<link href="__PUBLIC__/Domain/css/domainmessage.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="__PUBLIC__/Domain/js/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Domain/js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="__PUBLIC__/Domain/js/domainmessage.js"></script>
+	</head>
+	<body style="background-color:#ecf0f5;">
+		<div class="wrapper">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<ol class="breadcrumb">
+					<li>
+						<a href="javascript:void();">
+							<i class="fa fa-home">
+							</i>
+							&nbsp;&nbsp;后台首页
+						</a>
+					</li>
+				</ol>
+			</div>
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<a  onclick="dj(this,'s');">
+									<i class="fa fa-list">
+									</i>
+									域名绑定
+								</a>
+								<a  onclick="dj(this,'f');" class='on'>
+									<i class="fa fa-list">
+									</i>
+									域名购买
+								</a>
+							</h3>
+							<!-- <a href="{:U('Seller/Domain/cart')}">
+							<div style="width:50px;height:50px;float:right;margin-right:20px;margin-top:20px;background-image:url(__PUBLIC__/Domain/shop.png);background-size:50px 50px;line-height:50px;text-align:center;color:#f00;font-size:20px;" id="shop">{$count}</div></a> -->
+						</div>
+
+						<div class="panel-body">
+							
+							<div class="panel-body-f" style='display:block;'>
+								<form method="get" action="" onsubmit="return mysubmit();">
+									<div class="panel-search">
+										<div>
+											<div></div>
+											<div>
+												<input type="text" placeholder="ydzjs" name="domain" id="domain" value="{$Think.get.domain}" >
+												<select name="suffix" style="min-width:100px;">
+												<option value="com">.com</option>
+												<option value="cn">.cn</option>
+												<option value="net">.net</option>
+												<option value="net">.net</option>
+												<option value="top">.top</option>
+												<option value="org">.org</option>
+												<option value="com.cn">.com.cn</option>
+												<option value="net.cn">.net.cn</option>
+												<option value="org.cn">.org.cn</option>
+												<option value="biz">.biz</option>
+												<option value="info">.info</option>
+												<option value="cc">.cc</option>
+												<option value="tv">.tv</option>
+												<option value="name">.name</option>
+												<option value="mobi">.mobi</option>
+												<option value="me">.me</option>
+												<option value="co">.co</option>
+												<option value="so">.so</option>
+												</select>
+											</div>
+											<div><button type="submit" class="btn btn-primary">搜索</button></div>
+										</div>
+									
+									</div>
+								</form>
+								<div id="ajax_return">
+										<div class="table-responsive">
+											<table class="table table-bordered table-hover" >
+												<thead <php>if(!$res)echo "style='display:none'";</php>>
+													<tr>
+														<td class="text-center">
+															
+														</td>
+														<td  class="text-center">
+															域名
+														</td>
+														<td class="text-center">
+															域名状态
+														</td>
+														<td class="text-center">
+															价格信息
+														</td>
+														<td  class="text-center">
+															操作
+														</td>
+													</tr>
+												</thead>
+
+
+
+												<tbody <php>if(!$res)echo "style='display:none'";</php>>
+													<tr>
+														<td class="text-center">
+															<!-- <input type="checkbox" > -->
+														</td>
+														<td class="text-center">
+															{$res['domain']}
+														</td>
+														<td class="text-center red">
+															<php>if($res['available'] == 0)echo '已被注册';</php>
+															<php>if($res['available'] == 1)echo '可以注册';</php>
+														</td>
+														<td class="text-center">
+															{$res['price']}元/年
+														</td>
+														<td class="text-center 999999">
+														<php>if($res['available'] == 1){</php>
+												<button type="button"  class="btn btn-primary"><a onclick="shop('{$res[domain]}',999999);" href='/Seller/Domain/cart' style='color:#fff;'>立即购买</a></button>
+														<php>}</php>
+														<php>if($res['available'] == 0){</php>
+														<div type="" style="cursor:default;" class="btn btn-primary"><a  style='color:#ccc;cursor:default;'>立即购买</a></div>
+														<php>}</php>
+														</td>
+													</tr>
+													
+												</tbody>
+												<div id="jiazhai" style="width:100px;margin:0 auto;text-align:center;display:none;">
+
+													<img src="/Public/images/073b526cc38b157eeaf609f98dde824c.gif" style="width:60px;margin:0 auto;">
+												</div>
+												<tbody id="table">
+												
+												</tbody>
+											</table>
+										</div>
+								</div>
+							</div>
+							<div class="panel-body-s" >
+								<form action="{:U('Seller/Domain/store_domain')}" method="post" onsubmit="return mysubmit2();">
+									<div class="panel-search">
+									<if condition="$domain['domain'] neq ''">
+									<div style="margin-left: 100px;font-size: 16px">您已绑定了独立域名{$domain.domain}</div><br />
+									</if>
+										<div class="text-left tip">
+											请先将你要绑定的域名解析到customer.yundi88.com<a href="javascript:showmsg();" >查看解析方法</a><br>
+										</div>
+										<div>
+											<div>请输入域名：</div>
+											<div>
+												<input style="width:90%;" type="text" placeholder="要绑定的域名:如 ydwzjs.cn" name="domain"  id="dom" />
+
+											</div>
+											<div><button type="submit" class="btn btn-primary"> 绑定</button></div>
+										</div>
+										
+									</div>
+								</form>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- /.row -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</body>
+	<script type="text/javascript">
+	var arr = new Array('com','cn','net','top','org','com_cn','net_cn','org_cn','biz','info','cc','tv','name','mobi','me','co','so');
+	var arr2 = new Array('com','cn','net','top','org','com.cn','net.cn','org.cn','biz','info','cc','tv','name','mobi','me','co','so');
+function domain_whois(i)
+{
+	$.get('/seller/Domain/domain_whois',{'suffix':arr[i],'domain':$('#domain').val()},function(res){
+		if(res.available === '0' && res.code == 200){
+			var msg = '已被注册';
+			var msg2 = "<a href='/Seller/Domain/whois?d="+res.domain+"'>查看域名信息</a>";
+		}else if(res.available === '1' && res.code == 200){
+			var msg = '可以注册';
+			var msg2 = "<button type='button'  class='btn btn-primary' onclick=shop('"+res.domain+"',"+i+");>加入购物车</button>";
+
+		}else{
+			var msg = '查询失败！';
+			var msg2 = '';
+		}
+		$('#'+i).html(msg);
+		$('.'+i).html(msg2);
+		if(res.available == 1){
+			$('#'+arr[i]).html(res.price+'元/年');
+			
+		}
+		var len = arr.length;
+		if(i < len){
+			i += 1;
+			if(arr[i] == "{$Think.get.suffix}"){i += 1;}
+			domain_whois(i);
+			
+		}
+	})
+
+}
+// function domin(){
+	
+// 	var str = '';
+// 	$.each(arr2,function(v,i){
+// 		if(i != "{$Think.get.suffix}"){
+// 		str += "<tr><td class='text-center'></td><td class='text-center'>"+$('#domain').val()+"."+i+"</td><td class='text-center red' id="+v+"></td><td class='text-center' id='"+i+"'></td><td class='text-center "+v+"'><img src='/Public/Domain/20.gif'</td></tr>";
+// 		}
+// 	})
+// 		$('#table').html(str);
+// 		domain_whois(0);
+
+// }
+if("{$res}"){domin();}
+
+
+
+function shop(v,i){
+	$.post('/Seller/Domain/cart',{'v':v},function(res){
+
+		if(res == 1){
+			// $('.'+i).html("<button type='button'  class='btn btn-primary'><a href='/Seller/Domain/cart' style='color:#999999'>已加入,去结算</a></button>")
+			// $('#shop').html(parseInt($('#shop').html())+1);
+
+			return true;
+		}else{
+			return false;
+		}
+	})
+}
+function mysubmit()
+{
+	var r = /^[A-Za-z0-9]+-?[A-Za-z0-9]+$/;
+	if(r.test($('#domain').val())){
+		$('#jiazhai').css('display','');
+		return true;
+	}else{
+		alert('格式有误！');
+		return false;	
+	}
+		return false;	
+	
+}
+
+
+// function mysubmit2()
+// {
+
+// 		return false;
+// }
+
+
+function showmsg(){
+
+	var posLeft = 200;
+   var posTop = 300;
+   window.open("/index.php/Seller/Domain/domainmsg", "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=1000%,height=999%,left="+posLeft+", top="+posTop);
+}
+
+
+
+	</script>
+</html>

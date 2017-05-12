@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css">
+	<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+	<script type="text/javascript" src='__PUBLIC__/pc/js/user.js'></script>
+	
+</head>
+<body>
+	<header class="navss">
+			<div class="navsslogo">
+				<a target="_blank" href="/index/index"><img src="__PUBLIC__/images/user/logo.png"></a>
+				<h4>让企业没有难做的推广！</h4>
+			</div>
+			<div class="navssphone"><img src="__PUBLIC__/images/user/navssphone.png"><p>{$phone}</p></div>			
+			<div class="cl"></div>
+	</header>
+	
+	<div class="registeredbenner">
+		<div class="navssbenmain">
+			<div class="navsssbennerr">
+				<div class="peopre">
+					<ul><li class="peopers peoperss" i=".peoprea">个人注册</li>
+						<li  i=".peopreb">企业注册</li>
+						<div class="cl"></div>
+						</ul>
+				</div>
+				<!-- 个人注册 -->
+				<form action="{:U('user/regstore')}" method="post" class="navsslogin peoprea" id="formall">
+					<div class="navinp"><img src="__PUBLIC__/images/user/loginpeo.png"><input type="text" name="sellername" id="sellername" placeholder="账号（字母开头6-16位）" onblur="checkseller()"></div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/nasphone.png" style="width:11px;"><input type="text" name="username" id="username" placeholder="手机（11位）" onblur="checkusername()"></div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/navssloginpass.png"><input type="password" name="password" id="password" placeholder="设置密码（6-20位）" onblur="checkpassword()"></div>
+					<div class="navssyanzheng"><img src="__PUBLIC__/images/user/navssyangzheng.png"><input type="text" name="code" id="code" placeholder="验证码"></div>
+					<div class="navssyanzhenma"><input type="button" value="获取验证码" onclick="codes('{:U('User/send_sms_reg_code')}')" id="button"></div>
+					<div class="cl"></div>
+					<div class="navssjiaru"><input type="checkbox" name="ids" id="ids">同意云狄<a href="/article/detail/article_id/52.html">《服务协议》</a>||<a href="/article/detail/article_id/51.html">《法律声明》</a><a href="{:U('/User/login')}" class="memberok">已有账号</a></div>
+					<div class="navsslog"><a onclick="onnsubmit()">注册</a></div>
+				</form>
+
+				<!-- 企业注册 -->
+				<form action="{:U('user/regstore')}" method="post"  class="Enterprise peopreb" id="formall2">
+					<div class="named">称呼 :	<input type="radio" name="sex" checked="true" value="1">		先生<input type="radio" name="sex" value="2">		女士</div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/navssqiye.png"><input type="text" name="storename" id="storenamev" placeholder="企业名（2-16位）" onblur="checkstorev()"></div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/loginpeo.png"><input type="text" name="sellername" id="sellernamev" placeholder="账号（字母开头6-16位）" onblur="checksellerv()"></div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/nasphone.png" ><input type="text" name="username" id="usernamev" placeholder="手机（11位）" onblur="checkusernamev()"></div>
+					<div class="navinp"><img src="__PUBLIC__/images/user/navssloginpass.png"><input type="password" name="password" id="passwordv" placeholder="设置密码（6-20位）" onblur="checkpasswordv()"></div>
+					<div class="navssyanzheng"><img src="__PUBLIC__/images/user/navssyangzheng.png"><input type="text" name="code" id="codev" placeholder="验证码"></div>
+					<div class="navssyanzhenma"><input type="button" value="获取验证码" onclick="codesv('{:U('User/send_sms_reg_code')}')" id="buttonv"></div>
+					<div class="cl"></div>
+					<div class="navssjiaru"><input type="checkbox" name="ids" id="idsv">同意云狄<a target="_blank"  href="/article/detail/article_id/52.html">《服务协议》</a>||<a target="_blank"  href="/article/detail/article_id/51.html">《法律声明》</a><a href="{:U('/User/login')}" class="memberok">已有账号</a></div>
+					<div class="navsslog"><a onclick="onnsubmit2()">注册</a></div>
+				</form>
+			</div>
+				<div class="navssyingying"><img src="__PUBLIC__/images/user/navssyingying.png"></div>
+			<div class="cl"></div>
+		</div>
+	</div>
+
+	 <script> 
+      document.onkeyup = function(e){
+
+		if(e.keyCode===13){
+
+      		var display =$('.peopreb').css('display');
+
+				if(display == 'block'){
+						onnsubmit(); 
+				}else{
+			      	onnsubmit2();   
+			      }	
+	      		    		
+			  }
+	 	};
+   </script>
+
+ <script type="text/javascript">
+	        $(function(){
+	          $('.peopre>ul li').bind('click',function(){
+	          $('.peopre>ul li').each(function(){
+	            $($(this).attr('i')).css('display','none');       
+	            $($(this).attr('i')).hide();
+	            $(this).removeClass('peoperss');
+	          })
+	          $($(this).attr('i')).show();
+	          $(this).addClass('peoperss');
+	       });
+		});
+
+	function onnsubmit(){
+	  var ids = document.getElementById("ids");
+      var code = document.getElementById("code").value;
+      if( code === ''){
+        layer.msg('请输入验证码',{icon:2,time:2000});
+        return false;
+      }
+
+      if(seller != true){
+        layer.msg('账号格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(mobile2 != true){
+        layer.msg('手机格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(password3 != true){
+        layer.msg('密码格式错误',{icon:2,time:2000});
+        return false;
+      }
+
+      if (storenames != true){
+        layer.msg('店铺名字格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+      if (ids.checked != true){
+        layer.msg('请同意服务协议',{icon:2,time:2000});
+        return false;
+      }
+      $('#formall').submit();
+	}
+
+	function onnsubmit2(){
+	  var idsv = document.getElementById("idsv");
+      var codev = document.getElementById("codev").value;
+      if (storenamesv !== true){
+        layer.msg('店铺名格式错误',{icon:2,time:2000});
+        return false;
+      }
+
+      if( codev === ''){
+        layer.msg('请输入验证码',{icon:2,time:2000});
+        return false;
+      }
+
+      if(sellerv !== true){
+        layer.msg('账号格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(mobile2v !== true){
+        layer.msg('手机格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(password3v != true){
+        layer.msg('密码格式错误',{icon:2,time:2000});
+        return false;
+      }
+
+      if (storenamesv !== true){
+        layer.msg('店铺名字格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+      if (idsv.checked != true){
+        layer.msg('请同意服务协议',{icon:2,time:2000});
+        return false;
+      }
+		$('#formall2').submit();
+	}
+  </script>
+
+
+<include file="Public/public_footer" />
+
+</body>
+</html>

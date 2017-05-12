@@ -1,0 +1,208 @@
+<include file="Public/min-header" />
+<script type="text/javascript">
+    window.UEDITOR_Admin_URL = "__ROOT__/Public/plugins/Ueditor/";
+    var URL_upload = "{$URL_upload}";
+    var URL_fileUp = "{$URL_fileUp}";
+    var URL_scrawlUp = "{$URL_scrawlUp}";
+    var URL_getRemoteImage = "{$URL_getRemoteImage}";
+    var URL_imageManager = "{$URL_imageManager}";
+    var URL_imageUp = "{$URL_imageUp}";
+    var URL_getMovie = "{$URL_getMovie}";
+    var URL_home = "{$URL_home}";    
+</script>
+<load href="__ROOT__/Public/plugins/Ueditor/ueditor.config.js"/>
+<load href="__ROOT__/Public/plugins/Ueditor/ueditor.all.js"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content ">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 编辑导航</h3>
+                </div>
+                <div class="panel-body ">   
+                    <!--表单数据-->
+                    <form method="post" id="handleposition" action="{:U('Store/navigationHandle')}">                    
+                        <!--通用信息-->
+                    <div class="tab-content col-md-12">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="col-sm-2">父分类：</td>
+                                    <td>
+                                       <select name="sn_pid" class="form-control">
+                                            <option value="0">顶级分类</option>
+                                            <foreach name="class" item="vvv">
+                                            <option value="{$vvv['sn_id']}" <if condition="$info['sn_pid'] eq $vvv['sn_id']"> selected="true" </if>>{$vvv['sn_title']}</option>
+                                            </foreach>
+                                       </select>                                  
+                                    </td>
+                                </tr> 
+                                <tr>
+                                    <td class="col-sm-2">导航名称：</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="sn_title" value="{$info.sn_title}" >                                   
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td>是否显示：</td>
+                                    <td >
+                         				<input type="radio" class="" name="sn_is_show" value="1" <if condition="$info[sn_is_show] eq 1"> checked="checked"</if>>是
+                      					<input type="radio" class="" name="sn_is_show" value="0" <if condition="$info[sn_is_show] eq 0"> checked="checked"</if>>否
+                                    </td>
+                                   
+                                </tr>  
+                                <tr>
+                                    <td>是否文章列表页：</td>
+                                    <td >
+                                        <input type="radio" class="" name="sn_is_list" value="1" <if condition="$info[sn_is_list] eq 1"> checked="checked"</if>>是
+                                        <input type="radio" class="" name="sn_is_list" value="0" <if condition="$info[sn_is_list] eq 0"> checked="checked"</if>>否
+                                    </td>
+                                   
+                                </tr> 
+                                <tr>
+                                    <td>是否首页推荐：</td>
+                                    <td >
+                                        <input type="radio" class="" name="sn_is_home" value="1" <if condition="$info[sn_is_home] eq 1"> checked="checked"</if>>是
+                                        <input type="radio" class="" name="sn_is_home" value="0" <if condition="$info[sn_is_home] eq 0"> checked="checked"</if>>否
+                                    文章列表有效
+                                    </td>
+                                   
+                                </tr> 
+                                <tr>
+                                    <td>此栏目在首页文章显示条数：</td>
+                                    <td >
+                                        <input type="text" name="sn_show_num" value="{$info[sn_show_num]}" placeholder="默认3条">
+                                    文章列表有效
+                                    </td>
+                                   
+                                </tr> 
+                                <tr>
+                                    <td>是否新窗口打开：</td>
+                                    <td>
+                               			<input type="radio" class="" name="sn_new_open" value="1"  <if condition="$info[sn_new_open] eq 1"> checked="checked"</if>>是
+                      					<input type="radio" class="" name="sn_new_open" value="0"  <if condition="$info[sn_new_open] eq 0"> checked="checked"</if>>否     
+                                    </td>
+                                  
+                                </tr>  
+                                <tr>
+                                    <td>导航外链URL：</td>
+                                    <td>
+                      					<input type="text" class="form-control" name="sn_url" value="{$info.sn_url}" placeholder="请填写包含http://的完整URL地址,如果填写此项则点击该导航会跳转到外链">
+                                    	<p class="text-warning"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>排序：</td>
+                                    <td>
+                      					<input type="text" class="form-control" name="sn_sort" value="{$info.sn_sort}" onkeyup="value=value.replace(/[^\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" placeholder="默认为0">
+                                    </td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td>关键词：</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="sn_keyword" value="{$info.sn_keyword}" >
+                                    </td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td>描述：</td>
+                                    <td>
+                                        <textarea type="text" class="form-control" name="sn_description" rows="2" >{$info.sn_description}</textarea>
+                                    </td>
+                                   
+                                </tr>
+                                <tr>
+
+                                    <td>banner图片：</td>
+                                    <td>
+
+                                        <img style="width:500px;" src="{$info.sn_pic}" id="sn_pic" alt="">
+                                         <input type="hidden" name="sn_pic" value="{$info.sn_pic}">
+
+                                        <input type="button" class="form-control" style="width:100px;" name="" value="上传banner" onClick="GetUploadify(1,'sn_pic','seller','callback2')" >  建议图片宽为1920px
+                                    </td>
+                                   
+                                </tr>
+                                  <tr>
+
+                                    <td>banner图片是否显示：</td>
+                                    <td>
+                                        <input type="radio" class="" name="sn_banner_show" value="1"  <if condition="$info[sn_banner_show] eq 1"> checked="checked"</if>>是
+                                        <input type="radio" class="" name="sn_banner_show" value="0"  <if condition="$info[sn_banner_show] eq 0"> checked="checked"</if>>否    
+                                    </td>
+                                   
+                                </tr>
+                                <tr>
+
+                                    <td>内容：</td>
+                                    <td class="col-xs-10">
+                             			<textarea class="span12 ckeditor" id="post_content" name="sn_content" title="">
+							            {$info.sn_content}
+							        </textarea>
+                                    </td>
+                                </tr>                                   
+                                </tbody> 
+                                <tfoot>
+                                	<tr>
+                                		<td><input type="hidden" name="sn_id" value="{$info.sn_id}"></td>
+                                		<td class="text-right"><input class="btn btn-primary" type="button" onclick="adsubmit()" value="保存"></td>
+                                	</tr>
+                                </tfoot>                               
+                                </table>
+                        </div>                           
+                    </div>              
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+function adsubmit(){
+	$('#handleposition').submit();
+}
+
+var editor;
+$(function () {
+    //具体参数配置在  editor_config.js 中
+    var options = {
+        zIndex: 999,
+        initialFrameWidth: "100%", //初化宽度
+        initialFrameHeight: 350, //初化高度
+        focus: false, //初始化时，是否让编辑器获得焦点true或false
+        maximumWords: 99999, removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',//允许的最大字符数 'fullscreen',
+        pasteplain: true, autoHeightEnabled: true,
+        autotypeset: {
+            mergeEmptyline: true,        //合并空行
+            removeClass: true,           //去掉冗余的class
+            removeEmptyline: false,      //去掉空行
+            textAlign: "left",           //段落的排版方式，可以是 left,right,center,justify 去掉这个属性表示不执行排版
+            imageBlockLine: 'center',    //图片的浮动方式，独占一行剧中,左右浮动，默认: center,left,right,none 去掉这个属性表示不执行排版
+            pasteFilter: false,          //根据规则过滤没事粘贴进来的内容
+            clearFontSize: false,        //去掉所有的内嵌字号，使用编辑器默认的字号
+            clearFontFamily: false,      //去掉所有的内嵌字体，使用编辑器默认的字体
+            removeEmptyNode: false,      //去掉空节点
+            removeTagNames: {"font": 1},
+            indent: false,               //行首缩进
+            indentValue: '0em'           //行首缩进的大小
+        }
+    };
+    editor = new UE.ui.Editor(options);
+    editor.render("post_content");
+});
+
+function callback2(img_str){
+    $('input[name="sn_pic"]').val(img_str);
+    $('#sn_pic').attr('src',img_str);
+}
+
+</script>
+</body>
+</html>

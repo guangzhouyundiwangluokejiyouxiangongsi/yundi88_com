@@ -1,0 +1,251 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云商会</title> 
+
+<!-- ie使用最高版本打开 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/yshanghui.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/animate.min.css">
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/wow.min.js"></script>
+
+
+<!-- <script type="text/javascript" src="js/scroll_image.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/pc/js/gundong.js"></script>
+
+</head> 
+
+<body  > 
+
+<!-- 使用动画效果必须加上实例化 -->
+<script type="text/javascript">
+  $(function(){
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+      new WOW().init();
+    };
+  });
+</script>
+
+
+<include file="Article/header" />
+
+ <script type="text/javascript">
+        $(function(){
+          $('.navs>a').bind('mouseover',function(){
+          $('.navs>a').each(function(){
+            $($(this).attr('i')).css('display','none');       
+            $($(this).attr('i')).hide('aa');
+          })
+          $($(this).attr('i')).show('aa');
+
+        });
+});
+    </script>
+
+	<main class="ymain">
+  <!-- benner部分 -->
+    <!-- <div class="benner">
+      <div class="yjiaru"><a href="#"><img src="./images/ann.png" ></a></div>
+      <img src="./images/indexBANNER.jpg" class="ybenner" style="width:100%;">   
+    </div> -->   
+    <div>
+      <img src="__PUBLIC__/pc/images/indexBANNER.jpg" style="width:100%;">   
+    </div>
+
+  <!-- 关于商会 -->
+
+  <!-- benner下面部分 -->
+    <div  class="indexabout">
+        <h2 >关于商会</h2>
+        <p>企业联盟云商会对接各种商业资源，最大化利用互联网+价值，帮助中国中小型企业探索出适合企业的转型升级之路。同时，云商会定期组织各界商务人士，以互联网+、自
+  媒体、资本投融资、创业项目等，通过互联网在线分享以及线下交流会等形式，形成良好的跨界人士相互交流与沟通的环境。且商会成员主要是来自各行业企业法人/
+  创始人，达到共建共享共赢的核心理念。企业联盟云商会是一个共享人脉资源促进商业合作发展的商业协会。</p>
+      
+      <ul>
+          <li><a href="#"><img src="__PUBLIC__/pc/images/addmember.png" class="indexadd">会员加入</a></li>
+          <li><a href="#"><img src="__PUBLIC__/pc/images/kuaisu.png" class="indexQuick">快速加入</a></li>
+          <li><a href="#"><img src="__PUBLIC__/pc/images/youshi.png" class="advantage">快速加入</a></li>
+          <div class="cl"></div>
+        </ul>
+    </div>
+
+    <!-- 小广告部分 -->
+  <div><img src="__PUBLIC__/pc/images/advertising.png" style="width:100%;"></div>
+    <!-- 商会咨询部分 -->
+  <div class="information">
+    <h2>商会资讯</h2>
+    <p>关注实时动态，记录点滴进步</p>
+    <p>商会资讯使你在最短的时间内了解企业最新新闻</p>
+
+    <!-- 幻灯片部分 -->
+    <div class="informationl">
+        <div id="main">
+        <div class="setmoll"><a href="#">查看更多+</a></div>
+          <!--下面的显示区域-->
+          <ul id="one">
+              <li style="background:#eb3436;">1</li>
+              <li>2</li>
+              <li>3</li>
+          </ul>
+          <!--需要轮播的图片-->
+          <ul id="two">
+              <li style="display:block;">
+                <img src="__PUBLIC__/pc/images/huandegnpian.png" alt="1">
+                <div class="twoD">热烈祝贺广州云狄网络科技有限公司挂牌成功！</div>
+              </li>
+              <li>
+                <img src="__PUBLIC__/pc/images/indexBANNER.jpg" alt="2">
+                <div class="twoD">商会资讯使你在最短的时间内了解企业最新新闻</div>
+              </li>
+              <li>
+                <img src="__PUBLIC__/pc/images/huandegnpian.png" alt="3">
+                <div class="twoD">热烈祝贺广州云狄网络科技有限公司挂牌成功！</div>
+                </li>
+          </ul>
+      </div>
+    </div>
+  <script type="text/javascript" src="__PUBLIC__/pc/js/huandengpian.js"></script>
+  
+  <!-- 新闻咨询部分 -->
+    
+    <div class="informationr">
+        <ul class="informationrt">
+        
+
+        <li class="infors" i='.lista'>
+        <tpshop sql="select * from `__PREFIX__article_cat`" key="key" item="val">
+        <php>if($val['cat_id'] == 34){ echo($val['cat_name']);}</php>
+        </tpshop></li>
+        <li i=".listb">
+        <tpshop sql="select * from `__PREFIX__article_cat`" key="key" item="val">
+        <php>if($val['cat_id'] == 35){ echo($val['cat_name']);}</php>
+        </tpshop></li>
+        <li i=".listc">
+        <tpshop sql="select * from `__PREFIX__article_cat`" key="key" item="val">
+        <php>if($val['cat_id'] == 36){ echo($val['cat_name']);}</php>
+        </tpshop></li>
+        
+        <div class="cl"></div>
+        </ul>
+
+       <div class="lista list">
+          <ul>
+            <tpshop sql="select * from `__PREFIX__article` where cat_id = 34 and is_open=1 order by add_time desc limit 10" key="key" item="vv">
+            <li><span><a href="/article/news?new_id={$vv.article_id}">{$vv.title|getSubstr=0,22}</a><p style="float:right;">{$vv.add_time|date='Y-m-d', ###}</p></span></li>
+            </tpshop>
+         </ul>  
+      </div>
+
+        <div class="listb list">
+          <ul>
+          <tpshop sql="select * from `__PREFIX__article` where cat_id = 35 and is_open=1 order by add_time desc limit 10" key="key" item="vv2">
+            <li><span><a href="/article/news?new_id={$vv2.article_id}">{$vv2.title|getSubstr=0,22}</a><p style="float:right;">{$vv2.add_time|date='Y-m-d',###}</p></span></li>
+          </tpshop>
+         </ul>  
+      </div>
+
+        <div class="listc list">
+          <ul>
+          <tpshop sql="select * from `__PREFIX__article` where cat_id = 36 and is_open=1 order by add_time desc limit 10" key="key" item="vv3">
+            <li><span><a href="/article/newsnew_id={$vv3.article_id}">{$vv3.title|getSubstr=0,22}</a><p style="float:right;">{$vv3.add_time|date='Y-m-d',###}</p></span></li>
+          </tpshop>
+         </ul>  
+      </div>
+  </div>
+  
+  <script type="text/javascript" src="__PUBLIC__/pc/js/renmengzixun.js"></script> 
+  <div class="cl"></div>
+</div>
+  <!-- 商会风采 -->
+  <div class="demeanour">
+    <div class="commerce">
+    
+      <h2>
+      <tpshop sql="select * from `__PREFIX__article_cat`" key="key" item="val2">
+      <php>if($val2['cat_id'] == 37){ echo($val2['cat_name']);}</php>
+      </tpshop>
+      </h2>
+
+      <p>企业联盟云商会对接各种商业资源，最大化利用互联网+价值，帮助</p>
+      <p>中国中小型企业探索出适合企业的转型升级之路</p>
+      <ul>
+      <tpshop sql="select * from `__PREFIX__article` where cat_id = 37 and is_open=1 order by add_time desc limit 10" key="key" item="vv4">
+        <li><a href="/article/elegant?new_id={$vv4.article_id}"><img src="{$vv4.thumb}"></a>{$vv4.title|getSubstr=0,15}</li>
+      </tpshop>
+      <div class="cl"></div>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- 新入住会员 -->
+<div class="rollbox">
+  <h2>新入驻会员</h2>
+  <div class="scroll_area">
+  <div class="scroll_list">
+   <ul class="scroll_ul" id="one1">
+   <foreach name="store_logo" item="vv">
+    <li  id="show1"><img src="{$vv}" class="rollboxa"></li>
+    </foreach>
+   </ul>
+  </div>
+  <a id="prev" class="btn_icon" href="javascript:;">></a>
+  <a id="next" class="btn_icon" href="javascript:;"><</a>
+ </div>
+</div>
+
+<script>			
+	var one1 = document.getElementById('one1');
+	var oLi = one1.getElementsByTagName('li');	
+	console.log(oLi);		
+	for(var i =1;i<=6;i++){
+		var oDiv = document.getElementById('show'+i);
+		oDiv.onmouseover = function(){
+			this.getElementsByClassName('zhezhao')[0].style.display ='block';
+			this.getElementsByClassName('rollboxa')[0].style.display ='none';
+		}
+		oDiv.onmouseout = function(){
+			this.getElementsByClassName('zhezhao')[0].style.display ="none";
+			this.getElementsByClassName('rollboxa')[0].style.display ='block';
+		}
+	}			
+</script>
+
+  
+<div class="rollboxs">
+  <h2>其它联盟商会</h2>
+  <div class="scroll_areas">
+  <div class="scroll_lists">
+   <ul class="scroll_uls">
+    <foreach name="shop_link" item="vv">
+    <li><a href="{$vv.link_url}"><img src="{$vv.link_logo}">{$vv.link_name}</a></li>
+    </foreach>
+   </ul>
+  </div>
+  <a id="prevs" class="btn_icons1" href="javascript:;"><img src="__PUBLIC__/pc/images/nexts.png"></a>
+
+  <a id="nexts" class="btn_icons2" href="javascript:;"><img src="__PUBLIC__/pc/images/prevs.png"></a>
+
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+  </main>	
+
+<div class="cl"></div>
+<include file="Article/footer" />
+</body> 
+</html>

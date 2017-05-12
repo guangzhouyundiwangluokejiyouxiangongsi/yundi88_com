@@ -1,0 +1,392 @@
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/public-header.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/detail-header.css">
+<header class="head">
+<style>
+
+
+</style>
+    <!-- <div class="left">Hi，你好  kky</div> -->
+    <nav class="nav">
+    	<p>
+	        <a href="/" title="{$tpshop_config['shop_info_store_name']}"> 
+    			<img src="__PUBLIC__/pc/images/logo-1.png" width="79" height="26"  alt=""/>
+    		</a>  
+    	</p>
+	    <ul style="float: right;">
+	        <li><a href="{:U('/user/reg')}" class='nologin' >注册</a><a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+	        </li>
+	        <span>|</span>
+	        <li><a href="{:U('/user/login')}" class='nologin' >登录</a><a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+	       
+	    </ul>
+	    <p style="margin:0 40px;">股票代码：366130</p>
+	    		<section class="search1">
+			       <div id="tab">
+					    <div class="tabList">
+					    	<span class="chosse">产品</span>
+					        <ul>
+					          	<li <?php if(I('q') || (!I('company') && !I('info'))) ?>>产品</li>
+					            <li <?php if(I('company')) ?>>公司</li>
+                     			<li <?php if(I('info')) ?>>信息</li>
+					        </ul>
+					    </div>
+				        
+					    <div class="tabCon">
+					        <div class="cur">
+					           <form name="sourch_form" id="sourch_form" method="post" action="{:U("/Goods/search")}">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="q" id="q" value="<?php echo I('q'); ?>" placeholder="搜索产品关键字"  onfocus="getdata(this);" oninput="getdata(this);"/>
+					             <a data-role="btn" href="javascript:void(0);" class="but" onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();"></a>
+					            </form>
+					        </div>
+					        <div class="cur">
+					           <form id="sourch_form_com" method="get" action="{:U('/index/searchstreet')}">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="company" id="q_com" value="<?php echo I('company'); ?>" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this)" />
+					             <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
+					            </form>
+					        </div>
+							<div class="cur">
+				               <form id="sourch_form_info" method="get" action="{:U('/Info/search')}">
+				                <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="<?php echo I('info'); ?>" placeholder="搜索信息关键字" />
+				                 <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
+				                </form>
+				            </div>
+					    </div>
+					    <ul class="tab-search-box" onfocus="$('.tab-search-box').show();">
+					    </ul>
+			        </div>
+				</section>
+    </nav>
+
+</header><!--顶部结束-->
+  
+  	<div style="padding: 13px 0;height: 74px;background: #ffffff;">
+  		<div class="prof">
+	  		<div class="prol">
+				<figure>
+			        <a target="_blank" href="{:U('Store/index',array('store_id'=>$store[store_id]))}" title="{$store[store_name]}"> 
+            			<img src="{:templogo($store[store_id],190,90)}"   alt=""/>
+            		</a>  
+			    </figure>
+			   	<p>{$store[store_name]}</p>
+				<if condition="$store[commerce_state]">
+				<a style="position: relative;z-index: 90;margin:11px 150px 11px 20px;" target="_blank" href="/article/yun_shop">
+					<img style="width: 50px;height: 50px;" src="/Public/renzheng/yunshanghui.png">
+					<span class="tipt">
+                		<img src="/Public/renzheng/yunshanghui.png" width="100" height="100" alt="">
+	               		<span>企业联盟商会会员,《权威企业》身份象征为消费者及商家提供100%安全保障,便捷服务(详细查看)!</span>
+	               		<img class="arrow" src="/Public/renzheng/tip_arrow_up.png"> 
+	                </span>
+				</a>
+				<else />
+				<a style="position: relative;z-index: 90;margin:11px 150px 11px 20px;" target="_blank" href="/article/yun_shop">
+					<img style="width: 50px;height: 50px;" src="/Public/renzheng/yunshanghui2.png">
+					<span class="tipt">
+                		<img src="/Public/renzheng/yunshanghui2.png" width="100" height="100" alt="">
+	               		<span style=" margin: 0 0 0 10px;">未加入！</span>
+	               		<img class="arrow" src="/Public/renzheng/tip_arrow_up.png"> 
+	                </span>
+				</a>
+				</if>
+				
+				<if condition="$store[apply_state]">
+				<a style="position: relative;z-index: 90;margin:11px 0 11px 20px;" target="_blank" href="/Index/certification.html?store_id={$store.store_id}">
+					<img style="width: 50px;height: 50px;" src="/Public/renzheng/renzheng3.png">
+					<span class="tip" >
+	               		<img src="__PUBLIC__/renzheng/renzheng3.png" width="100" height="100"  alt=""/>
+	               		<span>已认证企业/个体，杜绝一切虚假商家。</span>
+	               		<img class="arrow" src="__PUBLIC__/renzheng/tip_arrow_up.png">
+	               	</span>
+				</a>
+				<else />
+				<a style="position: relative;z-index: 90;margin:11px 0 11px 20px;" target="_blank" href="/Index/certification.html?store_id={$store.store_id}">
+					<img style="width: 50px;height: 50px;" src="/Public/renzheng/renzheng2.png">
+					<span class="tips" >
+	               		<img src="__PUBLIC__/renzheng/renzheng2.png" width="100" height="100"  alt=""/>
+	               		<span style=" margin: 0 0 0 10px;">未验证！</span>
+	               		<img class="arrow" src="__PUBLIC__/renzheng/tip_arrow_up.png">
+	               	</span>
+				</a>
+				</if>
+		    </div>
+	    </div>
+  	</div>
+
+
+<div class="com_nav">
+	<div class="mg">
+        <ul>
+    	    <li><a target="_blank" href="{:U('Store/index',array('store_id'=>$store[store_id]))}">{$store['store_products']['0']}</a></li>
+	        <li><a target="_blank" href="{:U('Store/goods_list',array('store_id'=>$store[store_id]))}" title="{$store['store_products']['1']}">{$store['store_products']['1']}</a>
+                <dl style="display: none;">
+                   <!-- 商品分类 -->
+                   <foreach name="main_cat" item="v">
+	                    <dd>
+	                   		<a target="_blank" href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'cat_id'=>$v[cat_id]))}" title="{$v.cat_name}">{$v.cat_name}</a>
+	                        <ul style="display: none;">
+		                        <!-- 二级分类 --> 
+		                        <foreach name="sub_cat[ $v['cat_id'] ]" item="vs">
+	                            <li>
+	                          		<a target="_blank" href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'cat_id'=>$vs[cat_id]))}" title="{$vs.cat_name}">{$vs.cat_name}</a>
+	                            </li>
+	                            </foreach>			                        
+		                    </ul>
+		                </dd> 
+		            </foreach>
+	            </dl> 
+            </li>            	
+            <!-- 自定义导航 -->
+            <foreach name="navigation" item="vv" key="kk">
+				    <li>
+	                <if condition="empty($vv[sn_url])">
+	                  <a  href="
+	                   <if condition='($vv[sn_is_list] eq 1)'>
+	                    {:U('Store/newsList',array('store_id'=>$store[store_id],'sn'=>$vv[sn_id]))}
+	                    <elseif condition='$vv[sn_is_list] eq 2'/>
+	                    {:U('Store/photolist',array('store_id'=>$store[store_id]))}
+	                    <elseif condition='$vv[sn_is_list] eq 3'/>
+	                    {:U('Store/message',array('store_id'=>$store[store_id]))}
+	                    <else/>
+	                    {:U('Store/store_news',array('store_id'=>$store[store_id],'sn_id'=>$vv[sn_id]))}
+	                    </if>"  
+	                    <if condition='($vv[sn_new_open])'>target='_blank'</if> >
+	                <else/>
+	                <a href="{$vv.sn_url}" title='{$vv.sn_keyword}' <if condition='($vv[sn_new_open])'>target='_blank'</if>>
+	                </if>
+	                {$vv.sn_title}</a>
+                    
+                    <dl>
+                     <foreach name="vv['son']" item="vvv">
+                     <dd>
+
+                     <if condition="empty($vvv[sn_url])">
+                     	<a  href="
+                        <if condition='($vvv[sn_is_list] eq 1)'>
+	                    {:U('Store/newsList',array('store_id'=>$store[store_id],'sn'=>$vvv[sn_id]))}
+	                    <elseif condition='$vvv[sn_is_list] eq 2'/>
+	                    {:U('Store/photolist',array('store_id'=>$store[store_id]))}
+	                    <elseif condition='$vvv[sn_is_list] eq 3'/>
+	                    {:U('Store/message',array('store_id'=>$store[store_id]))}
+	                    <else/>
+	                    {:U('Store/store_news',array('store_id'=>$store[store_id],'sn_id'=>$vvv[sn_id]))}
+	                    </if>" 
+                        <if condition='($vvv[sn_new_open])'>target='_blank'</if> >
+                    <else/>
+                    <a href="{$vvv.sn_url}" title='{$vvv.sn_keyword}' <if condition='($vvv[sn_new_open])'>target='_blank'</if>>
+                    </if>
+                     {$vvv.sn_title}</a>
+
+                     </dd>	
+                     </foreach>
+                    </dl>
+
+	                </li>
+                   </foreach>	  
+             <!-- 分类在导航显示 -->
+        </ul>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+		var navnum=function(liname){
+			var li_left= parseInt($(liname).css('marginLeft') );
+			var nli=$(liname).width();
+			nli=nli+li_left;
+			var nlilenmax=1200/nli;
+			var nlilen=$(liname).length;
+			for (var i = nlilen - 1 ; i > nlilenmax - 1; i--) {
+				$(liname).eq(i).remove();
+			}
+		}
+		navnum(".com_nav>.mg> ul >li");
+		
+      var uname= getCookie('uname');
+      if(uname == ''){
+        $('.islogin').remove();
+        $('.nologin').show();
+      }else{
+        $('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+      }
+      	
+     	
+		/* 搜索信息 */
+        $("#q").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		$("#q_com").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q_com").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		/* 搜索选项卡 */
+		$('.search1 #tab .tabCon .cur').hide();
+		if("<?php echo I('company');?>"){
+			$('.search1 #tab .tabCon .cur').eq(1).show();
+			
+		}else if("<?php echo I('info');?>"){
+
+      $('.search1 #tab .tabCon .cur').eq(2).show();
+    }else{
+			$('.search1 #tab .tabCon .cur').eq(0).show();
+		}
+		
+		$('#tab .tabList').mouseover(function(){
+			$(this).find('ul').css('display','block');
+		})
+		$('#tab .tabList').mouseout(function(){
+			$(this).find('ul').css('display','none');
+		})
+		// 同步搜索框的值
+		$('#tab .tabList ul li').click(function(){
+			$('#tab .tabList ul').hide();
+			var chosseval=$(this).parent().parent().find('span').html();
+			chosseval=$(this).html();
+			$(this).parent().parent().find('span').html(chosseval);
+			var q_txt='';
+			var i =$(this).index();
+			$('.search1 #tab .tabList ul li').removeClass('cur');
+			
+			$('.search1 #tab .tabCon .cur').hide();
+			$('.search1 #tab .tabCon .cur').eq(i).show();
+			if($('#q').val() != '' || $('#q_com').val() != '' || $('#q_info').val() != '')
+			{	
+				if($('#q').val() != ''){
+					q_txt=$('#q').val();
+				}
+				else if($('#q_com').val() != ''){
+					q_txt=$('#q_com').val();
+				}
+				else{
+					q_txt=$('#q_info').val();
+				}
+
+				$("#tab .tabCon input[ type='text' ] ").val('');
+			}
+			$('#tab .tabCon >div').eq(i).find('.ssk').val(q_txt);		
+			
+		});
+
+		//com_nav
+		$(".com_nav ul li").mouseover(function(){
+			$(this).children("dl").stop().show();			
+		});
+		$(".com_nav ul li").mouseout(function(){
+			$(this).children("dl").stop().hide();			
+		});
+		$(".com_nav ul li dd").mouseover(function(){
+			$(this).children("ul").stop().show();			
+		});
+		$(".com_nav ul li dd").mouseout(function(){
+			$(this).children("ul").stop().hide();			
+		});
+    });
+
+  </script>
+<script type="text/javascript">
+function getdata(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Goods/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Goods/search/q/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    // 限制搜索框数量
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+
+function getdata2(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Index/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Index/searchstreet/company/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    // 限制搜索框数量
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+
+
+$('#tab .tabCon .ssk').keyup(function(event){ 
+
+	if(event.keyCode == 40){
+		var obj = $('.tab-search-box .xuanzhong');
+		if($(obj).text()){
+			$(obj).removeClass('xuanzhong');
+			$(obj).next().addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+			if(!text){
+				$('.tab-search-box li').eq(0).addClass('xuanzhong');
+				var text = $('.tab-search-box .xuanzhong').text();
+
+			}
+		}else{
+
+			$('.tab-search-box li').eq(0).addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+
+		}
+		
+		
+	$('input[name=company]').val(text);
+	$('input[name=q]').val(text);
+		
+	}else if(event.keyCode == 38){
+		var l = $('.tab-search-box li').length;
+		var obj = $('.tab-search-box .xuanzhong');
+		if($(obj).text()){
+			$(obj).removeClass('xuanzhong');
+			$(obj).prev().addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+			if(!text){
+				
+				$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+				var text = $('.tab-search-box .xuanzhong').text();
+			}
+		}else{
+
+			$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+
+		}
+		
+	$('input[name=company]').val(text);
+	$('input[name=q]').val(text);
+
+	}
+}); 
+
+
+  </script>

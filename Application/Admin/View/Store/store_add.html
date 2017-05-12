@@ -1,0 +1,138 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	           	   <nav class="navbar navbar-default">	     
+				      <div class="collapse navbar-collapse">
+	    				<div class="navbar-form form-inline">
+				            <div class="form-group">
+				            	<p class="text-success margin blod">店铺管理:</p>
+				            </div>
+				             <div class="form-group">
+				             <if condition="$is_own_shop eq 0">
+                                 <a class="btn btn-default" href="{:U('Store/store_list')}">店铺列表</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/apply_list')}" >开店申请</a>&nbsp;&nbsp;&nbsp;                                          
+                                 <a class="btn btn-default" href="{:U('Store/reopen_list')}" >签约申请</a>&nbsp;&nbsp;&nbsp;
+                             <else/>
+                                 <a class="btn btn-default" href="{:U('Store/store_own_list')}">管理</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a class="btn btn-default" href="javascript:;" >新增</a>&nbsp;&nbsp;&nbsp;
+                              </if>
+				            </div>
+	                        <div class="pull-right">
+				                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+				            </div>
+				          </div>
+				       </div>
+	    		 	</nav>	
+	               	<nav class="navbar navbar-default">
+		            	<if condition="$is_own_shop eq 1">
+		            	<div class="callout callout-inro">
+			            	<p>平台可以在此处添加自营店铺，新增的自营店铺默认为开启状态</p>
+							<p>新增自营店铺默认绑定所有经营类目并且佣金为0，可以手动设置绑定其经营类目</p>
+							<p>新增自营店铺将自动创建店主会员账号（用于登录网站会员中心）以及商家账号（用于登录商家中心）</p>
+						</div>
+						<else/>
+						<div class="callout callout-inro">
+							<p>1. 平台可以在此处添加外驻店铺，新增的外驻店铺默认为开启状态</p>
+					        <p>2. 新增外驻店铺默认绑定所有经营类目并且佣金为0，可以手动设置绑定其经营类目。</p>
+					        <p>3. 新增外驻店铺将自动创建店主会员账号（用于登录网站会员中心）以及商家账号（用于登录商家中心）。</p>
+		            	</div>
+						</if>
+	    			</nav>
+	             </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+	            	  <form method="post" id="store_info">
+		              <table class="table table-bordered table-striped dataTable">
+                        <tbody> 
+                        <tr><td>店铺名称：</td>
+                        	<td><input name="store_name" value="{$store.store_name}" onblur="store_check()"></td>
+                        	<td></td>
+                        </tr>
+                        <tr><td>店主账号：</td>
+                        	<td><input type="text" name="user_name" value="{$store.user_name}" onblur="store_check()"></td>
+                        	<td class="text-warning">用于登录会员中心,支持手机或邮箱</td>
+                        </tr>
+                        <tr>
+                            <td>店主卖家账号：</td>
+                            <td><input name="seller_name" value="{$store.seller_name}" onblur="store_check()"></td>
+                       		<td class="text-warning">用于登录商家中心，可与店主账号不同</td>
+                        </tr> 
+                         <tr>
+                            <td>登陆密码：</td>
+                            <td><input type="password" name="password" value="{$store.password}"></td>
+                       		<td class="text-warning">密码为6-16位字母数字组合</td>
+                        </tr> 
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                        <td colspan="3" style="text-align:center;">
+                        	<a href="javascript:void(0)" onclick="actsubmit()" class="btn btn-info margin">提交</a>
+                        	<input type="hidden" name="is_own_shop" value="{$is_own_shop}">        
+                        </td>
+                        </tr>
+                        </tfoot>
+		               </table>
+		               </form>
+	               </div>
+	            </div>
+	          </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+<script>
+var flag = true;
+function actsubmit(){
+	if($('input[name=store_name]').val() == ''){
+		layer.msg("店铺名称不能为空", {icon: 2,time: 2000});
+		return;
+	}
+	var user_name = $('input[name=user_name]').val();
+	if(user_name == ''){
+		layer.msg("店主账号不能为空", {icon: 2,time: 2000});
+		return;
+	}
+	if(!checkEmail(user_name) && !checkMobile(user_name)){
+		layer.msg("前台账号格式有误", {icon: 2,time: 2000});
+		return;
+	}
+	if($('input[name=seller_name]').val() == ''){
+		layer.msg("店主卖家账号不能为空", {icon: 2,time: 2000});
+		return;
+	}
+	if($('input[name=password]').val() == ''){
+		layer.msg("登陆密码不能为空", {icon: 2,time: 2000});
+		return;
+	}
+	if(flag){
+		$('#store_info').submit();
+	}
+}
+
+function store_check(){
+	$.ajax({
+		type:'post',
+		url:"{:U('Store/store_check')}",
+		dataType:'json',
+		data:{store_name:$('input[name=store_name]').val(),seller_name:$('input[name=seller_name]').val(),user_name:$('input[name=user_name]').val()},
+		success:function(res){
+			if(res.stat != 'ok'){
+				layer.msg(res.msg, {icon: 2,time: 2000});
+				flag = false;
+				return;
+			}else{
+				flag = true;
+			}
+		}
+	});
+}
+</script>
+</div>
+</body>
+</html>   

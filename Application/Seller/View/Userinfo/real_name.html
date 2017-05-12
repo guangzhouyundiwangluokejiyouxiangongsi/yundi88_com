@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/css-1.css">
+</head>
+<body>
+	<div class="cont-b1">
+		<div class="cont-tle1 clearfix">
+			<div>实名认证</div>
+			<div><img src="__PUBLIC__/images/1.png" alt=""><span>还未申请认证,完成实名认证可在积分商城兑换礼品。请上传子级手持身份证正面的照片。</span></div>
+		</div>
+
+		<div class="cont-box clearfix">
+		<div class="cob-l">
+				<div class="cob-tle">所填写的<span>真实姓名及证件号码必须准确无误</span></div>
+				<form action="" method="post" enctype="multipart/form-data">
+				<ul class="clearfix">
+					<li class="clearfix"><span class="inp-i"><img src="__PUBLIC__/images/start.png">真实姓名:</span><input type="text" class="inp-u"></li>
+					<li class="clearfix"><span class="inp-i"><img src="__PUBLIC__/images/start.png">身份证号码:</span><input type="text" class="inp-u"></li>
+					<li class="clearfix"><span class="inp-i"><img src="__PUBLIC__/images/start.png">持证件正面照:</span><div class="up">上传</div><div class="up-r">支持jpg/png,不超过2MB</div></li>
+					<li class="clearfix"><a href="" class="submit" onclick="return submit()">提交</a></li>
+				</ul>
+				<div class="cob-lb">
+					<p>建议使用二代身份证</p>
+				<p>照片须免冠,手持证件必须看清证件号码且证件完整(请参照右图)</p>
+				<p>照片必须是原始照片,不得使用任何软件进行修改</p>
+				<p></p>
+				</div>
+				<input type="file" id="file">
+			</div>
+			</form>
+			<div class="cob-r">
+              <div>示例图片:</div>
+              <img src="__PUBLIC__/images/123.png" alt="">
+			</div>
+		</div>
+	</div>
+	<script>
+		var file=document.getElementById('file');
+		var btn=document.getElementsByClassName('up')[0];
+		btn.onclick=function(){
+			file.click();
+		}
+		function submit(){
+			alert(file);
+		}
+	</script>
+</body>
+</html>

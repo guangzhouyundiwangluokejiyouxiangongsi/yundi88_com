@@ -1,0 +1,115 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	             	<nav class="navbar navbar-default">	     
+				      <div class="collapse navbar-collapse">
+	    				<div class="navbar-form form-inline">
+				            <div class="form-group">
+				            	<p class="text-success margin blod">店铺:</p>
+				            </div>
+				             <div class="form-group">
+                                 <a class="btn btn-default" href="{:U('Store/store_list')}">店铺列表</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-info" href="{:U('Store/apply_list')}" >认证申请</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/reopen_list')}" >签约申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a class="btn btn-default" href="{:U('Store/apply_class_list')}">经营类目申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				            </div>			          
+				          </div>
+				       </div>
+	    		 	</nav>	
+	               	<nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('Store/apply_list')}" method="post">
+				           	<div class="form-group">
+				            	<label class="control-label" for="input-order-id">所属等级</label>
+			            	 	<select name="grade_id" class="form-control">
+			            	 		<option>选择等级</option>
+                                    <volist name="store_grade" id="item" key="k">
+                                        <option value="{$k}" <if condition="$sg_id eq $k">selected</if>>{$item}</option>
+                                    </volist>                  
+                                 </select>     
+				            </div>
+				           <div class="form-group">
+				              	<input type="text" name="seller_name" class="form-control" placeholder="请输入店主名称">
+				            </div>
+				            <div class="form-group">
+				            	<label class="control-label" for="input-order-id">店铺类型</label>
+							     <select name="sc_id" class="form-control">
+							     	<option>选择类别</option>
+                                    <volist name="store_class" id="item" key="k">
+                                       <option value="{$k}">{$item}</option>
+                                    </volist>                  
+                                 </select>   
+				            </div>
+				            <div class="form-group">
+				              	<input type="text" name="store_name" class="form-control" placeholder="请输店铺名称">
+				            </div>
+				            <button type="submit" class="btn btn-primary">查询</button>	          
+				          </form>
+				      	</div>
+	    			</nav>
+	             </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable">
+		                 <thead>
+		                   <tr role="row">
+                               <th>店铺名称</th>
+                               <th>店主卖家账号</th>	
+                               <th>联系人</th>
+			                   <th>所属等级</th>	                   
+			                   <th>店铺类别</th>
+			                   <th>所在地</th>
+                               <th>申请时间</th>
+			                   <th>状态</th>
+		                  	   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="list" item="vo" key="k" >
+                             <tr role="row">    
+                             <td>{$vo.store_name}</td>
+		                     <td>{$vo.seller_name}</td>	 
+		                     <td>{$vo.contacts_name}</td>                   
+		                     <td>{$vo.sg_name}</td>
+		                     <td>{$vo.sc_name}</td>
+		                     <td>{$vo.store_address}</td>                                     
+		                     <td>{$vo.add_time|date='Y-m-d',###}</td>
+		                     <td>
+		                     	<if condition="$vo[apply_state] eq 0">新申请<elseif condition="$vo[apply_state] eq 2"/>未通过<else/>开店成功</if>
+		                     </td>
+		                     <td>
+		                      <a class="btn btn-primary" href="{:U('Store/apply_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil"></i></a>
+		                      <a class="btn btn-danger" onclick="delfunc(this)" data-url="{:U('Store/apply_del')}" data-id="{$vo.id}"><i class="fa fa-trash-o"></i></a>
+				     		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left">
+              	    	<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+              	    </div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+<script>
+
+</script>
+</div>
+</body>
+</html>   

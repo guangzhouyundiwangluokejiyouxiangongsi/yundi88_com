@@ -1,0 +1,77 @@
+<include file="Article/public_header" />
+
+<body  > 
+
+
+	<main class="tgmain">
+		
+		<include file="Article/tuiguang_common" />
+
+			<!-- 二级页面信息展示 -->
+			<div class="xiangxixingxi" >
+			<div class="tgnewss">
+				<h4>{$article.title}</h4>
+				<p class="laiyuan">
+				<notempty name="article['link_source']">
+				来源：<span>{$article.link_source}</span>  
+				</notempty>
+
+				<notempty name="article['time_source']">
+				日期：<span>{$article.time_source}</span>   
+				</notempty>
+
+				<notempty name="article['link_num']">
+				浏览量：<span>{$article.link_num}</span></p>
+				</notempty>
+				<div class="tgnewssmain">
+					 {$article.content|htmlspecialchars_decode}
+					
+				</div>
+			</div>
+			
+			<div class="tgfengxiang">分享到:
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+				</div>
+		</div>
+				<div class="cl"></div>
+			</div>
+			<div class="cl"></div>
+		</div>
+		<div class="tgpages">
+			<if condition="$last">
+			<span class="pageup">上一篇：<a href="lists1.html?id={$last.article_id}#xiangxixingxi" target="_blank">{$last.title}</a></span>
+			<else />
+			<span class="pageup">上一篇：<a href="javascript:;">没有了</a></span>
+			</if>
+			<if condition="$next">
+			<span class="pagedump">下一篇：<a href="lists1.html?id={$next.article_id}#xiangxixingxi" target="_blank">{$next.title}</a></span>
+			<else />
+			<span class="pagedump">下一篇：<a href="javascript:;" >没有了</a></span>
+			</if>
+		</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.tgnavssm >ul li').bind('click',function(){
+					$('.tgnavssm > ul li').each(function(){				
+						$($(this).attr('i')).css('display','none');				
+						$($(this).attr('i')).hide();
+						$('.xiangxixingxi').hide();	
+						$('.tgpages').hide();
+						$(this).removeClass('active');	
+					})
+				$(this).addClass('active');
+				$($(this).attr('i')).show();
+				});
+		})
+	</script>
+</main>
+
+<div class="cl"></div>
+
+<include file="Public/footer" />
+
+
+</body> 
+</html>

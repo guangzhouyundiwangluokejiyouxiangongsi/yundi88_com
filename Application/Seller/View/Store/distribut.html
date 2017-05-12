@@ -1,0 +1,126 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content" style="padding:0px 15px;">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+                <a onclick="get_help(this)" data-url="http://www.tp-shop.cn/Doc/Indexbbc/article/id/1064/developer/user.html" class="btn btn-default" href="javascript:;"><i class="fa fa-question-circle"></i> 帮助</a>
+            </div>
+            <div class="panel panel-default">           
+                <div class="panel-body ">   
+                    <include file="store_setting_navtabs"/>
+                    <!--表单数据-->
+                    <form method="post" id="handlepost" action="{:U('Store/distribut')}">                    
+                        <!--通用信息-->
+                    <div class="tab-content" style="padding:20px 0px;">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody> 
+                                <tr>
+                                    <td>分销开关：</td>
+                                	<td colspan="2">
+                         				开:<input type="radio"  name="switch" value="1" <if condition="$config['switch'] eq 1">checked="checked"</if> />
+                         				关:<input type="radio"  name="switch" value="0" <if condition="$config['switch'] eq 0">checked="checked"</if> />                                    
+                                    </td>
+                                </tr>    
+                                <!--                             
+                                <tr>
+                                    <td>分销模式：</td>
+                                	<td>
+                                        <select class="form-control" name="pattern" id="distribut_pattern">
+	                                       <option value="0" <if condition="$config['pattern'] eq 0">selected="selected"</if>>按商品设置的分成金额</option>
+	                                       <option value="1" <if condition="$config['pattern'] eq 1">selected="selected"</if>>按订单设置的分成比例</option>
+                                        </select>                                  
+                                    </td>
+                                	<td></td>
+                                </tr>
+                                <tr id="distribut_order_rate" <if condition="$config['pattern'] eq 0">style="display:none"</if>>
+                                    <td>订单默认分成比例：</td>
+                                	<td>
+                                        <input type="text" placeholder="输入 1-100 整数" class="form-control" name="order_rate" value="{$config.order_rate}" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"/>                                                                  
+                                    </td>
+                                	<td class="text-warning">% 订单的百分之多少拿出来分成</td>
+                                </tr>   
+                                 -->
+                                <tr>
+                                    <td>一级分销商比例：</td>
+                                	<td>
+										<input type="text" placeholder="输入 1-100 整数" class="form-control" name="first_rate" id="distribut_first_rate" value="{$config.first_rate}"onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" >
+                                    </td>
+                                	<td class="text-warning">%</td>
+                                </tr>                                   
+                                <tr>
+                                    <td>二级分销商比例：</td>
+                                	<td>
+										<input type="text" placeholder="输入 1-100 整数" class="form-control" name="second_rate" id="distribut_second_rate" value="{$config.second_rate}"onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" >
+                                    </td>
+                                	<td class="text-warning">% </td>
+                                </tr>                                    
+                                <tr>
+                                    <td>三级分销商比例：</td>
+                                	<td>
+										<input type="text" placeholder="输入 1-100 整数" class="form-control" name="third_rate" id="distribut_third_rate" value="{$config.third_rate}"onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" >
+                                    </td>
+                                	<td class="text-warning">% </td>
+                                </tr>    
+                                <tr>
+                                    <td>分成时间：</td>
+                                    <!--
+                                   <td>
+                                        <select class="form-control" name="date" id="distribut_date">
+                                                <for start="1" end="31" name="i" >          
+                                                    <option value="{$i}" <if condition="$config[date] eq $i">selected="selected"</if>>{$i}天</option>
+                                                </for>
+                                        </select>
+                                    </td>
+                                    -->
+                                    <td colspan="2" class="text-warning">订单收货确认<?php echo tpCache('shopping.auto_transfer_date');?>天后可以分成,此时间由平台设置. </td>
+                                </tr>    
+								<tr>
+                                	<td><input type="hidden" name="id" value="{$config.id}"></td>
+                                	<td></td>
+                                	<td class="text-right"><input class="btn btn-primary" type="button" onclick="adsubmit()" value="保存"></td>
+                                 </tr>                                                                                                                    
+                            </table>
+                        </div>                           
+                    </div>              
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+
+$('#distribut_pattern').change(function(){
+	 if($(this).val() == 1)
+	    $('#distribut_order_rate').show();
+	 else	
+	    $('#distribut_order_rate').hide();	 
+});
+
+function goset(obj){
+	window.location.href = $(obj).attr('data-url');
+}
+
+function adsubmit(){
+	var distribut_first_rate  = $.trim($('#distribut_first_rate').val());
+	var distribut_second_rate = $.trim($('#distribut_second_rate').val());
+	var distribut_third_rate  = $.trim($('#distribut_third_rate').val());		
+	
+	var rate = parseInt(distribut_first_rate) + parseInt(distribut_second_rate) + parseInt(distribut_third_rate);
+	if(rate > 100)
+	{
+		layer.msg('三个分销商比例总和不得超过100%', {icon: 2,time: 2000});//alert('少年，邮箱不能为空！');		
+		// alert('三个分销商比例总和不得超过100%');
+		return false;
+	}
+	
+	$('#handlepost').submit();
+}
+</script>
+</body>
+</html>

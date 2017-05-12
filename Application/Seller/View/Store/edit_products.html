@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="Public/min-header"/>
+<script src="__PUBLIC__/js/layer/layer.js"></script>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+	<meta charset="UTF-8">
+	<title>修改名称</title>
+</head>
+<style>
+#button1{
+        width: 68px;
+        height: 25px;
+        font-size: 16px;
+        font-family: 微软雅黑;
+        letter-spacing: 8px;
+        padding-left: 12px;
+}
+#input1{
+        border: 1px solid #C3CED9;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 14px;
+        height: 31px;
+        line-height: 31px;
+        margin-right: 10px;
+        padding: 0;
+        width: 230px;
+}
+</style>
+<body>
+	<div style="text-align: center;margin-top: 20px">
+	<form action="" onsubmit="return checkname()" method="post">
+		<input type="hidden" name="id" value="{$id}">
+		<input type="text" name="store_products" value="{$temp}" id="input1"><br><br><br>
+		<input type="submit" id="button1" name="提交">
+	</form>
+	</div>
+</body>
+<script>
+	function checkname(){
+		var store_products = document.getElementById('input1').value;
+		if (store_products == ''){
+			alert('名称不能为空');
+			return false;
+		}
+		// window.parent.location.reload();
+		// return false;
+		return;
+	}
+ 
+</script>
+</html>

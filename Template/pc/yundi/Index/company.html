@@ -1,0 +1,251 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>免费入驻</title> 
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/renzheng/1/css/ruzhu.css">
+<link rel="stylesheet" href="__STATIC__/renzheng/1/css/baguettebox.min.css">
+<script src="__STATIC__/renzheng/1/js/baguettebox.min.js"></script>
+<script type="text/javascript" src="__STATIC__/renzheng/1/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/renzheng/1/js/qietu.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+
+</head> 
+
+<body  > 
+
+<header class="head">
+    <!-- <div class="left">Hi，你好  kky</div> -->
+   <nav class="nav">
+      <ul> 
+          <li><a href="{:U('/user/reg')}" class='nologin' >注册</a><a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+          </li>
+          <span>|</span>
+          <li><a href="{:U('/user/login')}" class='nologin' >登录</a><a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+          <span>|</span>
+          <li><img src="__PUBLIC__/pc/images/index1.jpg" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="{:U('/Cart/cart')}" target="_blank">购物车</a></li><span>|</span>
+          <li><a href="{:U('/User/order_list')}" target="_blank">我的订单</a></li>
+      </ul>
+      <p>您好，欢迎来到云狄网！股票代码：366130</p>
+      <ul>   
+        <li><a href="{:U('/User/info')}" target="_blank">个人中心</a></li><span>|</span>
+          <li><a href="{:U('/user/login')}" target="_blank">免费发布信息</a></li><span>|</span>
+          <li><a href="#" target="_blank">网站导航</a></li> 
+      </ul>
+
+    </nav>
+  </header><!--顶部结束-->
+  <script>
+     $(document).ready(function(){
+
+      var uname= getCookie('uname');
+      if(uname == ''){
+        $('.islogin').remove();
+        $('.nologin').show();
+      }else{
+        $('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+      }
+       
+    });
+  </script>
+		<div class="benner" style="">		
+			<!-- 公司信息部分 -->
+			<div style="width:1200px;margin:30px auto;position:relative;min-height:390px;">
+		<div class="rmainc" style="position:absolute;right:4%;top:8%;color:#fff;">
+			<ul>
+				<li><span>公司名称：</span>{$res['company_name']}</li>
+				<li><span>注册号：</span>{$res['business_licence_number']}</li>
+				<li><span>注册资本：</span>{$res['reg_capital']}万</li>
+				<li><span>法人代表：</span>{$res['legal_person']}</li>
+				<li><span>营业期限：</span>永久</li>
+				<li><span>经营范围：</span>
+					<p style="display:inline-block;float:left;width:61%;">{$res['business_scope']}</p>
+					<div class="cl"></div>
+				</li>
+				<li><span>公司官网：</span>{$res['company_website']}</li>
+			<div class="cl"></div>
+			</ul>
+		</div>
+		<!-- 图标部分 -->
+		<div class="rmainr" style="position:absolute;left:6%;top:0%">			
+			<img src="__STATIC__/renzheng/1/images/tb.png" style="width:246px;height:225px;">
+ 		</div>
+ 	</div>
+</div>
+	<div class="rmain">
+	<!-- 资质部分 -->	
+	<div class="rmainl">
+		<h2 style="text-align: center;padding-top: 10px;">认证资质</h2>
+		<div class="img-scroll">
+		    <span class="prev"><img src="__STATIC__/renzheng/1/images/btn_l.png"></span>
+		    <span class="next"><img src="__STATIC__/renzheng/1/images/btn_r.png"></span>
+		    <div class="img-list">
+		    <div class="baguetteBoxOne gallery">
+		        <ul class = "poster-list">
+
+
+                <notempty name="res['business_licence_cert']">
+		            <li class = "poster-item" data-caption="Golden Gate Bridge">
+		            	<a href="{$res['business_licence_cert']}"> <!-- 税务登记证复印件（国税、地税）（需加盖红章 -->
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{$res['business_licence_cert']}"></a>
+		            </li>
+                </notempty>
+
+                <notempty name="res['taxpayer_cert']">
+                 <li class = "poster-item" data-caption="Golden Gate Bridge">
+                  <a href="{$res['taxpayer_cert']}"> <!-- 企业营业执照副本复印件（需加盖红章） -->
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{$res['taxpayer_cert']}"></a>
+                </li>
+                </notempty>
+
+                <notempty name="res['orgnization_cert']">
+                 <li class = "poster-item" data-caption="Golden Gate Bridge">
+                  <a href="{$res['orgnization_cert']}"> <!-- 组织机构代码证复印件（需加盖红章） -->
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{$res['orgnization_cert']}"></a>
+                </li>
+                </notempty>
+
+                <notempty name="res['legal_identity_cert']">
+                 <li class = "poster-item" data-caption="Golden Gate Bridge">
+                  <a href="{:mosaic($res['user_id'],502,630,'legal_identity_cert',90,150,260,240)}"> <!-- 法人身份证正反面复印件或护照（需加盖红章） -->
+
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{:mosaic($res['user_id'],502,630,'legal_identity_cert',90,150,260,550)}"></a>
+                </li>
+                </notempty>
+
+                <notempty name="res['store_person_cert']">
+                 <li class = "poster-item" data-caption="Golden Gate Bridge">
+                  <a href="{:mosaic($res['user_id'],502,630,'store_person_cert',90,150,260,240)}"> <!-- 店铺负责人身份证正反面复印件（需加盖红章） -->
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{:mosaic($res['user_id'],502,630,'store_person_cert',90,150,260,240)}"></a>
+                </li>
+                </notempty>
+
+                <notempty name="res['other_certificate']">
+                <li class = "poster-item" data-caption="Golden Gate Bridge">
+                  <a href="{$res['other_certificate']}"> <!-- 其它 -->
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{$res['other_certificate']}"></a>
+                </li>
+                </notempty>
+
+                <notempty name="res['other_certificate2']">
+                <li class = "poster-item" data-caption="Golden Gate Bridge">
+                  <a href="{$res['other_certificate2']}"> <!-- 其它 -->
+                  <img style="width:170px;height:200px;padding-top: 20px;" src="{$res['other_certificate2']}"></a>
+                </li>
+                </notempty>
+
+		        </ul>
+		        <div class="cl"></div>
+		        </div>
+		    </div>
+		</div>
+				<script>
+				baguetteBox.run('.baguetteBoxOne', {
+				    animation: 'fadeIn',
+				});
+				</script>
+	
+		</div>
+		<div class="cl"></div>
+	</div>
+	
+	<!-- 公司推荐产品 -->
+	<div class="rztj">
+		<h3 style="text-align:center;margin-bottom:20px;">精品推荐</h3>
+
+		  <!--多选区域-->
+ 		 <section class="product">
+     <div class="left">
+        <ul style="overflow: hidden;">
+         <foreach name="goods" item="v">
+          <li>
+            <figure><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
+            <div class="one">
+                <p>￥{$v[shop_price]}元</p>
+            </div>
+            <h1 class="there"><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank">{:getsubstr($v[goods_name],0,30)}</a></h1>
+            <div class="two">
+              <h2><!-- 已成交{$v[sales_sum]}笔 --></h2>
+              <!-- <span><img src="__PUBLIC__/pc/images/product3.jpg" width="33" height="17"  alt=""/><img src="__PUBLIC__/pc/images/product4.jpg" width="17" height="17"  alt=""/>1年</span> -->
+            </div>
+            <div class="thr">
+               <div style="cursor:pointer;" onclick="window.open('{:U('Store/index',array('store_id'=>$v[store_id]))}')"><span>{$v[store_name]}</span></div>
+               <figure><!-- <img src="__PUBLIC__/pc/images/product6.jpg" width="16" height="16"  alt=""/><img src="__PUBLIC__/pc/images/product7.jpg" width="16" height="16"  alt=""/><img src="__PUBLIC__/pc/images/product8.jpg" width="16" height="16"  alt=""/> -->
+                  <a href="javascript:void(0);">
+                   <php>if($apply_state[$v['user_id']]){</php>
+                   <span class="certification" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
+                     <img style="margin: -14px 0 0 -15px;position: absolute;top: 50%;left: 50%;"  src="__PUBLIC__/renzheng/renzheng3.png" width="30" height="30"  alt=""/>
+                     <span class="tip" >
+                        <img src="__PUBLIC__/renzheng/renzheng3.png" width="100" height="100"  alt=""/>
+                        <span>已认证企业/个体，杜绝一切虚假商家。</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
+                      </span>
+
+                    </span>
+                   <php>}else{</php>
+                    <span class="certifications" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
+                      <img style="margin: -14px 0 0 -15px;position: absolute;top: 50%;left: 50%;" src="__PUBLIC__/renzheng/renzheng2.png" width="30" height="30"  alt=""/>
+                      <span class="tips">
+                        <img src="__PUBLIC__/renzheng/renzheng2.png" width="100" height="100"  alt=""/>
+                        <span style="margin-left: 10px;">未验证！</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
+                      </span>
+                    </span>
+                   <php>}</php>
+                  </a>
+                  <if condition="$v['commerce_state']">
+                    <a href="javascript:void(0);">
+                      <span class="certificationt" onclick="window.open('/article/yun_shop.html')">
+                        <img style="margin: -14px 0 0 -15px;position: absolute;top: 50%;left: 50%;" src="__PUBLIC__/renzheng/yunshanghui.png" width="30" height="30"  alt=""/>
+                        <span class="tipt" >
+                          <img src="__PUBLIC__/renzheng/yunshanghui.png" width="100" height="100"  alt=""/>
+                          <span>已加入企业联盟商会会员,《权威企业》身份象征为消费者及商家提供100%安全保障,便捷服务(详细查看)!</span>
+                          <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                        </span>
+                      </span>
+                    </a>
+                  <else />
+                    <a href="javascript:void(0);">
+                      <span class="certificationt" onclick="window.open('/article/yun_shop.html')">
+                        <img style="margin: -14px 0 0 -15px;position: absolute;top: 50%;left: 50%;" src="__PUBLIC__/renzheng/yunshanghui2.png" width="30" height="30"  alt=""/>
+                        <span class="tipt" >
+                          <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="100" height="100"  alt=""/>
+                          <span style="margin-left: 10px;">未加入!</span>
+                          <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                        </span>
+                      </span>
+                    </a>
+                  </if>
+
+                  <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$v['store_presales']['qq'][0]}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" target="_blank">
+                    <img style="margin: -12px 0 0 -14px;position: absolute;top: 50%;left: 50%;" src="__PUBLIC__/pc/images/product5.jpg" width="27" height="25"  alt=""/>
+                  </a>
+
+          <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$v['store_presales']['ww'][0]}&amp;s=2" target="_blank" class="flow-qq">
+                    <img style="margin: -12px 0 0 -12px;position: absolute;top: 50%;left: 50%;" src="/Template/pc/yundi/Static/images/T1B7m.XeXuXXaHNz_X-16-16.gif" width="25" height="25" border="0" alt="旺旺">
+                </a>
+               </figure>
+            </div>
+          </li>
+</foreach>
+
+          </ul>        	    
+     </div><!--产品左边-->
+   </section>
+
+
+
+	</div>
+
+
+<div class="cl"></div>
+<include file="Goods/footer" />
+
+</body> 
+</html>

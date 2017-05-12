@@ -1,0 +1,116 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	           	   <nav class="navbar navbar-default">	     
+				      <div class="collapse navbar-collapse">
+	    				<div class="navbar-form form-inline">
+				            <div class="form-group">
+				            	<p class="text-success margin blod">店铺:</p>
+				            </div>
+				             <div class="form-group">
+                                 <a class="btn btn-default" href="{:U('Store/store_list')}">管理</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/apply_list')}" >认证申请</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-info" href="{:U('Store/reopen_list')}" >签约申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a class="btn btn-default" href="{:U('Store/apply_class_list')}">经营类目申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				            </div>			          
+				            <div class="form-group pull-right">
+					            <a href="{:U('Store/store_add',array('is_own_shop'=>0))}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> 新增店铺</a>
+				            </div>	
+				          </div>
+				       </div>
+	    		 	</nav>	
+	               	<nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('Store/store_list')}" method="post">
+				           <div class="form-group">
+				              	<input type="text" name="keywords" class="form-control" placeholder="请输入店主名称">
+				            </div>
+				            <div class="form-group">
+				            	<label class="control-label" for="input-order-id">店铺状态</label>
+				            	 <select name="pid" class="form-control">
+                                       <option value="1">开启</option>
+                                       <option value="0">关闭</option>
+                                       <option value="2">即将到期</option>
+                                       <option value="3">已到期</option>
+                                 </select>   
+				            </div>
+				           	<div class="form-group">
+				            	<label class="control-label" for="input-order-id">店铺类别</label>
+				            	 <select name="pid" class="form-control">
+                                      <volist name="store_class" id="item" key="k">
+                                          <option value="{$k}">{$item}</option>
+                                      </volist>       
+                                 </select>   
+				            </div>
+				            <div class="form-group">
+				              	<input type="text" name="keywords" class="form-control" placeholder="请输店铺名称">
+				            </div>
+				            <button type="submit" class="btn btn-primary">查询</button>	          
+				          </form>
+				      	</div>
+	    			</nav>
+	             </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable">
+		                 <thead>
+		                   <tr role="row">
+                               <th>店铺/ID</th>
+                               <th>申请时间</th>
+			                   <th>收费标准(元/年)</th>	
+			                   <th>续签时长(年)</th>
+			                   <th>付款金额(年)</th>	
+			                   <th>续签起止有效期</th>	
+			                   <th>状态</th>	
+			                   <th>付款凭证</th>
+			                   <th>付款备注</th>			                   
+		                  	   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="bind_class" item="vo" key="k" >
+                             <tr role="row">    
+                             <td>{$vo.class_1_name}</td>
+                             <td>{$vo.store_name}</td>
+		                     <td>{$vo.seller_name}</td>	                    
+		                     <td>{$vo.commis_rate}</td>
+		                     <td>{$vo.class_1_name}</td>
+                             <td>{$vo.store_name}</td>
+		                     <td>{$vo.seller_name}</td>	                    
+		                     <td>{$vo.commis_rate}</td>
+		                     <td class="text-center">
+		                      	<a class="btn btn-info" href="javascript:;">审核</a>
+		                      	<a class="btn btn-danger" onclick="delfunc(this)" data-url="{:U('Store/apply_class_del')}" data-id="{$vo.ad_id}">删除</a>
+				     		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left">
+              	    	<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+              	    </div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+<script>
+
+</script>
+</div>
+</body>
+</html>   

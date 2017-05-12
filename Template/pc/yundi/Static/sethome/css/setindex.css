@@ -1,0 +1,166 @@
+/*设为主页*/
+*{margin:0;padding:0;text-decoration: none;font-size:14px;font-family:'宋体';}
+/*ul,ol,li{list-style: none;}
+a{color:#333333;}
+
+.cl{clear:both;}
+*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,textarea,p,blockquote,th,td a{ margin:0; padding:0; border:0; font-weight:normal;}
+fieldset,img {border:0; list-style:none;} 
+label,input,img{vertical-align:middle}
+ol,ul, li{list-style: none;}
+*{margin:0;padding:0;font-family:"微软雅黑", "黑体";}
+a{color:#000;}  
+a:link,a:visited{text-decoration:none;}
+img{border:0;}
+.cl{clear:both;}
+a, a:visited {text-decoration: none; cursor: pointer;}
+a {blr:expression(this.onFocus=this.blur()) } /*针对 IE*/
+a { outline:none; } /*针对firefox等*/
+body {font-size: 14px;font-family: "微软雅黑";} 
+ul,li,ol{list-style: none; text-decoration: none;}
+form,dl,dt{margin:0; padding:0; }
+a, a:visited {text-decoration: none; cursor: pointer;}
+.inputarea {background-color:#ffffff}
+
+/*头部信息*/
+.header{width:100%;box-shadow: 1px 1px 1px 1px #ccc;position: fixed;height:80px;z-index: 99;background:#fff;}
+.headers{width:1200px;margin:0 auto;padding-top: 10px;height:70px;line-height: 70px;}
+.headers img{float:left;}
+.headers .headers1{float:left;border-left: 1px solid #ccc;font-size:24px;color:#21acd4;font-family:'宋体';height:40px;padding-left: 20px;margin-top: 10px;line-height: 40px;margin-left: 20px;}
+.headers .headers2{float:right;}
+.headers .headers2 a{margin-right: 20px;display: inline-block;height:30px;line-height: 30px;padding-right: 20px;font-size:14px;font-weight:800;}
+
+/*主体部分*/
+.main{width:1200px;margin:0 auto;position:relative;}
+.main .main1{padding-top: 120px;}
+.main .main1 h3{font-size:18px;font-weight:800;color:#000;height:30px;}
+.main .main1 p{font-size:14px;color:#999999;font-weight:800;}
+
+.main .main2{width:100%;margin-top: 20px;}
+/*左边导航部分*/
+.main .main2l{float:left;width:20%;}
+.main .main2l ul li{width:100%;height:40px;line-height: 40px;text-align: left;position:relative;font-size:14px;cursor:pointer;border:1px solid #ccc;}
+.main .main2l ul li{border-bottom: none;}
+.main .main2l ul li:nth-last-child(2){border-bottom:1px solid #ccc;}
+.main .main2l ul li span{padding-left:50px;}
+.main .main2l ul li .mainlogo{position:absolute;top:28%;left:10%;}
+					.mjiantou{position:absolute;top:35%;color:#ccc;right:10%;}
+				.main2la{background:#efeded;}
+				.main2laaa{background:#fff;}
+
+
+/*右边主题部分*/
+.main2r{width:78%;float:left;height:657px;position:relative;overflow:hidden;}
+
+/*左右切换按钮*/
+.main2r .left{width:120px;text-align: center;height:657px;float:left;}
+.main2r .right{width:30px;text-align: center;height:657px;float:right;}
+/*谷歌*/
+.main2r .left .preva{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nexta{position:absolute;top:47%;right:0;cursor:pointer;}
+/*ie*/
+.main2r .left .prevb{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nextb{position:absolute;top:47%;right:0;cursor:pointer;}
+/*360浏览器*/
+.main2r .left .prevc{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nextc{position:absolute;top:47%;right:0;cursor:pointer;}
+/*傲游浏览器*/
+.main2r .left .prevd{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nextd{position:absolute;top:47%;right:0;cursor:pointer;}
+/*搜狗浏览器*/
+.main2r .left .preve{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nexte{position:absolute;top:47%;right:0;cursor:pointer;}
+/*QQ浏览器*/
+.main2r .left .prevf{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nextf{position:absolute;top:47%;right:0;cursor:pointer;}
+/*TT浏览器*/
+.main2r .left .prevg{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .nextg{position:absolute;top:47%;right:0;cursor:pointer;}
+/*Firefox浏览器*/
+.main2r .left .prev1{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next1{position:absolute;top:47%;right:0;cursor:pointer;}
+/*360极速浏览器*/
+.main2r .left .prev2{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next2{position:absolute;top:47%;right:0;cursor:pointer;}
+/*世界之窗极速版浏览器*/
+.main2r .left .prev3{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next3{position:absolute;top:47%;right:0;cursor:pointer;}
+/*Opera浏览器*/
+.main2r .left .prev4{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next4{position:absolute;top:47%;right:0;cursor:pointer;}
+/*世界之窗浏览器*/
+.main2r .left .prev5{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next5{position:absolute;top:47%;right:0;cursor:pointer;}
+/*Safari浏览器*/
+.main2r .left .prev6{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next6{position:absolute;top:47%;right:0;cursor:pointer;}
+/*绿色浏览器*/
+.main2r .left .prev7{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next7{position:absolute;top:47%;right:0;cursor:pointer;}
+/*KR浏览器*/
+.main2r .left .prev8{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next8{position:absolute;top:47%;right:0;cursor:pointer;}
+/*百度浏览器*/
+.main2r .left .prev9{position:absolute;top:47%;left:50px;cursor:pointer;}
+.main2r .right .next9{position:absolute;top:47%;right:0;cursor:pointer;}
+
+
+.main2r	.main2rs{width:750px;float:left;height:100%;overflow:hidden;}
+.main2r	.main2rs .img-list ul li{width:100%;height:657px;text-align: center;padding-top: 20px;float:left;}
+.main2r	.main2rs .img-list ul li img{border:none;box-shadow: none;}
+
+.lista{display:block;}
+.listb{display:none;}
+.listc{display:none;}
+.listd{display:none;}
+.liste{display:none;}
+.listf{display:none;}
+.listg{display:none;}
+.list1{display:none;}
+.list2{display:none;}
+.list3{display:none;}
+.list4{display:none;}
+.list5{display:none;}
+.list6{display:none;}
+.list7{display:none;}
+.list8{display:none;}
+.list9{display:none;}
+
+/*尾部部分*/
+.setfooter{width:100%;height:350px;background:#efeded;text-align: center;margin:0 auto;line-height: 20px;position:relative;}
+.setfooter p{position:absolute;left:47%;top:50%;font-size:14px;color:#333;}
+
+footer{ font-size:14px; line-height:30px; text-align:center;}
+.footer{ width:100%;background:#f3f3f3; margin-top:60px; padding-top:50px;min-width: 1200px;}
+.footer .pr{ width:1200px; height:210px; margin:0 auto; border-bottom:1px solid #c7c7c7;text-align: center;padding-bottom: 30px;}
+.footer .pr .prc{ display:inline-block;*display:inline;*zoom:1;overflow: hidden;height: 210px;float:left;}
+
+.footer .pr .Tphone{float:left;width:300px;border-left: 1px solid #ccc;height:150px;margin-left: 80px;padding-left: 20px;margin-top:20px;padding-top: 35px;}
+.footer .pr .Tphone h2{color:#1691BD;font-size:18px;}						
+.footer .pr .Tphone a{display:inline-block;width:150px;height:30px;border-radius:5px;line-height: 30px;border:1px solid #1691BD;color:#1691BD;margin-top: 10px;}
+.footer .pr .Tphone a:hover{color:#fff;background:#1691BD;}
+
+.footer dl{ width: 150px; height:210px; float:left;}
+.footer dl dt{ height:60px; font-size:15px; line-height:60px;}
+.footer dl dd{ line-height:25px;}
+.footer dl dd a{ color:#757575;}
+.footer .pr .right{ float:right; height:120px; width:259px;text-align:center;  margin-top:35px; border-left:1px solid #c7c7c7;}
+.footer .pr .right h1{ font-size:20px; text-align:center; color:#008cba;}
+.footer .pr .right p{ line-height:40px; font-size:12px; color:#757575;}
+.footer .pr .right .kf{ width:120px; height:30px; border:1px solid #008cba; color:#008cba; line-height:30px; font-size:12px; margin:0 auto; border-radius:5px;}
+.footer h6{ width:1200px; line-height:45px; margin:0 auto; text-align:center; font-size:12px;}
+.footer h6 a{ color:#757575;font-size:12px;}
+
+.footer footer{/*  margin:50px auto; */ font-size:14px; line-height:30px; text-align:center;background: none;padding-bottom: 20px;}
+
+
+/*返回顶部*/
+.top-back{display: none;position: fixed;right: 20px;bottom: 100px; width: 50px;height: 50px;background:#008cba;overflow: hidden;}
+.top-back a{display: block;width: 50px;height: 50px;text-align: center;color: #ffffff !important;}
+.top-back .top{font-size: 20px;font-weight: bolder;line-height: 42px;}
+.top-back .txt{text-decoration: none;width: 40px;height: 40px;padding: 5px;font-size: 14px;}
+.top-back .hide{display: none;}
+.top-back:hover .top{display: none;}
+.top-back:hover .txt{display: block;}

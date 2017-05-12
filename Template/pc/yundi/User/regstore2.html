@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+	<style type="text/css">
+		*{padding: 0;margin: 0;}
+		a{text-decoration: none;}
+		.pop_ups_con{position: fixed;width: 490px;bottom: 18%;left: 37%;background-color: white;z-index: 10000;border-radius: 10px;overflow: hidden;display: none;}
+		.tankuang{width: 100%;height: 165px;background: url(__PUBLIC__/images/tangkuangbg.png) no-repeat;}
+		.tankuang>a{display: block;width: 30px;height: 30px;background: none;text-align: right;margin: 2px;float: right;}
+		h2{margin: 30px 0 0 30px;font-size: 16px;font-weight: 500;font-family: "微软雅黑";color: #333;text-align: left;}
+		h3{margin: 5px 0 0 30px;font-size: 14px;font-weight: 500;font-family: "微软雅黑";color: #333;text-align: left;}
+		.pop_ups_form{margin: 20px 30px 0 30px;}
+		.company_form{margin: 10px 29px;width: 372px;}
+		.company_form:after{clear: both;display: block;content: "";}
+		.company_form>p{float: left;line-height: 25px;font-family: "微软雅黑";font-size: 12px;color: #333;width: 60px;}
+		.company_form>input{float: left;width: 300px;padding-left: 10px;height: 25px;outline: none;border: 1px solid #999;}
+		input::-webkit-input-placeholder{font-size: 12px;}
+		.company_form>input:hover{border: 1px solid #0fa9fd;}
+		.gender{margin: 10px 29px;width: 372px;}
+		.gender:after{clear: both;display: block;content: "";}
+		.gender>p{float: left;line-height: 25px;font-family: "微软雅黑";font-size: 12px;color: #333;letter-spacing: 3px;width: 60px;}
+		.gender>input{float: left;margin: 7px 10px;}
+		.gender>i{float: left; font-family: "微软雅黑";font-size: 12px;font-style: normal;line-height: 25px;}
+		.ver_code{margin: 10px 29px;width: 372px;}
+		.ver_code:after{clear: both;display: block;content: "";}
+		.ver_code>p{float: left;line-height: 25px;font-family: "微软雅黑";font-size: 12px;color: #333;letter-spacing: 3px;width: 60px;}
+		.ver_code>input{float: left;width: 200px;height: 25px;border: 1px solid #999;outline: none;padding-left: 10px;}
+		.ver_code>input:hover{border: 1px solid #0fa9fd;}
+		/*.ver_code>i{font-style: normal;float: left;width: 100px;height: 27px;font-family: "微软雅黑";font-size: 12px;color: #fff;background-color: #0fa9fd;text-align: center;line-height: 27px;cursor: pointer;}*/
+		.ver_code_click{border: none;float: left;width: 100px;height: 27px;font-family: "微软雅黑";font-size: 12px;color: #fff;background-color: #0fa9fd;text-align: center;line-height: 27px;cursor: pointer;outline: none;}
+		/*.ver_code>i>img{width: 100%;height: 100%;}*/
+		.refer{margin: 20px auto 35px auto;width: 236px;position: relative;}
+		.refer:after{clear: both;display: block;content: "";}
+		.refer>button{float: left;width: 120px;height: 30px;font-family: "微软雅黑";color: #fff;line-height: 30px;border: none;outline: none;background: #4fbefa;text-align: center;border-radius: 30px;cursor: pointer;}
+		.refer>button:hover{background: #0fa9fd;}
+		.jump_login{float: left;line-height: 30px;margin: 0 10px;font-family: "微软雅黑";color: #333;font-size: 12px;}
+		.jump_login>a{font-family: "微软雅黑";color: #4fbefa;font-size: 12px;}
+		.jump_login>a:hover{color: #0fa9fd;}
+		.pop_ups_form span{display: block;clear: both; font-family: "微软雅黑";font-size: 12px;color: #ff0000;padding-left: 65px;padding-top: 10px;display: none;}
+
+		.button{margin: 35% auto 0 auto;width: 100px;height: 27px;}
+		.button>button{width: 100px;height: 27px;text-align: center;line-height: 27px;font-family: "微软雅黑";font-size: 12px;color: #fff;border: none;background: #0fa9fd;border-radius: 25px;cursor: pointer;outline: none;}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$(".button>button").click(function(){
+				$("body").css("background","rgba(0,0,0,0.8)");
+				$(".pop_ups_con").show();
+			})
+			$(".tankuang>a").click(function(){
+				$("body").css("background","none");
+				$(".pop_ups_con").hide();
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="button">
+		<button>弹窗</button>
+	</div>
+
+
+	<div class="pop_ups_con">
+		<div class="tankuang">
+			<a href="javascript:void(0)"><img src="__PUBLIC__images/joinover.png"></a>
+		</div>
+		<h2>欢迎您加入企业联盟云商会！</h2>
+		<h3>填写好以下资料，我们将安排客服专员一对一进行服务。</h3>
+		<div class="pop_ups_form">
+			<form>
+				<div class="company_name company_form">
+					<p>企业名称：</p>
+					<input type="text" placeholder="请填写企业名称与营业执照一致" name=""></input>
+					<span class="com_name_code">请输入正确名称</span>
+				</div>
+				<div class="account_num company_form">
+					<p>账　　号：</p>
+					<input type="text" placeholder="字母开头6-16位数" name=""></input>
+					<span class="acc_num_code">请输入正确账号</span>
+				</div>
+				<div class="gender">
+					<p>联系人：</p>
+					<input type="radio" name="gender" value="先生" checked="checked"></input>
+					<i>先生</i>
+					<input type="radio" name="gender" value="女士"></input>
+					<i>女士</i>
+				</div>
+				<div class="contact_info company_form">
+					<p>联系方式：</p>
+					<input type="text" placeholder="请输入手机号码" name=""></input>
+					<span class="con_info_code">手机号码不正确</span>
+				</div>
+				<div class="ver_code">
+					<p>验证码：</p>
+					<input type="text" placeholder="请输入验证码" name=""></input>
+					<!-- <i onselectstart="return false" class="ver_code_click">点击获取验证码</i> -->
+					<botton class="ver_code_click">点击获取验证码</botton>
+					<span class="ver_code_code">请输入验证码</span>
+				</div>
+				<div class="refer">
+					<button type="submit">提交</button>
+					<div class="jump_login">已有账号？<a href="">去登陆</a></div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var comName = /^[\u4e00-\u9fff\w]{2,16}$/;/*输入内容为中文*/
+			var accNum = /^[a-zA-Z][a-zA-Z0-9_]{6,16}/;/*输入内容不为中文且没有特殊字符*/
+			var conInfo = /^1[34578]\d{9}$/;/*手机号码*/
+			$(".company_name input").blur(function(){/*企业名称*/
+				if(!comName.test($(".company_name input[type=text]").val())){
+					$(".com_name_code").show();
+				}else{
+					$(".com_name_code").hide();
+				}
+			})
+			$(".account_num input").blur(function(){/*账号*/
+				if(!accNum.test($(".account_num input[type=text]").val())){
+					$(".acc_num_code").show();
+				}else{
+					$(".acc_num_code").hide();
+				}
+			})
+			$(".contact_info input").blur(function(){/*联系方式*/
+				if(!conInfo.test($(".contact_info input[type=text]").val())){
+					$(".con_info_code").show();
+				}else{
+					$(".con_info_code").hide();
+				}
+			})
+			$(".ver_code input").blur(function(){/*验证码不为空*/
+				if($(".ver_code input[type=text]").val()==""){
+					$(".ver_code_code").show();
+				}else{
+					$(".ver_code_code").hide();
+				}
+			})
+			$(".refer button[type=submit]").click(function(){/*提交*/
+				if(!comName.test($(".company_name input[type=text]").val()) || !accNum.test($(".account_num input[type=text]").val()) || !conInfo.test($(".contact_info input[type=text]").val()) || $(".ver_code input[type=text]").val()==""){
+					alert("请输入正确信息");
+					return false;
+				}else{
+					return true;
+				}
+			})
+			$(".ver_code_click").click(function(){
+				if(!conInfo.test($(".contact_info input[type=text]").val())){
+					alert("请输入正确的手机号码");
+					return false;
+				}else{
+					return true;
+				}
+			})
+			
+		})
+
+	</script>
+</body>
+</html>

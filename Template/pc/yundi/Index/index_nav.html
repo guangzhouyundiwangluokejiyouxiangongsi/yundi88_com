@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta charset="UTF-8">
+<title>云狄网-网站导航</title>
+<meta http-equiv="keywords" content="云狄 网络 科技 有限 公司" />
+<meta name="description" content="云狄网络科技有限公司" />
+<link href="__PUBLIC__/css/tsinformation.css" rel="stylesheet" type="text/css">
+<meta name="__hash__" content="27159e041a99d5464cc8d02536c9b8a8_b5e30518865c4fa0f50519a7d0ce3584" /></head>
+<body class="detailfont">
+<link href="__PUBLIC__/pc/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script> 
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/common.min.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/main.min.css">
+<style>.fn-clear .words{ line-height:1.5}.m-top-nav a{color:#000;}</style>
+<link href="__PUBLIC__/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script> 
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.min2.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/main.min.css">
+
+<style>.fn-clear .words{ line-height:1.5}.m-top-nav a{color:#000;}</style>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/public-header2.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/wangzhandaohan.css">
+<header class="head">
+<style type="text/css">.xuanzhong{background-color: #EDEDED}</style>
+    <!-- <div class="left">Hi，你好  kky</div> -->
+    <nav class="nav nav2">
+	    <ul> 
+	        <li><a href="/user/reg.html" class='nologin' >注册</a><a href="/seller/index/index.html" class="islogin userinfo" title="" target="_blank"></a>
+	        </li>
+	        <span>|</span>
+	        <li><a href="/user/login.html" class='nologin' >登录</a><a href="/user/logout.html" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+	        <span>|</span>
+	        <li><img src="__PUBLIC__/images/index1.jpg" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="/Cart/cart.html" target="_blank">购物车</a></li><span>|</span>
+	        <li><a href="/User/order_list.html" target="_blank">我的订单</a></li>
+	    </ul>
+	    <p>您好，欢迎来到云狄网！股票代码：366130</p>
+	    <ul>   
+	   		<li><a href="/User/info.html" target="_blank">个人中心</a></li><span>|</span>
+	        <li><a href="/user/login.html" target="_blank">免费发布信息</a></li><span>|</span>
+	        <li><a href="#" target="_blank">网站导航</a>
+				<div class="navss">
+		          <dl>
+		            <dd><a href="/goods/goodsList2.html" target="_blank">万千产品</a></dd>
+	                <dd><a href="/Info/index.html?nav_id=6" target="_blank">海量信息</a></dd>
+	                <dd><a href="/seller/index/index.html?nav=product" target="_blank">产品推广</a></dd>
+	                <dd><a href="/seller/index/index.html?nav=article" target="_blank">信息推广</a></dd>
+	                <dd><a href="/Info/index.html?nav_id=6" target="_blank">企业信息</a></dd>
+	                <dd><a href="/article/promote.html" target="_blank">免费推广</a></dd>
+	                <dd><a href="/article/yun_shop" target="_blank">云商会</a></dd>
+	                <dd><a href="/index/certification2" target="_blank">商城入驻</a></dd>
+	                <dd><a href="/article/detail/article_id/54.html" target="_blank">联系我们</a></dd>
+		          <div class="cl"></div>
+		          </dl>
+        		</div>
+	        </li> 
+	    </ul>
+    </nav>
+
+</header><!--顶部结束-->
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      var uname= getCookie('uname');
+      if(uname == ''){
+        $('.islogin').remove();
+        $('.nologin').show();
+      }else{
+        $('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+      }
+      	/* 头部定位 */
+     	$(window).scroll(function () {
+			if ($(window).scrollTop() >30) {
+				$('.prof').css({'position':'fixed','top':'0','z-index':'1000'});
+			}
+			else
+			{
+				$('.prof').css({'position':'','top':'','z-index':''});
+			}
+		});
+		/* 搜索信息 */
+        $("#q").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		$("#q_com").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q_com").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		/* 搜索选项卡 */
+		$('.search1 #tab .tabCon .cur').hide();
+		if(""){
+			$('.search1 #tab .tabCon .cur').eq(1).show();
+			
+		}else if(""){
+
+      $('.search1 #tab .tabCon .cur').eq(2).show();
+    }else{
+			$('.search1 #tab .tabCon .cur').eq(0).show();
+		}
+
+		$('#tab .tabList ul li').click(function(){
+			var q_txt='';
+			var i =$(this).index();
+			$('.search1 #tab .tabList ul li').removeClass('cur');
+			$(this).addClass('cur');
+			$('.search1 #tab .tabCon .cur').hide();
+			$('.search1 #tab .tabCon .cur').eq(i).show();
+			if($('#q').val() != '' || $('#q_com').val() != '' || $('#q_info').val() != '')
+			{	
+				if($('#q').val() != ''){
+					q_txt=$('#q').val();
+				}
+				else if($('#q_com').val() != ''){
+					q_txt=$('#q_com').val();
+				}
+				else{
+					q_txt=$('#q_info').val();
+				}
+
+				$("#tab .tabCon input[ type='text' ] ").val('');
+			}
+			$('#tab .tabCon .cur').eq(i).find('.ssk').val(q_txt);		
+			
+		});
+
+		
+  });
+
+  </script>
+  	<div style="height:100px;">
+  		<div class="prof">
+	  		<div class="prol">
+				<figure>
+			        <a style="text-decoration: none;" href="/" title="云狄网"> 
+            			<img src="__PUBLIC__/images/pro1.png" width="178" height="52"  alt=""/>
+            		</a>  <span>网站导航</span>
+			    </figure>
+			    <section class="search1">
+			       <div id="tab">
+					    <div class="tabList">
+					        <ul>
+					          	<li class="cur">产品</li>
+					            <li >公司</li>
+                     			<li >信息</li>
+					        </ul>
+					    </div>
+				        
+					    <div class="tabCon">
+					        <div class="cur">
+					           <form name="sourch_form" id="sourch_form" method="post" action="/Goods/search.html">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="q" id="q" value="" placeholder="搜索产品关键字"  onfocus="getdata(this);" oninput="getdata(this);"/>
+					             <a data-role="btn" href="javascript:void(0);" class="but" onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();"></a>
+					            <input type="hidden" name="__hash__" value="27159e041a99d5464cc8d02536c9b8a8_b5e30518865c4fa0f50519a7d0ce3584" /></form>
+					        </div>
+					        <div class="cur">
+					           <form id="sourch_form_com" method="get" action="/index/searchstreet.html">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="company" id="q_com" value="" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this)" />
+					             <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
+					            <input type="hidden" name="__hash__" value="27159e041a99d5464cc8d02536c9b8a8_b5e30518865c4fa0f50519a7d0ce3584" /></form>
+					        </div>
+							<div class="cur">
+				               <form id="sourch_form_info" method="get" action="/Info/search.html">
+				                <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="" placeholder="搜索信息关键字" />
+				                 <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
+				                <input type="hidden" name="__hash__" value="27159e041a99d5464cc8d02536c9b8a8_b5e30518865c4fa0f50519a7d0ce3584" /></form>
+				            </div>
+					    </div>
+					    <ul class="tab-search-box" onfocus="$('.tab-search-box').show();">
+					    </ul>
+			        </div>
+				 </section>
+		    </div>
+	    </div>
+  	</div>
+	<main class="navmain">
+		<div class="navss1">
+			<div class="navss1l">
+				<dl>
+					<dt>新手指南</dt>
+					<dd><img src="__PUBLIC__/images/navsabop.png"><a target="_blank" href="/article/detail/article_id/26.html">关于云狄</a></dd>
+					<dd><img src="__PUBLIC__/images/navzhuce.png"><a target="_blank" href="/User/regstore.html">免费注册</a></dd>
+					<dd><img src="__PUBLIC__/images/navrumeng.png"><a target="_blank"  href="/article/detail/article_id/28.html">买家入门</a></dd>
+					<dd><img src="__PUBLIC__/images/navrenzheng.png"><a  target="_blank" href="/Index/certification">认证信息</a></dd>
+					<dd><img src="__PUBLIC__/images/navmima.png"><a target="_blank" href="/User/forget_pwd.html">找回密码</a></dd>
+				</dl>
+			</div>
+			<div class="navss1r">
+				<dl>
+					<dt>安全交易</dt>
+					<dd><img src="__PUBLIC__/images/navorder.png"><a target="_blank" href="/Article/detail/article_id/41.html">如何下单</a></dd>
+					<dd><img src="__PUBLIC__/images/navpay.png"><a target="_blank" href="/Article/detail/article_id/42.html">如何付款</a></dd>
+					<dd><img src="__PUBLIC__/images/navsetord.png"><a target="_blank" href="/User/order_list">订单管理</a></dd>
+					<dd><img src="__PUBLIC__/images/navjiangkong.png"><a target="_blank" href="/Article/detail/article_id/44.html">交易保障</a></dd>
+					<dd><img src="__PUBLIC__/images/navpingjia.png"><a target="_blank" href="/Article/detail/article_id/45.html">如何评价</a></dd>
+				</dl>
+
+			</div>
+			<div class="cl"></div>
+		</div>
+
+		<h3>云狄地图</h3>
+
+		<div class="navss2">
+			<div class="navss2l">
+				<dl>
+					<dt>产品</dt>
+					<tpshop sql="select sc_name,sc_id from __STORE_CLASS__" item="vv">
+					<dd><a target="_blank" href="/goods/goodsList/id/{$vv.sc_id}">{$vv.sc_name}</a></dd>
+					</tpshop>
+				</dl>
+			</div>
+
+			<div class="navss2m">
+				<dl>
+					<dt>官网建设</dt>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=pc">PC网站建设</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=mobile">手机网站建设</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=mobile2">微商城建设</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=config">官网设置</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=index">首页编辑</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=nav">导航设置</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=product">域名绑定</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=config">logo上传</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=config">官网优化</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=config">标题优化</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=config">描述优化</a></dd>
+					<dd><a target="_blank" href="/seller/index/index.html?nav=config">关键词优化</a></dd>
+				</dl>
+			</div>
+
+			<div class="navss2r">
+				<dl>
+					<dt>联系我们</dt>
+					<dd style="width:200px;color:#666666;">电话：020-81000500</dd>					
+				</dl>
+			</div>
+			<div class="cl"></div>
+		</div>
+
+		<h3>云狄服务</h3>
+
+		<div class="navss3">
+			<div class='navss31'>
+				<dl>
+					<dt>会员服务</dt>
+					<dd><a href="/user/reg.html" target="_blank">会员注册</a></dd>
+					<dd><a href="/User/login.html" target="_blank">会员登录</a></dd>
+					<dd><a href="/Seller/Newjoin/basic_info" target="_blank">认证信息</a></dd>
+					<dd><a href="/article/yun_shop.html" target="_blank">云商会</a></dd>
+					<dd><a href="/article/detail/article_id/26.html" target="_blank">平台介绍</a></dd>
+					<dd><a href="/Article/experience" target="_blank">建议反馈</a></dd>
+					<dd><a href="#">会员帮助</a></dd>
+				</dl>				
+			</div>
+			<div class='navss32'>
+				<dl>
+					<dt>采购服务</dt>
+					<dd><a href="/goods/goodsList2.html" target="_blank">采购平台</a></dd>
+					<dd><a href="/info/index" target="_blank">企业商铺</a></dd>
+					<dd><a href="/seller/index/index.html?nav=product" target="_blank">产品发布</a></dd>
+					<dd><a href="/seller/index/index.html?nav=productclass" target="_blank">产品分类</a></dd>
+					<dd><a href="/seller/index/index.html?nav=productlist" target="_blank">产品管理</a></dd>
+				</dl>
+			</div>
+			<div class='navss33'>
+				<dl>
+					<dt>供应服务</dt>
+					<dd><a href="/info/index" target="_blank">供应信息</a></dd>
+					<dd><a href="/seller/index/index.html?nav=articleclass" target="_blank">供应管理</a></dd>
+					<dd><a href="/seller/index/index.html?nav=article" target="_blank">信息推广</a></dd>
+				</dl>
+			</div>
+			<div class='navss34'>
+				<dl>
+					<dt>企业服务</dt>
+					<dd><a href="/index/zixun" target="_blank">广告服务</a></dd>
+					<dd><a href="/index/certification2" target="_blank">商城入驻</a></dd>
+				</dl>
+			</div>
+		</div>
+
+		<h3>云狄特色</h3>
+		<div class="navss4">
+			<ul>
+				<li class="navss41"><a target="_blank" href="/article/promote.html"><img src="__PUBLIC__/images/navstuiguang.png"></a></li>
+				<li class="navss42"><a target="_blank" href="/index/street?nav_id=3"><img src="__PUBLIC__/images/navstuijian.png"></a></li>
+				<li><a target="_blank" href="/article/Joinus"><img src="__PUBLIC__/images/navsshanghui.png"></a></li>
+				<div class="cl"></div>
+			</ul>
+		</div>
+
+	</main>
+
+<!--中间内容 end-->
+<include file="Public/footer" />
+</body>
+</html>
+<script type="text/javascript">
+function getdata(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Goods/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Goods/search/q/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+
+function getdata2(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Index/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Index/searchstreet/company/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+
+
+$('#tab .tabCon .ssk').keyup(function(event){ 
+
+	if(event.keyCode == 40){
+		var obj = $('.tab-search-box .xuanzhong');
+		if($(obj).text()){
+			$(obj).removeClass('xuanzhong');
+			$(obj).next().addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+			if(!text){
+				$('.tab-search-box li').eq(0).addClass('xuanzhong');
+				var text = $('.tab-search-box .xuanzhong').text();
+
+			}
+		}else{
+
+			$('.tab-search-box li').eq(0).addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+
+		}
+	$('input[name=company]').val(text);
+	$('input[name=q]').val(text);
+		
+	}else if(event.keyCode == 38){
+		var l = $('.tab-search-box li').length;
+		var obj = $('.tab-search-box .xuanzhong');
+		if($(obj).text()){
+			$(obj).removeClass('xuanzhong');
+			$(obj).prev().addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+			if(!text){
+				
+				$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+				var text = $('.tab-search-box .xuanzhong').text();
+
+			}
+		}else{
+
+			$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+
+		}
+	$('input[name=company]').val(text);
+	$('input[name=q]').val(text);
+
+	}
+}); 
+
+
+  </script>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css">
+	<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+	<script type="text/javascript" src='__PUBLIC__/pc/js/user.js'></script>
+	
+</head>
+<body>
+	<header class="navss">
+			<div class="navsslogo">
+				<a target="_blank" href="/index/index"><img src="__PUBLIC__/images/user/logo.png"></a>
+				<h4>让企业没有难做的推广！</h4>
+			</div>
+			<div class="navssphone"><img src="__PUBLIC__/images/user/navssphone.png"><p>{$phone}</p></div>			
+			<div class="cl"></div>
+	</header>
+	
+	<div class="registeredbenner">
+		<div class="navssbenmain">
+			<div class="navsssbennerr">
+				<div class="peopre">
+					<ul><li class="peopers peoperss" i=".peoprea">个人注册</li>
+						<li  i=".peopreb">企业注册</li>
+						<div class="cl"></div>
+						</ul>
+				</div>
+				<script type="text/javascript">
+						var comNames = false;
+						var conInfos = false;
+						var pass2 = false;
+						var code = false;
+
+				$(function(){
+				      var comName = /^[\u4E00-\u9FA5]{5,16}$/;/*输入内容为中文*/
+				      var accNum = /^[a-zA-Z0-9_]{5,16}$/;/*输入内容不为中文且没有特殊字符*/
+				      var conInfo = /^(13[0-9]|15[0|3|6|7|8|9]|18[0|1|6|8|9])\d{8}$/;/*手机号码*/
+				      // var pass = /^[A-Za-z0-9]{6,20}$/;//密码
+				      var pass = /(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{6,}/;//密码
+				      var navname = /^[a-zA-Z0-9_]{5,16}$/;/*验证昵称*/
+				       // var navname =/^\d+$/;
+
+				       // 验证账号
+				      $(".company_name input").blur(function(){/*账号*/
+				        if (!$(".company_name input[type=text]").val()){
+				           $('.baocuo1').html('账号不能为空');
+				          $(".baocuo1").show();
+				          comNames = false;
+				          return false;
+				        }
+				        if(!accNum.test($(".company_name input[type=text]").val())){
+				          $(".baocuo1").show();
+				          $('.baocuo1').html('请正确输入 账号（字母开头6-16位）');
+				          comNames = false;
+				          return false;
+				        }else{
+				          $(".baocuo1").hide();
+				          	comNames = true;  
+				          }
+
+				        });	
+
+				       $(".company_phone input").blur(function(){/*账号*/
+				        if (!$(".company_phone input[type=text]").val()){
+				           $('.baocuo2').html('手机号不能为空');
+				          $(".baocuo2").show();
+				          conInfos = false;
+				          return false;
+				        }
+				        if(!conInfo.test($(".company_phone input[type=text]").val())){
+				          $(".baocuo2").show();
+				          $('.baocuo2').html('请正确输入 11位手机号');
+				          conInfos = false;
+				          return false;
+				        }else{
+				          $(".baocuo2").hide();
+				          	conInfos = true;  
+				          }
+
+				        });
+
+				       $(".company_pass input").blur(function(){/*密码*/
+				        if (!$(".company_pass input[type=password]").val()){
+				           $('.baocuo3').html('密码不能为空');
+				          $(".baocuo3").show();
+				          pass2 = false;
+				          return false;
+				        }
+				        if(!pass.test($(".company_pass input[type=password]").val())){
+				          $(".baocuo3").show();
+				          $('.baocuo3').html('请正确输入 密码（6-16位字母或英文组成）');
+				          pass2 = false;
+				          return false;
+				        }else{
+				          $(".baocuo3").hide();
+				          	pass2 = true;  
+				          }
+				        });
+
+				        $(".company_code input").blur(function(){/*验证码*/
+				        if (!$(".company_code input[type=text]").val()){
+				           $('.baocuo4').html('验证码不能为空');
+				          $(".baocuo4").show();
+				          code = false;
+				          return false;
+				        }
+				        else{
+				          $(".baocuo4").hide();
+				          	code = true;  
+				          }
+				        });
+
+				  });
+
+			</script>
+				<!-- 个人注册 -->
+				<form action="{:U('user/regstore')}" method="post" class="navsslogin peoprea" id="formall">
+					<span class="baocuo baocuo1">请正确输入账号</span>
+					<div class="navinp company_name"><img src="__PUBLIC__/images/user/loginpeo.png"><input type="text" name="sellername" id="sellername" placeholder="账号（字母开头6-16位）" onblur="checkseller()"></div>
+					<span class="baocuo baocuo2">请正确输入账号</span>
+					<div class="navinp company_phone"><img src="__PUBLIC__/images/user/nasphone.png" style="width:11px;"><input type="text" name="username" id="username" placeholder="手机（11位）" onblur="checkusername()"></div>
+					<span class="baocuo baocuo3">请正确输入账号</span>
+					<div class="navinp company_pass"><img src="__PUBLIC__/images/user/navssloginpass.png"><input type="password" name="password" id="password" placeholder="设置密码（6-20位）" onblur="checkpassword()"></div>
+					<span class="baocuo baocuo4">请正确输入账号</span>
+					<div class="navssyanzheng company_code"><img src="__PUBLIC__/images/user/navssyangzheng.png"><input type="text" name="code" id="code" placeholder="验证码"></div>
+					<div class="navssyanzhenma"><input type="button" value="获取验证码" onclick="codes('{:U('User/send_sms_reg_code')}')" id="button"></div>
+					<div class="cl"></div>
+					<div class="navssjiaru"><input type="checkbox" name="ids" id="ids">同意云狄<a href="/article/detail/article_id/52.html">《服务协议》</a>||<a href="/article/detail/article_id/51.html">《法律声明》</a><a href="{:U('/User/login')}" class="memberok">已有账号</a></div>
+					<div class="navsslog"><a onclick="onnsubmit()">注册</a></div>
+				</form>
+
+				<script type="text/javascript">
+						var comNames = false;
+						var conInfos = false;
+						var comuser = false;
+						var pass2 = false;
+						var code = false;
+						
+				$(function(){
+				      var comName = /^[\u4E00-\u9FA5]{5,16}$/;/*输入内容为中文*/
+				      var accNum = /^[a-zA-Z0-9_]{5,16}$/;/*输入内容不为中文且没有特殊字符*/
+				      var conInfo = /^(13[0-9]|15[0|3|6|7|8|9]|18[0|1|6|8|9])\d{8}$/;/*手机号码*/
+				      // var pass = /^[A-Za-z0-9]{6,20}$/;//密码
+				      var pass = /(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{6,}/;//密码
+				      var navname = /^[a-zA-Z0-9_]{5,16}$/;/*验证昵称*/
+				       // var navname =/^\d+$/;
+
+				       // 验证企业
+				      $(".accounts_name input").blur(function(){/*企业名*/
+				        if (!$(".accounts_name input[type=text]").val()){
+				           $('.baocuos1').html('企业名称不能为空');
+				          $(".baocuos1").show();
+				          comNames = false;
+				          return false;
+				        }
+				        if(!comName.test($(".accounts_name input[type=text]").val())){
+				          $(".baocuos1").show();
+				          $('.baocuos1').html('请正确输入 例如：广州XX有限公司');
+				          comNames = false;
+				          return false;
+				        }else{
+				          $(".baocuos1").hide();
+				          	comNames = true;  
+				          }
+				        });
+
+				       // 请输入账号
+				      $(".accounts_username input").blur(function(){/*请输入账号*/
+				        if (!$(".accounts_username input[type=text]").val()){
+				           $('.baocuos2').html('账号不能为空');
+				          $(".baocuos2").show();
+				          comuser = false;
+				          return false;
+				        }
+				        if(!accNum.test($(".accounts_username input[type=text]").val())){
+				          $(".baocuos2").show();
+				          $('.baocuos2').html('请正确输入 字母开头6-16位');
+				          comuser = false;
+				          return false;
+				        }else{
+				          $(".baocuos2").hide();
+				          	comuser = true;  
+				          }
+				        });
+
+				      	   // 请输入手机号
+				      $(".accounts_phone input").blur(function(){/*请输入手机号*/
+				        if (!$(".accounts_phone input[type=text]").val()){
+				           $('.baocuos3').html('手机号不能为空');
+				          $(".baocuos3").show();
+				          conInfos = false;
+				          return false;
+				        }
+				        if(!conInfo.test($(".accounts_phone input[type=text]").val())){
+				          $(".baocuos3").show();
+				          $('.baocuos3').html('请正确输入 11位手机号');
+				          conInfos = false;
+				          return false;
+				        }else{
+				          $(".baocuos3").hide();
+				          	conInfos = true;  
+				          }
+				        });
+
+				      	   // 请输入密码
+				      $(".accounts_pass input").blur(function(){/*请输入密码*/
+				        if (!$(".accounts_pass input[type=password]").val()){
+				           $('.baocuos4').html('密码不能为空');
+				          $(".baocuos4").show();
+				          pass2 = false;
+				          return false;
+				        }
+				        if(!pass.test($(".accounts_pass input[type=password]").val())){
+				          $(".baocuos4").show();
+				          $('.baocuos4').html('请正确输入密码  6-16位数字或英文');
+				          pass2 = false;
+				          return false;
+				        }else{
+				          $(".baocuos4").hide();
+				          	pass2 = true;  
+				          }
+				        });
+
+				        // 请输入验证码
+				      $(".accounts_code input").blur(function(){/*请输入验证码*/
+				        if (!$(".accounts_code input[type=text]").val()){
+				           $('.baocuos5').html('验证码不能为空');
+				          $(".baocuos5").show();
+				          code = false;
+				          return false;
+				        }
+				   		else{
+				          $(".baocuos5").hide();
+				          	code = true;  
+				          }
+				        });
+
+			// function onsubmits(){
+			// 	if(comNames == true || comuser == true || conInfos==true || pass2== true || code== code){
+			// 		alert('asas');
+			// 	}
+
+			// }
+
+				  });
+			</script>
+
+				<!-- 企业注册 -->
+				<form action="{:U('user/regstore')}" method="post"  class="Enterprise peopreb" id="formall2" >
+					<div class="named">称呼 :	<input type="radio" name="sex" checked="true" value="1">		先生<input type="radio" name="sex" value="2">		女士</div>
+					
+					<span class="baocuos baocuos1">请输入企业名</span>
+					<div class="navinp accounts_name"><img src="__PUBLIC__/images/user/navssqiye.png"><input type="text" name="storename" id="storenamev" placeholder="企业名（2-16位）" onblur="checkstorev()"></div>
+					
+					<span class="baocuos baocuos2">请输入账号</span>					
+					<div class="navinp accounts_username"><img src="__PUBLIC__/images/user/loginpeo.png"><input type="text" name="sellername" id="sellernamev" placeholder="账号（字母开头6-16位）" onblur="checksellerv()"></div>
+					
+					<span class="baocuos baocuos3">请输入手机号</span>
+					<div class="navinp accounts_phone"><img src="__PUBLIC__/images/user/nasphone.png" ><input type="text" name="username" id="usernamev" placeholder="手机（11位）" onblur="checkusernamev()"></div>
+					
+					<span class="baocuos baocuos4">请输入密码</span>
+					<div class="navinp accounts_pass"><img src="__PUBLIC__/images/user/navssloginpass.png"><input type="password" name="password" id="passwordv" placeholder="设置密码（6-20位）" onblur="checkpasswordv()"></div>
+					
+					<span class="baocuos baocuos5">请输入验证码</span>
+					<div class="navssyanzheng accounts_code"><img src="__PUBLIC__/images/user/navssyangzheng.png"><input type="text" name="code" id="codev" placeholder="验证码"></div>
+					<div class="navssyanzhenma"><input type="button" value="获取验证码" onclick="codesv('{:U('User/send_sms_reg_code')}')" id="buttonv"></div>
+					<div class="cl"></div>
+					<div class="navssjiaru"><input type="checkbox" name="ids" id="idsv">同意云狄<a target="_blank"  href="/article/detail/article_id/52.html">《服务协议》</a>||<a target="_blank"  href="/article/detail/article_id/51.html">《法律声明》</a><a href="{:U('/User/login')}" class="memberok">已有账号</a></div>
+					<div class="navsslog"><a onclick="onnsubmit2()">注册</a></div>
+				</form>
+
+
+			</div>
+				<div class="navssyingying"><img src="__PUBLIC__/images/user/navssyingying.png"></div>
+			<div class="cl"></div>
+		</div>
+	</div>
+
+	 <script> 
+      document.onkeyup = function(e){
+
+		if(e.keyCode===13){
+
+      		var display =$('.peopreb').css('display');
+
+				if(display == 'block'){
+						onnsubmit(); 
+				}else{
+			      	onnsubmit2();   
+			      }	
+	      		    		
+			  }
+	 	};
+   </script>
+
+ <script type="text/javascript">
+	        $(function(){
+	          $('.peopre>ul li').bind('click',function(){
+	          $('.peopre>ul li').each(function(){
+	            $($(this).attr('i')).css('display','none');       
+	            $($(this).attr('i')).hide();
+	            $(this).removeClass('peoperss');
+	          })
+	          $($(this).attr('i')).show();
+	          $(this).addClass('peoperss');
+	       });
+		});
+
+	function onnsubmit(){
+	  var ids = document.getElementById("ids");
+      var code = document.getElementById("code").value;
+      if( code === ''){
+        layer.msg('请输入验证码',{icon:2,time:2000});
+        return false;
+      }
+
+      if(seller != true){
+        layer.msg('账号格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(mobile2 != true){
+        layer.msg('手机格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(password3 != true){
+        layer.msg('密码格式错误',{icon:2,time:2000});
+        return false;
+      }
+
+      if (storenames != true){
+        layer.msg('店铺名字格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+      if (ids.checked != true){
+        layer.msg('请同意服务协议',{icon:2,time:2000});
+        return false;
+      }
+      $('#formall').submit();
+	}
+
+	function onnsubmit2(){
+	  var idsv = document.getElementById("idsv");
+      var codev = document.getElementById("codev").value;
+      if (storenamesv !== true){
+        layer.msg('店铺名格式错误',{icon:2,time:2000});
+        return false;
+      }
+
+      if( codev === ''){
+        layer.msg('请输入验证码',{icon:2,time:2000});
+        return false;
+      }
+
+      if(sellerv !== true){
+        layer.msg('账号格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(mobile2v !== true){
+        layer.msg('手机格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+
+      if(password3v != true){
+        layer.msg('密码格式错误',{icon:2,time:2000});
+        return false;
+      }
+
+      if (storenamesv !== true){
+        layer.msg('店铺名字格式错误或已被注册',{icon:2,time:2000});
+        return false;
+      }
+      if (idsv.checked != true){
+        layer.msg('请同意服务协议',{icon:2,time:2000});
+        return false;
+      }
+		$('#formall2').submit();
+	}
+  </script>
+
+
+<include file="Public/public_footer" />
+
+</body>
+</html>

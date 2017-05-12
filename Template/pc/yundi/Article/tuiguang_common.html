@@ -1,0 +1,66 @@
+		<div class="bennner">
+			<h2>免费推广教程</h2>
+			<ul>
+				<li><a href="javascript:" target="_blank"><img src="__PUBLIC__/images/feiji.png">网站推广</a></li>
+				<li><a href="javascript:" target="_blank"><img src="__PUBLIC__/images/feiji.png">网站推广</a></li>
+				<li><a href="javascript:" target="_blank"><img src="__PUBLIC__/images/feiji.png">网站推广</a></li>
+				<div class="cl"></div>
+			</ul>
+		</div>
+
+		<div class="tgnavss">
+			<div class="tgnavssm" id="xiangxixingxi">
+				<ul>
+					<php> if (ACTION_NAME == listsht1){</php>
+					<li i=".mianfei">免费建设网站</li>
+					<li class="active" i=".houtai">后台优化</li>
+					<php>}else{</php>
+					<li class="active" i=".mianfei">免费建设网站</li>
+					<li i=".houtai">后台优化</li>
+					<php>}</php>
+					<li i=".renzheng">诚信认证</li>
+					<li i=".ssyingqin">搜索引擎推送</li>
+					<div class="cl"></div>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tgmainss">
+			<!-- 免费建设网站 -->
+			<div class="jianshe mianfei" id="main">
+				<ul>
+				<tpshop sql="select article_id,title from __ARTICLE__ where cat_id = 40 and is_open = 1" item="vv" key="kk">
+					<li><a href="lists1.html?id={$vv.article_id}#xiangxixingxi" target='_blank'>
+					<img src="__PUBLIC__/images/sanjiao.png">{$kk+1}.{$vv.title}</a></li>
+				</tpshop>
+					<div class="cl"></div>
+				</ul>
+			</div>
+
+			<!-- 后台优化 -->
+			<div class="htyouhua houtai">
+				<p>在PC网站选择完毕之后，我们就要开始优化自己的网站了。一般不懂的优化新手来说，随便创建一个官网名称是为了方便记住。但是云云小编在此告诉大家，如果想让自己的网站优化到极致，请跟着小编的方法来操作。</p>
+				<ul>
+				<tpshop sql="select article_id,title from __ARTICLE__ where cat_id = 41 and is_open = 1" item="v" key="k">
+					<li><a href="listsht1.html?id={$v.article_id}#xiangxixingxi" target='_blank'>
+						<img src="__PUBLIC__/images/sanjiao.png">{$k+1}.{$v.title}</a></li>
+				</tpshop>
+					<div class="cl"></div>
+				</ul>
+			</div>
+
+			<!-- 诚信认证 -->
+			<div class="cxrenzheng renzheng">
+			<tpshop sql="select * from __ARTICLE__ where article_id=228" item="vo">
+					{$vo.content|htmlspecialchars_decode}
+			</tpshop>
+				
+			</div>
+
+			<!-- 搜索引擎推送 -->
+			<div class="sstuiguan ssyingqin">
+				<tpshop sql="select * from __ARTICLE__ where article_id=229" item="vs">
+					{$vs.content|htmlspecialchars_decode}
+				</tpshop>
+			</div>
+		

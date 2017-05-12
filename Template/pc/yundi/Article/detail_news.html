@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="zh-cn" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+<meta http-equiv="Cache-control" content="public" max-age="no-cache" />
+<title>{$article.title}</title>
+<meta http-equiv="keywords" content="{$article.keywords}" />
+<meta name="description" content="{$article.description}" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/help.css"/>
+ 
+<!--[if lt IE 9]>
+        <script src="js/html5.js"></script>
+        <script src="js/ie9.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/ie.css"/>
+        <![endif]-->
+</head>
+<body>
+<!--------头部开始-------------->
+<include file="User/header" />
+<!--------头部结束-------------->
+<style type="text/css">
+            #content .content-message{position: relative;border: 1px solid rgb(233, 234, 236); margin-bottom: 25px;}
+         .content-title{width: 1020px;margin-left: 200px;min-height:30px;padding: 35px 0;}
+         .content-title h1{font-size: 24px;text-align: center;}
+            #content .tit-bar{overflow: hidden;height: 30px;line-height: 30px; color: rgb(60, 60, 60); font-size: 14px;padding:0 10px;}
+            #content .tit-bar .tit-bar-name{float: left;margin-right: 10px;}
+            #content  .tit-bar .tit-bar-from{float: left;margin-right: 10px;}
+            #content .tit-bar .tit-bar-time{float: left;margin-right: 10px;}
+            #content .tit-bar .tit-bar-num{float: right;}
+            #content .share-btn{overflow: hidden;display: inline-block;padding-bottom: 20px;}
+            #content .share-btn span{float: left;line-height: 24px;}
+            #content .share-btn ul{overflow: hidden;float: left;}
+            #content .share-btn ul li{float: left;margin:0 5px; }
+            #content .share-btn ul li a{display: block;width: 24px; height:24px;line-height: 24px;overflow: hidden;}
+            #content .share-btn ul li a img{width: 24px; height:24px;display: block;}
+          </style> 
+<!--E头部-->
+<div style="clear: both;"></div>
+<div id="pageContent" class="pageContent">
+  <div class="hc-warp" id="page">
+   <div class="content-title">
+      <h1>{$article.title}</h1>
+    </div>  
+    <div class="hc-column">
+    <!-- <tpshop sql="select * from `__PREFIX__article_cat` where parent_id=2" key="k" item='v'> -->
+      <div class="hc-column-box">
+      <notempty name="parents">
+        <h2><a href="javascript:;" target="_self">{$parents}</a></h2>
+        </notempty>
+        <ul class="title">
+         <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]" key="k2" item='v2'>
+          <li><a href="">{$cat_name}</a></li>
+         </tpshop>
+        </ul>
+        <ul class="tabs">
+          <foreach name="parentss" item="vv">
+          <if condition="$vv['article_id'] eq $article['article_id']">
+          <li class="on">
+          <php>if ($vv['link'] != ''){</php>
+          <a target="_blank" href="{$vv[link]}"><span>{$vv.title}</span><i>></i></a>
+          <php>} else {</php>
+          <a href="{:U('/Article/detail_news',array('article_id'=>$vv[article_id]))}"><span>{$vv.title}</span><i>></i></a>
+          <php>}</php>
+          </li>
+          <else />
+          <php>if ($vv['link'] != ''){</php>
+         	<li><a target="_blank" href="{$vv[link]}"><span>{$vv.title}</span><i>></i>
+          <php>} else {</php>
+          <li><a href="{:U('/Article/detail_news',array('article_id'=>$vv[article_id]))}"><span>{$vv.title}</span><i>></i>
+          <php>}</php>
+          </a></li>
+          </if>
+          </foreach>
+        </ul>
+      </div>
+  	<!-- </tpshop> -->
+    </div>
+        <!--可编辑区域开始-->
+    <div id="content"> <!--可编辑区域开始-->
+		    
+      <div style="width: 1020px;  font-family: Verdana,Helvetica; float: right;">
+       		
+        <div class="content-message">
+        	
+        	
+          <php>if ($article['cat_id'] == 33 || $article['cat_id'] == 32){</php>
+        	<div class="tit-bar">
+    			<span class="tit-bar-name">{$cat_name}</span>
+          <notempty name="article['link_source']">
+    			<span class="tit-bar-from">来源：<i>{$article.link_source}</i></span>
+          </notempty>
+          <notempty name="article['time_source']">
+    			<span class="tit-bar-time">{$article.time_source}</span>
+          </notempty>
+          <notempty name="article['link_num']">
+    			<span class="tit-bar-num">浏览量：<i>{$article.link_num}</i></span>
+          </notempty>
+    		  </div>
+          <php>}</php>
+            <div style="padding: 20px 30px; color: rgb(60, 60, 60); font-size: 14px;">
+			         {$article.content|htmlspecialchars_decode}
+            </div>
+            <php>if ($article['cat_id'] == 32 || $article['cat_id'] == 33){</php>
+            <div style="text-align:center;">
+            	 <div class="share-btn">
+	            	<span>分享到：</span>
+	            	<ul>
+	            		<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+	            	</ul>
+	            </div>
+            </div>
+	         <php>}</php>
+        </div>
+      </div>
+      <!--可编辑区域结束--> </div>
+    <!--可编辑区域结束-->  
+    </div>
+</div>
+<div style="clear: both;"></div>
+<include file="User/footer" /> 
+</body>
+</html>

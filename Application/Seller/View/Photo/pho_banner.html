@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>相册benner-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/css/favorite.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/security_set.css"/>
+
+<!--字体图标-->
+<link href="__PUBLIC__/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<style type="text/css">
+.favorites_title ul li,.favorites .favorites_content .clearfix li{width:19.8%}
+.favorites_title ul li, .favorites .favorites_content .clearfix li:last-child{border:0}
+.btn_1{border:5px solid #008BB9;background-color: #008BB9;color: white}
+.btn_2 button:hover{font-size: 13.5px}
+
+#hjnext{background:#3c8dbc;cursor:pointer;color:#fff;font-size:16px;}
+#hjnext:hover{background:#3389bb;}
+
+.hjimg button{width:120px;height:40px;cursor:pointer;}
+
+/*当屏幕宽带在1200*/
+@media screen and (min-width:600px) and (max-width:1245px){
+
+ #hjsa{width:100%;}
+ #hjyanzheng{width:100%;margin:0 auto;}
+
+ }
+
+
+</style>
+<body> 
+<!-- 头部-s -->
+<!-- 头部-e -->
+   
+
+<div class="wrap" style="width:98%;background:#fff;margin:30px auto;min-height:400px;border:1px solid #d2d2d2;">
+<script type="text/javascript">
+function banner2(img_str){
+    $('input[name="photo_banner"]').val(img_str);
+    $('#banner_id').attr('src',img_str);
+    if ($('#banner').val()){
+            $.post('{:U("photo/index")}',{photo_banner:$('#banner').val()},function(res){
+                if (res){
+                    layer.msg('上传成功',{icon:1,time:2000});
+                } else {
+                    layer.msg('上传失败',{icon:2,time:2000});
+                }
+            })
+        } else {
+            layer.msg('没有选择图片',{icon:2,time:2000});
+        }
+}
+</script>
+  <!--菜单--> 
+  <!--菜单-->     
+  <!--侧边导航栏结束-->
+    <div class="col_main">
+  <div class="main security_passwd">
+
+  <div class="themes_title" style="border-bottom: 1px solid #d2d2d2;background:#f5f5f5;">
+      <h3 style="width:500px;float:left;padding:0;margin:0;height:40px;line-height: 40px;font-size:16px;font-weight:500;font-family:'微软雅黑';color:#000;"><i class="fa fa-camera" style="padding-left: 14px;padding-right: 6px;"></i>相册banner图</h3>
+      <span style="float:right;display:inline-block;width:40px;border-left: 1px solid #ccc;height:40px;">
+        <img src="__PUBLIC__/images/gerenfanhui.png" style="float:right;margin-right: 12px;margin-top: 10px;margin-left:20px;cursor:pointer;" onclick="history.go(-1);"></span>        
+    <div style="clear:both;"></div>
+    </div>
+
+    <section class="security_passwd">
+      <div class="wrapper-3" style="margin-top: 50px;text-align: center;">
+        <img style="width:80%;" src="{$photo_banner|default='__PUBLIC__/images/houtaimorenbenner.jpg'}" id="banner_id" alt="">
+        <input type="hidden" name="photo_banner" value="{$photo_banner}" id="banner">    
+      </div>
+      <div style="width:100%;margin: 30px auto;text-align: center;" class="hjimg">
+                <button onClick="GetUploadify(1,'photo_banner','seller','banner2')">上传图片</button>
+                <!-- <button onclick="upload()">保存图片</button> -->
+                <button onclick="delete_banner()">删除图片</button>
+        <span style="color:#f00;">注：图片大小建议宽度为1920</span>
+        </div>
+
+    </section>
+  </div>
+</div> 
+</div>
+ 
+<div style="clear: both;"></div>
+
+</body>
+<script>
+    function upload(){
+        if ($('#banner').val()){
+            $.post('{:U("photo/index")}',{photo_banner:$('#banner').val()},function(res){
+                if (res){
+                    layer.msg('保存成功',{icon:1,time:2000});
+                } else {
+                    layer.msg('保存失败',{icon:2,time:2000});
+                }
+            })
+        } else {
+            layer.msg('没有选择图片',{icon:2,time:2000});
+        }
+    }
+
+    function delete_banner(){
+        if ($('#banner').val() == '__PUBLIC__/images/houtaimorenbenner.jpg'){
+            return false;
+        }
+       var banner_id = document.getElementById('banner_id');
+       $.ajax({
+        type:'post',
+        url:"{:U('photo/delete_banner')}",
+            success:function(res){
+                if (res){
+                    banner_id.src = '__PUBLIC__/images/houtaimorenbenner.jpg';
+                    layer.msg('删除成功',{icon:2,time:2000});
+                } else {
+                    layrt.msg('删除失败',{icon:2,time:2000});
+                }
+            }
+        })
+    }
+</script>
+</html>

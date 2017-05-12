@@ -1,0 +1,127 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+	<include file="Public/breadcrumb"/>
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	             <div class="box-header">
+	           	   <nav class="navbar navbar-default">	     
+				      <div class="collapse navbar-collapse">
+	    				<div class="navbar-form form-inline">
+				            <div class="form-group">
+				            	<p class="text-success margin blod">店铺:</p>
+				            </div>
+				             <div class="form-group">
+                                 <a class="btn btn-info" href="{:U('Store/store_list')}">店铺列表</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/apply_list')}" >开店申请</a>&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                 <a class="btn btn-default" href="{:U('Store/reopen_list')}" >签约申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a class="btn btn-default" href="{:U('Store/apply_class_list')}">经营类目申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				            </div>			          
+				            <div class="form-group pull-right">
+					            <a href="{:U('Store/store_add',array('is_own_shop'=>0))}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> 新增店铺</a>
+				            </div>	
+				          </div>
+				       </div>
+	    		 	</nav>	
+	               	<nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				          <form class="navbar-form form-inline" action="{:U('Store/store_list')}" method="post">
+				           	<div class="form-group">
+				            	<label class="control-label" for="input-order-id">所属等级</label>
+				            	 <select name="grade_id" class="form-control">
+				            	 	  <option>选择等级</option>
+                                      <volist name="store_grade" id="item" key="k">
+                                            <option value="{$k}" <if condition="$pid eq $k">selected</if>>{$item}</option>
+                                      </volist>                  
+                                 </select>   
+				            </div>
+				           <div class="form-group">
+				              	<input type="text" name="seller_name" class="form-control" placeholder="请输入店主名称">
+				            </div>
+				            <div class="form-group">
+				            	<label class="control-label" for="input-order-id">店铺状态</label>
+				            	 <select name="store_state" class="form-control">
+				            	 	   <option>选择状态</option>
+									   <option value="1">开启</option>
+				            	 	   <option value="2">关闭</option>
+                                       <option value="3">即将到期</option>
+                                       <option value="4">已到期</option>
+                                 </select>   
+				            </div>
+				           	<div class="form-group">
+				            	<label class="control-label" for="input-order-id">店铺类别</label>
+				            	 <select name="sc_id" class="form-control">
+				            	 	  <option>选择类别</option>
+                                      <volist name="store_class" id="item" key="k">
+                                          <option value="{$k}">{$item}</option>
+                                      </volist>                  
+                                 </select>   
+				            </div>
+				            <div class="form-group">
+				              	<input type="text" name="store_name" class="form-control" placeholder="请输店铺名称">
+				            </div>
+				            <button type="submit" class="btn btn-primary">查询</button>	          
+				          </form>
+				      	</div>
+	    			</nav>
+	             </div>
+	             <div class="box-body">
+	           	 <div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-striped dataTable">
+		                 <thead>
+		                   <tr role="row">
+                               <th>店铺名称</th>
+                               <th>店主账号</th>
+			                   <th>卖家账号</th>	
+			                   <th>所属等级</th>	                   
+			                   <th>店铺类别</th>
+                               <th>进驻日期</th>
+			                   <th>状态</th>
+		                  	   <th>推荐</th>
+		                  	   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+                          <foreach name="list" item="vo" key="k" >
+                             <tr role="row">    
+                             <td>{$vo.store_name}</td>
+                             <td>{$vo.user_name}</td>
+		                     <td>{$vo.seller_name}</td>	                    
+		                     <td>{$store_grade[$vo[grade_id]]}</td>
+		                     <td>{$store_class[$vo[sc_id]]}</td>                                     
+		                     <td>{$vo.store_time|date='Y-m-d',###}</td>
+		                     <td><if condition="$vo[store_state] eq 1">开启<else/>关闭</if></td>
+		                     <td><img width="20" height="20" src="__PUBLIC__/images/<if condition='$vo[store_recommend] eq 1'>yes.png<else />cancel.png</if>" onclick="changeTableVal('store','store_id','{$vo.store_id}','store_recommend',this)"/></td>
+		                     <td class="text-center">
+		                     	<a class="btn btn-info" target="_blank" href="/store/index?store_id={$vo['store_id']}">进入店铺</a>
+		                     	<a class="btn btn-info" href="{:U('Store/store_info_news',array('store_id'=>$vo['store_id']))}">新闻</a>
+		                      	<a class="btn btn-info" href="{:U('Store/store_info',array('store_id'=>$vo['store_id']))}">查看</a>
+		                      	<a class="btn btn-info" href="{:U('Store/store_info_edit',array('store_id'=>$vo['store_id']))}">编辑</a>
+		                      	<a class="btn btn-info" href="{:U('Store/store_class_info',array('store_id'=>$vo['store_id']))}">经营类目</a>
+		                      	<a class="btn btn-danger" onclick="delfunc(this)" data-url="{:U('Store/store_del')}" data-id="{$vo.store_id}">删除</a>
+				     		</td>
+		                   </tr>
+		                  </foreach>
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left">
+              	    	<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+              	    </div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div>
+	        </div>
+       	</div>
+       </div>
+   </section>
+</div>
+</body>
+</html>   

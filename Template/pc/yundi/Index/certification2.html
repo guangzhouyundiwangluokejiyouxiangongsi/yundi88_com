@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>广州云狄网络科技有限公司</title>
+<meta http-equiv="keywords" content="免费建站">
+<meta name="description" content="免费建站">
+<link href="__PUBLIC__/pc/css/public.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/css/rezhen.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/rezhenlbt.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/ruzhu.css">
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery.banner.revolution.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/pc/js/banner.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script> 
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/common.min.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/main.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/wangzhandaohan.css">
+<style>.fn-clear .words{ line-height:1.5}.m-top-nav a{color:#000;}</style>
+<header class="head">
+    <!-- <div class="left">Hi，你好  kky</div> -->
+    <nav class="nav nav2">
+      <ul> 
+          <li><a href="{:U('/user/reg')}" class='nologin' >注册</a><a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+          </li>
+          <span>|</span>
+          <li><a href="{:U('/user/login')}" class='nologin' >登录</a><a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+          <span>|</span>
+          <li><img src="__PUBLIC__/pc/images/index1.jpg" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="{:U('/Cart/cart')}" target="_blank">购物车</a></li><span>|</span>
+          <li><a href="{:U('/User/order_list')}" target="_blank">我的订单</a></li>
+      </ul>
+      <p>您好，欢迎来到云狄网！股票代码：366130</p>
+      <ul>   
+        <li><a href="{:U('/User/info')}" target="_blank">个人中心</a></li><span>|</span>
+          <li><a href="{:U('/user/login')}" target="_blank">免费发布信息</a></li><span>|</span>
+          <li><a href="#" target="_blank">网站导航</a>
+            <div class="navss">
+              <dl>
+                <dd><a href="/goods/goodsList2.html">万千产品</a></dd>
+                <dd><a href="/Info/index.html?nav_id=6">海量信息</a></dd>
+                <dd><a href="/seller/index/index.html?nav=product">产品推广</a></dd>
+                <dd><a href="/seller/index/index.html?nav=article">信息推广</a></dd>
+                <dd><a href="/Info/index.html?nav_id=6">企业信息</a></dd>
+                <dd><a href="/article/promote.html">免费推广</a></dd>
+                <dd><a href="/article/yun_shop">云商会</a></dd>
+                <dd><a href="/index/certification2">商城入驻</a></dd>
+                <dd><a href="/article/detail/article_id/54.html">联系我们</a></dd>
+              <div class="cl"></div>
+              </dl>
+            </div>
+          </li> 
+      </ul>
+
+    </nav>
+  </header><!--顶部结束-->
+
+
+<!-- <script type="text/javascript">
+// 禁止右键
+document.oncontextmenu=function(){return false;}
+</script> -->
+
+<!-- benner -->
+<div id="wrapper">
+	<div class="fullwidthbanner-container">
+		<div class="fullwidthbanner">
+			<ul>
+				<foreach name="renzheng_lunbo[renzheng_lunbo]" item="vv" key="kk">
+        <if condition="$vv != ''">
+				<li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" data-link="#">
+					<a href="{$renzheng_lunbo[renzheng_jump][$kk]}"><img src="{$vv}" alt="" /></a>
+				</li>					
+        </if>
+        </foreach>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="remain">
+	<h4>免费入驻流程</h4>
+	<p>5分钟让您快速入驻平台</p>
+
+	<div class="remains">
+		<img src="__PUBLIC__/pc/./images/icon.png">
+		<div class="remains1">
+			<ul >
+				<li class="rlist1">企业/个体申请注册</li>
+				<li class="rlist2">填写企业/个体资料</li>
+				<li class="rlist3">提交资质待审核</li>
+				<li class="rlist4">开通店铺/官网</li>
+				<li class="rlist5">编辑网站信息</li>
+				<li class="rlist6">官网/店铺上线，发布产品，推广信息</li>			
+				<div class="cl"></div>
+			</ul>
+			<div class="cl"></div>
+		</div>
+	</div>
+
+	<h3>5分钟让您快速入驻平台</h3>
+	<div class="mianfei"><a href="{:U('User/regstore')}">点击入驻</a></div>
+</div>
+<include file="Goods/footer" />
+</body> 
+<script>
+$(document).ready(function(){
+
+      var uname= getCookie('uname');
+      if(uname == ''){
+        $('.islogin').remove();
+        $('.nologin').show();
+      }else{
+        $('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+      }
+        /* 头部定位 */
+      // $(window).scroll(function () {
+      // if ($(window).scrollTop() >30) {
+      //   $('.prof').css({'position':'fixed','top':'0','z-index':'1000'});
+      // }
+      // else
+      // {
+      //   $('.prof').css({'position':'','top':'','z-index':''});
+      // }
+    });
+      
+       $(function(){
+$('.xiuxian').removeClass('reasonaa');
+$('.xiuxian').addClass('reasona');
+
+  $('.reason >ul li').bind('click',function(){
+
+      $('.reason > ul li').each(function(){        
+        $($(this).attr('i')).css('display','none');       
+        $($(this).attr('i')).hide('reasonaa'); 
+        $(this).removeClass('reasona');
+        $(this).addClass('reasonaa');     
+      })
+    $(this).removeClass('reasonaa');
+    $(this).addClass('reasona');
+    $($(this).attr('i')).show('reasona');
+    });
+})
+</script>
+</html>

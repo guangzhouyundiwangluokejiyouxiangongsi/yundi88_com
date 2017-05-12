@@ -1,0 +1,145 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云商会-商会资讯</title> 
+
+<!-- ie使用最高版本打开 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/yshanghui.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/animate.min.css">
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/wow.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/pc/js/gundongs.js"></script>
+
+</head> 
+
+<body  > 
+
+<!-- 使用动画效果必须加上实例化 -->
+<script type="text/javascript">
+  $(function(){
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+      new WOW().init();
+    };
+  });
+</script>
+
+
+<include file="Article/header" />
+
+ <script type="text/javascript">
+        $(function(){
+          $('.navs>a').bind('mouseover',function(){
+          $('.navs>a').each(function(){
+            $($(this).attr('i')).css('display','none');       
+            $($(this).attr('i')).hide('aa');
+          })
+          $($(this).attr('i')).show('aa');
+
+        });
+});
+    </script>
+
+
+  </header><!--顶部结束-->
+
+  <main class="ymain">
+  <!-- benner部分 -->
+    <div class="benner">
+      <div class="ayjiaru">
+        <img src="__PUBLIC__/pc/images/fengcaia.png" class="wow slideInLeft">
+        <img src="__PUBLIC__/pc/images/information.png" class="wow slideInRight"></div>
+      <img src="__PUBLIC__/pc/images/aboutben.png" class="ybenner">   
+    </div>
+    
+    <div class="Contactusb">
+      <p>当前位置：<a href="/article/demeanour">商会资讯</a> > <a href="/article/demeanourmoll">最新动态</a></p>
+      <div class="commerce">
+          <h2>商会资讯</h2>
+          <img src="__PUBLIC__/pc/images/fegncai1.png">
+      </div>
+
+      <div class="commerqiehuan">
+        <ul>
+          <li id="div"  i=".zuixin"><a href="/article/demeanour#div">最新资讯</a></li>
+            <li  id="div2" class="commerqiehuans" i=".zuixins"><a href="/article/demeanourmoll#div2" style="color:#fff">最新动态</a></li>
+            <li id="div3" i=".gonggao"><a href="/article/gonggao#div3">公告</a></li>
+          <div class="cl"></div>
+        </ul>   
+      </div>
+
+<style type="text/css">
+  .zuixin{display:none;}
+  .gonggao{display:none;}
+  .scroll_ulss li a p:hover{color: red}
+  .elegantp:hover{color: red !important}
+</style>
+
+
+      
+       <div class="elegant zuixins">
+        <ul>
+          <foreach name="demeanourmoll" item="vv">
+          <li>
+            <a target="_blank" href="/article/news?new_id={$vv.article_id}"><img src="{$vv.thumb}"></a>
+            <p class="elegantp">{$vv.title|getSubstr=0,15}</p>
+            <p class="elegantt">{$vv.add_time|date='Y-m-d',###}</p>
+          </li>
+          </foreach>
+          <div class="cl"></div>
+        </ul> 
+      </div>
+
+     
+      <div class="eleganttpag">
+          <ul>
+           {$page}
+            <div class="cl"></div>
+          </ul> 
+      </div>
+
+
+<div class="rollboxss">
+  <h2>推荐文章</h2>
+  <div class="scroll_areass">
+  <div class="scroll_listss">
+   <ul class="scroll_ulss">
+   <tpshop sql="select * from `__PREFIX__article` where recommended = 1 and is_open = 1" key="key" item="val">
+    <li><a target="_blank" href="/article/news?new_id={$val.article_id}"><img src="{$val.thumb}"><p>{$val.title|getSubstr=0,15}</p></a></li>
+    </tpshop>
+   </ul>
+  </div>
+  <a id="prevss" class="btn_icons1" href="javascript:;"><img src="__PUBLIC__/pc/images/nexts.png"></a>
+
+  <a id="nextss" class="btn_icons2" href="javascript:;"><img src="__PUBLIC__/pc/images/prevs.png"></a>
+
+ </div>
+</div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+   
+  </main> 
+
+<div class="cl"></div>
+<include file="Article/footer" />
+
+
+</body> 
+</html>

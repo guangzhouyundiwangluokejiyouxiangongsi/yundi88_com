@@ -1,0 +1,208 @@
+<include file="Public/min-header" />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/welcomess.css">
+
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<!-- <meta name="renderer" content="ie-comp"> -->
+
+<style type="text/css">
+	.contentsa ul li{list-style: none;float:left;margin-right: 20px;}
+	ul,ol,li{list-style:none;}
+	/* banner */
+.banner{height:415px;overflow:hidden;position:relative;}
+.banner .d1{width:100%;min-height:400px;display:block;position:absolute;left:0px;top:0px;}
+.banner .d2{width:100%;height:30px;clear:both;position:absolute;z-index:100;left:0px;bottom:1%;}
+.banner .d2 ul{float:left;position:absolute;left:53.5%;top:0;margin:0 0 0 -96px;display:inline;}
+.banner .d2 li{width:17px;height:15px;overflow:hidden;cursor:pointer;background:url(__PUBLIC__/images/htsylbtimg1.png) no-repeat center;float:left;margin:0 3px;display:inline;}
+.banner .d2 li.nuw{background:url(__PUBLIC__/images/htsylbtimg1_1.png) no-repeat center;}
+#banner a{cursor:default;}
+
+.id_1{display:none;}
+.id11{position:absolute;z-index: 999;top:43%;left:57%;font-size:17.27px;color:#fff;font-size:16px;font-family:'微软雅黑';height:35px;line-height: 35px;cursor:pointer;}
+.id11:hover{color:#ffdf1b;}
+
+.id12{position:absolute;z-index: 999;top:74%;left:47.5%;color:#fff;font-size:24px;font-family:'微软雅黑';height:50px;line-height: 50px;cursor:pointer;}
+.id12:hover{color:#ffdf1b;}
+
+.id21{position:absolute;z-index:999;top:70%;left:54%;height:50px;width:170px;background:rgba(0,0,0,0);cursor:pointer;}
+
+.id31{position:absolute;z-index:999;top:81%;left:43.8%;height:50px;width:175px;background:rgba(0,0,0,0);cursor:pointer;}
+
+@media screen and (min-width:960px) and (max-width:1200px){
+.id11{left:61%;}
+.id12{left:45.5%;}
+.id21{left:56%;}
+.banner .d2 ul{left:54.5%;}
+}
+@media screen and (min-width:1200px) and (max-width:1500px){
+.id11{left:58%;}
+.id12{left:47%;}
+}
+
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/htjquery.js"/></script>
+
+<script>
+function banner(){	
+	var bn_id = 0;
+	var bn_id2= 1;
+	var speed33=5000;
+	var qhjg = 1;
+    var MyMar33;
+	$("#banner .d1").hide();
+	$("#banner .d1").eq(0).fadeIn("slow");
+	if($("#banner .d1").length>1)
+	{
+		$("#banner_id li").eq(0).addClass("nuw");
+		function Marquee33(){
+			bn_id2 = bn_id+1;
+			if(bn_id2>$("#banner .d1").length-1)
+			{
+				bn_id2 = 0;
+			}
+			$("#banner .d1").eq(bn_id).css("z-index","2");
+			$("#banner .d1").eq(bn_id2).css("z-index","1");
+			$("#banner .d1").eq(bn_id2).show();
+			$("#banner .d1").eq(bn_id).fadeOut("slow");
+			$("#banner_id li").removeClass("nuw");
+			$("#banner_id li").eq(bn_id2).addClass("nuw");
+			bn_id=bn_id2;
+		};
+	
+		MyMar33=setInterval(Marquee33,speed33);
+		
+		$("#banner_id li").click(function(){
+			var bn_id3 = $("#banner_id li").index(this);
+			if(bn_id3!=bn_id&&qhjg==1)
+			{
+				qhjg = 0;
+				$("#banner .d1").eq(bn_id).css("z-index","2");
+				$("#banner .d1").eq(bn_id3).css("z-index","1");
+				$("#banner .d1").eq(bn_id3).show();
+				$("#banner .d1").eq(bn_id).fadeOut("slow",function(){qhjg = 1;});
+				$("#banner_id li").removeClass("nuw");
+				$("#banner_id li").eq(bn_id3).addClass("nuw");
+				bn_id=bn_id3;
+			}
+		})
+		$(".banner").hover(
+			function(){
+				clearInterval(MyMar33);
+			}
+			,
+			function(){
+				MyMar33=setInterval(Marquee33,speed33);
+			}
+		)	
+	}
+	else
+	{
+		$("#banner_id").hide();
+	}
+}
+</script>
+
+<div class="wrapper">
+     <include file="Public/breadcrumb"/>    
+     <section class="content">
+		<div class="contentsa">	
+			<ul>
+				<li><a target="_blank" href="{:U('/article/yun_shop')}"><img src="__PUBLIC__/images/yungshang.png"></a></li>
+				<li><a href="{:U('store/store_setting')}"><img src="__PUBLIC__/images/wangj.png"></a></li>
+				<li><a href="{:U('Goods/addEditGoods')}"><img src="__PUBLIC__/images/chanping.png"></a></li>
+				<li><a href="{:U('News/addNews')}"><img src="__PUBLIC__/images/xinxi.png"></a></li>
+				<li><a target="_blank" href="{:U('/article/promote_school')}"><img src="__PUBLIC__/images/tuiguang.png"></a></li>
+				<div style="clear:both;"></div>
+			</ul>
+		</div>
+
+		<div class="banner" id="banner" >
+			<a href="javascript:" class="d1" style="background:url(__PUBLIC__/images/adminbenner1.jpg) center no-repeat;"><div class="id11" onclick="window.open('http://www.yundi88.com/index.php/article/yun_shop')">了解详情&gt;&gt;&gt;</div><div class="id12" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" >立即加入</div></a>
+			<a href="javascript:" class="d1" style="background:url(__PUBLIC__/images/adminbenner2.jpg) center no-repeat;"><div class="id21" onclick="window.open('http://www.yundi88.com/Index/certification.html')"></div></a>
+			<a href="javascript:" class="d1" style="background:url(__PUBLIC__/images/adminbenner3.jpg) center no-repeat;"><div class="id31" onclick="window.open('http://www.yundi88.com/article/Joinus.html')"></div></a>
+	<div class="d2" id="banner_id">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">banner()</script>
+            
+
+         </div>
+         <!--  <div class="callout callout-inro">
+            <p> <b></b>版权所有 © 2016-2017 广州云狄网络科技有限公司，并保留所有权利。 </p>
+          </div> -->
+    <div id="light" class="white_content"> 
+      <div class="tankuang">
+        <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="__PUBLIC__/pc/images/joinover.png"></a>       
+      </div>
+      <h3>尊敬的用户您好！</h3>
+      <p style="height:40px;line-height: 40px;">首年1688元加入企业联盟云商会享有的主要服务内容如下：</p>
+      <p>1.获得PC+手机网站+微商城+APP应用软件<br>
+      2.一站式为您设计好官网及店铺页面，并完善您的信息<br>
+      3.资深设计师为您首年设计10张banner图作为官网展示<br>
+      4.产品信息优先推送收录并全网推广<br>
+      5.享有全年云狄网金牌商家展示服务<br>
+      6.成为优选供应商，享有商城至尊版最高级别推广服务<br>
+      7.协助会员发布新媒体100篇软文，曝光品牌服务<br>
+      8.定期出版商会杂志，冠名企业信息彰显实力<br>
+      9.出版营销黄页免费推广到全国3000万企业手里<br>
+      10.定期邀约会员参与企业联盟研讨大会，共建共享经济！<br></p>
+
+      <script type="text/javascript">      
+            function nowpayss(){
+            var Sys={};        
+            var ua=navigator.userAgent.toLowerCase();        
+            var s;
+             (s=ua.match(/msie ([\d.]+)/))?Sys.ie=s[1]:
+             (s=ua.match(/firefox\/([\d.]+)/))?Sys.firefox=s[1]:
+             (s=ua.match(/chrome\/([\d.]+)/))?Sys.chrome=s[1]:
+             (s=ua.match(/opera.([\d.]+)/))?Sys.opera=s[1]:
+             (s=ua.match(/version\/([\d.]+).*safari/))?Sys.safari=s[1]:0;        
+            if(Sys.chrome){  
+             	window.open('{:U('Seller/Commerce/index')}');           	
+            	// window.open('http://chromecj.com/shopping/2014-10/195.html');
+                alert('您的浏览器版本不支持,请换个浏览器在试！');
+                $('#light').hide();
+                $('#fade').hide();
+
+            }else{
+             window.open('{:U('Seller/Commerce/index')}');
+            }         
+        };           
+  </script>
+
+	<!-- <script> 
+		// var WSH = new ActiveXObject("WScript.Shell"); 
+
+		// WSH.Run("iexplore.exe"); 
+
+		if(window.ActiveXObject|| "ActiveXObject" in window){
+			
+		  alert("IE浏览器");
+
+		}else{
+			
+
+		 alert("不是IE浏览器");
+
+
+		}
+
+			// RunApp "iexplore.exe www.baidu.com";
+
+		</script> -->
+
+
+        <button  onclick="window.open('{:U('Seller/Commerce/index')}');">确定</button>
+     </div>
+
+  <div id="fade" class="black_overlay"></div> 
+
+     </section>
+ </div>
+ </body>
+ </html>
