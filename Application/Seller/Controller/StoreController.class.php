@@ -1271,7 +1271,7 @@ class StoreController extends BaseController
 	
 	public function goods_class(){
 		$Model =  M('store_goods_class');
-		$res = $Model->where("store_id=".STORE_ID)->select();	
+		$res = $Model->where("store_id=".STORE_ID)->order('parent_id')->select();	
 		$cat_list = $this->getTreeClassList(2,$res);
 		$this->assign('cat_list',$cat_list);
 		$this->display();

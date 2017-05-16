@@ -14,7 +14,7 @@ class InfoController extends BaseController
 
         if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
 		$model = M();
-		$count =  $model->field('a.id,a.store,a.title,a.description,a.newsimg,a.content,a.sn_id,a.timer,a.pc_click,s.user_id,s.store_logo')->table('__STORE_ART__ as a')->join('INNER JOIN __STORE__ as s ON a.store = s.store_id')->where(array('a.is_show'=>1,'a.home_is_show'=>1))->order('a.timer DESC')->count();
+		$count =  $model->field('a.id,a.store,a.title,a.description,a.newsimg,a.content,a.sn_id,a.timer,a.pc_click,s.user_id,s.store_logo')->table('__STORE_ART__ as a')->join('INNER JOIN __STORE__ as s ON a.store = s.store_id')->where(array('a.is_show'=>1,'a.home_is_show'=>1))->order('a.timer DESC')->cache()->count();
 		$page = new Page($count,10);
 		$articlelist = $model->field('a.id,a.store,a.title,a.description,a.newsimg,a.content,a.sn_id,a.timer,a.pc_click,s.user_id,s.store_logo,s.domain,s.commerce_state,s.apply_state,IFNULL(s.commerce_state,0) + IFNULL(s.apply_state,0) as num')
         ->table('__STORE_ART__ as a')
@@ -22,10 +22,10 @@ class InfoController extends BaseController
         ->where(array('a.is_show'=>1,'a.home_is_show'=>1))
         ->order('num desc,s.commerce_state desc,s.apply_state desc,a.timer desc')
         ->limit($page->firstRow,$page->listRows)
-        ->select();
+        ->cache()->select();
 
             // dump($model);exit;
-        $apply_state = M('store_apply')->getField('user_id,apply_state');
+        $apply_state = M('store_apply')->cache()->getField('user_id,apply_state');
 
         foreach($articlelist as &$v){
         	$v['certification'] = $apply_state[ $v['user_id'] ];

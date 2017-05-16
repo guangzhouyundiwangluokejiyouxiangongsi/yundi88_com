@@ -81,7 +81,7 @@ class StoreController extends Controller {
 
 			$store_id = $this->store['store_id'];
 			//店铺内部分类
-			$store_goods_class_list = M('store_goods_class')->where(array('store_id' => $store_id, 'is_show' => '1'))->select(); //zhoufei 增加了 ,'is_show'=>'1'
+			$store_goods_class_list = M('store_goods_class')->where(array('store_id' => $store_id, 'is_show' => '1'))->order('cat_sort')->select(); //zhoufei 增加了 ,'is_show'=>'1'
 			if ($store_goods_class_list) {
 				$sub_cat = $main_cat = array();
 				foreach ($store_goods_class_list as $val) {
@@ -158,7 +158,7 @@ class StoreController extends Controller {
 	public function recommend() {
 		//查询首页推荐栏目
 		$product_m = M('goods');
-		$recommend = M('store_goods_class')->where(array('store_id' => $this->store['store_id'], 'is_show' => 1, 'is_recommend' => 1))->select();
+		$recommend = M('store_goods_class')->where(array('store_id' => $this->store['store_id'], 'is_show' => 1, 'is_recommend' => 1))->order('cat_sort')->select();
 		foreach ($recommend as &$v) {
 			// 查询推荐商品
 			$v['cat_id_goods'] = $product_m->where('(' . 'store_cat_id1 = ' . $v['cat_id'] . ' or store_cat_id2 = ' . $v['cat_id'] . ')' . 'and is_on_sale = 1')->field('goods_id,goods_name,original_img,shop_price')->limit($v['show_num'])->select();
@@ -172,7 +172,7 @@ class StoreController extends Controller {
 	public function recommend_news() {
 		//查询首页推荐栏目
 		$store_art_m = M('store_art');
-		$recommend = M('store_navigation')->where(array('sn_store_id' => $this->store['store_id'], 'sn_is_list' => 1, 'sn_is_show' => 1, 'sn_is_home' => 1))->select();
+		$recommend = M('store_navigation')->where(array('sn_store_id' => $this->store['store_id'], 'sn_is_list' => 1, 'sn_is_show' => 1, 'sn_is_home' => 1))->order('sn_sort')->select();
 		foreach ($recommend as &$v) {
 			// 查询推荐商品
 			$v['news'] = $store_art_m->where(array('sn_id' => $v['sn_id'], 'is_show' => 1))->order('timer desc')->field('id,sn_id,title,author,timer,pc_click,keyword,description,newsimg')->limit($v['sn_show_num'])->select();
