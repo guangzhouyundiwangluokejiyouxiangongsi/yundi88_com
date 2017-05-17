@@ -28,7 +28,6 @@ class IndexController extends MobileBaseController {
             $signPackage = $jssdk->GetSignPackage();              
             print_r($signPackage);
         */
-
         $nav = M('navigation')->where(array('is_show' => 1, 'sn_is_show' => 1))->field('name,url')->select();
         // dump($nav);exit;
         foreach($nav as &$v){
@@ -44,26 +43,36 @@ class IndexController extends MobileBaseController {
         $this->display();
     }
 
-    public function new_goods(){
-        $p = I('p',1);
-        $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where(array('is_on_sale'=>1,'goods_state'=>1,'home_is_show'=>1,'is_new'=>1))->order('num desc,commerce_state desc,apply_state desc,on_time desc')->page($p,10)->select();
+   
+
+
+    public function new_goods2()
+    {
+        $goods_list = M('ad')->where(array('pid'=>5114400))->order('orderby')->select();
         $this->assign('goods_list',$goods_list);
-        $this->display('ajaxgoods');
+        $this->display('ajaxnewgoods');
+
     }
 
+
+    //特色厂家
+    public function features()
+    {
+        $goods_list = M('ad')->where(array('pid'=>5114401))->order('orderby')->limit(8)->select();
+        $this->assign('goods_list',$goods_list);
+        $this->display('ajaxfeaturesgoods');
+    }
+
+
+
+    // 推荐精品
     public function recommend_goods(){
-        $p = I('p',1);
-        $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where(array('is_on_sale'=>1,'goods_state'=>1,'home_is_show'=>1,'is_recommend'=>1))->order('num desc,commerce_state desc,apply_state desc,on_time desc')->page($p,10)->select();
+        $goods_list = M('goods')->field('original_img,goods_name,shop_price,goods_id,apply_state,commerce_state,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where(array('recommend'=>1,'goods_state'=>1))->limit(6)->cache()->select();
         $this->assign('goods_list',$goods_list);
-        $this->display('ajaxgoods');
+        $this->display('ajaxrecommendgoods');
     }
 
-    public function hot_goods(){
-        $p = I('p',1);
-        $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where(array('is_on_sale'=>1,'goods_state'=>1,'home_is_show'=>1,'is_hot'=>1))->order('num desc,commerce_state desc,apply_state desc,on_time desc')->page($p,10)->select();
-        $this->assign('goods_list',$goods_list);
-        $this->display('ajaxgoods');
-    }
+
     /**
      * 分类列表显示
      */

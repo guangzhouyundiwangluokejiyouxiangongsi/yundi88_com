@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/home.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="w_header">
+		<h3 class="w_header_title">{$tpshop_config['shop_info_store_name']}</h3>
+		<div class="w_header_search">
+			<a href=""><img src="__STATIC__/images/search.png"></a>
+		</div>
+	</div>
+
+	<div class="w_content">
+		<!-- banner -->
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		    <adv pid ="2" limit="5" item="v">
+		        <div class="swiper-slide"><img src="{$v[ad_code]}" title="{$v[title]}" onclick="window.location.href='{$v[ad_link]}'"></div>
+		        </adv>
+		    </div>
+		    <!-- 分页器 -->
+		    <div class="swiper-pagination"></div>
+		    
+		</div>
+		
+		<div class="w_sort">
+			<div class="w_sort_on">
+				<ul>
+					<li>
+						<a href="/Mobile/Goods/categoryList.html">
+							<i><img src="__STATIC__/images/sort_icon_01.png"></i>
+							<p>分类</p>
+						</a>
+					</li>
+					<li>
+						<a href="/Mobile/Info/index.html">
+							<i><img src="__STATIC__/images/sort_icon_02.png"></i>
+							<p>企业信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="/Mobile/index/street.html">
+							<i><img src="__STATIC__/images/sort_icon_03.png"></i>
+							<p>金牌商家</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><img src="__STATIC__/images/sort_icon_04.png"></i>
+							<p>免费推广</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="w_sort_under">
+				<ul>
+					<li>
+						<a href="http://association.yundi88.com/">
+							<i><img src="__STATIC__/images/sort_icon_05.png"></i>
+							<p>云商会</p>
+						</a>
+					</li>
+					<li>
+						<a href="http://spectrum.yundi88.com">
+							<i><img src="__STATIC__/images/sort_icon_06.png"></i>
+							<p>企业云谱</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><img src="__STATIC__/images/sort_icon_07.png"></i>
+							<p>微微</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><img src="__STATIC__/images/sort_icon_08.png"></i>
+							<p>我的云</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="w_peer_pro">
+			<div class="w_peer_pro_t"><h3>同行产品</h3></div>
+			<div class="w_peer_pro_c">
+				<ul>
+					<li>
+						<a href="/Mobile/Goods/goodsList/id/1643.html">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.43rem;">女装</p>
+								<p style="padding-top: 0.43rem;">男装</p>
+								<p style="padding-top: 0.43rem;">内衣</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon01.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.185rem;">鞋帽箱包</p>
+								<p style="padding-top: 0.185rem;">运动用品</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon02.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.43rem;">童装</p>
+								<p style="padding-top: 0.43rem;">玩具</p>
+								<p style="padding-top: 0.43rem;">母婴</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon03.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.185rem;">机械设备</p>
+								<p style="padding-top: 0.185rem;">模具仪器</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon04.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.16rem;">宠物·成人</p>
+								<p style="padding-top: 0.185rem;">女性用品</p>
+								<p style="padding-top: 0.2947rem;">日用品</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon05.png">
+							</div>
+						</a>
+					</li>
+					<li class="w_more_pro">
+						<a href="javascript:;">
+							<div class="w_peer_pro_c_t">
+								<p style="line-height: 1.3474rem;text-align: center;float: none;writing-mode: lr-tb;-webkit-writing-mode:horizontal-tb;writing-mode:lr-tb;writing-mode:horizontal-tb;*writing-mode: lr-tb;">更多行业</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon06.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.185rem;">建筑建材</p>
+								<p style="padding-top: 0.185rem;">五金家具</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon07.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.15rem;">食品·禽兽</p>
+								<p style="padding-top: 0.185rem;">园林花卉</p>
+								<p style="padding-top: 0.2947rem;">农作物</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon08.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.185rem;">交通运输</p>
+								<p style="padding-top: 0.2947rem;">摩托车</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon09.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.27rem;"><span>3C</span>·手机</p>
+								<p style="padding-top: 0.185rem;">个人用品</p>
+								<p style="padding-top: 0.43rem;">家电</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon10.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.15rem;">电工·电器</p>
+								<p style="padding-top: 0.43rem;">配电</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon11.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.15rem;">能源·矿产</p>
+								<p style="padding-top: 0.15rem;">石油·政府</p>
+								<p style="padding-top: 0.185rem;">纺织皮革</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon12.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.15rem;">汽车·保养</p>
+								<p style="padding-top: 0.43rem;">维修</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon13.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.15rem;">饰品·礼品</p>
+								<p style="padding-top: 0.2947rem;">工艺品</p>
+								<p style="padding-top: 0.2947rem;">保健品</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon14.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.15rem;">包装·印刷</p>
+								<p style="padding-top: 0.185rem;">办公文教</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon15.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 13.5%;padding-top: 0.15rem;">照明·电子</p>
+								<p style="padding-top: 0.43rem;">环保</p>
+								<p style="padding-top: 0.43rem;">玻璃</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon16.png">
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="w_peer_pro_c_t">
+								<p style="padding-left: 25%;padding-top: 0.15rem;">金融·服务</p>
+								<p style="padding-top: 0.2189rem;"><span>IT</span>·广告</p>
+							</div>
+							<div class="w_peer_pro_c_i">
+								<img src="__STATIC__/images/peer_pro_icon17.png">
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+<script type="text/javascript">
+$(function(){
+  getnew_goods();
+});
+
+var page4 = 1;
+function getnew_goods(){
+  $('.get_more4').show();
+  $.ajax({
+    type : "get",
+    url:"/index.php?m=Mobile&c=Index&a=new_goods2&p=1",
+    dataType:'html',
+    success: function(data)
+    {
+      if(data){
+        $(".w_new_pro_c>ul").html(data);
+      }else{
+        $(".w_new_pro_c>ul>p").html('加载失败！');
+        
+      }
+    }
+  }); 
+}
+</script>
+
+
+
+		<div class="w_new_pro">
+			<div class="w_new_pro_t">
+				<h3>最新产品</h3>
+			</div>
+			<div class="w_new_pro_c">
+				<ul>
+					<p style="font-size:20px;text-align:center;">正在加载...</p>
+				</ul>
+			</div>
+		</div>
+
+<script type="text/javascript">
+$(function(){
+  features_goods();
+});
+
+var page4 = 1;
+function features_goods(){
+  // $('.get_more4').show();
+  $.ajax({
+    type : "get",
+    url:"/index.php?m=Mobile&c=Index&a=features",
+    dataType:'html',
+    success: function(data)
+    {
+      if(data){
+        $(".w_mill_c>ul").html(data);
+      }else{
+        $(".w_mill_c>ul>p").html('加载失败！');
+        
+      }
+    }
+  }); 
+}
+</script>
+		<div class="w_mill">
+			<div class="w_mill_t">
+				<h3>特色厂家</h3>
+				<a href="">更多 ></a>
+			</div>
+			<div class="w_mill_c">
+				<ul>
+					<p style="font-size:20px;text-align:center;">正在加载...</p>
+			    </ul>
+			</div>
+		</div>
+<script type="text/javascript">
+$(function(){
+  recommend_goods();
+});
+
+var page4 = 1;
+function recommend_goods(){
+  // $('.get_more4').show();
+  $.ajax({
+    type : "get",
+    url:"/index.php?m=Mobile&c=Index&a=recommend_goods",
+    dataType:'html',
+    success: function(data)
+    {
+      if(data){
+        $(".w_fine_pro_c>ul").html(data);
+      }else{
+        $(".w_fine_pro_c>ul>p").html('加载失败！');
+        
+      }
+    }
+  }); 
+}
+</script>
+
+		<div class="w_fine_pro">
+			<div class="w_fine_pro_t">
+				<h3>推荐精品</h3>
+			</div>
+			<div class="w_fine_pro_c">
+				<ul>
+					<p style="font-size:20px;text-align:center;">正在加载...</p>
+			    </ul>
+			</div>
+		</div>
+
+
+		<div class="w_copyright">
+			<p>云狄网络版权所有</p>
+			<p>粤ICP备16076354号</p>
+		</div>
+
+	</div>
+
+	<div class="w_footer">
+		<ul>
+			<li>
+				<a href="home.html">
+					<i><img src="__STATIC__/images/footer_icon01_hov.png"></i>
+					<p>首页</p>
+				</a>
+			</li>
+			<li>
+				<a href="info.html">
+					<i><img src="__STATIC__/images/footer_icon02.png"></i>
+					<p>搜信息</p>
+				</a>
+			</li>
+			<li>
+				<a href="street.html">
+					<i><img src="__STATIC__/images/footer_icon03.png"></i>
+					<p>搜企业</p>
+				</a>
+			</li>
+			<li>
+				<a href="classify.html">
+					<i><img src="__STATIC__/images/footer_icon04.png"></i>
+					<p>分类</p>
+				</a>
+			</li>
+			<li class="w_order_btn">
+				<a href="javascript:;">
+					<i><img src="__STATIC__/images/footer_icon05.png"></i>
+					<p>其他</p>
+				</a>
+				<div class="w_order">
+					<a href="">云商会</a>
+					<a href="">企业云谱</a>
+					<a href="">微微</a>
+					<a href="">我的云</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div id="w_top"><img src="__STATIC__/images/top.png"></div>
+
+</body>
+<script>
+	var mySwiper = new Swiper ('.swiper-container', {
+	    loop: true,
+	    autoplay: 3000,
+	    //分页器
+	    pagination: '.swiper-pagination', 
+	    autoplayDisableOnInteraction : false
+	  })        
+</script>
+</html>

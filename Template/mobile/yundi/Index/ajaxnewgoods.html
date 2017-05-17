@@ -1,0 +1,26 @@
+<foreach name="goods_list" item="v" key="k">
+
+
+		<php>if($k == 0){</php>
+					<li>
+						<a href="{$v.ad_link}">
+							<div class="w_new_pro_c_i">
+								<img src="{$v['ad_code']}">
+							</div>
+							<div class="w_new_pro_c_t">
+								<p>{$v['ad_name']}</p>
+							</div>
+						</a>
+					</li>
+		<php>}else{</php>
+
+					<li>
+						<a href="{$v.ad_link}">
+							<div class="w_new_pro_c_i">
+								<img src="{$v['ad_code']}">
+							</div>
+						</a>
+					</li>
+		<php>}</php>
+</foreach>
+					

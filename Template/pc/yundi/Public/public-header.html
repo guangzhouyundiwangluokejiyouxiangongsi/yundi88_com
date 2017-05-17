@@ -201,9 +201,9 @@
              <tpshop sql="SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` DESC limit 0,8" key="k" item='v'>
                <li class="myli" <php>if($v['id'] == 2){</php> style="position:relative;"   <php>}</php>>
                <php>if ($v['is_new'] == 1){</php>
-               <a target="_blank" href="{$v[url]}?nav_id={$v[id]}" 
+               <a class="snav{$v[id]}" target="_blank" href="{$v[url]}" 
                <php>} else {</php>
-               <a href="{$v[url]}?nav_id={$v[id]}"
+               <a class="snav{$v[id]}" href="{$v[url]}"
                <php>}</php>
                <php> if (I('nav_id') == $v['id']) echo 'style="color: #008CBA"'</php>
                   <?php  if($_SERVER['REQUEST_URI']==str_replace('&amp;','&',$v[url])){ echo "class='menu-item menu-item-active'";}

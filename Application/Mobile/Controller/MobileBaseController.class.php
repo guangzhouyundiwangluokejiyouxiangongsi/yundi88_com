@@ -79,9 +79,11 @@ class MobileBaseController extends Controller {
        // dump($goods_category_tree);exit;   
        $this->cateTrre = $goods_category_tree;
        $this->assign('goods_category_tree', $goods_category_tree);                     
-       $brand_list = M('brand')->cache(true,TPSHOP_CACHE_TIME)->field('id,cat_id1,logo,is_hot')->where("cat_id1>0")->select();              
+       $brand_list = M('brand')->cache(true,TPSHOP_CACHE_TIME)->field('id,cat_id1,logo,is_hot')->where("cat_id1>0")->select();         
+       // dump($brand_list);exit;     
        $this->assign('brand_list', $brand_list);
        $this->assign('tpshop_config', $tpshop_config);
+
     }      
 
     // 网页授权登录获取 OpendId

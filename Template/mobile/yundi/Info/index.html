@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>{$infolist['title']}</title>
+	<meta http-equiv="keywords" content="{$infolist['keywords']}" />
+	<meta name="description" content="{$infolist['description']}" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/info.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+</head>
+<body>
+
+	<!-- 头部 -->
+	<div class="w_header">
+		<h3 class="w_header_title">{$infolist['name']}</h3>
+		<div class="w_header_search">
+			<a href=""><img src="__STATIC__/images/search.png"></a>
+		</div>
+	</div>
+<script type="text/javascript">
+$(function(){
+  getinfo();
+});
+
+var page = 1;
+function getinfo(){
+  $.ajax({
+    type : "get",
+    url:"/index.php?m=Mobile&c=Info&a=ajaxgetinfo&p="+page,
+    dataType:'html',
+    success: function(data)
+    {
+      if(data){
+        $(".w_info>ul").html(data);
+      }else{
+        $(".w_info>ul>p").html('加载失败！');
+        
+      }
+    }
+  }); 
+}
+</script>
+
+	<div class="w_content">
+		
+		<div class="w_info">
+			<ul>
+				<p style="font-size:20px;text-align:center;"><img src="__STATIC__/images/Preloader_4.gif"></p>
+			</ul>
+		</div>
+
+		<div class="w_copyright">
+			<p>云狄网络版权所有</p>
+			<p>粤ICP备16076354号</p>
+		</div>
+
+	</div>
+
+	<div class="w_footer">
+		<ul>
+			<li>
+				<a href="home.html">
+					<i><img src="__STATIC__/images/footer_icon01.png"></i>
+					<p>首页</p>
+				</a>
+			</li>
+			<li>
+				<a href="info.html">
+					<i><img src="__STATIC__/images/footer_icon02_hov.png"></i>
+					<p>搜信息</p>
+				</a>
+			</li>
+			<li>
+				<a href="street.html">
+					<i><img src="__STATIC__/images/footer_icon03.png"></i>
+					<p>搜企业</p>
+				</a>
+			</li>
+			<li>
+				<a href="classify.html">
+					<i><img src="__STATIC__/images/footer_icon04.png"></i>
+					<p>分类</p>
+				</a>
+			</li>
+			<li class="w_order_btn">
+				<a href="javascript:;">
+					<i><img src="__STATIC__/images/footer_icon05.png"></i>
+					<p>其他</p>
+				</a>
+				<div class="w_order">
+					<a href="">云商会</a>
+					<a href="">企业云谱</a>
+					<a href="">微微</a>
+					<a href="">我的云</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div id="w_top"><img src="__STATIC__/images/top.png"></div>
+	
+</body>
+</html>

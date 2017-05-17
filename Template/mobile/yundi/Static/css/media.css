@@ -1,0 +1,41 @@
+@media all and (orientation : landscape) { 
+	.w_header{height: 44px;line-height: 44px;}
+	.w_header_title{font-size: 20px;}
+	.w_header_history{top: 12px;left: 24px;}
+	.w_header_history a{width: 11px;height: 20px;}
+	.w_header_search{top: 12px;right: 24px;}
+	.w_header_search a{width: 19px;height: 20px;}
+	.w_header_search a img{width: 100%;height: 100%;}
+	.w_content{margin: 44px 0;}
+	.w_footer{height: 44px;}
+	.w_footer ul li i{padding-top: 5px;height: 20px;}
+	.w_footer ul li i img{max-height: 20px;}
+	.w_footer ul li p{font-size: 12px;line-height: 12px;padding-top: 3px;}
+	.w_order{bottom: 45px;height: 176px;}
+	.w_order a{height: 44px;font-size: 12px;line-height: 44px;}
+	#w_top{width: 0.6737rem;height: 0.6737rem;}
+} 
+@media screen and (min-width: 280px) {html{font-size:50px;}}
+@media screen and (min-width: 360px) {html{font-size:56.25px;}}
+@media screen and (min-width: 375px) {html{font-size:58.59375px;}}
+@media screen and (min-width: 400px) {html{font-size:62.5px;}}
+@media screen and (min-width: 414px) {html{font-size:64.6875px;}}
+@media screen and (min-width: 440px) {html{font-size:68.75px;}}
+@media screen and (min-width: 480px) {html{font-size:75px;}}
+@media screen and (min-width: 520px) {html{font-size:81.25px;}}
+@media screen and (min-width: 560px) {html{font-size:87.5px;}}
+@media screen and (min-width: 600px) {html{font-size:93.75px;}}
+@media screen and (min-width: 640px) {html{font-size:100px;}}
+@media screen and (min-width: 680px) {html{font-size:106.25px;}}
+@media screen and (min-width: 720px) {html{font-size:112.5px;}}
+@media screen and (min-width: 760px) {html{font-size:118.75px;}}
+@media screen and (min-width: 800px) {html{font-size:125px;}}
+@media screen and (min-width: 960px) {html{font-size:150px;}
+
+
+
+
+
+
+
+
