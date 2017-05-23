@@ -32,10 +32,6 @@ class GoodsController extends BaseController {
         $goods_id = I("get.id");
         $goods = M('Goods')->where(array('goods_id'=>$goods_id))->find();
 
-
-
-
-
         if(empty($goods) || ($goods['is_on_sale'] == 0)){
         	$this->error('该商品已经下架',U('Index/index'));
         }
@@ -177,138 +173,144 @@ class GoodsController extends BaseController {
     }
 
 
+
+
+
     /**
      * 商品列表页
      */
-    public function goodsList(){ 
+    // public function goodsList(){ 
         
-        $key = md5($_SERVER['REQUEST_URI'].$_POST['start_price'].'_'.$_POST['end_price']);
-        // $html = S($key);
-        if(!empty($html))
-        {
-            exit($html);
-        }
-        if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
-        // dump($_SERVER['REDIRECT_URL']);exit;
+    //     $key = md5($_SERVER['REQUEST_URI'].$_POST['start_price'].'_'.$_POST['end_price']);
+    //     // $html = S($key);
+    //     if(!empty($html))
+    //     {
+    //         exit($html);
+    //     }
+    //     if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
+    //     // dump($_SERVER['REDIRECT_URL']);exit;
 
-        $filter_param = array(); // 帅选数组                        
-        $id = I('get.id',0); // 当前分类id 
-        $brand_id = I('get.brand_id',0);
-        //$spec = I('get.spec',0); // 规格 
-        $attr = I('get.attr',''); // 属性        
-        $sort = I('get.sort','goods_id'); // 排序
-        $sort_asc = I('get.sort_asc','asc'); // 排序
-        $price = I('get.price',''); // 价钱
-        $start_price = trim(I('post.start_price','0')); // 输入框价钱
-        $end_price = trim(I('post.end_price','0')); // 输入框价钱        
-        if($start_price && $end_price) $price = $start_price.'-'.$end_price; // 如果输入框有价钱 则使用输入框的价钱
+    //     $filter_param = array(); // 帅选数组                        
+    //     $id = I('get.id',0); // 当前分类id 
+    //     $brand_id = I('get.brand_id',0);
+    //     //$spec = I('get.spec',0); // 规格 
+    //     $attr = I('get.attr',''); // 属性        
+    //     $sort = I('get.sort','goods_id'); // 排序
+    //     $sort_asc = I('get.sort_asc','asc'); // 排序
+    //     $price = I('get.price',''); // 价钱
+    //     $start_price = trim(I('post.start_price','0')); // 输入框价钱
+    //     $end_price = trim(I('post.end_price','0')); // 输入框价钱        
+    //     if($start_price && $end_price) $price = $start_price.'-'.$end_price; // 如果输入框有价钱 则使用输入框的价钱
      
-        $filter_param['id'] = $id; //加入帅选条件中                       
-        $brand_id  && ($filter_param['brand_id'] = $brand_id); //加入帅选条件中
-        //$spec  && ($filter_param['spec'] = $spec); //加入帅选条件中
-        $attr  && ($filter_param['attr'] = $attr); //加入帅选条件中
-        $price  && ($filter_param['price'] = $price); //加入帅选条件中
+    //     $filter_param['id'] = $id; //加入帅选条件中                       
+    //     $brand_id  && ($filter_param['brand_id'] = $brand_id); //加入帅选条件中
+    //     //$spec  && ($filter_param['spec'] = $spec); //加入帅选条件中
+    //     $attr  && ($filter_param['attr'] = $attr); //加入帅选条件中
+    //     $price  && ($filter_param['price'] = $price); //加入帅选条件中
                 
-        $goodsLogic = new \Home\Logic\GoodsLogic(); // 前台商品操作逻辑类
+    //     $goodsLogic = new \Home\Logic\GoodsLogic(); // 前台商品操作逻辑类
         
-        // 分类菜单显示
-        $goodsCate = M('GoodsCategory')->where("id = $id")->find();// 当前分类
-        // $a = M('GoodsCategory')->where("name like '%珠%'")->select();
-        // dump($a);exit;
+    //     // 分类菜单显示
+    //     $goodsCate = M('GoodsCategory')->where("id = $id")->find();// 当前分类
+    //     // $a = M('GoodsCategory')->where("name like '%珠%'")->select();
+    //     // dump($a);exit;
 
-        //($goodsCate['level'] == 1) && header('Location:'.U('/Channel/index',array('cat_id'=>$id))); //一级分类跳转至大分类馆        
-        $cateArr = $goodsLogic->get_goods_cate($goodsCate); 
+    //     //($goodsCate['level'] == 1) && header('Location:'.U('/Channel/index',array('cat_id'=>$id))); //一级分类跳转至大分类馆        
+    //     $cateArr = $goodsLogic->get_goods_cate($goodsCate); 
          
-        // 帅选 品牌 规格 属性 价格
-        //$cat_id_arr = getCatGrandson ($id);        
-        $filter_goods_id = M('goods')->where("is_on_sale=1 and home_is_show=1 and goods_state = 1  and cat_id{$goodsCate['level']} = $id")->cache(true)->getField("goods_id",true); 
-        if ($filter_goods_id){
-            $filter_goods_id = explode(',',goodsorderby($id));    
-        }
+    //     // 帅选 品牌 规格 属性 价格
+    //     //$cat_id_arr = getCatGrandson ($id);        
+    //     $filter_goods_id = M('goods')->where("is_on_sale=1 and home_is_show=1 and goods_state = 1  and cat_id{$goodsCate['level']} = $id")->cache(true)->getField("goods_id",true); 
+    //     if ($filter_goods_id){
+    //         $filter_goods_id = explode(',',goodsorderby($id));    
+    //     }
 
-        // 过滤帅选的结果集里面找商品        
-        if($brand_id || $price)// 品牌或者价格
-        {
-            $goods_id_1 = $goodsLogic->getGoodsIdByBrandPrice($brand_id,$price); // 根据 品牌 或者 价格范围 查找所有商品id    
-            $filter_goods_id = array_intersect($filter_goods_id,$goods_id_1); // 获取多个帅选条件的结果 的交集
-        }
-        //if($spec)// 规格
-        //{
-        //    $goods_id_2 = $goodsLogic->getGoodsIdBySpec($spec); // 根据 规格 查找当所有商品id
-        //    $filter_goods_id = array_intersect($filter_goods_id,$goods_id_2); // 获取多个帅选条件的结果 的交集
-        //}
-        if($attr)// 属性
-        {
-            $goods_id_3 = $goodsLogic->getGoodsIdByAttr($attr); // 根据 规格 查找当所有商品id
-            $filter_goods_id = array_intersect($filter_goods_id,$goods_id_3); // 获取多个帅选条件的结果 的交集
-        }        
+    //     // 过滤帅选的结果集里面找商品        
+    //     if($brand_id || $price)// 品牌或者价格
+    //     {
+    //         $goods_id_1 = $goodsLogic->getGoodsIdByBrandPrice($brand_id,$price); // 根据 品牌 或者 价格范围 查找所有商品id    
+    //         $filter_goods_id = array_intersect($filter_goods_id,$goods_id_1); // 获取多个帅选条件的结果 的交集
+    //     }
+    //     //if($spec)// 规格
+    //     //{
+    //     //    $goods_id_2 = $goodsLogic->getGoodsIdBySpec($spec); // 根据 规格 查找当所有商品id
+    //     //    $filter_goods_id = array_intersect($filter_goods_id,$goods_id_2); // 获取多个帅选条件的结果 的交集
+    //     //}
+    //     if($attr)// 属性
+    //     {
+    //         $goods_id_3 = $goodsLogic->getGoodsIdByAttr($attr); // 根据 规格 查找当所有商品id
+    //         $filter_goods_id = array_intersect($filter_goods_id,$goods_id_3); // 获取多个帅选条件的结果 的交集
+    //     }        
              
-        $filter_menu  = $goodsLogic->get_filter_menu($filter_param,'goodsList'); // 获取显示的帅选菜单
-        $filter_price = $goodsLogic->get_filter_price($filter_goods_id,$filter_param,'goodsList'); // 帅选的价格期间         
-        $filter_brand = $goodsLogic->get_filter_brand($filter_goods_id,$filter_param,'goodsList',1); // 获取指定分类下的帅选品牌        
-        //$filter_spec  = $goodsLogic->get_filter_spec($filter_goods_id,$filter_param,'goodsList',1); // 获取指定分类下的帅选规格        
-        $filter_attr  = $goodsLogic->get_filter_attr($filter_goods_id,$filter_param,'goodsList',1); // 获取指定分类下的帅选属性        
+    //     $filter_menu  = $goodsLogic->get_filter_menu($filter_param,'goodsList'); // 获取显示的帅选菜单
+    //     $filter_price = $goodsLogic->get_filter_price($filter_goods_id,$filter_param,'goodsList'); // 帅选的价格期间         
+    //     $filter_brand = $goodsLogic->get_filter_brand($filter_goods_id,$filter_param,'goodsList',1); // 获取指定分类下的帅选品牌        
+    //     //$filter_spec  = $goodsLogic->get_filter_spec($filter_goods_id,$filter_param,'goodsList',1); // 获取指定分类下的帅选规格        
+    //     $filter_attr  = $goodsLogic->get_filter_attr($filter_goods_id,$filter_param,'goodsList',1); // 获取指定分类下的帅选属性        
                                 
-        $count = count($filter_goods_id);
-        $counts = ceil($count / 32);
-        $page = new Page($count,32);
-        if($count > 0)
-        {
-            $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where("goods_id in (".  implode(',', $filter_goods_id).")")
-            ->order("field(goods_id,".implode(',', $filter_goods_id).")")->limit($page->firstRow.','.$page->listRows)->select();
-            // shuffle($goods_list);
-            // dump($goods_list);
+    //     $count = count($filter_goods_id);
+    //     $counts = ceil($count / 32);
+    //     $page = new Page($count,32);
+    //     if($count > 0)
+    //     {
+    //         $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where("goods_id in (".  implode(',', $filter_goods_id).")")
+    //         ->order("field(goods_id,".implode(',', $filter_goods_id).")")->limit($page->firstRow.','.$page->listRows)->select();
+    //         // shuffle($goods_list);
+    //         // dump($goods_list);
 
-            $filter_goods_id2 = get_arr_column($goods_list, 'goods_id');
-            if($filter_goods_id2)
-            $goods_images = M('goods_images')->where("goods_id in (".  implode(',', $filter_goods_id2).")")->cache(true)->select();       
-        }
+    //         $filter_goods_id2 = get_arr_column($goods_list, 'goods_id');
+    //         if($filter_goods_id2)
+    //         $goods_images = M('goods_images')->where("goods_id in (".  implode(',', $filter_goods_id2).")")->cache(true)->select();       
+    //     }
 
-        $goods_category = M('goods_category')->where('is_show=1')->cache(true)->getField('id,name,parent_id,level'); // 键值分类数组
-        $navigate_cat = navigate_goods($id); // 面包屑导航  
-        $apply_state = M('store_apply')->getField('user_id,apply_state');
-        foreach($goods_list as &$vv){
-            $a = array_values(unserialize($vv['store_presales']));
-            foreach($a as $k=>$v){
-                if($v['type'] == 'qq'){
-                    $data_['qq'][] = $v['account'];
-                }elseif($v['type'] == 'ww'){
-                    $data_['ww'][] = $v['account'];
-                }
-            }
-                $vv['store_presales'] = $data_;
-                unset($data_);
+    //     $goods_category = M('goods_category')->where('is_show=1')->cache(true)->getField('id,name,parent_id,level'); // 键值分类数组
+    //     $navigate_cat = navigate_goods($id); // 面包屑导航  
+    //     $apply_state = M('store_apply')->getField('user_id,apply_state');
+    //     foreach($goods_list as &$vv){
+    //         $a = array_values(unserialize($vv['store_presales']));
+    //         foreach($a as $k=>$v){
+    //             if($v['type'] == 'qq'){
+    //                 $data_['qq'][] = $v['account'];
+    //             }elseif($v['type'] == 'ww'){
+    //                 $data_['ww'][] = $v['account'];
+    //             }
+    //         }
+    //             $vv['store_presales'] = $data_;
+    //             unset($data_);
 
            
-        }
-        // dump($goods_list);
-        // exit;
-        $this->assign('title',$goodsCate['name']);
-        $this->assign('keywords',$goodsCate['keywords']);
-        $this->assign('description',$goodsCate['description']);
-        $this->assign('apply_state',$apply_state);       
-        $this->assign('goods_list',$goods_list);
-        $this->assign('navigate_cat',$navigate_cat);
-        $this->assign('goods_category',$goods_category);                
-        $this->assign('goods_images',$goods_images);  // 相册图片
-        $this->assign('filter_menu',$filter_menu);  // 帅选菜单
-        //$this->assign('filter_spec',$filter_spec);  // 帅选规格
-        $this->assign('filter_attr',$filter_attr);  // 帅选属性
-        $this->assign('filter_brand',$filter_brand);  // 列表页帅选属性 - 商品品牌
-        $this->assign('filter_price',$filter_price);// 帅选的价格期间
-        $this->assign('goodsCate',$goodsCate);
-        $this->assign('cateArr',$cateArr);
-        $this->assign('filter_param',$filter_param); // 帅选条件
-        $this->assign('cat_id',$id);
-        $this->assign('page',$page);// 赋值分页输出
-        $this->assign('count',$counts);
-        C('TOKEN_ON',false);
-        $html = $this->fetch();        
-        S($key,$html);
-        echo $html;
-    }
+    //     }
+    //     // dump($goods_list);
+    //     // exit;
+    //     $this->assign('title',$goodsCate['name']);
+    //     $this->assign('keywords',$goodsCate['keywords']);
+    //     $this->assign('description',$goodsCate['description']);
+    //     $this->assign('apply_state',$apply_state);       
+    //     $this->assign('goods_list',$goods_list);
+    //     $this->assign('navigate_cat',$navigate_cat);
+    //     $this->assign('goods_category',$goods_category);                
+    //     $this->assign('goods_images',$goods_images);  // 相册图片
+    //     $this->assign('filter_menu',$filter_menu);  // 帅选菜单
+    //     //$this->assign('filter_spec',$filter_spec);  // 帅选规格
+    //     $this->assign('filter_attr',$filter_attr);  // 帅选属性
+    //     $this->assign('filter_brand',$filter_brand);  // 列表页帅选属性 - 商品品牌
+    //     $this->assign('filter_price',$filter_price);// 帅选的价格期间
+    //     $this->assign('goodsCate',$goodsCate);
+    //     $this->assign('cateArr',$cateArr);
+    //     $this->assign('filter_param',$filter_param); // 帅选条件
+    //     $this->assign('cat_id',$id);
+    //     $this->assign('page',$page);// 赋值分页输出
+    //     $this->assign('count',$counts);
+    //     C('TOKEN_ON',false);
+    //     $html = $this->fetch();        
+    //     S($key,$html);
+    //     echo $html;
+    // }
 
-    public function goodsList2()
+
+
+
+    public function goodsList2s()
     {
         if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
     	$count = M('goods')->where(array('is_on_sale'=>1,'goods_state'=>1,'home_is_show'=>1))->count();
@@ -358,6 +360,109 @@ class GoodsController extends BaseController {
         echo $html;
 
     }
+
+
+    public function goodsList()
+    {
+
+
+        
+        $key = md5($_SERVER['REQUEST_URI'].$_POST['start_price'].'_'.$_POST['end_price']);
+        $html = S($key);
+        if(!empty($html))
+        {
+            exit($html);
+        }
+         if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
+        if($_GET['id']){
+            $where['cat_id1'] = I('id',0);
+            $where['cat_id2'] = I('id',0);
+            $where['cat_id3'] = I('id',0);
+            $where['_logic'] = 'or';
+            $map['_complex'] = $where;
+            if($_GET['price']){
+                $price = explode('-', $_GET['price']);
+                $map['shop_price'][] = array('gt',$price[0]);
+                $map['shop_price'][] = array('lt',$price[1]);
+            }
+        }
+        $model = M('ranking_goods');
+        $count = $model->where($map)->cache()->count();
+        $goods_list_id = $model->where($map)->cache()->getField("goods_id",true);
+        if($count > 0){
+
+            $counts = ceil($count / 32);
+            $page = new Page($count,32);
+            $goods = $model->where($map)->limit($page->firstRow,$page->listRows)->order('num desc,commerce_state desc,apply_state desc,goods_id desc')->cache()->select();
+            $show = $page->show();
+            $goods_id = '';
+            $store_id = '';
+            foreach($goods as $v){
+                $goods_id .= $v['goods_id'].',';
+                $store_id .= $v['store_id'].',';
+            }
+            $filter_param['id']=$_GET['id'];
+            $goodsLogic = new \Home\Logic\GoodsLogic(); // 前台商品操作逻辑类
+            $filter_price = $goodsLogic->get_filter_price($goods_list_id,$filter_param,'goodsList');
+            $store = M('store')->field('store_id,store_name,store_presales,commerce_state,apply_state')->where('store_id in('.substr($store_id,0,-1).')')->cache()->select();
+
+            $goods_list = M('goods')->field('goods_id,store_id,goods_name,shop_price')->where('goods_id in('.substr($goods_id,0,-1).')')->order("field(goods_id,".substr($goods_id,0,-1).")")->cache()->select();
+
+            foreach($goods_list as &$vv){
+                foreach($store as $vs){
+                    if($vv['store_id'] == $vs['store_id']){
+                        $vv['store_name'] = $vs['store_name'];
+                        $vv['store_presales'] = $vs['store_presales'];
+                         $vv['commerce_state'] = $vs['commerce_state'];
+                        $vv['apply_state'] = $vs['apply_state'];
+                    }
+                }
+                $a = array_values(unserialize($vv['store_presales']));
+                foreach($a as $k=>$v){
+                    if($v['type'] == 'qq'){
+                        $data_['qq'][] = $v['account'];
+                    }elseif($v['type'] == 'ww'){
+                        $data_['ww'][] = $v['account'];
+                    }
+                }
+                    $vv['store_presales'] = $data_;
+                    unset($data_);
+            }
+
+        }
+
+        $path = M('goods_category')->where(array('id'=>I('id',0)))->getField('parent_id_path');
+        if($path){
+            $patharray = explode('_', $path);
+            $strpath = '<a href="'.SITE_URL.'">首页</a> > ';
+            for($i = 1;$i<count($patharray);$i++){
+                $pathname = M('goods_category')->where(array('id'=>$patharray[ $i ]))->getField('name');
+                $strpath .= "<a href='/Goods/goodsList/id/{$patharray[ $i ]}.html'>{$pathname}</a> > ";
+            }
+        }
+
+// select id from yd_goods_category where parent_id_path like '%0#_1#_2#_21' ESCAPE '#';
+        $this->assign('path',substr(trim($strpath),0,-1));
+        $navigation = M('navigation')->where(array('id'=>1))->find();
+        $this->assign('title',$navigation['title']);
+        $this->assign('keywords',$navigation['keywords']);
+        $this->assign('description',$navigation['description']);
+        $this->assign('name',$navigation['name']);
+        $this->assign('filter_price',$filter_price);  // 帅选菜单
+        $this->assign('page',$page);// 赋值分页输出
+        $this->assign('goods_list',$goods_list);
+        $this->assign('show',$show);
+        $this->assign('count',$counts);
+         C('TOKEN_ON',false);
+        $html = $this->fetch();
+        S($key,$html);
+        echo $html;
+    }
+
+   public function goodsList2()
+   {
+        header('location:./goodsList.html');
+   }
 
     /**
      * @author dyr

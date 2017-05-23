@@ -7,9 +7,11 @@
 						</div>
 
 						<div class="w_info_tit_c">
+
 							<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html">{:getsubstr($v['title'],0,20)}</a>
 							<p>{:date('Y-m-d :H:i:s',$v['timer'])}</p>
-							<p>浏览量：{$v['m_click']}</p>
+							<p>浏览量：{$v['m_click']+$v['pc_click']}</p>
+
 						</div>
 						<div class="w_info_tit_r">
 							<php>if($v['apply_state']){</php>
@@ -42,3 +44,4 @@
 					</div>
 				</li>
 			</foreach>
+			

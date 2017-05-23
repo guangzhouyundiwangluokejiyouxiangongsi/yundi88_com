@@ -113,17 +113,22 @@ class StoreController extends Controller {
 
 	public function index() {
 
-
+		$key = md5($_SERVER['REQUEST_URI']);
+        $html = S($key);
+        if(!empty($html))
+        {
+            exit($html);
+        }
 		$store_id = $this->store['store_id'];
 
 		//热门商品排行
-		$hot_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_on_sale' => 1,'is_hot'=>1))->order('sort,on_time desc')->limit(10)->select();
+		$hot_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_on_sale' => 1,'is_hot'=>1))->order('sort,on_time desc')->limit(10)->cache()->select();
 		//收藏商品排行
 		$collect_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_on_sale' => 1))->order('collect_sum desc')->limit(10)->select();
 		//新品
-		$new_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_new' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->select();
+		$new_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_new' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->cache()->select();
 		//推荐商品
-		$recomend_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_recommend' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->select();
+		$recomend_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_recommend' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->cache()->select();
 
 		// dump($recomend_goods);exit;
 
@@ -149,7 +154,9 @@ class StoreController extends Controller {
 		$this->assign('recommend', $this->recommend());
 		$this->assign('recommend_news', $this->recommend_news());
 		$this->assign('photo', $this->photo());
-		$this->display('/index');
+		 $html = $this->fetch('/index');
+        S($key,$html);
+        echo $html;
 	}
 
 	/**
@@ -158,10 +165,18 @@ class StoreController extends Controller {
 	public function recommend() {
 		//查询首页推荐栏目
 		$product_m = M('goods');
-		$recommend = M('store_goods_class')->where(array('store_id' => $this->store['store_id'], 'is_show' => 1, 'is_recommend' => 1))->order('cat_sort')->select();
+		$recommend = M('store_goods_class')->where(array('store_id' => $this->store['store_id'], 'is_show' => 1, 'is_recommend' => 1))->order('cat_sort')->cache()->select();
 		foreach ($recommend as &$v) {
 			// 查询推荐商品
-			$v['cat_id_goods'] = $product_m->where('(' . 'store_cat_id1 = ' . $v['cat_id'] . ' or store_cat_id2 = ' . $v['cat_id'] . ')' . 'and is_on_sale = 1')->field('goods_id,goods_name,original_img,shop_price')->limit($v['show_num'])->select();
+			if($v['show_num'] > 30){
+				$num = 30;
+			}elseif(!$v['show_num']){
+				$num = 3;
+			}else{
+				$num = $v['show_num'];
+			}
+
+			$v['cat_id_goods'] = $product_m->where('(' . 'store_cat_id1 = ' . $v['cat_id'] . ' or store_cat_id2 = ' . $v['cat_id'] . ')' . 'and is_on_sale = 1')->field('goods_id,goods_name,original_img,shop_price')->limit($num)->cache()->select();
 		}
 		return $recommend;
 	}
@@ -172,13 +187,18 @@ class StoreController extends Controller {
 	public function recommend_news() {
 		//查询首页推荐栏目
 		$store_art_m = M('store_art');
-		$recommend = M('store_navigation')->where(array('sn_store_id' => $this->store['store_id'], 'sn_is_list' => 1, 'sn_is_show' => 1, 'sn_is_home' => 1))->order('sn_sort')->select();
+		$recommend = M('store_navigation')->where(array('sn_store_id' => $this->store['store_id'], 'sn_is_list' => 1, 'sn_is_show' => 1, 'sn_is_home' => 1))->order('sn_sort')->cache()->select();
 		foreach ($recommend as &$v) {
 			// 查询推荐商品
-			$v['news'] = $store_art_m->where(array('sn_id' => $v['sn_id'], 'is_show' => 1))->order('timer desc')->field('id,sn_id,title,author,timer,pc_click,keyword,description,newsimg')->limit($v['sn_show_num'])->select();
+			if($v['sn_show_num'] > 30){
+				$num = 30;
+			}elseif(!$v['sn_show_num']){
+				$num = 3;
+			}else{
+				$num = $v['sn_show_num'];
+			}
+			$v['news'] = $store_art_m->where(array('sn_id' => $v['sn_id'], 'is_show' => 1))->order('timer desc')->field('id,sn_id,title,author,timer,pc_click,keyword,description,newsimg')->limit($num)->cache()->select();
 		}
-		// echo '<pre>';
-		// print_r($recommend);exit;
 
 		return $recommend;
 	}
@@ -188,9 +208,9 @@ class StoreController extends Controller {
 	 */
 	public function photo() {
 		$photoimg = M('photoimg');
-		$photo = M('photo')->where(array('store_id' => $this->store['store_id'], 'home' => 1, 'status' => 1))->select();
+		$photo = M('photo')->where(array('store_id' => $this->store['store_id'], 'home' => 1, 'status' => 1))->cache()->select();
 		foreach ($photo as &$v) {
-			$v['photoimg'] = $photoimg->where(array('photoid' => $v['id']))->select();
+			$v['photoimg'] = $photoimg->where(array('photoid' => $v['id']))->cache()->select();
 		}
 
 		return $photo;
@@ -203,7 +223,7 @@ class StoreController extends Controller {
 		$photoimg = M('photoimg');
 		$photolist = M('photo')->where(array('store_id' => $this->store['store_id'], 'status' => 1))->select();
 		foreach ($photolist as &$v) {
-			$v['photoimg'] = $photoimg->where(array('photoid' => $v['id']))->select();
+			$v['photoimg'] = $photoimg->where(array('photoid' => $v['id']))->cache()->select();
 		}
 		$this->assign('photolist', $photolist);
 			$this->assign('navigation',$this->navigation);
@@ -255,16 +275,16 @@ class StoreController extends Controller {
 		$cat_name = "全部商品";
 		if ($cat_id > 0) {
 			$map['_string'] = "store_cat_id1=$cat_id OR store_cat_id2=$cat_id";
-			$cat_name = M('store_goods_class')->where(array('cat_id' => $cat_id))->getField('cat_name');
+			$cat_name = M('store_goods_class')->where(array('cat_id' => $cat_id))->cache()->getField('cat_name');
 		}
-		$filter_goods_id = M('goods')->where($map)->getField("goods_id", true);
+		$filter_goods_id = M('goods')->where($map)->cache()->getField("goods_id", true);
 		$count = count($filter_goods_id);
 		$Page = new \Think\Page($count, 20);
 		if ($count > 0) {
-			$goods_list = M('goods')->where("(goods_id in (" . implode(',', $filter_goods_id) . ")) and is_on_sale = 1")->order("sort,on_time desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+			$goods_list = M('goods')->where("(goods_id in (" . implode(',', $filter_goods_id) . ")) and is_on_sale = 1")->order("sort,on_time desc")->limit($Page->firstRow . ',' . $Page->listRows)->cache()->select();
 			$filter_goods_id2 = get_arr_column($goods_list, 'goods_id');
 			if ($filter_goods_id2) {
-				$goods_images = M('goods_images')->where("goods_id in (" . implode(',', $filter_goods_id2) . ")")->cache(true)->select();
+				$goods_images = M('goods_images')->where("goods_id in (" . implode(',', $filter_goods_id2) . ")")->cache(true)->cache()->select();
 			}
 		}
 
@@ -369,12 +389,19 @@ class StoreController extends Controller {
 	 */
 	public function newsList() {
 
+		$key = md5($_SERVER['REQUEST_URI']);
+        $html = S($key);
+        if(!empty($html))
+        {
+            exit($html);
+        }
+
 		$storeid = $this->store['store_id'];
 
 		$sn_id = (empty($_GET['sn'])) ? 0 : (int) $_GET['sn'];
 		$_GET['p'] = (empty($_GET['p'])) ? 0 : $_GET['p'];
 		if($sn_id != 0){
-			$snid = M()->query("select group_concat(sn_id) as sn_id from __STORE_NAVIGATION__ where sn_pid = {$sn_id}");
+			$snid = M()->cache()->query("select group_concat(sn_id) as sn_id from __STORE_NAVIGATION__ where sn_pid = {$sn_id}");
 			if($snid[0]['sn_id']){
                 $sn_id_ = $sn_id.',';
             }else{
@@ -383,15 +410,17 @@ class StoreController extends Controller {
         }
 
         $sn_id = $sn_id_.$snid[0]['sn_id'];
-		$news = M('store_art')->where('(store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ')) and is_show = 1')->page($_GET['p'] . ',10')->order('timer desc')->select();
+		$news = M('store_art')->where('(store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ')) and is_show = 1')->page($_GET['p'] . ',10')->order('timer desc')->cache()->select();
 		$count = M('store_art')->where('(store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ')) and is_show = 1')->count();
 		$page = new \Think\Page($count, 10);
-		$navlist = M('store_navigation')->where(array('store_id' => $storeid, 'sn_id' => $sn_id))->find();
+		$navlist = M('store_navigation')->where(array('store_id' => $storeid, 'sn_id' => $sn_id))->cache()->find();
 		$this->assign('navlist', $navlist);
 		$this->assign('sn_id', $sn_id);
 		$this->assign('page', $page->show());
 		$this->assign('news', $news);
-		$this->display('/newslist');
+		$html = $this->fetch('/newslist');
+        S($key,$html);
+        echo $html;
 	}
 
 	/**

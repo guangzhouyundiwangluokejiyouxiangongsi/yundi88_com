@@ -35,9 +35,17 @@
 <div class="warp">
 <include file="Public/header"/> 
 
+  <style type="text/css">
+
+  .prod h6 a{font-size:14px;text-decoration:none;}
+  .prod h6 a:hover{color:#ff9416;}
+
+  </style>
   <!--导航结束-->
   <section class="prod">
-    <h6><a href="#" target="_blank">全部</a> > 找到<span>{$page->totalRows}</span>件相关产品</h6>
+    <h6>{$path}
+
+     > 找到<span>{$page->totalRows}</span>件相关产品</h6>
         <div class="group">
 
 
@@ -68,6 +76,10 @@
       </div>
     <!-- 品牌 -->
   </if>
+
+
+
+
 
     <foreach name="filter_spec" item="v" key="k">
       <!--规格-->
@@ -162,6 +174,7 @@
   <section class="product">
      <div class="left">
         <ul>
+
           <foreach name="goods_list" item="v" key="k">
           <li>
             <figure><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
@@ -177,7 +190,7 @@
                <div style="cursor:pointer;" onclick="window.open('{:U('Store/index',array('store_id'=>$v[store_id]))}')"><span>{:getSubstr($v[store_name],0,15)}</span></div>
                <figure><!-- <img src="__PUBLIC__/pc/images/product6.jpg" width="16" height="16"  alt=""/><img src="__PUBLIC__/pc/images/product7.jpg" width="16" height="16"  alt=""/><img src="__PUBLIC__/pc/images/product8.jpg" width="16" height="16"  alt=""/> -->
                   <a href="javascript:void(0);">
-                   <php>if($apply_state[$v['user_id']] == 1){</php>
+                   <php>if($v['apply_state'] == 1){</php>
                    <span class="certification" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
                      <img  src="__PUBLIC__/renzheng/renzheng3.png" width="30" height="30"  alt=""/>
                      <span class="tip" >
@@ -234,11 +247,13 @@
             </div>
           </li>
           </foreach>
+         
+
         </ul> 
         <p>
           <div class="page-box">
             <div class="page-clear">
-              {$page->show()}
+              {$show}
               <div class="pagination-form">
                 <div class="page-total">
                   <span>共</span>
@@ -273,15 +288,17 @@
           </div>
         </p>
 
+
+
       <div class="message" >
-      <tpshop sql="select * from `__PREFIX__article_cat` where cat_id = 32" key="key" item='val'>
+      <tpshop sql="select cat_name from `__PREFIX__article_cat` where cat_id = 32" key="key" item='val'>
       <div class="news">
         <div class="title">
           <h2>{$val.cat_name}</h2>
           <!-- <a href="#">更多</a> -->
         </div>
         <ul>
-          <tpshop sql="select * from `__PREFIX__article` where cat_id = 32 and is_open = 1 order by add_time desc  limit 15" key="k" item='v'>
+          <tpshop sql="select article_id,title,description,add_time from `__PREFIX__article` where cat_id = 32 and is_open = 1 order by add_time desc  limit 15" key="k" item='v'>
           <li>  
             <span class="point"></span>
             <a target="_blank" href="{:U('/Article/detail_news',array('article_id'=>$v[article_id]))}"><img src="{$v.thumb}"></a>
@@ -296,14 +313,14 @@
       </div>
       </tpshop>
 
-      <tpshop sql="select * from `__PREFIX__article_cat` where cat_id = 33" key="key" item='val'>
+      <tpshop sql="select cat_name from `__PREFIX__article_cat` where cat_id = 33" key="key" item='val'>
       <div class="news">
         <div class="title">
           <h2>{$val.cat_name}</h2>
           <!-- <a href="#">更多</a> -->
         </div>
         <ul>
-        <tpshop sql="select * from `__PREFIX__article` where cat_id = 33 and is_open = 1 order by add_time desc limit 15" key="k" item='v'>
+        <tpshop sql="select article_id,title,description,add_time,thumb from `__PREFIX__article` where cat_id = 33 and is_open = 1 order by add_time desc limit 15" key="k" item='v'>
           <li>  
             <span class="point"></span>
             <a target="_blank" href="{:U('/Article/detail_news',array('article_id'=>$v[article_id]))}"><img src="{$v.thumb}"></a>
@@ -323,7 +340,7 @@
         </div>
         <div id="colee">
           <ul id="colee1" >
-            <tpshop sql="select * from `__PREFIX__store_art` where is_show = 1 and home_is_show = 1 order by timer desc limit 200" key="k" item='v'>
+            <tpshop sql="select id,store,sn_id,title,timer,newsimg from `__PREFIX__store_art` where is_show = 1 and home_is_show = 1 order by timer desc limit 100" key="k" item='v'>
             <li>
               <a target="_blank"  href='/Store/newscontent/?store_id={$v.store}&sn={$v.sn_id}&text={$v.id}'><img src="{$v.newsimg}"></a>
               <div class="txt">
@@ -411,41 +428,6 @@ function linum(num){
   linum(10);
 //新闻位置 num li个数
 
-// function positionis(){
-  //   var plilen=$('.product .left>ul li').length;
-  //   if(plilen<9){
-  //     $('.product .right h2').remove();
-  //     $('.product .right .two').remove();
-  //     $('.message .recommend').remove();
-  //   }
-  //   else if(plilen<13){
-  //       linum(1);
-  //   }
-  //   else if(plilen<17){
-  //       linum(3);
-  //   }
-  //    else if(plilen<21){
-  //       linum(4);
-  //   }
-  //   else if(plilen<25){
-  //       linum(6);
-  //   }
-  //   else if(plilen<29){
-  //       linum(8);
-  //   }
-  //   var lheight=$('.product .left >ul').height();
-  //   var rheight=$('.product .right').height();
-  //   if(rheight>lheight+72){
-  //       $('.message .recommend').addClass('rf');
-  //       $('.message #colee').addClass('rs');
-  //       $('.message .recommend ul li').addClass('rt');
-  //     }
-  //     else{
-  //       $('.message .recommend').addClass('rf2');
-  //       $('.message #colee').addClass('rs2');
-  //     }
-  // }
-  // positionis();
   function positionis(num){
 
     for (var i = num; i >0; i--) {

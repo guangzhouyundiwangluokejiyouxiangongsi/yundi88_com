@@ -40,8 +40,14 @@
 <div class="warp">
   <include file="Goods/header" /> 
   <!--导航结束-->
+  <style type="text/css">
+
+  .prod h6 a{font-size:14px;text-decoration:none;}
+  .prod h6 a:hover{color:#ff9416;}
+
+  </style>
   <section class="prod">
-		<h6><a href="" target="_blank">全部</a> &gt; 找到<span>{$counts}</span>相关信息</h6>
+		<h6><a href="{:SITE_URL}">首页</a> > <a >信息</a> > 找到<span>{$counts}</span>条相关信息</h6>
       
   </section><!--多选区域-->
 
@@ -113,7 +119,7 @@
           </div>
           <div class="jingjiabootm">
             <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}" style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;">{$v['domain']|default=$_SERVER['HTTP_HOST']}</a>
-            <php>if($v['certification'] == 1){</php>
+            <php>if($v['apply_state'] == 1){</php>
             <a style="position: relative;" target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
             <img src="/Public/renzheng/renzheng3.png" class="jinjiasm">
             <span class="jinjiabig">

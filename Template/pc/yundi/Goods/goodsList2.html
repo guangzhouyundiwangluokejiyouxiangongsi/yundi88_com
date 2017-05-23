@@ -1,0 +1,74 @@
+
+          <foreach name="goods_list" item="v" key="k">
+          <li>
+            <figure><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
+            <div class="one">
+                <p>￥{$v[shop_price]}元</p>
+            </div>
+            <h1 class="there"><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank">{$v[goods_name]|mb_substr=0,30,'utf-8'}</a></h1>
+            <div class="two">
+              <h2><!-- 已成交{$v[sales_sum]}笔 --></h2>
+              <!-- <span><img src="__PUBLIC__/pc/images/product3.jpg" width="33" height="17"  alt=""/><img src="__PUBLIC__/pc/images/product4.jpg" width="17" height="17"  alt=""/>1年</span> -->
+            </div>
+            <div class="thr">
+               <div style="cursor:pointer;" onclick="window.open('{:U('Store/index',array('store_id'=>$v[store_id]))}')"><span>{:getSubstr($v[store_name],0,15)}</span></div>
+               <figure><!-- <img src="__PUBLIC__/pc/images/product6.jpg" width="16" height="16"  alt=""/><img src="__PUBLIC__/pc/images/product7.jpg" width="16" height="16"  alt=""/><img src="__PUBLIC__/pc/images/product8.jpg" width="16" height="16"  alt=""/> -->
+                  <a href="javascript:void(0);">
+                   <php>if($v['apply_state'] == 1){</php>
+                   <span class="certification" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
+                     <img  src="__PUBLIC__/renzheng/renzheng3.png" width="30" height="30"  alt=""/>
+                     <span class="tip" >
+                        <img src="__PUBLIC__/renzheng/renzheng3.png" width="100" height="100"  alt=""/>
+                        <span>已认证企业/个体，杜绝一切虚假商家。</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
+                      </span>
+
+                    </span>
+                   <php>}else{</php>
+                    <span class="certifications" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
+                      <img src="__PUBLIC__/renzheng/renzheng2.png" width="30" height="30"  alt=""/>
+                      <span class="tips">
+                        <img src="__PUBLIC__/renzheng/renzheng2.png" width="100" height="100"  alt=""/>
+                        <span style="margin:0 0 0 10px;">未验证！</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
+                      </span>
+                    </span>
+                   <php>}</php>
+                  </a>
+               <php>if($v['commerce_state']){</php>
+                  <a href="javascript:void(0);">
+                    <span class="certificationt" onclick="window.open('{:C('DOMAIN')}{:U('/article/newsmember')}?store_id={$v[store_id]}')">
+                      <img src="__PUBLIC__/renzheng/yunshanghui.png" width="30" height="30"  alt=""/>
+                      <span class="tipt" >
+                        <img src="__PUBLIC__/renzheng/yunshanghui.png" width="100" height="100"  alt=""/>
+                        <span>企业联盟商会会员,《权威企业》身份象征为消费者及商家提供100%安全保障,便捷服务(详细查看)!</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                      </span>
+                    </span>
+                  </a>
+                  <php>}else{</php>
+                  <a href="javascript:void(0);">
+                    <span class="certificationt" onclick="window.open('{:C('DOMAIN')}{:U('/article/yun_shop')}')">
+                      <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="30" height="30"  alt=""/>
+                      <span class="tipt" >
+                        <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="100" height="100"  alt=""/>
+                        <span style="margin:0 0 0 10px;">未加入！</span>
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                      </span>
+                    </span>
+                  </a>
+
+                  <php>}</php>
+
+                  <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$v['store_presales']['qq'][0]}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" target="_blank">
+                    <img src="__PUBLIC__/pc/images/product5.jpg" width="27" height="25"  alt=""/>
+                  </a>
+
+          <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$v['store_presales']['ww'][0]}&amp;s=2" target="_blank" class="flow-qq">
+                    <img src="/Template/pc/yundi/Static/images/T1B7m.XeXuXXaHNz_X-16-16.gif" width="25" height="25" border="0" alt="旺旺">
+                </a>
+               </figure>
+            </div>
+          </li>
+          </foreach>
+         
