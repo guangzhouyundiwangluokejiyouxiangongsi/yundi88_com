@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />  
+		<title>login</title>
+		<link rel="stylesheet" href="__STATIC__/css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="__STATIC__/css/common.css" />
+		<link rel="stylesheet" href="__STATIC__/css/login.css" />
+		<script type="text/javascript" src="__STATIC__/js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/main.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/regular.js" ></script>
+	</head>
+	<body>
+		<div class="d_header">
+			<div class="mg">
+				<a href="javascript:history.back();"><img src="__STATIC__/img/return.png"/></a>
+				<h2>会员登录</h2>
+			</div>			
+		</div>
+		
+		<!--详情-->
+		<div class="d_login">
+			<div class="mg">
+				<form id="form">
+					<label>
+						<span>账号</span> 
+						<input type="tel" name="username" placeholder="请输入账号" autofocus="autofocus" maxlength="11" "/>
+						<i></i>
+					</label>
+					<label>
+						<span>密码</span>
+						<input type="password" name="password" placeholder="请输入密码" maxlength="20"/>
+						<i></i>
+					</label>				
+					<a href="#" class="btn_log" onclick="btn_log()">登录</a>
+					<div class="d_function clear">
+						<label>
+							<input type="checkbox" id="" name="referurl" value="1" />
+							<span>自动登录</span>
+						</label>
+						<span>
+							<a href="/Mobile/User/register.html">注册</a>
+							<b>|</b>
+							<a href="/Mobile/User/retrieve.html">找回密码</a>
+						</span>
+					</div>
+				</form>
+			</div>			
+		</div>
+	</body>
+</html>

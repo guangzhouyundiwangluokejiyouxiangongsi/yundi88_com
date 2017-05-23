@@ -1,0 +1,21 @@
+/*头部*/
+.d_header{background: #008bb9;width: 100%;height: 0.7242rem;line-height: 0.7242rem;text-align: center;position: fixed;left: 0;top: 0;z-index: 1000;}
+.d_header a{display: block;float: left;}
+.d_header img{width: 0.1684rem;}
+.d_header h2{font-size: 0.3032rem;color: #ffffff;}
+
+.d_retrieve{width: 100%;}
+.d_retrieve form{font-size: 0.3032rem;}
+.d_retrieve form span,.d_retrieve form input{display: block;}
+.d_retrieve form>label{display: block;width: 100%;margin-bottom: 0.5221rem;height: 0.5726rem;line-height: 0.5726rem;border-bottom: 1px solid #cbcbc9;position: relative;}
+.d_retrieve form>label:first-child{margin-top: 1.3811rem;}
+.d_retrieve form>label>span{color: #333333;float: left;width: 1.0105rem;}
+.d_retrieve form>label>input{border: none;background: none;outline: none;padding-left: 0.7242rem;float: left;width: 4.2105rem;height: 0.5726rem;line-height: 0.5726rem;overflow: hidden;}
+.d_retrieve form>label>i{display: block;width: 2.1526rem;height: 0.7579rem;line-height: 0.7579rem;text-align: center;font-size: 0.2358rem;color: #ffffff;background: #4e4e4e;border-radius: 6px;
+position: absolute;left: 50%;bottom: 0;margin-left: -0.9263rem;z-index: 1000;display: none;}
+.d_retrieve form label .gaincode{color: #008bb9;float: right;}
+.d_retrieve form .btn_ret{display: block;width: 100%;height: 0.7411rem;line-height: 0.7411rem;background: #dd2726;color: #ffffff;text-align: center;border-radius: 4px;}
+
+
+
+

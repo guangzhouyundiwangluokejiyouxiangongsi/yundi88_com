@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>{$infolist['title']}</title>
+	<meta http-equiv="keywords" content="{$infolist['keywords']}" />
+	<meta name="description" content="{$infolist['description']}" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/street.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+</head>
+<body>
+
+	<!-- 头部 -->
+	<div class="w_header">
+		<h3 class="w_header_title">搜企业</h3>
+		<div class="w_header_search">
+			<a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a>
+		</div>
+	</div>
+
+
+	<div class="w_content">
+
+		<div class="w_street">
+			<ul class="street">
+				
+				
+			</ul>
+			<ul>
+			<li><p style="font-size:20px;text-align:center;margin-top: 15px;" class="tishi">正在加载...</p></li>
+			</ul>
+		</div>
+			
+
+		
+		
+		<include file="public/footer" />
+	
+</body>
+<script>
+var p = 1
+$(function(){
+	street();
+});
+function street(){
+	var name = '{$name}';
+	$.get('/Mobile/index/ajaxsearch?p='+p+'&name='+name,function(res){
+		if (res){
+			$('.street').append(res);
+			if ($('.street > li').length < 4){
+				$('.tishi').html('没有内容了');
+			}
+			if ($('.street > li').length < 1){
+				$('.tishi').html('您搜索的公司不存在');
+				$('.tishi').css('margin-top','70px');
+			}
+			p++;
+		}else{
+			$('.tishi').html('没有内容了');
+			if ($('.street > li').length < 1){
+				$('.tishi').html('您搜索的公司不存在');
+				$('.tishi').css('margin-top','70px');
+			}
+		}
+
+	})
+}
+$(window).scroll(function () {
+    var maxScroll=$(document).height()-$(window).height();
+
+    if ($(window).scrollTop() >= maxScroll) {
+      street();
+    }
+  });
+
+</script>
+</html>

@@ -13,7 +13,7 @@ iPad: u.indexOf('iPad') > -1, //是否iPad
 };
 if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
     // document.write('<h1>苹果</h1>');  
-    document.write('<link rel="stylesheet" type="text/css" href="css/ios.css"/>');  
+    document.write('<link rel="stylesheet" type="text/css" href="/Template/mobile/yundi/Static/css/ios.css"/>');  
 }
 if (browser.versions.android) {
 // document.write('<h2>安卓</h2>');  

@@ -125,12 +125,12 @@ class IndexController extends MobileBaseController {
      * @author dyr
      * @time 2016/08/15
      */
-    public function street()
-    {
-        $store_class = M('store_class')->where('')->select();
-        $this->assign('store_class', $store_class);//店铺分类
-        $this->display();
-    }
+    // public function street()
+    // {
+    //     $store_class = M('store_class')->where('')->select();
+    //     $this->assign('store_class', $store_class);//店铺分类
+    //     $this->display();
+    // }
 
     /**
      * ajax 获取店铺街
@@ -195,5 +195,34 @@ class IndexController extends MobileBaseController {
         $this->assign('brand_list', $brand_list);//品牌列表
         $this->assign('brand_class', $brand_class);//品牌分类
         $this->display();
+    }
+
+    public function street()
+    {
+        $this->display();
+    }
+
+    public function ajaxstreet()
+    {   
+        $street = M('store')->field('store_id,store_name,store_zy,store_phone,province_id,city_id,district,store_address,apply_state,commerce_state,store_desccredit,store_servicecredit,store_deliverycredit')->where(array('store_state'=>1))->order('commerce_state desc,apply_state desc,store_time desc')->page($_GET['p'].',5')->select();
+        $this->assign('street',$street);
+        $this->display();
+    }
+
+    public function search_store()
+    {   
+        $name = I('name');
+        $this->assign('name',$name);
+        $this->display();
+    }
+
+    public function ajaxsearch()
+    {   
+        $name = I('name');
+        $where['store_name'] = array('like','%'.$name.'%');
+        $where['store_state'] = 1;
+        $street = M('store')->field('store_id,store_name,store_zy,store_phone,province_id,city_id,district,store_address,apply_state,commerce_state,store_desccredit,store_servicecredit,store_deliverycredit')->where($where)->order('commerce_state desc,apply_state desc,store_time desc')->page($_GET['p'].',5')->select();
+        $this->assign('street',$street);
+        $this->display('ajaxstreet');
     }
 }

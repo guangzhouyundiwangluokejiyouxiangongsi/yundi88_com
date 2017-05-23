@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />  
+		<title>{$tpshop_config['shop_info_store_title']}</title>
+		<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+		<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+		<link rel="stylesheet" href="__STATIC__/css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="__STATIC__/css/common.css" />
+		<link rel="stylesheet" href="__STATIC__/css/prodetails.css" />
+		<script type="text/javascript" src="__STATIC__/js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/main2.js" ></script>	
+		<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+		<script src="__PUBLIC__/js/mobile_common.js"></script>
+	</head>
+	<body>
+		<div class="d_header">
+			<div class="mg">
+				<a class="return" href="javascript:history.back();"><img src="__STATIC__/img/return.png"/></a>
+				<div class="d_nav">
+					<ul>
+						<li class="active"><a href="#anchor1">商品</a></li>
+						<li id="#anchor2"><a href="#anchor2">图文详情</a></li>
+						<li id="#anchor3"><a href="#anchor3">商品属性</a></li>
+					</ul>
+				</div>
+				<a href="##" class="d_shop"><img src="__STATIC__/img/shop.png"/><i></i></a>
+			</div>			
+		</div>
+		
+		<div class="d_prodetails">			
+			<!--banner-->
+			<div class="d_banner" id="anchor1">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+					<foreach name="goods_images_list" item="vv">
+						<li class="swiper-slide"><img src="{$vv.image_url}"/></li>
+					</foreach>
+					</ul>
+				</div>		
+				<div class="pager"></div>
+	  		</div>
+	  		
+	  		<!--详情-->
+	  		<div class="d_product">
+	  			<div class="d_title mg clear">
+  					<h1>
+  						<span class="vertical">
+  							<span>{$goods.goods_name}</span>
+  						</span>
+  					</h1>
+  					<a href="javascript:;"><img src="__STATIC__/img/share.png"/>分享</a>
+  					<span class="clear">
+  						<em><i>￥</i>{$goods.shop_price}元</em>
+  						<b>￥{$goods.market_price}元</b>
+  					</span>  				
+	  			</div>
+	  			<form id="buy_goods_form">
+		  			<div class="d_style clear">
+		  				<div class="mg">
+		  					<a href="javascript:;">
+		  						<span>请选择  数量</span>
+		  						<div style="overflow: hidden;height: 0.4411rem;float: left;margin:0.14rem 0 0.14rem 0.5rem;">
+		  							<i style="display: block;width: 0.28rem;height: 0.4rem;text-align: center;line-height: 0.4rem;border: 1px solid #CCC;float: left;color: #666;font-size: 0.2rem;border-right: none;" onclick="jia()">+</i>
+		  							<input style="float: left;width: 0.6rem;line-height:0.4rem;height:0.4rem; text-align: center;font-size: 0.21rem;border: 1px solid #CCC;" type="text" maxlength="2" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" value="1" id="num" name="goods_num">
+		  							<i  style="display: block;width: 0.28rem;height: 0.4rem;text-align: center;line-height: 0.4rem;border: 1px solid #CCC;float: left;color: #666;font-size: 0.2rem;border-left: none;" onclick="jian()">-</i>
+		  							<input type="hidden" name="goods_id" value="{$goods.goods_id}"/>
+		  						</div>
+		  						<!-- <img src="__STATIC__/img/advance.png"/> -->
+		  					</a>
+		  				</div>
+		  			</div>
+	  			</form>  			  			
+	  			<div class="d_details clear mg">
+	  				<div class="d_logo clear">
+	  					<div class="logo">
+	  						<div class="vertical">
+	  							<a href="#"><img src="__STATIC__/img/logo.png"/></a>
+	  						</div>
+	  					</div>	  					
+	  					<span>
+	  						<h1>{$store.store_name}</h1>
+	  						<span>{$store.mobile}</span>
+	  						<span>{$store.store_phone}</span>
+	  					</span>	  						  					
+	  				</div>
+	  				<div class="approve clear">
+	  					<span>权威认证:
+	  					<if condition="store[apply_state]">
+	  						<img src="__STATIC__/img/crown.png"/>
+	  					</if>
+	  					</span>
+	  					<span>综合描述 : <em><?php echo number_format(($store['store_desccredit']+$store['store_servicecredit']+$store['store_deliverycredit'])/3,2);?></em></span>
+	  					<span>
+	  						<if condition="store[apply_state]">
+	  						<img style="width: 0.3368rem;" src="__STATIC__/img/approve.png"/>
+	  						<else />
+	  						<img style="width: 0.3368rem;" src="__STATIC__/images/renzheng2.png.png"/>
+	  						</if>
+	  						<if condition="store[commerce_state]">
+	  						<img style="width: 0.3032rem" src="__STATIC__/img/trade.png"/>
+	  						<else />
+	  						<img style="width: 0.3032rem" src="__STATIC__/images/yunshanghui2.png"/>
+	  						</if>
+	  					</span>
+						<div style="text-align: center;">
+							<a href="/Mobile/Store/goods_list/store_id/{$goods.store_id}">查全部商品</a>
+	  						<a href="/Mobile/Store/index/store_id/{$goods.store_id}">进入企业网</a>
+						</div>	  					
+	  				</div>
+	  			</div>
+	  		</div>
+	  		
+	  		<div class="d_graphic" id="anchor2">
+	  			<h1>图文详情</h1>
+	  			<div class="d_pic">
+	  				{$goods.goods_content|htmlspecialchars_decode}
+	  			</div>
+	  		</div>
+	  		
+	  		<div class="d_specs" id="anchor3">
+	  			<!-- <h1>商品属性</h1>
+	  			<ul class="clear mg">
+	  				<li>
+	  					<span>工艺</span>
+	  					<b>做旧、磨白、拉链、时尚</b>
+	  				</li>
+	  				<li>
+	  					<span>尺寸</span>
+	  					<b>S M L XL XXL XXXL</b>
+	  				</li>
+	  				<li>
+	  					<span>裙长</span>
+	  					<b>中长款</b>
+	  				</li>
+	  				<li>
+	  					<span>颜色</span>
+	  					<b>黑色  白色  灰色  蓝色  黄色</b>
+	  				</li>
+	  			</ul> -->
+	  		</div>
+	  		
+	  		<p>
+	  			<span class="vertical">
+	  				云狄网络版权所有<br />粤ICP备16076354号
+	  			</span>
+	  		</p>
+		</div>
+		
+		<div class="d_footer">
+			<ul>
+				<li>
+					<div class="vertical">
+						<a href="/Mobile/Store/index/store_id/{$goods.store_id}">
+							<img style="width: 0.3705rem;" src="__STATIC__/img/foot01.png"/>
+							官网首页
+						</a>	
+					</div>									
+				</li>
+				<li>
+					<div class="vertical">
+						<a href="/Mobile/Store/goods_list/store_id/{$goods.store_id}">
+							<img style="width: 0.3200rem;" src="__STATIC__/img/foot02.png"/>
+							供应产品
+						</a>	
+					</div>											
+				</li>
+				<li>
+					<div class="vertical">
+						<foreach name="store['store_presales']" item="vv">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin={$vv.account}&site=qq&menu=yes">
+							<img style="width: 0.2863rem;" src="__STATIC__/img/foot03.png"/>
+							联系客服
+						</a>	
+						<php>break;</php>
+						</foreach>
+					</div>										
+				</li>
+			</ul>			
+			<a href="javascript:;" style="background: #dd2726;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+			<a href="javascript:;" onClick="AjaxAddCart({$goods.goods_id},1,0);" class="d_addshop" style="background: #fbb5b4;">加入采购单</a>
+			
+			<div class="s_prompt">添加成功,<a href="">立即结算>></a></div>
+		</div>
+		
+		<!--弹窗-->
+		<div class="d_cpm">
+			<div class="d_title mg">
+				<div class="d_pic">
+					<a class="vertical" href="javascript:;"><img src="__STATIC__/img/exhibition.png"/></a>
+				</div>				
+				<span>
+					<em>￥199.00</em>
+					<div class="d_choice">
+						<span class="choose">请选择颜色尺码</span>
+						<span class="chosen" style="display: none"><span>已选择：</span><span class="color"></span><span class="hov" style="display: none">，</span><span class="size"></span></span>								
+					</div>						
+				</span>
+				<a class="d_miss" href="javascript:;"><img src="__STATIC__/img/miss.png"/></a>
+			</div>
+			<div class="f_prompt">
+				请选择商品颜色和尺码
+			</div>
+			<ul>
+				<li>
+					<h2>颜色</h2>
+					<div class="d_numA">
+						<span>黑色</span>
+						<span>白色</span>
+					</div>					
+				</li>				
+				<li>
+					<h2>尺码</h2>
+					<div class="d_numB">
+						<span>XS</span>
+						<span>S</span>
+						<span>M</span>
+						<span>L</span>
+						<span>XL</span>
+					</div>					
+				</li>
+				<li>
+					<h2>数量</h2>
+					<div class="d_shopcar">
+						<b class="reduct">—</b>
+						<input type="text" value="1" disabled="disabled" />
+						<b class="add">+</b>
+					</div>
+				</li>											
+			</ul>
+			
+			<a class="confirm" href="javascript:;">确认</a>
+		</div>	
+		<div class="d_shade"></div>	
+		
+		<script>
+			$(function(){
+				//滑轮滚动
+			    $(window).scroll(function(){
+					var dTopone = $('#anchor1').offset().top - $(window).height();
+					var dToptwo = $('#anchor2').offset().top - $(window).height();
+					var dTopthree = $('#anchor3').offset().top - $(window).height();						
+					if($(window).scrollTop() > dTopone){
+						$('.d_header .d_nav li').eq(0).addClass('active').siblings().removeClass('active');   	
+					}if($(window).scrollTop() > dToptwo){
+						$('.d_header .d_nav li').eq(1).addClass('active').siblings().removeClass('active');   
+					}if($(window).scrollTop() > dTopthree){
+						$('.d_header .d_nav li').eq(2).addClass('active').siblings().removeClass('active');   
+					};
+				});
+			});
+
+			function jia(){
+				var num = parseInt($('#num').val());
+				if (num > 98){
+					return false;
+				}else{
+					$('#num').val( num + 1);
+				}
+			}
+
+			function jian(){
+				var num = parseInt($('#num').val());
+				if (num < 2){
+					return false;
+				}else{
+					$('#num').val( num - 1);
+				}
+			}
+		</script>
+	</body>
+</html>

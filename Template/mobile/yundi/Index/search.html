@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />  
+		<title>{$tpshop_config['shop_info_store_title']}</title>
+		<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+		<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+		<link rel="stylesheet" href="__STATIC__/css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="__STATIC__/css/common.css" />
+		<link rel="stylesheet" href="__STATIC__/css/search.css" />
+		<script type="text/javascript" src="__STATIC__/js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/main2.js" ></script>
+	</head>
+	<body>
+		<div class="d_header">
+			<div class="mg">
+				<a class="return" href="javascript:history.back();"><img src="__STATIC__/img/return.png"/></a>
+				<div class="d_seek">
+					<ul>
+						<li>
+							<a href="javascript:;"><span class="name">产品</span><img src="__STATIC__/img/drop.png"/></a>
+							<ul class="drop">
+								<li>产品</li>
+								<li>信息</li>
+								<li>公司</li>
+							</ul>
+						</li>
+					</ul>					
+					<input type="text"  id="name" placeholder="请输入要搜索的内容"/>					
+				</div>	
+				<a class="d_btn" href="javascript:;" onclick="saosou()">搜索</a>
+			</div>	
+		</div>
+		
+		<div class="d_search">
+			<div class="mg">
+				<h1>你可能感兴趣的热词</h1>
+				<ul class="clear">
+					<li onclick="search(this)">云狄网</li>
+					<li onclick="search(this)">连衣裙</li>
+					<li onclick="search(this)">广州云狄网络科技有限公司</li>
+					<li onclick="search(this)">云狄网</li>
+					<li onclick="search(this)">连衣裙</li>
+					<li onclick="search(this)">广州云狄网络科技有限公司</li>
+					<li onclick="search(this)">云狄网</li>
+					<li onclick="search(this)">连衣裙</li>
+					<li onclick="search(this)">广州云狄网络科技有限公司</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+<script>
+	function saosou(){
+		var name = $('#name').val();
+		if (!name){
+			return false;
+		}
+		if ($('.name').html() == '产品'){
+			window.location.href="/Mobile/goods/searchgoods?name="+name;
+		}
+		if ($('.name').html() == '信息'){
+			window.location.href="/Mobile/info/search_info?name="+name;
+		}
+		if ($('.name').html() == '公司'){
+			window.location.href="/Mobile/index/search_store?name="+name;
+		}
+	}
+
+	function search(obj){
+		$('#name').val(obj.innerHTML);
+	}
+</script>
+</html>

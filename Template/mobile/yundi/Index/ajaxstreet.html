@@ -1,0 +1,62 @@
+				<foreach name="street" item="vv">
+				<li>
+					<div class="w_street_tit">
+						<div class="w_street_tit_l">
+							<div class="w_street_jummp"></div>
+							<a href="/Mobile/Store/index/store_id/{$vv.store_id}"><img src="{:templogo($vv['store_id'],215,215);}"></a>
+						</div>
+						<div class="w_street_tit_r">
+							<a href="/Mobile/Store/index/store_id/{$vv.store_id}">{$vv.store_name}</a>
+							<div class="w_street_btn">
+								<if condition="$vv[apply_state]">
+								<a href=""><img src="__STATIC__/images/rengzheng.png"></a>
+								<else />
+								<a href=""><img src="__STATIC__/images/rengzheng2.png"></a>
+								</if>
+								<if condition="$vv[commerce_state]">
+								<a href=""><img src="__STATIC__/images/yunshanghui.png"></a>
+								<else />
+								<a href=""><img src="__STATIC__/images/yunshanghui2.png"></a>
+								</if>
+							</div>
+						</div>
+					</div>
+					<div class="w_main_products">
+						<div class="w_main_pro_l">
+							<p>主营产品：</p>
+							<span>{$vv.store_zy}</span>
+						</div>
+					</div>
+					<div class="w_tel">
+						<p>电话：{$vv.store_phone}</p>
+					</div>
+					<div class="w_address">
+						<p>地址：
+						<tpshop sql="select name from __REGION__ where id=$vv[province_id] limit 1" item="v">
+				          {$v['name']}  <!-- 省 -->
+				          </tpshop>
+				          <tpshop sql="select name from __REGION__ where id=$vv[city_id] limit 1" item="v">
+				          {$v['name']} <!-- 市 -->
+				          </tpshop>
+				          <tpshop sql="select name from __REGION__ where id=$vv[district] limit 1" item="v">
+				          {$v['name']} <!-- 区 -->
+				        </tpshop>
+				        {$vv.store_address}
+						</p>
+					</div>
+					<div class="w_attest">
+						<div class="w_attest_l">
+							<h3>权威认证：</h3>
+							<ul>
+							<if condition="$vv[apply_state]">
+								<li><img src="__STATIC__/images/crown.png"></li>
+							</if>
+							</ul>
+						</div>
+						<div class="w_attest_r">
+							<p>综合描述 : <?php echo number_format(($vv['store_desccredit']+$vv['store_servicecredit']+$vv['store_deliverycredit'])/3,2);?></p>
+						</div>
+					</div>
+				</li>
+			</foreach>
+			

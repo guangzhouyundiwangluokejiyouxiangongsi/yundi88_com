@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>回复</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/goods.css">
+    <script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+    <style>
+        a.current {
+            border-color: #f22e00;
+            color: #f22e00;
+        }
+        .pagin a {
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            border: 1px solid #dedede;
+            text-align: center;
+            padding: 0 6px;
+            line-height: 20px;
+            margin: 0 4px;
+        }
+        a.next {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+      <div class="h-left">
+        <a class="sb-back" href="javascript:history.back(-1)" title="返回"></a>
+      </div>
+      <div class="h-mid" style="font-size:16px">回复   </div>
+    </div>
+<div class="comment_list" id="commentList" data-id="0" style="margin-top:30px">
+    <ul>
+        <foreach name="reply_list" item="vo" >
+            <li class="comment_item">
+                <div class="content_head" style="border-bottom:1px solid #dedede;">
+                    <div class="info">
+                        <div class=" comment_star">
+                            <div class="bor_sli">
+                                <div class="one"><em><img src=" /Template/mobile/new/Static/images/user68.jpg"></em></div>
+                                <div class="name">{$vo['user_name']|default="匿名用户"}</div>
+                                <div class="two"><php>echo $floor--;</php>楼</div>
+                            </div>
+                            <p class="message_comm">{$vo['content']}</p>
+                            <div class="twos">{$vo['reply_time']|date='Y-m-d H:i:s',###}</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </foreach>
+    </ul>
+</div>
+<div class="clearfix m">
+    <div class="pagin fr">
+        <if condition="$page_current neq 1">
+            <a class="next" target="_self" href="{:U('Mobile/Goods/reply',array('comment_id'=>$comment_info['comment_id'],'page'=>$page_current-1))}">上一页<b></b></a>
+        </if>
+        <php>
+            if($page_sum>1){
+                for($i=1;$i<=$page_sum;$i++){
+                if($page_current==$i){
+                echo "<a class='current'target='_self' href='".U('Mobile/Goods/reply',array('comment_id'=>$comment_info['comment_id'],'page'=>$i))."'>".$i."</a>";
+                }else{
+                echo "<a target='_self' href='".U('Mobile/Goods/reply',array('comment_id'=>$comment_info['comment_id'],'page'=>$i))."'>".$i."</a>";
+                }
+                }
+            }
+        </php>
+        <if condition="$page_current lt $page_sum">
+            <a class="next" target="_self" href="{:U('Mobile/Goods/reply',array('comment_id'=>$comment_info['comment_id'],'page'=>$page_current+1))}">下一页<b></b></a>
+        </if>
+    </div>
+</div>
+<div class="bottom-to-top J_ping" id="indexToTop" report-eventid="MProductdetail_CommentBackToTop" report-pageparam="110664" style="display: block;">
+        <img src="__STATIC__/images/scroll-to-top-icon.png?v=jd201608041716" style="width: 100%;">
+</div>
+
+
+<script type="text/javascript">
+    //返回顶部
+  $(document).ready(function() {
+    //首先将#indexToTop隐藏
+    $("#indexToTop").hide();
+    //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+    $(function() {
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 100) {
+          $("#indexToTop").fadeIn(1500);
+        } else {
+          $("#indexToTop").fadeOut(1500);
+        }
+      });
+      //当点击跳转链接后，回到页面顶部位置
+      $("#indexToTop").click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        },
+        1000);
+        return false;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

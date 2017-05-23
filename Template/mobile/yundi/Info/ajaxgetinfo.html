@@ -1,0 +1,69 @@
+<foreach name="articlelist" item="v">
+      <li>
+          <div class="jingjiaTop">
+               <div class="jingjiaLogo">
+                 <img class="jingjialogo" src="{:templogo($v['store'],95,95)}">
+               </div>
+               <div class="jingjiatext">
+                 <h3 class="there"><a title="{$v['title']}" target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{:getsubstr($v['title'],0,40)}</a></h3>
+                 <p>{:getsubstr($v['description'],0,300)}</p>
+                 <span class="unfolded">点击展开</span>
+               </div>
+          </div>
+          <div class="jingjiaimg">
+              <foreach name="v['content']" key="key" item="vv">
+              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img class="imghig" src="{$vv['src']}"></a>
+              <php>if ($key == 8){break;};</php>
+             </foreach>
+          </div>
+          
+          <div class="jingjiabootm">
+            <if condition="$v[apply_state]">
+            <a target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="{:C('DOMAIN')}/Public/renzheng/renzheng3.png" class="jinjiasm" style="width: 39px;">
+            <p>已认证</p>
+            <else />
+            <a target="_blank"  href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="{:C('DOMAIN')}/Public/renzheng/renzheng2.png" class="jinjiasm" style="width: 35px;">
+            <p>未认证</p>
+            </if>
+            <if condition="$v[commerce_state]">
+            <a target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="{:C('DOMAIN')}/Public/renzheng/yunshanghui.png" class="jinjiasm">
+            <p>已加入</p>
+            <else />
+            <a target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
+            <img src="{:C('DOMAIN')}/Public/renzheng/yunshanghui2.png" class="jinjiasm">
+            <p>未加入</p>
+            </if>
+          </div>
+      </li>
+    </foreach>
+    <script type="text/javascript">
+    $(function(){
+      var hig = $(".jingjiaimg>a").width();
+      $(".jingjiaimg>a").height(hig + "px");
+    })
+    </script>
+    <script type="text/javascript">
+    $(function(){
+      var lis = $(".tuiguang>li").length;
+      for(i=0;i<lis;i++){
+        // var hig = $(".tuiguang>li").eq(i).find(".jingjiatext").find("p").height();
+        if($(".tuiguang>li").eq(i).find(".jingjiatext").find("p").height()>48){
+          $(".tuiguang>li").eq(i).find(".jingjiatext").find(".unfolded").show();
+          $(".tuiguang>li").eq(i).find(".jingjiatext").find("p").addClass("fi");
+        }
+      }
+      $(".unfolded").click(function(){
+        if($(this).text() == "点击展开"){
+          $(this).text("点击收起");
+          $(this).siblings("p").removeClass("fi");
+        }else{
+          $(this).text("点击展开");
+          $(this).siblings("p").addClass("fi");
+        }
+      })
+    })
+  </script>
+   

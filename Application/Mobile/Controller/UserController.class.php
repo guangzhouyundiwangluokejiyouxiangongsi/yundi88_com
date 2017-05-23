@@ -39,9 +39,7 @@ class UserController extends MobileBaseController
             $this->assign('user', $user); //存储用户信息
         }
         $nologin = array(
-            'login', 'pop_login', 'do_login', 'logout', 'verify', 'set_pwd', 'finished',
-            'verifyHandle', 'reg', 'send_sms_reg_code', 'find_pwd', 'check_validate_code',
-            'forget_pwd', 'check_captcha', 'check_username', 'send_validate_code', 'express',
+            'login', 'pop_login', 'do_login', 'logout','ajax_seller','is_beautiful_username','ajax_mobile','ajax_store','register', 'verify', 'set_pwd', 'finished','verifyHandle', 'reg', 'send_sms_reg_code', 'find_pwd', 'check_validate_code','forget_pwd', 'check_captcha', 'check_username', 'send_validate_code', 'express',
         );
         if (!$this->user_id && !in_array(ACTION_NAME, $nologin)) {
             header("location:" . U('Mobile/User/login'));
@@ -128,7 +126,7 @@ class UserController extends MobileBaseController
      *  登录
      */
     public function login()
-    {
+    {   
         if ($this->user_id > 0) {
             header("Location: " . U('Mobile/User/index'));
         }
@@ -138,26 +136,55 @@ class UserController extends MobileBaseController
     }
 
 
-    public function do_login()
-    {
-        $username = I('post.username');
-        $password = I('post.password');
+    public function do_login(){
+        $username = I('post.username','');
+        $password = I('post.password','');
         $username = trim($username);
-        $password = trim($password);
+        $password = trim($password); 
+        $referurl = I('post.referurl','');       
+        $verify_code = I('post.verify_code');
+     
+        // $verify = new Verify();
+        // if (!$verify->check($verify_code,'user_login'))
+        // {
+        //      $res = array('status'=>0,'msg'=>'验证码错误');
+        //      exit(json_encode($res));
+        // }
+                 
         $logic = new UsersLogic();
-        $res = $logic->login($username, $password);
-        if ($res['status'] == 1) {
-            $res['url'] = urldecode(I('post.referurl'));
-            session('user', $res['result']);
-            setcookie('user_id', $res['result']['user_id'], null, '/');
-            setcookie('is_distribut', $res['result']['is_distribut'], null, '/');
-            $nickname = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
-            setcookie('uname', $nickname, null, '/');
+        $res = $logic->login($username,$password);         
+        
+        if($res['status'] == 1){
+            $res['result']['nickname'] = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
+            $seller = M('seller')->where(array('user_id'=>$res['result']['user_id']))->find();
+            if ($referurl){
+                $rand_id = date('YmdHis',time()).rand(111111,999999).$res['result']['user_id'];
+                setcookie('referurl',$rand_id,time()+3600*24*14,'/');
+                $data['user_id'] = $res['result']['user_id'];
+                $data['rand_id'] = $rand_id;
+                $data['addtime'] = time()+3600*24*14;
+                M('automatic_login')->add($data);
+            }
+            if($seller['group_id'] > 0){
+                 $group = M('seller_group')->where(array('group_id'=>$seller['group_id']))->find();
+                 $seller['act_limits'] = $group['act_limits'];
+                 $seller['smt_limits'] = $group['smt_limits'];
+            }
+            session('seller',$seller);
+            session('seller_id',$seller['seller_id']);
+            session('store_id',$seller['store_id']);
+            session('user',$res['result']);
+            setcookie('user_id',$res['result']['user_id'],null,'/');
+            setcookie('is_distribut',$res['result']['is_distribut'],null,'/');
+            setcookie('uname',urlencode($res['result']['nickname']),null,'/');
             setcookie('cn',0,time()-3600,'/');
             $cartLogic = new \Home\Logic\CartLogic();
-            $cartLogic->login_cart_handle($this->session_id, $res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
+            $cartLogic->login_cart_handle($this->session_id,$res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
+            M('seller')->where(array('seller_id'=>$seller['seller_id']))->save(array('last_login_time'=>time()));
+            // sellerLog('商家管理中心登录',__ACTION__);
+            // $url = session('from_url') ? session('from_url') : U('Index/index');
         }
-        exit(json_encode($res));
+        $this->ajaxReturn($res);
     }
 
     /**
@@ -202,6 +229,135 @@ class UserController extends MobileBaseController
         $this->display();
     }
 
+
+    public function register(){
+        if (IS_POST){
+            $logic = new UsersLogic(); 
+            $user_name = I('username');      // 手机号
+            $store_name = I('storename'); // 店铺名称
+            $seller_name = I('sellername');    // 登陆账号
+            $sex = I('sex',0);
+            $nickname = I('nickname');
+            $code = I('post.code','');
+            if (!I('password')){
+                $this->ajaxReturn('密码不能为空');
+            }
+            if (!$store_name) {
+                $store_name = $user_name;
+            }
+
+            if(!$code){
+                $this->ajaxReturn('请输入短信验证码');
+            }
+
+            $check_code = $logic->sms_code_verify($user_name,$code,$this->session_id);
+
+            if($check_code['status'] != 1){
+                $this->ajaxReturn($check_code['msg']);
+            }
+
+            if(M('users')->where(array('mobile'=>$user_name))->find()){
+                $this->ajaxReturn('手机号已被注册');
+            }
+            if(M('store')->where("store_name='$store_name'")->count()>0){
+                $this->ajaxReturn("店铺名称已存在");
+            }
+            if(!preg_match('/^[a-zA-Z][a-zA-Z0-9_]{5,16}/', $seller_name)){
+                $this->ajaxReturn("账号不合法！");
+            }
+            if(M('seller')->where("seller_name='$seller_name'")->count()>0){
+                $this->ajaxReturn("账号已被注册");
+            }
+            if (!$this->is_beautiful_username($seller_name)){
+                $this->ajaxReturn("账号已被注册");
+            }
+            $user_id = M('users')->where("email='$user_name' or mobile='$user_name'")->getField('user_id');
+            if($user_id){
+                if(M('store')->where(array('user_id'=>$user_id))->count()>0){
+                    $this->ajaxReturn("手机号已被使用");
+                }
+                if(M('seller')->where(array('user_id'=>$user_id))->count()>0){
+                    $this->ajaxReturn("手机号已被使用");
+                }
+            }
+            $store = array('store_name'=>$store_name,'user_name'=>$user_name,'store_state'=>1,
+                    'seller_name'=>$seller_name,'password'=>I('password'),
+                    'store_time'=>time(),'is_own_shop'=>0,'sex'=>$sex,'nickname'=>$nickname
+            );
+            $storeLogic = new StoreLogic();
+            if($storeLogic->addStore($store)){
+                $seller = M('seller')->where(array('seller_name'=>$seller_name))->find();
+                session('seller',$seller);
+                session('seller_id',$seller['seller_id']);
+                session('store_id',$seller['store_id']);
+                $this->ajaxReturn('注册成功');
+            }else{
+                $this->ajaxReturn('注册失败');
+            }
+        }
+        $this->display();
+    }
+
+     public function retrieve()
+    {   
+        if (IS_POST){
+            $mobile = I('mobile');
+            $code = I('code');
+            $password = I('password');
+            if (!$mobile){
+                $this->ajaxReturn(array('status'=>-1,'msg'=>'手机号码不能为空'));
+            }
+            if (!$password){
+                $this->ajaxReturn(array('status'=>-1,'msg'=>'密码不能为空'));
+            }
+            $password = encrypt($password);
+            $logic = new UsersLogic();
+            $check_code = $logic->sms_code_verify($mobile,$code,$this->session_id);
+            if($check_code['status'] != 1){
+                $this->ajaxReturn(array('status'=>-1,'msg'=>$check_code['msg']));
+            }
+            if (M('users')->where(array('mobile'=>$mobile))->count() > 1){
+                $this->ajaxReturn(array('status'=>-1,'msg'=>'请联系管理员帮忙修改'));
+            }
+            $user = M('users')->where(array('mobile'=>$mobile))->find();
+            if (!$user){
+                $this->ajaxReturn(array('status'=>-1,'msg'=>'该手机未注册账号!'));
+            }
+            $res = M('users')->where(array('user_id'=>$user['user_id']))->save(array('password'=>$password));
+            if (!$res){
+                $this->ajaxReturn(array('status'=>-1,'msg'=>'密码找回失败,请联系管理员'));
+            }
+            $this->ajaxReturn(array('status'=>1,'msg'=>'修改成功'));
+
+        }
+        $this->display();
+    }
+
+    public function is_beautiful_username($username){
+        $res = 1;
+        $arr = str_split($username);
+        if (count($arr) == 6){
+            if  ($arr[0] == $arr[1] && $arr[1] == $arr[2] &&  $arr[1] == $arr[3] && $arr[1] ==  $arr[4] && $arr[1] == $arr[5]){
+                $res = '';
+            }
+
+            if (is_numeric($arr[1]) && is_numeric($arr[2]) && is_numeric($arr[3]) && is_numeric($arr[4]) && is_numeric($arr[5])){
+
+                if ($arr[1]+1 == $arr[2] && $arr[2]+1 == $arr[3] && $arr[3]+1 == $arr[4] && $arr[4]+1 == $arr[5]){
+                    $res = '';
+                }
+
+                if ($arr[1]-1 == $arr[2] && $arr[2]-1 == $arr[3] && $arr[3]-1 == $arr[4] && $arr[4]-1 == $arr[5]){
+                    $res = '';
+                }
+
+                if  ($arr[1] == $arr[2] &&  $arr[1] == $arr[3] && $arr[1] ==  $arr[4] && $arr[1] == $arr[5]){
+                    $res = '';
+                }
+            }
+        }
+        return $res;
+    }
     /*
      * 订单列表
      */
@@ -897,6 +1053,7 @@ class UserController extends MobileBaseController
     }
 
 
+
     public function set_pwd()
     {
         if ($this->user_id > 0) {
@@ -946,6 +1103,18 @@ class UserController extends MobileBaseController
         $send = I('send');
         $logic = new UsersLogic();
         $logic->check_validate_code($code, $send);
+    }
+
+     public function send_sms_reg_code(){
+        $mobile = I('mobile');
+        $userLogic = new UsersLogic();
+        if(!check_mobile($mobile))
+            $this->ajaxReturn(array('status'=>-1,'msg'=>'手机号码格式有误'));
+        $code =  rand(100000,999999);
+        $send = $userLogic->sms_log($mobile,$code,$this->session_id);
+        if($send['status'] != 1)
+            $this->ajaxReturn(array('status'=>-1,'msg'=>$send['msg']));
+        $this->ajaxReturn(array('status'=>1,'msg'=>'验证码已发送，请注意查收'));
     }
 
     /**
@@ -1171,5 +1340,47 @@ class UserController extends MobileBaseController
             exit;
         }
         $this->display();
+    }
+
+    // ajax验证商户名是否重复
+    public function ajax_seller()
+    {   
+        $seller_name = I('sellername','');
+        $data['mobile'] = $seller_name;
+        $data['email'] = $seller_name;
+        $data['_logic'] = 'or';
+        $obj = M('seller')->where(array('seller_name'=>$seller_name))->find();
+        $res = M('users')->where(array($data))->find();
+        if($obj){
+            $this->ajaxReturn(true);
+        } else {
+            $this->ajaxReturn(false);
+        }
+    }
+
+    // ajax验证手机号码是否可以用
+    public function ajax_mobile()
+    {
+        $mobile = I('mobile','');
+        $obj = M('users')->where(array('mobile'=>$mobile))->find();
+        // $res = M('seller')->where(array('seller_name'=>$mobile))->find();
+        if($obj){
+            $this->ajaxReturn(true);
+        } else {
+            $this->ajaxReturn(false);
+        }
+    }
+
+    // ajax验证店铺名字是否存在
+    public function ajax_store()
+    {   
+        $store_name = I('storename','');
+        $obj = M('store')->where(array('store_name'=>$store_name))->find();
+        if ($obj) {
+            $this->ajaxReturn(true);
+        } else {
+            $this->ajaxReturn(false);
+        }
+        
     }
 }

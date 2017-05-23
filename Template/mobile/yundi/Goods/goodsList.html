@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>{$infolist['title']}</title>
+	<meta http-equiv="keywords" content="{$infolist['keywords']}" />
+	<meta name="description" content="{$infolist['description']}" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/classify.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+</head>
+<body>
+
+	<div class="w_header">
+		<div class="w_header_history"><a href="javascript:;" onClick="javascript :history.back(1);"><img src="__STATIC__/images/ify_hsitory.png"></a></div>
+		<h3 class="w_header_title">服装厂家</h3>
+		<div class="w_header_search"><a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a></div>
+	</div>
+
+
+	<div class="w_content">
+
+		<div class="w_con_tit">
+			<ul>
+				<li><a href="###">综合</a></li>
+				<li><a href="###">最新</a></li>
+				<li><a href="###">价格</a></li>
+			</ul>
+			<div class="w_change">
+				<a href="###"><img src="__STATIC__/images/ify_change.png"></a>
+			</div>
+		</div>
+
+		<div class="w_con_c">
+			<div class="w_poster">
+				<ul>
+					<div class="sales_sum"></div>
+					<p style="font-size:20px;text-align:center;" class="p1">正在加载...</p>
+				</ul>
+				
+				<ul>
+					<div class="new_goods"></div>
+					<p style="font-size:20px;text-align:center;" class="p2">正在加载...</p>
+				</ul>
+				<ul>
+					<div class="shop_price"></div>
+					<p style="font-size:20px;text-align:center;" class="p3">正在加载...</p>
+				</ul>
+			</div>
+
+			<div class="w_list">
+				<ul>
+					<div  class="sales_sum2"></div><br>
+					<p style="font-size:20px;text-align:center;" class="p4">正在加载...</p>
+				</ul>
+				<ul>
+					<div class="new_goods2"></div><br>
+					<p style="font-size:20px;text-align:center;" class="p5">正在加载...</p>
+				</ul>
+				<ul>
+					<div class="shop_price2"></div><br>
+					<p style="font-size:20px;text-align:center;" class="p6">正在加载...</p>
+				</ul>
+			</div>
+		</div>
+
+	<include file="Public/footer" />
+
+	
+</body>
+<script>
+	$(function() { 
+		sales_sum()
+		new_goods()
+		shop_price()
+		sales_sum2()
+		new_goods2()
+		shop_price2() 
+	});
+	self.setTimeout(function(){
+     	if ($('.sales_sum li').length < 5){
+     		$('.p1').html('没有内容了');
+     	};
+	},1500)
+	var p = 1;
+	var p2 = 1;
+	var p3 = 1;
+	var p4 = 1;
+	var p5 = 1;
+	var p6 = 1;
+	function sales_sum(){
+		var cat_id = '{$cat_id}';
+		$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p,'order':'sales_sum'},function(res){
+			if (res){
+				$('.sales_sum').append(res);
+			}else{
+				$('.p1').html('没有内容了');
+			}
+			p++;
+		})
+	}
+
+	function new_goods(){
+		var cat_id = '{$cat_id}';
+		$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p2,'order':'last_update'},function(res){
+			if (res){
+				$('.new_goods').append(res);
+				if ($('.sales_sum li').length < 5){
+		     		$('.p2').html('没有内容了');
+		     	};
+			}else{
+				$('.p2').html('没有内容了');
+			}
+			p2++;
+		})
+	}
+
+	function shop_price(){
+		var cat_id = '{$cat_id}';
+		$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p3,'order':'shop_price'},function(res){
+			if (res){
+				$('.shop_price').append(res);
+				if ($('.sales_sum li').length < 5){
+		     		$('.p3').html('没有内容了');
+		     	};
+			}else{
+				$('.p3').html('没有内容了');
+			}
+			p3++;
+		})
+	}
+	function sales_sum2(){
+		var cat_id = '{$cat_id}';
+		$.post('/Mobile/Goods/getcatgoods2',{'cat_id':cat_id,'p':p4,'order':'sales_sum'},function(res){
+			if (res){
+				$('.sales_sum2').append(res);
+				if ($('.sales_sum li').length < 5){
+		     		$('.p2').html('没有内容了');
+		     	};
+			}else{
+				$('.p4').html('没有内容了');
+			}
+			p4++;
+		})
+	}
+
+	function new_goods2(){
+		var cat_id = '{$cat_id}';
+		$.post('/Mobile/Goods/getcatgoods2',{'cat_id':cat_id,'p':p5,'order':'last_update'},function(res){
+			if (res){
+				$('.new_goods2').append(res);
+				if ($('.sales_sum li').length < 5){
+		     		$('.p5').html('没有内容了');
+		     	};
+			}else{
+				$('.p5').html('没有内容了');
+			}
+			p5++;
+		})
+	}
+
+	function shop_price2(){
+		var cat_id = '{$cat_id}';
+		$.post('/Mobile/Goods/getcatgoods2',{'cat_id':cat_id,'p':p6,'order':'shop_price'},function(res){
+			if (res){
+				$('.shop_price2').append(res);
+				if ($('.sales_sum li').length < 5){
+		     		$('.p6').html('没有内容了');
+		     	};
+			}else{
+				$('.p6').html('没有内容了');
+			}
+			p6++;
+		})
+	}
+	$('.w_con_tit> ul> li').find('a').eq(0).addClass('tab_on0');
+ 
+	  $('.w_con_tit> ul> li').click(function(){
+	    var index=$(this).index();
+	    $('.w_con_tit> ul> li').find('a').attr('class',' ');
+	    $(this).find('a').addClass('tab_on'+index);
+	  });
+
+	  $(window).scroll(function () {
+
+	      var maxScroll=$(document).height()-$(window).height();
+
+	      if ($(window).scrollTop() >= maxScroll) {
+	          if($('.w_con_tit> ul> li >a').hasClass('tab_on0')){
+	        	sales_sum();
+	        	sales_sum2();
+	          }
+	         
+	          if($('.w_con_tit> ul> li >a').hasClass('tab_on1')){
+	   			new_goods();
+	   			new_goods2();
+	          }
+	          if($('.w_con_tit> ul> li >a').hasClass('tab_on2')){
+	          	shop_price();
+	          	shop_price2();
+	          }
+	      }
+ 
+    });
+
+</script>
+</html>

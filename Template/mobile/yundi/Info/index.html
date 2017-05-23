@@ -20,7 +20,7 @@
 	<div class="w_header">
 		<h3 class="w_header_title">{$infolist['name']}</h3>
 		<div class="w_header_search">
-			<a href=""><img src="__STATIC__/images/search.png"></a>
+			<a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a>
 		</div>
 	</div>
 <script type="text/javascript">
@@ -37,10 +37,10 @@ function getinfo(){
     success: function(data)
     {
       if(data){
-        $(".w_info>ul").html(data);
+        $(".info").append(data);
+        page++;
       }else{
-        $(".w_info>ul>p").html('加载失败！');
-        
+        $(".tishi").html('加载失败！');
       }
     }
   }); 
@@ -50,60 +50,24 @@ function getinfo(){
 	<div class="w_content">
 		
 		<div class="w_info">
+			<ul class="info">
+				
+			</ul>
 			<ul>
-				<p style="font-size:20px;text-align:center;"><img src="__STATIC__/images/Preloader_4.gif"></p>
+				<p style="font-size:20px;text-align:center;" class="tishi"><img src="__STATIC__/images/Preloader_4.gif"></p>
 			</ul>
 		</div>
 
-		<div class="w_copyright">
-			<p>云狄网络版权所有</p>
-			<p>粤ICP备16076354号</p>
-		</div>
-
-	</div>
-
-	<div class="w_footer">
-		<ul>
-			<li>
-				<a href="home.html">
-					<i><img src="__STATIC__/images/footer_icon01.png"></i>
-					<p>首页</p>
-				</a>
-			</li>
-			<li>
-				<a href="info.html">
-					<i><img src="__STATIC__/images/footer_icon02_hov.png"></i>
-					<p>搜信息</p>
-				</a>
-			</li>
-			<li>
-				<a href="street.html">
-					<i><img src="__STATIC__/images/footer_icon03.png"></i>
-					<p>搜企业</p>
-				</a>
-			</li>
-			<li>
-				<a href="classify.html">
-					<i><img src="__STATIC__/images/footer_icon04.png"></i>
-					<p>分类</p>
-				</a>
-			</li>
-			<li class="w_order_btn">
-				<a href="javascript:;">
-					<i><img src="__STATIC__/images/footer_icon05.png"></i>
-					<p>其他</p>
-				</a>
-				<div class="w_order">
-					<a href="">云商会</a>
-					<a href="">企业云谱</a>
-					<a href="">微微</a>
-					<a href="">我的云</a>
-				</div>
-			</li>
-		</ul>
-	</div>
-
-	<div id="w_top"><img src="__STATIC__/images/top.png"></div>
+		<include file="public/footer" />
 	
 </body>
+<script>
+	$(window).scroll(function () {
+    var maxScroll=$(document).height()-$(window).height();
+
+    if ($(window).scrollTop() >= maxScroll) {
+      getinfo()
+    }
+  });
+</script>
 </html>

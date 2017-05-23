@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta name="Generator" content="TPSHOP v1.2.8" />
+<meta charset="UTF-8">
+<meta name="Keywords" content="{$store.seo_keywords}" />
+<meta name="Description" content="{$store.seo_description}" />
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>店铺商品类别</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS|" href="" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/dianpu.css">
+<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<style type="text/css">
+.Classification{ width:95%; margin:auto; overflow:hidden; padding-bottom:10px; border-bottom:1px solid #eeeeee;margin-bottom:10px; }
+.Classification dt{ width:100%; height:40px;}
+.Classification dt em{ display:block; float:left; font-size:16px; line-height:40px; color:#333}
+.Classification dt span{ display:block; float:right; font-size:12px; line-height:40px; color:#999; padding-right:5px;}
+.Classification dd{ width:100%; overflow:hidden; border-top:1px solid #eeeeee; padding-top:10px;}
+.Classification dd span{ display:block; float:left; width:50%; height:35px; margin-bottom:5px;}
+.Classification dd span a{ display:block; width:95%; height:35px; margin:auto; background:#f5f5f5; font-size:14px; line-height:35px; text-align:center; color:#666}
+</style>
+</head>
+<body>
+<header>
+    <div class="tab_nav">
+      <div class="header">
+        <div class="h-left"><a href="javascript:history.back(-1)" title="返回" class="back search_back"></a></div>
+        <div class="h-mid">全部分类  </div>
+        <div class="h-right">
+          <aside class="top_bar">
+            <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+</header>
+<include file="Public/menu"/>
+<foreach name="main_cat" item="vo">
+<dl class="Classification">
+	<dt><a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'cat_id'=>$vo[cat_id]))}"><em>{$vo.cat_name}</em><span>查看全部</span></a></dt>
+	<if condition="$sub_cat[$vo[cat_id]] neq ''">
+	<dd>
+		<foreach name="sub_cat[$vo[cat_id]]" item="v2">
+		<span>
+			<a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'cat_id'=>$v2[cat_id]))}">{$v2.cat_name}</a>
+		</span>
+		</foreach>
+	 </dd>
+	 </if>  
+</dl>
+</foreach> 
+<div style=" height:40px;"></div>
+<div class="bottm_nav">
+	 <ul>
+	 <li class="bian"><a href="{:U('Store/store_goods_class',array('store_id'=>$store[store_id]))}">店铺分类</a></li>
+	 <li class="bian"><a href="{:U('Store/about',array('store_id'=>$store[store_id]))}">店铺简介</a></li>
+	 <li><a href="tel:{$store['store_phone']}">联系卖家</a></li>
+	 </ul>
+</div>
+</body>
+</html>

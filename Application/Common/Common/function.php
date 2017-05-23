@@ -861,3 +861,4 @@ function templogo($store_id,$width,$height)
         // return '/'.$path.$logo_thumb_name;
 
 }
+

@@ -186,8 +186,6 @@ class UserController extends BaseController {
     	$res = $logic->login($username,$password);         
         
     	if($res['status'] == 1){
-    		// $res['url'] =  urldecode(I('post.referurl'));
-
     		$res['result']['nickname'] = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
             $seller = M('seller')->where(array('user_id'=>$res['result']['user_id']))->find();
             if ($referurl){

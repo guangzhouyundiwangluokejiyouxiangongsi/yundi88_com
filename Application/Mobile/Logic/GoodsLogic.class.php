@@ -362,5 +362,47 @@ class GoodsLogic extends RelationModel
         $str .= "</table>";
        return $str;   
     }
+
+
+    public function getcatgoods($cat_id=1,$p=1,$num=6,$order='')
+    {   
+        $where['cat_id1'] = $cat_id;
+        $where['cat_id2'] = $cat_id;
+        $where['cat_id3'] = $cat_id;
+        $where['_logic'] = 'or';
+        $map['_complex'] = $where;
+        $map['home_is_show'] = 1;
+        $map['goods_state'] = 1;
+        $model = M();
+        if ($order == 'on_time'){
+            $order .= ' desc';
+        }
+        if ($order == 'sales_sum'){
+            $order .= ' desc ,click_count desc';
+        }
+        $goods_list = $model->field('g.store_id,g.goods_name,g.goods_id,g.shop_price,s.store_name,s.commerce_state,s.apply_state')->table('__GOODS__ AS g')->join('INNER JOIN __STORE__ AS s ON s.store_id = g.store_id')->where($map)->order('s.commerce_state desc,s.apply_state desc,g.'.$order)
+            ->page($p,$num)
+            ->select();
+        // dump(M()->getlastsql());
+            // "select * from goods inner jion store on store.id = goods.id";
+        return $goods_list;
+    }
+
+    public function searchgoods($p=1,$num=6,$order='',$name)
+    {   
+        $map['home_is_show'] = 1;
+        $map['goods_state'] = 1;
+        $map['goods_name'] = array('like','%'.$name.'%');
+        $model = M();
+        if ($order != 'shop_price'){
+            $order .= ' desc';
+        }
+        $goods_list = $model->field('g.store_id,g.goods_name,g.goods_id,g.shop_price,s.store_name,s.commerce_state,s.apply_state')->table('__GOODS__ AS g')->join('INNER JOIN __STORE__ AS s ON s.store_id = g.store_id')->where($map)->order('s.commerce_state desc,s.apply_state desc,g.'.$order)
+            ->page($p,$num)
+            ->select();
+        // dump(M()->getlastsql());
+            // "select * from goods inner jion store on store.id = goods.id";
+        return $goods_list;
+    }
     
 }

@@ -1,0 +1,60 @@
+<div style="height:50px; line-height:50px; clear:both;"></div>
+<div class="v_nav" style="display: none;">
+	<div class="vf_nav">
+		<ul>
+			<li><a href="{:U('Index/index')}">
+			    <i class="vf_1"></i>
+			    <span>首页</span></a></li>
+		    <li><a href="{:U('Mobile/Info/index')}">
+			    <i class="vf_2"></i>
+			    <span>搜信息</span></a></li>
+			<li><a href="{:U('Mobile/index/street')}">
+			   <i class="vf_4"></i>
+			   <span>搜公司</span></a></li>
+
+		    <li class="foot_nav_order"><a>
+			    <i class="vf_3"></i>
+			    <span>其他</span></a>
+				<div class="order_hov">
+					<div class="spread"><a href="">免费推广</a></div>
+					<div class="cloud"><a href="">云商会</a></div>
+				</div>
+			</li>
+			<!-- <li><a href="{:U('Goods/products')}">
+			    <i class="vf_3"></i>
+			    <span>产品</span></a></li> -->
+			<li><a href="{:U('User/index')}">
+			    <i class="vf_5"></i>
+			    <span>我的</span></a>
+			</li>
+		</ul>
+	</div>
+</div> 
+<script type="text/javascript">
+	$(function(){
+		$(".foot_nav_order>a").click(function(){
+			$(".order_hov").fadeToggle(200)
+		})
+	})
+</script>
+<script type="text/javascript">
+// $(document).ready(function(){
+// 	  var cart_cn = getCookie('cn');
+// 	  if(cart_cn == ''){
+// 		$.ajax({
+// 			type : "GET",
+// 			url:"/index.php?m=Home&c=Cart&a=header_cart_list",//+tab,
+// 			success: function(data){								 
+// 				cart_cn = getCookie('cn');
+// 				$('#cart_quantity').html(cart_cn);						
+// 			}
+// 		});	
+// 	  }
+// 	  $('#cart_quantity').html(cart_cn);
+// });
+</script>
+<!-- 微信浏览器 调用微信 分享js-->
+<if condition="$signPackage neq null">
+	<include file="Public/wx_share"/>
+</if>
+<!-- 微信浏览器 调用微信 分享js  end-->

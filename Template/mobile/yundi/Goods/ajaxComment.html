@@ -1,0 +1,135 @@
+
+ <!---晒单end-->
+ <script>
+ 	$(document).ready(function() {
+ 		$('.comment_littlenav ul li').click(function() {
+ 			$(this).addClass('com-red').siblings().removeClass('com-red');
+ 		});
+ 	});
+ </script>
+<if condition="$count gt 0">
+<div class="comment_list" id="commentList"  data-id="0" >
+	<ul>
+  	<foreach name="commentlist"  key="k" item="v">
+      <li class="comment_item">
+        <div class="content_head" <if condition="($k+1) eq count($comment_list)"> style="border-bottom:0px solid #dedede;"<else/>style="border-bottom:1px solid #dedede;"</if>>
+	          <div class="info">
+	            <div class=" comment_star">
+	              <div class="bor_sli">
+		              <div class="one"><em><img src="{$v['head_pic']|default=" __STATIC__/images/user68.jpg"}"></em></div>
+		              <div class="name">
+		              		{$v['nickname']}
+		              </div>
+		              <div class="two">{$v['add_time']|date="Y-m-d H:i:s",###}</div>
+	              </div>
+	              <div class="satr_img"><em><img src="__STATIC__/images/stars{$v['goods_rank']|ceil}.png" alt="" /></em></div>
+	              <p> {$v['content']|htmlspecialchars_decode}</p>
+					<if condition="strlen($v['pay_time']) gt 0"><div class="twos">购买日期：{$v.pay_time|date="Y-m-d H:i:s",###}</div></if>
+					<if condition="strlen($v['spec_key_name']) gt 0"><div class="twos">规格：{$v.spec_key_name}</div></if>
+	            </div>
+	          </div>
+	          
+			 <!---晒单-->
+			<if condition="$v['img'] neq ''">
+					<div class="sd_img">
+					<dl id="gallery">
+						<foreach name="v['img']" key="key" item="v2">
+						    <dd>
+						    	<a href="{$v2}"><img src="{$v2}" width="100px" heigth="100px"></a>
+						    </dd>
+						</foreach>
+					</dl>
+					</div>
+			</if>
+			<!--管理员回复-->
+			<foreach name="replyList" item="val">
+			<p style=" color:#F60; border-top:1px dashed #e5e5e5; padding-top:8px; margin-top:10px"><span>管理员{$val.username}回复：<br></span>{$val.content}</p>
+			</foreach>
+   		</div>
+   		<div class="assess-btns">        
+   			<a class="assess-like-btn" data-comment-id="{$v['comment_id']}" onclick="zan(this);">
+   				<i class="assess-btns-icon btn-like-icon like-grey"></i>            
+   				<span class="assess-btns-num" id="span_zan_{$v['comment_id']}">{$v['zan_num']}</span>
+   			</a>        
+   			<a class="assess-reply-btn" <if condition="$v['reply_num'] gt 0">href="{:U('Mobile/Goods/reply',array('comment_id'=>$v['comment_id']))}"</if>>
+   				<i class="assess-btns-icon btn-reply-icon"></i>            
+   				<span class="assess-btns-num">{$v['reply_num']}</span>
+   			</a>
+   		</div>
+   	  </li>
+  	</foreach>
+	</ul>
+<else />
+	<script>
+		ajax_sourch_submit_hide();
+	</script>
+<div class="comment_list" >
+	<div class="score">暂时还没有用户评论</div>
+</div>
+</if>
+</div>
+<if condition="($count gt $current_count) AND (count($commentlist) eq $page_count)">
+	<div class="getmore" style="font-size:.24rem;text-align: center;color:#888;padding:.25rem .24rem .4rem; clear:both">
+		<a href="javascript:void(0)" onClick="ajax_sourch_submit()">点击加载更多</a>
+	</div>
+	<elseif condition="($count elt $current_count AND $count gt 0)" />
+	<div class="score">已显示完所有评论</div>
+	<else />
+</if>
+<script>
+	var  page = {$p};
+	function ajax_sourch_submit() {
+		page += 1;
+		$.ajax({
+			type: "GET",
+			url: "{:U('Mobile/Goods/ajaxComment',array('goods_id'=>$goods_id,'commentType'=>$commentType),'')}"+"/p/" + page,//+tab,
+			success: function (data) {
+				$('.getmore').hide();
+				if ($.trim(data) != ''){
+					$("#commentList").append(data);
+				}
+			}
+		});
+	}
+
+
+	$(document).ready(function() {
+		 $('.assess-like-btn').click(function() {
+		 	$(this).find('.assess-btns-icon').toggleClass('bac-po');
+		 });
+	})
+	/**
+	 * 点赞ajax
+	 * dyr
+	 * @param obj
+	 */
+	function zan(obj) {
+		var comment_id = $(obj).attr('data-comment-id');
+		var zan_num = parseInt($("#span_zan_" + comment_id).text());
+		$.ajax({
+			type: "POST",
+			data: {comment_id: comment_id},
+			dataType: 'json',
+			url: "/index.php?m=Home&c=user&a=ajaxZan",//
+			success: function (res) {
+				if (res.success) {
+					$("#span_zan_" + comment_id).text(zan_num + 1);
+				} else {
+					alert('只能点赞一次哟~');
+				}
+			},
+			error : function(res) {
+				if( res.status == "200"){ // 兼容调试时301/302重定向导致触发error的问题
+					alert("请先登录!");
+					return;
+				}
+				alert("请求失败!");
+				return;
+			}
+		});
+	}
+	function  ajax_sourch_submit_hide(){
+		$('.getmore').hide();
+	}
+
+</script>

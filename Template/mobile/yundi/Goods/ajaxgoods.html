@@ -1,0 +1,20 @@
+<foreach name="goodslist" item="vv">
+<li>
+	<div class="w_poster_i">
+		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}">
+			<img src="{:goods_thum_images($vv['goods_id'],375,289);}">
+		</a>
+	</div>
+	<div class="w_poster_r">
+		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}">{$vv.goods_name}</a>
+		<p>{$vv.store_name}</p>
+		<div class="w_poster_fine">
+			<p>￥<span>{$vv.shop_price}</span>元</p>
+			<div class="w_poster_fine_btn">
+				<a href=""><img src="__STATIC__/images/rengzheng.png" title="权威认证"></a>
+				<a href=""><img src="__STATIC__/images/yunshanghui.png" title="云商会"></a>
+			</div>
+		</div>
+	</div>
+</li>
+</foreach>
