@@ -3,11 +3,11 @@
 					<div class="w_info_tit">
 						<div class="w_info_tit_l">
 							<div class="w_dummy"></div>
-							<a href=""><img src="{:templogo($v['store'],83,83)}"></a>
+							<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html"><img src="{:templogo($v['store'],83,83)}"></a>
 						</div>
 
 						<div class="w_info_tit_c">
-							<a href="{:U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{:getsubstr($v['title'],0,20)}</a>
+							<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html">{:getsubstr($v['title'],0,20)}</a>
 							<p>{:date('Y-m-d :H:i:s',$v['timer'])}</p>
 							<p>浏览量：{$v['m_click']}</p>
 						</div>
@@ -26,7 +26,7 @@
 					</div>
 					<div class="w_info_text">
 						<p class="hov" id="hov">{:getsubstr($v['description'],0,150)}</p>
-						<span class="w_info_btn">点击展开</span>
+						<span class="w_info_btn">点击展开</span>s
 					</div>
 					<div class="w_info_img">
 						<ul>
@@ -34,7 +34,7 @@
 						<notempty name="vv['src']">
 							<li>
 								<div class="w_dummy_img"></div>
-								<a href=""><img src="{:tempimg($vv['src'],585,585)}"></a>
+								<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html"><img src="{:tempimg($vv['src'],385,385)}"></a>
 							</li>
 						</notempty>
 						</foreach>

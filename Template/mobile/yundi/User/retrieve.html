@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />  
+		<title>retrieve</title>
+		<link rel="stylesheet" href="__STATIC__/css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="__STATIC__/css/common.css" />
+		<link rel="stylesheet" href="__STATIC__/css/retrieve.css" />
+		<script type="text/javascript" src="__STATIC__/js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/main.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/regular.js" ></script>
+	</head>
+	<body>
+		<div class="d_header">
+			<div class="mg">
+				<a href="javascript:history.back();"><img src="__STATIC__/img/return.png"/></a>
+				<h2>找回密码</h2>
+			</div>			
+		</div>
+		
+		<!--详情-->
+		<div class="d_retrieve">
+			<div class="mg">
+				<form id="formtwo">
+					<label>
+						<span>手机号</span> 
+						<input type="tel" name="mobile" id="mobile" placeholder="手机号" autofocus="autofocus" maxlength="11" onblur="e_isTel(this.value);"/>
+						<i></i>
+					</label>
+					<label>
+						<span>验证码</span>
+						<input type="text" style="width: 1.6926rem;" name="code" id="" placeholder="验证码" maxlength="6" onblur="e_iscode(this.value);"/>
+						<i></i>
+						<a href="javascript:;" class="gaincode" onclick="codess()">获取验证码</a>
+					</label>
+					<label>
+						<span>新密码</span>
+						<input type="password" name="password" placeholder="设置密码" maxlength="20"  onblur="e_isPass(this.value);"/>
+						<i></i>
+					</label>				
+					<a href="#" class="btn_ret" onclick="btn_ret()">提交</a>					
+				</form>
+			</div>			
+		</div>
+	</body>
+</html>

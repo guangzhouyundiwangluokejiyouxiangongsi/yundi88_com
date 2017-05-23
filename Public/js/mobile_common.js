@@ -16,7 +16,6 @@ function AjaxAddCart(goods_id,num,to_catr)
             data : $('#buy_goods_form').serialize(),// 你的formid 搜索表单 序列化提交                        
 			dataType:'json',
             success: function(data){	
-            	alert(data)
             	if(data == 999){alert('此商品为测试商品,不可购买！');return false;}
 				// 加入购物车后再跳转到 购物车页面
 			    if(data.status < 0)

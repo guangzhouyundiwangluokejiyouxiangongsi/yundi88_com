@@ -1,0 +1,137 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta name="Generator" content="TPSHOP v2.1.8"/>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="{$store.seo_keywords}"/>
+    <meta name="Description" content="{$store.seo_description}"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>{$store.store_name} </title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="animated_favicon.gif" type="image/gif"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href=""/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/dianpu.css">
+    <script type="text/javascript" src="__STATIC__/js/layer.js"></script>
+    <script type="text/javascript" src="__STATIC__/js/jquery.js"></script>
+<body style=" background:#F5F5F5">
+<header>
+    <div class="tab_nav">
+        <div class="header">
+            <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+            <div class="h-mid">全部商品</div>
+            <div class="h-right">
+                <aside class="top_bar">
+                    <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a></div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</header>
+<include file="Public/menu"/>
+<section class="filtrate_term" id="product_sort" style="width: 100%;">
+    <ul>
+        <foreach name="link_arr" item="link" key="k">
+            <li
+            <if condition="$link[key] eq $keys">class='on'</if>
+            ><a href="{$link.url}">{$link.name}</a></li>
+        </foreach>
+        <li class="" style=" border-left:1px solid #ccc; margin-right:-1px;"><a href="javascript:void(0);" class="show_type show_list">&nbsp;</a></li>
+    </ul>
+</section>
+<div class="product_list">
+    <ul id="goods_list">
+    </ul>
+</div>
+
+<script type="Text/Javascript" language="JavaScript">
+
+    <!--
+    function selectPage(sel) {
+        sel.form.submit();
+    }
+    //-->
+    $(function () {
+        getGoodsList();
+    });
+
+    var page = 1;//页数
+    var cat_id = '{$cat_id}';
+    var key = '{$key}';
+    var sort = '{$sort}';
+    var keywords = '{$keywords}';
+    var store_id = "{$_GET['store_id']}";
+    function getGoodsList() {
+        $('.get_more').show();
+        $.ajax({
+            type: "POST",
+            url: "/index.php?m=Mobile&c=Store&a=goods_list",
+            data: {p: page, cat_id: cat_id, key: key, sort: sort, keywords: keywords ,store_id:store_id},
+            dataType: 'html',
+            success: function (data) {
+                if (data) {
+                    $("#goods_list").append(data);
+                    page++;
+                    $('.get_more').hide();
+                } else {
+                    $('.get_more').hide();
+                    $('#getmore').remove();
+                }
+            }
+        });
+    }
+
+    $('.show_type').bind("click", function () {
+        if ($('#goods_list').hasClass('openList')) {
+            $('#goods_list').removeClass('openList');
+            $(this).removeClass('show_list');
+        }
+        else {
+            $('#goods_list').addClass('openList');
+            $(this).addClass('show_list');
+        }
+    });
+
+</script>
+<!--  
+<form name="selectPageForm" action="" method="get">
+<div class="c_pagination" id="pager">
+      <a href="javascript:;" class="last">上一页</a>
+      <a href="javascript:;" class="page-num">1/3</a>
+      <a href="" class="next">下一页</a> 
+</div>
+</form>
+-->
+<script type="Text/Javascript" language="JavaScript">
+    <!--
+
+    function selectPage(sel) {
+        sel.form.submit();
+    }
+
+    //-->
+</script>
+
+<if condition="$goods_list_total_count gt page_count">
+<div class="floor_body2">
+    <div id="J_ItemList">
+        <ul class="product single_item info">
+        </ul>
+        <a href="javascript:;" class="get_more" style="text-align:center; display:block;">
+            <img src='__STATIC__/images/category/loader.gif' width="12" height="12"> </a>
+    </div>
+    <div id="getmore" style="font-size:.24rem;text-align: center;color:#888;padding:.25rem .24rem .4rem;">
+        <a href="javascript:void(0)" onClick="getGoodsList()">点击加载更多</a>
+    </div>
+</div>
+</if>
+<div style=" height:40px;"></div>
+<div class="bottm_nav">
+    <ul>
+        <li class="bian"><a href="{:U('Store/store_goods_class',array('store_id'=>$store[store_id]))}">店铺分类</a></li>
+        <li class="bian"><a href="{:U('Store/about',array('store_id'=>$store[store_id]))}">店铺简介</a></li>
+        <li><a href="tel:{$store['store_phone']}">联系卖家</a></li>
+    </ul>
+</div>
+</body>
+</html>

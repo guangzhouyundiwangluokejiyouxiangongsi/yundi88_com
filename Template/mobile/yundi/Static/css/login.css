@@ -1,0 +1,26 @@
+/*头部*/
+.d_header{background: #008bb9;width: 100%;height: 0.7242rem;line-height: 0.7242rem;text-align: center;position: fixed;left: 0;top: 0;z-index: 1000;}
+.d_header a{display: block;float: left;}
+.d_header img{width: 0.1684rem;}
+.d_header h2{font-size: 0.3032rem;color: #ffffff;}
+
+.d_login{width: 100%;}
+.d_login form{font-size: 0.3032rem;}
+.d_login form span,.d_login form input{display: block;}
+.d_login form>label{display: block;width: 100%;margin-bottom: 0.5221rem;height: 0.5726rem;line-height: 0.5726rem;border-bottom: 1px solid #cbcbc9;position: relative;}
+.d_login form>label:first-child{margin-top: 1.3811rem;}
+.d_login form>label>span{color: #333333;float: left;width: 1.0105rem;}
+.d_login form>label>input{border: none;background: none;outline: none;padding-left: 0.7242rem;float: left;width: 4.2105rem;height: 0.5726rem;line-height: 0.5726rem;overflow: hidden;}
+.d_login form>label>i{display: block;width: 1.8526rem;height: 0.7579rem;line-height: 0.7579rem;text-align: center;font-size: 0.2358rem;color: #ffffff;background: #4e4e4e;border-radius: 6px;
+position: absolute;left: 50%;bottom: 0;margin-left: -0.9263rem;z-index: 1000;display: none;}
+.d_login form .btn_log{display: block;width: 100%;height: 0.7411rem;line-height: 0.7411rem;background: #dd2726;color: #ffffff;text-align: center;border-radius: 4px;}
+.d_login form .d_function{margin-top: 0.3032rem;font-size: 0.2358rem;color: #4e4e4e;}
+.d_login form .d_function label{float: left;display: block;}
+.d_login form .d_function label input{float: left;width: 0.2526rem;height: 0.2526rem;}
+.d_login form .d_function label span{float: left;margin: -0.1179rem 0 0 0.0505rem;}
+.d_login form .d_function>span{float: right;margin-top: -0.1011rem;}
+.d_login form .d_function>span a{color: #4e4e4e;}
+.d_login form .d_function>span b{margin: 0 0.1684rem;}
+
+
+

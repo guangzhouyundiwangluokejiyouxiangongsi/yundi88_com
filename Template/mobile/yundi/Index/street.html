@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/street.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+</head>
+<body>
+
+	<!-- 头部 -->
+	<div class="w_header">
+		<h3 class="w_header_title">搜企业</h3>
+		<div class="w_header_search">
+			<a href="/Mobile/Index/search"><img src="__STATIC__/images/search.png"></a>
+		</div>
+	</div>
+
+
+	<div class="w_content">
+
+		<div class="w_street">
+			<ul class="street">
+				
+				
+			</ul>
+		</div>
+		<include file="Public/footer" />
+	
+</body>
+<script>
+var p = 1
+$(function(){
+	street();
+});
+function street(){
+	$.post('/Mobile/index/ajaxstreet?p='+p,function(res){
+		$('.street').append(res);
+	})
+}
+$(window).scroll(function () {
+    var maxScroll=$(document).height()-$(window).height();
+
+    if ($(window).scrollTop() >= maxScroll) {
+      street();
+    }
+  });
+
+</script>
+</html>

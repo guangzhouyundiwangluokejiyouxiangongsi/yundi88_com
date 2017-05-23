@@ -1,0 +1,25 @@
+<foreach name="goodslist" item="vv">
+<li>
+	<div class="w_list_top">
+		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}">
+			<div class="w_list_i">
+				<div class="w_list_jummp"></div>
+				<div class="w_list_ji">
+					<img src="{:goods_thum_images($vv['goods_id'],420,420);}">
+				</div>
+			</div>
+			<div class="w_list_t">
+				<h3>{$vv.goods_name}</h3>
+				<p>{$vv.store_name}</p>
+			</div>
+		</a>
+	</div>
+	<div class="w_list_btn">
+		<p>￥<span>{$vv.shop_price}</span>元</p>
+		<div class="w_list_btn_r">
+			<a href=""><img src="__STATIC__/images/rengzheng.png"></a>
+			<a href=""><img src="__STATIC__/images/yunshanghui.png"></a>
+		</div>
+	</div>
+</li>
+</foreach>

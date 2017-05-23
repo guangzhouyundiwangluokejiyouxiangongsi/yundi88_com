@@ -1519,4 +1519,5 @@ function news_thum_images($news_id,$width,$height){
     }catch (Think\Exception $e){
         return $original_img;
     }
+
 }

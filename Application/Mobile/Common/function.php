@@ -23,7 +23,20 @@
 //     return $imgs_data;
 // }
 
-
+/**
+ * 管理员操作记录
+ * @param $log_url 操作URL
+ * @param $log_info 记录信息
+ * @param $log_type 日志类别
+ */function adminLog($log_info,$log_type=0){
+    $add['log_time'] = time();
+    $add['admin_id'] = session('admin_id');
+    $add['log_info'] = $log_info;
+    $add['log_ip'] = getIP();
+    $add['log_url'] = __ACTION__;
+    $add['log_type'] = $log_type;
+    M('admin_log')->add($add);
+}
 
 function tempimg($name,$width,$height)
 {
@@ -42,7 +55,7 @@ function tempimg($name,$width,$height)
         
     
     $original_img = '.'.$name; // 相对路径
-    if(!file_exists($original_img)) return '';
+    if(!file_exists($original_img)) return $name;
     
     
         $image = new \Think\Image();

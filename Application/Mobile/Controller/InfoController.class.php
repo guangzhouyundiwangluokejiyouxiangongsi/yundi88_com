@@ -19,11 +19,7 @@ class InfoController extends MobileBaseController
     public function ajaxgetinfo()
     {
         $ranking_m = M('ranking_art');
-        $conut = $ranking_m->count();
-        $page = new Page($count,10);
-        $artid = $ranking_m->limit($page->firstRow,$page->listRows)->order('num desc,commerce_state desc,apply_state desc,id desc')->cache()->select();
-
-
+        $artid = $ranking_m->order('num desc,commerce_state desc,apply_state desc,id desc')->page($_GET['p'].',5')->cache()->select();
         $art_id = '';
         foreach($artid as $v){
             $art_id .= $v['id'].',';
@@ -43,6 +39,29 @@ class InfoController extends MobileBaseController
         $this->display('ajaxinfo');
     }
 
+    public function search_info()
+    {   
+        $name = I('name');
+        $this->assign('name',$name);
+        $this->display();
+    }
+
+    public function ajaxsearchinfo()
+    {   
+        $name = I('name');
+        $where['title'] = array('like','%'.$name.'%');
+        $where['is_show'] = 1;
+        $where['home_is_show'] = 1;
+        $model = M();
+        $articlelist = $model->field('a.id,a.sn_id,a.timer,a.title,a.content,a.store,a.newsimg,a.m_click,a.description,a.keyword,a.pc_click,s.store_name,s.commerce_state,s.apply_state')->table('__STORE_ART__ AS a')->join('INNER JOIN __STORE__ AS s ON s.store_id = a.store')->where($where)->order('s.commerce_state desc,s.apply_state desc,a.id')
+            ->page($p,5)
+            ->select();
+        foreach($articlelist as &$v){
+            $v['content'] = sp_getcontent_imgs(htmlspecialchars_decode($v['content']));
+        }
+        $this->assign('articlelist',$articlelist);
+        $this->display('ajaxinfo');
+    }
 
 	public function search()
 	{

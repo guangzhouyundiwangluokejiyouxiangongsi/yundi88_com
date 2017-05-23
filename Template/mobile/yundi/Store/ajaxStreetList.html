@@ -1,0 +1,46 @@
+<volist name="store_list" id="store">
+	<section class="rzs_info">
+		<dl>
+			<dt><a href="{:U('Store/index',array('store_id'=>$store[store_id]))}" class="flow-datu" title="{$store['store_name']}"
+				   style="background-image:url({$store['store_logo']})"> </a></dt>
+			<dd><strong><a href="{:U('Store/index',array('store_id'=>$store[store_id]))}"> 店铺：{$store['store_name']}</a></strong>
+
+				<p>所在地55555555：{$store['province_name']},{$store['city_name']},{$store['district_name']}</p>
+			</dd>
+		</dl>
+		<ul>
+			<li><span>宝贝描述</span><strong>:<if condition="$store['store_desccredit'] eq 0">5.0<else />{$store['store_desccredit']|number_format=1}</if></span></strong>
+				<em><between name="store.store_desccredit" value="0,1.99">低</between>
+					<between name="store.store_desccredit" value="2,3.99">中</between>
+					<between name="store.store_desccredit" value="4,5">高</between>
+				</em>
+			</li>
+			<li><span>卖家服务</span><strong>:<if condition="$store['store_servicecredit'] eq 0">5.0<else />{$store['store_servicecredit']|number_format=1}</if></strong>
+				<em><between name="store.store_desccredit" value="0,1.99">低</between>
+					<between name="store.store_desccredit" value="2,3.99">中</between>
+					<between name="store.store_desccredit" value="4,5">高</between></em>
+			</li>
+			<li><span>物流服务</span><strong>:<if condition="$store['store_deliverycredit'] eq 0">5.0<else />{$store['store_deliverycredit']|number_format=1}</if></strong>
+				<em><between name="store.store_desccredit" value="0,1.99">低</between>
+					<between name="store.store_desccredit" value="2,3.99">中</between>
+					<between name="store.store_desccredit" value="4,5">高</between></em>
+			</li>
+		</ul>
+		<div class="index_taocan">
+			<h2>共{$store['goods_array']['goods_count']}件宝贝</h2>
+			<volist name="store['goods_array']['goods_list']" id="goods">
+				<a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$goods['goods_id']))}">
+					<dl>
+						<dt><img src="{$goods['goods_id']|goods_thum_images=137,137}" class="B_eee"><em>￥{$goods['shop_price']}</em>
+						</dt>
+						<dd>{$goods['goods_name']}</dd>
+					</dl>
+				</a>
+			</volist>
+		</div>
+		<div class="s_dianpu">
+			<span><a href="tel:{$store['store_phone']}" style=" margin-left:7%"><em class="bg1"></em>联系客服</a></span>
+			<span><a href="{:U('Mobile/Store/index',array('store_id'=>$store['store_id']))}" style=" margin-left:3%"><em class="bg2"></em>进入店铺</a></span>
+		</div>
+	</section>
+</volist>

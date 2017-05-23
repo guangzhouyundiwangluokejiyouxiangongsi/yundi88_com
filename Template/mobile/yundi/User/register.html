@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />  
+		<title>register</title>
+		<link rel="stylesheet" href="__STATIC__/css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="__STATIC__/css/common.css" />
+		<link rel="stylesheet" href="__STATIC__/css/register.css" />
+		<script type="text/javascript" src="__STATIC__/js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/main2.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/regular.js" ></script>
+	</head>
+	<body>
+		<div class="d_header">
+			<div class="mg">
+				<a href="javascript:history.back();"><img src="__STATIC__/img/return.png"/></a>
+				<h2>会员注册</h2>
+			</div>			
+		</div>
+		
+		<div class="d_register">
+			<ul>
+				<li class="active">个人注册</li>
+				<li>企业注册</li>
+			</ul>
+			
+			<div class="mg">
+				<form class="show formone" id="form1">
+					<label>
+						<span>账号</span>
+						<input type="text" name="sellername" placeholder="账号(字母开头6-16位)" maxlength="16" onblur="p_isaccount(this.value)"/>
+						<i></i>
+					</label>
+					<label>
+						<span>手机号</span>
+						<input type="tel" name="username" id="mobile" placeholder="手机号(11位)" maxlength="11" onblur="p_isTel(this.value);"/>
+						<i></i>
+					</label>
+					<label>
+						<span>密码</span>
+						<input type="password" name="password" id="" placeholder="设置密码(6-20位)" maxlength="20" onblur="p_isPass(this.value);"/>
+						<i></i>
+					</label>
+					<label>
+						<span>验证码</span>
+						<input type="text" style="width: 1.6926rem;" name="code" id="" placeholder="验证码" maxlength="6" onblur="iscode(this.value);"/>
+						<i></i>
+						<a href="javascript:;" class="gaincode" onclick="code()">获取验证码</a>
+					</label>					
+					<a href="javascript:;" onclick="btn_reg()">注册</a>
+					<span>
+						<a href="/Mobile/User/login.html">已有账号</a>
+					</span>
+				</form>
+				
+				<form class="show formtwo" id="form2">
+					<label class="clear">
+						<span>称呼</span>
+						<div class="d_sex">
+							<label>
+								<input type="radio" name="sex" value="1" checked="checked"/>
+								<span>先生</span>
+							</label>
+							<label>
+								<input type="radio" name="sex" value="2" />
+								<span>女士</span>
+							</label>							
+						</div>
+					</label>
+					<label>
+						<span>企业名</span>
+						<input type="text" name="storename" id="" placeholder="企业名(4-16位)" maxlength="16" onblur="c_iscorporation(this.value)"/>
+						<i></i>
+					</label>
+					<label>
+						<span>账号</span>
+						<input type="text" name="sellername" placeholder="账号(字母开头6-16位)" maxlength="16" onblur="c_isaccount(this.value)"/>
+						<i></i>
+					</label>
+					<label>
+						<span>手机号</span>
+						<input type="tel" name="username" id="mobile2" placeholder="手机号(11位)" maxlength="11" onblur="c_isTel(this.value);"/>
+						<i></i>
+					</label>
+					<label>
+						<span>密码</span>
+						<input type="password" name="password" id="" placeholder="设置密码(6-20位)" maxlength="20" onblur="c_isPass(this.value);"/>
+						<i></i>
+					</label>
+					<label>
+						<span>验证码</span>
+						<input type="text" style="width: 1.6926rem;" name="code" id="" placeholder="验证码" maxlength="6" onblur="iscode(this.value);"/>
+						<i></i>
+						<a href="javascript:;" class="gaincode" onclick="codes()">获取验证码</a>
+					</label>					
+					<a href="javascript:;" onclick="btn_regg()">注册</a>
+					<span>
+						<a href="/Mobile/User/login.html">已有账号</a>
+					</span>
+				</form>
+			</div>			
+		</div>
+	</body>
+</html>

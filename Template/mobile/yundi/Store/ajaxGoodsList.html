@@ -1,0 +1,11 @@
+<foreach name="goods_list" item="vo">
+    <li>
+        <a href="{:U('Goods/goodsInfo',array('id'=>$vo[goods_id]))}">
+            <img src="{$vo.goods_id|goods_thum_images=200,200}" alt="{$vo.goods_name|getSubstr=0,16}" srcset="{$vo.goods_id|goods_thum_images=200,200}"
+                 srcd="{$vo.goods_id|goods_thum_images=200,200}">
+
+            <p> {$vo.goods_name|getSubstr=0,20} </p>
+            <span>￥{$vo.shop_price}元</span>
+        </a>
+    </li>
+</foreach>
