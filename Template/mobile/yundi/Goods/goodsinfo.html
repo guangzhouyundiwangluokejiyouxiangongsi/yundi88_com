@@ -15,6 +15,11 @@
 		<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
 		<script src="__PUBLIC__/js/mobile_common.js"></script>
 	</head>
+	<style>
+		#bdshare .bds_more{background: none !important;}
+		.bds_more img{width: 0.3032rem;border: 0;margin: 0;padding: 0;cursor: pointer;}
+		
+	</style>
 	<body>
 		<div class="d_header">
 			<div class="mg">
@@ -51,7 +56,11 @@
   							<span>{$goods.goods_name}</span>
   						</span>
   					</h1>
-  					<a href="javascript:;"><img src="__STATIC__/img/share.png"/>分享</a>
+  					 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+  					 <span class="bds_more"><img src="__STATIC__/img/share.png"/>分享</span>
+  					</div>
+  					<script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
+    				<script type="text/javascript" id="bdshell_js"></script> 
   					<span class="clear">
   						<em><i>￥</i>{$goods.shop_price}元</em>
   						<b>￥{$goods.market_price}元</b>
@@ -270,5 +279,16 @@
 				}
 			}
 		</script>
+		 <script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
+	    <script type="text/javascript" id="bdshell_js"></script> 
+	    <script type="text/javascript">
+		/**
+		 * 在这里定义bds_config
+		 */
+		var bds_config = {};
+
+		document.getElementById('bdshell_js').src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+		</script>
+		<!-- Baidu Button END -->
 	</body>
 </html>
