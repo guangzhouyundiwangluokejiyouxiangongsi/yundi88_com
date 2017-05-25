@@ -63,8 +63,10 @@
 /*图文详情*/
 .d_graphic{width: 100%;}
 .d_graphic h1,.d_specs h1{width: 100%;height: 0.6737rem;line-height: 0.6737rem;text-align: center;background: #e4e5e9;color: #999999;font-size: 0.2021rem;}
-.d_graphic .d_pic img{max-width: 100%;}
+.d_graphic .d_pic img{width: 100%;}
 
+.s_txt img{margin-right: 0.05rem !important;margin-top: -0.1rem !important;}
+.s_txt {height: 0.4rem !important;font-size: 0.21rem;line-height: 0.4rem ;}
 /*商品属性*/
 .d_specs{width: 100%;}
 .d_specs ul{margin-bottom: 0.4211rem;}

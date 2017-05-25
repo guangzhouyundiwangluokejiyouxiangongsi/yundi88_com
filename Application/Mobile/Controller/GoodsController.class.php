@@ -155,7 +155,7 @@ class GoodsController extends MobileBaseController {
          
         $spec_goods_price  = M('spec_goods_price')->where("goods_id = $goods_id")->getField("key,price,store_count"); // 规格 对应 价格 库存表
         //M('Goods')->where("goods_id=$goods_id")->save(array('click_count'=>$goods['click_count']+1 )); //统计点击数
-        $commentStatistics = $goodsLogic->commentStatistics($goods_id);// 获取某个商品的评论统计
+        // $commentStatistics = $goodsLogic->commentStatistics($goods_id);// 获取某个商品的评论统计
         $this->assign('spec_goods_price', json_encode($spec_goods_price,true)); // 规格 对应 价格 库存表
       	$goods['sale_num'] = M('order_goods')->where("goods_id=$goods_id and is_send=1")->count();
         //商品促销
@@ -171,7 +171,7 @@ class GoodsController extends MobileBaseController {
 
         $goods_images_list[]['image_url'] = $goods['original_img'];
 
-        $this->assign('commentStatistics',$commentStatistics);//评论概览
+        // $this->assign('commentStatistics',$commentStatistics);//评论概览
         $this->assign('goods_attribute',$goods_attribute);//属性值     
         $this->assign('goods_attr_list',$goods_attr_list);//属性列表
         $this->assign('filter_spec',$filter_spec);//规格参数
@@ -185,9 +185,14 @@ class GoodsController extends MobileBaseController {
             $this->assign('store_apply',$store_apply);
             $this->assign('store',$store);
         }
-        $this->display();
+        $cart = M('cart')->where(array('session_id'=>$this->session_id))->find();
+        $this->display('goodsinfo');
     }
 
+    public function ajaxcart(){
+        $cart = M('cart')->where(array('session_id'=>$this->session_id))->find();
+        $this->ajaxReturn($cart);
+    }
     /**
      * 商品详情页
      */
