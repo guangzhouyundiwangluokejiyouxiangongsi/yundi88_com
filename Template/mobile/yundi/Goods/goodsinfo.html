@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
 		<script type="text/javascript" src="__STATIC__/js/main2.js" ></script>	
 		<script type="text/javascript" src="__STATIC__/js/layer.js" ></script>
-		<script src="__PUBLIC__/js/mobile_common.js"></script>
+		<script src="__PUBLIC__/js/mobile_common2.js"></script>
 	</head>
 	<style>
 		#bdshare .bds_more{background: none !important;}
@@ -31,7 +31,7 @@
 						<li id="#anchor3"><a href="#anchor3">商品属性</a></li>
 					</ul>
 				</div>
-				<a href="##" class="d_shop"><img src="__STATIC__/img/shop.png"/><i></i></a>
+				<a href="/Mobile/Cart/cart" class="d_shop"><img src="__STATIC__/img/shop.png" class="img"/><i></i></a>
 			</div>			
 		</div>
 		
@@ -57,7 +57,7 @@
   						</span>
   					</h1>
   					 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-  					 <span class="bds_more"><img src="__STATIC__/img/share.png"/>分享</span>
+  					 <span class="bds_more s_txt"><img src="__STATIC__/img/share.png"/>分享</span>
   					</div>
   					<script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
     				<script type="text/javascript" id="bdshell_js"></script> 
@@ -247,6 +247,17 @@
 		<script>
 			function jump(url){
 				window.location.href=url;
+			}
+
+			ajaxcart();
+			function ajaxcart(){
+			    $.get('/Mobile/Goods/ajaxcart',function(res){
+			        if (res){
+			            $('.img').attr('src','/Template/mobile/yundi/Static/img/gouwuche.png');
+			        }else{
+			        	$('.img').attr('src','/Template/mobile/yundi/Static/img/shop.png');
+			        }
+			    })
 			}
 
 			$(function(){
