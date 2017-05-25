@@ -225,4 +225,54 @@ class IndexController extends MobileBaseController {
         $this->assign('street',$street);
         $this->display('ajaxstreet');
     }
+
+    public function promote()
+    {
+
+        if(IS_AJAX){//前端请求
+            $num = M('config')->where(array('id'=>88))->getField('value');
+            $this->ajaxReturn($num);
+
+        }elseif(IS_POST){//操作系统增加
+        $num = rand(1,3);
+          M('config')->where(array('id'=>88))->setInc('value',$num);  exit;
+
+        }else{
+            $num = M('config')->where(array('id'=>88))->getField('value');
+            $this->assign('num',$num);
+            $this->display();
+            
+        }
+    }
+
+    public function enter()
+    {
+        $store_id = I('store_id','');
+        if (!$store_id){
+            header('location:http://association.yundi88.com/Mobile/index');
+            exit;
+        }
+        $store = M('store')->field('store_id,store_name,province_id,city_id,district,store_address,domain,commerce_state')->where(array('store_id'=>$store_id))->find();
+        if (!$store['commerce_state']){
+            header('location:http://association.yundi88.com/Mobile/index');
+            exit;
+        }
+        $this->assign('store',$store);
+        $this->display();
+    }
+
+    public function certification_info()
+    {
+        $store_id = I('store_id',606);
+        if (!$store_id) $this->redirect('/Mobile/Index/certification');
+        $store = M('store')->where(array('store_id'=>$store_id))->field('store_name,store_id,user_id,commerce_state,apply_state')->find();
+        $user_id = $store['user_id'];
+        $apply = M('store_apply')->where(array('user_id'=>$user_id))->find();
+        if (!$apply['apply_state']) $this->redirect('/Mobile/Index/certification');
+        $goods = M('goods')->where(array('store_id'=>$store_id))->order('on_time desc')->limit(6)->select();
+        $this->assign('goods',$goods);
+        $this->assign('store',$store);
+        $this->assign('apply',$apply);
+        $this->display();
+    }
 }

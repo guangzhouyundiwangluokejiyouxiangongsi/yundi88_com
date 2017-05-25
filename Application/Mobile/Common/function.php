@@ -70,3 +70,34 @@ function tempimg($name,$width,$height)
         // return '/'.$path.$thumb_name;
 
 }
+
+    function mosaic($user_id,$width,$height,$field,$x1,$y1,$x2,$y2)
+    {
+
+        if(empty($user_id)) return '';
+        //判断缩略图是否存在
+        $path = "Public/upload/mosaic/thumb/$user_id/";
+        $mosaic_thumb_name ="mosaic_thumb_{$user_id}_{$width}_{$height}_{}";
+      
+        // 这个商品 已经生成过这个比例的图片就直接返回了
+        if(file_exists($path.$mosaic_thumb_name.'.jpg'))  return '/'.$path.$mosaic_thumb_name.'.jpg'; 
+        if(file_exists($path.$mosaic_thumb_name.'.jpeg')) return '/'.$path.$mosaic_thumb_name.'.jpeg'; 
+        if(file_exists($path.$mosaic_thumb_name.'.gif'))  return '/'.$path.$mosaic_thumb_name.'.gif'; 
+        if(file_exists($path.$mosaic_thumb_name.'.png'))  return '/'.$path.$mosaic_thumb_name.'.png'; 
+
+         $original_img = M('store_apply')->where(array('user_id'=>$user_id))->getField($field);
+         if(empty($original_img)) return '';
+         $mosaic_img = '.'.$original_img;
+         if(!file_exists($mosaic_img)) return '';
+         if(!is_dir($path)) mkdir($path,0777,true);
+
+         $image = new \Think\Image(); 
+         $image->open($mosaic_img);//将图片裁剪为440x440并保存为corp.jpg
+          $type = $image->type(); 
+         $image->thumb($width, $height)->save($path.$mosaic_thumb_name.'.'.$type,NULL,100);//缩放
+         $image->water('./Public/images/mosaic.jpg',array($x1,$y1),100)->save($path.$mosaic_thumb_name.'.'.$type);
+         $image->water('./Public/images/mosaic.jpg',array($x2,$y2),100)->save($path.$mosaic_thumb_name.'.'.$type);
+
+         return '/'.$path.$mosaic_thumb_name.'.'.$type;
+
+    }

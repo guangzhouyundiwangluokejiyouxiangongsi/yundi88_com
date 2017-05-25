@@ -1,0 +1,64 @@
+
+@media all and (orientation : landscape) { 
+
+/*头部*/
+.y_header{margin: 0 auto;background: #252525;height: 50px;color: #fff;text-align: center;position: fixed;top: 0;width: 100%;z-index: 20;line-height: 50px;}
+
+.y_header .y_nav_icon{padding: 16px;position: absolute;}
+.y_header .y_nav_icon img{display: block;width: 18px;}
+.y_header .y_title{display: block;line-height: 50px;overflow: hidden;width: 200px;margin: 0 auto;padding: 0;}    
+.y_header .y_title img{float: left;display: block;margin:8px 13px 0 0;width: 32px;}
+.y_header .y_title h3{float: left;font-size: 20px;font-weight: normal;}
+
+.y_header .y_back{display: block;position: absolute;left: 0;top:  0;padding:10px 20px 10px 20px;}
+.y_header .y_back img{width:16px;height: 30px;}
+
+.y_content{margin:50px 0; }
+/*底部导航*/
+.y_footer {overflow: hidden;margin: 0 auto;border-top: 1px solid #cccccc;position: fixed;bottom: 0;width: 100%;background: #ffffff;z-index: 20;}
+.y_footer a{padding: 6px 0 4px;display:block;width: 25%;text-align: center;float: left;color: #6a6a6a;font-size:16px;}
+.y_footer a img{width:22px;height: 20px;}
+.y_footer a span{display: block;}
+
+/*返回顶部*/
+.backtop{bottom:0.5rem;}
+/*侧边栏*/
+.slide_menu{position: fixed;background: rgba(0,0,0,0.5);top:50px;height: 100%;width: 100%;z-index: 21;display: none;overflow-y:auto;}
+.slide_menu ul{background: #ffffff;height: 100%;width: 40%;}
+.slide_menu ul li a{display: block;font-size:18px;color: #333333;height: 40px;line-height: 40px;position: relative;}
+.slide_menu ul li a:hover{background: url(../img/slide_bg.png) no-repeat left #f1f1f1;background-size: 80%;}
+.slide_menu ul li a span{display: block;width: 110px;margin: 0 auto;}
+.slide_menu ul li a span img{float: left;width:22px;height:22px;margin: 8px 4px 6px 0;}
+.slide_menu ul li a i{background: url(../img/slide_icon1.png) no-repeat center;display: block;width:18px;height: 18px;position: absolute;right: 0.2rem;top: 10px;}
+
+/*imformation选项卡*/
+.y_content .y_tabs{top:50px !important;}
+
+/*云谱头部*/
+.header{position: fixed;overflow: hidden;background: #2196f3;height:50px;line-height: 0px; text-align: center;width: 100%;top: 0;}
+.header .sort_back{display: block;position: absolute;left: 0;top:  0;padding:10px 20px 10px 20px;}
+.header .sort_back img{width:16px;height: 30px;}
+.header .sort_search{display: block;position: absolute;right: 0;top:  0;padding:10px 20px 10px 20px;}
+.header .sort_search img{width:30px;}
+.header .header_title{color: #FFFFFF;font-size: 20px;overflow: hidden;display:inline-block;margin: 5px 0 ;}
+.header .header_title span{display: block;float: left;line-height: 40px;}
+.header .header_title img{width: 32px;float: left;padding:5px 10px 0 0; height: 30px;}
+.header a img{display: block;}
+
+/*云谱详情底部*/
+.footer {overflow: hidden;margin: 0 auto;background: #343434;position: fixed;bottom: 0;width: 100%;z-index: 20;}
+.footer a{padding: 10px 0;display:block;width: 33.333%;text-align: center;float: left;color: #6a6a6a;font-size:18px;line-height: 24px;color: #FFFFFF;cursor: pointer;}
+.footer .num img{width:26px;}
+.footer .goodnum img{width:26px;margin-bottom: -2px;}
+.footer .share img{width:18px;margin-bottom:-2px;}
+
+.footer .num {padding: 12px 0;background: url(../img/y_detail_line.png) no-repeat right center;background-size: auto 40%;}
+.footer .goodnum {padding:10px 0;background: url(../img/y_detail_line.png) no-repeat right center;background-size: auto 40%;}
+.footer .share {padding:10px 0;}
+
+.footer .num i{font-style: normal;}
+.footer .goodnum i{font-style: normal;}
+
+
+
+} 

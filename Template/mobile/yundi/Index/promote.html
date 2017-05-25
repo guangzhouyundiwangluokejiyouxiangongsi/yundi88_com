@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/extend.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+</head>
+<body>
+
+	<div class="w_header">
+		<div class="w_header_history"><a href="#" onClick="javascript :history.back(1);"><img src="__STATIC__/img/ify_hsitory.png"></a></div>
+		<h3 class="w_header_title">免费推广</h3>
+		<div class="w_header_search"><a href=""><img src="__STATIC__/img/search.png"></a></div>
+	</div>
+
+
+	<div class="w_content">
+
+		<!-- banner -->
+		<div class="w_banner">
+			<img src="__STATIC__/img/extend_banner.jpg">
+		</div>
+		<!-- w_why_extend -->
+		<div class="w_why_extend">
+			<h3 class="w_extend_title">云狄网为什么要为中小企业进行免费网络推广？</h3>
+			<ul>
+				<li class="w_extend_list01">
+					<div class="txt">
+						<span>云狄网将网站和应用及 服务开放化，进而创造 新的价值。</span>
+					</div>
+				</li>
+				<li class="w_extend_list02">
+					<div class="txt">
+						<span>我们有充分的理由相信， 开放时代必将成为一个 创造无数奇迹的时代。 </span>
+					</div>
+				</li>
+				<li class="w_extend_list03">
+					<div class="txt">
+						<span>全民进行信息分享，提 高信息的覆盖面，从而 使相关信息能够通过更 多的渠道进行传播，实 现互联网上信息的高度 共享。 </span>
+					</div>
+				</li>
+				<li class="w_extend_list04">
+					<div class="txt">
+						<span>云狄网让企业在互联网 没有难做的推广，让平 台没有难做的服务！ </span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- w_eight_advantage -->
+		<div class="w_eight_advantage">
+			<div class="w_advantage_title">
+				<h3>加入云狄网免费免费获得 <span>8大</span> 推广优势</h3>
+				<p>资源、渠道、团队、服务、策划、保障</p>
+			</div>
+			<div class="adv_listf">
+				<div class="txt">
+					<p>同步免费拥有四站合 一(PC+移动+微官网+ 微商城)</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_01.png">
+			</div>
+			<div class="adv_lists">
+				<div class="txt">
+					<p>免费为用户在云狄网 认证企业/个体信息， 其产品永久免费</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_02.png">
+			</div>
+			<div class="adv_listt">
+				<p>所用的网站程序是针 对（SEO）搜索引擎 优化所制</p>
+				
+			</div>
+			<div class="adv_listfour">
+				<div class="txt">
+					<p>推广技巧傻瓜式操作， 无基础都就能操作后台 、看懂原理</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_04.png">
+			</div>
+			<div class="adv_listfifth">
+				<div class="txt">
+					<p>产品信息免费推送至 各大搜索引擎</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_05.png">
+			</div>
+			<div class="adv_listsixth">
+				<div class="txt">
+					<p>免费分享网络营销推 广100种方法</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_06.png">
+			</div>
+
+			<div class="adv_listseventh">
+				<div class="txt">
+					<p>加入企业联盟云商会 整合资源共建共享共 赢</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_07.png">
+			</div>
+			<div class="adv_listeighth">
+				<div class="txt">
+					<p>7天24小时候推广咨 询服务</p>
+				</div>
+				<img src="__STATIC__/img/extend_adv_08.png">
+			</div>
+		</div>
+	
+		<div class="add_extend">
+			<h3>你还在等什么呢？</h3>
+			<p style="text-align: left;margin:0.28rem 0;">现已有</p>
+			<span class="tgthreem">{$num}</span>
+			<p style="text-align: right;margin:0.28rem 0 0;">企业正在免费推广</p>
+			<a href="/Mobile/User/register.html">立即免费推广</a>
+		</div>
+		<include file="Public/footer" />
+	
+</body>
+<script type="text/javascript">
+           function fun(){
+	           $.post('/Mobile/Index/promote.html',{},function(res){
+	            if(res){
+	              $('.tgthreem').html(res)
+	            }
+	           })
+	       };
+	      setInterval(fun,10000); 
+</script>
+</html>

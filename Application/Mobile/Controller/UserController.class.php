@@ -79,6 +79,7 @@ class UserController extends MobileBaseController
     {
         session_unset();
         session_destroy();
+        cookie();
         setcookie('cn', '', time() - 3600, '/');
         setcookie('user_id', '', time() - 3600, '/');
         //$this->success("退出成功",U('Mobile/Index/index'));
