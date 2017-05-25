@@ -404,6 +404,8 @@ class GoodsController extends MobileBaseController {
     public function goodsList()
     {   
         $cat_id = I('id');
+        $cat_name = M('goods_category')->where(array('id'=>$cat_id))->getField('name');
+        $this->assign('cat_name',$cat_name);
         $this->assign('cat_id',$cat_id);
         $this->display();
     }
