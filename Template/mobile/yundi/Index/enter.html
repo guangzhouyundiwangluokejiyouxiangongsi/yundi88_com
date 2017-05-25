@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />  
+	<title>入驻会员</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/publics.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/public.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/enter.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/landscape.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/public.js"></script>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/extend.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="y_header">
+		<a class="y_back" href="javascript:history.go(-1)">
+			<img src="__STATIC__/img/sort_back.png">
+		</a>
+		<a class="y_title">
+			<img src="__STATIC__/img/logo2.png">
+			<h3>企业联盟云商会</h3>
+		</a>
+	</div>
+	
+	<div class="y_content">
+		<!-- banner -->
+		<div class="y_banner">
+			<img src="__STATIC__/img/enter_banner.png">
+		</div>
+		<!-- abstract -->
+		<div class="abstract">
+			<div class="txt">
+				<h3>{$store.store_name}简介</h3>
+				<p>{$store.store_profile}</p>
+				<if condition="!$store['store_profile']"><p>该公司暂未添加简介</p></if>
+			</div>
+			<div class="address">
+				<h3>公司地址</h3>
+				<p>
+				  <tpshop sql="select name from __REGION__ where id=$store[province_id] limit 1" item="v">
+		          {$v['name']}  <!-- 省 -->
+		          </tpshop>
+		          <tpshop sql="select name from __REGION__ where id=$store[city_id] limit 1" item="v">
+		          {$v['name']} <!-- 市 -->
+		          </tpshop>
+		          <tpshop sql="select name from __REGION__ where id=$store[district] limit 1" item="v">
+		          {$v['name']} <!-- 区 -->
+		          </tpshop>{$store.store_address}
+				</p>
+				<a href="http://{$store.domain}">{$store.domain}</a>
+			</div>
+		</div>
+
+		<include file="Public/footer" />
+</body>
+</html>

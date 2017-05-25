@@ -1,0 +1,77 @@
+/*header*/
+.w_header{width: 100%;height: 0.741rem;background: #008bb9;position: fixed;top: 0;z-index: 20;text-align: center;line-height: 0.741rem;}
+.w_header_title{font-family: "黑体";font-size: 0.3032rem;color: #fff;font-weight: normal;}
+.w_header_history{position: absolute;top: 0.2189rem;left: 0.2189rem;}
+.w_header_history a{display: block;height: 0.3032rem;width: 0.1684rem;}
+.w_header_history a img{width: 100%;height: 100%;position: absolute;top: 0;right: 0;}
+.w_header_search{position: absolute;top: 0.2189rem;right: 0.2189rem;}
+.w_header_search a{display: block;height: 0.3032rem;width: 0.2947rem;}
+.w_header_search a img{width: 0.2947rem;position: absolute;top: 0;right: 0;}
+/*w_banner*/
+.w_content .w_banner img{width: 100%;display: block;}
+
+.w_content .w_why_extend{border-top:0.2rem solid #e4e5e9;border-bottom:0.2rem solid #e4e5e9;padding:0 0.201rem 0.1rem;  }
+.w_content .w_why_extend .w_extend_title{font-size:0.2358rem;font-weight: normal;padding:0.2358rem 0;line-height: 0.25rem;color: #008bb9;text-align: center;}
+/*w_why_extend*/
+.w_content .w_why_extend ul{overflow: hidden;max-width: 760px;margin: 0 auto;}
+.w_content .w_why_extend ul li{width: 48%;margin: 1%;float: left;}
+.w_content .w_why_extend ul li div.txt{display:table-cell; width:2.2632rem ;height:2.8632rem ;color:#FFF; font-size:0.2358rem; vertical-align:middle;padding:0 0.3rem;text-align: justify;overflow: hidden;}
+.w_content .w_why_extend ul li div.txt span{display:inline-block; font-size:0.2rem; vertical-align:middle;}
+
+.w_content .w_why_extend .w_extend_list01{background: url(../img/extend_01.png) no-repeat center center;background-size:auto 100% ;}
+.w_content .w_why_extend .w_extend_list02{background: url(../img/extend_02.png) no-repeat center center;background-size:auto  100%;}
+.w_content .w_why_extend .w_extend_list03{background: url(../img/extend_03.png) no-repeat center center;background-size:auto  100%;}
+.w_content .w_why_extend .w_extend_list04{background: url(../img/extend_04.png) no-repeat center center;background-size:auto  100%;}
+
+/*w_eight_advantage*/
+.w_eight_advantage .w_advantage_title{text-align: center;padding: 0.1684rem 0;}
+.w_eight_advantage .w_advantage_title h3{color: #333333;font-size: 0.2358rem;font-weight: normal;}
+.w_eight_advantage .w_advantage_title h3 span{color: #ff0000;font-size:0.4042rem; }
+.w_eight_advantage .w_advantage_title p{color: #999999;font-size: 0.2189rem;line-height: 0.4rem;}
+
+
+
+.adv_listf {padding:0.3368rem 3.3684rem 0.3368rem 0.3368rem;background: #79bdf7;overflow: hidden;position: relative;}
+.adv_listf img{width: 3rem;position: absolute;right:0.3368rem ;top:0.3368rem ;}
+.adv_listf .txt{display:table-cell; height: 2.2563rem; vertical-align:middle;}
+.adv_listf p{color:#FFF; font-size:0.2358rem;vertical-align:middle;}
+
+.adv_lists {padding:0.3368rem 0.3368rem 0.3368rem 3.3684rem;background: #e6e6e6;overflow: hidden;position: relative;}
+.adv_lists img{position: absolute;left:0.3368rem ;top:0.3368rem ;width: 2.7621rem;}
+.adv_lists .txt{display:table-cell; height: 2.4563rem; vertical-align:middle;}
+.adv_lists p{color:#333; font-size:0.2358rem;vertical-align:middle;}
+
+.adv_listt {padding:0.3368rem 0.3368rem 0.3368rem 3.3684rem ;overflow: hidden;background:url(../img/extend_adv_03.png) no-repeat center; background-size:auto 100%;height: 3rem;}
+.adv_listt p{color:#333; font-size:0.2358rem;float: right;margin-top: 2rem;}
+
+.adv_listfour {padding:0.3368rem 3.3684rem 0.3368rem 0.3368rem;background: #fd7f8b;overflow: hidden;position: relative;}
+.adv_listfour img{position: absolute;right:0.3368rem ;top:0.3368rem ;width:2.3916rem;}
+.adv_listfour .txt{display:table-cell; height: 2.8563rem; vertical-align:middle;}
+.adv_listfour p{color:#FFF; font-size:0.2358rem;vertical-align:middle;}
+
+.adv_listfifth {padding:0.3368rem 0.3368rem 0.3368rem 4rem;overflow: hidden;position: relative;}
+.adv_listfifth img{position: absolute;left:0.3368rem ;top:0.3368rem ;width: 3.6rem;}
+.adv_listfifth .txt{display:table-cell; height:2.1rem; vertical-align:middle;}
+.adv_listfifth p{color:#333; font-size:0.2358rem;vertical-align:middle;}
+
+.adv_listsixth {padding:0.3368rem 3.3684rem 0.3368rem 0.3368rem;background: #64bbb2;overflow: hidden;position: relative;}
+.adv_listsixth img{position: absolute;right:0.3368rem ;top:0.3368rem ;width: 2.3158rem;}
+.adv_listsixth .txt{display:table-cell; height:3rem; vertical-align:middle;}
+.adv_listsixth p{color:#FFF; font-size:0.2358rem;vertical-align:middle;}
+
+.adv_listseventh {padding:0.3368rem 0.3368rem 0.3368rem 3.3684rem;overflow: hidden;background: #adec89;position: relative;}
+.adv_listseventh img{position: absolute;left:0.3368rem ;top:0.3368rem ;width:2.4337rem ;}
+.adv_listseventh .txt{display:table-cell; height:2.4rem; vertical-align:middle;}
+.adv_listseventh p{color:#333; font-size:0.2358rem;vertical-align:middle;}
+
+.adv_listeighth {padding:0.3368rem 3.3684rem 0.3368rem 0.3368rem;background: #f7643d;overflow: hidden;position: relative;}
+.adv_listeighth img{position: absolute;right:0.3368rem ;top:0.3368rem ;width: 2.1389rem;}
+.adv_listeighth .txt{display:table-cell; height:2.8rem; vertical-align:middle;}
+.adv_listeighth p{color:#FFF; font-size:0.2358rem;vertical-align:middle;}
+
+/*add_extend*/
+.add_extend  {text-align: center;padding:0.8rem  0.3368rem 0;background: #e4e5e9;}
+.add_extend h3{color: #333;font-weight: normal;font-size: 0.3032rem;}
+.add_extend p{color: #333;font-size: 0.2526rem;}
+.add_extend span{color:#eb3436;font-size: 0.9rem;}
+.add_extend a{color:#FFF; font-size:0.2358rem;background: #347ab8;padding:0.1684rem 0.6rem;}

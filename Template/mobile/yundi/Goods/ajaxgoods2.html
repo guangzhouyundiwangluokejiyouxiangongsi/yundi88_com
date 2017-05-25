@@ -17,8 +17,22 @@
 	<div class="w_list_btn">
 		<p>￥<span>{$vv.shop_price}</span>元</p>
 		<div class="w_list_btn_r">
-			<a href=""><img src="__STATIC__/images/rengzheng.png"></a>
-			<a href=""><img src="__STATIC__/images/yunshanghui.png"></a>
+
+			<a href="/Mobile/Index/certification_info?store_id={$vv.store_id}">
+			<if condition="$vv[apply_state]">
+			<img src="__STATIC__/images/rengzheng.png" title="权威认证">
+			<else />
+			<img src="__STATIC__/images/rengzheng2.png" title="权威认证">
+			</if>
+			</a>
+
+			<a href="/Mobile/Index/enter?store_id={$vv.store_id}">
+			<if condition="$vv[commerce_state]">
+			<img src="__STATIC__/images/yunshanghui.png">
+			<else />
+			<img src="__STATIC__/images/yunshanghui2.png">
+			</if>
+			</a>
 		</div>
 	</div>
 </li>

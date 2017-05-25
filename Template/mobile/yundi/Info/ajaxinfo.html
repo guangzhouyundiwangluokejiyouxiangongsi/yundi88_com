@@ -15,14 +15,14 @@
 						</div>
 						<div class="w_info_tit_r">
 							<php>if($v['apply_state']){</php>
-								<a href=""><img src="__STATIC__/images/rengzheng.png" title="权威认证"></a>
+								<a href="/Mobile/Index/certification_info?store_id={$v.store}"><img src="__STATIC__/images/rengzheng.png" title="权威认证"></a>
 							<php>}else{</php>
-								<a href=""><img src="__STATIC__/images/rengzheng2.png" title="权威认证"></a>
+								<a href="/Mobile/Index/certification_info?store_id={$v.store}"><img src="__STATIC__/images/rengzheng2.png" title="权威认证"></a>
 							<php>}</php>
-							<php>if($v['apply_state']){</php>
-								<a href=""><img src="__STATIC__/images/yunshanghui.png" title="云商会"></a>
+							<php>if($v['commerce_state']){</php>
+								<a href="/Mobile/Index/enter?store_id={$v.store}"><img src="__STATIC__/images/yunshanghui.png" title="云商会"></a>
 							<php>}else{</php>
-								<a href=""><img src="__STATIC__/images/yunshanghui2.png" title="云商会"></a>
+								<a href="/Mobile/Index/enter?store_id={$v.store}"><img src="__STATIC__/images/yunshanghui2.png" title="云商会"></a>
 							<php>}</php>
 						</div>
 					</div>

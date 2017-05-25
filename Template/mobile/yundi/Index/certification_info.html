@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>企业认证</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/certification_message.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/media.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/main.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/swiper.min.js"></script>
+	<link rel="stylesheet" href="__STATIC__/css/swipebox.css">
+	<script src="__STATIC__/js/jquery.swipebox.js"></script>
+
+</head>
+<body>
+
+	<div class="w_header">
+		<div class="w_header_history"><a href="#" onClick="javascript :history.back(1);"><img src="__STATIC__/images/ify_hsitory.png"></a></div>
+		<h3 class="w_header_title">企业认证</h3>
+		<div class="w_header_search"><a href=""><img src="__STATIC__/images/search.png"></a></div>
+	</div>
+
+
+	<div class="w_content">
+
+		<!-- banner -->
+		<div class="w_banner">
+			<if condition="$apply[apply_type]">
+			<img src="__STATIC__/images/banner.png">
+			<else/>
+			<img src="__STATIC__/images/certification_message_banner.png">
+			</if>
+		</div>
+		<!-- 信息列表 -->
+		<div class="com_message">
+			<ul>
+			<php> if($apply['apply_type']){</php>
+				<li>
+					<span>个体名称</span>
+					<p>{$store.store_name}</p>
+				</li>
+
+				<li>
+					<span>身份证号码</span>
+					<p>{$apply.store_person_identity}</p>
+				</li>
+
+				<li>
+					<span>营业期限</span>
+					<p>永久</p>
+				</li>
+
+				<li>
+					<span>主营产品</span>
+					<tpshop sql="select * from yd_store_class where sc_id = $apply[sc_id]" item="vo">
+					<p>{$vo.sc_name}</p>
+					</tpshop>
+				</li>
+
+				<li>
+					<span>个人网址</span>
+					<p>{$apply.company_website}</p>
+				</li>
+
+			<php> }else{ </php>
+				<li>
+					<span>公司名称</span>
+					<p>{$apply.company_name}</p>
+				</li>
+				<li>
+					<span>注册号</span>
+					<p>{$apply.business_licence_number}</p>
+				</li>
+				<li>
+					<span>注册资本</span>
+					<p>{$apply.reg_capital}万</p>
+				</li>
+				<li>
+					<span>法人代表</span>
+					<p>{$apply.legal_person}</p>
+				</li>
+				<li>
+					<span>营业期限</span>
+					<p>永久</p>
+				</li>
+				<li>
+					<span>经营范围</span>
+					<p>{$apply.business_scope}</p>
+				</li>
+				<li>
+					<span>公司官网</span>
+					<p>{$apply.company_website}</p>
+				</li>
+				<php>}</php>
+			</ul>
+		</div>
+	
+		<!-- 认证资质 -->
+		<div class="w_fine_pro_t">
+				<h3>推荐精品</h3>
+			</div>
+		<div class="certification_img">
+
+			 <!-- Swiper -->
+		    <div class="swiper-container">
+		        <div class="swiper-wrapper swipebox">
+		        <php> if ($apply['apply_type']){</php>
+					<notempty name="apply[store_person_cert]">
+		            <div class="swiper-slide" >
+		            	<!-- href里面的图片为点击放大后显示的 title里面的值为页数/最大页数-->
+			            <a rel="gallery-1" href="{$apply.store_person_cert}" class="swipebox" title="1/2">
+						    <img src="{$apply.store_person_cert}" alt="image">
+						</a>
+					</div>
+					</notempty>
+					
+					<notempty name="apply[legal_identity_cert]">
+					<div class="swiper-slide">
+						<a rel="gallery-1" href="{:mosaic($apply['user_id'],502,630,'legal_identity_cert',90,150,260,550)}" class="swipebox" title="2/2">
+						    <img src="{:mosaic($apply['user_id'],502,630,'legal_identity_cert',90,150,260,550)}" alt="image">
+						</a>
+		            </div>
+		            </notempty>
+		        <php> }else{</php>
+		        	<notempty name="apply[business_licence_cert]">
+		            <div class="swiper-slide" >
+		            	<!-- href里面的图片为点击放大后显示的 title里面的值为页数/最大页数-->
+			            <a rel="gallery-1" href="{$apply.business_licence_cert}" class="swipebox" title="1/3">
+						    <img src="{$apply.business_licence_cert}" alt="image">
+						</a>
+					</div>
+					</notempty>
+					
+					<notempty name="apply[taxpayer_cert]">
+					<div class="swiper-slide">
+						<a rel="gallery-1" href="{$apply.taxpayer_cert}" class="swipebox" title="1/3">
+						    <img src="{$apply.taxpayer_cert}" alt="image">
+						</a>
+		            </div>
+		            </notempty>
+
+		            <notempty name="apply[orgnization_cert]">
+		            <div class="swiper-slide">
+						<a rel="gallery-1" href="{$apply.orgnization_cert}" class="swipebox" title="1/3">
+						    <img src="{$apply.orgnization_cert}" alt="image">
+						</a>
+		            </div>
+		            </notempty>
+					
+					<notempty name="apply[legal_identity_cert]">
+		            <div class="swiper-slide">
+						<a rel="gallery-1" href="{:mosaic($apply['user_id'],502,630,'legal_identity_cert',90,150,260,550)}" class="swipebox" title="2/3">
+						    <img src="{:mosaic($apply['user_id'],502,630,'legal_identity_cert',90,150,260,550)}" alt="image">
+						</a>
+		            </div>
+					</notempty>
+
+		            <notempty name="apply[store_person_cert]">
+		            <div class="swiper-slide">
+		            	<a rel="gallery-1" href="{:mosaic($apply['user_id'],502,630,'store_person_cert',90,150,260,240)}" class="swipebox" title="3/3">
+						    <img src="{:mosaic($apply['user_id'],502,630,'store_person_cert',90,150,260,240)}" alt="image">
+						</a>
+		            </div>
+					</notempty>
+
+					<notempty name="apply[other_certificate]">
+		            <div class="swiper-slide">
+		            	<a rel="gallery-1" href="{$apply.other_certificate}" class="swipebox" title="1/3">
+						    <img src="{$apply.other_certificate}" alt="image">
+						</a>
+		            </div>
+					</notempty>
+
+					<notempty name="apply[other_certificate2]">
+		            <div class="swiper-slide">
+		            	<a rel="gallery-1" href="{$apply.other_certificate2}" class="swipebox" title="1/3">
+						    <img src="{$apply.other_certificate2}" alt="image">
+						</a>
+		            </div>
+					</notempty>
+				<php>}</php>
+		        </div>
+		    </div>
+
+		</div>
+		
+		<!-- 推荐精品 -->
+		<div class="w_fine_pro">
+			<div class="w_fine_pro_t">
+				<h3>推荐精品</h3>
+			</div>
+			<div class="w_fine_pro_c">
+				<ul>
+					<foreach name="goods" item="vv">
+					<li>
+						<div class="w_fine_top">
+							<a href="/Mobile/Goods/goodsInfo/id/{$vv.goods_id}">
+								<div class="w_fine_pro_c_i">
+									<div class="w_fine_jummp"></div>
+									<div class="w_fine_jummp_ji">
+										<img src="{$vv.goods_id|goods_thum_images=220,220}" />
+									</div>
+								</div>
+								<div class="w_fine_pro_c_t">
+									<p>{:getsubstr($vv[goods_name],0,30)}</p>
+								</div>
+
+							</a>
+						</div>
+						<div class="w_fine_btn">
+							<p>￥<span>{$vv.shop_price}</span>元</p>
+							<div class="w_fine_btn_r">
+								<if condition="store[apply_state]">
+								<a href="/Mobile/Index/certification_info?store_id={$store.store_id}"><img src="__STATIC__/images/rengzheng.png" title="权威认证"></a>
+								<else/>
+								<a href="/Mobile/Index/certification_info?store_id={$store.store_id}"><img src="__STATIC__/images/rengzheng2.png" title="权威认证"></a>
+								</if>
+								<if condition="store[commerce_state]">
+								<a href="/Mobile/Index/enter?store_id={$store.store_id}"><img src="__STATIC__/images/yunshanghui.png" title="云商会"></a>
+								<else />
+								<a href="/Mobile/Index/enter?store_id={$store.store_id}"><img src="__STATIC__/images/yunshanghui2.png" title="云商会"></a>
+								</if>
+							</div>
+						</div>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+
+		<include file="Public/footer" />
+	
+</body>
+<script type="text/javascript">
+
+    ( function( $ ) {
+ 
+        $( '.swipebox' ).swipebox({
+        	 useCSS : true,
+        	  initialIndexOnArray : 0, 
+        	 hideCloseButtonOnMobile : false,
+        	 loopAtEnd: false
+        });
+ 		
+    } )( jQuery );
+
+</script>
+ <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 2.3,
+        paginationClickable: true,
+        spaceBetween:0,
+        freeMode: true
+    });
+</script>
+
+</html>

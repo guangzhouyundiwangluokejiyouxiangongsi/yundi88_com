@@ -104,14 +104,14 @@
 	  					<span>综合描述 : <em><?php echo number_format(($store['store_desccredit']+$store['store_servicecredit']+$store['store_deliverycredit'])/3,2);?></em></span>
 	  					<span>
 	  						<if condition="store[apply_state]">
-	  						<img style="width: 0.3368rem;" src="__STATIC__/img/approve.png"/>
+	  						<img style="width: 0.3368rem;" src="__STATIC__/img/approve.png" onClick="jump('/Mobile/Index/certification_info?store_id={$store.store_id}')"/>
 	  						<else />
-	  						<img style="width: 0.3368rem;" src="__STATIC__/images/renzheng2.png.png"/>
+	  						<img style="width: 0.3368rem;" src="__STATIC__/images/renzheng2.png.png" onClick="jump('/Mobile/Index/certification_info?store_id={$store.store_id}')"/>
 	  						</if>
 	  						<if condition="store[commerce_state]">
-	  						<img style="width: 0.3032rem" src="__STATIC__/img/trade.png"/>
+	  						<img style="width: 0.3032rem" src="__STATIC__/img/trade.png" onClick="jump('/Mobile/Index/enter?store_id={$store.store_id}')"/>
 	  						<else />
-	  						<img style="width: 0.3032rem" src="__STATIC__/images/yunshanghui2.png"/>
+	  						<img style="width: 0.3032rem" src="__STATIC__/images/yunshanghui2.png" onClick="jump('/Mobile/Index/enter?store_id={$store.store_id}')"/>
 	  						</if>
 	  					</span>
 						<div style="text-align: center;">
@@ -245,6 +245,10 @@
 		<div class="d_shade"></div>	
 		
 		<script>
+			function jump(url){
+				window.location.href=url;
+			}
+
 			$(function(){
 				//滑轮滚动
 			    $(window).scroll(function(){
