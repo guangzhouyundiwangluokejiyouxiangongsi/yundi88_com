@@ -179,10 +179,14 @@
 				<li>
 					<div class="vertical">
 						<foreach name="store['store_presales']" item="vv">
+						<php>if($vv['account']){</php>
 						<a href="http://wpa.qq.com/msgrd?v=3&uin={$vv.account}&site=qq&menu=yes">
-							<img style="width: 0.2863rem;" src="__STATIC__/img/foot03.png"/>
+							<img style="width: 0.2863rem;" src="__STATIC__/img/qq04.png"/>
 							联系客服
-						</a>	
+						</a>
+						<php>}else{</php>
+							<img style="width: 0.2863rem;" src="__STATIC__/img/foot03.png"/>
+						<php>}</php>	
 						<php>break;</php>
 						</foreach>
 					</div>										

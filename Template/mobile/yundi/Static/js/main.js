@@ -67,28 +67,33 @@ $(function(){
 	// classify
 
 	// info
-	var lis = $(".w_info>ul>li").length;
-	for(i=0;i<lis;i++){
-		var hig = parseFloat($(".w_info>ul>li").eq(i).find(".w_info_text").find("p").css('line-height'));
-		var hig = 3*hig;
-		if($(".w_info>ul>li").eq(i).find(".w_info_text").find("p").height() > hig){
-			$(".w_info>ul>li").eq(i).find(".w_info_text").find(".w_info_btn").addClass("on");
-			$(".w_info>ul>li").eq(i).find(".w_info_text").find("p").addClass("default");
-		}
-	}
-	$(".w_info_btn").click(function(){
-		var _text = $(this).html();
-		if(_text == "点击展开"){
-			$(this).siblings('p').removeClass("default");
-			$(this).siblings('p').addClass("hov");
-			$(this).html("收起");
-		}else{
-			$(this).siblings('p').removeClass("hov");
-			$(this).siblings('p').addClass("default");
-			$(this).html("点击展开");
-		}
-		
-	})
+	// $(".w_info_li").each(function(lis){
+
+
+	// 	// var lis = $(".w_info>ul>li").length;
+	// 	// alert(lis)
+	// 	for(i=0;i<lis;i++){
+	// 		var hig = parseFloat($(".w_info>ul>li").eq(i).find(".w_info_text").find("p").css('line-height'));
+	// 		var hig = 3*hig;
+	// 		if($(".w_info>ul>li").eq(i).find(".w_info_text").find("p").height() > hig){
+	// 			$(".w_info>ul>li").eq(i).find(".w_info_text").find(".w_info_btn").addClass("on");
+	// 			$(".w_info>ul>li").eq(i).find(".w_info_text").find("p").addClass("default");
+	// 		}
+	// 	}
+	// 	$(".w_info_btn").click(function(){
+	// 		var _text = $(this).html();
+	// 		if(_text == "点击展开"){
+	// 			$(this).siblings('p').removeClass("default");
+	// 			$(this).siblings('p').addClass("hov");
+	// 			$(this).html("收起");
+	// 		}else{
+	// 			$(this).siblings('p').removeClass("hov");
+	// 			$(this).siblings('p').addClass("default");
+	// 			$(this).html("点击展开");
+	// 		}
+			
+	// 	})
+	// })
 
 	// info
 
@@ -114,3 +119,11 @@ $(function(){
 
 })
 
+
+function getsubstr(kk)
+{
+	var str = $('#str_'+kk).html();
+	$('#str_'+kk).html(str.substr(0,50));
+	$('#str_'+kk+'s').css('display','');
+	$('#str_'+kk+'_s').css('display','none');
+}
