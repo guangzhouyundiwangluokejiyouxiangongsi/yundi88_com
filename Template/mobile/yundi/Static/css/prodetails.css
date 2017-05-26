@@ -1,5 +1,5 @@
 /*头部*/
-.d_header{background: #008bb9;width: 100%;height: 0.7242rem;line-height: 0.7242rem;text-align: center;position: fixed;left: 0;top: 0;z-index: 2000;}
+.d_header{background: #21d460;width: 100%;height: 0.7242rem;line-height: 0.7242rem;text-align: center;position: fixed;left: 0;top: 0;z-index: 2000;}
 .d_header a,.d_header i{display: block;}
 .d_header .return{float: left;}
 .d_header .return img{width: 0.1684rem;}
