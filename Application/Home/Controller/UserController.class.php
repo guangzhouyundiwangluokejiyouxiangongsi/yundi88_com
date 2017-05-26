@@ -19,31 +19,31 @@ use Think\Verify;
 
 class UserController extends BaseController {
 
-	public $user_id = 0;
-	public $user = array();
-	
+    public $user_id = 0;
+    public $user = array();
+    
     public function _initialize() {      
         parent::_initialize();
         if(session('?user'))
         {
-        	$user = session('user');
+            $user = session('user');
             $user = M('users')->where("user_id = {$user['user_id']}")->find();
             session('user',$user);  //覆盖session 中的 user               
-        	$this->user = $user;
-        	$this->user_id = $user['user_id'];
-        	$this->assign('user',$user); //存储用户信息
-        	$this->assign('user_id',$this->user_id);
+            $this->user = $user;
+            $this->user_id = $user['user_id'];
+            $this->assign('user',$user); //存储用户信息
+            $this->assign('user_id',$this->user_id);
         }else{
-        	$nologin = array(
-        			'login','pop_login','do_login','logout','verify','set_pwd','finished',
-        			'verifyHandle','reg','send_sms_reg_code','identity','check_validate_code',
-        			'forget_pwd','check_captcha','check_username','send_validate_code','regstore',
-                    'ajax_seller','ajax_mobile','ajax_store','regstore2','login3','registered','ajax_jump','putcode','is_beautiful_username','test'
-        	);
-        	if(!in_array(ACTION_NAME,$nologin)){
-        		header("location:".U('/User/login'));
-        		exit;
-        	}
+            $nologin = array(
+                    'login','pop_login','do_login','logout','verify','set_pwd','finished',
+                    'verifyHandle','reg','send_sms_reg_code','send_sms_reg_code2','identity','check_validate_code',
+                    'forget_pwd','check_captcha','check_username','send_validate_code','regstore',
+                    'ajax_seller','ajax_mobile','ajax_store','regstore2','regstoress','login3','registered','ajax_jump','putcode','is_beautiful_username','test'
+            );
+            if(!in_array(ACTION_NAME,$nologin)){
+                header("location:".U('/User/login'));
+                exit;
+            }
         }
 
         
@@ -79,7 +79,7 @@ class UserController extends BaseController {
     }
     
     public function logout(){
-    	session(null);
+        session(null);
         cookie('uname',null);
         cookie('cn',null);
         cookie('user_id',null);
@@ -119,7 +119,7 @@ class UserController extends BaseController {
      */
     public function login(){
         if($this->user_id > 0 && session('store_id') > 0 && session('seller') != ''){
-        	header("Location: ".U('seller/Index/index'));
+            header("Location: ".U('seller/Index/index'));
         }           
         // dump($_COOKIE['referurl']);
         if ($_COOKIE['referurl']){
@@ -159,21 +159,21 @@ class UserController extends BaseController {
     }
 
     public function pop_login(){
-    	if($this->user_id > 0){
-    		header("Location: ".U('seller/Index/index'));
-    	}
+        if($this->user_id > 0){
+            header("Location: ".U('seller/Index/index'));
+        }
         $referurl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : U("seller/Index/index");
         $this->assign('referurl',$referurl);
-    	$this->display();
+        $this->display();
     }
     
     public function do_login(){
-    	$username = I('post.username','');
-    	$password = I('post.password','');
+        $username = I('post.username','');
+        $password = I('post.password','');
         $username = trim($username);
         $password = trim($password); 
         $referurl = I('post.referurl','');       
-    	$verify_code = I('post.verify_code');
+        $verify_code = I('post.verify_code');
      
         $verify = new Verify();
         if (!$verify->check($verify_code,'user_login'))
@@ -181,12 +181,12 @@ class UserController extends BaseController {
              $res = array('status'=>0,'msg'=>'验证码错误');
              exit(json_encode($res));
         }
-    	         
-    	$logic = new UsersLogic();
-    	$res = $logic->login($username,$password);         
+                 
+        $logic = new UsersLogic();
+        $res = $logic->login($username,$password);         
         
-    	if($res['status'] == 1){
-    		$res['result']['nickname'] = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
+        if($res['status'] == 1){
+            $res['result']['nickname'] = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
             $seller = M('seller')->where(array('user_id'=>$res['result']['user_id']))->find();
             if ($referurl){
                 $rand_id = date('YmdHis',time()).rand(111111,999999).$res['result']['user_id'];
@@ -205,24 +205,24 @@ class UserController extends BaseController {
             session('seller_id',$seller['seller_id']);
             session('store_id',$seller['store_id']);
             session('user',$res['result']);
-    		setcookie('user_id',$res['result']['user_id'],null,'/');
-    		setcookie('is_distribut',$res['result']['is_distribut'],null,'/');
+            setcookie('user_id',$res['result']['user_id'],null,'/');
+            setcookie('is_distribut',$res['result']['is_distribut'],null,'/');
             setcookie('uname',urlencode($res['result']['nickname']),null,'/');
             setcookie('cn',0,time()-3600,'/');
-    		$cartLogic = new \Home\Logic\CartLogic();
-    		$cartLogic->login_cart_handle($this->session_id,$res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
+            $cartLogic = new \Home\Logic\CartLogic();
+            $cartLogic->login_cart_handle($this->session_id,$res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
             M('seller')->where(array('seller_id'=>$seller['seller_id']))->save(array('last_login_time'=>time()));
             // sellerLog('商家管理中心登录',__ACTION__);
             // $url = session('from_url') ? session('from_url') : U('Index/index');
-    	}
-    	exit(json_encode($res));
+        }
+        exit(json_encode($res));
     }
 
     /**
      *  个人注册
      */
     public function reg(){
-    	if($this->user_id > 0) header("Location: ".U('/seller/Index/index'));
+        if($this->user_id > 0) header("Location: ".U('/seller/Index/index'));
         $copyright = M('config')->where(array('id'=>80))->getField('value');
         $record_no = M('config')->where(array('id'=>2))->getField('value');
         $phone = M('config')->where(array('id'=>9))->getField('value');
@@ -417,8 +417,8 @@ class UserController extends BaseController {
         //获取订单操作记录
         $order_action = M('order_action')->where(array('order_id'=>$id))->select();
         if($order_info['shipping_status'] == 1){
-        	$express = queryExpress($order_info['shipping_code'],$order_info['invoice_no']);
-        	$this->assign('express',$express);
+            $express = queryExpress($order_info['shipping_code'],$order_info['invoice_no']);
+            $this->assign('express',$express);
         }
         $this->assign('store',$store);
         $this->assign('regionLits',$regionLits);        
@@ -501,8 +501,8 @@ class UserController extends BaseController {
         $c = M('region')->where(array('parent_id'=>$address['province'],'level'=> 2))->select();
         $d = M('region')->where(array('parent_id'=>$address['city'],'level'=> 3))->select();
         if($address['twon']){
-        	$e = M('region')->where(array('parent_id'=>$address['district'],'level'=>4))->select();
-        	$this->assign('twon',$e);
+            $e = M('region')->where(array('parent_id'=>$address['district'],'level'=>4))->select();
+            $this->assign('twon',$e);
         }
 
         $this->assign('province',$p);
@@ -909,6 +909,19 @@ class UserController extends BaseController {
             exit(json_encode(array('status'=>-1,'msg'=>$send['msg'])));
         exit(json_encode(array('status'=>1,'msg'=>'验证码已发送，请注意查收')));
     }
+
+    public function send_sms_reg_code2(){
+        $mobile = I('mobile');
+        $session_id = I('sessionid');
+        $userLogic = new UsersLogic();
+        if(!check_mobile($mobile))
+            exit(json_encode(array('status'=>-1,'msg'=>'手机号码格式有误')));
+        $code =  rand(100000,999999);
+        $send = $userLogic->sms_log($mobile,$code,$session_id);
+        if($send['status'] != 1)
+            exit(json_encode(array('status'=>-1,'msg'=>$send['msg'])));
+        exit(json_encode(array('status'=>1,'msg'=>'验证码已发送，请注意查收')));
+    }
     /**
      *我的收藏
      */
@@ -993,148 +1006,148 @@ class UserController extends BaseController {
 
     public function bind_remove()
     {
-		
+        
     }
     
     public function forget_pwd(){
-    	session(null);
+        session(null);
         cookie('referurl',null);
-    	if(IS_POST){
-    		$logic = new UsersLogic();
-    		$username = I('post.username');
-    		$code = I('post.code');
-    		$new_password = I('post.new_password');
-    		$confirm_password = I('post.confirm_password');
-    		$pass = false;
-    	
-    		//检查是否手机找回
-    		if(check_mobile($username)){
-    			if(!$user = get_user_info($username,2))
-    				$this->error('账号不存在');
-    			$check_code = $logic->sms_code_verify($username,$code,$this->session_id);
-    			if($check_code['status'] != 1)
-    				$this->error($check_code['msg']);
-    			$pass = true;
-    		}
-    		//检查是否邮箱
-    		if(check_email($username)){
-    			if(!$user = get_user_info($username,1))
-    				$this->error('账号不存在');
-    			$check = session('forget_code');
-    			if(empty($check))
-    				$this->error('非法操作');
-    			if(!$username || !$code || $check['email'] != $username || $check['code'] != $code)
-    				$this->error('邮箱验证码不匹配');
-    			$pass = true;
-    		}
-    		if($user['user_id'] > 0 && $pass)
-    			$data = $logic->password($user['user_id'],'',$new_password,$confirm_password,false); // 获取用户信息
-    		if($data['status'] != 1)
-    			$this->error($data['msg'] ? $data['msg'] :  '操作失败');
-    		$this->success($data['msg'],U('/User/login'));
-    		exit;
-    	}
+        if(IS_POST){
+            $logic = new UsersLogic();
+            $username = I('post.username');
+            $code = I('post.code');
+            $new_password = I('post.new_password');
+            $confirm_password = I('post.confirm_password');
+            $pass = false;
+        
+            //检查是否手机找回
+            if(check_mobile($username)){
+                if(!$user = get_user_info($username,2))
+                    $this->error('账号不存在');
+                $check_code = $logic->sms_code_verify($username,$code,$this->session_id);
+                if($check_code['status'] != 1)
+                    $this->error($check_code['msg']);
+                $pass = true;
+            }
+            //检查是否邮箱
+            if(check_email($username)){
+                if(!$user = get_user_info($username,1))
+                    $this->error('账号不存在');
+                $check = session('forget_code');
+                if(empty($check))
+                    $this->error('非法操作');
+                if(!$username || !$code || $check['email'] != $username || $check['code'] != $code)
+                    $this->error('邮箱验证码不匹配');
+                $pass = true;
+            }
+            if($user['user_id'] > 0 && $pass)
+                $data = $logic->password($user['user_id'],'',$new_password,$confirm_password,false); // 获取用户信息
+            if($data['status'] != 1)
+                $this->error($data['msg'] ? $data['msg'] :  '操作失败');
+            $this->success($data['msg'],U('/User/login'));
+            exit;
+        }
         $this->display();
     }
     
     public function set_pwd(){
-    	
-    	$check = session('validate_code');
-    	if(empty($check)){
-    		header("Location:".U('/User/forget_pwd'));
-    	}elseif($check['is_check']==0){
-    		$this->error('验证码还未验证通过',U('/User/forget_pwd'));
-    	}    	
-    	if(IS_POST){
-    		$password = I('post.password');
-    		$password2 = I('post.password2');
-    		if($password2 != $password){
-    			$this->error('两次密码不一致',U('/User/forget_pwd'));
-    		}  		
-    		if($check['is_check']==1){
-    			//$user = get_user_info($check['sender'],1);
+        
+        $check = session('validate_code');
+        if(empty($check)){
+            header("Location:".U('/User/forget_pwd'));
+        }elseif($check['is_check']==0){
+            $this->error('验证码还未验证通过',U('/User/forget_pwd'));
+        }       
+        if(IS_POST){
+            $password = I('post.password');
+            $password2 = I('post.password2');
+            if($password2 != $password){
+                $this->error('两次密码不一致',U('/User/forget_pwd'));
+            }       
+            if($check['is_check']==1){
+                //$user = get_user_info($check['sender'],1);
                         $user = M('users')->where("mobile = '{$check['sender']}' or email = '{$check['sender']}'")->find();
 
-    			M('users')->where("user_id=".$user['user_id'])->save(array('password'=>encrypt($password)));
-    			session('validate_code',null);
-    			header("Location:".U('/User/finished'));
-    		}else{
-    			$this->error('验证码还未验证通过',U('/User/forget_pwd'));
-    		}
-    	}
-    	$this->display();
+                M('users')->where("user_id=".$user['user_id'])->save(array('password'=>encrypt($password)));
+                session('validate_code',null);
+                header("Location:".U('/User/finished'));
+            }else{
+                $this->error('验证码还未验证通过',U('/User/forget_pwd'));
+            }
+        }
+        $this->display();
     }
     
     public function finished(){
 
-    	session(null);
+        session(null);
         setcookie('uname','',time()-3600,'/');
         setcookie('cn','',time()-3600,'/');
         setcookie('user_id','',time()-3600,'/');
         setcookie('referurl','',time()-3600,'/');
-    	$this->display();
+        $this->display();
     }   
     
     public function check_captcha(){
-    	$verify = new Verify();
-    	$type = I('post.type','user_login');
-    	if (!$verify->check(I('post.verify_code'), $type)) {
-    		exit(json_encode(0));
-    	}else{
-    		exit(json_encode(1));
-    	}
+        $verify = new Verify();
+        $type = I('post.type','user_login');
+        if (!$verify->check(I('post.verify_code'), $type)) {
+            exit(json_encode(0));
+        }else{
+            exit(json_encode(1));
+        }
     }
     
     public function check_username(){
-    	$username = I('post.username');
-    	if(!empty($username)){
-    		$count = M('users')->where("email='$username' or mobile='$username'")->count();
+        $username = I('post.username');
+        if(!empty($username)){
+            $count = M('users')->where("email='$username' or mobile='$username'")->count();
             if ($count == 0){
                 $count = M('seller')->where(array('seller_name'=>$username))->count();
             }
-    		exit(json_encode(intval($count)));
-    	}else{
-    		exit(json_encode(0));
-    	}  	
+            exit(json_encode(intval($count)));
+        }else{
+            exit(json_encode(0));
+        }   
     }
     
     public function identity(){
-    	$username = I('post.username');
-    	$userinfo = array();
-    	if($username){
-    		$userinfo = M('users')->where("email='$username' or mobile='$username'")->find();
+        $username = I('post.username');
+        $userinfo = array();
+        if($username){
+            $userinfo = M('users')->where("email='$username' or mobile='$username'")->find();
             if (empty($userinfo)){
                 $seller = M('seller')->where(array('seller_name'=>$username))->find();
                 $userinfo = M('users')->where(array('user_id'=>$seller['user_id']))->find();
             }
-    		$userinfo['username'] = $username;
+            $userinfo['username'] = $username;
             // dump($userinfo['mobile']);die;
             if (empty($userinfo['mobile']) && empty($userinfo['email'])) $this->error('您未绑定手机和邮箱,请联系客服帮忙找回密码');
-    		session('userinfo',$userinfo);
-    	}else{
-    		$this->error('参数有误！！！');
-    	} 	
-    	if(empty($userinfo)){
-    		$this->error('非法请求！！！');
-    	}
-    	unset($user_info['password']);
-    	$this->assign('userinfo',$userinfo);
-    	$this->display();
+            session('userinfo',$userinfo);
+        }else{
+            $this->error('参数有误！！！');
+        }   
+        if(empty($userinfo)){
+            $this->error('非法请求！！！');
+        }
+        unset($user_info['password']);
+        $this->assign('userinfo',$userinfo);
+        $this->display();
     }
     
     //发送验证码
     public function send_validate_code(){
-    	$type = I('type');
-    	$send = I('send');
-    	$logic = new UsersLogic();
+        $type = I('type');
+        $send = I('send');
+        $logic = new UsersLogic();
         $res = $logic->send_validate_code2($send, $type);
         $this->ajaxReturn($res);
     }
     
     public function check_validate_code(){
-    	$code = I('post.code');
-    	$send = I('send');
-    	$logic = new UsersLogic();
+        $code = I('post.code');
+        $send = I('send');
+        $logic = new UsersLogic();
         $res = $logic->check_validate_code($code, $send);
         $this->ajaxReturn($res);
     }
@@ -1173,8 +1186,8 @@ class UserController extends BaseController {
         $data = confirm_order($id,$this->user_id);
         if(!$data['status'])
             $this->error($data['msg']);
-		else	
-	        $this->success($data['msg']);
+        else    
+            $this->success($data['msg']);
     }
     /**
      * 申请退货
@@ -1184,7 +1197,7 @@ class UserController extends BaseController {
         $order_id = I('order_id',0);
         $order_sn = I('order_sn',0);
         $goods_id = I('goods_id',0);        
-	$spec_key = I('spec_key');    
+    $spec_key = I('spec_key');    
 
         $c = M('order')->where("order_id = $order_id and user_id = {$this->user_id}")->count();
         if($c == 0)
@@ -1272,13 +1285,13 @@ class UserController extends BaseController {
      * 申请提现记录
      */
     public function withdrawals(){       
-    	//C('TOKEN_ON',true);
-    	if(IS_POST)
-    	{
+        //C('TOKEN_ON',true);
+        if(IS_POST)
+        {
                 $this->verifyHandle('withdrawals');                
-    		$data = I('post.');
-    		$data['user_id'] = $this->user_id;    		    		
-    		$data['create_time'] = time();                
+            $data = I('post.');
+            $data['user_id'] = $this->user_id;                      
+            $data['create_time'] = time();                
                 $distribut_min = tpCache('distribut.min'); // 最少提现额度
                 if($data['money'] < $distribut_min)
                 {
@@ -1291,14 +1304,14 @@ class UserController extends BaseController {
                         exit;
                 }     
                  
-    		if(M('withdrawals')->add($data)){
-    			$this->success("已提交申请");
+            if(M('withdrawals')->add($data)){
+                $this->success("已提交申请");
                         exit;
-    		}else{
-    			$this->error('提交失败,联系客服!');
+            }else{
+                $this->error('提交失败,联系客服!');
                         exit;
-    		}
-    	}
+            }
+        }
         
         $where = " user_id = {$this->user_id}";        
         $count = M('withdrawals')->where($where)->count();
@@ -1312,49 +1325,49 @@ class UserController extends BaseController {
 
 
     public  function recharge(){
-    	if(IS_POST){
-   			$user = session('user');
-   			$data['user_id'] = $this->user_id;
-   			$data['nickname'] = $user['nickname'];
-   			$data['account'] = I('account');
-   			$data['order_sn'] = 'recharge'.get_rand_str(10,0,1);
-   			$data['ctime'] = time();
-    		$order_id = M('recharge')->add($data);
-    		if($order_id){
-    			$url = U('/Payment/getPay',array('pay_radio'=>$_REQUEST['pay_radio'],'order_id'=>$order_id));
-    			redirect($url);
-    		}else{
-    			$this->error('提交失败,参数有误!');
-    		}
-    	}
-	   	$paymentList = M('Plugin')->where("`type`='payment' and code!='cod' and status = 1 and scene in(0,2)")->select();
-	   	$paymentList = convert_arr_key($paymentList, 'code');	   	
-	   	foreach($paymentList as $key => $val)
-	   	{
-	   		$val['config_value'] = unserialize($val['config_value']);
-	   		if($val['config_value']['is_bank'] == 2)
-	   		{
-	   			$bankCodeList[$val['code']] = unserialize($val['bank_code']);
-	   		}
-	   	}
-	   	$bank_img = include 'Application/Home/Conf/bank.php'; // 银行对应图片
-	   	$this->assign('paymentList',$paymentList);
-	   	$this->assign('bank_img',$bank_img);
-	   	$this->assign('bankCodeList',$bankCodeList);
-	   	
-	   	$count = M('recharge')->where(array('user_id'=>$this->user_id))->count();
-	   	$Page = new Page($count,10);
-	   	$show = $Page->show();
-	   	$recharge_list = M('recharge')->where(array('user_id'=>$this->user_id))->limit($Page->firstRow.','.$Page->listRows)->select();
-	   	$this->assign('page',$show);
-	   	$this->assign('recharge_list',$recharge_list);//充值记录
-	   	
-	   	$count2 = M('account_log')->where(array('user_id'=>$this->user_id,'user_money'=>array('neq',0)))->count();
-	   	$Page2 = new Page($count2,10);
-	   	$consume_list = M('account_log')->where(array('user_id'=>$this->user_id,'user_money'=>array('neq',0)))->limit($Page2->firstRow.','.$Page2->listRows)->select();
-	   	$this->assign('consume_list',$consume_list);//消费记录
-	   	$this->assign('page2',$Page2->show());
-   		$this->display();
+        if(IS_POST){
+            $user = session('user');
+            $data['user_id'] = $this->user_id;
+            $data['nickname'] = $user['nickname'];
+            $data['account'] = I('account');
+            $data['order_sn'] = 'recharge'.get_rand_str(10,0,1);
+            $data['ctime'] = time();
+            $order_id = M('recharge')->add($data);
+            if($order_id){
+                $url = U('/Payment/getPay',array('pay_radio'=>$_REQUEST['pay_radio'],'order_id'=>$order_id));
+                redirect($url);
+            }else{
+                $this->error('提交失败,参数有误!');
+            }
+        }
+        $paymentList = M('Plugin')->where("`type`='payment' and code!='cod' and status = 1 and scene in(0,2)")->select();
+        $paymentList = convert_arr_key($paymentList, 'code');       
+        foreach($paymentList as $key => $val)
+        {
+            $val['config_value'] = unserialize($val['config_value']);
+            if($val['config_value']['is_bank'] == 2)
+            {
+                $bankCodeList[$val['code']] = unserialize($val['bank_code']);
+            }
+        }
+        $bank_img = include 'Application/Home/Conf/bank.php'; // 银行对应图片
+        $this->assign('paymentList',$paymentList);
+        $this->assign('bank_img',$bank_img);
+        $this->assign('bankCodeList',$bankCodeList);
+        
+        $count = M('recharge')->where(array('user_id'=>$this->user_id))->count();
+        $Page = new Page($count,10);
+        $show = $Page->show();
+        $recharge_list = M('recharge')->where(array('user_id'=>$this->user_id))->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('page',$show);
+        $this->assign('recharge_list',$recharge_list);//充值记录
+        
+        $count2 = M('account_log')->where(array('user_id'=>$this->user_id,'user_money'=>array('neq',0)))->count();
+        $Page2 = new Page($count2,10);
+        $consume_list = M('account_log')->where(array('user_id'=>$this->user_id,'user_money'=>array('neq',0)))->limit($Page2->firstRow.','.$Page2->listRows)->select();
+        $this->assign('consume_list',$consume_list);//消费记录
+        $this->assign('page2',$Page2->show());
+        $this->display();
     }
 
     /**
@@ -1429,15 +1442,15 @@ class UserController extends BaseController {
 
     // ajax验证店铺名字是否存在
     public function ajax_store()
-    {	
-    	$store_name = I('storename','');
-    	$obj = M('store')->where(array('store_name'=>$store_name))->find();
-    	if ($obj) {
-    		$this->ajaxReturn(true);
-    	} else {
-    		$this->ajaxReturn(false);
-    	}
-    	
+    {   
+        $store_name = I('storename','');
+        $obj = M('store')->where(array('store_name'=>$store_name))->find();
+        if ($obj) {
+            $this->ajaxReturn(true);
+        } else {
+            $this->ajaxReturn(false);
+        }
+        
     }
 
     //将另一台服务器的邮箱验证码写入到session
@@ -1497,7 +1510,92 @@ class UserController extends BaseController {
         // $storeLogic = new StoreLogic();
         // $storeLogic->add_user('aa206414','206414','13640618075','aa208349@163.com','');
         // dump(session());
-        dump(cookie());
-        dump(session());
+        // dump(cookie());
+        // dump(session());
+    }
+
+    public function regstoress()
+    {
+        if (IS_POST){
+            $logic = new UsersLogic(); 
+            $user_name = I('username');      // 手机号
+            $store_name = I('storename'); // 店铺名称
+            $seller_name = I('sellername');    // 登陆账号
+            $sex = I('sex',0);
+            $nickname = I('nickname');
+            $code = I('post.code','');
+            $session_id = I('sessionid');
+            if (!$session_id){
+                echo 'cookie未开启';
+                exit;
+            }
+            if (!I('password')){
+                echo '密码不能为空';
+                exit;
+            }
+            if (!$store_name) {
+                $store_name = $user_name;
+            }
+
+            if(!$code){
+               echo '请输入短信验证码';
+               exit;
+            }
+
+            $check_code = $logic->sms_code_verify($user_name,$code,$session_id);
+
+            if($check_code['status'] != 1){
+                echo $check_code['msg'];
+                exit;
+            }
+
+            if(M('users')->where(array('mobile'=>$user_name))->find()){
+                echo '手机号已被注册';
+                exit;
+            }
+            if(M('store')->where("store_name='$store_name'")->count()>0){
+                echo "店铺名称已存在";
+                exit;
+            }
+            if(!preg_match('/^[a-zA-Z][a-zA-Z0-9_]{5,16}/', $seller_name)){
+                echo "账号不合法！";
+                exit;
+            }
+            if(M('seller')->where("seller_name='$seller_name'")->count()>0){
+                echo "账号已被注册";
+                exit;
+            }
+            if (!$this->is_beautiful_username($seller_name)){
+                echo "账号已被注册";
+                exit;
+            }
+            $user_id = M('users')->where("email='$user_name' or mobile='$user_name'")->getField('user_id');
+            if($user_id){
+                if(M('store')->where(array('user_id'=>$user_id))->count()>0){
+                    echo "手机号已被使用";
+                    exit;
+                }
+                if(M('seller')->where(array('user_id'=>$user_id))->count()>0){
+                    echo "手机号已被使用";
+                    exit;
+                }
+            }
+            $store = array('store_name'=>$store_name,'user_name'=>$user_name,'store_state'=>1,
+                    'seller_name'=>$seller_name,'password'=>I('password'),
+                    'store_time'=>time(),'is_own_shop'=>0,'sex'=>$sex,'nickname'=>$nickname
+            );
+            $storeLogic = new StoreLogic();
+            if($storeLogic->addStore($store)){
+                $seller = M('seller')->where(array('seller_name'=>$seller_name))->find();
+                session('seller',$seller);
+                session('seller_id',$seller['seller_id']);
+                session('store_id',$seller['store_id']);
+                echo '注册成功';
+                exit;
+            }else{
+                echo '注册失败';
+                exit;
+            }
+        }
     }
 }
