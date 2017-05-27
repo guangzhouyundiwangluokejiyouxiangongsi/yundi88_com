@@ -28,7 +28,7 @@
 							</ul>
 						</li>
 					</ul>					
-					<input type="text"  id="name" placeholder="请输入要搜索的内容"/>					
+					<input type="text"  id="name"  value="请输入要搜索的内容" />					
 				</div>	
 				<a class="d_btn" href="javascript:;" onclick="saosou()">搜索</a>
 			</div>	
@@ -52,9 +52,28 @@
 		</div>
 	</body>
 <script>
+
+
+function init(index,item){
+     value = $(item).val();
+     return (function(item,value){
+         $(item).blur(function(){
+             if($(this).val()!="") return;
+             $(this).val(value);
+         })
+         $(item).focus(function(){
+             if($(this).val()!=value) return;
+             $(this).val("");
+         })
+     })(item,value);
+ }
+ $('#name').map(init)
+
+ 
+
 	function saosou(){
 		var name = $('#name').val();
-		if (!name){
+		if (name == '请输入要搜索的内容'){
 			return false;
 		}
 		if ($('.name').html() == '产品'){
@@ -73,3 +92,5 @@
 	}
 </script>
 </html>
+
+

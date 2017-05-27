@@ -149,7 +149,7 @@
                                    
         <div class="body">
            <foreach name="filter_price" item="v" key="k">
-          <a href="{$v[href]}" class="item">
+          <a href="{$v[href]}/p/{$Think.get.p||default=1}.html" class="item">
             <input class="bginput4" type="checkbox" name="{$v[value]}" value='{$v[value]}'>
             <span>{$v[value]}</span>
           </a>  

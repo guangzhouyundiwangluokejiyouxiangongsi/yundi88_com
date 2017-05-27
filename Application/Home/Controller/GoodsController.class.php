@@ -432,9 +432,9 @@ class GoodsController extends BaseController {
         }
 
         $path = M('goods_category')->where(array('id'=>I('id',0)))->getField('parent_id_path');
+            $strpath = '<a href="'.SITE_URL.'">首页</a> > ';
         if($path){
             $patharray = explode('_', $path);
-            $strpath = '<a href="'.SITE_URL.'">首页</a> > ';
             for($i = 1;$i<count($patharray);$i++){
                 $pathname = M('goods_category')->where(array('id'=>$patharray[ $i ]))->getField('name');
                 $strpath .= "<a href='/Goods/goodsList/id/{$patharray[ $i ]}.html'>{$pathname}</a> > ";

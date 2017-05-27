@@ -178,17 +178,20 @@
 				</li>
 				<li>
 					<div class="vertical">
+
+						<php>if($store['store_presales']){</php>
 						<foreach name="store['store_presales']" item="vv">
-						<php>if($vv['account']){</php>
 						<a href="http://wpa.qq.com/msgrd?v=3&uin={$vv.account}&site=qq&menu=yes">
 							<img style="width: 0.2863rem;" src="__STATIC__/img/qq04.png"/>
 							联系客服
 						</a>
-						<php>}else{</php>
-							<img style="width: 0.2863rem;" src="__STATIC__/img/foot03.png"/>
-						<php>}</php>	
+						
 						<php>break;</php>
 						</foreach>
+						<php>}else{</php>
+						<a href="{$vv['account']}">
+							<img style="width: 0.2863rem;" src="__STATIC__/img/foot03.png"/>联系客服</a>
+						<php>}</php>	
 					</div>										
 				</li>
 			</ul>			
