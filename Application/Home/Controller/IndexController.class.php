@@ -209,6 +209,13 @@ class IndexController extends BaseController {
         foreach ($store_list['result'] as &$v) {
                 $v['store_presales'] = unserialize($v['store_presales']);
                 $v['store_aftersales'] = unserialize($v['store_aftersales']);
+                if(!$v['domain']){
+                    $v['domain'] = U('/Store/index',array('store_id'=>$v['store_id']));$v['nofollow'] = '';
+                }else{
+                    $v['nofollow'] = 'nofollow';
+                    $v['domain'] = 'http://'.$v['domain'];
+
+                }
         }
         $this->assign('page', $store_list['show']);// 赋值分页输出
         $this->assign('count', $store_list['num']);// 页数

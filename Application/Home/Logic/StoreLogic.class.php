@@ -189,7 +189,7 @@ class StoreLogic extends RelationModel
         $page = new Page($store_count, $item);
         $show = $page->show();
         $store_list = $model
-            ->field("s.commerce_state,s.apply_state,s.store_aftersales,s.store_id,s.store_qq,s.store_name,s.store_logo,s.store_zy,s.store_phone,s.store_presales,s.store_banner,s.store_aliwangwang,s.store_qq,s.store_desccredit,s.store_servicecredit,
+            ->field("s.commerce_state,s.apply_state,s.domain,s.store_aftersales,s.store_id,s.store_qq,s.store_name,s.store_logo,s.store_zy,s.store_phone,s.store_presales,s.store_banner,s.store_aliwangwang,s.store_qq,s.store_desccredit,s.store_servicecredit,
             s.store_deliverycredit,r1.name as province_name,r2.name as city_name,r3.name as district_name,s.deleted as goods_array,IFNULL(s.commerce_state,0) + IFNULL(s.apply_state,0) as num")
             ->table($db_prefix . 'store s')
             ->join('LEFT JOIN '.$db_prefix . 'region As r1 ON r1.id = s.province_id')
