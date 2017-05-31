@@ -18,9 +18,9 @@
 <include file="Public/header"/>
 
 <div class="margin-w1210">
- <h6>{$path}
+ <!-- <h6>{$path}
 
-     > 找到<span>{$page->totalRows}</span>件相关产品</h6>
+     > 找到<span>{$page->totalRows}</span>件相关产品</h6> -->
   <div class="flow">
     <!-- <div class="cate_attr clearfix">
       <div class="nav-tag">
@@ -38,19 +38,19 @@
     <div class="flow-wrap">
       <volist name="store_list" id="scl">
         <div class="flow-item first">
-          <a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" class="flow-datu" title="L&amp;L">
+          <a rel="{$scl['nofollow']}" target="_blank" href="{$scl['domain']}" class="flow-datu" title="L&amp;L">
             <img title="L&amp;L" width="150" height="150" alt="" src="{:templogo($scl['store_id'],150,150)}">
           </a>
           <div class="flow-content">
-            <h4 class="flow-title" > <a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="{$scl['store_name']}"><span style="color:#000;">{:zfgetsubstr($scl['store_name'],0,30,$_GET['company'])}</span></a><span class="flow_title_phone"><img src="__STATIC__/images/phonessss.png">{$scl['store_phone']}</span>
+            <h4 class="flow-title" > <a rel="{$scl['nofollow']}" target="_blank" href="{$scl['domain']}" title="{$scl['store_name']}"><span style="color:#000;">{:zfgetsubstr($scl['store_name'],0,30,$_GET['company'])}</span></a><span class="flow_title_phone"><img src="__STATIC__/images/phonessss.png">{$scl['store_phone']}</span>
               <!-- <span class="guanzhu" id="favoriteStore" data-id={$scl['store_id']}>关注</span> -->
             </h4>
             <!-- <p class="flow-logo">
-              <a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" style="float:none; display:inline-block;">
+              <a  target="_blank" href="{$scl['domain']}" style="float:none; display:inline-block;">
                 <img id="j_logo_5" alt="" width="90" height="45" src="{$scl['store_banner']|default='__STATIC__/images/57c7ed6bcc96f.jpg'}">
               </a>
             </p> -->
-            <p class="flow_zhuying"><a  target="_blank" href="{:U('/Store/index',array('store_id'=>$scl['store_id']))}" title="{$scl['store_name']}">主营商品：{$scl['store_zy']}</a></p>
+            <p class="flow_zhuying"><a rel="{$scl['nofollow']}"  target="_blank" href="{$scl['domain']}" title="{$scl['store_name']}">主营商品：{$scl['store_zy']}</a></p>
             <!-- <p class="flow-desc"> <span>卖家：</span>
               <a href="supplier.php?suppId=5" title="{$scl['store_name']}管理员" target="_blank"></a>
               <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$scl['store_aftersales']['qq_account']}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" class="flow-qq">

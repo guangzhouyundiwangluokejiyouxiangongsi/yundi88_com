@@ -1,5 +1,5 @@
 /*header*/
-.w_header{width: 100%;height: 0.741rem;background: #008bb9;position: fixed;top: 0;z-index: 20;text-align: center;line-height: 0.741rem;}
+.w_header{width: 100%;height: 0.741rem;background: #21d460;position: fixed;top: 0;z-index: 20;text-align: center;line-height: 0.741rem;}
 .w_header_title{font-family: "黑体";font-size: 0.3032rem;color: #fff;font-weight: normal;}
 .w_header_search{position: absolute;top: 0.2189rem;right: 0.2189rem;}
 .w_header_search a{display: block;height: 0.3032rem;width: 0.2947rem;}

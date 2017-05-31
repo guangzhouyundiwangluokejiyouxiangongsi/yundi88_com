@@ -181,6 +181,7 @@ class GoodsController extends MobileBaseController {
         if($goods['store_id']>0){
             $store = M('store')->where(array('store_id'=>$goods['store_id']))->find();
             $store['store_presales'] = unserialize($store['store_presales']);
+            // dump($store['store_presales']);exit;
             $store_apply = M('store_apply')->where(array('user_id'=>$store['user_id']))->find();
             $this->assign('store_apply',$store_apply);
             $this->assign('store',$store);

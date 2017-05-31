@@ -319,9 +319,9 @@ class AdminController extends BaseController {
 	 */
 	public function cleanCache()
 	{
-		delFile('./Public/upload/goods/thumb');// 删除缩略图
-        delFile('./Public/upload/news/seller');
-        delFile('./Public/upload/mosaic');
+		// delFile('./Public/upload/goods/thumb');// 删除缩略图
+        // delFile('./Public/upload/news/seller');
+        // delFile('./Public/upload/mosaic');
 		$html_arr = glob("./Application/Runtime/Html/*.html");
 		foreach ($html_arr as $key => $val) {
 			// 删除详情页

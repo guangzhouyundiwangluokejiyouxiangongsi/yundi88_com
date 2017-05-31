@@ -83,6 +83,37 @@ class ArticleController extends BaseController {
             if($parent['parent_id'] != 0){
                 $parents = D('article_cat')->where("cat_id=".$parent['parent_id'])->find();
             }
+
+            $location = '<a href="http://'.$_SERVER[HTTP_HOST].'">首页</a>&nbsp;>&nbsp;';
+            foreach($this->getlocation($article['cat_id']) as $v){
+
+                $location .= '<a href="">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
+            }
+                $location .= '<a >正文</a>';
+
+            //上一篇
+            $where['article_id']=array('lt',$article['article_id']);
+            $where['cat_id'] = $article['cat_id'];
+            $p = M('article')->where($where)->find();
+            if(!$p){
+            $p['article_id'] = $article['article_id'];
+            $p['title'] = '没有了';
+            }
+            $this->assign('p',$p);
+
+
+            //下一篇
+            $where['article_id']=array('gt',$article['article_id']);
+            $n = M('article')->where($where)->find();
+            if(!$n){
+            $n['article_id'] = $article['article_id'];
+            $n['title'] = '没有了';
+            }
+            $this->assign('n',$n);
+
+
+
+            $this->assign('location',$location);
             $this->assign('parentss',$parentss);
             $this->assign('parents',$parents['cat_name']);
             $this->assign('cat_name',$parent['cat_name']);
@@ -90,6 +121,18 @@ class ArticleController extends BaseController {
         }
         $this->display();
     } 
+
+    public $location = array();
+    public function getlocation($pid){
+        if(!(int)$pid){return;}
+        $pid_ = M('article_cat')->where(array('cat_id'=>$pid))->find();
+        $this->location[] = array('cat_id'=>$pid_['cat_id'],'cat_name'=>$pid_['cat_name']);
+        if($pid_['parent_id'] != 0){
+            $this->getlocation($pid_['parent_id']);
+        }
+        sort($this->location);
+        return $this->location;
+    }
     
 
    // 用户体验

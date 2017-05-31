@@ -43,6 +43,8 @@
 <div style="clear: both;"></div>
 <div id="pageContent" class="pageContent">
   <div class="hc-warp" id="page">
+  <div style="width:100%;height:50px;line-height: 50px;"> {$location}</div>
+ 
    <div class="content-title">
       <h1>{$article.title}</h1>
     </div>  
@@ -79,10 +81,11 @@
         </ul>
       </div>
   	<!-- </tpshop> -->
+
     </div>
         <!--可编辑区域开始-->
     <div id="content"> <!--可编辑区域开始-->
-		    
+
       <div style="width: 1020px;  font-family: Verdana,Helvetica; float: right;">
        		
         <div class="content-message">
@@ -123,6 +126,16 @@
     </div>
 </div>
 <div style="clear: both;"></div>
+<style type="text/css">.location li{list-style:none; }</style>
+    <div class="location" style="width:1220px;margin:0 auto;height:50px;">
+      <ul>
+      <li style="width:50%;line-height: 50px;height:50px;float:left;">上一篇：<a href="{:U('detail_news',array('article_id'=>$p['article_id']))}" title="{$p['title']}">{:getsubstr($p['title'],0,30)}</a></li>
+      <li style="width:50%;line-height: 50px;height:50px;float:left;">下一篇：<a href="{:U('detail_news',array('article_id'=>$n['article_id']))}" title="{$n['title']}">{:getsubstr($n['title'],0,30)}</a></li>
+
+      </ul>
+
+    </div>
+
 <include file="User/footer" /> 
 </body>
 </html>

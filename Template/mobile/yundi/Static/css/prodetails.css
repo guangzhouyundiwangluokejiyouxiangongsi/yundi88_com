@@ -1,5 +1,5 @@
 /*头部*/
-.d_header{background: #008bb9;width: 100%;height: 0.7242rem;line-height: 0.7242rem;text-align: center;position: fixed;left: 0;top: 0;z-index: 2000;}
+.d_header{background: #21d460;width: 100%;height: 0.7242rem;line-height: 0.7242rem;text-align: center;position: fixed;left: 0;top: 0;z-index: 2000;}
 .d_header a,.d_header i{display: block;}
 .d_header .return{float: left;}
 .d_header .return img{width: 0.1684rem;}
@@ -79,13 +79,13 @@
 .d_footer{width: 100%;height: 0.8421rem;text-align: center;background: #ffffff;position: fixed;left: 0;bottom: 0;z-index: 1000;}
 .d_footer a{display: block;}
 .d_footer ul{float: left;}
-.d_footer ul li{float: left;width: 0.8253rem;height: 0.8421rem;border-right: 1px solid #cccccc;text-align: center;}
-.d_footer ul li .vertical{width: 0.8253rem;height: 0.8421rem;}
+.d_footer ul li{float: left;width: 1.0rem;height: 0.8421rem;border-right: 1px solid #cccccc;text-align: center;}
+.d_footer ul li .vertical{width: 1.0rem;height: 0.8421rem;}
 .d_footer ul li:last-child{border: none;}
 .d_footer ul li a{font-size: 0.1684rem;color: #6a6a6a;height: 0.5558rem;}
 .d_footer ul li img{display: block;margin: 0 auto;}
 .d_footer ul li:active{background: #f5f5f5;}
-.d_footer>a{float: right;width: 1.9368rem;height: 0.8421rem;line-height: 0.8421rem;color: #ffffff;font-size: 0.2358rem;}
+.d_footer>a{float: right;width: 1.4rem;height: 0.8421rem;line-height: 0.8421rem;color: #ffffff;font-size: 0.2358rem;}
 
 .d_footer .s_prompt{width: 3.0316rem;height: 0.7579rem;line-height: 0.7579rem;text-align: center;font-size: 0.2358rem;color: #ffffff;background: #4e4e4e;border-radius: 6px;
 position: absolute;left: 50%;bottom: 1.0947rem;margin-left: -1.5158rem;z-index: 1000;display: none;}

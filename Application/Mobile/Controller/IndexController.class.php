@@ -156,21 +156,25 @@ class IndexController extends MobileBaseController {
     public function search()
     {   
         $p = I('p');
-        $name = I('name','');
-        $store_list = D('store')->getStreetsearch($name,$p,10);
-        // dump($store_list);
-        foreach($store_list as $key=>$value){
-            $store_list[$key]['goods_array'] = D('store')->getStoreGoods($value['store_id'],10);
-            $store_list[$key]['domain'] = $store_list[$key]['domain'] ? $store_list[$key]['domain'] : 'yundi88.ydwzjs.cn';
-            $store_list[$key]['apply_state'] = M('store_apply')->where(array('user_id'=>$value['user_id']))->getField('apply_state');
-        }
-        $this->assign('name',$name);
-        $this->assign('store_list',$store_list);
-        if ($p){
-            $this->display('ajaxStreetList');
-        }else{
+        $name = trim(I('name',''));
+        if(!$name){
             $this->display();
+            exit;
         }
+            $store_list = D('store')->getStreetsearch($name,$p,10);
+            // dump($store_list);
+            foreach($store_list as $key=>$value){
+                $store_list[$key]['goods_array'] = D('store')->getStoreGoods($value['store_id'],10);
+                $store_list[$key]['domain'] = $store_list[$key]['domain'] ? $store_list[$key]['domain'] : 'yundi88.ydwzjs.cn';
+                $store_list[$key]['apply_state'] = M('store_apply')->where(array('user_id'=>$value['user_id']))->getField('apply_state');
+            }
+            $this->assign('name',$name);
+            $this->assign('store_list',$store_list);
+            if ($p){
+                $this->display('ajaxStreetList');
+            }else{
+                $this->display();
+            }
     }
 
     /**
