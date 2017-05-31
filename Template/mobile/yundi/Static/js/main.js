@@ -35,7 +35,8 @@ $(function(){
 			$(".w_order").stop(true,true).slideDown(300);
 	        $(".w_order_btn").css("background","#f5f5f5");
 		}else{
-			$(".w_order").stop(true,true).hide();
+			//$(".w_order").stop(true,true).hide();
+			$(".w_order").stop(true,true).slideUp(300);
 	        $(".w_order_btn").css("background","#ffffff");
 		}
 	})
