@@ -39,10 +39,10 @@ $(function(){
 	        $(".w_order_btn").css("background","#ffffff");
 		}
 	})
-	$(document).bind("touchstart",function(e){
-		$(".w_order").stop(true,true).slideUp(300);
-		$(".w_order_btn").css("background","#ffffff");
-    });
+	// $(document).bind("touchstart",function(e){
+	// 	$(".w_order").stop(true,true).slideUp(300);
+	// 	$(".w_order_btn").css("background","#ffffff");
+ //    });
 
 	$(".w_more_pro").click(function(){
 		$(".w_peer_pro_c ul li").addClass("hov");
