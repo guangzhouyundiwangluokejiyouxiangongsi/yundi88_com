@@ -35,14 +35,15 @@ $(function(){
 			$(".w_order").stop(true,true).slideDown(300);
 	        $(".w_order_btn").css("background","#f5f5f5");
 		}else{
-			$(".w_order").stop(true,true).hide();
+			//$(".w_order").stop(true,true).hide();
+			$(".w_order").stop(true,true).slideUp(300);
 	        $(".w_order_btn").css("background","#ffffff");
 		}
 	})
-	$(document).bind("touchstart",function(e){
-		$(".w_order").stop(true,true).slideUp(300);
-		$(".w_order_btn").css("background","#ffffff");
-    });
+	// $(document).bind("touchstart",function(e){
+	// 	$(".w_order").stop(true,true).slideUp(300);
+	// 	$(".w_order_btn").css("background","#ffffff");
+ //    });
 
 	$(".w_more_pro").click(function(){
 		$(".w_peer_pro_c ul li").addClass("hov");

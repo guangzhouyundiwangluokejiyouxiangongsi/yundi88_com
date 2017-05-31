@@ -378,7 +378,7 @@ class GoodsLogic extends RelationModel
             $order .= ' desc';
         }
         if ($order == 'sales_sum'){
-            $order .= ' desc ,click_count desc';
+            $order .= ' desc ,click_count desc,on_time';
         }
         $goods_list = $model->field('g.store_id,g.goods_name,g.goods_id,g.shop_price,s.store_name,s.commerce_state,s.apply_state')->table('__GOODS__ AS g')->join('INNER JOIN __STORE__ AS s ON s.store_id = g.store_id')->where($map)->order('s.commerce_state desc,s.apply_state desc,g.'.$order)
             ->page($p,$num)
@@ -394,8 +394,11 @@ class GoodsLogic extends RelationModel
         $map['goods_state'] = 1;
         $map['goods_name'] = array('like','%'.$name.'%');
         $model = M();
-        if ($order != 'shop_price'){
+        if ($order == 'on_time'){
             $order .= ' desc';
+        }
+        if ($order == 'sales_sum'){
+            $order .= ' desc ,click_count desc,on_time desc';
         }
         $goods_list = $model->field('g.store_id,g.goods_name,g.goods_id,g.shop_price,s.store_name,s.commerce_state,s.apply_state')->table('__GOODS__ AS g')->join('INNER JOIN __STORE__ AS s ON s.store_id = g.store_id')->where($map)->order('s.commerce_state desc,s.apply_state desc,g.'.$order)
             ->page($p,$num)

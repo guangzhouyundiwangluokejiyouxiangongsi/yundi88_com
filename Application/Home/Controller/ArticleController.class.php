@@ -197,7 +197,7 @@ class ArticleController extends BaseController {
 
     public function newsmember(){
         $store_id = I('store_id');
-        header('location:http://http://association.yundi88.com/Home/newsmember?store_id='.$store_id);
+        header('location:http://association.yundi88.com/Home/newsmember?store_id='.$store_id);
     }
 
     public function lists1(){
