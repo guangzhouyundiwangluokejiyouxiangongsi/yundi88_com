@@ -44,6 +44,7 @@ $(function(){
 function street(){
 	$.post('/Mobile/index/ajaxstreet?p='+p,function(res){
 		$('.street').append(res);
+		p++;
 	})
 }
 $(window).scroll(function () {
