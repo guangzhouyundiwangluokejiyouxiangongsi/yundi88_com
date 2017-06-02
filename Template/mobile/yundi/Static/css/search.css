@@ -1,7 +1,7 @@
-.d_header{background: #21d460;width: 100%;height: 0.7242rem;line-height: 0.7242rem;position: fixed;left: 0;top: 0;z-index: 1000;font-size: 0.2526rem;}
+.d_header{background: #f92246;width: 100%;height: 0.7242rem;line-height: 0.7242rem;position: fixed;left: 0;top: 0;z-index: 1000;font-size: 0.2526rem;}
 .d_header .return{display: block;float: left;margin-right: 0.3368rem;}
 .d_header .return img{width: 0.1684rem;}
-.d_header .d_seek{float: left;height: 0.3705rem;line-height: 0.3705rem;border-bottom: 1px solid #ffffff;padding-top: 0.2021rem;}
+/*.d_header .d_seek{float: left;height: 0.3705rem;line-height: 0.3705rem;border-bottom: 1px solid #ffffff;padding-top: 0.2021rem;}
 .d_header .d_seek>ul{width: 0.7579rem;height: 0.3705rem;float: left;}
 .d_header .d_seek>ul>li{line-height: 0.3705rem;position: relative;}
 .d_header .d_seek>ul>li>a{display: block;}
@@ -11,7 +11,19 @@
 .d_header .d_seek .drop li{width: 100%;height: 0.6568rem;line-height: 0.6568rem;border: 1px solid #eeeeee;text-align: center;color: #333333;background: #ffffff;}
 .d_header .d_seek .drop li:nth-child(2){border-top: none;border-bottom: none;}
 .d_header .d_seek input{display: block;width: 4.0758rem;color:#d0f2e5;height: 0.3705rem;;line-height: 0.3705rem;border: none;background: none;outline: none;text-indent: 0.1347rem;float: left;}
-.d_header .d_btn{color: #ffffff;float: right;display: block;}
+.d_header .d_btn{color: #ffffff;float: right;display: block;}*/
+
+.d_search_input{width: 100%;margin-top: 1.2rem;}
+.d_search_input>.mg{width: 90%;margin: 0 auto;}
+.d_seeklist{width: 100%;height: 0.5rem;}
+.drop{width: 100%;height: 0.5rem;clear: both;overflow: hidden;}
+.drop>li{float: left;width: 0.95rem;height: 0.5rem;background: #fff;line-height: 0.5rem;text-align: center;font-size: 0.28rem;color: #000;}
+.drop>li.active{color: #fff;background: #f92246;}
+.d_seekcon{width: 100%;height: 0.6rem;border: 1px solid #f92246;position: relative;}
+.d_seekcon:after{clear: both;display: block;content: "";}
+.d_seekcon>input{display: block;height: 0.6rem;width: 80%;float: left;padding-left: 10px;margin-right: -10px;overflow: hidden;background: none;border: none;outline: none;font-size: 0.23rem;color: #999;z-index: 1;}
+.d_seekcon>a{display: block;width: 20%;height: 0.6rem;float: left;background: #f92246;color: #fff;font-size: 0.23rem;line-height: 0.6rem;text-align: center;z-index: 2;position: absolute;top: 0;right: 0;}
+
 
 .d_search{width: 100%;margin-top: 0.9768rem;}
 .d_search h1{color: #999999;font-size: 0.2021rem;}
