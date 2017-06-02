@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<div class="w_header">
+	<div class="w_header" a="1" b="1" c="1" d="1" e="1" f="1">
 		<div class="w_header_history"><a href="javascript:;" onClick="javascript :history.back(1);"><img src="__STATIC__/images/ify_hsitory.png"></a></div>
 		<h3 class="w_header_title">{$cat_name}</h3>
 		<div class="w_header_search"><a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a></div>
@@ -40,31 +40,32 @@
 			<div class="w_poster">
 				<ul>
 					<div class="sales_sum"></div>
-					<p style="font-size:20px;text-align:center;" class="p1">正在加载...</p>
+					<p style="font-size:20px;text-align:center;clear: both;" class="p1">正在加载...</p>
 				</ul>
 				
 				<ul>
 					<div class="new_goods"></div>
-					<p style="font-size:20px;text-align:center;" class="p2">正在加载...</p>
+					<p style="font-size:20px;text-align:center;clear: both;" class="p2">正在加载...</p>
 				</ul>
+
 				<ul>
 					<div class="shop_price"></div>
-					<p style="font-size:20px;text-align:center;" class="p3">正在加载...</p>
+					<p style="font-size:20px;text-align:center;clear: both;" class="p3">正在加载...</p>
 				</ul>
 			</div>
 
 			<div class="w_list">
 				<ul>
 					<div  class="sales_sum2"></div><br>
-					<p style="font-size:20px;text-align:center;" class="p4">正在加载...</p>
+					<p style="font-size:20px;text-align:center;clear: both;" class="p4">正在加载...</p>
 				</ul>
 				<ul>
 					<div class="new_goods2"></div><br>
-					<p style="font-size:20px;text-align:center;" class="p5">正在加载...</p>
+					<p style="font-size:20px;text-align:center;clear: both;" class="p5">正在加载...</p>
 				</ul>
 				<ul>
 					<div class="shop_price2"></div><br>
-					<p style="font-size:20px;text-align:center;" class="p6">正在加载...</p>
+					<p style="font-size:20px;text-align:center;clear: both;" class="p6">正在加载...</p>
 				</ul>
 			</div>
 		</div>
@@ -82,26 +83,26 @@
 		new_goods2()
 		shop_price2() 
 	});
+	var p = 0;
+	var p2 = 0;
+	var p3 = 0;
+	var p4 = 0;
+	var p5 = 0;
+	var p6 = 0;
 	self.setTimeout(function(){
      	if ($('.sales_sum li').length < 5){
      		$('.p1').html('没有内容了');
      	};
 	},1500)
-	var p = 1;
-	var p2 = 1;
-	var p3 = 1;
-	var p4 = 1;
-	var p5 = 1;
-	var p6 = 1;
 	function sales_sum(){
 		var cat_id = '{$cat_id}';
 		$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p,'order':'sales_sum'},function(res){
 			if (res){
 				$('.sales_sum').append(res);
+				$('.w_header').attr('a',parseInt($('.w_header').attr('a'))+1);
 			}else{
 				$('.p1').html('没有内容了');
 			}
-			p++;
 		})
 	}
 
@@ -113,10 +114,10 @@
 				if ($('.sales_sum li').length < 5){
 		     		$('.p2').html('没有内容了');
 		     	};
+		     	$('.w_header').attr('b',parseInt($('.w_header').attr('b'))+1);
 			}else{
 				$('.p2').html('没有内容了');
 			}
-			p2++;
 		})
 	}
 
@@ -128,10 +129,10 @@
 				if ($('.sales_sum li').length < 5){
 		     		$('.p3').html('没有内容了');
 		     	};
+		     	$('.w_header').attr('c',parseInt($('.w_header').attr('c'))+1);
 			}else{
 				$('.p3').html('没有内容了');
 			}
-			p3++;
 		})
 	}
 	function sales_sum2(){
@@ -142,10 +143,10 @@
 				if ($('.sales_sum li').length < 5){
 		     		$('.p2').html('没有内容了');
 		     	};
+		     	$('.w_header').attr('d',parseInt($('.w_header').attr('d'))+1);
 			}else{
 				$('.p4').html('没有内容了');
 			}
-			p4++;
 		})
 	}
 
@@ -157,10 +158,10 @@
 				if ($('.sales_sum li').length < 5){
 		     		$('.p5').html('没有内容了');
 		     	};
+		     	$('.w_header').attr('e',parseInt($('.w_header').attr('e'))+1);
 			}else{
 				$('.p5').html('没有内容了');
 			}
-			p5++;
 		})
 	}
 
@@ -172,10 +173,10 @@
 				if ($('.sales_sum li').length < 5){
 		     		$('.p6').html('没有内容了');
 		     	};
+		     	$('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
 			}else{
 				$('.p6').html('没有内容了');
 			}
-			p6++;
 		})
 	}
 	$('.w_con_tit> ul> li').find('a').eq(0).addClass('tab_on0');
@@ -192,16 +193,29 @@
 
 	      if ($(window).scrollTop() >= maxScroll) {
 	          if($('.w_con_tit> ul> li >a').hasClass('tab_on0')){
+	          	if(parseInt($('.w_header').attr('a')) == p){return;}
+    			p = parseInt($('.w_header').attr('a'));
+    			
 	        	sales_sum();
+	        	if(parseInt($('.w_header').attr('d')) == p4){return;}
+    			p4 = parseInt($('.w_header').attr('d'));
 	        	sales_sum2();
 	          }
 	         
 	          if($('.w_con_tit> ul> li >a').hasClass('tab_on1')){
+	          	if(parseInt($('.w_header').attr('b')) == p2){return;}
+    			p2 = parseInt($('.w_header').attr('b'));
 	   			new_goods();
+	   			if(parseInt($('.w_header').attr('e')) == p5){return;}
+    			p5 = parseInt($('.w_header').attr('e'));
 	   			new_goods2();
 	          }
 	          if($('.w_con_tit> ul> li >a').hasClass('tab_on2')){
+	          	if(parseInt($('.w_header').attr('c')) == p3){return;}
+    			p3 = parseInt($('.w_header').attr('c'));
 	          	shop_price();
+	          	if(parseInt($('.w_header').attr('f')) == p6){return;}
+    			p6 = parseInt($('.w_header').attr('f'));
 	          	shop_price2();
 	          }
 	      }

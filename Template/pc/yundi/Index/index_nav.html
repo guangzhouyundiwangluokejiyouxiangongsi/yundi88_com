@@ -46,17 +46,17 @@
 	    <ul>   
 	   		<li><a href="/User/info.html" target="_blank">个人中心</a></li><span>|</span>
 	        <li><a href="/user/login.html" target="_blank">免费发布信息</a></li><span>|</span>
-	        <li><a href="#" target="_blank">网站导航</a>
+	        <li><a href="/index/index_nav.html" target="_blank">网站导航</a>
 				<div class="navss">
 		          <dl>
 		            <dd><a href="/goods/goodsList2.html" target="_blank">万千产品</a></dd>
-	                <dd><a href="/Info/index.html?nav_id=6" target="_blank">海量信息</a></dd>
-	                <dd><a href="/seller/index/index.html?nav=product" target="_blank">产品推广</a></dd>
-	                <dd><a href="/seller/index/index.html?nav=article" target="_blank">信息推广</a></dd>
-	                <dd><a href="/Info/index.html?nav_id=6" target="_blank">企业信息</a></dd>
+	                <dd><a href="/Info/index/" target="_blank">海量信息</a></dd>
+	                <dd><a href="{:U('/seller/index/index',array('nav'=>product))}" target="_blank">产品推广</a></dd>
+	                <dd><a href="{:U('/seller/index/index',array('nav'=>article))}" target="_blank">信息推广</a></dd>
+	                <dd><a href="/index/street/" target="_blank">企业信息</a></dd>
 	                <dd><a href="/article/promote.html" target="_blank">免费推广</a></dd>
-	                <dd><a href="/article/yun_shop" target="_blank">云商会</a></dd>
-	                <dd><a href="/index/certification2" target="_blank">商城入驻</a></dd>
+	                <dd><a href="http://association.yundi88.com" target="_blank">云商会</a></dd>
+	                <dd><a href="/index/certification2.html" target="_blank">商城入驻</a></dd>
 	                <dd><a href="/article/detail/article_id/54.html" target="_blank">联系我们</a></dd>
 		          <div class="cl"></div>
 		          </dl>
@@ -195,7 +195,7 @@
 					<dd><img src="__PUBLIC__/images/navsabop.png"><a target="_blank" href="/article/detail/article_id/26.html">关于云狄</a></dd>
 					<dd><img src="__PUBLIC__/images/navzhuce.png"><a target="_blank" href="/User/regstore.html">免费注册</a></dd>
 					<dd><img src="__PUBLIC__/images/navrumeng.png"><a target="_blank"  href="/article/detail/article_id/28.html">买家入门</a></dd>
-					<dd><img src="__PUBLIC__/images/navrenzheng.png"><a  target="_blank" href="/Index/certification">认证信息</a></dd>
+					<dd><img src="__PUBLIC__/images/navrenzheng.png"><a  target="_blank" href="/Index/certification.html">认证信息</a></dd>
 					<dd><img src="__PUBLIC__/images/navmima.png"><a target="_blank" href="/User/forget_pwd.html">找回密码</a></dd>
 				</dl>
 			</div>
@@ -204,7 +204,7 @@
 					<dt>安全交易</dt>
 					<dd><img src="__PUBLIC__/images/navorder.png"><a target="_blank" href="/Article/detail/article_id/41.html">如何下单</a></dd>
 					<dd><img src="__PUBLIC__/images/navpay.png"><a target="_blank" href="/Article/detail/article_id/42.html">如何付款</a></dd>
-					<dd><img src="__PUBLIC__/images/navsetord.png"><a target="_blank" href="/User/order_list">订单管理</a></dd>
+					<dd><img src="__PUBLIC__/images/navsetord.png"><a target="_blank" href="/User/order_list.html">订单管理</a></dd>
 					<dd><img src="__PUBLIC__/images/navjiangkong.png"><a target="_blank" href="/Article/detail/article_id/44.html">交易保障</a></dd>
 					<dd><img src="__PUBLIC__/images/navpingjia.png"><a target="_blank" href="/Article/detail/article_id/45.html">如何评价</a></dd>
 				</dl>
@@ -220,7 +220,7 @@
 				<dl>
 					<dt>产品</dt>
 					<tpshop sql="select sc_name,sc_id from __STORE_CLASS__" item="vv">
-					<dd><a target="_blank" href="/goods/goodsList/id/{$vv.sc_id}">{$vv.sc_name}</a></dd>
+					<dd><a target="_blank" href="{:U('/goods/goodsList',array('id'=>$vv['sc_id']))}">{$vv.sc_name}</a></dd>
 					</tpshop>
 				</dl>
 			</div>
@@ -228,18 +228,18 @@
 			<div class="navss2m">
 				<dl>
 					<dt>官网建设</dt>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=pc">PC网站建设</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=mobile">手机网站建设</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=mobile2">微商城建设</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=config">官网设置</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=index">首页编辑</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=nav">导航设置</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=product">域名绑定</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=config">logo上传</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=config">官网优化</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=config">标题优化</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=config">描述优化</a></dd>
-					<dd><a target="_blank" href="/seller/index/index.html?nav=config">关键词优化</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>pc))}">PC网站建设</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>mobile))}">手机网站建设</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>mobile2))}">微商城建设</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>config))}">官网设置</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>index))}">首页编辑</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>nav))}">导航设置</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>product))}">域名绑定</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>config))}">logo上传</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>config))}">官网优化</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>config))}">标题优化</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>config))}">描述优化</a></dd>
+					<dd><a target="_blank" href="{:U('/seller/index/index',array('nav'=>config))}">关键词优化</a></dd>
 				</dl>
 			</div>
 
@@ -281,15 +281,15 @@
 				<dl>
 					<dt>供应服务</dt>
 					<dd><a href="/info/index" target="_blank">供应信息</a></dd>
-					<dd><a href="/seller/index/index.html?nav=articleclass" target="_blank">供应管理</a></dd>
-					<dd><a href="/seller/index/index.html?nav=article" target="_blank">信息推广</a></dd>
+					<dd><a href="{:U('/seller/index/index',array('nav'=>articleclass))}" target="_blank">供应管理</a></dd>
+					<dd><a href="{:U('/seller/index/index',array('nav'=>article))}" target="_blank">信息推广</a></dd>
 				</dl>
 			</div>
 			<div class='navss34'>
 				<dl>
 					<dt>企业服务</dt>
-					<dd><a href="/index/zixun" target="_blank">广告服务</a></dd>
-					<dd><a href="/index/certification2" target="_blank">商城入驻</a></dd>
+					<dd><a href="/index/zixun.html" target="_blank">广告服务</a></dd>
+					<dd><a href="/index/certification2.html" target="_blank">商城入驻</a></dd>
 				</dl>
 			</div>
 		</div>
@@ -298,7 +298,7 @@
 		<div class="navss4">
 			<ul>
 				<li class="navss41"><a target="_blank" href="/article/promote.html"><img src="__PUBLIC__/images/navstuiguang.png"></a></li>
-				<li class="navss42"><a target="_blank" href="/index/street?nav_id=3"><img src="__PUBLIC__/images/navstuijian.png"></a></li>
+				<li class="navss42"><a target="_blank" href="/index/street/"><img src="__PUBLIC__/images/navstuijian.png"></a></li>
 				<li><a target="_blank" href="/article/Joinus"><img src="__PUBLIC__/images/navsshanghui.png"></a></li>
 				<div class="cl"></div>
 			</ul>

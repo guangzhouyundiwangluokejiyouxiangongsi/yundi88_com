@@ -91,20 +91,16 @@
         <div class="content-message">
         	
         	
-          <php>if ($article['cat_id'] == 33 || $article['cat_id'] == 32){</php>
         	<div class="tit-bar">
     			<!-- <span class="tit-bar-name">{$cat_name}</span> -->
           <notempty name="article['link_source']">
     			<span class="tit-bar-from">来源：<i>{$article.link_source}</i></span>
           </notempty>
-          <notempty name="article['time_source']">
-    			<span class="tit-bar-time">{$article.time_source}</span>
-          </notempty>
+          <span class="tit-bar-time">发布时间：{:date('Y-m-d',$article['add_time'])}</span>
           <notempty name="article['link_num']">
     			<span class="tit-bar-num">浏览量：<i>{$article.link_num}</i></span>
           </notempty>
     		  </div>
-          <php>}</php>
             <div style="padding: 20px 30px; color: rgb(60, 60, 60); font-size: 14px;">
 			         {$article.content|htmlspecialchars_decode}
             </div>
