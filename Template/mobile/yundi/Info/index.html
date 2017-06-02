@@ -17,7 +17,7 @@
 <body>
 
 	<!-- 头部 -->
-	<div class="w_header">
+	<div class="w_header" f="1">
 		<h3 class="w_header_title">{$infolist['name']}</h3>
 		<div class="w_header_search">
 			<a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a>
@@ -27,18 +27,18 @@
 $(function(){
   getinfo();
 });
-
-var page = 1;
+page = 0;
 function getinfo(){
+	
   $.ajax({
     type : "get",
-    url:"/index.php?m=Mobile&c=Info&a=ajaxgetinfo&p="+page,
+    url:"/index.php?m=Mobile&c=Info&a=ajaxgetinfo&p="+parseInt($('.w_header').attr('f')),
     dataType:'html',
     success: function(data)
     {
       if(data){
         $(".info").append(data);
-        page++;
+        $('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
       }else{
         $(".tishi").html('加载失败！');
       }
@@ -64,9 +64,10 @@ function getinfo(){
 <script>
 	$(window).scroll(function () {
     var maxScroll=$(document).height()-$(window).height();
-
     if ($(window).scrollTop() >= maxScroll) {
-      getinfo()
+    	if(parseInt($('.w_header').attr('f')) == page){return;}
+    	page = parseInt($('.w_header').attr('f'));
+      getinfo();
     }
   });
 </script>

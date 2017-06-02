@@ -17,7 +17,7 @@
 <body>
 
 	<!-- 头部 -->
-	<div class="w_header">
+	<div class="w_header" f="1">
 		<h3 class="w_header_title">搜企业</h3>
 		<div class="w_header_search">
 			<a href="/Mobile/Index/search"><img src="__STATIC__/images/search.png"></a>
@@ -32,26 +32,35 @@
 				
 				
 			</ul>
+			<ul>
+				<p style="font-size:20px;text-align:center;" class="tishi"><img src="__STATIC__/images/Preloader_4.gif"></p>
+			</ul>
 		</div>
 		<include file="Public/footer" />
 	
 </body>
 <script>
-var p = 1
+var p=0;
 $(function(){
 	street();
 });
 function street(){
+
 	$.post('/Mobile/index/ajaxstreet?p='+p,function(res){
-		$('.street').append(res);
-		p++;
+		if (res){
+			$('.street').append(res);
+			$('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
+		}else{
+			 $(".tishi").html('加载失败！');
+		}
 	})
 }
 $(window).scroll(function () {
     var maxScroll=$(document).height()-$(window).height();
-
     if ($(window).scrollTop() >= maxScroll) {
-      street();
+    	if(parseInt($('.w_header').attr('f')) == p){return;}
+    	p = parseInt($('.w_header').attr('f'));
+        street();
     }
   });
 
