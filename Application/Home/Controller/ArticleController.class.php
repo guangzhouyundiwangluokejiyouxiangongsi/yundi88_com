@@ -64,7 +64,7 @@ class ArticleController extends BaseController {
     		$this->assign('cat_name',$parent['cat_name']);
     		$this->assign('article',$article);
     	}
-        $this->display();
+        $this->display('detail_news');
     } 
 
     public function detail_news(){
@@ -87,9 +87,10 @@ class ArticleController extends BaseController {
             $location = '<a href="http://'.$_SERVER[HTTP_HOST].'">首页</a>&nbsp;>&nbsp;';
             foreach($this->getlocation($article['cat_id']) as $v){
 
-                $location .= '<a href="">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
+                $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
             }
-                $location .= '<a >正文</a>';
+                $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
+                // dump($article_id);exit;
 
             //上一篇
             $where['article_id']=array('lt',$article['article_id']);

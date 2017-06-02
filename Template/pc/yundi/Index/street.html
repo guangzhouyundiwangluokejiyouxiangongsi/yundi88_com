@@ -50,9 +50,9 @@
                 <img id="j_logo_5" alt="" width="90" height="45" src="{$scl['store_banner']|default='__STATIC__/images/57c7ed6bcc96f.jpg'}">
               </a>
             </p> -->
-            <p class="flow_zhuying"><a rel="{$scl['nofollow']}"  target="_blank" href="{$scl['domain']}" title="{$scl['store_name']}">主营商品：{$scl['store_zy']}</a></p>
+            <p class="flow_zhuying"><a rel="{$scl['nofollow']}" title="{$scl['store_name']}">主营商品：{$scl['store_zy']}</a></p>
             <!-- <p class="flow-desc"> <span>卖家：</span>
-              <a href="supplier.php?suppId=5" title="{$scl['store_name']}管理员" target="_blank"></a>
+              <a href="supplier.php?suppId=5"  title="{$scl['store_name']}管理员" target="_blank"></a>
               <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$scl['store_aftersales']['qq_account']}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" class="flow-qq">
                 <img src="__STATIC__/images/button_old_41.gif" height="16" border="0" alt="QQ"> </a>
               <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$scl['store_aftersales']['ww_account']}&amp;s=2" target="_blank" class="flow-qq">
@@ -64,20 +64,20 @@
             <p class="flow-desc"> <span>地址：</span>{$scl['province_name']},{$scl['city_name']},{$scl['district_name']} </p>
             <div class="flow_renzheng">
             <if condition="$scl[apply_state]">
-            <a target="_blank" href="/Index/certification.html?store_id={$scl[store_id]}" title="已认证企业/个体，杜绝一切虚假商家">
+            <a target="_blank" rel="nofollow" href="/Index/certification.html?store_id={$scl[store_id]}" title="已认证企业/个体，杜绝一切虚假商家">
               <img src="__PUBLIC__/renzheng/renzheng3.png" style="padding-top: 2px;">
             </a>
             <else />
-            <a target="_blank" href="/Index/certification.html?store_id={$scl[store_id]}" title="未认证！">
+            <a target="_blank" rel="nofollow" href="/Index/certification.html?store_id={$scl[store_id]}" title="未认证！">
               <img src="__PUBLIC__/renzheng/renzheng2.png" style="padding-top: 2px;">
             </a>
             </if>
             <if condition="$scl[commerce_state]">
-            <a target="_blank" href="http://association.yundi88.com/Home/newsmember?store_id={$scl[store_id]}" title="《权威企业》身份象征为消费者及商家提供100%安全保障">
+            <a target="_blank" rel="nofollow" href="http://association.yundi88.com/Home/newsmember?store_id={$scl[store_id]}" title="《权威企业》身份象征为消费者及商家提供100%安全保障">
               <img src="__PUBLIC__/renzheng/yunshanghui.png">
             </a>
             <else />
-            <a target="_blank" href="http://association.yundi88.com/Home/index" title="未加入！">
+            <a target="_blank" rel="nofollow" href="http://association.yundi88.com/Home/index" title="未加入！">
               <img src="__PUBLIC__/renzheng/yunshanghui2.png">
             </a>
             </if>

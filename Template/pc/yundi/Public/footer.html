@@ -29,6 +29,7 @@
     .btn_5{margin-left:10px;}
     .btn_6 a:hover{color: red;}
     </style>
+    <php>if(M('friend_link')->where(array('is_show'=>1))->count()){</php>
      <h6 class="btn_6">友情链接：
      <tpshop sql="select * from `__PREFIX__friend_link` where is_show = 1 order by orderby" key="k3" item="v3">
      <a href="{$v3[link_url]}" <php> if ($v3[target] == 1){</php>
@@ -36,6 +37,7 @@
       > {$v3[link_name]}</a>
      </tpshop>
      </h6>
+     <php>}</php>
      <footer>{$tpshop_config['shop_info_copyright']} 备案号:{$tpshop_config['shop_info_record_no']}</footer>
 </footer>
 <div class="top-back">
