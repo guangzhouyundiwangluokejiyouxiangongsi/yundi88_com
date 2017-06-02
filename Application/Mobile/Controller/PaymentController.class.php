@@ -187,7 +187,7 @@ class PaymentController extends MobileBaseController {
                 // include_once(PATH.'/plugins/payment/alipay/alipay3.class.php');
                 // $pay = new \alipay();
                 $order['order_sn'] = $records['order_id'];
-                $order['order_amount'] = 0.01;
+                $order['order_amount'] = 1688;
                 // $order['store_id'] = $store_id;
                 $config_value['pay_code'] = 'alipayMobile';
                 $res = $this->payment->get_code2($order,$config_value);
