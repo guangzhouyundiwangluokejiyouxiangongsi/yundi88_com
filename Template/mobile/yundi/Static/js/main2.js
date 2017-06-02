@@ -146,5 +146,22 @@ $(window).load(function(){
 	
 });
 
-	
+$(function(){
+    $(".d_seeklist>ul>li").click(function(){
+        var seeklist = $(this).index();
+        var seektext = $(this).text();
+        $(".d_seeklist>ul>li").eq(seeklist).addClass('active').siblings('li').removeClass('active');
+        $(".d_seeklist>a>span").text(seektext);
+        if(seeklist == 0){
+            $(".d_seekcon>input").val("搜索产品关键字");
+        }if(seeklist == 1){
+            $(".d_seekcon>input").val("搜索信息关键字");
+        }if(seeklist == 2){
+            $(".d_seekcon>input").val("搜索公司关键字");
+        }
+    })
+    $(".d_seekcon>input").focus(function(){
+        $(this).val("");
+    })
+})
 	

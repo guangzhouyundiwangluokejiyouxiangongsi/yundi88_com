@@ -97,22 +97,22 @@
 	  				</div>
 	  				<div class="approve clear">
 	  					<span>权威认证:
-	  					<if condition="store[apply_state]">
+	  					<php>if($store[apply_state]){</php>
 	  						<img src="__STATIC__/img/crown.png"/>
-	  					</if>
+						<php>}</php>
 	  					</span>
 	  					<span>综合描述 : <em><?php echo number_format(($store['store_desccredit']+$store['store_servicecredit']+$store['store_deliverycredit'])/3,2);?></em></span>
 	  					<span>
-	  						<if condition="store[apply_state]">
+	  						<php>if($store[apply_state]){</php>
 	  						<img style="width: 0.3368rem;" src="__STATIC__/img/approve.png" onClick="jump('/Mobile/Index/certification_info?store_id={$store.store_id}')"/>
-	  						<else />
+	  						<php>}else{</php>
 	  						<img style="width: 0.3368rem;" src="__STATIC__/images/renzheng2.png.png" onClick="jump('/Mobile/Index/certification_info?store_id={$store.store_id}')"/>
-	  						</if>
-	  						<if condition="store[commerce_state]">
+	  						<php>}</php>
+	  						<php>if($store[commerce_state]){</php>
 	  						<img style="width: 0.3032rem" src="__STATIC__/img/trade.png" onClick="jump('/Mobile/Index/enter?store_id={$store.store_id}')"/>
-	  						<else />
+	  						<php>}else{</php>
 	  						<img style="width: 0.3032rem" src="__STATIC__/images/yunshanghui2.png" onClick="jump('/Mobile/Index/enter?store_id={$store.store_id}')"/>
-	  						</if>
+	  						<php>}</php>
 	  					</span>
 						<div style="text-align: center;">
 							<a href="/Mobile/Store/goods_list/store_id/{$goods.store_id}">查全部商品</a>
@@ -196,7 +196,7 @@
 				</li>
 			</ul>			
 			<a href="javascript:;" style="background: #dd2726;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
-			<a href="javascript:;" onClick="AjaxAddCart({$goods.goods_id},1,0);" class="d_addshop" style="background: #fbb5b4;">加入采购单</a>
+			<a href="javascript:;" onClick="AjaxAddCart({$goods.goods_id},1,0);" class="d_addshop" style="background: #fb6a68;">加入采购单</a>
 			
 			<div class="s_prompt">添加成功,<a href="">立即结算>></a></div>
 		</div>
