@@ -32,9 +32,9 @@ class PaymentController extends MobileBaseController {
         {            
             $_GET = I('get.');            
             //file_put_contents('./a.html',$_GET,FILE_APPEND);    
-            $this->pay_code = I('get.pay_code');
+            $this->pay_code = I('get.pay_code','alipayMobile');
             unset($_GET['pay_code']); // 用完之后删除, 以免进入签名判断里面去 导致错误
-        }                        
+        }    
         //获取通知的数据
         $xml = $GLOBALS['HTTP_RAW_POST_DATA'];               
         // 导入具体的支付类文件                
@@ -126,42 +126,100 @@ class PaymentController extends MobileBaseController {
     	$this->display('recharge'); //分跳转 和不 跳转
     }
 
-        // 服务器点对点 // http://www.tp-shop.cn/index.php/Home/Payment/notifyUrl        
-        public function notifyUrl(){            
-            $this->payment->response();            
-            exit();
-        }
+    // 服务器点对点 // http://www.tp-shop.cn/index.php/Home/Payment/notifyUrl        
+    public function notifyUrl(){      
+        $this->payment->response();            
+        exit();
+    }
 
-        // 页面跳转 // http://www.tp-shop.cn/index.php/Home/Payment/returnUrl        
-        public function returnUrl(){
-             $result = $this->payment->respond2(); // $result['order_sn'] = '201512241425288593';            
-             if(stripos($result['order_sn'],'recharge') !== false)
-             {
-             	$order = M('recharge')->where("order_sn = '{$result['order_sn']}'")->find();
-             	$this->assign('order', $order);
-             	if($result['status'] == 1)
-             		$this->display('recharge_success');
-             	else
-             		$this->display('recharge_error');
-             	exit();
-             }             
-            // 先查看一下 是不是 合并支付的主订单号
-             $sum_order_amount = M('order')->where("master_order_sn = '{$result['order_sn']}'")->sum('order_amount');
-             if($sum_order_amount)
-             {
-                $this->assign('master_order_sn', $result['order_sn']); // 主订单号
-                $this->assign('sum_order_amount', $sum_order_amount); // 所有订单应付金额                        
-             }
-             else
-             {
-                $order = M('order')->where("order_sn = '{$result['order_sn']}'")->find();
-                $this->assign('order', $order);
-             }            
-             
-            if($result['status'] == 1)
-                $this->display('success');   
-            else
-                $this->display('error');   
-        }                
+    // 页面跳转 // http://www.tp-shop.cn/index.php/Home/Payment/returnUrl        
+    public function returnUrl(){
+         $result = $this->payment->respond2(); // $result['order_sn'] = '201512241425288593';            
+         if(stripos($result['order_sn'],'recharge') !== false)
+         {
+         	$order = M('recharge')->where("order_sn = '{$result['order_sn']}'")->find();
+         	$this->assign('order', $order);
+         	if($result['status'] == 1)
+         		$this->display('recharge_success');
+         	else
+         		$this->display('recharge_error');
+         	exit();
+         }             
+        // 先查看一下 是不是 合并支付的主订单号
+         $sum_order_amount = M('order')->where("master_order_sn = '{$result['order_sn']}'")->sum('order_amount');
+         if($sum_order_amount)
+         {
+            $this->assign('master_order_sn', $result['order_sn']); // 主订单号
+            $this->assign('sum_order_amount', $sum_order_amount); // 所有订单应付金额                        
+         }
+         else
+         {
+            $order = M('order')->where("order_sn = '{$result['order_sn']}'")->find();
+            $this->assign('order', $order);
+         }            
+         
+        if($result['status'] == 1)
+            $this->display('success');   
+        else
+            $this->display('error');   
+    }         
+
+    public function join()
+    {   
+        $store_id = session('store_id');
+        if (!$store_id) $this->redirect('/Mobile/User/login.html');
+        $commerce_state = M('store')->where(array('store_id'=>$store_id))->getField('commerce_state');
+        if (!$commerce_state){
+            $records = M('records')->where(array('store_id'=>$store_id))->find();
+            if (!$records){
+                $data['order_id'] = date('YmdHis',time()).rand(111111,999999);
+                $data['store_id'] = $store_id;
+                $data['name'] = '加入云商会会员(首年)';
+                $data['addtime'] = time();
+                $data['price']    = 1688;
+                M('records')->add($data);
+                $records['order_id'] = $data['order_id'];
+            }
+            if (!$store_id) {
+                $this->redirect('/Mobile/User/login.html');
+                exit;
+            } else {
+                // include_once(PATH.'/plugins/payment/alipay/alipay3.class.php');
+                // $pay = new \alipay();
+                $order['order_sn'] = $records['order_id'];
+                $order['order_amount'] = 0.01;
+                // $order['store_id'] = $store_id;
+                $config_value['pay_code'] = 'alipayMobile';
+                $res = $this->payment->get_code2($order,$config_value);
+                        echo $res;
+            }
+        
+        } else {
+            $this->error('您已经加入云商会了','/Seller/index/index');
+            echo '<script>alert("您已经加入云商会了!");window.location.href="http://www.yundi88.com";</script>';
+        }
+    }    
+
+    // 服务器点对点 // http://www.tp-shop.cn/index.php/Home/Payment/notifyUrl        
+    public function notifyUrl2(){      
+        $this->payment->response();            
+        exit();
+    }
+
+    // 页面跳转 // http://www.tp-shop.cn/index.php/Home/Payment/returnUrl        
+    public function returnUrl2(){
+         $result = $this->payment->respond3(); // $result['order_sn'] = '201512241425288593';            
+         if(stripos($result['order_sn'],'recharge') !== false)
+         {
+            $order = M('records')->where("order_id = '{$result['order_sn']}'")->getField('status');
+            echo '<script>alert("恭喜您已经成功加入云商会");window.location.href="http://www.yundi88.com";</script>';
+         }             
+               
+         
+        if($result['status'] == 1)
+            echo '<script>alert("恭喜您已经成功加入云商会!");window.location.href="http://www.yundi88.com";</script>';   
+        else
+            echo '<script>alert("支付失败!");window.location.href="http://www.yundi88.com";</script>';   
+    }            
               
 }

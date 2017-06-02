@@ -73,9 +73,9 @@ class alipayMobile extends RelationModel
                         "payment_type"  => "1", // 支付类型 ，无需修改
                         "_input_charset"=> trim(strtolower($this->alipay_config['input_charset'])), //字符编码格式 目前支持 gbk 或 utf-8
                         "out_trade_no"	=> $order['order_sn'], //商户订单号
-                        "subject"       =>"TPshop订单", //订单名称，必填
+                        "subject"       =>"云狄网订单", //订单名称，必填
                         "total_fee"	=> $order['order_amount'], //付款金额
-                        "show_url"	=> "http://www.tp-shop.cn", //收银台页面上，商品展示的超链接，必填
+                        "show_url"	=> "http://www.yundi88.com", //收银台页面上，商品展示的超链接，必填
                 
                     );
             //  如果是支付宝网银支付    
@@ -145,6 +145,7 @@ class alipayMobile extends RelationModel
                     
                     if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') 
                     {                           
+                        update_pay_status($order_sn);
                        return array('status'=>1,'order_sn'=>$order_sn);//跳转至成功页面
                     }
                     else {                        
@@ -154,6 +155,114 @@ class alipayMobile extends RelationModel
             else 
             {                     
                 return array('status'=>0,'order_sn'=>$_GET['out_trade_no']);//跳转至失败页面
+            }
+    }
+
+     function get_code2($order, $config_value)
+    {         
+             // 接口类型
+            $service = array(             
+                 1 => 'create_partner_trade_by_buyer', //使用担保交易接口
+                 2 => 'create_direct_pay_by_user', //使用即时到帐交易接口
+                 );
+            //构造要请求的参数数组，无需改动
+            $parameter = array(
+                        
+                        "partner" => trim($this->alipay_config['partner']), //合作身份者ID，签约账号，以2088开头由16位纯数字组成的字符串，查看地址：https://b.alipay.com/order/pidAndKey.htm
+                        'seller_id'=> trim($this->alipay_config['partner']), //收款支付宝账号，以2088开头由16位纯数字组成的字符串，一般情况下收款账号就是签约账号
+                        "key" => trim($this->alipay_config['key']), // MD5密钥，安全检验码，由数字和字母组成的32位字符串，查看地址：https://b.alipay.com/order/pidAndKey.htm
+                        // "seller_email" => trim($this->alipay_config['seller_email']),                                            
+                        "notify_url"    => SITE_URL.U('Payment/notifyUrl2',array('pay_code'=>'alipayMobile')) , //服务器异步通知页面路径 //必填，不能修改
+                        "return_url"    => SITE_URL.U('Payment/returnUrl2',array('pay_code'=>'alipayMobile')),  //页面跳转同步通知页面路径
+                        "sign_type"     => strtoupper('MD5'), //签名方式
+                        "input_charset" =>strtolower('utf-8'), //字符编码格式 目前支持utf-8
+                        "cacert"    =>  getcwd().'\\cacert.pem',
+                        "transport" => 'http', // //访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http                        
+                        "service" => 'alipay.wap.create.direct.pay.by.user',   // // 产品类型，无需修改                
+                        "payment_type"  => "1", // 支付类型 ，无需修改
+                        "_input_charset"=> trim(strtolower($this->alipay_config['input_charset'])), //字符编码格式 目前支持 gbk 或 utf-8
+                        "out_trade_no"  => $order['order_sn'], //商户订单号
+                        "subject"       =>"云狄网订单", //订单名称，必填
+                        "total_fee" => $order['order_amount'], //付款金额
+                        "show_url"  => "http://www.yundi88.com", //收银台页面上，商品展示的超链接，必填
+                
+                    );
+            //  如果是支付宝网银支付    
+            if(!empty($config_value['bank_code']))
+            {            
+                $parameter["paymethod"] = 'bankPay'; // 若要使用纯网关，取值必须是bankPay（网银支付）。如果不设置，默认为directPay（余额支付）。
+                $parameter["defaultbank"] = $config_value['bank_code'];
+                $parameter["service"] = 'create_direct_pay_by_user';
+            }        
+            //建立请求
+            require_once("lib/alipay_submit.class.php");            
+            $alipaySubmit = new AlipaySubmit($this->alipay_config);
+            $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");
+            return $html_text;         
+    }
+
+    function respond3()
+    {
+        require_once("lib/alipay_notify.class.php");  // 请求返回
+        //计算得出通知验证结果
+        $alipayNotify = new AlipayNotify($this->alipay_config);
+        $verify_result = $alipayNotify->verifyReturn();
+        
+            if($verify_result) //验证成功
+            {
+                    $order_sn = $out_trade_no = $_GET['out_trade_no']; //商户订单号
+                    $trade_no = $_GET['trade_no']; //支付宝交易号                   
+                    $trade_status = $_GET['trade_status']; //交易状态
+                    
+                    if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') 
+                    {                           
+                        M('records')->where(array('order_id'=>"{$order_sn}"))->save(array('status'=>1));
+                        $store = M('records')->where(array('order_id'=>"{$order_sn}"))->find();
+                        M('store')->where(array('store_id'=>$store['store_id']))->save(array('commerce_state'=>1));
+                       return array('status'=>1,'order_sn'=>$order_sn);//跳转至成功页面
+                    }
+                    else {                        
+                       return array('status'=>0,'order_sn'=>$order_sn); //跳转至失败页面
+                    }                       
+            }
+            else 
+            {                     
+                return array('status'=>0,'order_sn'=>$_GET['out_trade_no']);//跳转至失败页面
+            }
+    }
+
+    function response4()
+    {                
+        require_once("lib/alipay_notify.class.php");  // 请求返回
+        //计算得出通知验证结果
+        $alipayNotify = new AlipayNotify($this->alipay_config); // 使用支付宝原生自带的累 和方法 这里只是引用了一下 而已
+        $verify_result = $alipayNotify->verifyNotify();
+        
+            if($verify_result) //验证成功
+            {
+                    $order_sn = $out_trade_no = $_POST['out_trade_no']; //商户订单号                    
+                    $trade_no = $_POST['trade_no']; //支付宝交易号                   
+                    $trade_status = $_POST['trade_status']; //交易状态
+                    
+                    // 支付宝解释: 交易成功且结束，即不可再做任何操作。
+                    if($_POST['trade_status'] == 'TRADE_FINISHED') 
+                    {                         
+                        M('records')->where(array('order_id'=>"{$order_sn}"))->save(array('status'=>1));
+                        $store = M('records')->where(array('order_id'=>"{$order_sn}"))->find();
+                        M('store')->where(array('store_id'=>$store['store_id']))->save(array('commerce_state'=>1));
+                    }
+                    //支付宝解释: 交易成功，且可对该交易做操作，如：多级分润、退款等。
+                    elseif ($_POST['trade_status'] == 'TRADE_SUCCESS') 
+                    { 
+                        M('records')->where(array('order_id'=>"{$order_sn}"))->save(array('status'=>1));
+                        $store = M('records')->where(array('order_id'=>"{$order_sn}"))->find();
+                        M('store')->where(array('store_id'=>$store['store_id']))->save(array('commerce_state'=>1));
+                    }
+                    echo "success"; // 告诉支付宝处理成功
+            }
+            else 
+            {                
+                echo "fail"; //验证失败                                
             }
     }
     
