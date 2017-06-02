@@ -180,7 +180,7 @@
      
      <div class="right">
        <h1>优质供应商</h1>
-       <span class="there"><a href="/index/street?nav_id=3" target="_blank">更多</a></span>
+       <span class="there"><a href="{:U('/index/street')}" target="_blank">更多</a></span>
        <div class="cl"></div> 
        <div class="one">
         <tpshop sql="select * from `__PREFIX__store` where  store_state = 1  and deleted =0 and store_recommend = 1 order by rand() limit 10" item="v" key="k">

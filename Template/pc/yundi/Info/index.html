@@ -111,14 +111,14 @@
             </div>
           <div class="jingjiaimg">
               <notempty name="v['newsimg']">
-              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$v['newsimg']}"></a>
+              <a><img src="{$v['newsimg']}"></a>
               </notempty>
               <foreach name="v['content']" item="vv">
-              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$vv['src']}"></a>
+              <a><img src="{$vv['src']}"></a>
              </foreach>
           </div>
           <div class="jingjiabootm">
-            <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}" style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;">{$v['domain']|default=$_SERVER['HTTP_HOST']}</a>
+            <a style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;color: #a0a0a0;">作者:{$v.author}</a>
             <php>if($v['apply_state'] == 1){</php>
             <a style="position: relative;" target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
             <img src="/Public/renzheng/renzheng3.png" class="jinjiasm">
@@ -174,7 +174,7 @@
      
      <div class="right">
        <h1>优质供应商</h1>
-       <span class="there"><a href="/index/street?nav_id=3" target="_blank">更多</a></span>
+       <span class="there"><a href="{:U('/index/street')}" target="_blank">更多</a></span>
        <div class="cl"></div> 
        <div class="one">
         <tpshop sql="select * from `__PREFIX__store` where  store_state = 1  and deleted =0 and store_recommend = 1 order by rand() limit 10" item="v" key="k">

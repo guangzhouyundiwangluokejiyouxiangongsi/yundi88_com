@@ -167,7 +167,7 @@
             	<div style="cursor:pointer;" onclick="window.open('{:U('Store/index',array('store_id'=>$v[store_id]))}')"><span>{:getSubstr($v[store_name],0,15)}</span></div>
                 
                 <figure>
-                	 <a href="javascript:void(0);">
+                	 <a href="javascript:void(0);" rel="nofollow">
                    <php>if($apply_state[$v['user_id']] == 1){</php>
                    <span class="certification" onclick="window.open('/Index/certification.html?store_id={$v[store_id]}')">
                      <img  src="__PUBLIC__/renzheng/renzheng3.png" width="30" height="30"  alt=""/>
@@ -190,7 +190,7 @@
                   </a>
                
                   <php>if($v['commerce_state']){</php>
-                  <a href="javascript:void(0);">
+                  <a href="javascript:void(0);" rel="nofollow">
                     <span class="certificationt" onclick="window.open('http://association.yundi88.com/Home/newsmember?store_id={$v[store_id]}')">
                       <img src="__PUBLIC__/renzheng/yunshanghui.png" width="30" height="30"  alt=""/>
                       <span class="tipt" >
@@ -201,7 +201,7 @@
                     </span>
                   </a>
                   <php>}else{</php>
-                  <a href="javascript:void(0);">
+                  <a href="javascript:void(0);" rel="nofollow">
                     <span class="certificationt" onclick="window.open('http://association.yundi88.com/Home/index')">
                       <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="30" height="30"  alt=""/>
                       <span class="tipt" >
@@ -213,11 +213,11 @@
                   </a>
 
                   <php>}</php>
-                  <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$v['store_presales']['qq'][0]}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" target="_blank">
+                  <a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$v['store_presales']['qq'][0]}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" target="_blank">
                     <img src="__PUBLIC__/pc/images/product5.jpg" width="27" height="25"  alt=""/>
                   </a>
 
-          <a href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$v['store_presales']['ww'][0]}&amp;s=2" target="_blank" class="flow-qq">
+          <a rel="nofollow" href="http://amos1.taobao.com/msg.ww?v=2&amp;uid={$v['store_presales']['ww'][0]}&amp;s=2" target="_blank" class="flow-qq">
                     <img src="/Template/pc/yundi/Static/images/T1B7m.XeXuXXaHNz_X-16-16.gif" width="25" height="25" border="0" alt="旺旺">
                 </a>
                 </figure>
@@ -264,7 +264,7 @@
      </div><!--产品左边-->
      <div class="right">
        <h1>优质供应商</h1>
-       <span class="there"><a href="/index/street?nav_id=3" target="_blank">更多</a></span>
+       <span class="there"><a href="{:U('/index/street')}" target="_blank">更多</a></span>
        <div class="cl"></div>	
        <div class="one">
         <tpshop sql="select * from `__PREFIX__store` where  store_state = 1  and deleted =0 and store_recommend = 1 order by rand() limit 10" item="v" key="k">

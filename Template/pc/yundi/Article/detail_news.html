@@ -44,7 +44,7 @@
 <div id="pageContent" class="pageContent">
   <div class="hc-warp" id="page">
   <div style="width:100%;height:50px;line-height: 50px;"> {$location}</div>
- 
+
    <div class="content-title">
       <h1>{$article.title}</h1>
     </div>  
@@ -56,7 +56,7 @@
         </notempty>
         <ul class="title">
          <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]" key="k2" item='v2'>
-          <li><a href="">{$cat_name}</a></li>
+          <li><a>{$cat_name}</a></li>
          </tpshop>
         </ul>
         <ul class="tabs">
@@ -93,7 +93,7 @@
         	
           <php>if ($article['cat_id'] == 33 || $article['cat_id'] == 32){</php>
         	<div class="tit-bar">
-    			<span class="tit-bar-name">{$cat_name}</span>
+    			<!-- <span class="tit-bar-name">{$cat_name}</span> -->
           <notempty name="article['link_source']">
     			<span class="tit-bar-from">来源：<i>{$article.link_source}</i></span>
           </notempty>
@@ -108,7 +108,6 @@
             <div style="padding: 20px 30px; color: rgb(60, 60, 60); font-size: 14px;">
 			         {$article.content|htmlspecialchars_decode}
             </div>
-            <php>if ($article['cat_id'] == 32 || $article['cat_id'] == 33){</php>
             <div style="text-align:center;">
             	 <div class="share-btn">
 	            	<span>分享到：</span>
@@ -117,8 +116,12 @@
                   <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 	            	</ul>
 	            </div>
+              <ul>
+              <li style="width:50%;line-height: 50px;height:50px;float:left;">上一篇：<a href="{:U('detail_news',array('article_id'=>$p['article_id']))}" title="{$p['title']}">{:getsubstr($p['title'],0,30)}</a></li>
+              <li style="width:50%;line-height: 50px;height:50px;float:left;">下一篇：<a href="{:U('detail_news',array('article_id'=>$n['article_id']))}" title="{$n['title']}">{:getsubstr($n['title'],0,30)}</a></li>
+
+              </ul>
             </div>
-	         <php>}</php>
         </div>
       </div>
       <!--可编辑区域结束--> </div>
@@ -127,14 +130,14 @@
 </div>
 <div style="clear: both;"></div>
 <style type="text/css">.location li{list-style:none; }</style>
-    <div class="location" style="width:1220px;margin:0 auto;height:50px;">
+    <!-- <div class="location" style="width:1220px;margin:0 auto;height:50px;">
       <ul>
       <li style="width:50%;line-height: 50px;height:50px;float:left;">上一篇：<a href="{:U('detail_news',array('article_id'=>$p['article_id']))}" title="{$p['title']}">{:getsubstr($p['title'],0,30)}</a></li>
       <li style="width:50%;line-height: 50px;height:50px;float:left;">下一篇：<a href="{:U('detail_news',array('article_id'=>$n['article_id']))}" title="{$n['title']}">{:getsubstr($n['title'],0,30)}</a></li>
 
       </ul>
 
-    </div>
+    </div> -->
 
 <include file="User/footer" /> 
 </body>
