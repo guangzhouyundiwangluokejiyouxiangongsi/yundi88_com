@@ -25,7 +25,7 @@ h1,h2,h3{font-weight: normal;}
 .w_footer ul li i img{max-width: 100%;height: 0.3537rem;}
 .w_footer ul li p{font-size: 0.2rem;color: #6a6a6a;line-height: 0.4rem;font-weight: bold;}
 .w_order{position: absolute;bottom: 0.8253rem;right: 0;z-index: 25;height: 2.7284rem;width: 100%;background-color: #fff;box-shadow: -0.0253rem -0.0253rem 0.1263rem #e4e5e9;display: none;}
-.w_order a{display: block;width: 100%;height: 0.6737rem;line-height: 0.6737rem;text-align: center;border-bottom: 1px solid #eee;background-color: #fff;font-size: 0.2021rem;color: #999;}
+.w_order a{display: block;width: 100%;height: 0.6737rem;line-height: 0.6737rem;text-align: center;border-bottom: 1px solid #eee;background-color: #fff;font-size: 0.2021rem;color: #666;}
 
 #w_top{width: 0.6rem;height: 0.6rem;position: fixed;bottom: 1.1368rem;right: 3%;z-index: 24;display: none;max-width: 100px;max-height: 100px;}
 #w_top img{width: 100%;height: 100%;display: block;}
