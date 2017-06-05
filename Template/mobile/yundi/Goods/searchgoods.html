@@ -21,7 +21,7 @@
 		<h3 class="w_header_title">搜索与"{$name}"相关的商品</h3>
 		<div class="w_header_search"><a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a></div>
 	</div>
-
+	<span o="0" class="order" style="display: none;"></span>
 
 	<div class="w_content">
 
@@ -29,7 +29,7 @@
 			<ul>
 				<li><a href="###">综合</a></li>
 				<li><a href="###">最新</a></li>
-				<li><a href="###">价格</a></li>
+				<li><a href="###" onclick="order()">价格</a></li>
 			</ul>
 			<div class="w_change">
 				<a href="###"><img src="__STATIC__/images/ify_change.png"></a>
@@ -74,13 +74,30 @@
 	
 </body>
 <script>
+	function order(){
+		$('.w_header').attr('c',1);
+		$('.w_header').attr('f',1);
+		p3 = 0;
+		p6 = 0;
+		$('.shop_price').html('');
+		$('.shop_price2').html('');
+		if ($('.order').attr('o') == 0){
+			$('.order').attr('o',1);
+		}else{
+			$('.order').attr('o',0);
+		}
+		shop_price();
+		shop_price2();
+
+	}
+
 	$(function() { 
 		sales_sum()
 		new_goods()
-		shop_price()
+		// shop_price()
 		sales_sum2()
 		new_goods2()
-		shop_price2() 
+		// shop_price2() 
 	});
 	self.setTimeout(function(){
      	if ($('.sales_sum li').length < 5){
@@ -122,17 +139,31 @@
 
 	function shop_price(){
 		var name = '{$name}';
-		$.post('/Mobile/Goods/ajaxsearchgoods',{'name':name,'p':p3,'order':'shop_price'},function(res){
-			if (res){
-				$('.shop_price').append(res);
-				$('.w_header').attr('c',parseInt($('.w_header').attr('c'))+1);
-				if ($('.sales_sum li').length < 5){
-		     		$('.p3').html('没有内容了');
-		     	};
-			}else{
-				$('.p3').html('没有内容了');
-			}
-		})
+		if ($('.order').attr('o') == 1){
+			$.post('/Mobile/Goods/ajaxsearchgoods',{'name':name,'p':p3,'order':'shop_price'},function(res){
+				if (res){
+					$('.shop_price').append(res);
+					$('.w_header').attr('c',parseInt($('.w_header').attr('c'))+1);
+					if ($('.sales_sum li').length < 5){
+			     		$('.p3').html('没有内容了');
+			     	};
+				}else{
+					$('.p3').html('没有内容了');
+				}
+			})
+		}else{
+			$.post('/Mobile/Goods/ajaxsearchgoods',{'name':name,'p':p3,'order':'shop_price desc'},function(res){
+				if (res){
+					$('.shop_price').append(res);
+					$('.w_header').attr('c',parseInt($('.w_header').attr('c'))+1);
+					if ($('.sales_sum li').length < 5){
+			     		$('.p3').html('没有内容了');
+			     	};
+				}else{
+					$('.p3').html('没有内容了');
+				}
+			})
+		}
 	}
 	function sales_sum2(){
 		var name = '{$name}';
@@ -166,17 +197,31 @@
 
 	function shop_price2(){
 		var name = '{$name}';
-		$.post('/Mobile/Goods/ajaxsearchgoods2',{'name':name,'p':p6,'order':'shop_price'},function(res){
-			if (res){
-				$('.shop_price2').append(res);
-				$('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
-				if ($('.sales_sum li').length < 5){
-		     		$('.p6').html('没有内容了');
-		     	};
-			}else{
-				$('.p6').html('没有内容了');
-			}
-		})
+		if ($('.order').attr('o') == 1){
+			$.post('/Mobile/Goods/ajaxsearchgoods2',{'name':name,'p':p6,'order':'shop_price'},function(res){
+				if (res){
+					$('.shop_price2').append(res);
+					$('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
+					if ($('.sales_sum li').length < 5){
+			     		$('.p6').html('没有内容了');
+			     	};
+				}else{
+					$('.p6').html('没有内容了');
+				}
+			})
+		}else{
+			$.post('/Mobile/Goods/ajaxsearchgoods2',{'name':name,'p':p6,'order':'shop_price desc'},function(res){
+				if (res){
+					$('.shop_price2').append(res);
+					$('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
+					if ($('.sales_sum li').length < 5){
+			     		$('.p6').html('没有内容了');
+			     	};
+				}else{
+					$('.p6').html('没有内容了');
+				}
+			})
+		}
 	}
 	$('.w_con_tit> ul> li').find('a').eq(0).addClass('tab_on0');
  

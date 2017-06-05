@@ -7,6 +7,7 @@ class CommerceController extends IndexController
 
 	public function index()
 	{	
+		header('location:http://association.yundi88.com/Home/messageboard.html');
 		$store_id = session('store_id');
 		$commerce_state = M('store')->where(array('store_id'=>$store_id))->getField('commerce_state');
 		if (!$commerce_state){
