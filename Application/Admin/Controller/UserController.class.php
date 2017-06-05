@@ -431,6 +431,8 @@ class UserController extends BaseController {
     // 用户留言
     public function message()
     {   
+        $message = M('messageboard')->select();
+        $this->assign('message',$message);
         $this->display();
     }
 

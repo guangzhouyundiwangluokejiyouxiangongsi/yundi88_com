@@ -13,24 +13,28 @@
 </style>
 <body>
 <form action="" method="post">
-	<h2 style="text-align: center;">用户体验</h2>
-	<table border="1px soild" width="90%" style="text-align: center;color: #55f;border-color: #55f">
-		<th width="8%">I D</th>
-		<th width="10%">美观评分</th>
-		<th width="10%">操作难度</th>
-		<th width="10%">成交数量</th>
-		<th width="44%">留言内容</th>
+	<h2 style="text-align: center;">用户留言</h2>
+	<table border="1px soild" width="98%" style="text-align: center;color: #55f;border-color: #55f">
+		<th width="4%">I D</th>
+		<th width="10%">姓名</th>
+		<th width="12%">手机号码</th>
+		<th width="12%">QQ</th>
+		<th width="16%">邮箱</th>
+		<th width="30%">留言内容</th>
 		<th width="8%">操作</th>
-		<th width="10%"><input type="checkbox" onclick="SelectAll()" />删除</th>
-		<tr>
-			<td>12313</td>
-			<td>12313</td>
-			<td>12313</td>
-			<td>12313</td>
-			<td ><a href="javascript:;" onclick="chakan()" ><div class="inner" id="btn">哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈pppp</div></a></td>
-			<td><a href="javascript:;" onclick="delete_mes()">删除</a></td>
+		<th width="8%"><input type="checkbox" onclick="SelectAll()" />删除</th>
+		<foreach name="message" item="vv">
+		<tr id="tid{$vv.id}">
+			<td>{$vv.id}</td>
+			<td>{$vv.name}</td>
+			<td>{$vv.phone}</td>
+			<td>{$vv.qq}</td>
+			<td>{$vv.email}</td>
+			<td ><a href="javascript:;" onclick="chakan('{$vv.id}')" ><div class="inner" id="{$vv.id}">{$vv.message}</div></a></td>
+			<td><a href="javascript:;" onclick="delete_mes('{$vv.id}')">删除</a></td>
 			<td><input type="checkbox" name="choose[]"></td>
 		</tr>
+		</foreach>
 	</table>
 </form>
 </body>
@@ -43,17 +47,18 @@
 		}
 	}
 
-	function delete_mes(){
-		layer.alert('啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊');
+	function delete_mes(id){
+		$.post('/Admin/User/delete_mes',{'id':id},function(res){
+			if (res){
+				$('#tid'+id).remove();
+			}else{
+				alert('删除失败');
+			}
+		})
 	}
 
-	function btn(){
-		alert(1);
-	}
-
-	function chakan(){
-		var btn = document.getElementById("btn").innerHTML;
-		layer.alert(btn);
+	function chakan(id){
+		layer.alert($('#'+id).html());
 	}
 	
 	</script>
