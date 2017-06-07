@@ -168,6 +168,7 @@ class PaymentController extends MobileBaseController {
     {   
         $store_id = session('store_id');
         if (!$store_id) $this->redirect('/Mobile/User/login.html');
+        header('location:http://association.yundi88.com/Home/messageboard.html');
         $commerce_state = M('store')->where(array('store_id'=>$store_id))->getField('commerce_state');
         if (!$commerce_state){
             $records = M('records')->where(array('store_id'=>$store_id))->find();

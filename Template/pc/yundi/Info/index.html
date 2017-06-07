@@ -118,7 +118,7 @@
              </foreach>
           </div>
           <div class="jingjiabootm">
-            <a style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;color: #a0a0a0;">作者:{$v.author}</a>
+            <a style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;color: #a0a0a0;">作者:{$v.author|default="未知"}</a>
             <php>if($v['apply_state'] == 1){</php>
             <a style="position: relative;" target="_blank" href="javascript:vid(0);" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')" class="jingjiasb">
             <img src="/Public/renzheng/renzheng3.png" class="jinjiasm">

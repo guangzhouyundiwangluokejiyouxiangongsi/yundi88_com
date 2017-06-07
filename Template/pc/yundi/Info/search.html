@@ -61,7 +61,7 @@
              </foreach>
           </div>
           <div class="jingjiabootm">
-            <a href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}" style="max-width:456px;display:inline-block;overflow:hidden;height: 20px;">{$v['domain']|default=$_SERVER['HTTP_HOST']}</a>
+            <a href="javascript:;" style="max-width:456px;display:inline-block;overflow:hidden;height: 20px;">作者:{$v.author|default="未知"}</a>
 
             <php>if($v['certification'] == 1){</php>
             <a style="position: relative;" href="javascript:vid(0);" class="jingjiasb" onclick="window.open('{:U('Index/certification')}')">
@@ -121,7 +121,7 @@
              </foreach>
           </div>
           <div class="jingjiabootm">
-            <a style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;" target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{$v['domain']|default=$_SERVER['HTTP_HOST']}</a>
+            <a style="max-width:456px;height: 20px;display:inline-block;overflow:hidden;color: #a0a0a0;" target="_blank" href="javascript:;">作者:{$v.author|default="未知"}</a>
             <php>if($v['certification'] == 1){</php>
             <a style="position: relative;" href="javascript:vid(0);" class="jingjiasb" onclick="window.open('{:U('Index/certification')}?store_id={$v[store]}')">
             <img src="/Public/renzheng/renzheng3.png" class="jinjiasm">

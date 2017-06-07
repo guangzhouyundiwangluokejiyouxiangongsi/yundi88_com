@@ -454,7 +454,21 @@ class UserController extends BaseController {
     // 删除留言
     public function delete_mes()
     {
-        $this->display();
+        $id = I('id');
+        $res = M('messageboard')->where(array('id'=>$id))->delete();
+        $this->ajaxReturn($res);
+    }
+
+    public function delete_all2()
+    {   
+        $arr = I('choose');
+        foreach($arr as $vv){
+            if ($vv){
+                M('messageboard')->where(array('id'=>$vv))->delete();
+            }
+        }
+        redirect('/Admin/User/message.html');
+        // header('location:http://www.yundi88.com/Admin/User/message.html');
     }
 
     // 用户体验轮播图管理
