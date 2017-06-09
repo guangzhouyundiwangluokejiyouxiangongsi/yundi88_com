@@ -13,6 +13,9 @@
 		<script type="text/javascript" src="__STATIC__/js/idangerous.swiper.min.js" ></script>
 		<script type="text/javascript" src="__STATIC__/js/main2.js" ></script>
 	</head>
+	<style>
+	.clear p{clear: both;}
+	</style>
 	<body>
 		<div class="d_header">
 			<div class="mg">
@@ -58,15 +61,19 @@
 			<div class="mg">
 				<h1>你可能感兴趣的热词</h1>
 				<ul class="clear">
-					<li onclick="search(this)">云狄网</li>
-					<li onclick="search(this)">连衣裙</li>
-					<li onclick="search(this)">广州云狄网络科技有限公司</li>
-					<li onclick="search(this)">云狄网</li>
-					<li onclick="search(this)">连衣裙</li>
-					<li onclick="search(this)">广州云狄网络科技有限公司</li>
-					<li onclick="search(this)">云狄网</li>
-					<li onclick="search(this)">连衣裙</li>
-					<li onclick="search(this)">广州云狄网络科技有限公司</li>
+					<p>产品：</p>
+					<foreach name="shop" item="v">
+					<li onclick="search('shop','{$v[keywords]}')">{:mb_substr($v['keywords'],0,8);}</li>
+					</foreach><br>
+					<p>信息：</p>
+					<foreach name="info" item="vv">
+					<li onclick="search('info','{$vv[keywords]}')">{:mb_substr($vv['keywords'],0,8);}</li>
+					</foreach><br>
+					<p>公司：</p>
+					<foreach name="compnay" item="vvv">
+					<li onclick="search('compnay','{$vvv[keywords]}')">{:mb_substr($vvv['keywords'],0,8);}</li>
+					</foreach><br>
+					
 				</ul>
 			</div>
 		</div>
@@ -107,8 +114,16 @@ function init(index,item){
 		}
 	}
 
-	function search(obj){
-		$('#name').val(obj.innerHTML);
+	function search(url,name){
+		if (url == 'shop'){
+			window.location.href="/Mobile/goods/searchgoods?name="+name;
+		}
+		if (url == 'info'){
+			window.location.href="/Mobile/info/search_info?name="+name;
+		}
+		if (url == 'compnay'){
+			window.location.href="/Mobile/index/search_store?name="+name;
+		}
 	}
 </script>
 </html>

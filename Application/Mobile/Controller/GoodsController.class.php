@@ -425,11 +425,15 @@ class GoodsController extends MobileBaseController {
 
     public function ajaxsearchgoods()
     {
-        $name = I('name','衣');
-        $p = I('p');
+        $name = I('name','');
+        $p = I('p',1);
         $order = I('order','sales_sum');
         $Logic = new \Mobile\Logic\GoodsLogic(); 
         $goodslist = $Logic->searchgoods($p,6,$order,$name);
+        foreach($goodslist as &$v){
+            $v['goods_name'] = str_replace($name,'<span style="color:red;">'.$name.'</span>',$v['goods_name']);
+        }
+        if ($goodslist && $p == 1) search($name,0,0,1);
         $this->assign('goodslist',$goodslist);
         $this->display('ajaxgoods');
     }

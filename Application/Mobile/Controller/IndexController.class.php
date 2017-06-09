@@ -155,26 +155,17 @@ class IndexController extends MobileBaseController {
      */
     public function search()
     {   
-        $p = I('p');
-        $name = trim(I('name',''));
-        if(!$name){
-            $this->display();
-            exit;
-        }
-            $store_list = D('store')->getStreetsearch($name,$p,10);
-            // dump($store_list);
-            foreach($store_list as $key=>$value){
-                $store_list[$key]['goods_array'] = D('store')->getStoreGoods($value['store_id'],10);
-                $store_list[$key]['domain'] = $store_list[$key]['domain'] ? $store_list[$key]['domain'] : 'yundi88.ydwzjs.cn';
-                $store_list[$key]['apply_state'] = M('store_apply')->where(array('user_id'=>$value['user_id']))->getField('apply_state');
-            }
-            $this->assign('name',$name);
-            $this->assign('store_list',$store_list);
-            if ($p){
-                $this->display('ajaxStreetList');
-            }else{
-                $this->display();
-            }
+        $time = time()-604800;
+        $sql = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=0 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
+        $shop = M()->query($sql);
+        $sql2 = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=1 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
+        $compnay = M()->query($sql2);
+        $sql3 = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=2 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
+        $info = M()->query($sql3);
+        $this->assign('info',$info);
+        $this->assign('shop',$shop);
+        $this->assign('compnay',$compnay);
+        $this->display();
     }
 
     /**
@@ -233,6 +224,7 @@ class IndexController extends MobileBaseController {
             $v['store_name'] = str_replace($name,'<span style="color:red">'.$name.'</span>',$v['store_name']);
             $v['store_zy'] = str_replace($name,'<span style="color:red">'.$name.'</span>',$v['store_zy']);
         }
+        if ($street && $_GET['p']==1) search($name,1,0,1);
         $this->assign('street',$street);
         $this->display('ajaxstreet');
     }

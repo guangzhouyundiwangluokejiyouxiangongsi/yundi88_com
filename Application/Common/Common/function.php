@@ -862,3 +862,13 @@ function templogo($store_id,$width,$height)
 
 }
 
+function search($name='',$type=0,$pc=0,$mobile=0)
+{
+    $data['keywords'] = $name;
+    $data['type'] = $type;
+    $data['pc'] = $pc;
+    $data['mobile'] = $mobile;
+    $data['addtime'] = time();
+    M('search')->add($data);
+}
+
