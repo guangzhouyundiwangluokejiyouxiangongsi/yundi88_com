@@ -9,14 +9,14 @@
 							<a href="/Mobile/Store/index/store_id/{$vv.store_id}">{$vv.store_name}</a>
 							<div class="w_street_btn">
 								<if condition="$vv[apply_state]">
-								<a href="/Mobile/Index/certification_info?store_id={$vv.store_id}"><img src="__STATIC__/images/rengzheng.png"></a>
+								<a href="/Mobile/Index/certification_info/store_id/{$vv.store_id}.html"><img src="__STATIC__/images/rengzheng.png"></a>
 								<else />
-								<a href="/Mobile/Index/certification_info?store_id={$vv.store_id}"><img src="__STATIC__/images/rengzheng2.png"></a>
+								<a href="/Mobile/Index/certification_info/store_id/{$vv.store_id}.html"><img src="__STATIC__/images/rengzheng2.png"></a>
 								</if>
 								<if condition="$vv[commerce_state]">
-								<a href="/Mobile/Index/enter?store_id={$vv.store_id}"><img src="__STATIC__/images/yunshanghui.png"></a>
+								<a href="/Mobile/Index/enter/store_id/{$vv.store_id}.html"><img src="__STATIC__/images/yunshanghui.png"></a>
 								<else />
-								<a href="/Mobile/Index/enter?store_id={$vv.store_id}"><img src="__STATIC__/images/yunshanghui2.png"></a>
+								<a href="/Mobile/Index/enter/store_id/{$vv.store_id}.html"><img src="__STATIC__/images/yunshanghui2.png"></a>
 								</if>
 							</div>
 						</div>
