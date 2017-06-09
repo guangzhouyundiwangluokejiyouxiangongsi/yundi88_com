@@ -208,6 +208,7 @@ function getAllMenu(){
 			'userr' => array('name'=>'用户体验','icon'=>'fa-user','sub_menu'=>array(
 					array('name'=>'用户体验','act'=>'experience','control'=>'User'),
 					array('name'=>'用户留言','act'=>'message','control'=>'User'),
+					array('name'=>'h5留言','act'=>'h5message','control'=>'User'),
 			)),
 			'user' => array('name' => '轮播管理', 'icon'=>'fa-flag', 'sub_menu' => array(
 					array('name'=>'用户体验','act'=>'tiyan_lunbo','control'=>'User'),

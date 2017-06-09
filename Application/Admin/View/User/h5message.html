@@ -27,16 +27,15 @@
 .page .current{background-color: #008cc1;color:#fff;}
 </style>
 <body>
-<form action="{:U('/Admin/User/delete_all2')}" method="post" id="formone">
-	<h2 style="text-align: center;">用户留言</h2>
+<form action="{:U('/Admin/User/delete_h5all')}" method="post" id="formone">
+	<h2 style="text-align: center;">h5留言</h2>
 	<table border="1px soild" width="98%" style="text-align: center;color: #55f;border-color: #55f">
 		<th width="4%">I D</th>
 		<th width="10%">姓名</th>
 		<th width="12%">手机号码</th>
 		<th width="12%">QQ</th>
-		<th width="16%">邮箱</th>
-		<th width="20%">留言内容</th>
-		<th width="10%">留言时间</th>
+		<th width="16%">微信</th>
+		<th width="20%">留言时间</th>
 		<th width="8%">操作</th>
 		<th width="8%"><input type="checkbox" onclick="SelectAll()" /><a href="javascript:;" onclick="onesubmit()">删除</a></th>
 		<foreach name="message" item="vv">
@@ -45,14 +44,13 @@
 			<td>{$vv.name}</td>
 			<td>{$vv.phone}</td>
 			<td>{$vv.qq}</td>
-			<td>{$vv.email}</td>
+			<td>{$vv.weixin}</td>
 			<td>{:date('Y-m-d H:i:s',$vv['addtime']);}</td>
-			<td ><a href="javascript:;" onclick="chakan('{$vv.id}')" ><div class="inner" id="{$vv.id}">{$vv.message}</div></a></td>
 			<td><a href="javascript:;" onclick="delete_mes('{$vv.id}')">删除</a></td>
 			<td><input type="checkbox" name="choose[]" value="{$vv.id}"></td>
 		</tr>
 		</foreach>
-		<div class="row">
+		<div class="row" style="text-align: center;">
       	    <div class="col-sm-6 text-left"></div>
             <div class="col-sm-6 text-right">{$page}</div>		
         </div>
@@ -69,7 +67,7 @@
 	}
 
 	function delete_mes(id){
-		$.post('/Admin/User/delete_mes',{'id':id},function(res){
+		$.post('/Admin/User/delete_h5',{'id':id},function(res){
 			if (res){
 				$('#tid'+id).remove();
 			}else{
@@ -78,9 +76,6 @@
 		})
 	}
 
-	function chakan(id){
-		layer.alert($('#'+id).html());
-	}
 	
 	function onesubmit(){
 		$('#formone').submit();

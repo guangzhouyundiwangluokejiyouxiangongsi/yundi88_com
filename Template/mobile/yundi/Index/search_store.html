@@ -17,7 +17,7 @@
 <body>
 
 	<!-- 头部 -->
-	<div class="w_header">
+	<div class="w_header" f="1">
 		<h3 class="w_header_title">搜企业</h3>
 		<div class="w_header_search">
 			<a href="/Mobile/index/search"><img src="__STATIC__/images/search.png"></a>
@@ -53,6 +53,7 @@ function street(){
 	$.get('/Mobile/index/ajaxsearch?p='+p+'&name='+name,function(res){
 		if (res){
 			$('.street').append(res);
+			$('.w_header').attr('f',parseInt($('.w_header').attr('f'))+1);
 			if ($('.street > li').length < 4){
 				$('.tishi').html('没有内容了');
 			}
@@ -60,7 +61,6 @@ function street(){
 				$('.tishi').html('您搜索的公司不存在');
 				$('.tishi').css('margin-top','70px');
 			}
-			p++;
 		}else{
 			$('.tishi').html('没有内容了');
 			if ($('.street > li').length < 1){
@@ -75,7 +75,9 @@ $(window).scroll(function () {
     var maxScroll=$(document).height()-$(window).height();
 
     if ($(window).scrollTop() >= maxScroll) {
-      street();
+      if(parseInt($('.w_header').attr('f')) == p){return;}
+    	p = parseInt($('.w_header').attr('f'));
+        street();
     }
   });
 

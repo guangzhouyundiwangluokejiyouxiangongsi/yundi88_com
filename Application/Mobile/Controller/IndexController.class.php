@@ -224,8 +224,15 @@ class IndexController extends MobileBaseController {
     {   
         $name = I('name');
         $where['store_name'] = array('like','%'.$name.'%');
-        $where['store_state'] = 1;
-        $street = M('store')->field('store_id,store_name,store_zy,store_phone,province_id,city_id,district,store_address,apply_state,commerce_state,store_desccredit,store_servicecredit,store_deliverycredit')->where($where)->order('commerce_state desc,apply_state desc,store_time desc')->page($_GET['p'].',5')->select();
+        $where['store_zy'] = array('like','%'.$name.'%');
+        $where['_logic'] = 'or';
+        $map['_complex'] = $where;
+        $map['store_state'] = 1;
+        $street = M('store')->field('store_id,store_name,store_zy,store_phone,province_id,city_id,district,store_address,apply_state,commerce_state,store_desccredit,store_servicecredit,store_deliverycredit')->where($map)->order('commerce_state desc,apply_state desc,store_time desc')->page($_GET['p'].',5')->select();
+        foreach($street as &$v){
+            $v['store_name'] = str_replace($name,'<span style="color:red">'.$name.'</span>',$v['store_name']);
+            $v['store_zy'] = str_replace($name,'<span style="color:red">'.$name.'</span>',$v['store_zy']);
+        }
         $this->assign('street',$street);
         $this->display('ajaxstreet');
     }
