@@ -77,8 +77,8 @@
 	function order(){
 		$('.w_header').attr('c',1);
 		$('.w_header').attr('f',1);
-		p3 = 0;
-		p6 = 0;
+		p3 = 1;
+		p6 = 1;
 		$('.shop_price').html('');
 		$('.shop_price2').html('');
 		if ($('.order').attr('o') == 0){
@@ -104,12 +104,12 @@
      		$('.p1').html('没有内容了');
      	};
 	},1500)
-	var p = 0;
-	var p2 = 0;
-	var p3 = 0;
-	var p4 = 0;
-	var p5 = 0;
-	var p6 = 0;
+	var p = 1;
+	var p2 = 1;
+	var p3 = 1;
+	var p4 = 1;
+	var p5 = 1;
+	var p6 = 1;
 	function sales_sum(){
 		var name = '{$name}';
 		$.post('/Mobile/Goods/ajaxsearchgoods',{'name':name,'p':p,'order':'sales_sum'},function(res){

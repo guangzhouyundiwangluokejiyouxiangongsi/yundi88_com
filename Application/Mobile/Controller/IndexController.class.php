@@ -156,11 +156,11 @@ class IndexController extends MobileBaseController {
     public function search()
     {   
         $time = time()-604800;
-        $sql = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=0 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
+        $sql = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=0 and status=1 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
         $shop = M()->query($sql);
-        $sql2 = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=1 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
+        $sql2 = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=1 and status=1 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
         $compnay = M()->query($sql2);
-        $sql3 = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=2 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
+        $sql3 = "SELECT keywords,type, count( * ) AS count FROM yd_search WHERE addtime > $time and type=2 and status=1 GROUP BY keywords ORDER BY count DESC,addtime DESC LIMIT 10";
         $info = M()->query($sql3);
         $this->assign('info',$info);
         $this->assign('shop',$shop);
@@ -224,7 +224,7 @@ class IndexController extends MobileBaseController {
             $v['store_name'] = str_replace($name,'<span style="color:red">'.$name.'</span>',$v['store_name']);
             $v['store_zy'] = str_replace($name,'<span style="color:red">'.$name.'</span>',$v['store_zy']);
         }
-        if ($street && $_GET['p']==1) search($name,1,0,1);
+        if ($street && $_GET['p']==1) search($name,1,1);
         $this->assign('street',$street);
         $this->display('ajaxstreet');
     }

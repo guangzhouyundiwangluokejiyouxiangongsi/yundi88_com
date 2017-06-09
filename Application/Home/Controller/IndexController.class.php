@@ -233,7 +233,7 @@ class IndexController extends BaseController {
         $store_id = M('store')->where("store_name like '%{$company}%' or store_zy like '%{$company}%'")->getField('store_id',true);
         if($store_id){
             $p = I('p',1);
-            if ($p == 1) search($company,1,1,0);
+            if ($p == 1) search($company,1,0);
 
              $store_logic = new StoreLogic();
             $store_list = $store_logic->getStoreList2($store_id);

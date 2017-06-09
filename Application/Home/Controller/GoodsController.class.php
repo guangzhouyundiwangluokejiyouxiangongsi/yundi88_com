@@ -608,7 +608,7 @@ class GoodsController extends BaseController {
         if($count > 0)
         {   
             $p = I('p',1);
-            if ($p == 1) search($q,0,1,0);
+            if ($p == 1) search($q,0,0);
             $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where("is_on_sale=1 and goods_id in (".  implode(',', $filter_goods_id).")")->order('num desc,commerce_state desc,apply_state desc,on_time desc')->limit($page->firstRow.','.$page->listRows)->select();
             
             $goods_about = M('goods')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where("is_on_sale=1 and goods_id in (".  implode(',', $filter_goods_id).")")->order(" rand() ")->limit(1,12)->select();

@@ -144,7 +144,7 @@ class InfoController extends BaseController
         foreach($quality as &$vc){
             $vc['store_zy2'] = str_replace($info, "<zhoufei>{$info}</zhoufei>", $vc['store_zy']);
         }
-        if ($articlelist && !$_GET['p']) search($info,2,1,0);
+        if ($articlelist && !$_GET['p']) search($info,2,0);
         
         $this->assign('quality',$quality);
 

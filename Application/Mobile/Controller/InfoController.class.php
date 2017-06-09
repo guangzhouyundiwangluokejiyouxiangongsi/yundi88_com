@@ -65,7 +65,7 @@ class InfoController extends MobileBaseController
             $v['title'] = str_replace($name,"<span style='color:red;'>".$name."</span>",$v['title']);
             $v['description'] = str_replace($name,'<span style="color:red;">'.$name.'</span>',$v['description']);
         }
-        if ($articlelist && $p == 1) search($name,2,0,1);
+        if ($articlelist && $p == 1) search($name,2,1);
         $this->assign('articlelist',$articlelist);
         $this->display('ajaxsearchinfo');
     }
