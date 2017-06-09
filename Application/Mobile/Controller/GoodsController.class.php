@@ -433,7 +433,7 @@ class GoodsController extends MobileBaseController {
         foreach($goodslist as &$v){
             $v['goods_name'] = str_replace($name,'<span style="color:red;">'.$name.'</span>',$v['goods_name']);
         }
-        if ($goodslist && $p == 1) search($name,0,0,1);
+        if ($goodslist && $p == 1) search($name,0,1);
         $this->assign('goodslist',$goodslist);
         $this->display('ajaxgoods');
     }
