@@ -527,6 +527,7 @@ class GoodsController extends BaseController {
         $end_price = trim(I('end_price','0')); // 输入框价钱
         if($start_price && $end_price) $price = $start_price.'-'.$end_price; // 如果输入框有价钱 则使用输入框的价钱
         $q = urldecode(trim(I('q',''))); // 关键字搜索 
+        
         empty($q) && $this->error('请输入搜索词');
                 
         $id && ($filter_param['id'] = $id); //加入帅选条件中                       
@@ -605,7 +606,9 @@ class GoodsController extends BaseController {
         $counts = ceil($count / 32);
         $page = new Page($count,32);
         if($count > 0)
-        {
+        {   
+            $p = I('p',1);
+            if ($p == 1) search($q,0,1,0);
             $goods_list = M('goods')->field('*,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where("is_on_sale=1 and goods_id in (".  implode(',', $filter_goods_id).")")->order('num desc,commerce_state desc,apply_state desc,on_time desc')->limit($page->firstRow.','.$page->listRows)->select();
             
             $goods_about = M('goods')->join('INNER JOIN __STORE__ ON __STORE__.store_id = __GOODS__.store_id')->where("is_on_sale=1 and goods_id in (".  implode(',', $filter_goods_id).")")->order(" rand() ")->limit(1,12)->select();

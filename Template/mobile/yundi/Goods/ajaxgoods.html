@@ -1,17 +1,17 @@
 <foreach name="goodslist" item="vv">
 <li>
 	<div class="w_poster_i">
-		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}">
+		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}.html">
 			<img src="{:goods_thum_images($vv['goods_id'],375,289);}">
 		</a>
 	</div>
 	<div class="w_poster_r">
-		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}">{$vv.goods_name}</a>
+		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}.html">{$vv.goods_name}</a>
 		<p>{$vv.store_name}</p>
 		<div class="w_poster_fine">
 			<p>￥<span>{$vv.shop_price}</span>元</p>
 			<div class="w_poster_fine_btn">
-				<a href="/Mobile/Index/certification_info?store_id={$vv.store_id}">
+				<a href="/Mobile/Index/certification_info/store_id/{$vv.store_id}.html">
 				<if condition="$vv[apply_state]">
 				<img src="__STATIC__/images/rengzheng.png" title="权威认证">
 				<else />
@@ -19,7 +19,7 @@
 				</if>
 				</a>
 
-				<a href="/Mobile/Index/enter?store_id={$vv.store_id}">
+				<a href="/Mobile/Index/enter/store_id/{$vv.store_id}.html">
 				<if condition="$vv[commerce_state]">
 				<img src="__STATIC__/images/yunshanghui.png" title="云商会">
 				<else />

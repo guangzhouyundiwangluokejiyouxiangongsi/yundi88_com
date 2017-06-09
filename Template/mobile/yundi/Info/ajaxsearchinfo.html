@@ -1,0 +1,71 @@
+<foreach name='articlelist' item="v" key="k">
+				<li class="w_info_li">
+					<div class="w_info_tit">
+						<div class="w_info_tit_l">
+							<div class="w_dummy"></div>
+							<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html"><img src="{:templogo($v['store'],83,83)}"></a>
+						</div>
+
+						<div class="w_info_tit_c">
+
+							<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html">{:getsubstr($v['title'],0,50)}</a>
+							<p>{:date('Y-m-d :H:i:s',$v['timer'])}</p>
+							<p>浏览量：{$v['m_click']+$v['pc_click']}</p>
+
+						</div>
+						<div class="w_info_tit_r">
+
+						<a href="{:U('Mobile/Index/certification_info',array('store_id'=>$v[store]))}">
+							<php>if($v['apply_state']){</php>
+								<img src="__STATIC__/images/rengzheng.png" title="权威认证">
+							<php>}else{</php>
+								<img src="__STATIC__/images/rengzheng2.png" title="权威认证">
+							<php>}</php>
+							</a>
+							<a href="{:U('Mobile/Index/enter',array('store_id'=>$v[store]))}">
+							<php>if($v['apply_state']){</php>
+								<img src="__STATIC__/images/yunshanghui.png" title="云商会">
+							<php>}else{</php>
+								<img src="__STATIC__/images/yunshanghui2.png" title="云商会">
+							<php>}</php>
+							</a>
+						</div>
+					</div>
+					<div class="w_info_text">
+						<p class="hov"><span id="str_{$v['id']}">{:getsubstr($v['description'],0,80)}</span>
+						<span id="str_{$v['id']}s" style="display: none;">{:mb_substr($v['description'],80)}</span>
+						</p>
+						<php>if(mb_strlen($v['description']) > 80){</php>
+						<span class="w_info_btn" id="str_{$v['id']}_s" style="float:left;" onclick="getsubstr2('{$v[id]}')">点击展开</span>
+						<php>}</php>
+					</div>
+					<div class="w_info_img">
+						<ul>
+						<foreach name="v['content']" item="vv" key="kk">
+						<notempty name="vv['src']">
+						<php>if($kk < 9){</php>
+							<li>
+								<div class="w_dummy_img"></div>
+								<a href="/Mobile/Store/newscontent/store_id/{$v.store}/sn/{$v.sn_id}/text/{$v.id}.html"><img src="{:tempimg($vv['src'],385,385)}"></a>
+							</li>
+							<php>}</php>
+						</notempty>
+						</foreach>
+						</ul>
+					</div>
+				</li>
+			</foreach>
+
+			
+<!-- 			
+#ff0077
+#21d460
+
+			详情页文字间距
+			购物车
+			qq
+			登录提示页面取消
+			顶部颜色
+
+			企业信息页 描述文字加大  logo改成方形 描述文字改成三行点击展开 
+ -->

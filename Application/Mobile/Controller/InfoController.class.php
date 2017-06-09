@@ -50,17 +50,24 @@ class InfoController extends MobileBaseController
     {   
         $name = I('name');
         $where['title'] = array('like','%'.$name.'%');
-        $where['is_show'] = 1;
-        $where['home_is_show'] = 1;
+        $where['description'] = array('like','%'.$name.'%');
+        $where['_logic'] = 'or';
+        $map['_complex'] = $where;
+        $map['is_show'] = 1;
+        $map['home_is_show'] = 1;
         $model = M();
-        $articlelist = $model->field('a.id,a.sn_id,a.timer,a.title,a.content,a.store,a.newsimg,a.m_click,a.description,a.keyword,a.pc_click,s.store_name,s.commerce_state,s.apply_state')->table('__STORE_ART__ AS a')->join('INNER JOIN __STORE__ AS s ON s.store_id = a.store')->where($where)->order('s.commerce_state desc,s.apply_state desc,a.id')
+        $p = I('p',1);
+        $articlelist = $model->field('a.id,a.sn_id,a.timer,a.title,a.content,a.store,a.newsimg,a.m_click,a.description,a.keyword,a.pc_click,s.store_name,s.commerce_state,s.apply_state')->table('__STORE_ART__ AS a')->join('INNER JOIN __STORE__ AS s ON s.store_id = a.store')->where($map)->order('s.commerce_state desc,s.apply_state desc,a.id')
             ->page($p,5)
             ->select();
         foreach($articlelist as &$v){
             $v['content'] = sp_getcontent_imgs(htmlspecialchars_decode($v['content']));
+            $v['title'] = str_replace($name,"<span style='color:red;'>".$name."</span>",$v['title']);
+            $v['description'] = str_replace($name,'<span style="color:red;">'.$name.'</span>',$v['description']);
         }
+        if ($articlelist && $p == 1) search($name,2,0,1);
         $this->assign('articlelist',$articlelist);
-        $this->display('ajaxinfo');
+        $this->display('ajaxsearchinfo');
     }
 
 	public function search()

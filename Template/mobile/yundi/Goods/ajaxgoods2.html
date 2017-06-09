@@ -1,7 +1,7 @@
 <foreach name="goodslist" item="vv">
 <li>
 	<div class="w_list_top">
-		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}">
+		<a href="/Mobile/goods/goodsinfo/id/{$vv.goods_id}.html">
 			<div class="w_list_i">
 				<div class="w_list_jummp"></div>
 				<div class="w_list_ji">
@@ -18,7 +18,7 @@
 		<p>￥<span>{$vv.shop_price}</span>元</p>
 		<div class="w_list_btn_r">
 
-			<a href="/Mobile/Index/certification_info?store_id={$vv.store_id}">
+			<a href="/Mobile/Index/certification_info/store_id/{$vv.store_id}.html">
 			<if condition="$vv[apply_state]">
 			<img src="__STATIC__/images/rengzheng.png" title="权威认证">
 			<else />
@@ -26,7 +26,7 @@
 			</if>
 			</a>
 
-			<a href="/Mobile/Index/enter?store_id={$vv.store_id}">
+			<a href="/Mobile/Index/enter/store_id/{$vv.store_id}.html">
 			<if condition="$vv[commerce_state]">
 			<img src="__STATIC__/images/yunshanghui.png">
 			<else />

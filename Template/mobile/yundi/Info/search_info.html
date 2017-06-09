@@ -78,5 +78,13 @@ $(function(){
       getinfo()
     }
   });
+
+	function getsubstr2(kk)
+	{
+		var str = $('#str_'+kk).html();
+		$('#str_'+kk).html(str.substr(0,80));
+		$('#str_'+kk+'s').css('display','');
+		$('#str_'+kk+'_s').css('display','none');
+	}
 </script>
 </html>

@@ -97,6 +97,7 @@ class InfoController extends BaseController
 
 		$info = I('info');
 		if(!$info){$this->error();}
+
         $apply_state = M('store_apply')->getField('user_id,apply_state');
 
 		//竞价排名 bidding
@@ -143,6 +144,8 @@ class InfoController extends BaseController
         foreach($quality as &$vc){
             $vc['store_zy2'] = str_replace($info, "<zhoufei>{$info}</zhoufei>", $vc['store_zy']);
         }
+        if ($articlelist && !$_GET['p']) search($info,2,1,0);
+        
         $this->assign('quality',$quality);
 
         $this->assign('articlelist',$articlelist);
