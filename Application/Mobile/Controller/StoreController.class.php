@@ -286,7 +286,8 @@ class StoreController extends Controller {
         $banner = M('store')->where(array('store_id' => $this->store['store_id']))->getField('store_banner');
         $this->assign('banner', $banner);
         //点击量
-        M('store_art')->where('id='.$text)->setInc('m_click',1);
+        $num = mt_rand(1,9);
+        M('store_art')->where('id='.$text)->setInc('m_click',$num);
         $this->assign('pre',$pre);
         $this->assign('next',$next);
         $this->assign('sn_id',$sn_id);

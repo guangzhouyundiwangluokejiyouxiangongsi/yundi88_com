@@ -436,7 +436,8 @@ class StoreController extends Controller {
 		$next = M('store_art')->where('store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ') and id > ' . $text)->order('id ASC')->limit(1)->find();
 		$pre = M('store_art')->where('store = ' . $storeid . ' and  sn_id in (0,' . $sn_id . ') and id < ' . $text)->order('id DESC')->limit(1)->find();
 		//点击量
-		M('store_art')->where('id=' . $text)->setInc('pc_click', 1);
+		$num = mt_rand(1,9);
+		M('store_art')->where('id=' . $text)->setInc('pc_click', $num);
 		$banner = M('store')->where(array('store_id' => $this->store['store_id']))->getField('store_banner');
 		$this->assign('banner', $banner);
 
