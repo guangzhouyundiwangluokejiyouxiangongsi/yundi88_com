@@ -50,7 +50,7 @@
                 <img id="j_logo_5" alt="" width="90" height="45" src="{$scl['store_banner']|default='__STATIC__/images/57c7ed6bcc96f.jpg'}">
               </a>
             </p> -->
-            <p class="flow_zhuying"><a rel="{$scl['nofollow']}" title="{$scl['store_name']}">主营商品：{$scl['store_zy']}</a></p>
+            <p class="flow_zhuying"><a rel="{$scl['nofollow']}" title="{$scl['store_name']}">主营商品：{:zfgetsubstr($scl['store_zy'],0,100,$_GET['company'])}</a></p>
             <!-- <p class="flow-desc"> <span>卖家：</span>
               <a href="supplier.php?suppId=5"  title="{$scl['store_name']}管理员" target="_blank"></a>
               <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$scl['store_aftersales']['qq_account']}&amp;site=qq&amp;menu=yes" target="_blank" alt="点击这里联系我" title="点击这里联系我" class="flow-qq">
