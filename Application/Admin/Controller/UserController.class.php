@@ -463,6 +463,25 @@ class UserController extends BaseController {
         $this->ajaxReturn($res);
     }
 
+     // 删除留言
+    public function delete_h5()
+    {
+        $id = I('id');
+        $res = M('user_contact')->where(array('id'=>$id))->delete();
+        $this->ajaxReturn($res);
+    }
+
+    public function delete_h5all()
+    {   
+        $arr = I('choose');
+        foreach($arr as $vv){
+            if ($vv){
+                M('user_contact')->where(array('id'=>$vv))->delete();
+            }
+        }
+        redirect('/Admin/User/h5message.html');
+        // header('location:http://www.yundi88.com/Admin/User/h5message.html');
+    }
     public function delete_all2()
     {   
         $arr = I('choose');
@@ -550,11 +569,13 @@ class UserController extends BaseController {
     public function h5message()
     {   
         $count      = M('user_contact')->count();// 查询满足要求的总记录数
-        $Page       = new \Think\Page($count,15);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $Page       = new \Think\Page($count,15);// 实例化分页类 传入总记录数和每页显示的记录数(15)
         $show       = $Page->show();// 分页显示输出
         $message = M('user_contact')->order('addtime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('page',$show);
         $this->assign('message',$message);
         $this->display();
     }
+
+
 }
