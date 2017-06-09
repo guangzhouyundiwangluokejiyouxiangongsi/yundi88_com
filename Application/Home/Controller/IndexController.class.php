@@ -230,7 +230,7 @@ class IndexController extends BaseController {
         $company = I('company');
         if(!$company){$this->error();}
         $m = M();
-        $store_id = M('store')->where("store_name like '%{$company}%'")->getField('store_id',true);
+        $store_id = M('store')->where("store_name like '%{$company}%' or store_zy like '%{$company}%'")->getField('store_id',true);
         if($store_id){
 
 

@@ -13,8 +13,12 @@ use Think\Page;
 class RankingController extends Controller
 {
 
+
     public function index()
     {
+
+        $d = date('d',time()) % 2;
+        if(M('ranking_art')->count()){return;}
         $_GET['p'] = I('p',1);
         $model = M('store_art');
         $count =  $model->where(array('is_show'=>1))->count();
@@ -48,11 +52,9 @@ class RankingController extends Controller
             }
         }
 
-        // echo '<pre>';
-        // print_r($articlelist);
         M('ranking_art')->addAll($articlelist);
         $pa = ceil($count / 5000);
-        if($_GET['p'] <= $pa){
+        if($_GET['p'] < $pa){
              $p = $_GET['p']+1;
             $this->assign('url',"/Admin/Ranking/index/p/{$p}.html");
             $this->display();
@@ -66,6 +68,7 @@ class RankingController extends Controller
 
     public function goods()
     {
+        if(M('ranking_goods')->count()){return;}
         $_GET['p'] = I('p',1);
         $model = M('goods');
         $count =  $model->where(array('is_on_sale'=>1,'goods_state'=>1,'home_is_show'=>1))->count();
@@ -99,11 +102,9 @@ class RankingController extends Controller
             }
         }
 
-        // echo '<pre>';
-        // print_r($goodslist);
         M('ranking_goods')->addAll($goodslist);
         $pa = ceil($count / 5000);
-        if($_GET['p'] <= $pa){
+        if($_GET['p'] < $pa){
             $p = $_GET['p']+1;
             $this->assign('url',"/Admin/Ranking/goods/p/{$p}.html");
             $this->display('index');
@@ -112,9 +113,12 @@ class RankingController extends Controller
         }
 
 
-
-
-
     }
 
 }
+
+
+
+// 0 03 * * *
+// http://www.yundi88.com/Admin/Ranking/index.html
+// http://www.yundi88.com/Admin/Ranking/goods.html
