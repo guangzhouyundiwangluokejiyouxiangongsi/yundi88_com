@@ -50,7 +50,7 @@ class IndexController extends BaseController {
 
 
     // 首页开始
-    public function Yun_commerce()
+    public function yun_commerce()
     {
 
         $file = file_get_contents(PATH.'/index.html');

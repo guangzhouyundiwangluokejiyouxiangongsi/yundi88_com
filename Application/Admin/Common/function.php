@@ -250,8 +250,6 @@ function getAllMenu(){
 					array('name' => '轮播图管理', 'act'=>'carousel', 'control'=>'Carousel'),
                     array('name' => '图片导航', 'act'=>'pic', 'control'=>'Pic'),
                     array('name' => '楼层', 'act'=>'floor', 'control'=>'Page'),
-					array('name' => '会员统计', 'act'=>'user', 'control'=>'Commerce'),
-					array('name' => '运营概览', 'act'=>'finance', 'control'=>'Commerce'),
 			)),
 			'count' => array('name' => '其他', 'icon'=>'fa-signal', 'sub_menu' => array(
 					array('name' => '测试数据账户', 'act'=>'index', 'control'=>'Testaccount'),
