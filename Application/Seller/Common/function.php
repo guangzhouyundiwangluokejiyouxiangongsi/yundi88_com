@@ -210,7 +210,7 @@ function getMenuList() {
 			array('name' => '账号日志', 'act' => 'log', 'op' => 'Admin'),
 			//array('name' => '官网消费', 'act'=>'store_cost', 'op'=>'cost_list'),
 		)),
-		'account' => array('name' => '云狄云谱', 'icon' => 'fa-book', 'child' => array(
+		'account' => array('name' => '企业云谱', 'icon' => 'fa-book', 'child' => array(
 			array('name' => '我的云谱', 'act' => 'baike', 'op' => 'Finance'),
 		)),
 		// http://www.tpshop.com/Admin/Distribut/remittance
