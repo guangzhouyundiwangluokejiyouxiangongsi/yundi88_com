@@ -1,0 +1,68 @@
+<include file="Public/min-header" />
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+       <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                 <div class="box-header">
+                    <nav class="navbar navbar-default">
+                        <div class="collapse navbar-collapse">
+                          <form class="navbar-form form-inline" action="{:U('Carousel/carousel')}" method="post">
+                            <div class="form-group">
+                                <input type="text" name="keywords" class="form-control" placeholder="搜索">
+                            </div>
+                            <button type="submit" class="btn btn-default">提交</button>
+                            <div class="form-group pull-right">
+                                <a href="{:U('Carousel/addCarousel')}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>添加轮播图</a>
+                            </div>
+                          </form>
+                        </div>
+                    </nav>
+                 </div>
+                 <div class="box-body">
+                    <div class="row">
+                    <div class="col-sm-12">
+                      <table id="list-table" class="table table-bordered table-striped dataTable">
+                         <thead>
+                           <tr role="row">
+                               <th>ID</th>
+                               <th>图片</th>
+                               <th>链接地址</th>
+                               <th>排序</th>
+                               <th>加入时间</th>
+                               <th>操作</th>
+                           </tr>
+                         </thead>
+                        <tbody>
+                          <foreach name="data" item="vo" key="k" >
+                            <tr role="row" align="center">
+                             <td>{$vo.id}</td>
+                             <td><img height="50" src="__PUBLIC__/Carousel/{$vo.link}"></td>
+                             <td>{$vo.url}</td>
+                             <td>{$vo.order}</td>
+                             <td>{$vo.addtime}</td>
+                             <td>
+                                <a href="__CONTROLLER__/editCarousel/id/{$vo.id}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="__CONTROLLER__/delCarousel/id/{$vo.id}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                             </td>
+                           </tr>
+                          </foreach>
+                           </tbody>
+                         <tfoot>
+                         </tfoot>
+                       </table>
+                   </div>
+              </div>
+              <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>
+              </div>
+             </div>
+            </div>
+        </div>
+       </div>
+   </section>
+</div>
+</body>
+</html>

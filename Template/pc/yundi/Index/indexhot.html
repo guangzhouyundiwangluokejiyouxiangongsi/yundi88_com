@@ -1,0 +1,7 @@
+<foreach item="vo" name="data">
+	<li><a href="{:U('Goods/goodsInfo',array('id'=>$vo['goods_id']))}">
+		<img src="{:goods_thum_images($vo['goods_id'],67,66)}" >
+		<p>{:getSubstr($vo['goods_name'],0,20)}</p>
+		<span>￥{$vo['shop_price']}</span>
+	</a></li>
+</foreach>

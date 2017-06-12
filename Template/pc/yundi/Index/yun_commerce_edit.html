@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html id="ng-app">
+<head lang="zh">
+<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>购物车-{$tpshop_config['shop_info_store_title']}</title>
+<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+<link href="__STATIC__/css/common.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__STATIC__/css/jh.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/yun_commerce.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/jquery.bxslider.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script src="__PUBLIC__/js/pc_common.js"></script>
+<script src="__PUBLIC__/js/layer/layer.js"></script>
+</head>
+<body class="ng-scope">
+<!-- 头部顶栏 start [[-->
+<include file="Public/header"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.bxslider.js"></script>
+<style type="text/css">
+.pro .nav .yi .dyj{display: none !important;}
+</style>
+<div class="commerce">
+	<div class="mg">
+        <!-- 内容头部 -->
+        <div class="commerce_head">
+            <div class="commerce_h_left">
+                <div class="commerce_banner">
+                    <!-- <img src="image/commerce_banner.jpg"> -->
+                    <div class="slider1">
+                          <div class="slide" ><a href="#"><img src="__PUBLIC__/image/commerce_banner.jpg"></a></div>
+
+                          <div class="slide" ><a href="#"><img src="__PUBLIC__/image/commerce_banner.jpg"></a></div>
+
+                          <div class="slide" ><a href="#"><img src="__PUBLIC__/image/commerce_banner.jpg"></a></div>
+                    </div>
+
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+
+                      $('.slider1').bxSlider({
+                        autoHover: true,
+                        slideWidth: 700,
+                        auto: true,
+                        minSlides: 1,
+                        maxSlides: 1,
+
+                      });
+
+                    });
+
+                </script>
+                <!-- 主题 -->
+                <ul class="commerce_theme">
+                    <li>
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}90">
+                        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'90'; echo $floorRes[$numId]['pic']; ?>">
+                        <span class="commerce_txt">
+                            <span style="color: <?php $numId = ($k+1).'90'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'90'; echo $floorRes[$numId]["title"]; ?></span>
+                            <p style="color: <?php $numId = ($k+1).'90'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'90'; echo $floorRes[$numId]["des"]; ?></p>
+                        </span>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}91">
+                        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'91'; echo $floorRes[$numId]['pic']; ?>">
+                        <span class="commerce_txt">
+                             <span style="color: <?php $numId = ($k+1).'91'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'91'; echo $floorRes[$numId]["title"]; ?></span>
+                            <p style="color: <?php $numId = ($k+1).'91'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'91'; echo $floorRes[$numId]["des"]; ?></p>
+                        </span>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}92">
+                        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'92'; echo $floorRes[$numId]['pic']; ?>">
+                        <span class="commerce_txt">
+                             <span style="color: <?php $numId = ($k+1).'92'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'92'; echo $floorRes[$numId]["title"]; ?></span>
+                            <p style="color: <?php $numId = ($k+1).'92'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'92'; echo $floorRes[$numId]["des"]; ?></p>
+                        </span>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="commerce_h_right">
+                <!-- 未登录 -->
+                <div class="commerce_login_box">
+                    <div class="user_img">
+                        <img src="__PUBLIC__/image/commerce_user_img.png">
+                    </div>
+                    <p>云狄网已成功帮助10万企业免费推广受益！</p>
+                    <h4>赶紧入驻平台吧！！</h4>
+                    <div class="commerce_btn">
+                        <a class="commerce_login" href="#">登录</a>
+                        <a class="commerce_register" href="#">免费注册</a>
+                    </div>
+                </div>
+                <!-- 已登录 -->
+                <div class="commerce_user_box">
+                    <div class="user_img">
+                        <img src="__PUBLIC__/image/commerce_user_img.png">
+                    </div>
+                    <p>你好！某某某</p>
+                    <div class="commerce_btn">
+                        <a class="commerce_y" href="javascript:;"><img style="padding-right: 8px;margin-top: 6px;" src="__PUBLIC__/image/commerce_y.png">已认证</a>
+                        <a class="commerce_n" href="javascript:;"><img style="padding-right: 8px;margin-top: 5px;" src="__PUBLIC__/image/commerce_n.png">未认证</a>
+                    </div>
+                </div>
+                <!-- 公告栏 -->
+                <div class="commerce_bulletin">
+                    <h3>公告栏</h3>
+                    <ul>
+                    <foreach item="vo" name="list">
+                        <li><a href="#">公告：{$vo.content}</a></li>
+                    </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 内容banner -->
+        <div class="con_banner">
+            <img src="__PUBLIC__/Pic/{$picRes.link}" width="1200" height="86">
+        </div>
+        <!-- </foreach> -->
+        <foreach name="typeData" item="vo" key="k">
+            <switch name="k">
+            <case value="0|1">
+                <div id="floor_{$k+1}" class="com_box_1 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+
+
+        			<!-- 1F内容左 -->
+        			<div class="com_box_1_l">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}1">
+            				<div class="com_box_1_l_t">
+            					<!-- <a href="#"> -->
+            						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'1'; echo $floorRes[$numId]['pic']; ?>" />
+            						<div class="commerce_txt_f txt_t_c">
+
+            							<h3 style="color: <?php $numId = ($k+1).'1'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'1'; echo $floorRes[$numId]["title"]; ?></h3>
+            							<p style="color: <?php $numId = ($k+1).'1'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'1'; echo $floorRes[$numId]["des"]; ?></p>
+            						</div>
+            					<!-- </a> -->
+            				</div>
+                        </a>
+        				<!-- <div class="com_box_1_l_b">
+        					<img src="image/commerce_108.png">
+        					<p>双排扣大码风衣</p>
+        				</div> -->
+        				<div class="com_box_1_l_b">
+        					<div class="slider2">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}110">
+            				        <div class="slide" >
+        						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'110'; echo $floorRes[$numId]['pic']; ?>">
+        						        <p><?php $numId = ($k+1).'110'; echo $floorRes[$numId]["title"]; ?></p>
+            				        </div>
+                                </a>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}111">
+            				        <div class="slide" >
+        						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'111'; echo $floorRes[$numId]['pic']; ?>">
+        						        <p><?php $numId = ($k+1).'111'; echo $floorRes[$numId]["title"]; ?></p>
+            				        </div>
+                                </a>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}112">
+            				      	<div class="slide" >
+        						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'112'; echo $floorRes[$numId]['pic']; ?>">
+        						        <p><?php $numId = ($k+1).'112'; echo $floorRes[$numId]["title"]; ?></p>
+            				        </div>
+                                </a>
+            				</div>
+        				</div>
+
+
+        			    <script type="text/javascript">
+
+        			        $(document).ready(function(){
+
+        			          $('.slider2').bxSlider({
+        			          	autoHover: true,
+        			            slideWidth: 240,
+        						auto: true,
+        			            minSlides: 1,
+        			            maxSlides: 1,
+
+        			          });
+
+        			        });
+
+        			    </script>
+        			</div>
+        			<!-- 1F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}2">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'2'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="color: <?php $numId = ($k+1).'2'; echo $floorRes[$numId]['color1']; ?>; text-align: <?php $numId = ($k+1).'2'; echo $floorRes[$numId]['align1']; ?>;"><?php $numId = ($k+1).'2'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="color: <?php $numId = ($k+1).'2'; echo $floorRes[$numId]['color2']; ?>; text-align: <?php $numId = ($k+1).'2'; echo $floorRes[$numId]['align2'];?>"><?php $numId = ($k+1).'2'; echo $floorRes[$numId]["des"]; ?> </p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}3">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'3'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="color: <?php $numId = ($k+1).'3'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'3'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="color: <?php $numId = ($k+1).'3'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'3'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+            					</li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}4">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'4'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'4'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'4'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'4'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'4'; echo $floorRes[$numId]['align2']; ?>; color: <?php $numId = ($k+1).'4'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'4'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}5">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'5'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style=" text-align: <?php $numId = ($k+1).'5'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'5'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'5'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'5'; echo $floorRes[$numId]['align2']; ?>; color: <?php $numId = ($k+1).'5'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'5'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}6">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'6'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'6'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'6'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'6'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'6'; echo $floorRes[$numId]['align2']; ?>; color: <?php $numId = ($k+1).'6'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'6'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}7">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'7'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'7'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'7'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'7'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'7'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'7'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'7'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+        					</ul>
+        				</div>
+        				<div class="com_box_1_c_b">
+        					<ul>
+                                <li>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}8">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'8'; echo $floorRes[$numId]['pic']; ?>">
+        							<p style="text-align: <?php $numId = ($k+1).'8'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'8'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'8'; echo $floorRes[$numId]["title"]; ?></p>
+                                </a>
+                                </li>
+                                <li>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}9">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'9'; echo $floorRes[$numId]['pic']; ?>">
+        							<p style="text-align: <?php $numId = ($k+1).'9'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'9'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'9'; echo $floorRes[$numId]["title"]; ?></p>
+                                </a>
+                                </li>
+                                <li>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}10">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'10'; echo $floorRes[$numId]['pic']; ?>">
+        							<p style="text-align: <?php $numId = ($k+1).'10'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'10'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'10'; echo $floorRes[$numId]["title"]; ?></p>
+                                </a>
+                                </li>
+        					</ul>
+        				</div>
+        			</div>
+
+        			<!-- 1F内容右 -->
+        			<div class="com_box_1_r">
+        				<ul class="logo_show">
+                            <foreach name="store_logo[1]" item="vo">
+            					<li>
+                                    <a href="#">
+                						<img src="{$vo}">
+                					</a>
+                                </li>
+                            </foreach>
+        				</ul>
+        			</div>
+        		</div>
+            </case>
+            <case value="2|3">
+                <div id="floor_{$k+1}" class="com_box_1 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 3F内容左 -->
+        			<div class="com_box_1_l">
+                        <div class="com_box_1_l_t">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}11">
+        					<!-- <a href="#"> -->
+        						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['pic']; ?>">
+        						<div class="commerce_txt_f txt_t_c">
+        							<h3 style="text-align: <?php $numId = ($k+1).'11'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'11'; echo $floorRes[$numId]["title"]; ?> </h3>
+        							<p style="text-align: <?php $numId = ($k+1).'11'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'11'; echo $floorRes[$numId]["des"]; ?></p>
+        						</div>
+        					<!-- </a> -->
+                        </a>
+                        </div>
+        			</div>
+        			<!-- 3F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul class="no_bottom">
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}12">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'12'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'12'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'12'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'12'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}13">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'13'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'13'; echo $floorRes[$numId]["title"]; ?>  </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'13'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'13'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}14">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'14'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'14'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'14'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'14'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}15">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'15'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'15'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'15'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'15'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}16">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'16'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'16'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'16'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'16'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}17">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'17'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'17'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'17'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'17'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+        					</ul>
+        				</div>
+        			</div>
+
+
+<script type="text/javascript">
+
+function is_hot()
+{
+    $.post("/index.php/Index/indexhot",{'id':1},function(data){
+
+        $('.commerce_hot').html(data);
+    })
+}
+is_hot();
+
+</script>
+        			<!-- 3F内容右 -->
+        			<div class="com_box_1_r">
+        				<div class="commerce_refresh_title">
+        					<h3>热销产品</h3>
+        					<span onclick="is_hot();"><img src="__PUBLIC__/image/commerce_refresh_icon.png" >换一换</span>
+        				</div>
+        				<!-- 热销产品 -->
+        				<ul class="commerce_hot">
+
+
+        				</ul>
+        			</div>
+
+        		</div>
+            </case>
+            <case value="4|5">
+                <div id="floor_{$k+1}" class="com_box_1 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 5F内容左 -->
+        			<div class="com_box_1_l">
+                        <div class="com_box_1_l_t">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}73">
+    						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['pic']; ?>">
+    						<div class="commerce_txt_f txt_t_c">
+    							<h3 style="text-align: <?php $numId = ($k+1).'73'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'73'; echo $floorRes[$numId]["title"]; ?> </h3>
+    							<p style="text-align: <?php $numId = ($k+1).'73'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'73'; echo $floorRes[$numId]["des"]; ?></p>
+    						</div>
+                        </a>
+                        </div>
+        			</div>
+        			<!-- 5F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul class="no_bottom">
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}18">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'18'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'18'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'18'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'18'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}19">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'19'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'19'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'19'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'19'; echo $floorRes[$numId]["des"]; ?> </p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}20">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'20'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'20'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'20'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'20'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}21">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'21'; echo $floorRes[$numId]['align1']; ?>;color:<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'21'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'21'; echo $floorRes[$numId]['align2']; ?>;color:<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'21'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}22">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'22'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'22'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'22'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'22'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}23">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'23'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'23'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'23'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'23'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+        					</ul>
+        				</div>
+        			</div>
+        			<style type="text/css">
+
+        			</style>
+
+<script type="text/javascript">
+    function is_new()
+    {
+        $.post("/index.php/Index/indexnew",{'id':1},function(data){
+
+            $('.commerce_new').html(data);
+        })
+    }
+    is_new();
+
+</script>
+        			<!-- 5F内容右 -->
+        			<div class="com_box_1_r">
+        				<div class="commerce_refresh_title">
+        					<h3>最新产品</h3>
+        					<span onclick="is_new();"><img src="__PUBLIC__/image/commerce_refresh_icon.png">换一换</span>
+        				</div>
+        				<!-- 最新产品 -->
+        				<div class="commerce_new">
+        					<!-- <a href="#">
+        						<img src="image/commerce_508.png">
+        						<p>大小款纯色帆布书包男双肩包女韩版 高中生双肩背包中学生简约百搭</p>
+        						<span>￥39.00 <s>￥89.00</s></span>
+        					</a> -->
+        				</div>
+        			</div>
+
+        		</div>
+            </case>
+            <case value="6|7">
+                <div id="floor_{$k+1}" class="com_box_1 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 7F内容左 -->
+        			<div class="com_box_1_l">
+                        <div class="com_box_1_l_t">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}25">
+    						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['pic']; ?>">
+    						<div class="commerce_txt_f txt_t_c">
+    							<h3 style="text-align: <?php $numId = ($k+1).'25'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'25'; echo $floorRes[$numId]["title"]; ?></h3>
+    							<p style="text-align: <?php $numId = ($k+1).'25'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'25'; echo $floorRes[$numId]["des"]; ?></p>
+    						</div>
+        				</a>
+                        </div>
+        			</div>
+        			<!-- 7F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul class="no_bottom">
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}24">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'24'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'24'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'24'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'24'; echo $floorRes[$numId]["des"]; ?> </p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}26">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'26'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'26'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'26'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'26'; echo $floorRes[$numId]["des"]; ?> </p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}27">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'27'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'27'; echo $floorRes[$numId]["title"]; ?> </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'27'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'27'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}28">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'28'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'28'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'28'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'28'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}29">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'29'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'29'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'29'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'29'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}30">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'30'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'30'; echo $floorRes[$numId]["title"]; ?> </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'30'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'30'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+        					</ul>
+        				</div>
+        			</div>
+        			<!-- 7F内容右 -->
+        			<div class="com_box_1_r">
+        			<!-- 三级分类列表 -->
+        				<ul class="commerce_t_list">
+                            <foreach item="vo" name="dataRes">
+        					<li><a href="#">{$vo.name}</a></li>
+                            </foreach>
+        				</ul>
+        			</div>
+
+        		</div>
+            </case>
+            <case value="8|9">
+                <div id="floor_{$k+1}" class="com_box_1 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 9F内容左 -->
+        			<div class="com_box_1_l">
+                        <div class="com_box_1_l_t">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}31">
+    						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['pic']; ?>">
+    						<div class="commerce_txt_f txt_t_c">
+    							<h3 style="text-align: <?php $numId = ($k+1).'31'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'31'; echo $floorRes[$numId]["title"]; ?></h3>
+    							<p style="text-align: <?php $numId = ($k+1).'31'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'31'; echo $floorRes[$numId]["des"]; ?></p>
+        					</a>
+                            </div>
+        				</div>
+        				<!-- <div class="com_box_1_l_b">
+        					<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'9'; echo $floorRes[$numId]['pic']; ?>">
+        					<p>好书看细节</p>
+        				</div> -->
+        				<div class="com_box_1_l_b">
+        					<div class="slider3">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}32">
+            				        <div class="slide" >
+        						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'32'; echo $floorRes[$numId]['pic']; ?>">
+        						        <p><?php $numId = ($k+1).'32'; echo $floorRes[$numId]["title"]; ?></p>
+            				        </div>
+                                </a>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}33">
+            				        <div class="slide" >
+        						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'33'; echo $floorRes[$numId]['pic']; ?>">
+        						        <p><?php $numId = ($k+1).'33'; echo $floorRes[$numId]["title"]; ?></p>
+            				        </div>
+                                </a>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}34">
+            				      	<div class="slide" >
+        						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'34'; echo $floorRes[$numId]['pic']; ?>">
+        						        <p><?php $numId = ($k+1).'34'; echo $floorRes[$numId]["title"]; ?></p>
+            				        </div>
+                                </a>
+        					</div>
+
+        				</div>
+
+
+        			    <script type="text/javascript">
+
+        			        $(document).ready(function(){
+
+        			          $('.slider3').bxSlider({
+        			          	autoHover: true,
+        			            slideWidth: 240,
+        						auto: true,
+        			            minSlides: 1,
+        			            maxSlides: 1,
+
+        			          });
+
+        			        });
+
+        			    </script>
+        			</div>
+        			<!-- 9F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+                                <li class="hover_s" >
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}35">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'35'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'35'; echo $floorRes[$numId]["title"]; ?> </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'35'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'35'; echo $floorRes[$numId]["des"]; ?> </p>
+        							</div>
+                                </a>
+                                </li>
+                                <li class="hover_s"><a href="#">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}36">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'36'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'36'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'36'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'36'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div></a>
+        						</li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}37">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'37'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'37'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'37'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'37'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div></a>
+        						</li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}38">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'38'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'38'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'38'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'38'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div></a>
+        						</li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}39">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'39'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'39'; echo $floorRes[$numId]["title"]; ?> </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'39'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'39'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div></a>
+        						</li>
+                                <li class="hover_s">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}40">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'40'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'40'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'40'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'40'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div></a>
+        						</li>
+        					</ul>
+        				</div>
+        				<div class="com_box_1_c_b">
+        					<ul>
+                                <li>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}41">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'41'; echo $floorRes[$numId]['pic']; ?>">
+        							<p><?php $numId = ($k+1).'41'; echo $floorRes[$numId]["title"]; ?></p>
+                                    </a>
+        						</li>
+                                <li>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}42">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'42'; echo $floorRes[$numId]['pic']; ?>">
+        							<p><?php $numId = ($k+1).'42'; echo $floorRes[$numId]["title"]; ?></p>
+                                </a>
+        						</li>
+                                <li>
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}43">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'43'; echo $floorRes[$numId]['pic']; ?>">
+        							<p><?php $numId = ($k+1).'43'; echo $floorRes[$numId]["title"]; ?></p>
+                                </a>
+        						</li>
+        					</ul>
+        				</div>
+        			</div>
+        			<!-- 9F内容右 -->
+        			<div class="com_box_1_r">
+        				<!-- 产品展示 -->
+        				<ul class="pro_show">
+                            <li>
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}44">
+        						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'44'; echo $floorRes[$numId]['pic']; ?>">
+        						<p><?php $numId = ($k+1).'44'; echo $floorRes[$numId]["title"]; ?></p>
+                        </a>
+                            </li>
+                            <li>
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}45">
+        						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'45'; echo $floorRes[$numId]['pic']; ?>">
+        						<p><?php $numId = ($k+1).'45'; echo $floorRes[$numId]["title"]; ?></p>
+                        </a>
+                            </li>
+                            <li>
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}46">
+        						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'46'; echo $floorRes[$numId]['pic']; ?>">
+        						<p><?php $numId = ($k+1).'46'; echo $floorRes[$numId]["title"]; ?></p>
+                        </a>
+                            </li>
+
+        				</ul>
+        			</div>
+
+        		</div>
+            </case>
+            <case value="10|11">
+                <div id="floor_{$k+1}" class="com_box_2 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 11F内容左 -->
+        			<div class="com_box_1_l">
+                        <div class="com_box_1_l_t">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}47">
+        						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['pic']; ?>).jpg">
+        						<div class="commerce_txt_f txt_t_c">
+        							<h3 style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["title"]; ?></h3>
+        							<p style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["des"]; ?></p>
+        						</div>
+                    </a>
+                        </div>
+        			</div>
+        			<!-- 11F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+    						<li class="hover_f">
+                                 <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}48">
+    							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['pic']; ?>).jpg">
+    							<div class="commerce_txt_s txt_t_c">
+    								<h3 style="text-align: <?php $numId = ($k+1).'48'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'48'; echo $floorRes[$numId]["title"]; ?></h3>
+    								<p style="text-align: <?php $numId = ($k+1).'48'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'48'; echo $floorRes[$numId]["des"]; ?></p>
+    							</div>
+                                </a>
+    						</li>
+
+    						<li class="hover_f">
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}49">
+    							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['pic']; ?>).jpg">
+    							<div class="comm erce_txt_s txt_t_l">
+    								<h3 style="text-align: <?php $numId = ($k+1).'49'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'49'; echo $floorRes[$numId]["title"]; ?> </h3>
+    								<p style="text-align: <?php $numId = ($k+1).'49'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'49'; echo $floorRes[$numId]["des"]; ?></p>
+    							</div>
+                                </a>
+    						</li>
+
+    						<li class="hover_f">
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}50">
+    							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['pic']; ?>).jpg">
+    							<div class="commerce_txt_s txt_t_l">
+    								<h3 style="text-align: <?php $numId = ($k+1).'50'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'50'; echo $floorRes[$numId]["title"]; ?></h3>
+    								<p style="text-align: <?php $numId = ($k+1).'50'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'50'; echo $floorRes[$numId]["des"]; ?> </p>
+    							</div>
+                                </a>
+    						</li>
+
+
+        					</ul>
+        				</div>
+        			</div>
+        			<!-- 11F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+        						<li class="hover_f">
+                                 <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}51">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['pic']; ?>).jpg">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'51'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'51'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'51'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'51'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+        						<li class="hover_f">
+                                 <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}52">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['pic']; ?>).jpg">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'52'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'52'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'52'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'52'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}53">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['pic']; ?>).jpg">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'53'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'53'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'53'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'53'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+                                </li>
+        					</ul>
+        				</div>
+        			</div>
+
+
+        			<div class="lun_11">
+
+        				<ul class="slider5">
+                            <li class="slide" >
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}54">
+    					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'54'; echo $floorRes[$numId]['pic']; ?>">
+    							<p><?php $numId = ($k+1).'54'; echo $floorRes[$numId]["title"]; ?></p>
+                            </a>
+                            </li>
+                            <li class="slide" >
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}55">
+    					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'55'; echo $floorRes[$numId]['pic']; ?>">
+    							<p><?php $numId = ($k+1).'55'; echo $floorRes[$numId]["title"]; ?></p>
+                            </a>
+                            </li>
+                            <li class="slide" >
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}56">
+                    	        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'56'; echo $floorRes[$numId]['pic']; ?>">
+                    			<p><?php $numId = ($k+1).'56'; echo $floorRes[$numId]["title"]; ?></p>
+                            </a>
+                            </li>
+                            <li class="slide" >
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}57">
+    					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'57'; echo $floorRes[$numId]['pic']; ?>">
+    							<p><?php $numId = ($k+1).'57'; echo $floorRes[$numId]["title"]; ?></p>
+                            </a>
+                            </li>
+                            <li class="slide" >
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}58">
+    					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'58'; echo $floorRes[$numId]['pic']; ?>">
+    							<p><?php $numId = ($k+1).'58'; echo $floorRes[$numId]["title"]; ?></p>
+                            </a>
+                            </li>
+        				</ul>
+
+        			    <script type="text/javascript">
+
+        			        $(document).ready(function(){
+
+        			          $('.slider5').bxSlider({
+        			          	autoHover: true,
+        			            slideWidth: 240,
+        						auto: true,
+        			            minSlides: 5,
+        			            maxSlides: 5,
+        			            moveSlides: 1,
+        			          });
+
+        			        });
+
+        			    </script>
+        			</div>
+        		</div>
+            </case>
+            <case value="12|13">
+                <div id="floor_{$k+1}" class="com_box_2 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 13F内容左 -->
+        			<div class="com_box_1_l">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}59">
+        				<div class="com_box_1_l_t">
+    						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'59'; echo $floorRes[$numId]['pic']; ?>">
+    						<div class="commerce_txt_f txt_t_c">
+    							<h3 style="text-align: <?php $numId = ($k+1).'59'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'59'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'59'; echo $floorRes[$numId]["title"]; ?></h3>
+    							<p style="text-align: <?php $numId = ($k+1).'59'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'59'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'59'; echo $floorRes[$numId]["des"]; ?></p>
+    						</div>
+        				</div>
+                    </a>
+        			</div>
+        			<!-- 13F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}60">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'68'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'60'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'68'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'60'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}61">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'61'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'61'; echo $floorRes[$numId]["title"]; ?> </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'61'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'61'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}72">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'72'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'72'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'72'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'72'; echo $floorRes[$numId]["des"]; ?> </p>
+        							</div>
+                                </a>
+        						</li>
+
+
+        					</ul>
+        				</div>
+        			</div>
+        			<!-- 13F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}62">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'62'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'62'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'62'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'62'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}63">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'63'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'63'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'63'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'63'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}64">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'64'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'64'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'64'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'64'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+        						</li>
+
+        					</ul>
+        				</div>
+        			</div>
+        			<div class="lun_13">
+        				<!-- <ul>
+        					<li><a href="#">
+        						<img src="image/commerce_13 (8).jpg">
+        						<p>￥110.00</p>
+        					</a></li>
+
+        				</ul> -->
+        				<ul class="slider7">
+
+        			        <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        					 <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        			         <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        			         <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        			         <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+
+        			        <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        					 <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        			         <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        			         <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        			         <li class="slide" >
+        			     	    <a href="#">
+        					      	<img src="image/commerce_13 (8).jpg">
+        							<p>￥110.00</p>
+        				        </a>
+        			        </li>
+        				</ul>
+
+        			    <script type="text/javascript">
+
+        			        $(document).ready(function(){
+
+        			          $('.slider7').bxSlider({
+        			          	autoHover: true,
+        			            slideWidth: 110,
+        						auto: true,
+        			            minSlides: 10,
+        			            maxSlides: 10,
+        			            moveSlides: 1,
+        			            slideMargin: 10
+
+        			          });
+
+        			        });
+
+        			    </script>
+        			</div>
+        		</div>
+            </case>
+            <case value="14|15">
+                <div id="floor_{$k+1}" class="com_box_2 commerce_f_{$k+1}">
+        			<!-- 头部 -->
+        			<div class="commerce_title">
+        				<span class="commerce_line"></span>
+        				<h3><span>F{$k+1}</span>{$vo.name}</h3>
+        				<ul>
+                            <foreach name="vo['smallType']" item="v">
+                                <li><a href="#">{$v}</a></li>
+                            </foreach>
+        				</ul>
+        				<a class="commerce_more">查看全部</a>
+        			</div>
+        			<!-- 15F内容左 -->
+        			<div class="com_box_1_l">
+                        <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}65">
+        				<div class="com_box_1_l_t">
+    						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'65'; echo $floorRes[$numId]['pic']; ?>">
+    						<div class="commerce_txt_f txt_t_c">
+    							<h3 style="text-align: <?php $numId = ($k+1).'65'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'65'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'65'; echo $floorRes[$numId]["title"]; ?></h3>
+    							<p style="text-align: <?php $numId = ($k+1).'65'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'65'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'65'; echo $floorRes[$numId]["des"]; ?></p>
+    						</div>
+        				</div>
+                    </a>
+        			</div>
+        			<!-- 15F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}66">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'66'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'66'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'66'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'66'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}67">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'67'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'67'; echo $floorRes[$numId]["title"]; ?> </h3>
+        								<p style="text-align: <?php $numId = ($k+1).'67'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'67'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}68">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'68'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'68'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'68'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'68'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+
+        					</ul>
+        				</div>
+        			</div>
+        			<!-- 15F内容中 -->
+        			<div class="com_box_1_c">
+        				<div class="com_box_1_c_t">
+        					<ul>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}69">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_c">
+        								<h3 style="text-align: <?php $numId = ($k+1).'69'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'69'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'69'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'69'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}70">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'70'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'70'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'70'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'70'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+                                <li class="hover_f">
+                                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}71">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['pic']; ?>">
+        							<div class="commerce_txt_s txt_t_l">
+        								<h3 style="text-align: <?php $numId = ($k+1).'71'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'71'; echo $floorRes[$numId]["title"]; ?></h3>
+        								<p style="text-align: <?php $numId = ($k+1).'71'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'71'; echo $floorRes[$numId]["des"]; ?></p>
+        							</div>
+                                    </a>
+        						</li>
+
+        					</ul>
+        				</div>
+        			</div>
+
+        			<ul class="com_box_bottom_16">
+                        <li>
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}72">
+        						<div class="bottom_img">
+        							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['pic']; ?>">
+        						</div>
+                                <p style="text-align: <?php $numId = ($k+1).'72'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'72'; echo $floorRes[$numId]["title"]; ?></p>
+                                <span style="text-align: <?php $numId = ($k+1).'72'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'72'; echo $floorRes[$numId]["des"]; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}73">
+                                <div class="bottom_img">
+                                    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['pic']; ?>">
+                                </div>
+                                <p style="text-align: <?php $numId = ($k+1).'73'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'73'; echo $floorRes[$numId]["title"]; ?></p>
+                                <span style="text-align: <?php $numId = ($k+1).'73'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'73'; echo $floorRes[$numId]["des"]; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}74">
+                                <div class="bottom_img">
+                                    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'74'; echo $floorRes[$numId]['pic']; ?>">
+                                </div>
+                                <p style="text-align: <?php $numId = ($k+1).'74'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'74'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'74'; echo $floorRes[$numId]["title"]; ?></p>
+                                <span style="text-align: <?php $numId = ($k+1).'74'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'74'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'74'; echo $floorRes[$numId]["des"]; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}12">
+                                <div class="bottom_img">
+                                    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'75'; echo $floorRes[$numId]['pic']; ?>">
+                                </div>
+                                <p style="text-align: <?php $numId = ($k+1).'75'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'75'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'75'; echo $floorRes[$numId]["title"]; ?></p>
+                                <span style="text-align: <?php $numId = ($k+1).'75'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'75'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'75'; echo $floorRes[$numId]["des"]; ?></span>
+                            </a>
+                        </li>
+        			</ul>
+
+        		</div>
+            </case>
+            </switch>
+        </foreach>
+
+		<!-- 底部新闻 -->
+		<div class="commerce_message">
+			<div class="commerce_message_box">
+				<div class="commerce_m_title">
+					最新新闻
+				</div>
+                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}100">
+				    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'100'; echo $floorRes[$numId]['pic']; ?>">
+                </a>
+				<ul>
+                    <foreach name="zxNews" item="vo">
+    					<li>
+    						<a href="{:U($vo.link)}">
+    							<span>{$vo.title}</span>
+    							<i>{$vo.add_time}</i>
+    						</a>
+    					</li>
+                    </foreach>
+				</ul>
+			</div>
+			<div class="commerce_message_box">
+				<div class="commerce_m_title">
+					行业头条
+				</div>
+                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}101">
+				    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'101'; echo $floorRes[$numId]['pic']; ?>">
+                </a>
+                <ul>
+                    <foreach name="hyNews" item="vo">
+    					<li>
+    						<a href="{:U($vo.link)}">
+    							<span>{$vo.title}</span>
+    							<i>{$vo.add_time}</i>
+    						</a>
+    					</li>
+                    </foreach>
+				</ul>
+			</div>
+			<div class="commerce_message_box">
+				<div class="commerce_m_title">
+					推广学院
+				</div>
+                <a href="__APP__/Admin/Page/editInfo/type/1/id/{$k+1}102">
+				<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'102'; echo $floorRes[$numId]['pic']; ?>">
+                </a>
+				<ul>
+                    <foreach name="tgNews" item="vo">
+    					<li>
+    						<a href="{:U($vo.link)}">
+    							<span>{$vo.title}</span>
+    							<i>{$vo.add_time}</i>
+    						</a>
+    					</li>
+                    </foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 浮动层 -->
+	<div class="floor_float">
+		<div class="floor_back_top"><a href="javascript:;">返回顶部</a></div>
+		<ul>
+			<li><a href="javascript:;">F1</a></li>
+			<li><a href="javascript:;">F2</a></li>
+			<li><a href="javascript:;">F3</a></li>
+			<li><a href="javascript:;">F4</a></li>
+			<li><a href="javascript:;">F5</a></li>
+			<li><a href="javascript:;">F6</a></li>
+			<li><a href="javascript:;">F7</a></li>
+			<li><a href="javascript:;">F8</a></li>
+			<li><a href="javascript:;">F9</a></li>
+			<li><a href="javascript:;">F10</a></li>
+			<li><a href="javascript:;">F11</a></li>
+			<li><a href="javascript:;">F12</a></li>
+			<li><a href="javascript:;">F13</a></li>
+			<li><a href="javascript:;">F14</a></li>
+			<li><a href="javascript:;">F15</a></li>
+			<li><a href="javascript:;">F16</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		// 楼层分类个数限制方法li_limit()
+		var li_limit=function(li,span,h3,a){
+			var spanWid=$(span).width();
+			var hWid=$(h3).width();
+			var aWid=$(a).width();
+			var spanWid_right= parseInt($(span).css('marginRight'));
+			var aWid_right= parseInt($(a).css('paddingRight'));
+
+			spanWid=spanWid+spanWid_right;
+			aWid=aWid+aWid_right;
+			// ul最大长度
+			var max_ullen=1200-aWid-hWid-spanWid;
+			var li_left= parseInt($(li).css('marginLeft'));
+			// alert(max_ullen)
+			var lilen=$(li).length;
+			var ullen=0;
+			for (var i = 0; i <= lilen-1; i++) {
+				// alert($('#floor_1 .commerce_title ul li').eq(i).width()+li_left);
+				ullen=$(li).eq(i).width()+li_left+ullen;
+				if (ullen>max_ullen) {
+					for (var j = lilen - 1 ; j > i - 1; j--) {
+						$(li).eq(j).remove();
+					}
+					break;
+				}
+			}
+		}
+
+		// li_limit('#floor_1 li','#floor_1 .commerce_line','#floor_1 h3','#floor_1 .commerce_more');
+
+		for (var f = 1; f <= 16; f++) {
+			li_limit('#floor_'+f+' .commerce_title ul li','#floor_'+f+' .commerce_title .commerce_line','#floor_'+f+' .commerce_title h3','#floor_'+f+' .commerce_title .commerce_more');
+		}
+
+		var float=function(){
+			var width=window.innerWidth;
+			var left=(width-1300)/2 -20;
+			if(width<1340){
+				$('.floor_float').css('left','-50px')
+			}
+			else{
+				$('.floor_float').css('left',left+'px')
+			}
+		}
+		float();
+		$(window).resize(function () {
+			float();
+
+		})
+
+
+		$('.floor_float ul li').click(function(){
+
+			// $(this).find('a').addClass('onhover').siblings('.floor_float ul li a').removeClass('onhover');
+			$(this).find('a').css('background', '#f22e00 !important').siblings('.floor_float ul li a').css('background', '#808080  !important');
+			var index=$(this).index();
+			index=index+1;
+			var top=$("#floor_"+index).offset().top - 70;
+			$("html,body").animate({scrollTop:top},500);
+			// alert($("#floor_"+index).offset().top - 70)
+		});
+		if ($(window).scrollTop() > 600) {
+			$('.floor_float').fadeIn(300);
+		}
+		$(window).scroll(function () {
+			if ($(window).scrollTop() > 600) {
+				$('.floor_float').fadeIn(300);
+				// if ($(window).scrollTop() >= ($("#floor_1").offset().top - 70)){
+				// 	$('.floor_float ul li a').removeClass('onhover');
+				// 	$('.floor_float ul li').eq(0).find('a').addClass('onhover');
+				// }
+				// if ($(window).scrollTop() >= ($("#floor_2").offset().top - 70)){
+				// 	$('.floor_float ul li a').removeClass('onhover');
+				// 	$('.floor_float ul li').eq(1).find('a').addClass('onhover');
+				// }
+				for (var i = 1; i <= 16; i++) {
+					if ($(window).scrollTop() >= ($("#floor_"+i).offset().top - 70)){
+						$('.floor_float ul li a').removeClass('onhover');
+						$('.floor_float ul li').eq(i-1).find('a').addClass('onhover');
+					}
+				}
+			}
+			else
+			{
+				$('.floor_float').fadeOut(300);
+			}
+
+		});
+		$(".floor_back_top").click(function(){
+		  $('body,html').animate({scrollTop:0},600);
+		   return false;
+		});
+	});
+</script>
+<!-- footer start [[-->
+<include file="Public/footer"/>
+<!-- footer end ]]-->

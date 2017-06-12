@@ -1,0 +1,60 @@
+<include file="Public/min-header"/>
+<link href="__PUBLIC__/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/plugins/daterangepicker/moment.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content ">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+				<a href="javascript:;" class="btn btn-default" data-url="http://www.tp-shop.cn/Doc/Index/article/id/1012/developer/user.html" onclick="get_help(this)"><i class="fa fa-question-circle"></i> 帮助</a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>第{$res.id}层</h3>
+                </div>
+                <div class="panel-body ">
+                    <!--表单数据-->
+                    <form method="post" id="handleposition" action="__CONTROLLER__/editPic" enctype="multipart/form-data">
+                        <!--通用信息-->
+                    <div class="tab-content col-md-10">
+                        <div class="tab-pane active" id="tab_tongyong">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <foreach name="res" item="vo" key="key">
+                                        <tr>
+                                            <td class="col-sm-2">第{$key+1}部分：</td>
+                                            <td class="col-sm-8">
+                                                标题：<input type="text" class="form-control" name="title{$key+1}" value="{$vo.title}" >
+                                                <span id="err_attr_name" style="color:#F00; display:none;"></span>
+                                                链接：<input type="text" class="form-control" name="link{$key+1}" value="{$vo.url}" >
+                                                <img src="__PUBLIC__/Floor/Upload/{$vo.pic}" alt="">
+                                                图片：<input type="file" name="pic{$key+1}" value="">
+                                            </td>
+                                        </tr>
+                                    </foreach>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <input type="hidden" name="id" value="{$res.id}">
+                                        <td class="text-right"><input class="btn btn-primary" type="button" onclick="adsubmit()" value="保存"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    function adsubmit(){
+    	$('#handleposition').submit();
+    }
+</script>
+ </body>
+ </html>

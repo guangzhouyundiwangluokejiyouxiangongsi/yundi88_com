@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>导航管理</title>
+		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/style.css" rel="stylesheet">
+	</head>
+
+	<body class="gray-bg">
+		<div class="" style="margin-left:30px;">
+		    <h2>当前导航</h2>
+			<form id="img_form" action="{:U('Pic/upImg')}" method="post" enctype="multipart/form-data">
+				<img src="__PUBLIC__/Pic/{$list.link}" alt="" width="600" id="pic">
+				<input id="upload" type="file" name="path" value="{$list.link}" />
+			</form>
+			<hr>
+			<h2>以往导航</h2>
+			<ul class="lis">
+				<foreach name="data" item="vo">
+					<li data-value="{$vo.id}"><img src="__PUBLIC__/Pic/{$vo.link}" alt=""></li>
+				</foreach>
+			</ul>
+		</div>
+
+		<!-- 全局js -->
+		<script src="__PUBLIC__/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js?v=3.3.6"></script>
+		<script type="text/javascript">
+			// 隐藏文件上传控件
+			$('#upload').hide();
+
+			// 实现点击图片可以选择文件上传
+			$(function() {
+				$("#pic").click(function () {
+					$("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+					$("#upload").on("change",function(){
+						$('#img_form').submit();
+					});
+				});
+			});
+
+			//建立一個可存取到該file的url
+			function getObjectURL(file) {
+				var url = null ;
+				if (window.createObjectURL!=undefined) { // basic
+					url = window.createObjectURL(file) ;
+				} else if (window.URL!=undefined) { // mozilla(firefox)
+					url = window.URL.createObjectURL(file) ;
+				} else if (window.webkitURL!=undefined) { // webkit or chrome
+					url = window.webkitURL.createObjectURL(file) ;
+				}
+				return url ;
+			}
+
+			$('.lis li').click(function () {
+				var id = $(this).attr('data-value');
+				$.post(
+					'{:U("Pic/changePic")}',
+					{'id':id},
+					function (data) {
+						// window.location.href="./";
+                        history.go(0);
+					},
+					'json'
+				);
+			});
+	    </script>
+	</body>
+</html>

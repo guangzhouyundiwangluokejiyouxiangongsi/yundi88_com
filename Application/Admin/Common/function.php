@@ -34,36 +34,36 @@ function getAdminInfo($admin_id){
 }
 
 function tpversion()
-{     
+{
     if(!empty($_SESSION['isset_push']))
-        return false;    
-    $_SESSION['isset_push'] = 1;    
+        return false;
+    $_SESSION['isset_push'] = 1;
     error_reporting(0);//关闭所有错误报告
     $app_path = dirname($_SERVER['SCRIPT_FILENAME']).'/';
     $version_txt_path = $app_path.'/Application/Admin/Conf/version.txt';
     $curent_version = file_get_contents($version_txt_path);
-    
-    $vaules = array(            
-            'domain'=>$_SERVER['HTTP_HOST'], 
-            'last_domain'=>$_SERVER['HTTP_HOST'], 
-            'key_num'=>$curent_version, 
-            'install_time'=>INSTALL_DATE, 
+
+    $vaules = array(
+            'domain'=>$_SERVER['HTTP_HOST'],
+            'last_domain'=>$_SERVER['HTTP_HOST'],
+            'key_num'=>$curent_version,
+            'install_time'=>INSTALL_DATE,
             'cpu'=>'0001',
             'mac'=>'0002',
             'serial_number'=>SERIALNUMBER,
-            );     
+            );
      $url = "http://service.tp-shop.cn/index.php?m=Home&c=Index&a=user_push&".http_build_query($vaules);
      stream_context_set_default(array('http' => array('timeout' => 3)));
-     file_get_contents($url);       
+     file_get_contents($url);
 }
- 
+
 /**
  * 面包屑导航  用于后台管理
  * 根据当前的控制器名称 和 action 方法
  */
 function navigate_admin()
-{        
-    $navigate = include APP_PATH.'Common/Conf/navigate.php';    
+{
+    $navigate = include APP_PATH.'Common/Conf/navigate.php';
     $location = strtolower('Admin/'.CONTROLLER_NAME);
     $arr = array(
         '后台首页'=>'javascript:void();',
@@ -169,14 +169,14 @@ function getAllMenu(){
 			'Store' => array('name' => '店铺管理', 'icon'=>'fa-home', 'sub_menu' => array(
 					array('name' => '店铺等级', 'act'=>'store_grade', 'control'=>'Store'),
 					array('name' => '店铺分类', 'act'=>'store_class', 'control'=>'Store'),
-					array('name' => '店铺列表', 'act'=>'store_list', 'control'=>'Store'),					
+					array('name' => '店铺列表', 'act'=>'store_list', 'control'=>'Store'),
 					array('name' => '自营店铺', 'act'=>'store_own_list', 'control'=>'Store'),
 					array('name' => '经营类目审核', 'act'=>'apply_class_list', 'control'=>'Store'),
 			)),
 			'Ad' => array('name' => '广告管理', 'icon'=>'fa-flag', 'sub_menu' => array(
 					array('name' => '广告列表', 'act'=>'adList', 'control'=>'Ad'),
 					array('name' => '广告位置', 'act'=>'positionList', 'control'=>'Ad'),
-			)),			
+			)),
 			'promotion' => array('name' => '活动管理', 'icon'=>'fa-bell', 'sub_menu' => array(
 					array('name' => '抢购管理', 'act'=>'flash_sale', 'control'=>'Promotion'),
 					array('name' => '团购管理', 'act'=>'group_buy_list', 'control'=>'Promotion'),
@@ -214,17 +214,17 @@ function getAllMenu(){
 					array('name'=>'用户体验','act'=>'tiyan_lunbo','control'=>'User'),
 					array('name'=>'云狄认证','act'=>'renzheng_lunbo','control'=>'User'),
 					// array('name'=>'商户首页','act'=>'store_lunbo','control'=>'User'),
-			)),	
+			)),
 
-            /* * 
-           
+            /* *
+
 			'distribut' => array('name' => '分销管理', 'icon'=>'fa-cubes', 'sub_menu' => array(
 					array('name' => '分销商列表', 'act'=>'distributor_list', 'control'=>'Distribut'),
 					array('name' => '分销关系', 'act'=>'tree', 'control'=>'Distribut'),
 //					array('name' => '提现申请', 'act'=>'withdrawals', 'control'=>'Distribut'),
 					array('name' => '分成日志', 'act'=>'rebate_log', 'control'=>'Distribut'),
 			)),
-             */ 
+             */
 			'tools' => array('name' => '插件工具', 'icon'=>'fa-plug', 'sub_menu' => array(
 					array('name' => '插件列表', 'act'=>'index', 'control'=>'Plugin'),
 					array('name' => '数据备份', 'act'=>'index', 'control'=>'Tools'),
@@ -244,6 +244,14 @@ function getAllMenu(){
 					array('name' => '销售明细', 'act'=>'saleList', 'control'=>'Report'),
 					array('name' => '会员统计', 'act'=>'user', 'control'=>'Report'),
 					array('name' => '运营概览', 'act'=>'finance', 'control'=>'Report'),
+			)),
+			'commerce' => array('name' => '主页', 'icon'=>'fa-home', 'sub_menu' => array(
+					array('name' => '公告管理', 'act'=>'notice', 'control'=>'Commerce'),
+					array('name' => '轮播图管理', 'act'=>'carousel', 'control'=>'Carousel'),
+                    array('name' => '图片导航', 'act'=>'pic', 'control'=>'Pic'),
+                    array('name' => '楼层', 'act'=>'floor', 'control'=>'Page'),
+					array('name' => '会员统计', 'act'=>'user', 'control'=>'Commerce'),
+					array('name' => '运营概览', 'act'=>'finance', 'control'=>'Commerce'),
 			)),
 			'count' => array('name' => '其他', 'icon'=>'fa-signal', 'sub_menu' => array(
 					array('name' => '测试数据账户', 'act'=>'index', 'control'=>'Testaccount'),
