@@ -194,7 +194,7 @@ class IndexController extends BaseController {
 
             // 处理编辑
             if (I('get.edit') && I('get.edit') == 1) {
-                $this->display('Yun_commerce_edit');
+                $this->display('yun_commerce_edit');
                 exit;
             }
 
