@@ -200,7 +200,7 @@ class IndexController extends BaseController {
 
             $file = $this->fetch();
             $this->show($file);
-            file_put_contents(PATH.'/index.html',$file);
+            // file_put_contents(PATH.'/index.html',$file);
 
 
 

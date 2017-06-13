@@ -69,7 +69,7 @@
             if ($res) {
                 $this->success('删除成功', 'notice');exit;
             } else {
-                $this->error('删除失败');
+                $this->error('删除失败','notice');
             }
 		}
 

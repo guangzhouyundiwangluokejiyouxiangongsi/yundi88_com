@@ -38,11 +38,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>文字对齐：</td>
+                                    <td>大标题对齐：{$res.align1}</td>
                                     <td>
-                                        <label><input type="radio" name="align" value="0" <if condition="$res.align eq 0"> checked </if> >左 <br></label>
-                                        <label><input type="radio" name="align" value="1" <if condition="$res.align eq 1"> checked </if> >中 <br></label>
-                                        <label><input type="radio" name="align" value="2" <if condition="$res.align eq 2"> checked </if> >右</label>
+                                        <label><input type="radio" name="align1" value="0" <if condition="$res[align1] eq 0"> checked </if> >左 <br></label>
+                                        <label><input type="radio" name="align1" value="1" <if condition="$res[align1] eq 1"> checked </if> >中 <br></label>
+                                        <label><input type="radio" name="align1" value="2" <if condition="$res[align1] eq 2"> checked </if> >右</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>小标题对齐：</td>
+                                    <td>
+                                        <label><input type="radio" name="align2" value="0" <if condition="$res[align2] eq 0"> checked </if> >左 <br></label>
+                                        <label><input type="radio" name="align2" value="1" <if condition="$res[align2] eq 1"> checked </if> >中 <br></label>
+                                        <label><input type="radio" name="align2" value="2" <if condition="$res[align2] eq 2"> checked </if> >右</label>
                                     </td>
                                 </tr>
                                 <tr>
