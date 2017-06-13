@@ -296,7 +296,7 @@ $(function(){
         				<ul class="logo_show">
                             <foreach name="store_logo[ $k + 1]" item="vo" key="ko">
             					<li>
-                                    <a href="{:U('Store/index',array('store_id'=>$ko))}">
+                                    <a href="{:U('/Store/index',array('store_id'=>$ko))}">
                 						<img src="{$vo}">
                 					</a>
                                 </li>
