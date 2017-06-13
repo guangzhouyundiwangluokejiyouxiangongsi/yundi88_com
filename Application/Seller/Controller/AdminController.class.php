@@ -318,7 +318,16 @@ class AdminController extends BaseController {
 	 * 清空系统缓存
 	 */
 	public function cleanCache()
-	{
+	{  
+
+        S(md5(U('/Store/index',array('store_id'=>session('store_id')))),null);
+        S(md5(U('/Store/index').'?store_id='.session('store_id')),null);
+        S(md5(U('/Store/index',array('store_id'=>session('store_id'))).'.html'),null);
+        S(md5(U('/Store/index').'?store_id='.session('store_id').'.html'),null);
+        $navigation = M('store_navigation')->where(array('sn_store_id'=>session('store_id')))->select();
+        foreach($navigation as $val){
+            S(md5(U('/Store/newsList',array('store_id'=>session('store_id'),'sn_id'=>$val['sn_id'])).'.html'),null);
+        }
 		// delFile('./Public/upload/goods/thumb');// 删除缩略图
         // delFile('./Public/upload/news/seller');
         // delFile('./Public/upload/mosaic');
