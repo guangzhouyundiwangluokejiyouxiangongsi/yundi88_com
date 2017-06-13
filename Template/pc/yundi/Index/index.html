@@ -36,9 +36,26 @@
 .swiper-button-next{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_right.png) no-repeat !important;right: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 .swiper-button-prev:hover{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_left_on.png) no-repeat !important;left: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 .swiper-button-next:hover{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_right_on.png) no-repeat !important;right: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
+
+ /*.head{background: #F92246;}
+ #tab .tabList li.cur{background: #F92246;}
+ #tab .tabCon .but{background: #F92246 url(__PUBLIC__/images/but.jpg) center no-repeat;}
+ #tab .tabCon{border: 1px solid #F92246;}
+.pro{border-bottom: 2px solid #F92246;}
+.pro .nav .yi{background: url(__PUBLIC__/images/pro_icon_0.jpg) no-repeat 30px 15px #ffffff;}
+.pro .nav .yi .dyj .one{background: #ffffff;}
+.pro .nav .yi .dyj .one:hover>a{color: #F92246 ;}
+.pro .nav .yi .dyj .one section dl dt a{color: #333333;}
+.pro .nav .yi .dyj .one section dl dd a:hover{color:#F92246;}
+.pro .nav .yi .dyj .one section dl dt{border-bottom: 1px solid #F92246;}
+.pro .nav .yi >a {color: #333333 !important;}
+.pro .nav .yi .dyj .one:hover{color: #F92246 ;}
+.pro .nav .yi a{color: #333333 ;}
+.pro .nav .yi a:hover{color: #F92246;}
+.pro .nav .yi .dyj .one section{top: 46px;}*/
+
 </style>
 <!-- 头部顶栏 start [[-->
-
 <div class="commerce">
 	<div class="mg">
         <!-- 内容头部 -->
@@ -1296,7 +1313,7 @@ is_hot('{$k + 1}');
 				<ul>
                     <foreach name="zxNews" item="vo">
     					<li>
-    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
+    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('/Article/detail',array('article_id'=>$vo['article_id']))}</if>">
     							<span>{$vo.title}</span>
     							<i>{$vo.add_time}</i>
     						</a>
@@ -1314,7 +1331,7 @@ is_hot('{$k + 1}');
                 <ul>
                     <foreach name="hyNews" item="vo">
     					<li>
-    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
+    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('/Article/detail',array('article_id'=>$vo['article_id']))}</if>">
     							<span>{$vo.title}</span>
     							<i>{$vo.add_time}</i>
     						</a>
@@ -1332,7 +1349,7 @@ is_hot('{$k + 1}');
 				<ul>
                     <foreach name="tgNews" item="vo">
     					<li>
-    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
+    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('/Article/detail',array('article_id'=>$vo['article_id']))}</if>">
     							<span>{$vo.title}</span>
     							<i>{$vo.add_time}</i>
     						</a>
@@ -1346,22 +1363,9 @@ is_hot('{$k + 1}');
 	<div class="floor_float">
 		<div class="floor_back_top"><a target="_blank" href="javascript:;">返回顶部</a></div>
 		<ul>
-			<li><a target="_blank" href="javascript:;">F1</a></li>
-			<li><a target="_blank" href="javascript:;">F2</a></li>
-			<li><a target="_blank" href="javascript:;">F3</a></li>
-			<li><a target="_blank" href="javascript:;">F4</a></li>
-			<li><a target="_blank" href="javascript:;">F5</a></li>
-			<li><a target="_blank" href="javascript:;">F6</a></li>
-			<li><a target="_blank" href="javascript:;">F7</a></li>
-			<li><a target="_blank" href="javascript:;">F8</a></li>
-			<li><a target="_blank" href="javascript:;">F9</a></li>
-			<li><a target="_blank" href="javascript:;">F10</a></li>
-			<li><a target="_blank" href="javascript:;">F11</a></li>
-			<li><a target="_blank" href="javascript:;">F12</a></li>
-			<li><a target="_blank" href="javascript:;">F13</a></li>
-			<li><a target="_blank" href="javascript:;">F14</a></li>
-			<li><a target="_blank" href="javascript:;">F15</a></li>
-			<li><a target="_blank" href="javascript:;">F16</a></li>
+		<foreach item="vo"  name="typeData" key="k">
+            <li><a title="{$vo.name}" href="javascript:;">F{$k+1}</a></li>
+        </foreach>
 		</ul>
 	</div>
 </div>

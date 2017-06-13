@@ -28,6 +28,14 @@ class IndexController extends BaseController {
         $this->display();
     }
    
+   // 清除首页缓存
+    public function clearCache()
+    {
+
+        delFile(PATH.'/index.html');
+        $this->success('成功清除缓存');
+    }
+
     public function welcome(){
     	$this->assign('sys_info',$this->get_sys_info());
     	$today = strtotime("-1 day");

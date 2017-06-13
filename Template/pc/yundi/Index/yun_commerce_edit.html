@@ -1362,8 +1362,10 @@ is_hot();
 	<div class="floor_float">
 		<div class="floor_back_top"><a href="javascript:;">返回顶部</a></div>
 		<ul>
-			<li><a href="javascript:;">F1</a></li>
-			<li><a href="javascript:;">F2</a></li>
+        <foreach item="vo" title="{$vo.name}" name="typeData" key="k">
+			<li><a href="javascript:;">F{$k+1}</a></li>
+        </foreach>
+			<!-- <li><a href="javascript:;">F2</a></li>
 			<li><a href="javascript:;">F3</a></li>
 			<li><a href="javascript:;">F4</a></li>
 			<li><a href="javascript:;">F5</a></li>
@@ -1377,7 +1379,7 @@ is_hot();
 			<li><a href="javascript:;">F13</a></li>
 			<li><a href="javascript:;">F14</a></li>
 			<li><a href="javascript:;">F15</a></li>
-			<li><a href="javascript:;">F16</a></li>
+			<li><a href="javascript:;">F16</a></li> -->
 		</ul>
 	</div>
 </div>

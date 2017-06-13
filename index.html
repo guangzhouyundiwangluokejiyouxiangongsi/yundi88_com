@@ -17,7 +17,7 @@
 <script src="/Public/js/global.js"></script>
 <script src="/Public/js/pc_common.js"></script>
 <script src="/Public/js/layer/layer.js"></script>
-<meta name="__hash__" content="e251273eb74a8ee3f661a7af00915af1_225b55d4573206c26812003f10496f62" /></head>
+<meta name="__hash__" content="6454617d6d35a203771a1a72aab75453_ce59c4571c7c6e00c2211631c18cf3c6" /></head>
 <body class="ng-scope">
 
 <link href="/Public/pc/css/public.css" rel="stylesheet" type="text/css">
@@ -167,19 +167,19 @@
 					           <form name="sourch_form" id="sourch_form" method="post" action="/Goods/search.html">
 					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="q" id="q" value="" placeholder="搜索产品关键字"  onfocus="getdata(this);" oninput="getdata(this);"/>
 					             <a data-role="btn" href="javascript:void(0);" class="but" onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();"></a>
-					            <input type="hidden" name="__hash__" value="e251273eb74a8ee3f661a7af00915af1_225b55d4573206c26812003f10496f62" /></form>
+					            <input type="hidden" name="__hash__" value="6454617d6d35a203771a1a72aab75453_ce59c4571c7c6e00c2211631c18cf3c6" /></form>
 					        </div>
 					        <div class="cur">
 					           <form id="sourch_form_com" method="get" action="/index/searchstreet.html">
 					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="company" id="q_com" value="" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this)" />
 					             <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
-					            <input type="hidden" name="__hash__" value="e251273eb74a8ee3f661a7af00915af1_225b55d4573206c26812003f10496f62" /></form>
+					            <input type="hidden" name="__hash__" value="6454617d6d35a203771a1a72aab75453_ce59c4571c7c6e00c2211631c18cf3c6" /></form>
 					        </div>
 							<div class="cur">
 				               <form id="sourch_form_info" method="get" action="/Info/search.html">
 				                <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="" placeholder="搜索信息关键字" />
 				                 <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
-				                <input type="hidden" name="__hash__" value="e251273eb74a8ee3f661a7af00915af1_225b55d4573206c26812003f10496f62" /></form>
+				                <input type="hidden" name="__hash__" value="6454617d6d35a203771a1a72aab75453_ce59c4571c7c6e00c2211631c18cf3c6" /></form>
 				            </div>
 					    </div>
 					    <ul class="tab-search-box" onfocus="$('.tab-search-box').show();">
@@ -192,7 +192,7 @@
 	<div class="pro">
       <nav class="nav">
         <ul>
-            <li class="yi"><a href="/Home/goods/goodsList2.html" >所有分类</a>
+            <li class="yi"><a href="/goods/goodsList2.html" >所有分类</a>
                <ul class="dyj">
                 <li class="one">
                   <!-- <img src="/Public/upload/category/2017/04-24/58fd95e2f2fb8.png"> -->
@@ -1122,9 +1122,26 @@ $('#tab .tabCon .ssk').keyup(function(event){
 .swiper-button-next{width: 20px  !important;height: 30px  !important;background: url(/Public/image/commerce_b_right.png) no-repeat !important;right: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 .swiper-button-prev:hover{width: 20px  !important;height: 30px  !important;background: url(/Public/image/commerce_b_left_on.png) no-repeat !important;left: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 .swiper-button-next:hover{width: 20px  !important;height: 30px  !important;background: url(/Public/image/commerce_b_right_on.png) no-repeat !important;right: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
+
+ /*.head{background: #F92246;}
+ #tab .tabList li.cur{background: #F92246;}
+ #tab .tabCon .but{background: #F92246 url(/Public/images/but.jpg) center no-repeat;}
+ #tab .tabCon{border: 1px solid #F92246;}
+.pro{border-bottom: 2px solid #F92246;}
+.pro .nav .yi{background: url(/Public/images/pro_icon_0.jpg) no-repeat 30px 15px #ffffff;}
+.pro .nav .yi .dyj .one{background: #ffffff;}
+.pro .nav .yi .dyj .one:hover>a{color: #F92246 ;}
+.pro .nav .yi .dyj .one section dl dt a{color: #333333;}
+.pro .nav .yi .dyj .one section dl dd a:hover{color:#F92246;}
+.pro .nav .yi .dyj .one section dl dt{border-bottom: 1px solid #F92246;}
+.pro .nav .yi >a {color: #333333 !important;}
+.pro .nav .yi .dyj .one:hover{color: #F92246 ;}
+.pro .nav .yi a{color: #333333 ;}
+.pro .nav .yi a:hover{color: #F92246;}
+.pro .nav .yi .dyj .one section{top: 46px;}*/
+
 </style>
 <!-- 头部顶栏 start [[-->
-
 <div class="commerce">
 	<div class="mg">
         <!-- 内容头部 -->
@@ -1133,7 +1150,7 @@ $('#tab .tabCon .ssk').keyup(function(event){
                 <div class="commerce_banner">
                     <!-- <img src="image/commerce_banner.jpg"> -->
                     <div class="slider1">
-					    <div class="slide" ><a href="#"><img src="/Public/Carousel/2017-06-12/593e8fdb3e050.jpg" width="700" height="274"></a></div><div class="slide" ><a href="#"><img src="/Public/Carousel/2017-06-10/593bb3e16d101.jpg" width="700" height="274"></a></div><div class="slide" ><a href="#"><img src="/Public/Carousel/2017-06-12/593e8fd212b7d.jpg" width="700" height="274"></a></div>					</div>
+					    <div class="slide" ><a target="_blank" href="#"><img src="/Public/Carousel/2017-06-12/593e8fdb3e050.jpg" width="700" height="274"></a></div><div class="slide" ><a target="_blank" href="#"><img src="/Public/Carousel/2017-06-10/593bb3e16d101.jpg" width="700" height="274"></a></div><div class="slide" ><a target="_blank" href="#"><img src="/Public/Carousel/2017-06-12/593e8fd212b7d.jpg" width="700" height="274"></a></div>					</div>
 
                 </div>
 
@@ -1156,7 +1173,7 @@ $('#tab .tabCon .ssk').keyup(function(event){
                 <!-- 主题 -->
                 <ul class="commerce_theme">
                     <li>
-                        <a href="/index.php/index.php/Admin/Page/d'sa'd'sa">
+                        <a target="_blank" href="/index.php/index.php/Admin/Page/d'sa'd'sa">
                         <img src="/Public/Floor/Upload/2017-06-13/593f4adfbe8b4.jpg">
                         <span class="commerce_txt">
                             <span style="color: #000000;">sfgdf</span>
@@ -1165,7 +1182,7 @@ $('#tab .tabCon .ssk').keyup(function(event){
                     </a>
                     </li>
                     <li>
-                        <a href="/index.php/Admin/Page/fdyhfgh">
+                        <a target="_blank" href="/index.php/Admin/Page/fdyhfgh">
                         <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
                         <span class="commerce_txt">
                              <span style="color: #000000;"></span>
@@ -1174,7 +1191,7 @@ $('#tab .tabCon .ssk').keyup(function(event){
                     </a>
                     </li>
                     <li>
-                        <a href="/index.php/Admin/Page/reytry">
+                        <a target="_blank" href="/index.php/Admin/Page/reytry">
                         <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
                         <span class="commerce_txt">
                              <span style="color: #000000;"></span>
@@ -1191,7 +1208,7 @@ $('#tab .tabCon .ssk').keyup(function(event){
                 <div class="commerce_bulletin">
                     <h3>公告栏</h3>
                     <ul>
-                    <li><a href="#">公告：免费注册送三站合一</a></li><li><a href="#">公告：免费注册送三站合一</a></li><li><a href="#">公告：免费注册送三站合一</a></li><li><a href="#">公告：免费注册送三站合一</a></li><li><a href="#">公告：免费注册送三站合一</a></li><li><a href="#">公告：免费注册送三站合一</a></li><li><a href="#">公告：诚信通要让企业路路通</a></li><li><a href="#">公告：免费注册送三站合一</a></li>                    </ul>
+                    <li><a target="_blank" href="#">公告：免费注册送三站合一</a></li><li><a target="_blank" href="#">公告：免费注册送三站合一</a></li><li><a target="_blank" href="#">公告：免费注册送三站合一</a></li><li><a target="_blank" href="#">公告：免费注册送三站合一</a></li><li><a target="_blank" href="#">公告：免费注册送三站合一</a></li><li><a target="_blank" href="#">公告：免费注册送三站合一</a></li><li><a target="_blank" href="#">公告：诚信通要让企业路路通</a></li><li><a target="_blank" href="#">公告：免费注册送三站合一</a></li>                    </ul>
                 </div>
             </div>
         </div>
@@ -1217,16 +1234,16 @@ $(function(){
         				<span class="commerce_line"></span>
         				<h3><span>F1</span>女装/男装/内衣</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/2.html" >女装市场</a></li><li><a href="/Goods/goodsList/id/22.html" >男装市场</a></li><li><a href="/Goods/goodsList/id/43.html" >内衣市场</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/1.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/2.html" >女装市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/22.html" >男装市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/43.html" >内衣市场</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/1.html" class="commerce_more">查看全部</a>
         			</div>
 
 
         			<!-- 1F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="/index.php/index.php/index.php/Admin/Page/editInfo">
+                        <a target="_blank" href="/index.php/index.php/index.php/Admin/Page/editInfo">
             				<div class="com_box_1_l_t">
-            					<!-- <a href="#"> -->
+            					<!-- <a target="_blank" href="#"> -->
             						<img src="/Public/Floor/Upload/2017-06-13/593f48f147781.jpg" />
             						<div class="commerce_txt_f txt_t_c">
 
@@ -1242,19 +1259,19 @@ $(function(){
         				</div> -->
         				<div class="com_box_1_l_b">
         					<div class="slider2">
-                                <a href="/index.php/index.php/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/index.php/index.php/Admin/Page/addInfo">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e3f0e3a3fd.jpg">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e404b7cd80.png">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
             				      	<div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e4056030eb.jpg">
         						        <p></p>
@@ -1286,7 +1303,7 @@ $(function(){
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_s">
-                                <a href="/index.php/index.php/index.php/index.php/index.php/index.php/Goods/goodsInfo/id/8689.html">
+                                <a target="_blank" href="/index.php/index.php/index.php/index.php/index.php/index.php/Goods/goodsInfo/id/8689.html">
         							<img src="/Public/Floor/Upload/2017-06-13/593f4912f4236.jpg">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="color: #ff80c0; text-align: center;">58958</h3>
@@ -1295,7 +1312,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="/index.php/index.php/index.php/index.php/index.php/Admin/Page/hfdg">
+                                <a target="_blank" href="/index.php/index.php/index.php/index.php/index.php/Admin/Page/hfdg">
         							<img src="/Public/Floor/Upload/2017-06-12/593e8e74ecf2b.jpg">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="color: #ff80c0;">sss</h3>
@@ -1304,7 +1321,7 @@ $(function(){
                                 </a>
             					</li>
                                 <li class="hover_s">
-                                <a href="ret">
+                                <a target="_blank" href="ret">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color: #000000;"></h3>
@@ -1313,7 +1330,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style=" text-align: left; color: ;"></h3>
@@ -1322,7 +1339,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="/index.php/index.php/index.php/Admin/Page/esdfdsfds">
+                                <a target="_blank" href="/index.php/index.php/index.php/Admin/Page/esdfdsfds">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color: #0000a0;"></h3>
@@ -1331,7 +1348,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color: ;"></h3>
@@ -1344,19 +1361,19 @@ $(function(){
         				<div class="com_box_1_c_b">
         					<ul>
                                 <li>
-                                <a href="ee">
+                                <a target="_blank" href="ee">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         							<p style="text-align: center; color: #000000;"></p>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p style="text-align: left; color: ;"></p>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         							<p style="text-align: center; color: #000000;"></p>
                                 </a>
@@ -1369,39 +1386,39 @@ $(function(){
         			<div class="com_box_1_r">
         				<ul class="logo_show">
                             <li>
-                                    <a href="/Home/Store/index/store_id/33.html">
+                                    <a target="_blank" href="/Store/index/store_id/33.html">
                 						<img src="/Public/upload/seller/2016/12-28/58635c0496ca2.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/40.html">
+                                    <a target="_blank" href="/Store/index/store_id/40.html">
                 						<img src="/Public/upload/seller/2017/01-06/586f67d418523.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/47.html">
+                                    <a target="_blank" href="/Store/index/store_id/47.html">
                 						<img src="/Public/upload/seller/2016/12-30/586639ddbc5f8.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/53.html">
+                                    <a target="_blank" href="/Store/index/store_id/53.html">
                 						<img src="/Public/upload/seller/2017/01-18/587f00e11430d.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/58.html">
+                                    <a target="_blank" href="/Store/index/store_id/58.html">
                 						<img src="/Public/upload/seller/2017/01-03/586b66531b90d.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/64.html">
+                                    <a target="_blank" href="/Store/index/store_id/64.html">
                 						<img src="/Public/upload/seller/2017/03-31/58ddc5dd45610.jpg">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/69.html">
+                                    <a target="_blank" href="/Store/index/store_id/69.html">
                 						<img src="/Public/upload/seller/2017/01-06/586f74ac8bace.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/77.html">
+                                    <a target="_blank" href="/Store/index/store_id/77.html">
                 						<img src="/Public/upload/seller/2017/01-06/586f5756b0439.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/82.html">
+                                    <a target="_blank" href="/Store/index/store_id/82.html">
                 						<img src="/Public/upload/seller/2017/01-07/58708cebb0648.png">
                 					</a>
                                 </li>        				</ul>
@@ -1412,16 +1429,16 @@ $(function(){
         				<span class="commerce_line"></span>
         				<h3><span>F2</span>鞋靴/帽子/箱包/运动/体育用品</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/64.html" >鞋靴市场</a></li><li><a href="/Goods/goodsList/id/73.html" >开店必备</a></li><li><a href="/Goods/goodsList/id/84.html" >箱包市场</a></li><li><a href="/Goods/goodsList/id/94.html" >女包市场</a></li><li><a href="/Goods/goodsList/id/103.html" >配饰市场</a></li><li><a href="/Goods/goodsList/id/111.html" >运动户外服装</a></li><li><a href="/Goods/goodsList/id/121.html" >骑行用品</a></li><li><a href="/Goods/goodsList/id/130.html" >山地、野营用品</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/63.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/64.html" >鞋靴市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/73.html" >开店必备</a></li><li><a target="_blank" href="/Goods/goodsList/id/84.html" >箱包市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/94.html" >女包市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/103.html" >配饰市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/111.html" >运动户外服装</a></li><li><a target="_blank" href="/Goods/goodsList/id/121.html" >骑行用品</a></li><li><a target="_blank" href="/Goods/goodsList/id/130.html" >山地、野营用品</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/63.html" class="commerce_more">查看全部</a>
         			</div>
 
 
         			<!-- 1F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="/index.php/index.php/Admin/Page/e3e3">
+                        <a target="_blank" href="/index.php/index.php/Admin/Page/e3e3">
             				<div class="com_box_1_l_t">
-            					<!-- <a href="#"> -->
+            					<!-- <a target="_blank" href="#"> -->
             						<img src="/Public/Floor/Upload/2017-06-12/593e33ee3d5d2.jpg" />
             						<div class="commerce_txt_f txt_t_c">
 
@@ -1437,19 +1454,19 @@ $(function(){
         				</div> -->
         				<div class="com_box_1_l_b">
         					<div class="slider2">
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e33a88c68b.jpg">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="">
+                                <a target="_blank" href="">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="">
+                                <a target="_blank" href="">
             				      	<div class="slide" >
         						        <img src="/Public/Floor/Upload/">
         						        <p></p>
@@ -1481,7 +1498,7 @@ $(function(){
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="color: ; text-align: left;"></h3>
@@ -1490,7 +1507,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="color: ;"></h3>
@@ -1499,7 +1516,7 @@ $(function(){
                                 </a>
             					</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color: ;"></h3>
@@ -1508,7 +1525,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style=" text-align: left; color: ;"></h3>
@@ -1517,7 +1534,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color: ;"></h3>
@@ -1526,7 +1543,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color: ;"></h3>
@@ -1539,19 +1556,19 @@ $(function(){
         				<div class="com_box_1_c_b">
         					<ul>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p style="text-align: left; color: ;"></p>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p style="text-align: left; color: ;"></p>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p style="text-align: left; color: ;"></p>
                                 </a>
@@ -1564,11 +1581,11 @@ $(function(){
         			<div class="com_box_1_r">
         				<ul class="logo_show">
                             <li>
-                                    <a href="/Home/Store/index/store_id/319.html">
+                                    <a target="_blank" href="/Store/index/store_id/319.html">
                 						<img src="/Public/upload/seller/2017/03-14/58c7c60e48f43.png">
                 					</a>
                                 </li><li>
-                                    <a href="/Home/Store/index/store_id/326.html">
+                                    <a target="_blank" href="/Store/index/store_id/326.html">
                 						<img src="/Public/upload/seller/2017/03-14/58c769d772369.png">
                 					</a>
                                 </li>        				</ul>
@@ -1579,14 +1596,14 @@ $(function(){
         				<span class="commerce_line"></span>
         				<h3><span>F3</span>童装/玩具/母婴用品</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/186.html" >童装市场</a></li><li><a href="/Goods/goodsList/id/207.html" >玩具市场</a></li><li><a href="/Goods/goodsList/id/227.html" >母婴用品市场</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/185.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/186.html" >童装市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/207.html" >玩具市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/227.html" >母婴用品市场</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/185.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 3F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
-        					<!-- <a href="#"> -->
+                        <a target="_blank" href="">
+        					<!-- <a target="_blank" href="#"> -->
         						<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						<div class="commerce_txt_f txt_t_c">
         							<h3 style="text-align: left; color:#000000;"> </h3>
@@ -1601,7 +1618,7 @@ $(function(){
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1610,7 +1627,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;">  </h3>
@@ -1619,7 +1636,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1628,7 +1645,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1637,7 +1654,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1646,7 +1663,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1686,14 +1703,14 @@ is_hot('3');
         				<span class="commerce_line"></span>
         				<h3><span>F4</span>日用品/宠物/成人/女性用品</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/249.html" >居家日用</a></li><li><a href="/Goods/goodsList/id/270.html" >收纳清洁市场</a></li><li><a href="/Goods/goodsList/id/281.html" >宠物市场</a></li><li><a href="/Goods/goodsList/id/293.html" >成人用品市场</a></li><li><a href="/Goods/goodsList/id/302.html" >女性护理市场</a></li><li><a href="/Goods/goodsList/id/1630.html" >美容护肤品</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/248.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/249.html" >居家日用</a></li><li><a target="_blank" href="/Goods/goodsList/id/270.html" >收纳清洁市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/281.html" >宠物市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/293.html" >成人用品市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/302.html" >女性护理市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/1630.html" >美容护肤品</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/248.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 3F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="/index.php/Admin/Page/addInfo">
-        					<!-- <a href="#"> -->
+                        <a target="_blank" href="/index.php/Admin/Page/addInfo">
+        					<!-- <a target="_blank" href="#"> -->
         						<img src="/Public/Floor/Upload/2017-06-12/593e3a7af2fd0.png">
         						<div class="commerce_txt_f txt_t_c">
         							<h3 style="text-align: center; color:#000000;"> </h3>
@@ -1708,7 +1725,7 @@ is_hot('3');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1717,7 +1734,7 @@ is_hot('3');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;">  </h3>
@@ -1726,7 +1743,7 @@ is_hot('3');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1735,7 +1752,7 @@ is_hot('3');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1744,7 +1761,7 @@ is_hot('3');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1753,7 +1770,7 @@ is_hot('3');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1793,13 +1810,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F5</span>3C/手机/家电/个人用品</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/309.html" >手机及配件市场</a></li><li><a href="/Goods/goodsList/id/317.html" >电脑及配件市场</a></li><li><a href="/Goods/goodsList/id/333.html" >数码及配件市场</a></li><li><a href="/Goods/goodsList/id/345.html" >厨房电器</a></li><li><a href="/Goods/goodsList/id/355.html" >广电市场</a></li><li><a href="/Goods/goodsList/id/366.html" >个人用品</a></li><li><a href="/Goods/goodsList/id/393.html" >美容美发市场</a></li><li><a href="/Goods/goodsList/id/1567.html" >浴室电器</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/308.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/309.html" >手机及配件市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/317.html" >电脑及配件市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/333.html" >数码及配件市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/345.html" >厨房电器</a></li><li><a target="_blank" href="/Goods/goodsList/id/355.html" >广电市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/366.html" >个人用品</a></li><li><a target="_blank" href="/Goods/goodsList/id/393.html" >美容美发市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/1567.html" >浴室电器</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/308.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 5F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: left; color:;"> </h3>
@@ -1813,7 +1830,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1822,7 +1839,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1831,7 +1848,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1840,7 +1857,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left;color:;"></h3>
@@ -1849,7 +1866,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1858,7 +1875,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1888,7 +1905,7 @@ is_hot('4');
         				</div>
         				<!-- 最新产品 -->
         				<div class="commerce_new commerce_new5">
-        					<!-- <a href="#">
+        					<!-- <a target="_blank" href="#">
         						<img src="image/commerce_508.png">
         						<p>大小款纯色帆布书包男双肩包女韩版 高中生双肩背包中学生简约百搭</p>
         						<span>￥39.00 <s>￥89.00</s></span>
@@ -1902,13 +1919,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F6</span>机械/设备/模具/仪器</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/415.html" >五金工具</a></li><li><a href="/Goods/goodsList/id/432.html" >化工机械</a></li><li><a href="/Goods/goodsList/id/443.html" >工控系统</a></li><li><a href="/Goods/goodsList/id/450.html" >焊接紧固</a></li><li><a href="/Goods/goodsList/id/464.html" >模具刀具</a></li><li><a href="/Goods/goodsList/id/472.html" >道路养护</a></li><li><a href="/Goods/goodsList/id/478.html" >包装印刷</a></li><li><a href="/Goods/goodsList/id/486.html" >机械主机市场</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/414.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/415.html" >五金工具</a></li><li><a target="_blank" href="/Goods/goodsList/id/432.html" >化工机械</a></li><li><a target="_blank" href="/Goods/goodsList/id/443.html" >工控系统</a></li><li><a target="_blank" href="/Goods/goodsList/id/450.html" >焊接紧固</a></li><li><a target="_blank" href="/Goods/goodsList/id/464.html" >模具刀具</a></li><li><a target="_blank" href="/Goods/goodsList/id/472.html" >道路养护</a></li><li><a target="_blank" href="/Goods/goodsList/id/478.html" >包装印刷</a></li><li><a target="_blank" href="/Goods/goodsList/id/486.html" >机械主机市场</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/414.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 5F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: left; color:;"> </h3>
@@ -1922,7 +1939,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1931,7 +1948,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1940,7 +1957,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1949,7 +1966,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left;color:;"></h3>
@@ -1958,7 +1975,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1967,7 +1984,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -1997,7 +2014,7 @@ is_hot('4');
         				</div>
         				<!-- 最新产品 -->
         				<div class="commerce_new commerce_new6">
-        					<!-- <a href="#">
+        					<!-- <a target="_blank" href="#">
         						<img src="image/commerce_508.png">
         						<p>大小款纯色帆布书包男双肩包女韩版 高中生双肩背包中学生简约百搭</p>
         						<span>￥39.00 <s>￥89.00</s></span>
@@ -2011,13 +2028,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F7</span>食品/农作物/园林花卉/禽畜</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/519.html" >粮食油类</a></li><li><a href="/Goods/goodsList/id/529.html" >生鲜水果</a></li><li><a href="/Goods/goodsList/id/546.html" >畜牧种苗</a></li><li><a href="/Goods/goodsList/id/566.html" >菌类水产</a></li><li><a href="/Goods/goodsList/id/583.html" >绿化盆景</a></li><li><a href="/Goods/goodsList/id/592.html" >农药化肥</a></li><li><a href="/Goods/goodsList/id/599.html" >零食/副食</a></li><li><a href="/Goods/goodsList/id/1598.html" >餐饮</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/518.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/519.html" >粮食油类</a></li><li><a target="_blank" href="/Goods/goodsList/id/529.html" >生鲜水果</a></li><li><a target="_blank" href="/Goods/goodsList/id/546.html" >畜牧种苗</a></li><li><a target="_blank" href="/Goods/goodsList/id/566.html" >菌类水产</a></li><li><a target="_blank" href="/Goods/goodsList/id/583.html" >绿化盆景</a></li><li><a target="_blank" href="/Goods/goodsList/id/592.html" >农药化肥</a></li><li><a target="_blank" href="/Goods/goodsList/id/599.html" >零食/副食</a></li><li><a target="_blank" href="/Goods/goodsList/id/1598.html" >餐饮</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/518.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 7F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: left; color:;"></h3>
@@ -2031,7 +2048,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2040,7 +2057,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2049,7 +2066,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2058,7 +2075,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2067,7 +2084,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2076,7 +2093,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2091,7 +2108,7 @@ is_hot('4');
         			<div class="com_box_1_r">
         			<!-- 三级分类列表 -->
         				<ul class="commerce_t_list">
-                            <li><a href="/Goods/goodsList/id/520.html">玉米</a></li><li><a href="/Goods/goodsList/id/521.html">豆类</a></li><li><a href="/Goods/goodsList/id/522.html">稻谷</a></li><li><a href="/Goods/goodsList/id/523.html">麦类</a></li><li><a href="/Goods/goodsList/id/524.html">薯类</a></li><li><a href="/Goods/goodsList/id/525.html">高粱</a></li><li><a href="/Goods/goodsList/id/526.html">花生油</a></li><li><a href="/Goods/goodsList/id/527.html">豆油</a></li><li><a href="/Goods/goodsList/id/528.html">菜籽油</a></li><li><a href="/Goods/goodsList/id/530.html">猕猴桃</a></li><li><a href="/Goods/goodsList/id/531.html">枣子</a></li><li><a href="/Goods/goodsList/id/532.html">荔枝</a></li><li><a href="/Goods/goodsList/id/533.html">梨</a></li><li><a href="/Goods/goodsList/id/534.html">桃</a></li><li><a href="/Goods/goodsList/id/535.html">菠萝</a></li><li><a href="/Goods/goodsList/id/536.html">枇杷</a></li><li><a href="/Goods/goodsList/id/537.html">苹果</a></li><li><a href="/Goods/goodsList/id/538.html">葡萄</a></li><li><a href="/Goods/goodsList/id/539.html">香蕉</a></li><li><a href="/Goods/goodsList/id/540.html">草莓</a></li><li><a href="/Goods/goodsList/id/541.html">桂圆</a></li><li><a href="/Goods/goodsList/id/542.html">甘蔗</a></li>        				</ul>
+                            <li><a target="_blank" href="/Goods/goodsList/id/520.html">玉米</a></li><li><a target="_blank" href="/Goods/goodsList/id/521.html">豆类</a></li><li><a target="_blank" href="/Goods/goodsList/id/522.html">稻谷</a></li><li><a target="_blank" href="/Goods/goodsList/id/523.html">麦类</a></li><li><a target="_blank" href="/Goods/goodsList/id/524.html">薯类</a></li><li><a target="_blank" href="/Goods/goodsList/id/525.html">高粱</a></li><li><a target="_blank" href="/Goods/goodsList/id/526.html">花生油</a></li><li><a target="_blank" href="/Goods/goodsList/id/527.html">豆油</a></li><li><a target="_blank" href="/Goods/goodsList/id/528.html">菜籽油</a></li><li><a target="_blank" href="/Goods/goodsList/id/530.html">猕猴桃</a></li><li><a target="_blank" href="/Goods/goodsList/id/531.html">枣子</a></li><li><a target="_blank" href="/Goods/goodsList/id/532.html">荔枝</a></li><li><a target="_blank" href="/Goods/goodsList/id/533.html">梨</a></li><li><a target="_blank" href="/Goods/goodsList/id/534.html">桃</a></li><li><a target="_blank" href="/Goods/goodsList/id/535.html">菠萝</a></li><li><a target="_blank" href="/Goods/goodsList/id/536.html">枇杷</a></li><li><a target="_blank" href="/Goods/goodsList/id/537.html">苹果</a></li><li><a target="_blank" href="/Goods/goodsList/id/538.html">葡萄</a></li><li><a target="_blank" href="/Goods/goodsList/id/539.html">香蕉</a></li><li><a target="_blank" href="/Goods/goodsList/id/540.html">草莓</a></li><li><a target="_blank" href="/Goods/goodsList/id/541.html">桂圆</a></li><li><a target="_blank" href="/Goods/goodsList/id/542.html">甘蔗</a></li>        				</ul>
         			</div>
 
         		</div><div id="floor_8" class="com_box_1 commerce_f_8">
@@ -2100,13 +2117,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F8</span>建筑/建材/五金/家具</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/621.html" >水暖五金</a></li><li><a href="/Goods/goodsList/id/630.html" >家居装修</a></li><li><a href="/Goods/goodsList/id/653.html" >施工材料</a></li><li><a href="/Goods/goodsList/id/673.html" >橡胶塑胶</a></li><li><a href="/Goods/goodsList/id/692.html" >PEX</a></li><li><a href="/Goods/goodsList/id/693.html" >PPR</a></li><li><a href="/Goods/goodsList/id/699.html" >楼宇设施</a></li><li><a href="/Goods/goodsList/id/709.html" >防水保温</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/620.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/621.html" >水暖五金</a></li><li><a target="_blank" href="/Goods/goodsList/id/630.html" >家居装修</a></li><li><a target="_blank" href="/Goods/goodsList/id/653.html" >施工材料</a></li><li><a target="_blank" href="/Goods/goodsList/id/673.html" >橡胶塑胶</a></li><li><a target="_blank" href="/Goods/goodsList/id/692.html" >PEX</a></li><li><a target="_blank" href="/Goods/goodsList/id/693.html" >PPR</a></li><li><a target="_blank" href="/Goods/goodsList/id/699.html" >楼宇设施</a></li><li><a target="_blank" href="/Goods/goodsList/id/709.html" >防水保温</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/620.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 7F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: left; color:;"></h3>
@@ -2120,7 +2137,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2129,7 +2146,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2138,7 +2155,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2147,7 +2164,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="/index.php/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/index.php/Admin/Page/addInfo">
         							<img src="/Public/Floor/Upload/2017-06-13/593f4c50b805b.jpg">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: center; color:#000000;">efew</h3>
@@ -2156,7 +2173,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2165,7 +2182,7 @@ is_hot('4');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2180,7 +2197,7 @@ is_hot('4');
         			<div class="com_box_1_r">
         			<!-- 三级分类列表 -->
         				<ul class="commerce_t_list">
-                            <li><a href="/Goods/goodsList/id/622.html">龙头</a></li><li><a href="/Goods/goodsList/id/623.html">花洒</a></li><li><a href="/Goods/goodsList/id/624.html">暖气、散热器</a></li><li><a href="/Goods/goodsList/id/625.html">地漏</a></li><li><a href="/Goods/goodsList/id/626.html">阀门</a></li><li><a href="/Goods/goodsList/id/627.html">快开、阀芯</a></li><li><a href="/Goods/goodsList/id/628.html">水嘴</a></li><li><a href="/Goods/goodsList/id/629.html">花洒软管</a></li><li><a href="/Goods/goodsList/id/631.html">门</a></li><li><a href="/Goods/goodsList/id/632.html">窗</a></li><li><a href="/Goods/goodsList/id/633.html">地板</a></li><li><a href="/Goods/goodsList/id/634.html">吊顶隔断</a></li><li><a href="/Goods/goodsList/id/635.html">淋浴房</a></li><li><a href="/Goods/goodsList/id/636.html">管件</a></li><li><a href="/Goods/goodsList/id/637.html">管道系统</a></li><li><a href="/Goods/goodsList/id/638.html">墙面砖</a></li><li><a href="/Goods/goodsList/id/639.html">台面</a></li><li><a href="/Goods/goodsList/id/640.html">天花板</a></li><li><a href="/Goods/goodsList/id/641.html">浴缸</a></li><li><a href="/Goods/goodsList/id/642.html">面盆</a></li><li><a href="/Goods/goodsList/id/643.html">浴房</a></li><li><a href="/Goods/goodsList/id/644.html">便器</a></li>        				</ul>
+                            <li><a target="_blank" href="/Goods/goodsList/id/622.html">龙头</a></li><li><a target="_blank" href="/Goods/goodsList/id/623.html">花洒</a></li><li><a target="_blank" href="/Goods/goodsList/id/624.html">暖气、散热器</a></li><li><a target="_blank" href="/Goods/goodsList/id/625.html">地漏</a></li><li><a target="_blank" href="/Goods/goodsList/id/626.html">阀门</a></li><li><a target="_blank" href="/Goods/goodsList/id/627.html">快开、阀芯</a></li><li><a target="_blank" href="/Goods/goodsList/id/628.html">水嘴</a></li><li><a target="_blank" href="/Goods/goodsList/id/629.html">花洒软管</a></li><li><a target="_blank" href="/Goods/goodsList/id/631.html">门</a></li><li><a target="_blank" href="/Goods/goodsList/id/632.html">窗</a></li><li><a target="_blank" href="/Goods/goodsList/id/633.html">地板</a></li><li><a target="_blank" href="/Goods/goodsList/id/634.html">吊顶隔断</a></li><li><a target="_blank" href="/Goods/goodsList/id/635.html">淋浴房</a></li><li><a target="_blank" href="/Goods/goodsList/id/636.html">管件</a></li><li><a target="_blank" href="/Goods/goodsList/id/637.html">管道系统</a></li><li><a target="_blank" href="/Goods/goodsList/id/638.html">墙面砖</a></li><li><a target="_blank" href="/Goods/goodsList/id/639.html">台面</a></li><li><a target="_blank" href="/Goods/goodsList/id/640.html">天花板</a></li><li><a target="_blank" href="/Goods/goodsList/id/641.html">浴缸</a></li><li><a target="_blank" href="/Goods/goodsList/id/642.html">面盆</a></li><li><a target="_blank" href="/Goods/goodsList/id/643.html">浴房</a></li><li><a target="_blank" href="/Goods/goodsList/id/644.html">便器</a></li>        				</ul>
         			</div>
 
         		</div><div id="floor_9" class="com_box_1 commerce_f_9">
@@ -2189,13 +2206,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F9</span>能源/矿产/石油/纺织皮革/政府</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/742.html" >能源产品</a></li><li><a href="/Goods/goodsList/id/756.html" >金属矿产</a></li><li><a href="/Goods/goodsList/id/777.html" >有色金属</a></li><li><a href="/Goods/goodsList/id/786.html" >非金属矿产</a></li><li><a href="/Goods/goodsList/id/802.html" >工业润滑油</a></li><li><a href="/Goods/goodsList/id/810.html" >板材、卷材</a></li><li><a href="/Goods/goodsList/id/823.html" >不锈钢材</a></li><li><a href="/Goods/goodsList/id/830.html" >面料市场</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/741.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/742.html" >能源产品</a></li><li><a target="_blank" href="/Goods/goodsList/id/756.html" >金属矿产</a></li><li><a target="_blank" href="/Goods/goodsList/id/777.html" >有色金属</a></li><li><a target="_blank" href="/Goods/goodsList/id/786.html" >非金属矿产</a></li><li><a target="_blank" href="/Goods/goodsList/id/802.html" >工业润滑油</a></li><li><a target="_blank" href="/Goods/goodsList/id/810.html" >板材、卷材</a></li><li><a target="_blank" href="/Goods/goodsList/id/823.html" >不锈钢材</a></li><li><a target="_blank" href="/Goods/goodsList/id/830.html" >面料市场</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/741.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 9F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: left; color:;"></h3>
@@ -2209,19 +2226,19 @@ is_hot('4');
         				</div> -->
         				<div class="com_box_1_l_b">
         					<div class="slider3">
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="/index.php/index.php/Admin/Page/weq">
+                                <a target="_blank" href="/index.php/index.php/Admin/Page/weq">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
             				      	<div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						        <p></p>
@@ -2254,7 +2271,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_s" >
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2262,8 +2279,8 @@ is_hot('4');
         							</div>
                                 </a>
                                 </li>
-                                <li class="hover_s"><a href="#">
-                                <a href="">
+                                <li class="hover_s"><a target="_blank" href="#">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2271,7 +2288,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2279,7 +2296,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2287,7 +2304,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2295,7 +2312,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2307,19 +2324,19 @@ is_hot('4');
         				<div class="com_box_1_c_b">
         					<ul>
                                 <li>
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         							<p></p>
                                     </a>
         						</li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p></p>
                                 </a>
         						</li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p></p>
                                 </a>
@@ -2332,19 +2349,19 @@ is_hot('4');
         				<!-- 产品展示 -->
         				<ul class="pro_show">
                             <li>
-                            <a href="">
+                            <a target="_blank" href="">
         						<img src="/Public/Floor/Upload/">
         						<p></p>
                         </a>
                             </li>
                             <li>
-                        <a href="">
+                        <a target="_blank" href="">
         						<img src="/Public/Floor/Upload/">
         						<p></p>
                         </a>
                             </li>
                             <li>
-                        <a href="/index.php/Admin/Page/e'w're">
+                        <a target="_blank" href="/index.php/Admin/Page/e'w're">
         						<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						<p></p>
                         </a>
@@ -2359,13 +2376,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F10</span>电工/电气/配电</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/874.html" >电工器材</a></li><li><a href="/Goods/goodsList/id/890.html" >配电输电</a></li><li><a href="/Goods/goodsList/id/898.html" >电气设备</a></li><li><a href="/Goods/goodsList/id/919.html" >发电机组</a></li><li><a href="/Goods/goodsList/id/929.html" >高压电器</a></li><li><a href="/Goods/goodsList/id/938.html" >低压电器</a></li><li><a href="/Goods/goodsList/id/946.html" >电动机</a></li><li><a href="/Goods/goodsList/id/953.html" >医疗设备</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/873.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/874.html" >电工器材</a></li><li><a target="_blank" href="/Goods/goodsList/id/890.html" >配电输电</a></li><li><a target="_blank" href="/Goods/goodsList/id/898.html" >电气设备</a></li><li><a target="_blank" href="/Goods/goodsList/id/919.html" >发电机组</a></li><li><a target="_blank" href="/Goods/goodsList/id/929.html" >高压电器</a></li><li><a target="_blank" href="/Goods/goodsList/id/938.html" >低压电器</a></li><li><a target="_blank" href="/Goods/goodsList/id/946.html" >电动机</a></li><li><a target="_blank" href="/Goods/goodsList/id/953.html" >医疗设备</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/873.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 9F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: left; color:;"></h3>
@@ -2379,19 +2396,19 @@ is_hot('4');
         				</div> -->
         				<div class="com_box_1_l_b">
         					<div class="slider3">
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="">
+                                <a target="_blank" href="">
             				        <div class="slide" >
         						        <img src="/Public/Floor/Upload/">
         						        <p></p>
             				        </div>
                                 </a>
-                                <a href="">
+                                <a target="_blank" href="">
             				      	<div class="slide" >
         						        <img src="/Public/Floor/Upload/">
         						        <p></p>
@@ -2424,7 +2441,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_s" >
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2432,8 +2449,8 @@ is_hot('4');
         							</div>
                                 </a>
                                 </li>
-                                <li class="hover_s"><a href="#">
-                                <a href="">
+                                <li class="hover_s"><a target="_blank" href="#">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2441,7 +2458,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2449,7 +2466,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2457,7 +2474,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2465,7 +2482,7 @@ is_hot('4');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2477,19 +2494,19 @@ is_hot('4');
         				<div class="com_box_1_c_b">
         					<ul>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p></p>
                                     </a>
         						</li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p></p>
                                 </a>
         						</li>
                                 <li>
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<p></p>
                                 </a>
@@ -2502,19 +2519,19 @@ is_hot('4');
         				<!-- 产品展示 -->
         				<ul class="pro_show">
                             <li>
-                            <a href="">
+                            <a target="_blank" href="">
         						<img src="/Public/Floor/Upload/">
         						<p></p>
                         </a>
                             </li>
                             <li>
-                        <a href="">
+                        <a target="_blank" href="">
         						<img src="/Public/Floor/Upload/">
         						<p></p>
                         </a>
                             </li>
                             <li>
-                        <a href="">
+                        <a target="_blank" href="">
         						<img src="/Public/Floor/Upload/">
         						<p></p>
                         </a>
@@ -2529,13 +2546,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F11</span>饰品/礼品/工艺品/保健品</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/965.html" >工艺/鲜花/饰品</a></li><li><a href="/Goods/goodsList/id/1000.html" >节庆用品</a></li><li><a href="/Goods/goodsList/id/1017.html" >婚庆用品</a></li><li><a href="/Goods/goodsList/id/1025.html" >民间工艺</a></li><li><a href="/Goods/goodsList/id/1039.html" >数码礼品</a></li><li><a href="/Goods/goodsList/id/1047.html" >金银珠宝</a></li><li><a href="/Goods/goodsList/id/1055.html" >纪念收藏</a></li><li><a href="/Goods/goodsList/id/1064.html" >养生保健品</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/964.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/965.html" >工艺/鲜花/饰品</a></li><li><a target="_blank" href="/Goods/goodsList/id/1000.html" >节庆用品</a></li><li><a target="_blank" href="/Goods/goodsList/id/1017.html" >婚庆用品</a></li><li><a target="_blank" href="/Goods/goodsList/id/1025.html" >民间工艺</a></li><li><a target="_blank" href="/Goods/goodsList/id/1039.html" >数码礼品</a></li><li><a target="_blank" href="/Goods/goodsList/id/1047.html" >金银珠宝</a></li><li><a target="_blank" href="/Goods/goodsList/id/1055.html" >纪念收藏</a></li><li><a target="_blank" href="/Goods/goodsList/id/1064.html" >养生保健品</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/964.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 11F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="">
+                        <a target="_blank" href="">
         						<img src="/Public/Floor/Upload/">
         						<div class="commerce_txt_f txt_t_c">
         							<h3 style="text-align: left; color:;"></h3>
@@ -2549,7 +2566,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
     						<li class="hover_f">
-                                 <a href="">
+                                 <a target="_blank" href="">
     							<img src="/Public/Floor/Upload/">
     							<div class="commerce_txt_s txt_t_c">
     								<h3 style="text-align: left; color:;"></h3>
@@ -2559,7 +2576,7 @@ is_hot('4');
     						</li>
 
     						<li class="hover_f">
-                            <a href="">
+                            <a target="_blank" href="">
     							<img src="/Public/Floor/Upload/">
     							<div class="comm erce_txt_s txt_t_l">
     								<h3 style="text-align: left; color:;"> </h3>
@@ -2569,7 +2586,7 @@ is_hot('4');
     						</li>
 
     						<li class="hover_f">
-                            <a href="">
+                            <a target="_blank" href="">
     							<img src="/Public/Floor/Upload/">
     							<div class="commerce_txt_s txt_t_l">
     								<h3 style="text-align: left; color:;"></h3>
@@ -2587,7 +2604,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
         						<li class="hover_f">
-                                 <a href="">
+                                 <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2596,7 +2613,7 @@ is_hot('4');
                                     </a>
         						</li>
         						<li class="hover_f">
-                                 <a href="">
+                                 <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2605,7 +2622,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2622,31 +2639,31 @@ is_hot('4');
 
         				<ul class="slider5">
                             <li class="slide" >
-                            <a href="/index.php/Admin/Page/fgfdg">
+                            <a target="_blank" href="/index.php/Admin/Page/fgfdg">
     					        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
     							<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                                <a href="">
+                                <a target="_blank" href="">
     					        <img src="/Public/Floor/Upload/">
     							<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="">
+                            <a target="_blank" href="">
                     	        <img src="/Public/Floor/Upload/">
                     			<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="">
+                            <a target="_blank" href="">
     					        <img src="/Public/Floor/Upload/">
     							<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="">
+                            <a target="_blank" href="">
     					        <img src="/Public/Floor/Upload/">
     							<p></p>
                             </a>
@@ -2676,13 +2693,13 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F12</span>汽车/保养/维修</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/1085.html" >汽摩配件</a></li><li><a href="/Goods/goodsList/id/1097.html" >维护工具</a></li><li><a href="/Goods/goodsList/id/1105.html" >汽车改装</a></li><li><a href="/Goods/goodsList/id/1122.html" >车身附件</a></li><li><a href="/Goods/goodsList/id/1137.html" >汽车电器</a></li><li><a href="/Goods/goodsList/id/1154.html" >汽车内饰</a></li><li><a href="/Goods/goodsList/id/1167.html" >制动系统</a></li><li><a href="/Goods/goodsList/id/1174.html" >汽车特色市场</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/1084.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/1085.html" >汽摩配件</a></li><li><a target="_blank" href="/Goods/goodsList/id/1097.html" >维护工具</a></li><li><a target="_blank" href="/Goods/goodsList/id/1105.html" >汽车改装</a></li><li><a target="_blank" href="/Goods/goodsList/id/1122.html" >车身附件</a></li><li><a target="_blank" href="/Goods/goodsList/id/1137.html" >汽车电器</a></li><li><a target="_blank" href="/Goods/goodsList/id/1154.html" >汽车内饰</a></li><li><a target="_blank" href="/Goods/goodsList/id/1167.html" >制动系统</a></li><li><a target="_blank" href="/Goods/goodsList/id/1174.html" >汽车特色市场</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/1084.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 11F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="/index.php/index.php/Admin/Page/879">
+                        <a target="_blank" href="/index.php/index.php/Admin/Page/879">
         						<img src="/Public/Floor/Upload/2017-06-13/593f5ce5b0165.jpg">
         						<div class="commerce_txt_f txt_t_c">
         							<h3 style="text-align: center; color:#000000;">787</h3>
@@ -2696,7 +2713,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
     						<li class="hover_f">
-                                 <a href="/index.php/Admin/Page/addInfo">
+                                 <a target="_blank" href="/index.php/Admin/Page/addInfo">
     							<img src="/Public/Floor/Upload/2017-06-13/593f73e63cffc.jpg">
     							<div class="commerce_txt_s txt_t_c">
     								<h3 style="text-align: center; color:#000000;"></h3>
@@ -2706,7 +2723,7 @@ is_hot('4');
     						</li>
 
     						<li class="hover_f">
-                            <a href="">
+                            <a target="_blank" href="">
     							<img src="/Public/Floor/Upload/">
     							<div class="comm erce_txt_s txt_t_l">
     								<h3 style="text-align: left; color:;"> </h3>
@@ -2716,7 +2733,7 @@ is_hot('4');
     						</li>
 
     						<li class="hover_f">
-                            <a href="">
+                            <a target="_blank" href="">
     							<img src="/Public/Floor/Upload/">
     							<div class="commerce_txt_s txt_t_l">
     								<h3 style="text-align: left; color:;"></h3>
@@ -2734,7 +2751,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
         						<li class="hover_f">
-                                 <a href="">
+                                 <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2743,7 +2760,7 @@ is_hot('4');
                                     </a>
         						</li>
         						<li class="hover_f">
-                                 <a href="">
+                                 <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2752,7 +2769,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2769,31 +2786,31 @@ is_hot('4');
 
         				<ul class="slider5">
                             <li class="slide" >
-                            <a href="/index.php/Admin/Page/addInfo">
+                            <a target="_blank" href="/index.php/Admin/Page/addInfo">
     					        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
     							<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                                <a href="/index.php/Admin/Page/addInfo">
+                                <a target="_blank" href="/index.php/Admin/Page/addInfo">
     					        <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
     							<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="">
+                            <a target="_blank" href="">
                     	        <img src="/Public/Floor/Upload/">
                     			<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="">
+                            <a target="_blank" href="">
     					        <img src="/Public/Floor/Upload/">
     							<p></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="">
+                            <a target="_blank" href="">
     					        <img src="/Public/Floor/Upload/">
     							<p></p>
                             </a>
@@ -2824,11 +2841,11 @@ is_hot('4');
         				<h3><span>F13</span>摩托车/交通运输</h3>
         				<ul>
                                     				</ul>
-        				<a href="/Goods/goodsList/id/1181.html" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="/Goods/goodsList/id/1181.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 13F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="/index.php/Admin/Page/addInfo">
+                        <a target="_blank" href="/index.php/Admin/Page/addInfo">
         				<div class="com_box_1_l_t">
     						<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
     						<div class="commerce_txt_f txt_t_c">
@@ -2843,7 +2860,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2852,7 +2869,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -2861,7 +2878,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2879,7 +2896,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2888,7 +2905,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2897,7 +2914,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -2911,7 +2928,7 @@ is_hot('4');
         			</div>
         			<div class="lun_13">
         				<!-- <ul>
-        					<li><a href="#">
+        					<li><a target="_blank" href="#">
         						<img src="image/commerce_13 (8">
         						<p>￥110.00</p>
         					</a></li>
@@ -2921,102 +2938,102 @@ is_hot('4');
                         <div class="swiper-container">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8043.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8043.html">
                                     <img src="">
                                     <p>￥200000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8062.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8062.html">
                                     <img src="">
                                     <p>￥230000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8063.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8063.html">
                                     <img src="">
                                     <p>￥150000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8077.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8077.html">
                                     <img src="">
                                     <p>￥188800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8078.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8078.html">
                                     <img src="">
                                     <p>￥115800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8079.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8079.html">
                                     <img src="">
                                     <p>￥88800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8076.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8076.html">
                                     <img src="">
                                     <p>￥120800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8074.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8074.html">
                                     <img src="">
                                     <p>￥106400.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8071.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8071.html">
                                     <img src="">
                                     <p>￥100000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8072.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8072.html">
                                     <img src="">
                                     <p>￥78300.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8069.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8069.html">
                                     <img src="">
                                     <p>￥100000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/8066.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/8066.html">
                                     <img src="">
                                     <p>￥130000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/27616.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/27616.html">
                                     <img src="">
                                     <p>￥200000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28220.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28220.html">
                                     <img src="">
                                     <p>￥230000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28221.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28221.html">
                                     <img src="">
                                     <p>￥150000.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28223.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28223.html">
                                     <img src="">
                                     <p>￥188800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28224.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28224.html">
                                     <img src="">
                                     <p>￥115800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28225.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28225.html">
                                     <img src="">
                                     <p>￥88800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28365.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28365.html">
                                     <img src="">
                                     <p>￥120800.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/28366.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/28366.html">
                                     <img src="">
                                     <p>￥106400.00</p>
                                 </a>
@@ -3056,52 +3073,52 @@ is_hot('4');
         				<!-- <ul class="slider7">
 
         			       <li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8043.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8043.html">
 	        					      	<img src="">
 	        							<p>￥200000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8062.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8062.html">
 	        					      	<img src="">
 	        							<p>￥230000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8063.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8063.html">
 	        					      	<img src="">
 	        							<p>￥150000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8077.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8077.html">
 	        					      	<img src="">
 	        							<p>￥188800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8078.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8078.html">
 	        					      	<img src="">
 	        							<p>￥115800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8079.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8079.html">
 	        					      	<img src="">
 	        							<p>￥88800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8076.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8076.html">
 	        					      	<img src="">
 	        							<p>￥120800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8074.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8074.html">
 	        					      	<img src="">
 	        							<p>￥106400.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8071.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8071.html">
 	        					      	<img src="">
 	        							<p>￥100000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8072.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8072.html">
 	        					      	<img src="">
 	        							<p>￥78300.00</p>
 	        				        </a>
@@ -3134,11 +3151,11 @@ is_hot('4');
         				<h3><span>F14</span>包装/办公文教/印刷</h3>
         				<ul>
                                     				</ul>
-        				<a href="/Goods/goodsList/id/1321.html" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="/Goods/goodsList/id/1321.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 13F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="">
+                        <a target="_blank" href="">
         				<div class="com_box_1_l_t">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
@@ -3153,7 +3170,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3162,7 +3179,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -3171,7 +3188,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3189,7 +3206,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3198,7 +3215,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3207,7 +3224,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3221,7 +3238,7 @@ is_hot('4');
         			</div>
         			<div class="lun_13">
         				<!-- <ul>
-        					<li><a href="#">
+        					<li><a target="_blank" href="#">
         						<img src="image/commerce_13 (8">
         						<p>￥110.00</p>
         					</a></li>
@@ -3231,102 +3248,102 @@ is_hot('4');
                         <div class="swiper-container">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6123.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6123.html">
                                     <img src="">
                                     <p>￥40.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6216.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6216.html">
                                     <img src="">
                                     <p>￥56.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6260.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6260.html">
                                     <img src="">
                                     <p>￥5.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6117.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6117.html">
                                     <img src="">
                                     <p>￥40.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6134.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6134.html">
                                     <img src="">
                                     <p>￥20.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6135.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6135.html">
                                     <img src="">
                                     <p>￥60.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/771.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/771.html">
                                     <img src="">
                                     <p>￥30.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/772.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/772.html">
                                     <img src="">
                                     <p>￥30.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/773.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/773.html">
                                     <img src="">
                                     <p>￥30.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/774.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/774.html">
                                     <img src="">
                                     <p>￥30.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/775.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/775.html">
                                     <img src="">
                                     <p>￥50.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/776.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/776.html">
                                     <img src="">
                                     <p>￥110.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6217.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6217.html">
                                     <img src="">
                                     <p>￥10.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6218.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6218.html">
                                     <img src="">
                                     <p>￥20.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6215.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6215.html">
                                     <img src="">
                                     <p>￥40.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6238.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6238.html">
                                     <img src="">
                                     <p>￥20.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6379.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6379.html">
                                     <img src="">
                                     <p>￥1.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6313.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6313.html">
                                     <img src="">
                                     <p>￥30.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6316.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6316.html">
                                     <img src="">
                                     <p>￥30.00</p>
                                 </a>
                             </div><div class="swiper-slide swiper-no-swiping">
-                                <a href="/Home/Goods/goodsInfo/id/6236.html">
+                                <a target="_blank" href="/Goods/goodsInfo/id/6236.html">
                                     <img src="">
                                     <p>￥55.00</p>
                                 </a>
@@ -3366,52 +3383,52 @@ is_hot('4');
         				<!-- <ul class="slider8">
 
         			       <li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8043.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8043.html">
 	        					      	<img src="">
 	        							<p>￥200000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8062.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8062.html">
 	        					      	<img src="">
 	        							<p>￥230000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8063.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8063.html">
 	        					      	<img src="">
 	        							<p>￥150000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8077.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8077.html">
 	        					      	<img src="">
 	        							<p>￥188800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8078.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8078.html">
 	        					      	<img src="">
 	        							<p>￥115800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8079.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8079.html">
 	        					      	<img src="">
 	        							<p>￥88800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8076.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8076.html">
 	        					      	<img src="">
 	        							<p>￥120800.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8074.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8074.html">
 	        					      	<img src="">
 	        							<p>￥106400.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8071.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8071.html">
 	        					      	<img src="">
 	        							<p>￥100000.00</p>
 	        				        </a>
 	        			        </li><li class="slide" >
-	        			     	    <a href="/Home/Goods/goodsInfo/id/8072.html">
+	        			     	    <a target="_blank" href="/Goods/goodsInfo/id/8072.html">
 	        					      	<img src="">
 	        							<p>￥78300.00</p>
 	        				        </a>
@@ -3443,12 +3460,12 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F15</span>照明/电子/环保/玻璃</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/1396.html" >照明市场</a></li><li><a href="/Goods/goodsList/id/1419.html" >LED灯配城</a></li><li><a href="/Goods/goodsList/id/1437.html" >电子市场</a></li><li><a href="/Goods/goodsList/id/1456.html" >环保</a></li><li><a href="/Goods/goodsList/id/1465.html" >玻璃原材料</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/1395.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/1396.html" >照明市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/1419.html" >LED灯配城</a></li><li><a target="_blank" href="/Goods/goodsList/id/1437.html" >电子市场</a></li><li><a target="_blank" href="/Goods/goodsList/id/1456.html" >环保</a></li><li><a target="_blank" href="/Goods/goodsList/id/1465.html" >玻璃原材料</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/1395.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 15F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="">
+                        <a target="_blank" href="">
         				<div class="com_box_1_l_t">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
@@ -3463,7 +3480,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3472,7 +3489,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -3481,7 +3498,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3498,7 +3515,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3507,7 +3524,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3516,7 +3533,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3531,7 +3548,7 @@ is_hot('4');
 
         			<ul class="com_box_bottom_16">
                         <li>
-                            <a href="/index.php/Admin/Page/we'w">
+                            <a target="_blank" href="/index.php/Admin/Page/we'w">
         						<div class="bottom_img">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         						</div>
@@ -3540,7 +3557,7 @@ is_hot('4');
                             </a>
                         </li>
                         <li>
-                            <a href="/index.php/Admin/Page/addInfo">
+                            <a target="_blank" href="/index.php/Admin/Page/addInfo">
                                 <div class="bottom_img">
                                     <img src="/Public/Floor/Upload/2017-06-12/593e32a0b7916.png">
                                 </div>
@@ -3549,7 +3566,7 @@ is_hot('4');
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" href="">
                                 <div class="bottom_img">
                                     <img src="/Public/Floor/Upload/">
                                 </div>
@@ -3558,7 +3575,7 @@ is_hot('4');
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" href="">
                                 <div class="bottom_img">
                                     <img src="/Public/Floor/Upload/">
                                 </div>
@@ -3574,12 +3591,12 @@ is_hot('4');
         				<span class="commerce_line"></span>
         				<h3><span>F16</span>IT/广告/金融/服务</h3>
         				<ul>
-                            <li><a href="/Goods/goodsList/id/1474.html" >IT服务</a></li><li><a href="/Goods/goodsList/id/1489.html" >中介服务</a></li><li><a href="/Goods/goodsList/id/1500.html" >公关服务</a></li><li><a href="/Goods/goodsList/id/1506.html" >认证服务</a></li><li><a href="/Goods/goodsList/id/1511.html" >创意设计</a></li><li><a href="/Goods/goodsList/id/1522.html" >搬家服务</a></li><li><a href="/Goods/goodsList/id/1528.html" >房屋租赁</a></li><li><a href="/Goods/goodsList/id/1535.html" >维修服务</a></li>        				</ul>
-        				<a href="/Goods/goodsList/id/1473.html" class="commerce_more">查看全部</a>
+                            <li><a target="_blank" href="/Goods/goodsList/id/1474.html" >IT服务</a></li><li><a target="_blank" href="/Goods/goodsList/id/1489.html" >中介服务</a></li><li><a target="_blank" href="/Goods/goodsList/id/1500.html" >公关服务</a></li><li><a target="_blank" href="/Goods/goodsList/id/1506.html" >认证服务</a></li><li><a target="_blank" href="/Goods/goodsList/id/1511.html" >创意设计</a></li><li><a target="_blank" href="/Goods/goodsList/id/1522.html" >搬家服务</a></li><li><a target="_blank" href="/Goods/goodsList/id/1528.html" >房屋租赁</a></li><li><a target="_blank" href="/Goods/goodsList/id/1535.html" >维修服务</a></li>        				</ul>
+        				<a target="_blank" href="/Goods/goodsList/id/1473.html" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 15F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="">
+                        <a target="_blank" href="">
         				<div class="com_box_1_l_t">
     						<img src="/Public/Floor/Upload/">
     						<div class="commerce_txt_f txt_t_c">
@@ -3594,7 +3611,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3603,7 +3620,7 @@ is_hot('4');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"> </h3>
@@ -3612,7 +3629,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:#000000;"></h3>
@@ -3629,7 +3646,7 @@ is_hot('4');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3638,7 +3655,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3647,7 +3664,7 @@ is_hot('4');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="">
+                                <a target="_blank" href="">
         							<img src="/Public/Floor/Upload/">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: left; color:;"></h3>
@@ -3662,7 +3679,7 @@ is_hot('4');
 
         			<ul class="com_box_bottom_16">
                         <li>
-                            <a href="">
+                            <a target="_blank" href="">
         						<div class="bottom_img">
         							<img src="/Public/Floor/Upload/">
         						</div>
@@ -3671,7 +3688,7 @@ is_hot('4');
                             </a>
                         </li>
                         <li>
-                            <a href="/index.php/Admin/Page/dssa">
+                            <a target="_blank" href="/index.php/Admin/Page/dssa">
                                 <div class="bottom_img">
                                     <img src="/Public/Floor/Upload/2017-06-13/593f4bf4c35ed.jpg">
                                 </div>
@@ -3680,7 +3697,7 @@ is_hot('4');
                             </a>
                         </li>
                         <li>
-                            <a href="/index.php/Admin/Page/addInfo">
+                            <a target="_blank" href="/index.php/Admin/Page/addInfo">
                                 <div class="bottom_img">
                                     <img src="/Public/Floor/Upload/2017-06-13/593f4998e3828.jpg">
                                 </div>
@@ -3689,7 +3706,7 @@ is_hot('4');
                             </a>
                         </li>
                         <li>
-                            <a href="/index.php/Admin/Page/addInfo">
+                            <a target="_blank" href="/index.php/Admin/Page/addInfo">
                                 <div class="bottom_img">
                                     <img src="/Public/Floor/Upload/2017-06-13/593f4c38cf8af.jpg">
                                 </div>
@@ -3706,59 +3723,59 @@ is_hot('4');
 				<div class="commerce_m_title">
 					最新新闻
 				</div>
-                <a href="/index.php/index.php/index.php/index.php/Admin/Page/addInfo">
+                <a target="_blank" href="/index.php/index.php/index.php/index.php/Admin/Page/addInfo">
 				    <img src="/Public/Floor/Upload/2017-06-12/593e3b3c44f43.png">
                 </a>
 				<ul>
                     <li>
-    						<a href="/Home/Article/detail/article_id/253.html">
+    						<a target="_blank" href="/Article/detail/article_id/253.html">
     							<span>快讯！美众院419:1通过法案扩大对朝制裁 切断其资金来源</span>
-    							<i>1494035418</i>
+    							<i>2017-05-06</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/252.html">
+    						<a target="_blank" href="/Article/detail/article_id/252.html">
     							<span>今年已有16位省委副书记履新 这5人从中央部门“空降”</span>
-    							<i>1494035247</i>
+    							<i>2017-05-06</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/251.html">
+    						<a target="_blank" href="/Article/detail/article_id/251.html">
     							<span>商派云起ERP为古今量身打造的品牌电商高效管理模式</span>
-    							<i>1494035011</i>
+    							<i>2017-05-06</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/250.html">
+    						<a target="_blank" href="/Article/detail/article_id/250.html">
     							<span>电商进入家电市场 从线下突破</span>
-    							<i>1494034884</i>
+    							<i>2017-05-06</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/249.html">
+    						<a target="_blank" href="/Article/detail/article_id/249.html">
     							<span>人民币成广东自贸区跨境资金往来的主要货币</span>
-    							<i>1493949775</i>
+    							<i>2017-05-05</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/248.html">
+    						<a target="_blank" href="/Article/detail/article_id/248.html">
     							<span>马云谈太极拳风波：核弹面前一切武功同是天涯沦落人</span>
-    							<i>1493949516</i>
+    							<i>2017-05-05</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/247.html">
+    						<a target="_blank" href="/Article/detail/article_id/247.html">
     							<span>李克强为何一再向金融业人士推荐这本书？</span>
-    							<i>1493949289</i>
+    							<i>2017-05-05</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/246.html">
+    						<a target="_blank" href="/Article/detail/article_id/246.html">
     							<span>兴国：电商扶贫助贫困户奔富路</span>
-    							<i>1493948653</i>
+    							<i>2017-05-05</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/245.html">
+    						<a target="_blank" href="/Article/detail/article_id/245.html">
     							<span>网红电商乱象调查：质量服务良莠不齐 套单砍单频发</span>
-    							<i>1493948441</i>
+    							<i>2017-05-05</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/244.html">
+    						<a target="_blank" href="/Article/detail/article_id/244.html">
     							<span>三问企业家：干实业前途几何</span>
-    							<i>1493864271</i>
+    							<i>2017-05-04</i>
     						</a>
     					</li>				</ul>
 			</div>
@@ -3766,59 +3783,59 @@ is_hot('4');
 				<div class="commerce_m_title">
 					行业头条
 				</div>
-                <a href="/index.php/Admin/Page/addInfo">
+                <a target="_blank" href="/index.php/Admin/Page/addInfo">
 				    <img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
                 </a>
                 <ul>
                     <li>
-    						<a href="/Home/Article/detail/article_id/61.html">
+    						<a target="_blank" href="/Article/detail/article_id/61.html">
     							<span>海外代购乱象：女子疑似在跨境电商买到假货</span>
-    							<i>1489042931</i>
+    							<i>2017-03-09</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/62.html">
+    						<a target="_blank" href="/Article/detail/article_id/62.html">
     							<span>加快电商法落地　保护网购者权益</span>
-    							<i>1489042966</i>
+    							<i>2017-03-09</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/63.html">
+    						<a target="_blank" href="/Article/detail/article_id/63.html">
     							<span>去年电商产品不合格率超三成</span>
-    							<i>1489042989</i>
+    							<i>2017-03-09</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/64.html">
+    						<a target="_blank" href="/Article/detail/article_id/64.html">
     							<span>超8成消费者曾遇电商砍单</span>
-    							<i>1489043003</i>
+    							<i>2017-03-09</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/65.html">
+    						<a target="_blank" href="/Article/detail/article_id/65.html">
     							<span>乐视网释放414电商节等三响炮</span>
-    							<i>1489043019</i>
+    							<i>2017-03-09</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/66.html">
+    						<a target="_blank" href="/Article/detail/article_id/66.html">
     							<span>开启鲜果新时代 鼎元优选电商平台在京发布</span>
-    							<i>1489043038</i>
+    							<i>2017-03-09</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/72.html">
+    						<a target="_blank" href="/Article/detail/article_id/72.html">
     							<span>2017 IEBE（广州）国际电子商务博览会3月26日开幕</span>
-    							<i>1490165377</i>
+    							<i>2017-03-22</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/76.html">
+    						<a target="_blank" href="/Article/detail/article_id/76.html">
     							<span>推进电商进农村全覆盖促进农业增效农民增收</span>
-    							<i>1490256217</i>
+    							<i>2017-03-23</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/77.html">
+    						<a target="_blank" href="/Article/detail/article_id/77.html">
     							<span>国务院部署电商领域打假 提高市场监管</span>
-    							<i>1490256349</i>
+    							<i>2017-03-23</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/78.html">
+    						<a target="_blank" href="/Article/detail/article_id/78.html">
     							<span>重庆农产品电商报告：新农人成主力 品牌效应有待提高</span>
-    							<i>1490327346</i>
+    							<i>2017-03-24</i>
     						</a>
     					</li>				</ul>
 			</div>
@@ -3826,19 +3843,19 @@ is_hot('4');
 				<div class="commerce_m_title">
 					推广学院
 				</div>
-                <a href="/index.php/index.php/Admin/Page/addInfo">
+                <a target="_blank" href="/index.php/index.php/Admin/Page/addInfo">
 				<img src="/Public/Floor/Upload/2017-06-12/593e3194271c2.jpg">
                 </a>
 				<ul>
                     <li>
-    						<a href="/Home/Article/detail/article_id/53.html">
+    						<a target="_blank" href="/Article/detail/article_id/53.html">
     							<span>商务合作</span>
-    							<i>1488767040</i>
+    							<i>2017-03-06</i>
     						</a>
     					</li><li>
-    						<a href="/Home/Article/detail/article_id/54.html">
+    						<a target="_blank" href="/Article/detail/article_id/54.html">
     							<span>联系我们</span>
-    							<i>1488889632</i>
+    							<i>2017-03-07</i>
     						</a>
     					</li>				</ul>
 			</div>
@@ -3846,25 +3863,9 @@ is_hot('4');
 	</div>
 	<!-- 浮动层 -->
 	<div class="floor_float">
-		<div class="floor_back_top"><a href="javascript:;">返回顶部</a></div>
+		<div class="floor_back_top"><a target="_blank" href="javascript:;">返回顶部</a></div>
 		<ul>
-			<li><a href="javascript:;">F1</a></li>
-			<li><a href="javascript:;">F2</a></li>
-			<li><a href="javascript:;">F3</a></li>
-			<li><a href="javascript:;">F4</a></li>
-			<li><a href="javascript:;">F5</a></li>
-			<li><a href="javascript:;">F6</a></li>
-			<li><a href="javascript:;">F7</a></li>
-			<li><a href="javascript:;">F8</a></li>
-			<li><a href="javascript:;">F9</a></li>
-			<li><a href="javascript:;">F10</a></li>
-			<li><a href="javascript:;">F11</a></li>
-			<li><a href="javascript:;">F12</a></li>
-			<li><a href="javascript:;">F13</a></li>
-			<li><a href="javascript:;">F14</a></li>
-			<li><a href="javascript:;">F15</a></li>
-			<li><a href="javascript:;">F16</a></li>
-		</ul>
+			<li><a title="女装/男装/内衣" href="javascript:;">F1</a></li><li><a title="鞋靴/帽子/箱包/运动/体育用品" href="javascript:;">F2</a></li><li><a title="童装/玩具/母婴用品" href="javascript:;">F3</a></li><li><a title="日用品/宠物/成人/女性用品" href="javascript:;">F4</a></li><li><a title="3C/手机/家电/个人用品" href="javascript:;">F5</a></li><li><a title="机械/设备/模具/仪器" href="javascript:;">F6</a></li><li><a title="食品/农作物/园林花卉/禽畜" href="javascript:;">F7</a></li><li><a title="建筑/建材/五金/家具" href="javascript:;">F8</a></li><li><a title="能源/矿产/石油/纺织皮革/政府" href="javascript:;">F9</a></li><li><a title="电工/电气/配电" href="javascript:;">F10</a></li><li><a title="饰品/礼品/工艺品/保健品" href="javascript:;">F11</a></li><li><a title="汽车/保养/维修" href="javascript:;">F12</a></li><li><a title="摩托车/交通运输" href="javascript:;">F13</a></li><li><a title="包装/办公文教/印刷" href="javascript:;">F14</a></li><li><a title="照明/电子/环保/玻璃" href="javascript:;">F15</a></li><li><a title="IT/广告/金融/服务" href="javascript:;">F16</a></li>		</ul>
 	</div>
 </div>
 <script type="text/javascript" src="/Public/js/jquery.bxslider.js"></script>

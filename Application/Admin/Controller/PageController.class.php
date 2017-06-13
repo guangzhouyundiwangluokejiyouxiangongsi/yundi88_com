@@ -4,7 +4,7 @@
     class PageController extends BaseController {
         public function floor()
         {
-            header('location:'.__APP__.'/Index/yun_commerce/edit/1');
+            header('location:'.__APP__.'/Index/index/edit/1');
         }
 
         public function editInfo()

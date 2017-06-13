@@ -50,10 +50,11 @@ class IndexController extends BaseController {
 
 
     // 首页开始
+
+
     public function index()
     {
-
-        $file = file_get_contents(PATH.'/index.html');
+        // $file = file_get_contents(PATH.'/index.html');
         if($file){
             $this->show($file);
         }else{
@@ -146,6 +147,7 @@ class IndexController extends BaseController {
             $two_typeData = $cate->field('parent_id,name,id')
                     ->where(array('level'=>2))
                     ->select();
+            // dump($two_typeData);exit;
             for ($i=0; $i < count($two_typeData); $i++) {
                 for ($j=0; $j < count($typeData); $j++) {
                     if ($two_typeData[$i]['parent_id'] == $typeData[$j]['id']) {
@@ -188,6 +190,10 @@ class IndexController extends BaseController {
             $hyNews = M('article')->field('add_time,title,link,article_id')->where(array('cat_id'=>33))->limit(10)->select();
             $zxNews = M('article')->field('add_time,title,link,article_id')->order('add_time desc')->limit(10)->select();
             $tgNews = M('article')->field('add_time,title,link,article_id')->where(array('cat_id'=>31))->limit(10)->select();
+            $hyNews = $this->makeTime($hyNews);
+            $zxNews = $this->makeTime($zxNews);
+            $tgNews = $this->makeTime($tgNews);
+            // dump($hyNews);exit;
 
             // dump($tgNews);exit;
             $this->assign('hyNews', $hyNews);
@@ -212,9 +218,16 @@ class IndexController extends BaseController {
         // $this->display();
     }
 
+    public function makeTime($arr)
+    {
+        for ($i = 0; $i < count($arr); $i++) {
+            $arr[$i]['add_time'] = date('Y-m-d', $arr[$i]['add_time']);
+        }
+        return $arr;
+    }
+
 
     // 首页结束
-
 
 
 
