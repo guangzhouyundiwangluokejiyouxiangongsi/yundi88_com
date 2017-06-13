@@ -7,14 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=8">
-<title>购物车-{$tpshop_config['shop_info_store_title']}</title>
+<title>{$tpshop_config['shop_info_store_title']}</title>
 <meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
 <meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
 <link href="__STATIC__/css/common.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="__STATIC__/css/jh.css">
-
 <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
-
 <script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
 <script src="__PUBLIC__/js/global.js"></script>
 <script src="__PUBLIC__/js/pc_common.js"></script>
@@ -103,31 +101,9 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="commerce_h_right">
+ <div class="commerce_h_right" style="height: 459px;">
                 <!-- 未登录 -->
-                <div class="commerce_login_box">
-                    <div class="user_img">
-                        <img src="__PUBLIC__/image/commerce_user_img.png">
-                    </div>
-                    <p>云狄网已成功帮助10万企业免费推广受益！</p>
-                    <h4>赶紧入驻平台吧！！</h4>
-                    <div class="commerce_btn">
-                        <a class="commerce_login" href="#">登录</a>
-                        <a class="commerce_register" href="#">免费注册</a>
-                    </div>
-                </div>
-                <!-- 已登录 -->
-                <div class="commerce_user_box">
-                    <div class="user_img">
-                        <img src="__PUBLIC__/image/commerce_user_img.png">
-                    </div>
-                    <p>你好！某某某</p>
-                    <div class="commerce_btn">
-                        <a class="commerce_y" href="javascript:;"><img style="padding-right: 8px;margin-top: 6px;" src="__PUBLIC__/image/commerce_y.png">已认证</a>
-                        <a class="commerce_n" href="javascript:;"><img style="padding-right: 8px;margin-top: 5px;" src="__PUBLIC__/image/commerce_n.png">未认证</a>
-                    </div>
-                </div>
+                <span id="is_login"></span>
                 <!-- 公告栏 -->
                 <div class="commerce_bulletin">
                     <h3>公告栏</h3>
@@ -139,6 +115,17 @@
                 </div>
             </div>
         </div>
+<script type="text/javascript">
+$(function(){
+
+    $.post("/index.php/Index/is_login",{},function(data){
+
+        $('#is_login').html(data);
+    })
+})
+
+</script>
+           
         <!-- 内容banner -->
         <div class="con_banner">
             <img src="__PUBLIC__/Pic/{$picRes.link}" width="1200" height="86">

@@ -576,4 +576,16 @@ class IndexController extends BaseController {
         cookie('referurl',null);
     }
 
+
+    public function is_login()
+    {
+        if(session('seller')){
+            $store = M('store')->field('store_logo,apply_state,commerce_state,store_name')->where(array('store_id'=>session('seller.store_id')))->find();
+            $this->assign('store',$store);
+        }
+
+
+        $this->display();
+    }
+
 }
