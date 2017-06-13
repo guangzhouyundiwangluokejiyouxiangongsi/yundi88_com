@@ -185,9 +185,11 @@ class IndexController extends BaseController {
             $this->assign('slideData', $slideData);
 
             // 处理新闻
-            $hyNews = M('article')->field('add_time,title,link')->where(array('cat_id'=>33))->limit(10)->select();
-            $zxNews = M('article')->field('add_time,title,link')->order('add_time desc')->limit(10)->select();
-            $tgNews = M('article')->field('add_time,title,link')->where(array('cat_id'=>31))->limit(10)->select();
+            $hyNews = M('article')->field('add_time,title,link,article_id')->where(array('cat_id'=>33))->limit(10)->select();
+            $zxNews = M('article')->field('add_time,title,link,article_id')->order('add_time desc')->limit(10)->select();
+            $tgNews = M('article')->field('add_time,title,link,article_id')->where(array('cat_id'=>31))->limit(10)->select();
+
+            // dump($tgNews);exit;
             $this->assign('hyNews', $hyNews);
             $this->assign('zxNews', $zxNews);
             $this->assign('tgNews', $tgNews);
