@@ -24,7 +24,7 @@
                 $data['align2'] = I('post.align2');
                 $data['color1'] = I('post.color1');
                 $data['color2'] = I('post.color2');
-                $data['link'] = U(I('post.link'));
+                $data['link'] = I('post.link');
                 $result = M('floor')->where(array('id'=>I('post.id')))->save($data);
                 if ($result) {
                     $this->success('修改成功', 'floor');
@@ -64,6 +64,7 @@
                 }
                 $data['pic']  = $fileInfo['msg'];
             }
+
             $data['id'] = I('post.id');
             $data['title'] = I('post.title');
             $data['des'] = I('post.des');
@@ -71,7 +72,7 @@
             $data['align2'] = I('post.align2');
             $data['color1'] = I('post.color1');
             $data['color2'] = I('post.color2');
-            $data['link'] = U(I('post.link'));
+            $data['link'] = I('post.link');
             $res = M('floor')->add($data);
             if ($res) {
                 $this->success('添加成功', 'floor');
@@ -93,7 +94,7 @@
                 }
                 $data['board'] = I('post.id');
                 $data['title'] = I('post.title'.($i + 1));
-                $data['url'] = U(I('post.url'.($i + 1)));
+                $data['url'] = I('post.url'.($i + 1));
                 $res[] = M('slide_pic')->add($data);
             }
             for ($j=0; $j < count($res); $j++) {
@@ -117,7 +118,7 @@
                         $data['pic']  = $fileInfo['msg'];
                     }
                     $data['title'] = I('post.title'.($i + 1));
-                    $data['url'] = U(I('post.url'.($i + 1)));
+                    $data['url'] = I('post.url'.($i + 1));
                     $result[] = M('floor')->where(array('board'=>I('post.id')))->save($data);
                 }
                 for ($j=0; $j < count($res); $j++) {
