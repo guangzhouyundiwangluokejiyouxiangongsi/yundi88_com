@@ -50,7 +50,7 @@ class IndexController extends BaseController {
 
 
     // 首页开始
-    public function yun_commerce()
+    public function index()
     {
 
         $file = file_get_contents(PATH.'/index.html');
@@ -202,7 +202,7 @@ class IndexController extends BaseController {
 
             $file = $this->fetch();
             $this->show($file);
-            // file_put_contents(PATH.'/index.html',$file);
+            file_put_contents(PATH.'/index.html',$file);
 
 
 
@@ -326,35 +326,35 @@ class IndexController extends BaseController {
 
 
 
-    public function index(){
-        //$aa = order_settlement(316);
-        //print_r($aa);
-        // 如果是手机跳转到 手机模块
-        if(true == isMobile()){
-            header("Location: ".U('Mobile/Index/index'));
-        }
+  //   public function index(){
+  //       //$aa = order_settlement(316);
+  //       //print_r($aa);
+  //       // 如果是手机跳转到 手机模块
+  //       if(true == isMobile()){
+  //           header("Location: ".U('Mobile/Index/index'));
+  //       }
 
-        $hot_goods = $hot_cate = $cateList = array();
-        $sql = "select a.goods_name,a.goods_id,a.shop_price,a.market_price,a.cat_id1,b.parent_id_path,b.name from __PREFIX__goods as a left join ";
-        $sql .= " __PREFIX__goods_category as b on a.cat_id1=b.id where a.is_hot=1 and a.is_on_sale=1 and a.goods_state = 1 order by rand() limit 0,10";//二级分类下热卖商品
-        $index_hot_goods = M()->query($sql);//首页热卖商品
-		if($index_hot_goods){
-			foreach($index_hot_goods as $val){
-				$cat_path = explode('_', $val['parent_id_path']);
-				$hot_goods[$cat_path[1]][] = $val;
-			}
-		}
-        $record_no = M('config')->where(array('name' => 'record_no'))->find();
-        $copyright = M('config')->where(array('name'=> 'copyright'))->find();
-        $article = M('article')->where('cat_id = 27 and is_open = 1')->order('add_time DESC')->limit(2)->select();
-        //文章
-        // dump($article);exit;
-        $this->assign('record_no',$record_no);
-        $this->assign('copyright',$copyright);
-        $this->assign('cateList',$index_hot_goods);
-        $this->assign('article',$article);
-        $this->display();
-    }
+  //       $hot_goods = $hot_cate = $cateList = array();
+  //       $sql = "select a.goods_name,a.goods_id,a.shop_price,a.market_price,a.cat_id1,b.parent_id_path,b.name from __PREFIX__goods as a left join ";
+  //       $sql .= " __PREFIX__goods_category as b on a.cat_id1=b.id where a.is_hot=1 and a.is_on_sale=1 and a.goods_state = 1 order by rand() limit 0,10";//二级分类下热卖商品
+  //       $index_hot_goods = M()->query($sql);//首页热卖商品
+		// if($index_hot_goods){
+		// 	foreach($index_hot_goods as $val){
+		// 		$cat_path = explode('_', $val['parent_id_path']);
+		// 		$hot_goods[$cat_path[1]][] = $val;
+		// 	}
+		// }
+  //       $record_no = M('config')->where(array('name' => 'record_no'))->find();
+  //       $copyright = M('config')->where(array('name'=> 'copyright'))->find();
+  //       $article = M('article')->where('cat_id = 27 and is_open = 1')->order('add_time DESC')->limit(2)->select();
+  //       //文章
+  //       // dump($article);exit;
+  //       $this->assign('record_no',$record_no);
+  //       $this->assign('copyright',$copyright);
+  //       $this->assign('cateList',$index_hot_goods);
+  //       $this->assign('article',$article);
+  //       $this->display();
+  //   }
 
     /**
      *  公告详情页
