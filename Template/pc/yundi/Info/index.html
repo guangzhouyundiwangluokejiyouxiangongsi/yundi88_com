@@ -179,7 +179,7 @@
        <div class="one">
         <tpshop sql="select * from `__PREFIX__store` where  store_state = 1  and deleted =0 and store_recommend = 1 order by rand() limit 10" item="v" key="k">
          <dl>
-           <dt><a onmouseenter="this.style.color='#ff9416'" onmouseleave="this.style.color='#666666'" target="_blank" href="{:U('Store/index')}?store_id={$v[store_id]}" target="_blank">{:getSubstr($v[store_name],0,14)}</a></dt>
+           <dt><a onmouseenter="this.style.color='#ff9416'" onmouseleave="this.style.color='#666666'" target="_blank" href="{:U('Store/index',array('store_id'=>$v[store_id]))}" target="_blank">{:getSubstr($v[store_name],0,14)}</a></dt>
            <dd>主营：{$v.store_zy|getSubstr=0,14}</dd>
            <dd>地址：{:getSubstr($v[store_address],0,14)} </dd>
          </dl>
