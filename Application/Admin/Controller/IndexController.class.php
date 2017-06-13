@@ -31,9 +31,8 @@ class IndexController extends BaseController {
    // 清除首页缓存
     public function clearCache()
     {
-
         delFile(PATH.'/index.html');
-        $this->success('成功清除缓存');
+        $this->success('成功清除缓存',U('Admin/index'));
     }
 
     public function welcome(){
