@@ -234,8 +234,8 @@ class IndexController extends BaseController {
         $map['level']  = array('eq',3);
         $goods_category = M('goods_category')->field("group_concat(id) as id")->where($map)->select()[0]['id'];
         $hot_count = $goods_m->where("cat_id3 in(".$goods_category.")")->count();
-        $n = mt_rand(0,$hot_count-3);
-        $hot = M('goods')->where("cat_id3 in(".$goods_category.")")->limit($n,3)->select();
+        $n = mt_rand(0,$hot_count-4);
+        $hot = M('goods')->where("cat_id3 in(".$goods_category.")")->limit($n,4)->select();
         // dump($goods_m);
         $this->assign('data',$hot);
         $this->display();
