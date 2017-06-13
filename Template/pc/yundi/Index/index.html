@@ -48,7 +48,7 @@
                     <!-- <img src="image/commerce_banner.jpg"> -->
                     <div class="slider1">
 					    <foreach item="vo" name="carouselRes">
-					    <div class="slide" ><a href="#"><img src="__PUBLIC__/Carousel/{$vo.link}" width="700" height="274"></a></div>
+					    <div class="slide" ><a target="_blank" href="#"><img src="__PUBLIC__/Carousel/{$vo.link}" width="700" height="274"></a></div>
 						</foreach>
 					</div>
 
@@ -73,7 +73,7 @@
                 <!-- 主题 -->
                 <ul class="commerce_theme">
                     <li>
-                        <a href="<?php $numId = ($k+1).'90'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'90'; echo $floorRes[$numId]['link']; ?>">
                         <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'90'; echo $floorRes[$numId]['pic']; ?>">
                         <span class="commerce_txt">
                             <span style="color: <?php $numId = ($k+1).'90'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'90'; echo $floorRes[$numId]["title"]; ?></span>
@@ -82,7 +82,7 @@
                     </a>
                     </li>
                     <li>
-                        <a href="<?php $numId = ($k+1).'91'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'91'; echo $floorRes[$numId]['link']; ?>">
                         <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'91'; echo $floorRes[$numId]['pic']; ?>">
                         <span class="commerce_txt">
                              <span style="color: <?php $numId = ($k+1).'91'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'91'; echo $floorRes[$numId]["title"]; ?></span>
@@ -91,7 +91,7 @@
                     </a>
                     </li>
                     <li>
-                        <a href="<?php $numId = ($k+1).'92'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'92'; echo $floorRes[$numId]['link']; ?>">
                         <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'92'; echo $floorRes[$numId]['pic']; ?>">
                         <span class="commerce_txt">
                              <span style="color: <?php $numId = ($k+1).'92'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'92'; echo $floorRes[$numId]["title"]; ?></span>
@@ -109,7 +109,7 @@
                     <h3>公告栏</h3>
                     <ul>
                     <foreach item="vo" name="list">
-                        <li><a href="#">公告：{$vo.content}</a></li>
+                        <li><a target="_blank" href="#">公告：{$vo.content}</a></li>
                     </foreach>
                     </ul>
                 </div>
@@ -141,18 +141,18 @@ $(function(){
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
 
 
         			<!-- 1F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="<?php $numId = ($k+1).'1'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'1'; echo $floorRes[$numId]['link']; ?>">
             				<div class="com_box_1_l_t">
-            					<!-- <a href="#"> -->
+            					<!-- <a target="_blank" href="#"> -->
             						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'1'; echo $floorRes[$numId]['pic']; ?>" />
             						<div class="commerce_txt_f txt_t_c">
 
@@ -168,19 +168,19 @@ $(function(){
         				</div> -->
         				<div class="com_box_1_l_b">
         					<div class="slider2">
-                                <a href="<?php $numId = ($k+1).'110'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'110'; echo $floorRes[$numId]['link']; ?>">
             				        <div class="slide" >
         						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'110'; echo $floorRes[$numId]['pic']; ?>">
         						        <p><?php $numId = ($k+1).'110'; echo $floorRes[$numId]["title"]; ?></p>
             				        </div>
                                 </a>
-                                <a href="<?php $numId = ($k+1).'111'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'111'; echo $floorRes[$numId]['link']; ?>">
             				        <div class="slide" >
         						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'111'; echo $floorRes[$numId]['pic']; ?>">
         						        <p><?php $numId = ($k+1).'111'; echo $floorRes[$numId]["title"]; ?></p>
             				        </div>
                                 </a>
-                                <a href="<?php $numId = ($k+1).'112'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'112'; echo $floorRes[$numId]['link']; ?>">
             				      	<div class="slide" >
         						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'112'; echo $floorRes[$numId]['pic']; ?>">
         						        <p><?php $numId = ($k+1).'112'; echo $floorRes[$numId]["title"]; ?></p>
@@ -212,7 +212,7 @@ $(function(){
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'2'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'2'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'2'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="color: <?php $numId = ($k+1).'2'; echo $floorRes[$numId]['color1']; ?>; text-align: <?php $numId = ($k+1).'2'; echo $floorRes[$numId]['align1']; ?>;"><?php $numId = ($k+1).'2'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -221,7 +221,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'3'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'3'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'3'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="color: <?php $numId = ($k+1).'3'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'3'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -230,7 +230,7 @@ $(function(){
                                 </a>
             					</li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'4'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'4'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'4'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'4'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'4'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'4'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -239,7 +239,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'5'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'5'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'5'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style=" text-align: <?php $numId = ($k+1).'5'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'5'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'5'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -248,7 +248,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'6'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'6'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'6'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'6'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'6'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'6'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -257,7 +257,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'7'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'7'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'7'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'7'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'7'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'7'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -270,19 +270,19 @@ $(function(){
         				<div class="com_box_1_c_b">
         					<ul>
                                 <li>
-                                <a href="<?php $numId = ($k+1).'8'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'8'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'8'; echo $floorRes[$numId]['pic']; ?>">
         							<p style="text-align: <?php $numId = ($k+1).'8'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'8'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'8'; echo $floorRes[$numId]["title"]; ?></p>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="<?php $numId = ($k+1).'9'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'9'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'9'; echo $floorRes[$numId]['pic']; ?>">
         							<p style="text-align: <?php $numId = ($k+1).'9'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'9'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'9'; echo $floorRes[$numId]["title"]; ?></p>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="<?php $numId = ($k+1).'10'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'10'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'10'; echo $floorRes[$numId]['pic']; ?>">
         							<p style="text-align: <?php $numId = ($k+1).'10'; echo $floorRes[$numId]['align1']; ?>; color: <?php $numId = ($k+1).'10'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'10'; echo $floorRes[$numId]["title"]; ?></p>
                                 </a>
@@ -296,7 +296,7 @@ $(function(){
         				<ul class="logo_show">
                             <foreach name="store_logo[ $k + 1]" item="vo" key="ko">
             					<li>
-                                    <a href="{:U('/Store/index',array('store_id'=>$ko))}">
+                                    <a target="_blank" href="{:U('/Store/index',array('store_id'=>$ko))}">
                 						<img src="{$vo}">
                 					</a>
                                 </li>
@@ -313,16 +313,16 @@ $(function(){
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 3F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['link']; ?>">
-        					<!-- <a href="#"> -->
+                        <a target="_blank" href="<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['link']; ?>">
+        					<!-- <a target="_blank" href="#"> -->
         						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['pic']; ?>">
         						<div class="commerce_txt_f txt_t_c">
         							<h3 style="text-align: <?php $numId = ($k+1).'11'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'11'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'11'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -337,7 +337,7 @@ $(function(){
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'12'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'12'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'12'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -346,7 +346,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'13'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'13'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'13'; echo $floorRes[$numId]["title"]; ?>  </h3>
@@ -355,7 +355,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'14'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'14'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'14'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -364,7 +364,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'15'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'15'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'15'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -373,7 +373,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'16'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'16'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'16'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -382,7 +382,7 @@ $(function(){
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'17'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'17'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'17'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -426,15 +426,15 @@ is_hot('{$k + 1}');
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 5F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['link']; ?>">
     						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['pic']; ?>">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: <?php $numId = ($k+1).'73'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'73'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -448,7 +448,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'18'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'18'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'18'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -457,7 +457,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'19'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'19'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'19'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -466,7 +466,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'20'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'20'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'20'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -475,7 +475,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'21'; echo $floorRes[$numId]['align1']; ?>;color:<?php $numId = ($k+1).'21'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'21'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -484,7 +484,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'22'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'22'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'22'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -493,7 +493,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'23'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'23'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'23'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -523,7 +523,7 @@ is_hot('{$k + 1}');
         				</div>
         				<!-- 最新产品 -->
         				<div class="commerce_new commerce_new{$k + 1}">
-        					<!-- <a href="#">
+        					<!-- <a target="_blank" href="#">
         						<img src="image/commerce_508.png">
         						<p>大小款纯色帆布书包男双肩包女韩版 高中生双肩背包中学生简约百搭</p>
         						<span>￥39.00 <s>￥89.00</s></span>
@@ -541,15 +541,15 @@ is_hot('{$k + 1}');
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 7F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['link']; ?>">
     						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['pic']; ?>">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: <?php $numId = ($k+1).'25'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'25'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'25'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -563,7 +563,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul class="no_bottom">
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'24'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'24'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'24'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -572,7 +572,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'26'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'26'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'26'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -581,7 +581,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'27'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'27'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'27'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -590,7 +590,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'28'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'28'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'28'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -599,7 +599,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'29'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'29'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'29'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -608,7 +608,7 @@ is_hot('{$k + 1}');
                                 </a>
                                 </li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'30'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'30'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'30'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -624,7 +624,7 @@ is_hot('{$k + 1}');
         			<!-- 三级分类列表 -->
         				<ul class="commerce_t_list">
                             <foreach item="vo" name="dataRes[ $k + 1 ]" key="ko">
-        					<li><a href="{:U('/Goods/goodsList',array('id'=>$ko))}">{$vo}</a></li>
+        					<li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$ko))}">{$vo}</a></li>
                             </foreach>
         				</ul>
         			</div>
@@ -639,15 +639,15 @@ is_hot('{$k + 1}');
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 9F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['link']; ?>">
     						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['pic']; ?>">
     						<div class="commerce_txt_f txt_t_c">
     							<h3 style="text-align: <?php $numId = ($k+1).'31'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'31'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'31'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -661,19 +661,19 @@ is_hot('{$k + 1}');
         				</div> -->
         				<div class="com_box_1_l_b">
         					<div class="slider3">
-                                <a href="<?php $numId = ($k+1).'32'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'32'; echo $floorRes[$numId]['link']; ?>">
             				        <div class="slide" >
         						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'32'; echo $floorRes[$numId]['pic']; ?>">
         						        <p><?php $numId = ($k+1).'32'; echo $floorRes[$numId]["title"]; ?></p>
             				        </div>
                                 </a>
-                                <a href="<?php $numId = ($k+1).'33'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'33'; echo $floorRes[$numId]['link']; ?>">
             				        <div class="slide" >
         						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'33'; echo $floorRes[$numId]['pic']; ?>">
         						        <p><?php $numId = ($k+1).'33'; echo $floorRes[$numId]["title"]; ?></p>
             				        </div>
                                 </a>
-                                <a href="<?php $numId = ($k+1).'34'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'34'; echo $floorRes[$numId]['link']; ?>">
             				      	<div class="slide" >
         						        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'34'; echo $floorRes[$numId]['pic']; ?>">
         						        <p><?php $numId = ($k+1).'34'; echo $floorRes[$numId]["title"]; ?></p>
@@ -706,7 +706,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_s" >
-                                <a href="<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'35'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'35'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'35'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -714,8 +714,8 @@ is_hot('{$k + 1}');
         							</div>
                                 </a>
                                 </li>
-                                <li class="hover_s"><a href="#">
-                                <a href="<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['link']; ?>">
+                                <li class="hover_s"><a target="_blank" href="#">
+                                <a target="_blank" href="<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'36'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'36'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'36'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -723,7 +723,7 @@ is_hot('{$k + 1}');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'37'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'37'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'37'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -731,7 +731,7 @@ is_hot('{$k + 1}');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'38'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'38'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'38'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -739,7 +739,7 @@ is_hot('{$k + 1}');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'39'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'39'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'39'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -747,7 +747,7 @@ is_hot('{$k + 1}');
         							</div></a>
         						</li>
                                 <li class="hover_s">
-                                <a href="<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'40'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'40'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'40'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -759,19 +759,19 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_b">
         					<ul>
                                 <li>
-                                <a href="<?php $numId = ($k+1).'41'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'41'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'41'; echo $floorRes[$numId]['pic']; ?>">
         							<p><?php $numId = ($k+1).'41'; echo $floorRes[$numId]["title"]; ?></p>
                                     </a>
         						</li>
                                 <li>
-                                <a href="<?php $numId = ($k+1).'42'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'42'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'42'; echo $floorRes[$numId]['pic']; ?>">
         							<p><?php $numId = ($k+1).'42'; echo $floorRes[$numId]["title"]; ?></p>
                                 </a>
         						</li>
                                 <li>
-                                <a href="<?php $numId = ($k+1).'43'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'43'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'43'; echo $floorRes[$numId]['pic']; ?>">
         							<p><?php $numId = ($k+1).'43'; echo $floorRes[$numId]["title"]; ?></p>
                                 </a>
@@ -784,19 +784,19 @@ is_hot('{$k + 1}');
         				<!-- 产品展示 -->
         				<ul class="pro_show">
                             <li>
-                            <a href="<?php $numId = ($k+1).'44'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'44'; echo $floorRes[$numId]['link']; ?>">
         						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'44'; echo $floorRes[$numId]['pic']; ?>">
         						<p><?php $numId = ($k+1).'44'; echo $floorRes[$numId]["title"]; ?></p>
                         </a>
                             </li>
                             <li>
-                        <a href="<?php $numId = ($k+1).'45'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'45'; echo $floorRes[$numId]['link']; ?>">
         						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'45'; echo $floorRes[$numId]['pic']; ?>">
         						<p><?php $numId = ($k+1).'45'; echo $floorRes[$numId]["title"]; ?></p>
                         </a>
                             </li>
                             <li>
-                        <a href="<?php $numId = ($k+1).'46'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'46'; echo $floorRes[$numId]['link']; ?>">
         						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'46'; echo $floorRes[$numId]['pic']; ?>">
         						<p><?php $numId = ($k+1).'46'; echo $floorRes[$numId]["title"]; ?></p>
                         </a>
@@ -815,15 +815,15 @@ is_hot('{$k + 1}');
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 11F内容左 -->
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
-                        <a href="<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['link']; ?>">
         						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['pic']; ?>">
         						<div class="commerce_txt_f txt_t_c">
         							<h3 style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -837,7 +837,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
     						<li class="hover_f">
-                                 <a href="<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['link']; ?>">
+                                 <a target="_blank" href="<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['link']; ?>">
     							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['pic']; ?>">
     							<div class="commerce_txt_s txt_t_c">
     								<h3 style="text-align: <?php $numId = ($k+1).'48'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'48'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'48'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -847,7 +847,7 @@ is_hot('{$k + 1}');
     						</li>
 
     						<li class="hover_f">
-                            <a href="<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['link']; ?>">
     							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['pic']; ?>">
     							<div class="comm erce_txt_s txt_t_l">
     								<h3 style="text-align: <?php $numId = ($k+1).'49'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'49'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -857,7 +857,7 @@ is_hot('{$k + 1}');
     						</li>
 
     						<li class="hover_f">
-                            <a href="<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['link']; ?>">
     							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['pic']; ?>">
     							<div class="commerce_txt_s txt_t_l">
     								<h3 style="text-align: <?php $numId = ($k+1).'50'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'50'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'50'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -875,7 +875,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
         						<li class="hover_f">
-                                 <a href="<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['link']; ?>">
+                                 <a target="_blank" href="<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'51'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'51'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'51'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -884,7 +884,7 @@ is_hot('{$k + 1}');
                                     </a>
         						</li>
         						<li class="hover_f">
-                                 <a href="<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['link']; ?>">
+                                 <a target="_blank" href="<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'52'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'52'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'52'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -893,7 +893,7 @@ is_hot('{$k + 1}');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'53'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'53'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'53'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -910,31 +910,31 @@ is_hot('{$k + 1}');
 
         				<ul class="slider5">
                             <li class="slide" >
-                            <a href="<?php $numId = ($k+1).'54'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'54'; echo $floorRes[$numId]['link']; ?>">
     					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'54'; echo $floorRes[$numId]['pic']; ?>">
     							<p><?php $numId = ($k+1).'54'; echo $floorRes[$numId]["title"]; ?></p>
                             </a>
                             </li>
                             <li class="slide" >
-                                <a href="<?php $numId = ($k+1).'55'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'55'; echo $floorRes[$numId]['link']; ?>">
     					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'55'; echo $floorRes[$numId]['pic']; ?>">
     							<p><?php $numId = ($k+1).'55'; echo $floorRes[$numId]["title"]; ?></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="<?php $numId = ($k+1).'56'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'56'; echo $floorRes[$numId]['link']; ?>">
                     	        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'56'; echo $floorRes[$numId]['pic']; ?>">
                     			<p><?php $numId = ($k+1).'56'; echo $floorRes[$numId]["title"]; ?></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="<?php $numId = ($k+1).'57'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'57'; echo $floorRes[$numId]['link']; ?>">
     					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'57'; echo $floorRes[$numId]['pic']; ?>">
     							<p><?php $numId = ($k+1).'57'; echo $floorRes[$numId]["title"]; ?></p>
                             </a>
                             </li>
                             <li class="slide" >
-                            <a href="<?php $numId = ($k+1).'58'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'58'; echo $floorRes[$numId]['link']; ?>">
     					        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'58'; echo $floorRes[$numId]['pic']; ?>">
     							<p><?php $numId = ($k+1).'58'; echo $floorRes[$numId]["title"]; ?></p>
                             </a>
@@ -968,14 +968,14 @@ is_hot('{$k + 1}');
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['sma llType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 13F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="<?php $numId = ($k+1).'59'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'59'; echo $floorRes[$numId]['link']; ?>">
         				<div class="com_box_1_l_t">
     						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'59'; echo $floorRes[$numId]['pic']; ?>">
     						<div class="commerce_txt_f txt_t_c">
@@ -990,7 +990,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'60'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'60'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'60'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -999,7 +999,7 @@ is_hot('{$k + 1}');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'61'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'61'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'61'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -1008,7 +1008,7 @@ is_hot('{$k + 1}');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'72'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'72'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1026,7 +1026,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'62'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'62'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'62'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1035,7 +1035,7 @@ is_hot('{$k + 1}');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'63'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'63'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1044,7 +1044,7 @@ is_hot('{$k + 1}');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'64'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'64'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'64'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1058,7 +1058,7 @@ is_hot('{$k + 1}');
         			</div>
         			<div class="lun_13">
         				<!-- <ul>
-        					<li><a href="#">
+        					<li><a target="_blank" href="#">
         						<img src="image/commerce_13 (8">
         						<p>￥110.00</p>
         					</a></li>
@@ -1069,7 +1069,7 @@ is_hot('{$k + 1}');
                         <div class="swiper-wrapper">
                           <foreach name="goodslist[ $k + 1]" item="vv">
                             <div class="swiper-slide swiper-no-swiping">
-                                <a href="{:U('Goods/goodsInfo',array('id'=>$vv['goods_id']))}">
+                                <a target="_blank" href="{:U('/Goods/goodsInfo',array('id'=>$vv['goods_id']))}">
                                     <img src="{:goods_thum_images($vv['goods_id'],111,82)}">
                                     <p>￥{$vv['shop_price']}</p>
                                 </a>
@@ -1112,7 +1112,7 @@ is_hot('{$k + 1}');
 
         			       <tpshop sql="select * from __GOODS__ where cat_id1 = 1181 limit 10" item="v">
 	        			         <li class="slide" >
-	        			     	    <a href="{:U('Goods/goodsInfo',array('id'=>$v['goods_id']))}">
+	        			     	    <a target="_blank" href="{:U('Goods/goodsInfo',array('id'=>$v['goods_id']))}">
 	        					      	<img src="{:goods_thum_images($v['goods_id'],111,82)}">
 	        							<p>￥{$v['shop_price']}</p>
 	        				        </a>
@@ -1152,14 +1152,14 @@ is_hot('{$k + 1}');
         				<h3><span>F{$k+1}</span>{$vo.name}</h3>
         				<ul>
                             <foreach name="vo['smallType']" item="v">
-                                <li><a href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
+                                <li><a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$v['id']))}" >{$v['name']}</a></li>
                             </foreach>
         				</ul>
-        				<a href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
+        				<a target="_blank" href="{:U('/Goods/goodsList',array('id'=>$vo['id']))}" class="commerce_more">查看全部</a>
         			</div>
         			<!-- 15F内容左 -->
         			<div class="com_box_1_l">
-                        <a href="<?php $numId = ($k+1).'65'; echo $floorRes[$numId]['link']; ?>">
+                        <a target="_blank" href="<?php $numId = ($k+1).'65'; echo $floorRes[$numId]['link']; ?>">
         				<div class="com_box_1_l_t">
     						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'65'; echo $floorRes[$numId]['pic']; ?>">
     						<div class="commerce_txt_f txt_t_c">
@@ -1174,7 +1174,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'66'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'66'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'66'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1183,7 +1183,7 @@ is_hot('{$k + 1}');
                                 </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'67'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'67'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'67'; echo $floorRes[$numId]["title"]; ?> </h3>
@@ -1192,7 +1192,7 @@ is_hot('{$k + 1}');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'68'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'68'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'68'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1209,7 +1209,7 @@ is_hot('{$k + 1}');
         				<div class="com_box_1_c_t">
         					<ul>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_c">
         								<h3 style="text-align: <?php $numId = ($k+1).'69'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'69'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'69'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1218,7 +1218,7 @@ is_hot('{$k + 1}');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'70'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'70'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'70'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1227,7 +1227,7 @@ is_hot('{$k + 1}');
                                     </a>
         						</li>
                                 <li class="hover_f">
-                                <a href="<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['link']; ?>">
+                                <a target="_blank" href="<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['pic']; ?>">
         							<div class="commerce_txt_s txt_t_l">
         								<h3 style="text-align: <?php $numId = ($k+1).'71'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'71'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'71'; echo $floorRes[$numId]["title"]; ?></h3>
@@ -1242,7 +1242,7 @@ is_hot('{$k + 1}');
 
         			<ul class="com_box_bottom_16">
                         <li>
-                            <a href="<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['link']; ?>">
         						<div class="bottom_img">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'72'; echo $floorRes[$numId]['pic']; ?>">
         						</div>
@@ -1251,7 +1251,7 @@ is_hot('{$k + 1}');
                             </a>
                         </li>
                         <li>
-                            <a href="<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['link']; ?>">
                                 <div class="bottom_img">
                                     <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'73'; echo $floorRes[$numId]['pic']; ?>">
                                 </div>
@@ -1260,7 +1260,7 @@ is_hot('{$k + 1}');
                             </a>
                         </li>
                         <li>
-                            <a href="<?php $numId = ($k+1).'74'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'74'; echo $floorRes[$numId]['link']; ?>">
                                 <div class="bottom_img">
                                     <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'74'; echo $floorRes[$numId]['pic']; ?>">
                                 </div>
@@ -1269,7 +1269,7 @@ is_hot('{$k + 1}');
                             </a>
                         </li>
                         <li>
-                            <a href="<?php $numId = ($k+1).'75'; echo $floorRes[$numId]['link']; ?>">
+                            <a target="_blank" href="<?php $numId = ($k+1).'75'; echo $floorRes[$numId]['link']; ?>">
                                 <div class="bottom_img">
                                     <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'75'; echo $floorRes[$numId]['pic']; ?>">
                                 </div>
@@ -1290,13 +1290,13 @@ is_hot('{$k + 1}');
 				<div class="commerce_m_title">
 					最新新闻
 				</div>
-                <a href="<?php $numId = ($k+1).'100'; echo $floorRes[$numId]['link']; ?>">
+                <a target="_blank" href="<?php $numId = ($k+1).'100'; echo $floorRes[$numId]['link']; ?>">
 				    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'100'; echo $floorRes[$numId]['pic']; ?>">
                 </a>
 				<ul>
                     <foreach name="zxNews" item="vo">
     					<li>
-    						<a href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
+    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
     							<span>{$vo.title}</span>
     							<i>{$vo.add_time}</i>
     						</a>
@@ -1308,13 +1308,13 @@ is_hot('{$k + 1}');
 				<div class="commerce_m_title">
 					行业头条
 				</div>
-                <a href="<?php $numId = ($k+1).'101'; echo $floorRes[$numId]['link']; ?>">
+                <a target="_blank" href="<?php $numId = ($k+1).'101'; echo $floorRes[$numId]['link']; ?>">
 				    <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'101'; echo $floorRes[$numId]['pic']; ?>">
                 </a>
                 <ul>
                     <foreach name="hyNews" item="vo">
     					<li>
-    						<a href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
+    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
     							<span>{$vo.title}</span>
     							<i>{$vo.add_time}</i>
     						</a>
@@ -1326,13 +1326,13 @@ is_hot('{$k + 1}');
 				<div class="commerce_m_title">
 					推广学院
 				</div>
-                <a href="<?php $numId = ($k+1).'102'; echo $floorRes[$numId]['link']; ?>">
+                <a target="_blank" href="<?php $numId = ($k+1).'102'; echo $floorRes[$numId]['link']; ?>">
 				<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'102'; echo $floorRes[$numId]['pic']; ?>">
                 </a>
 				<ul>
                     <foreach name="tgNews" item="vo">
     					<li>
-    						<a href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
+    						<a target="_blank" href="<if condition='$vo[link]'>{$vo[link]}<else />{:U('Article/detail',array('article_id'=>$vo['article_id']))}</if>">
     							<span>{$vo.title}</span>
     							<i>{$vo.add_time}</i>
     						</a>
@@ -1344,24 +1344,24 @@ is_hot('{$k + 1}');
 	</div>
 	<!-- 浮动层 -->
 	<div class="floor_float">
-		<div class="floor_back_top"><a href="javascript:;">返回顶部</a></div>
+		<div class="floor_back_top"><a target="_blank" href="javascript:;">返回顶部</a></div>
 		<ul>
-			<li><a href="javascript:;">F1</a></li>
-			<li><a href="javascript:;">F2</a></li>
-			<li><a href="javascript:;">F3</a></li>
-			<li><a href="javascript:;">F4</a></li>
-			<li><a href="javascript:;">F5</a></li>
-			<li><a href="javascript:;">F6</a></li>
-			<li><a href="javascript:;">F7</a></li>
-			<li><a href="javascript:;">F8</a></li>
-			<li><a href="javascript:;">F9</a></li>
-			<li><a href="javascript:;">F10</a></li>
-			<li><a href="javascript:;">F11</a></li>
-			<li><a href="javascript:;">F12</a></li>
-			<li><a href="javascript:;">F13</a></li>
-			<li><a href="javascript:;">F14</a></li>
-			<li><a href="javascript:;">F15</a></li>
-			<li><a href="javascript:;">F16</a></li>
+			<li><a target="_blank" href="javascript:;">F1</a></li>
+			<li><a target="_blank" href="javascript:;">F2</a></li>
+			<li><a target="_blank" href="javascript:;">F3</a></li>
+			<li><a target="_blank" href="javascript:;">F4</a></li>
+			<li><a target="_blank" href="javascript:;">F5</a></li>
+			<li><a target="_blank" href="javascript:;">F6</a></li>
+			<li><a target="_blank" href="javascript:;">F7</a></li>
+			<li><a target="_blank" href="javascript:;">F8</a></li>
+			<li><a target="_blank" href="javascript:;">F9</a></li>
+			<li><a target="_blank" href="javascript:;">F10</a></li>
+			<li><a target="_blank" href="javascript:;">F11</a></li>
+			<li><a target="_blank" href="javascript:;">F12</a></li>
+			<li><a target="_blank" href="javascript:;">F13</a></li>
+			<li><a target="_blank" href="javascript:;">F14</a></li>
+			<li><a target="_blank" href="javascript:;">F15</a></li>
+			<li><a target="_blank" href="javascript:;">F16</a></li>
 		</ul>
 	</div>
 </div>
