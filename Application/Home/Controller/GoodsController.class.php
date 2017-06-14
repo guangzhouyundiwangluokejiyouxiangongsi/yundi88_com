@@ -407,7 +407,11 @@ class GoodsController extends BaseController {
             $store = M('store')->field('store_id,store_name,store_presales,commerce_state,apply_state')->where('store_id in('.substr($store_id,0,-1).')')->cache()->select();
 
             $goods_list = M('goods')->field('goods_id,store_id,goods_name,shop_price')->where('goods_id in('.substr($goods_id,0,-1).')')->order("field(goods_id,".substr($goods_id,0,-1).")")->cache()->select();
-
+            if (!$goods_list){
+                $id = I('id',0);
+                $parent_id = M('goods_category')->where(array('id'=>$id))->getField('parent_id');
+                $this->redirect('goodsList',array('id'=>$parent_id));
+            }
             foreach($goods_list as &$vv){
                 foreach($store as $vs){
                     if($vv['store_id'] == $vs['store_id']){
@@ -429,6 +433,10 @@ class GoodsController extends BaseController {
                     unset($data_);
             }
 
+        }else{
+            $id = I('id',0);
+            $parent_id = M('goods_category')->where(array('id'=>$id))->getField('parent_id');
+            $this->redirect('goodsList',array('id'=>$parent_id));
         }
 
         $path = M('goods_category')->where(array('id'=>I('id',0)))->getField('parent_id_path');
