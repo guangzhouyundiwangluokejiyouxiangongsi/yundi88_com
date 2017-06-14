@@ -24,6 +24,7 @@
                 $data['url'] = I('post.url');
                 $data['order'] = I('post.order');
                 $data['addtime'] = time();
+                $data['bgcolor'] = I('post.bgcolor');
                 $list = M('carousel')->data($data)->add();
                 if ($list) {
                     $this->success('成功', U('carousel'));
@@ -39,7 +40,7 @@
         // 显示
         public function carousel()
         {
-            $data = M('carousel')->field('id,link,order,url,addtime')->select();
+            $data = M('carousel')->field('id,link,order,url,bgcolor,addtime')->select();
             // dump($data);
             for ($i=0; $i < count($data); $i++) {
                 $data[$i]['addtime'] = date('Y-m-d H:i:s', $data[$i]['addtime']);
@@ -100,6 +101,7 @@
                 }
                 $data['order'] = I('post.order');
                 $data['url'] = I('post.url');
+                $data['bgcolor'] =I('post.bgcolor');
                 $res = M('carousel')->where(array('id'=>I('post.id')))->save($data);
                 if ($res) {
                     $this->success('更新成功', U('carousel'));

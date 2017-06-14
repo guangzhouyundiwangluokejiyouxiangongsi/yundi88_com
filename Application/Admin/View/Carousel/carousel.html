@@ -30,6 +30,7 @@
                                <th>图片</th>
                                <th>链接地址</th>
                                <th>排序</th>
+                               <th>背景颜色</th>
                                <th>加入时间</th>
                                <th>操作</th>
                            </tr>
@@ -41,6 +42,7 @@
                              <td><img height="50" src="__PUBLIC__/Carousel/{$vo.link}"></td>
                              <td>{$vo.url}</td>
                              <td>{$vo.order}</td>
+                             <td>{$vo.bgcolor}</td>
                              <td>{$vo.addtime}</td>
                              <td>
                                 <a href="__CONTROLLER__/editCarousel/id/{$vo.id}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>

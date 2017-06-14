@@ -65,7 +65,7 @@
                     <!-- <img src="image/commerce_banner.jpg"> -->
                     <div class="slider1">
 					    <foreach item="vo" name="carouselRes">
-					    <div class="slide" ><a target="_blank" href="#"><img src="__PUBLIC__/Carousel/{$vo.link}" width="700" height="274"></a></div>
+					    <div class="slide" ><a target="_blank" href="{$vo.url}"><img src="__PUBLIC__/Carousel/{$vo.link}" width="700" height="274"></a></div>
 						</foreach>
 					</div>
 
@@ -145,7 +145,11 @@ $(function(){
            
         <!-- 内容banner -->
         <div class="con_banner">
-            <img src="__PUBLIC__/Pic/{$picRes.link}" width="1200" height="86">
+
+ <adv limit="1" item="v" pid="100005">
+       <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="1200" height="86" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>            
+</adv>
+
         </div>
         <!-- </foreach> -->
         <foreach name="typeData" item="vo" key="k">

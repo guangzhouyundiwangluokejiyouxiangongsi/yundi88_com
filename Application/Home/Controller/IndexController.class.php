@@ -65,7 +65,7 @@ class IndexController extends BaseController {
             $this->assign('list', $list);
 
             // 查询轮播图
-            $carouselRes = M('carousel')->field('link')->order('addtime desc')->limit(3)->select();
+            $carouselRes = M('carousel')->field('link,url')->order('addtime desc')->limit(3)->select();
             $this->assign('carouselRes', $carouselRes);
 
 
@@ -102,7 +102,7 @@ class IndexController extends BaseController {
 
 
             // 查询导航栏图片
-            $picRes = M('pic')->field('link')->where(array('status'=>1))->find();
+            $picRes = M('pic')->field('link,url')->where(array('status'=>1))->find();
             $this->assign('picRes', $picRes);
 
             // 查询出楼层数据
