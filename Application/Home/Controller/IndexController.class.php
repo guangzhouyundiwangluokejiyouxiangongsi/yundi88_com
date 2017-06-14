@@ -593,7 +593,7 @@ class IndexController extends BaseController {
     public function is_login()
     {
         if(session('seller')){
-            $store = M('store')->field('store_logo,apply_state,commerce_state,store_name')->where(array('store_id'=>session('seller.store_id')))->find();
+            $store = M('store')->field('store_logo,apply_state,commerce_state,store_name,store_id')->where(array('store_id'=>session('seller.store_id')))->find();
             $this->assign('store',$store);
         }
 

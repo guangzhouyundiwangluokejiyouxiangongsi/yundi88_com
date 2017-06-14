@@ -20,15 +20,15 @@
                     <p>你好！{$store['store_name']}</p>
                     <div class="commerce_btn">
                     <php>if($store['apply_state']){</php>
-                        <a class="commerce_y" href="javascript:;"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/renzheng3.png">已认证</a>
+                        <a class="commerce_y" href="{:U('/Index/certification',array('store_id'=>$store['store_id']))}"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/renzheng3.png">已认证</a>
                     <php>}else{</php>
-                        <a class='commerce_n' href="javascript:;"><img style="padding-right: 8px;margin-top: 5px;" src="/Public/renzheng/renzheng2.png">未认证</a>
+                        <a class='commerce_n' href="{:U('/Index/certification',array('store_id'=>$store['store_id']))}"><img style="padding-right: 8px;margin-top: 5px;" src="/Public/renzheng/renzheng2.png">未认证</a>
 
                     <php>}</php>
                     <php>if($store['commerce_state']){</php>
-                        <a class="commerce_y" href="javascript:;"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/yunshanghui.png">已加入</a>
+                        <a class="commerce_y" href="http://association.yundi88.com/Home/newsmember/store_id/{$store['store_id']}.html"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/yunshanghui.png">已加入</a>
                     <php>}else{</php>
-                        <a class="commerce_n" href="javascript:;"><img style="padding-right: 8px;margin-top: 5px;" src="/Public/renzheng/yunshanghui2.png">未加入</a>
+                        <a class="commerce_n" href="http://association.yundi88.com/Home/newsmember/store_id/{$store['store_id']}.html"><img style="padding-right: 8px;margin-top: 5px;" src="/Public/renzheng/yunshanghui2.png">未加入</a>
 
                     <php>}</php>
                     </div>
