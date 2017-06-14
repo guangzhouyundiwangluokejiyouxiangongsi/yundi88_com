@@ -54,6 +54,10 @@ class IndexController extends BaseController {
 
     public function index()
     {
+        // 如果是手机跳转到 手机模块
+        if(true == isMobile()){
+            header("Location: ".U('Mobile/Index/index'));
+        }
         $file = file_get_contents(PATH.'/index.html');
         if($file){
             $this->show($file);
