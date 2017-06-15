@@ -151,7 +151,7 @@ class SystemController extends BaseController{
 			foreach ($html_arr as $key => $val)
 			{
 
-				in_array('index',$_POST['clear']) && strstr($val,'Home_Index_index.html') && unlink($val); // 首页
+				in_array('index',$_POST['clear']) && delFile('./Application/Runtime/Temp') && strstr($val,'Home_Index_index.html') && unlink($val); // 首页
 				in_array('goodsList',$_POST['clear']) && strstr($val,'Home_Goods_goodsList') && unlink($val); // 列表页
 				in_array('channel',$_POST['clear']) && strstr($val,'Home_Channel_index') && unlink($val);  // 频道页
 
