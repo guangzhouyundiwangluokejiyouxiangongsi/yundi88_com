@@ -26,7 +26,7 @@
 	    		 	</nav>	
 	               	<nav class="navbar navbar-default">	     
 				        <div class="collapse navbar-collapse">
-				          <form class="navbar-form form-inline" action="{:U('Store/store_list')}" method="post">
+				          <form class="navbar-form form-inline" action="{:U('Store/store_list')}" method="get">
 				           	<div class="form-group">
 				            	<label class="control-label" for="input-order-id">所属等级</label>
 				            	 <select name="grade_id" class="form-control">
@@ -60,6 +60,9 @@
 				            </div>
 				            <div class="form-group">
 				              	<input type="text" name="store_name" class="form-control" placeholder="请输店铺名称">
+				            </div>
+				            <div class="form-group">
+				              	<input type="text" name="store_id" class="form-control" placeholder="请输店铺id">
 				            </div>
 				            <button type="submit" class="btn btn-primary">查询</button>	          
 				          </form>

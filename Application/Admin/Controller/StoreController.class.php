@@ -113,6 +113,8 @@ class StoreController extends BaseController{
 		if($grade_id>0) $map['grade_id'] = $grade_id;
 		$sc_id =I('sc_id');
 		if($sc_id>0) $map['sc_id'] = $sc_id;
+		$store_id = I('store_id');
+		if($store_id)$map['store_id'] = $store_id;
 		$store_state = I("store_state");
 		if($store_state>0)$map['store_state'] = $store_state;
 		$seller_name = I('seller_name');
