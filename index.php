@@ -38,11 +38,11 @@ define('PLUGIN_PATH','plugins/');
 // ob_start ( GZIP_ENABLE ? 'ob_gzhandler' : null );
 
 //隐藏Home
-// $arr    =    explode('/',$_SERVER['PHP_SELF']);
-//  if(count($arr) > 2 && $arr[2]!=='Admin' && $arr[2]!=='admin' && $arr[2]!=='mobile' && $arr[2]!=='Mobile' && $arr[2]!=='Seller' && $arr[2]!=='seller'){
+$arr    =    explode('/',$_SERVER['PHP_SELF']);
+ if(count($arr) > 2 && $arr[2]!=='Admin' && $arr[2]!=='admin' && $arr[2]!=='mobile' && $arr[2]!=='Mobile' && $arr[2]!=='Seller' && $arr[2]!=='seller'){
     
-    // define('BIND_MODULE','Home');
-//  }
+    define('BIND_MODULE','Home');
+ }
 
 
 
