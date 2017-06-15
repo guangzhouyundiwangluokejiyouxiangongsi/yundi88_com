@@ -264,6 +264,12 @@ class StoreController extends Controller {
 	}
 
 	function goods_list() {
+		$keys = md5($_SERVER['REQUEST_URI']);
+        $html = S($keys);
+        if(!empty($html))
+        {
+            exit($html);
+        }
 		$store_id = I('store_id', 1);
 		$cat_id = I('cat_id', 0);
 		$key = I('key', 'is_new');
@@ -275,16 +281,16 @@ class StoreController extends Controller {
 		$cat_name = "全部商品";
 		if ($cat_id > 0) {
 			$map['_string'] = "store_cat_id1=$cat_id OR store_cat_id2=$cat_id";
-			$cat_name = M('store_goods_class')->where(array('cat_id' => $cat_id))->cache()->getField('cat_name');
+			$cat_name = M('store_goods_class')->where(array('cat_id' => $cat_id))->getField('cat_name');
 		}
-		$filter_goods_id = M('goods')->where($map)->cache()->getField("goods_id", true);
+		$filter_goods_id = M('goods')->where($map)->getField("goods_id", true);
 		$count = count($filter_goods_id);
 		$Page = new \Think\Page($count, 20);
 		if ($count > 0) {
-			$goods_list = M('goods')->where("(goods_id in (" . implode(',', $filter_goods_id) . ")) and is_on_sale = 1")->order("sort,on_time desc")->limit($Page->firstRow . ',' . $Page->listRows)->cache()->select();
+			$goods_list = M('goods')->where("(goods_id in (" . implode(',', $filter_goods_id) . ")) and is_on_sale = 1")->order("sort,on_time desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
 			$filter_goods_id2 = get_arr_column($goods_list, 'goods_id');
 			if ($filter_goods_id2) {
-				$goods_images = M('goods_images')->where("goods_id in (" . implode(',', $filter_goods_id2) . ")")->cache(true)->cache()->select();
+				$goods_images = M('goods_images')->where("goods_id in (" . implode(',', $filter_goods_id2) . ")")->select();
 			}
 		}
 
@@ -313,7 +319,12 @@ class StoreController extends Controller {
 		$this->assign('page_show', $page_show); // 赋值分页输出
 		$this->assign('navigation', $this->navigation);
 		$this->assign('keyword', $keyword);
-		$this->display('/goods_list');
+		// $this->display('/goods_list');
+
+		$html = $this->fetch('/goods_list');
+        S($keys,$html);
+
+        // echo $html;
 	}
 
 	function store_news() {
@@ -401,7 +412,7 @@ class StoreController extends Controller {
 		$sn_id = (empty($_GET['sn'])) ? 0 : (int) $_GET['sn'];
 		$_GET['p'] = (empty($_GET['p'])) ? 0 : $_GET['p'];
 		if($sn_id != 0){
-			$snid = M()->cache()->query("select group_concat(sn_id) as sn_id from __STORE_NAVIGATION__ where sn_pid = {$sn_id}");
+			$snid = M()->query("select group_concat(sn_id) as sn_id from __STORE_NAVIGATION__ where sn_pid = {$sn_id}");
 			if($snid[0]['sn_id']){
                 $sn_id_ = $sn_id.',';
             }else{
@@ -410,10 +421,10 @@ class StoreController extends Controller {
         }
 
         $sn_id = $sn_id_.$snid[0]['sn_id'];
-		$news = M('store_art')->where('(store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ')) and is_show = 1')->page($_GET['p'] . ',10')->order('timer desc')->cache()->select();
+		$news = M('store_art')->where('(store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ')) and is_show = 1')->page($_GET['p'] . ',10')->order('timer desc')->select();
 		$count = M('store_art')->where('(store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ')) and is_show = 1')->count();
 		$page = new \Think\Page($count, 10);
-		$navlist = M('store_navigation')->where(array('store_id' => $storeid, 'sn_id' => $sn_id))->cache()->find();
+		$navlist = M('store_navigation')->where(array('store_id' => $storeid, 'sn_id' => $sn_id))->find();
 		$this->assign('navlist', $navlist);
 		$this->assign('sn_id', $sn_id);
 		$this->assign('page', $page->show());

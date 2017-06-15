@@ -320,13 +320,36 @@ class AdminController extends BaseController {
 	public function cleanCache()
 	{  
 
+        // 首页
         S(md5(U('/Store/index',array('store_id'=>session('store_id')))),null);
         S(md5(U('/Store/index').'?store_id='.session('store_id')),null);
         S(md5(U('/Store/index',array('store_id'=>session('store_id'))).'.html'),null);
         S(md5(U('/Store/index').'?store_id='.session('store_id').'.html'),null);
-        $navigation = M('store_navigation')->where(array('sn_store_id'=>session('store_id')))->select();
+        S(md5(substr(U('/Store/index',array('store_id'=>session('store_id'))),10)),null);
+        S(md5(substr(U('/Store/index',array('store_id'=>session('store_id'))),10).'.html'),null);
+
+
+        //商品列表
+        S(md5(U('/Store/goods_list',array('store_id'=>session('store_id')))),null);
+        S(md5(U('/Store/goods_list').'?store_id='.session('store_id')),null);
+        S(md5(U('/Store/goods_list',array('store_id'=>session('store_id'))).'.html'),null);
+        S(md5(U('/Store/goods_list').'?store_id='.session('store_id').'.html'),null);
+        S(md5(substr(U('/Store/goods_list',array('store_id'=>session('store_id'))),10)),null);
+        S(md5(substr(U('/Store/goods_list',array('store_id'=>session('store_id'))),10).'.html'),null);
+
+        $goodslist = M('store_goods_class')->where(array('store_id'=>session('store_id')))->getField('cat_id',true);
+        foreach($goodslist as $gv){
+            S(md5(U('/Store/goods_list',array('store_id'=>session('store_id'),'cat_id'=>$gv))),null);
+            S(md5(U('/Store/goods_list',array('store_id'=>session('store_id'),'cat_id'=>$gv)).'.html'),null);
+
+            S(md5(substr(U('/Store/goods_list',array('store_id'=>session('store_id'),'cat_id'=>$gv)),10)),null);
+            S(md5(substr(U('/Store/goods_list',array('store_id'=>session('store_id'),'cat_id'=>$gv)),10).'.html'),null);
+        }
+        $navigation = M('store_navigation')->where(array('sn_store_id'=>session('store_id')))->getField('sn_id',true);
         foreach($navigation as $val){
-            S(md5(U('/Store/newsList',array('store_id'=>session('store_id'),'sn_id'=>$val['sn_id'])).'.html'),null);
+            S(md5(U('/Store/newsList',array('store_id'=>session('store_id'),'sn'=>$val))),null);
+            S(md5(substr(U('/Store/newsList',array('store_id'=>session('store_id'),'sn'=>$val)),10)),null);
+            S(md5(substr(U('/Store/newsList',array('store_id'=>session('store_id'),'sn'=>$val)),10).'.html'),null);
         }
 		// delFile('./Public/upload/goods/thumb');// 删除缩略图
         // delFile('./Public/upload/news/seller');
