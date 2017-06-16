@@ -82,11 +82,14 @@ class IndexController extends BaseController {
             // $map['_complex'] = $where;
             // $map['level']  = array('eq',3);
 
-            $userid1 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>1))->select()[0]['userid'];
-            $storelogo1 = M('store')->where("user_id in(".$userid1.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            // $userid1 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>1))->select()[0]['userid'];
+            // $storelogo1 = M('store')->where("user_id in(".$userid1.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            $storelogo1 = M('store')->where("store_id in(772,769,768,760,748,747,746,736,371,326,18,21)")->limit(12)->getField('store_id,store_logo',true);
 
-            $userid2 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>63))->select()[0]['userid'];
-            $storelogo2 = M('store')->where("user_id in(".$userid2.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            // $userid2 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>63))->select()[0]['userid'];
+            // $storelogo2 = M('store')->where("user_id in(".$userid2.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            $storelogo2 = M('store')->where("store_id in(28,288,297,310,311,59,61,63,85,93,120)")->limit(12)->getField('store_id,store_logo',true);
+
             $store_logo[1] = $storelogo1;
             $store_logo[2] = $storelogo2;
             $this->assign('store_logo', $store_logo);
