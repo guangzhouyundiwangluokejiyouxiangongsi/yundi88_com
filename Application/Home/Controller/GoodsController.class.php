@@ -375,6 +375,10 @@ class GoodsController extends BaseController {
         }
          if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
         if($_GET['id']){
+            $catrgrory = M('goods_category')->where(array('id'=>$_GET['id']))->find();
+            $this->assign('title',$catrgrory['title']);
+            $this->assign('keywords',$catrgrory['keywords']);
+            $this->assign('description',$catrgrory['description']);
             $where['cat_id1'] = I('id',0);
             $where['cat_id2'] = I('id',0);
             $where['cat_id3'] = I('id',0);
@@ -385,6 +389,11 @@ class GoodsController extends BaseController {
                 $map['shop_price'][] = array('gt',$price[0]);
                 $map['shop_price'][] = array('lt',$price[1]);
             }
+        }else{
+            $navigation = M('navigation')->where(array('id'=>1))->find();
+            $this->assign('title',$navigation['title']);
+            $this->assign('keywords',$navigation['keywords']);
+            $this->assign('description',$navigation['description']);
         }
         $model = M('ranking_goods');
         $count = $model->where($map)->cache()->count();
@@ -451,10 +460,6 @@ class GoodsController extends BaseController {
 
 // select id from yd_goods_category where parent_id_path like '%0#_1#_2#_21' ESCAPE '#';
         $this->assign('path',substr(trim($strpath),0,-1));
-        $navigation = M('navigation')->where(array('id'=>1))->find();
-        $this->assign('title',$navigation['title']);
-        $this->assign('keywords',$navigation['keywords']);
-        $this->assign('description',$navigation['description']);
         $this->assign('name',$navigation['name']);
         $this->assign('filter_price',$filter_price);  // 帅选菜单
         $this->assign('page',$page);// 赋值分页输出
