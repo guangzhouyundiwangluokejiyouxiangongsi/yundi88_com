@@ -126,15 +126,15 @@ class StoreController extends Controller {
 		//收藏商品排行
 		$collect_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_on_sale' => 1))->order('collect_sum desc')->limit(10)->select();
 		//新品
-		$new_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_new' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->cache()->select();
+		$new_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_new' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->select();
 		//推荐商品
-		$recomend_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_recommend' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->cache()->select();
+		$recomend_goods = M('goods')->field('goods_content', true)->where(array('store_id' => $store_id, 'is_recommend' => 1, 'is_on_sale' => 1))->order('sort,on_time desc')->limit(10)->select();
 
 		// dump($recomend_goods);exit;
 
 		$goods_id_arr = array_merge(get_arr_column($new_goods, 'goods_id'), get_arr_column($recomend_goods, 'goods_id'));
 		if ($goods_id_arr) {
-			$goods_images = M('goods_images')->where("goods_id in (" . implode(',', $goods_id_arr) . ")")->cache(true)->select();
+			$goods_images = M('goods_images')->where("goods_id in (" . implode(',', $goods_id_arr) . ")")->select();
 		}
 
 		$texts = M('store_mod')->where('store_id = '.$store_id)->select();
@@ -165,7 +165,7 @@ class StoreController extends Controller {
 	public function recommend() {
 		//查询首页推荐栏目
 		$product_m = M('goods');
-		$recommend = M('store_goods_class')->where(array('store_id' => $this->store['store_id'], 'is_show' => 1, 'is_recommend' => 1))->order('cat_sort')->cache()->select();
+		$recommend = M('store_goods_class')->where(array('store_id' => $this->store['store_id'], 'is_show' => 1, 'is_recommend' => 1))->order('cat_sort')->select();
 		foreach ($recommend as &$v) {
 			// 查询推荐商品
 			if($v['show_num'] > 30){
@@ -176,7 +176,7 @@ class StoreController extends Controller {
 				$num = $v['show_num'];
 			}
 
-			$v['cat_id_goods'] = $product_m->where('(' . 'store_cat_id1 = ' . $v['cat_id'] . ' or store_cat_id2 = ' . $v['cat_id'] . ')' . 'and is_on_sale = 1')->field('goods_id,goods_name,original_img,shop_price')->limit($num)->cache()->select();
+			$v['cat_id_goods'] = $product_m->where('(' . 'store_cat_id1 = ' . $v['cat_id'] . ' or store_cat_id2 = ' . $v['cat_id'] . ')' . 'and is_on_sale = 1')->field('goods_id,goods_name,original_img,shop_price')->limit($num)->select();
 		}
 		return $recommend;
 	}
@@ -187,7 +187,7 @@ class StoreController extends Controller {
 	public function recommend_news() {
 		//查询首页推荐栏目
 		$store_art_m = M('store_art');
-		$recommend = M('store_navigation')->where(array('sn_store_id' => $this->store['store_id'], 'sn_is_list' => 1, 'sn_is_show' => 1, 'sn_is_home' => 1))->order('sn_sort')->cache()->select();
+		$recommend = M('store_navigation')->where(array('sn_store_id' => $this->store['store_id'], 'sn_is_list' => 1, 'sn_is_show' => 1, 'sn_is_home' => 1))->order('sn_sort')->select();
 		foreach ($recommend as &$v) {
 			// 查询推荐商品
 			if($v['sn_show_num'] > 30){
@@ -197,7 +197,7 @@ class StoreController extends Controller {
 			}else{
 				$num = $v['sn_show_num'];
 			}
-			$v['news'] = $store_art_m->where(array('sn_id' => $v['sn_id'], 'is_show' => 1))->order('timer desc')->field('id,sn_id,title,author,timer,pc_click,keyword,description,newsimg')->limit($num)->cache()->select();
+			$v['news'] = $store_art_m->where(array('sn_id' => $v['sn_id'], 'is_show' => 1))->order('timer desc')->field('id,sn_id,title,author,timer,pc_click,keyword,description,newsimg')->limit($num)->select();
 		}
 
 		return $recommend;
@@ -208,7 +208,7 @@ class StoreController extends Controller {
 	 */
 	public function photo() {
 		$photoimg = M('photoimg');
-		$photo = M('photo')->where(array('store_id' => $this->store['store_id'], 'home' => 1, 'status' => 1))->cache()->select();
+		$photo = M('photo')->where(array('store_id' => $this->store['store_id'], 'home' => 1, 'status' => 1))->select();
 		foreach ($photo as &$v) {
 			$v['photoimg'] = $photoimg->where(array('photoid' => $v['id']))->cache()->select();
 		}
