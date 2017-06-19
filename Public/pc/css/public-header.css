@@ -68,7 +68,7 @@
 /*第一级弹出结束*/
 /*第二级弹出*/
 .pro .nav .yi:hover .dyj{ display:block;}
-.pro .nav .yi .dyj .one section{ position: absolute;top: 45px; width:370px;display:none;margin-left: 250px;background: #FFFFFF;}
+.pro .nav .yi .dyj .one section{ position: absolute;top: 45px; width:370px;display:none;margin-left: 250px;background: #FFFFFF;box-shadow: 0 2px 5px #CCC}
 .pro .nav .yi .dyj .one section dl{ width:350px; margin:0 auto;text-indent:0; }
 .pro .nav .yi .dyj .one section dl dt{ width:350px; text-align:left; font-size:14px; border-bottom:1px solid #f0f0f0; height:40px; line-height:40px; }
 .pro .nav .yi .dyj .one section dl dt a{ color:#000000;}
