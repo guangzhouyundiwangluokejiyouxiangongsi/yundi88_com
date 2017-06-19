@@ -105,7 +105,7 @@ footer{ font-size:14px; line-height:30px; text-align:center;}
 .footer footer{/*  margin:50px auto; */ font-size:14px; line-height:30px; text-align:center;background: none;padding-bottom: 20px;color: #333333;}
 
 /*返回顶部*/
-.top-back{display: none;position: fixed;right: 20px;bottom: 100px; width: 50px;height: 50px;background:#008cba;overflow: hidden;}
+.top-back{display: none;position: fixed;right: 20px;bottom: 100px; width: 50px;height: 50px;background:#008cba;overflow: hidden;z-index:9999;}
 .top-back a{display: block;width: 50px;height: 50px;text-align: center;color: #ffffff !important;}
 .top-back .top{font-size: 20px;font-weight: bolder;line-height: 42px;}
 .top-back .txt{text-decoration: none;width: 40px;height: 40px;padding: 5px;font-size: 14px;}
