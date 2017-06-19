@@ -170,11 +170,12 @@ class ArticleController extends BaseController {
 
     public function details()
     {
-        $cat_id = I('cat_id');
+        $cat_id = I('cat_id',1);
         $count      = M('article')->where(array('cat_id'=>$cat_id))->count();
         $Page       = new \Think\Page($count,10);
         $show       = $Page->show();
         $articleList = M('article')->where(array('cat_id'=>$cat_id))->order('add_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        if ($cat_id == 22) $articleList = M('article')->where(array('article_id'=>26))->select();
         foreach($articleList as &$vv){
             $vv['miaoshu'] = mb_substr(strip_tags(htmlspecialchars_decode($vv['content'])),0,250);
         }
