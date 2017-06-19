@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="__PUBLIC__/pc/css/newslist2.css" />
+		<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.1.min.js" ></script>
+		<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="content-language" content="zh-cn" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta http-equiv="Cache-control" content="public" max-age="no-cache" />
+		<title>{$article_cat.cat_name}列表页</title>
+		<meta http-equiv="keywords" content="" />
+		<meta name="description" content="" />
+	</head>
+	
+	<include file="Public/header" /> 
+
+	<body>		
+		<div class="mybanner">
+			<img src="__PUBLIC__/pc/images/mybanner.jpg"/>
+			<h2>
+				<em>LIST SHOWS</em>
+				{$article_cat.cat_name}
+			</h2>
+		</div>
+		
+		<div class="newslist_content">
+			<div class="the_current mg">
+				<span><a href="{:U('/Index/index')}">首页</a></span>
+				<span>></span>
+				<span><a href="{:U('/Article/details',array('cat_id'=>$article_cat['cat_id']))}">{$article_cat.cat_name}</a></span>
+			</div>
+			
+			<div class="mydetails mg">
+				<ul>
+					<foreach name="articleList" item="vv">
+					<li class="clear">
+						<span>
+							<span>
+								<h3>
+									<em>{$vv.add_time|date="d",###}</em>
+									{$vv.add_time|date="Y-m",###}
+								</h3>
+							</span>							
+						</span>
+						<div class="matter">
+							<h2><a href="{:U('Article/detail_news',array('article_id'=>$vv['article_id']))}" target="_blank">{:getSubstr($vv['title'],0,30)}</a></h2>
+							<p>{$vv.miaoshu}</p>
+						</div>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+			
+			<div class="pages mg">
+				<ol class="clear">
+					{$show}
+				</ol>
+			</div>
+		</div>
+	</body>
+	<include file="User/footer" />
+</html>
