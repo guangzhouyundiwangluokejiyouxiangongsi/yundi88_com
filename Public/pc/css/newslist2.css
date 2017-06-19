@@ -22,7 +22,7 @@ b{font-weight: normal;}
 
 .mg{width: 1200px;margin: 0 auto;}
 .clear{overflow: hidden;clear: both;}
-.mg a{color: #666666;}
+.the_current a{color: #666666;}
 
 .mybanner{width: 100%;height: 200px;position: relative;text-align: center;overflow: hidden;}
 .mybanner img{width: 1920px;height: 200px;display: block;position: absolute;top: 0px;left: 50%;margin-left: -960px;z-index: 100;}
@@ -38,14 +38,14 @@ b{font-weight: normal;}
 
 .mydetails ul li{margin-bottom: 20px;padding-bottom: 20px;border-bottom: 1px  dashed #e5e5e5;}
 .mydetails ul li>span{width: 80px;height: 80px;background: #f5f5f5;display: block;float: left;}
-.mydetails ul li>span>span{display: table-cell;vertical-align: middle;height: 80px;}
+.mydetails ul li>span>span{display: table-cell;vertical-align: middle;width: 80px;height: 80px;}
 .mydetails ul li>span>span h3{color: #f92246;line-height: 24px;text-align: center;}
-.mydetails ul li>span>span h3 em{font-size: 26px;line-height: 34px;}
+.mydetails ul li>span>span h3 em{font-size: 26px;line-height: 34px;display: block;}
 .mydetails ul li .matter{float: left;margin-left: 52px;}
 .mydetails ul li .matter h2{font-size: 20px;line-height: 30px;}
 .mydetails ul li .matter h2 a{display: inline-block;color: #000000;transition: all .4s;}
 .mydetails ul li .matter h2 a:hover{color: #f92246;}
-.mydetails ul li .matter p{color: #999999;width: 1050px;line-height: 26px;height: 52px;overflow: hidden;}
+.mydetails ul li .matter p{color: #999999;width: 1050px;line-height: 26px;height: 52px;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;}
 
 .pages{margin: 32px auto;text-align: center;}
 .pages ol li{display: inline-block;width: 38px;height: 38px;line-height: 40px;border: 1px solid #cccccc;text-align: center;border-radius: 4px;transition: all .3s;margin: 0 2px;}
@@ -60,7 +60,7 @@ b{font-weight: normal;}
 .myarticle .state{margin: 20px auto 54px;height: 28px;line-height: 28px;}
 .myarticle .state span{color: #999999;display: inline-block;margin: 0 14px;}
 .myarticle .art{border-bottom: 1px dashed #e5e5e5;padding-bottom: 10px;}
-.myarticle .art p{color: #333333;text-indent: 2em;line-height: 20px;text-align: left;margin-bottom: 30px;}
+.myarticle .art p{color: #333333;text-indent: 2em;line-height: 20px;text-align: left;margin-bottom: 30px;font-size:14px;}
 .myarticle .turn_page{margin: 24px auto 32px;}
 .myarticle .turn_page a{display: block;color: #333333;}
 .myarticle .turn_page a:hover em{color: #ff0000;}
