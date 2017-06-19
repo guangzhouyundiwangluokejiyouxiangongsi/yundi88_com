@@ -64,7 +64,7 @@
 
                      <div class="commerce_head bulletin">
                 
-                        <div class="commerce_h_right" style="height: 459px;">
+                        <div class="commerce_h_right">
                             <!-- 未登录 -->
                             <span id="is_login">
                                 
@@ -85,7 +85,7 @@
                                 <h3>公告栏</h3>
                                 <ul>
                                 <foreach item="vo" name="list">
-                                    <li><a target="_blank" href="#">公告：{$vo.content}</a></li>
+                                    <li><a target="_blank" href="#">公告：{:getsubstr($vo[content],0,16)}</a></li>
                                 </foreach>
                                 </ul>
                             </div>
