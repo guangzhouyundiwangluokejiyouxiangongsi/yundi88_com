@@ -1,7 +1,7 @@
 .pro .nav .yi .dyj{display: block;}
 .footer{margin-top: 0;}
 
-.commerce{background: #F3F3F3;padding: 20px 0 0;}
+.commerce{background: #F3F3F3;}
 .commerce .mg{width: 1200px;margin: 0 auto;}
 
 /*内容头部*/
@@ -10,18 +10,36 @@
 .commerce_banner{width: 700px;height: 274px;overflow: hidden;}
 
 .commerce .commerce_head .commerce_h_left{float: left;width: 700px;height: 274px;}
-/*主题*/
-.commerce .commerce_head .commerce_theme{overflow: hidden;margin-top: 17px;}
-.commerce .commerce_head .commerce_theme li{overflow: hidden;width: 220px;height: 170px;float: left;}
-.commerce .commerce_head .commerce_theme li a{display: block;position: relative;}
-.commerce .commerce_head .commerce_theme li img{width: 100%;}
-.commerce .commerce_head .commerce_theme li+li{margin:0 20px;}
-.commerce .commerce_head .commerce_theme li+li+li{margin: 0;}
-.commerce .commerce_head .commerce_theme .commerce_txt{display: block;width: 220px;height: 170px;overflow: hidden;position: absolute;top: 0;left: 0;color: #FFF;font-size: 16px;text-align: center;}
-.commerce .commerce_head .commerce_theme .commerce_txt span{border-top: 1px solid #FFF;border-bottom: 1px solid #FFF;line-height: 28px;display: inline-block;margin: 50px 0 22px;max-width: 250px;height: 28px;overflow: hidden;}
-.commerce .commerce_head .commerce_theme .commerce_txt p{max-width: 250px;height: 28px;overflow: hidden;}
 
-.commerce .commerce_head .commerce_h_right{float: right;width: 260px;background: #FFFFFF;}
+
+/*头部轮播*/
+ #slideBox{text-align: center;}
+.slideBox{ width:100%; height:480px; overflow:hidden; position:relative;min-width: 1200px;}
+.slideBox .hd{ height:16px; overflow:hidden; position:absolute;  bottom:30px; z-index:1;text-align: center;display:inline-block;}
+.slideBox .hd ul{ overflow:hidden; zoom:1; display: inline-block;}
+.slideBox .hd ul li{ float:left; margin-right:2px;  width:16px; height:16px; line-height:16px; text-align:center;  cursor:pointer;border-radius: 50%;background: #fff; background: url(../image/commerce_focus.png) no-repeat;}
+.slideBox .hd ul li.on{ color:#fff; background: url(../image/commerce_focus_on.png) no-repeat;}
+.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+.slideBox .bd .bdul li{ zoom:1; vertical-align:middle; }
+.slideBox .bd .bdul img{ width:700px; height:480px; display:block; margin: 0 auto; }
+.slideBox .bd ul.bdul{width: 100%;position: absolute;z-index: 2;}
+/* 下面是前/后按钮代码，如果不需要删除即可 */
+
+.slideBox .next{background: url(../image/commerce_b_right.png) no-repeat; position:absolute;  right:0;  top:50%; margin-top:-15px; display:block; width:30px; height:45px;  z-index: 5 ;}
+
+.slideBox .prev{background: url(../image/commerce_b_left.png) no-repeat;left:0; position:absolute; top:50%; margin-top:-15px; display:block; width:30px; height:45px; z-index: 5 ;}
+
+.slideBox .next:hover{ background: url(../image/commerce_b_right_on.png) no-repeat;}
+.slideBox .prev:hover{ background: url(../image/commerce_b_left_on.png) no-repeat;}
+.slideBox .prevStop{ display:none;  }
+.slideBox .nextStop{ display:none;  }
+
+.p_n_btn{position: absolute;width: 700px;height: 480px;top: 50%;left: 50%;margin: 0 auto;margin-top:-240px;margin-left:-350px; }
+
+.commerce .bulletin{width: 260px;margin-left: 0;background: none;position: absolute;z-index: 10;right: -260px;top: 10px;text-align: left;}
+.commerce .bulletin  .commerce_bulletin ul{padding: 0 14px 6px !important;}
+.commerce .bulletin .commerce_login_box{background: #ffffff !important;}
+.commerce .bulletin .commerce_bulletin{background: #ffffff !important;margin-top: 10px;}
 /*未登录*/
 .commerce .commerce_head .commerce_login_box{padding:12px 14px;border-bottom: 1px solid #f3f3f3;}
 .commerce .commerce_head .user_img{width: 60px;height: 60px;line-height: 60px;background: #e8e8e8;border-radius: 50%;overflow: hidden;margin: 0 auto 8px;}
@@ -337,7 +355,7 @@
 .commerce_message{overflow: hidden;margin-top: 40px;}
 .commerce_message .commerce_message_box{float: left;width: 390px;}
 .commerce_message .commerce_message_box:nth-child(2){margin: 0 15px;}
-.commerce_message .commerce_m_title{padding-left: 10px;border-left: 8px solid #008cba;color: #333333;font-size: 16px;line-height: 20px;height: 20px;margin-bottom: 20px;}
+.commerce_message .commerce_m_title{padding-left: 10px;border-left: 8px solid #f92246;color: #333333;font-size: 16px;line-height: 20px;height: 20px;margin-bottom: 20px;}
 .commerce_message .commerce_message_box img{display: block;width: 390px;height: 210px;}
 .commerce_message ul{padding: 15px;width:360px;background: #FFFFFF;}
 .commerce_message ul li{overflow: hidden;height: 26px;line-height: 26px; }

@@ -1,0 +1,64 @@
+<footer class="footer">
+<style>
+.pr a:hover{color: red}
+</style>
+    <div class="pr">
+    	<div class="prc">
+	     	<tpshop sql="select * from `__PREFIX__article_cat` where parent_id = 0 and show_in_nav =1 order by sort_order limit 8" key="k" item='v'>
+		        <dl> 
+		          <dt>{$v[cat_name]}</dt>
+		          <tpshop sql="select * from `__PREFIX__article` where cat_id = $v[cat_id]  and is_open=1" key="k2" item='v2'>
+		              <php>if ($v2['link'] == ''){ </php>
+		              <dd><a target="_blank" href="{:U('/Article/detail',array('article_id'=>$v2[article_id]))}">{$v2[title]}</a></dd>
+		              <php>} else {</php>
+		              <dd><a target="_blank" href="{$v2[link]}">{$v2[title]}</a></dd>
+		              <php>}</php>
+		            </tpshop>
+		        </dl>
+	       </tpshop>
+        </div>
+        
+        <div class="Tphone">
+	    	<h2>{$tpshop_config['shop_info_phone']}</h2>
+			<p>周一至周日 9:00-18:00</p>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$tpshop_config['shop_info_qq']}&amp;site=qq&amp;menu=yes">QQ24小时在线客服</a>
+	    	</div>
+    </div><!-- 
+     <h6>有情链接：<a href="#" target="_blank">百度</a>   <a href="#" target="_blank">  盛大在线</a></h6> -->
+     <style>
+    .btn_5{margin-left:10px;}
+    .btn_6 a:hover{color: red;}
+    .footer h6{font-size: 14px;text-align: left;}
+    .footer footer{padding-bottom: 40px;}
+    </style>
+
+    <php>if(M('friend_link')->where(array('is_show'=>1))->count()){</php>
+     <h6 class="btn_6">友情链接：
+     <tpshop sql="select * from `__PREFIX__friend_link` where is_show = 1 order by orderby" key="k3" item="v3">
+     <a href="{$v3[link_url]}" <php> if ($v3[target] == 1){</php>
+      target="_blank" <php>}</php>
+      > {$v3[link_name]}</a>
+     </tpshop>
+     </h6>
+     <php>}</php>
+     <footer>{$tpshop_config['shop_info_copyright']} 备案号:{$tpshop_config['shop_info_record_no']}</footer>
+</footer>
+<div class="top-back">
+	<a class="top" href="javascript:;">︿</a>
+	<a class="txt" href="javascript:;">回到顶部</a>
+</div>
+<script type="text/javascript">
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > 600) {
+			$('.top-back').show(300);
+		}
+		else
+		{
+			$('.top-back').hide(300);
+		}
+	});
+	$(".top-back").click(function(){
+	  $('body,html').animate({scrollTop:0},600);
+	   return false;
+	});
+</script>
