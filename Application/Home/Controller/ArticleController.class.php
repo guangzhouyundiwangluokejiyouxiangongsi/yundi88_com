@@ -62,7 +62,7 @@ class ArticleController extends BaseController {
             $location = '<a href="http://'.$_SERVER[HTTP_HOST].'">首页</a>&nbsp;>&nbsp;';
             foreach($this->getlocation($article['cat_id']) as $v){
 
-                $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
+                $location .= '<a href="'.U('/Article/details',array('cat_id'=>$v['cat_id'])).'">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
             }
                 $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
                 // dump($article_id);exit;
@@ -115,7 +115,7 @@ class ArticleController extends BaseController {
             $location = '<a href="http://'.$_SERVER[HTTP_HOST].'">首页</a>&nbsp;>&nbsp;';
             foreach($this->getlocation($article['cat_id']) as $v){
 
-                $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
+                $location .= '<a href="'.U('/Article/details',array('cat_id'=>$v['cat_id'])).'">'.$v['cat_name'].'</a>&nbsp;>&nbsp;';
             }
                 $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
                 // dump($article_id);exit;
@@ -150,6 +150,20 @@ class ArticleController extends BaseController {
         }
         $this->display();
     } 
+
+    public function details()
+    {
+        $cat_id = I('cat_id');
+        $count      = M('article')->where(array('cat_id'=>$cat_id))->count();
+        $Page       = new \Think\Page($count,10);
+        $show       = $Page->show();
+        $articleList = M('article')->where(array('cat_id'=>$cat_id))->order('add_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $article_cat = M('article_cat')->where(array('cat_id'=>$cat_id))->find();
+        $this->assign('show',$show);
+        $this->assign('article_cat',$article_cat);
+        $this->assign('articleList',$articleList);
+        $this->display();
+    }
 
     public $location = array();
     public function getlocation($pid){
