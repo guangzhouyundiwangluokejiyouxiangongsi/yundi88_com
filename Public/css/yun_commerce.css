@@ -38,8 +38,8 @@
 
 .commerce .bulletin{width: 260px;margin-left: 0;background: none;position: absolute;z-index: 10;right: -260px;top: 10px;text-align: left;}
 .commerce .bulletin  .commerce_bulletin ul{padding: 0 14px 6px !important;}
-.commerce .bulletin .commerce_login_box{background: #ffffff !important;}
-.commerce .bulletin .commerce_bulletin{background: #ffffff !important;margin-top: 10px;}
+.commerce .bulletin .commerce_login_box{background: #ffffff !important;opacity: 0.8;}
+.commerce .bulletin .commerce_bulletin{background: #ffffff !important;margin-top: 10px;opacity: 0.8;}
 /*未登录*/
 .commerce .commerce_head .commerce_login_box{padding:12px 14px;border-bottom: 1px solid #f3f3f3;}
 .commerce .commerce_head .user_img{width: 60px;height: 60px;line-height: 60px;background: #e8e8e8;border-radius: 50%;overflow: hidden;margin: 0 auto 8px;}
@@ -53,7 +53,7 @@
 .commerce .commerce_head .commerce_login_box .commerce_register{float: right;color: #f22e00;}
 
 /*已登录*/
-.commerce .commerce_head .commerce_user_box{padding:12px 14px;border-bottom: 1px solid #f3f3f3;display: none;}
+.commerce .commerce_head .commerce_user_box{padding:12px 14px;border-bottom: 1px solid #f3f3f3;display: none;background: #ffffff !important;opacity: 0.8;}
 .commerce .commerce_head .commerce_user_box p{color: #333333;font-size: 12px;text-align: center;padding-bottom: 15px;}
 
 .commerce .commerce_head .commerce_user_box .commerce_btn{overflow: hidden;}
