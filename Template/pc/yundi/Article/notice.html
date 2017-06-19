@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="__PUBLIC__/pc/css/newslist2.css" />
+		<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.1.min.js" ></script>
+		<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="content-language" content="zh-cn" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta http-equiv="Cache-control" content="public" max-age="no-cache" />
+		<title>{$notice.content
+		}</title>
+		<meta http-equiv="keywords" content="" />
+		<meta name="description" content="" />
+	</head>
+	<include file="Public/header" />
+	<body>
+		<div class="mybanner">
+			<img src="__PUBLIC__/pc/images/mybanner.jpg"/>
+			<h2>
+				<em>LIST SHOWS</em>
+				公告栏
+			</h2>
+		</div>
+		
+		<div class="news_content">
+			<div class="the_current mg">
+				<span><a href="{:U('/Index/index')}">首页</a>&nbsp;>&nbsp;<a href="{:U('/Article/noticeList')}">公告栏</a>&nbsp;>&nbsp;<a href="{:U('/Article/notice',array('id'=>$notice['id']))}">正文</a></span>
+			</div>
+			<div class="myarticle mg">
+				<h1>{$notice.content}</h1>
+				<div class="state">
+					<span>发布时间：{:date('Y-m-d',$notice['addtime'])}</span>
+				</div>
+				<div class="art">
+				{$notice.text|htmlspecialchars_decode}
+				</div>
+				<div class="turn_page clear">
+					<if condition="$last">
+					<a href="{:U('notice',array('id'=>$last['id']))}">上一篇：<em>{:getsubstr($last['content'],0,30)}</em></a>
+					<else />
+					<a href="{:U('notice',array('id'=>$notice['id']))}">上一篇：<em>没有了</em></a>
+					</if>
+					
+					<if condition="$next">
+					<a href="{:U('notice',array('id'=>$next['id']))}">下一篇：<em>{:getsubstr($next['content'],0,30)}</em></a>
+					<else />
+					<a href="{:U('notice',array('id'=>$notice['id']))}">下一篇：<em>没有了</em></a>
+					</if>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+		<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+	</body>
+	<include file="Public/footer" />
+</html>

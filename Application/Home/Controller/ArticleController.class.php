@@ -67,25 +67,35 @@ class ArticleController extends BaseController {
                 $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
                 // dump($article_id);exit;
 
-            //上一篇
-            $where['article_id']=array('lt',$article['article_id']);
-            $where['cat_id'] = $article['cat_id'];
-            $p = M('article')->where($where)->find();
-            if(!$p){
-            $p['article_id'] = $article['article_id'];
-            $p['title'] = '没有了';
-            }
-            $this->assign('p',$p);
+            if ($article_id == 26){
+                $p['article_id'] = $article_id;
+                $p['title'] = '没有了';
+                $this->assign('p',$p);
+
+                $n['article_id'] = $article_id;
+                $n['title'] = '没有了';
+                $this->assign('n',$n);
+            }else{
+                //上一篇
+                $where['article_id']=array('lt',$article['article_id']);
+                $where['cat_id'] = $article['cat_id'];
+                $p = M('article')->where($where)->find();
+                if(!$p){
+                $p['article_id'] = $article['article_id'];
+                $p['title'] = '没有了';
+                }
+                $this->assign('p',$p);
 
 
-            //下一篇
-            $where['article_id']=array('gt',$article['article_id']);
-            $n = M('article')->where($where)->find();
-            if(!$n){
-            $n['article_id'] = $article['article_id'];
-            $n['title'] = '没有了';
+                //下一篇
+                $where['article_id']=array('gt',$article['article_id']);
+                $n = M('article')->where($where)->find();
+                if(!$n){
+                $n['article_id'] = $article['article_id'];
+                $n['title'] = '没有了';
+                }
+                $this->assign('n',$n);
             }
-            $this->assign('n',$n);
             $this->assign('location',$location);
             $this->assign('parentss',$parentss);
             $this->assign('parents',$parents['cat_name']);
@@ -99,11 +109,8 @@ class ArticleController extends BaseController {
         $article_id = I('article_id',1);
         $article = D('article')->where(array('article_id'=>$article_id))->find();
         if($article){
-            if ($article['cat_id'] == 32 || $article['cat_id'] == 33){
-                $data['link_num'] = $article['link_num']+1;
-                M('article')->where(array('article_id'=>$article_id))->save($data);
-            }
-            
+            $data['link_num'] = $article['link_num']+1;
+            M('article')->where(array('article_id'=>$article_id))->save($data);
             $parent = D('article_cat')->where("cat_id=".$article['cat_id'])->find();
             $map['cat_id'] = $parent['cat_id'];
             $map['is_open'] = 1;
@@ -120,25 +127,35 @@ class ArticleController extends BaseController {
                 $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
                 // dump($article_id);exit;
 
-            //上一篇
-            $where['article_id']=array('lt',$article['article_id']);
-            $where['cat_id'] = $article['cat_id'];
-            $p = M('article')->where($where)->find();
-            if(!$p){
-            $p['article_id'] = $article['article_id'];
-            $p['title'] = '没有了';
-            }
-            $this->assign('p',$p);
+            if ($article_id == 26){
+                $p['article_id'] = $article_id;
+                $p['title'] = '没有了';
+                $this->assign('p',$p);
+
+                $n['article_id'] = $article_id;
+                $n['title'] = '没有了';
+                $this->assign('n',$n);
+            }else{
+                //上一篇
+                $where['article_id']=array('lt',$article['article_id']);
+                $where['cat_id'] = $article['cat_id'];
+                $p = M('article')->where($where)->find();
+                if(!$p){
+                $p['article_id'] = $article['article_id'];
+                $p['title'] = '没有了';
+                }
+                $this->assign('p',$p);
 
 
-            //下一篇
-            $where['article_id']=array('gt',$article['article_id']);
-            $n = M('article')->where($where)->find();
-            if(!$n){
-            $n['article_id'] = $article['article_id'];
-            $n['title'] = '没有了';
+                //下一篇
+                $where['article_id']=array('gt',$article['article_id']);
+                $n = M('article')->where($where)->find();
+                if(!$n){
+                $n['article_id'] = $article['article_id'];
+                $n['title'] = '没有了';
+                }
+                $this->assign('n',$n);
             }
-            $this->assign('n',$n);
 
 
 
@@ -153,11 +170,12 @@ class ArticleController extends BaseController {
 
     public function details()
     {
-        $cat_id = I('cat_id');
+        $cat_id = I('cat_id',1);
         $count      = M('article')->where(array('cat_id'=>$cat_id))->count();
         $Page       = new \Think\Page($count,10);
         $show       = $Page->show();
         $articleList = M('article')->where(array('cat_id'=>$cat_id))->order('add_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        if ($cat_id == 22) $articleList = M('article')->where(array('article_id'=>26))->select();
         foreach($articleList as &$vv){
             $vv['miaoshu'] = mb_substr(strip_tags(htmlspecialchars_decode($vv['content'])),0,250);
         }
@@ -289,6 +307,35 @@ class ArticleController extends BaseController {
         $article2 = M('article')->where(array('cat_id'=>41,'is_open'=>1))->select();//后台优化
         $this->assign('article',$article);
         $this->assign('article2',$article2);
+        $this->display();
+    }
+
+    //公告栏
+    public function noticeList()
+    {   
+        $count      = M('notice')->count();// 查询满足要求的总记录数
+        $Page       = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $show       = $Page->show();// 分页显示输出
+        $noticeList = M('notice')->order('addtime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        foreach($noticeList as &$vv){
+            $vv['miaoshu'] = mb_substr(strip_tags(htmlspecialchars_decode($vv['text'])),0,250);
+        }
+        $this->assign('show',$show);
+        $this->assign('noticeList',$noticeList);
+        $this->display();
+    }
+
+    //公告页面
+    public function notice(){
+        $id = I('id',1);
+        $notice = M('notice')->where(array('id'=>$id))->find();
+        $where['id'] = array('lt',$id);
+        $where2['id'] = array('gt',$id);
+        $last = M('notice')->where($where)->order('addtime desc')->find();
+        $next = M('notice')->where($where2)->order('addtime')->find();
+        $this->assign('last',$last);
+        $this->assign('next',$next);
+        $this->assign('notice',$notice);
         $this->display();
     }
 
