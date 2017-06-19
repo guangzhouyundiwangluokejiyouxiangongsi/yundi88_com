@@ -1,0 +1,68 @@
+/**********公共样式************/
+*{margin:0;padding:0;}
+body,button,input,select,textarea{font:14px/2 Verdana, 微软雅黑, Helvetica, sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;margin: 0px;}
+address,cite,dfn,em,var,i{font-style:normal;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;word-wrap: break-word; white-space: normal;}
+small{font-size:12px;}
+ul,ol{list-style:none;}
+a{cursor: pointer;text-decoration: none!important;outline: none;border: 0;star:expression(this.onFocus=this.blur());}
+a:link,a:visited{color: deepskyblue;text-decoration:none;}
+a:focus {outline:none;}
+a:active{outline: none;star:expression(this.onFocus=this.blur());border: 0;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+fieldset{border:0;}
+legend{color:#666;}
+img{vertical-align:middle;border:0 none;}
+button,input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+b{font-weight: normal;}
+
+
+.mg{width: 1200px;margin: 0 auto;}
+.clear{overflow: hidden;clear: both;}
+.mg a{color: #666666;}
+
+.mybanner{width: 100%;height: 200px;position: relative;text-align: center;overflow: hidden;}
+.mybanner img{width: 1920px;height: 200px;display: block;position: absolute;top: 0px;left: 50%;margin-left: -960px;z-index: 100;}
+.mybanner h2{color: #ffffff;font-size: 18px;line-height: 30px;text-align: center;width: 150px;font-family: 华文楷体;position: absolute;left: 50%;margin-left: -75px;top: 35%;z-index: 100;}
+.mybanner h2 em{font-family: Cambria;font-size: 24px;font-weight: bold;display: block;}
+
+.newslist_content,.news_content{width: 100%;}
+
+.the_current{height: 28px;line-height: 28px;padding-bottom: 16px;border-bottom: 1px solid #e5e5e5;margin: 24px auto 52px;}
+.the_current span{display: block;float: left;color: #666666;}
+.the_current span a{color: #666666;}
+.the_current span:nth-child(even){padding: 0 6px;}
+
+.mydetails ul li{margin-bottom: 20px;padding-bottom: 20px;border-bottom: 1px  dashed #e5e5e5;}
+.mydetails ul li>span{width: 80px;height: 80px;background: #f5f5f5;display: block;float: left;}
+.mydetails ul li>span>span{display: table-cell;vertical-align: middle;height: 80px;}
+.mydetails ul li>span>span h3{color: #f92246;line-height: 24px;text-align: center;}
+.mydetails ul li>span>span h3 em{font-size: 26px;line-height: 34px;}
+.mydetails ul li .matter{float: left;margin-left: 52px;}
+.mydetails ul li .matter h2{font-size: 20px;line-height: 30px;}
+.mydetails ul li .matter h2 a{display: inline-block;color: #000000;transition: all .4s;}
+.mydetails ul li .matter h2 a:hover{color: #f92246;}
+.mydetails ul li .matter p{color: #999999;width: 1050px;line-height: 26px;height: 52px;overflow: hidden;}
+
+.pages{margin: 32px auto;text-align: center;}
+.pages ol li{display: inline-block;width: 38px;height: 38px;line-height: 40px;border: 1px solid #cccccc;text-align: center;border-radius: 4px;transition: all .3s;margin: 0 2px;}
+.pages ol li a{display: block;color: #333333;}
+.pages ol li.active{border-color: #f92246;background: #f92246;}
+.pages ol li.active a{color: #ffffff;}
+.pages ol .num{width: 30px;}
+.pages ol .next{width: 58px;}
+.pages ol .previous{width: 58px;}
+.myarticle{text-align: center;}
+.myarticle h1{color: #000000;font-size: 20px;}
+.myarticle .state{margin: 20px auto 54px;height: 28px;line-height: 28px;}
+.myarticle .state span{color: #999999;display: inline-block;margin: 0 14px;}
+.myarticle .art{border-bottom: 1px dashed #e5e5e5;padding-bottom: 10px;}
+.myarticle .art p{color: #333333;text-indent: 2em;line-height: 20px;text-align: left;margin-bottom: 30px;}
+.myarticle .turn_page{margin: 24px auto 32px;}
+.myarticle .turn_page a{display: block;color: #333333;}
+.myarticle .turn_page a:hover em{color: #ff0000;}
+.myarticle .turn_page a:nth-child(1){float: left;}
+.myarticle .turn_page a:nth-child(2){float: right;}
