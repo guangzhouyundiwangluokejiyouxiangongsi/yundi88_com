@@ -126,7 +126,7 @@
                     <h3>公告栏</h3>
                     <ul>
                     <foreach item="vo" name="list">
-                        <li><a target="_blank" href="#">公告：{$vo.content}</a></li>
+                        <li><a target="_blank" href="{:U('/article/notice',array('id'=>$vo['id']))}">公告：{$vo.content}</a></li>
                     </foreach>
                     </ul>
                 </div>

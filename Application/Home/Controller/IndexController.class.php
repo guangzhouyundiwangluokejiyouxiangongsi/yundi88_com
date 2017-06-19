@@ -65,7 +65,7 @@ class IndexController extends BaseController {
 
             
             // 查询公告
-            $list = M('notice')->field('content')->order('addtime desc')->limit(8)->select();
+            $list = M('notice')->field('content,id')->order('addtime desc')->limit(8)->select();
             $this->assign('list', $list);
 
             // 查询轮播图
