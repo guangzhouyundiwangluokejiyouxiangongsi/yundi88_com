@@ -69,7 +69,7 @@ class IndexController extends BaseController {
             $this->assign('list', $list);
 
             // 查询轮播图
-            $carouselRes = M('carousel')->field('link,url')->order('addtime desc')->limit(3)->select();
+            $carouselRes = M('carousel')->field('link,url,bgcolor')->order('addtime desc')->limit(3)->select();
             $this->assign('carouselRes', $carouselRes);
 
 
