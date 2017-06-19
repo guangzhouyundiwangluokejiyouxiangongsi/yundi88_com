@@ -310,4 +310,33 @@ class ArticleController extends BaseController {
         $this->display();
     }
 
+    //公告栏
+    public function noticeList()
+    {   
+        $count      = M('notice')->count();// 查询满足要求的总记录数
+        $Page       = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $show       = $Page->show();// 分页显示输出
+        $noticeList = M('notice')->order('addtime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        foreach($noticeList as &$vv){
+            $vv['miaoshu'] = mb_substr(strip_tags(htmlspecialchars_decode($vv['text'])),0,250);
+        }
+        $this->assign('show',$show);
+        $this->assign('noticeList',$noticeList);
+        $this->display();
+    }
+
+    //公告页面
+    public function notice(){
+        $id = I('id',1);
+        $notice = M('notice')->where(array('id'=>$id))->find();
+        $where['id'] = array('lt',$id);
+        $where2['id'] = array('gt',$id);
+        $last = M('notice')->where($where)->order('addtime desc')->find();
+        $next = M('notice')->where($where2)->order('addtime')->find();
+        $this->assign('last',$last);
+        $this->assign('next',$next);
+        $this->assign('notice',$notice);
+        $this->display();
+    }
+
 }
