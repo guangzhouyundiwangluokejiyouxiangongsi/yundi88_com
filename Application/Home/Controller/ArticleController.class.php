@@ -67,25 +67,35 @@ class ArticleController extends BaseController {
                 $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
                 // dump($article_id);exit;
 
-            //上一篇
-            $where['article_id']=array('lt',$article['article_id']);
-            $where['cat_id'] = $article['cat_id'];
-            $p = M('article')->where($where)->find();
-            if(!$p){
-            $p['article_id'] = $article['article_id'];
-            $p['title'] = '没有了';
-            }
-            $this->assign('p',$p);
+            if ($article_id == 26){
+                $p['article_id'] = $article_id;
+                $p['title'] = '没有了';
+                $this->assign('p',$p);
+
+                $n['article_id'] = $article_id;
+                $n['title'] = '没有了';
+                $this->assign('n',$n);
+            }else{
+                //上一篇
+                $where['article_id']=array('lt',$article['article_id']);
+                $where['cat_id'] = $article['cat_id'];
+                $p = M('article')->where($where)->find();
+                if(!$p){
+                $p['article_id'] = $article['article_id'];
+                $p['title'] = '没有了';
+                }
+                $this->assign('p',$p);
 
 
-            //下一篇
-            $where['article_id']=array('gt',$article['article_id']);
-            $n = M('article')->where($where)->find();
-            if(!$n){
-            $n['article_id'] = $article['article_id'];
-            $n['title'] = '没有了';
+                //下一篇
+                $where['article_id']=array('gt',$article['article_id']);
+                $n = M('article')->where($where)->find();
+                if(!$n){
+                $n['article_id'] = $article['article_id'];
+                $n['title'] = '没有了';
+                }
+                $this->assign('n',$n);
             }
-            $this->assign('n',$n);
             $this->assign('location',$location);
             $this->assign('parentss',$parentss);
             $this->assign('parents',$parents['cat_name']);
@@ -99,11 +109,8 @@ class ArticleController extends BaseController {
         $article_id = I('article_id',1);
         $article = D('article')->where(array('article_id'=>$article_id))->find();
         if($article){
-            if ($article['cat_id'] == 32 || $article['cat_id'] == 33){
-                $data['link_num'] = $article['link_num']+1;
-                M('article')->where(array('article_id'=>$article_id))->save($data);
-            }
-            
+            $data['link_num'] = $article['link_num']+1;
+            M('article')->where(array('article_id'=>$article_id))->save($data);
             $parent = D('article_cat')->where("cat_id=".$article['cat_id'])->find();
             $map['cat_id'] = $parent['cat_id'];
             $map['is_open'] = 1;
@@ -120,25 +127,35 @@ class ArticleController extends BaseController {
                 $location .= '<a href="'.U('/Article/detail_news',array('article_id'=>$article_id)).'">正文</a>';
                 // dump($article_id);exit;
 
-            //上一篇
-            $where['article_id']=array('lt',$article['article_id']);
-            $where['cat_id'] = $article['cat_id'];
-            $p = M('article')->where($where)->find();
-            if(!$p){
-            $p['article_id'] = $article['article_id'];
-            $p['title'] = '没有了';
-            }
-            $this->assign('p',$p);
+            if ($article_id == 26){
+                $p['article_id'] = $article_id;
+                $p['title'] = '没有了';
+                $this->assign('p',$p);
+
+                $n['article_id'] = $article_id;
+                $n['title'] = '没有了';
+                $this->assign('n',$n);
+            }else{
+                //上一篇
+                $where['article_id']=array('lt',$article['article_id']);
+                $where['cat_id'] = $article['cat_id'];
+                $p = M('article')->where($where)->find();
+                if(!$p){
+                $p['article_id'] = $article['article_id'];
+                $p['title'] = '没有了';
+                }
+                $this->assign('p',$p);
 
 
-            //下一篇
-            $where['article_id']=array('gt',$article['article_id']);
-            $n = M('article')->where($where)->find();
-            if(!$n){
-            $n['article_id'] = $article['article_id'];
-            $n['title'] = '没有了';
+                //下一篇
+                $where['article_id']=array('gt',$article['article_id']);
+                $n = M('article')->where($where)->find();
+                if(!$n){
+                $n['article_id'] = $article['article_id'];
+                $n['title'] = '没有了';
+                }
+                $this->assign('n',$n);
             }
-            $this->assign('n',$n);
 
 
 
