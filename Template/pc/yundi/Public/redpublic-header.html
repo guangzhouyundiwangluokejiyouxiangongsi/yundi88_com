@@ -174,7 +174,7 @@
                 <tpshop sql="select * from `__PREFIX__goods_category` where is_show = 1 and `level` = 1" key="k" item='v'>
                   <li class="one">
                   <!-- <img src="{$v.image}"> -->
-                  <i style="background:url({$v.image}) no-repeat 2px 3px"></i>
+                  <i style="background:url({$v.image}) no-repeat 1px 3px"></i>
                   <a href="{:U('/Goods/goodsList',array('id'=>$v[id]))}" >{$v.name}</a>
                       <section>
                         <foreach name='goods_category_tree[$v[id]]["tmenu"]' item='l'>
@@ -194,10 +194,10 @@
             </li>
             <script type="text/javascript">
             		$('.dyj .one').hover(function(){
-            			$(this).find('i').css('background-position','-16px 2px')
+            			$(this).find('i').css('background-position','-18px 3px')
             		},function(){
             			// alert(1)
-            			$(this).find('i').css('background-position','2px 3px')
+            			$(this).find('i').css('background-position','1px 3px')
 
             		})
 
