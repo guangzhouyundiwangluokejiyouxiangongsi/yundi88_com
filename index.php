@@ -25,6 +25,7 @@ if(file_exists("./Install/") && !file_exists("./Install/install.lock")){
 	header('Location:/Install/index.php');
 	exit(); 
 }
+error_reporting(0); 
 // error_reporting(E_ALL ^ E_NOTICE);//显示除去 E_NOTICE 之外的所有错误信息
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
 define('APP_DEBUG',true);
@@ -40,8 +41,8 @@ define('PLUGIN_PATH','plugins/');
 //隐藏Home
 $arr    =    explode('/',$_SERVER['PHP_SELF']);
  if(count($arr) > 2 && $arr[2]!=='Admin' && $arr[2]!=='admin' && $arr[2]!=='mobile' && $arr[2]!=='Mobile' && $arr[2]!=='Seller' && $arr[2]!=='seller'){
-    
     define('BIND_MODULE','Home');
+    
  }
 
 

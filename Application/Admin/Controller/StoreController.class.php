@@ -249,21 +249,61 @@ class StoreController extends BaseController{
 	}
 	
 	/*删除店铺*/
-	public function store_del(){
+	// public function store_del(){
+	// 	$store_id = I('del_id');
+	// 	if($store_id > 1){
+	// 		$store = M('store')->where("store_id=$store_id")->find();
+	// 		if(M('goods')->where("store_id=$store_id")->count()>0){
+	// 			respose('该店铺有发布商品，不得删除');
+	// 		}else{
+	// 			M('store')->where("store_id=$store_id")->delete();
+	// 			M('seller')->where("store_id=$store_id")->delete();
+	// 			adminLog("删除店铺".$store['store_name']);
+	// 			respose(1);
+	// 		}
+	// 	}else{
+	// 		respose('基础自营店，不得删除');
+	// 	}
+	// }
+
+
+
+
+	public function store_del()
+	{
 		$store_id = I('del_id');
-		if($store_id > 1){
-			$store = M('store')->where("store_id=$store_id")->find();
-			if(M('goods')->where("store_id=$store_id")->count()>0){
-				respose('该店铺有发布商品，不得删除');
-			}else{
-				M('store')->where("store_id=$store_id")->delete();
-				M('seller')->where("store_id=$store_id")->delete();
-				adminLog("删除店铺".$store['store_name']);
-				respose(1);
-			}
-		}else{
-			respose('基础自营店，不得删除');
-		}
+		if(!$store_id)return;
+		//自定义导航表
+		M('store_navigation')->where(array('sn_store_id'=>$store_id))->delete();
+		//文章表
+		M('store_art')->where(array('store'=>$store_id))->delete();
+		//商品分类表
+		M('store_goods_class')->where(array('store_id'=>$store_id))->delete();
+		//商品表
+		M('goods')->where(array('store_id'=>$store_id))->delete();
+
+		//认证数据
+		$user_id = M('store')->where(array('store_id'=>$store_id))->getField('user_id');
+		M('store_apply')->where(array('user_id'=>$user_id))->delete();
+		//store
+		M('store')->where(array('store_id'=>$store_id))->delete();
+		//store_mod 自定义模块
+		M('store_mod')->where(array('store_id'=>$store_id))->delete();
+		//相册
+		$photoid = M('photo')->field("group_concat(id) as photoid")->where(array('store_id'=>$store_id))->select()[0]['photoid'];
+		
+		M('photoimg')->where('photoid in('.$photoid.')')->delete();
+		M('photo')->where(array('store_id'=>$store_id))->delete();
+
+		//user
+		M('users')->where(array('user_id'=>$user_id))->delete();
+
+		//商户表
+		M('seller')->where(array('user_id'=>$user_id))->delete();
+
+		//yd_store_extend
+		M('store_extend')->where(array('store_id'=>$store_id))->delete();
+		respose(1);
 	}
 	
 	//店铺信息

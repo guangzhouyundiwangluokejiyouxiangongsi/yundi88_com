@@ -368,7 +368,7 @@ class AdminController extends BaseController {
 	 */
 	public function ClearGoodsThumb(){
 		$goods_id = I('goods_id');
-		delFile("./Public/upload/goods/thumb/$goods_id"); // 删除缩略图
+		// delFile("./Public/upload/goods/thumb/$goods_id"); // 删除缩略图
 		$json_arr = array('status'=>1,'msg'=>'清除成功,请清除对应的静态页面','result'=>'');
 		$json_str = json_encode($json_arr);
 		exit($json_str);

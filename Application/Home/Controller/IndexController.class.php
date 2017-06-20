@@ -65,11 +65,11 @@ class IndexController extends BaseController {
 
             
             // 查询公告
-            $list = M('notice')->field('content,id')->order('addtime desc')->limit(8)->select();
+            $list = M('notice')->field('content')->order('addtime desc')->limit(10)->select();
             $this->assign('list', $list);
 
             // 查询轮播图
-            $carouselRes = M('carousel')->field('link,url')->order('addtime desc')->limit(3)->select();
+            $carouselRes = M('carousel')->field('link,url,bgcolor')->order('addtime desc')->limit(3)->select();
             $this->assign('carouselRes', $carouselRes);
 
 
@@ -82,11 +82,14 @@ class IndexController extends BaseController {
             // $map['_complex'] = $where;
             // $map['level']  = array('eq',3);
 
-            $userid1 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>1))->select()[0]['userid'];
-            $storelogo1 = M('store')->where("user_id in(".$userid1.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            // $userid1 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>1))->select()[0]['userid'];
+            // $storelogo1 = M('store')->where("user_id in(".$userid1.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            $storelogo1 = M('store')->where("store_id in(772,769,768,760,748,747,746,736,371,326,18,21)")->limit(12)->getField('store_id,store_logo',true);
 
-            $userid2 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>63))->select()[0]['userid'];
-            $storelogo2 = M('store')->where("user_id in(".$userid2.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            // $userid2 = M('store_apply')->field("group_concat(user_id) as userid")->where(array('sc_id'=>63))->select()[0]['userid'];
+            // $storelogo2 = M('store')->where("user_id in(".$userid2.") and store_recommend = 1")->limit(12)->getField('store_id,store_logo',true);
+            $storelogo2 = M('store')->where("store_id in(28,288,297,310,311,59,61,63,85,93,120)")->limit(12)->getField('store_id,store_logo',true);
+
             $store_logo[1] = $storelogo1;
             $store_logo[2] = $storelogo2;
             $this->assign('store_logo', $store_logo);
@@ -211,8 +214,8 @@ class IndexController extends BaseController {
             }
 
             $file = $this->fetch();
-            $this->show($file);
             file_put_contents(PATH.'/index.html',$file);
+            $this->show($file);
 
 
 

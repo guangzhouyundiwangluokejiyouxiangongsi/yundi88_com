@@ -7,8 +7,8 @@
                     <p>云狄网已成功帮助10万企业免费推广受益！</p>
                     <h4>赶紧入驻平台吧！！</h4>
                     <div class="commerce_btn">
-                        <a class="commerce_login" href="{:U('User/login')}">登录</a>
-                        <a class="commerce_register" href="{:U('User/reg')}">免费注册</a>
+                        <a class="commerce_login" target= _blank href="{:U('User/login')}">登录</a>
+                        <a class="commerce_register" target= _blank href="{:U('User/reg')}">免费注册</a>
                     </div>
                 </div>
 <php>}else{</php>
@@ -17,16 +17,16 @@
                     <div class="user_img">
                         <img src="{$store['store_logo']}" style="width:60px;">
                     </div>
-                    <p>你好！{$store['store_name']}</p>
+                    <p><!-- 你好！ -->{$store['store_name']}</p>
                     <div class="commerce_btn">
                     <php>if($store['apply_state']){</php>
-                        <a class="commerce_y" href="{:U('/Index/certification',array('store_id'=>$store['store_id']))}"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/renzheng3.png">已认证</a>
+                        <a class="commerce_y" target= _blank href="{:U('/Index/certification',array('store_id'=>$store['store_id']))}"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/renzheng3.png">已认证</a>
                     <php>}else{</php>
                         <a class='commerce_n' href="{:U('/Index/certification',array('store_id'=>$store['store_id']))}"><img style="padding-right: 8px;margin-top: 5px;" src="/Public/renzheng/renzheng2.png">未认证</a>
 
                     <php>}</php>
                     <php>if($store['commerce_state']){</php>
-                        <a class="commerce_y" href="http://association.yundi88.com/Home/newsmember/store_id/{$store['store_id']}.html"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/yunshanghui.png">已加入</a>
+                        <a class="commerce_y" target= _blank href="http://association.yundi88.com/Home/newsmember/store_id/{$store['store_id']}.html"><img style="padding-right: 8px;margin-top: 6px;" src="/Public/renzheng/yunshanghui.png">已加入</a>
                     <php>}else{</php>
                         <a class="commerce_n" href="http://association.yundi88.com/Home/newsmember/store_id/{$store['store_id']}.html"><img style="padding-right: 8px;margin-top: 5px;" src="/Public/renzheng/yunshanghui2.png">未加入</a>
 

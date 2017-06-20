@@ -367,7 +367,7 @@ class GoodsController extends BaseController {
 
 
         
-        $key = md5($_SERVER['REQUEST_URI'].$_POST['start_price'].'_'.$_POST['end_price']);
+        $key = md5($_SERVER['REQUEST_URI']);
         $html = S($key);
         if(!empty($html))
         {
