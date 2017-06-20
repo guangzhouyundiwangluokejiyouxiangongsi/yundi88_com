@@ -55,7 +55,7 @@
             }
 
             $id = I('get.id');
-            $res = M('notice')->field('id,content')->where(array('id'=>$id))->find();
+            $res = M('notice')->field('id,content,text')->where(array('id'=>$id))->find();
             $this->assign('id', $id);
             $this->assign('res', $res);
             $this->initEditor();

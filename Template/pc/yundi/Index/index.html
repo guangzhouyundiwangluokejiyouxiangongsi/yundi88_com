@@ -85,7 +85,7 @@
                                 <h3>公告栏</h3>
                                 <ul>
                                 <foreach item="vo" name="list">
-                                    <li><a target="_blank" href="#">公告：{:getsubstr($vo[content],0,16)}</a></li>
+                                    <li><a target="_blank" href="{:U('/Article/notice',array('id'=>$vo['id']))}">公告：{:getsubstr($vo[content],0,16)}</a></li>
                                 </foreach>
                                 </ul>
                             </div>
