@@ -1,0 +1,250 @@
+  <include file="Public/min-header"/>
+<link href="__PUBLIC__/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<style>
+    .panel-heading{
+        height: 36px;
+        margin: 0;
+        padding: 0;
+    }
+    #home-sell{
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 36px;
+        width: 110px;
+        text-align: center;
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 16px;
+        color: #ffffff;
+        background: #367fa9;
+    }
+
+    #home-buy{
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 36px;
+        width: 110px;
+        text-align: center;
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 16px;
+        color: inherit;
+        background: transparent;
+    }
+    .form-group{
+        float: left;
+    }
+</style>
+<form action="" method="post" >
+    <div class="wrapper">
+        <!-- Content Header (Page header) -->
+        <include file="Public/breadcrumb"/>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="" id="home-buy"><i class="fa fa-list"></i>修改采购单</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="navbar navbar-default">
+                            <div style="margin: 2px 0;" class="form-group" style="float: left;">
+                                <label class="control-label" for="input-order-id">采购联系人</label>
+                                <div class="input-group">
+                                    <input type="text" name="tab2[person]" placeholder="采购联系人" class="input-sm" value="{$data1.person}" style="width:100px;" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div style="margin: 2px 0;" class="form-group">
+                                <label class="control-label" for="input-order-id">联系电话</label>
+                                <div class="input-group">
+                                    <input type="text" name="tab2[phone]" placeholder="联系电话" class="input-sm" value="{$data1.phone}" style="width:100px;" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div style="margin: 2px 0;" class="form-group">
+                                <label class="control-label" for="input-order-id">QQ</label>
+                                <div class="input-group">
+                                    <input type="text" name="tab2[qq]" placeholder="QQ" class="input-sm" value="{$data1.qq}" style="width:100px;" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div style="margin: 2px 0;" class="form-group">
+                                <label class="control-label" for="input-order-id">邮箱</label>
+                                <div class="input-group">
+                                    <input type="text" name="tab2[email]" placeholder="邮箱" class="input-sm" value="{$data1.email}" style="width:100px;" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div style="margin: 2px 0;" class="form-group">
+                                <label class="control-label" for="input-date-added">采购日期</label>
+                                <div class="input-group">
+                                    <input type="date" name="tab2[addtime]" placeholder="下单日期" value="{$data1.addtime}" class="input-sm" autocomplete="off" />
+                                 </div>
+                            </div>
+                            <div style="margin: 2px 0;" class="form-group">
+                                <label class="control-label" for="input-date-added">供货商</label>
+                                <div class="input-group">
+                                    <input type="text" name="tab2[supplier]" placeholder="供货商" value="{$data1.supplier}" class="input-sm" autocomplete="off" />
+                                 </div>
+                            </div>
+                            <!-- <button style="margin: 2px 0;" type="submit" class="btn btn-default pull-right"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button> -->
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" style="font-size:12px;">
+                                <thead>
+                                    <tr>
+                                        <!-- <td class="text-center">序号</td> -->
+                                        <td class="text-center">物品编号</td>
+                                        <td class="text-center">物品名称</td>
+                                        <td class="text-center">规格型号</td>
+                                        <td class="text-center">数量</td>
+                                        <td class="text-center">单位</td>
+                                        <td class="text-center">单价</td>
+                                        <td class="text-center">金额</td>
+                                        <td class="text-center">备注</td>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tbody">
+                                    <foreach name="data2" item="vo" >
+                                        <tr>
+                                            <td><input name='tab1[gid][]' type="text" value="{$vo.gid}"  autocomplete="off" /></td>
+                                            <td><input name='tab1[gname][]' type="text" value="{$vo.gname}"  autocomplete="off" /></td>
+                                            <td><input name='tab1[model][]' type="text" value="{$vo.model}"  autocomplete="off" /></td>
+                                            <td><input id="num0" name='tab1[num][]'  type="number" value="{$vo.num}"  autocomplete="off" onchange="total(0)" /></td>
+                                            <td><input name='tab1[unit][]' type="text" value="{$vo.unit}"  autocomplete="off" /></td>
+                                            <td>￥ <input id="price0" name='tab1[price][]' type="number" value="{$vo.price}"  autocomplete="off" onchange="total(0)" /></td>
+                                            <td>￥ <input id="money0" name='tab1[money][]' type="number" readonly value="{$vo.money}"  autocomplete="off" /></td>
+                                            <td><input name='tab1[remark][]' type="text" value="{$vo.remark}"  autocomplete="off" /></td>
+                                            <input type="hidden" name="tab1[id][]" value="{$vo.id}">
+                                        </tr>
+                                    </foreach>
+                                    <tr id="purpic_tr">
+                                        <td>采购单</td>
+                                        <foreach name="data2.0.purpic" item="v" key="key">
+                                            <td>
+                                                <input type="hidden" name="img[purpic][]"  value="{$v}">
+                                                    <img src="{$v}">
+                                                    <span class="dels">删除</span>
+                                            </td>
+                                        </foreach>
+                                        <td id="purpic">
+                                            <input type="button" class="button" onClick="GetUploadify(10,'purpic','seller','callback1')"  value="修改采购单" style="float:left;margin-left: 20px;margin-top: 30px;background:#f22e00;height:30px;line-height: 30px;width:80px;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;"/>
+                                        </td>
+                                    </tr>
+                                    <tr id="purcontract_tr">
+                                        <td>采购合同</td>
+                                        <foreach name="data2.0.purcontract" item="v">
+                                            <td>
+                                                <input type="hidden" name="img[purcontract][]" value="{$v}">
+                                                <img src="{$v}">
+                                                <span class="dels">删除</span>
+                                            </td>
+                                        </foreach>
+
+                                        <td id="purcontract">
+                                            <input type="button" class="button" onClick="GetUploadify(10,'purcontract','seller','callback2')"  value="修改采购合同" style="float:left;margin-left: 20px;margin-top: 30px;background:#f22e00;height:30px;line-height: 30px;width:80px;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;"/>
+                                        </td>
+                                    </tr>
+                                    <tr id="purelse_tr">
+                                        <td>附件</td>
+                                        <foreach name="data2.0.purelse" item="v">
+                                            <td>
+                                                <input type="hidden" name="img[purelse][]" value="{$v}">
+                                                <img src="{$v}">
+                                                <span class="dels">删除</span>
+                                            </td>
+                                        </foreach>
+
+                                        <td id="purelse">
+                                            <input type="button" class="button" onClick="GetUploadify(10,'purelse','seller','callback3')"  value="修改附件" style="float:left;margin-left: 20px;margin-top: 30px;background:#f22e00;height:30px;line-height: 30px;width:80px;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+
+                            </div>
+                            <tr>
+                                <td colspan="11" align="center">
+                                    <input type="hidden" name="id" value="{$id}">
+                                    <button id="submitBtn" type="submit">修改</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-6 text-left"></div>
+                            <div class="col-sm-6 text-right">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>        <!-- /.row -->
+    </div>        <!-- /.row -->
+</form>
+
+<script>
+    // 计算金额
+    function total(i) {
+
+       var total = parseInt($('#num'+i).val()) * parseInt($('#price'+i).val());
+       $('#money'+i).val(parseInt(total));
+    }
+
+    function callback1(img_str){
+
+        var img = '';
+        jQuery.each(img_str,function(key,val){
+             img += "<td><input type='hidden' name='img[purpic][]' value='"+val+"' /><img src='"+val+"'  /><span class='dels'>删除</span></td>";
+        })
+        var html = $('#purpic').html();
+        $('#purpic').remove();
+        var html2 = "<td id='purpic'>"+html+"</td>";
+        $('#purpic_tr').append(img+html2);
+    }
+
+    function callback2(img_str){
+
+        var img = '';
+        jQuery.each(img_str,function(key,val){
+             img += "<td><input type='hidden' name='img[purcontract][]' value='"+val+"' /><img src='"+val+"'  /><span class='dels'>删除</span></td>";
+        })
+        var html = $('#purcontract').html();
+        $('#purcontract').remove();
+        var html2 = "<td id='purcontract'>"+html+"</td>";
+        $('#purcontract_tr').append(img+html2);
+    }
+
+    function callback3(img_str){
+
+        var img = '';
+        jQuery.each(img_str,function(key,val){
+             img += "<td><input type='hidden' name='img[purelse][]' value='"+val+"' /><img src='"+val+"'  /><span class='dels'>删除</span></td>";
+        })
+        var html = $('#purelse').html();
+        $('#purelse').remove();
+        var html2 = "<td id='purelse'>"+html+"</td>";
+        $('#purelse_tr').append(img+html2);
+    }
+
+
+    $(document).on('click', '.dels', function () {
+        $(this).parent().remove();
+    });
+
+    // 点击追加一行表单
+    $('#presales_btn').click(function () {
+
+        var i = $('#tbody tr').length + 1;
+        // 定义一行表单
+        var str = "<tr><td><input name='tab1[gid][]' type='text' /></td><td><input name='tab1[gname][]' type='text' /></td><td><input name='tab1[model][]' type='text' /></td><td><input name='tab1[num][]' onchange='total("+i+")' id='num"+i+"' type='number' /></td><td><input name='tab1[unit][]' type='text' /></td><td>￥<input name='tab1[price][]' id='price"+i+"' type='number' onchange='total("+i+")'/></td><td>￥<input name='tab1[money][]' id='money"+i+"' type='number' readonly /></td><td><input name='tab1[remark][]' type='text' /></td><td><button class='del' type='button'>删除</button></td></tr>";
+        $('#tbody').append(str);
+    });
+
+    // 点击删除该行表单
+    $(document).on('click', '.del', function () {
+        $(this).parent().parent().remove();
+    });
+
+</script>
+</body>
+</html>

@@ -123,7 +123,7 @@ function getMenuList() {
 			array('name' => '地址管理','act' => 'address_list','op'=>'Userinfo'),
 			array('name' => '安全中心','act' => 'safety_settings','op'=>'Userinfo'),
 			array('name' => '我的订单','act' => 'order_list','op'=>'Userinfo'),
-			)), 
+			)),
 		'storee' => array('name' => '网站模板', 'icon' => 'fa-gift','child' => array(
 			array('name' => '手机模板', 'act' => 'store_mtpl', 'op' => 'Store'),
 			array('name' => '官网模板', 'act' => 'store_tpl?t=pc&tpl=fuzhuang&layer=1', 'op' => 'Store'),
@@ -140,7 +140,7 @@ function getMenuList() {
 			// array('name' => '导航分类', 'act' => 'navigation_art_list', 'op' => 'Store'),
 			array('name' => '导航设置', 'act' => 'navigation_list', 'op' => 'Store'),
 			array('name' => '经营类目', 'act'=>'bind_class_list', 'op'=>'Store'),
-			// array('name' => '网站信息', 'act' => 'store_info', 'op' => 'Store'), 
+			// array('name' => '网站信息', 'act' => 'store_info', 'op' => 'Store'),
 			// array('name' => '网站关注', 'act' => 'store_collect', 'op' => 'Store'),
 			array('name' => '绑定域名', 'act' => 'domain_whois', 'op' => 'Domain'),
 		)),
@@ -160,7 +160,7 @@ function getMenuList() {
 			// array('name' => '品牌申请', 'act'=>'brandList', 'op'=>'Goods'),
 			//array('name' => '图片空间', 'act'=>'store_album', 'op'=>'album_cate'),
 		)),
-		
+
 		'photo' => array('name' => '相册管理', 'icon' => 'fa-camera', 'child' => array(
 			array('name' => '相册发布', 'act' => 'addphoto', 'op' => 'Photo'), ///index.php/Seller/goods/addEditGoods.html'
 			array('name' => '相册查看', 'act' => 'index', 'op' => 'Photo'),
@@ -190,7 +190,7 @@ function getMenuList() {
 			array('name' => '留言banner图', 'act' => 'store_mes', 'op' => 'Index'),
 			//array('name' => '聊天记录查询', 'act'=>'store_im', 'op'=>'store'),
 		)),
-		
+
 		// 'statistics' => array('name' => '统计报表', 'icon' => 'fa-signal', 'child' => array(
 		// 	array('name' => '官网概况', 'act' => 'index', 'op' => 'Report'),
 		// 	array('name' => '商品分析', 'act' => 'saleTop', 'op' => 'Report'),
@@ -212,6 +212,11 @@ function getMenuList() {
 		)),
 		'account' => array('name' => '企业云谱', 'icon' => 'fa-book', 'child' => array(
 			array('name' => '我的云谱', 'act' => 'baike', 'op' => 'Finance'),
+		)),
+		'account' => array('name' => '采购管理', 'icon' => 'fa-book', 'child' => array(
+			array('name' => '采购单', 'act' => 'purchase', 'op' => 'Purchase'),
+			array('name' => '查看采购单', 'act' => 'index', 'op' => 'Purchase'),
+			// array('name' => '查看别人的采购单', 'act' => 'show_else', 'op' => 'Purchase'),
 		)),
 		// http://www.tpshop.com/Admin/Distribut/remittance
 		// 'finance' => array('name' => '财务管理', 'icon' => 'fa-book', 'child' => array(
@@ -351,7 +356,7 @@ function permissions()
 function alipayconfig()
 {
 		$paymentPlugin = M('Plugin')->where("code='alipay' and  type = 'payment' ")->find(); // 找到支付插件的配置
-        $config_value = unserialize($paymentPlugin['config_value']); // 配置反序列化        
+        $config_value = unserialize($paymentPlugin['config_value']); // 配置反序列化
 	return array(
 
         'alipay_pay_method'=> $config_value['alipay_pay_method'], // 1 使用担保交易接口  2 使用即时到帐交易接口s
@@ -369,12 +374,12 @@ function alipayconfig()
         'cacert'        => getcwd().'\\cacert.pem', //ca证书路径地址，用于curl中ssl校验 //请保证cacert.pem文件在当前文件夹目录中
         'transport'     => 'http',//访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
        	'payment_type' => 1,
-		
+
 		// 产品类型，无需修改
 		'service' => "create_direct_pay_by_user",
 		// 防钓鱼时间戳  若要使用请调用类文件submit中的query_timestamp函数
 		'anti_phishing_key' => "",
-	
+
 		// 客户端的IP地址 非局域网的外网IP地址，如：221.0.0.1
 		'exter_invoke_ip' => "",
 
