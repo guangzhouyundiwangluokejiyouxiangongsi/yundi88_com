@@ -19,4 +19,5 @@ return array(
 	'TMPL_ACTION_ERROR' => 'Public:tpmsg',
 	//默认成功跳转对应的模板文件
 	'TMPL_ACTION_SUCCESS' => 'Public:tpmsg',
+	'ERROR_PAGE'=>'/index.php/Mobile/Index/index.html',  
 );
