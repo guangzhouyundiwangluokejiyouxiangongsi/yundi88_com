@@ -38,14 +38,14 @@
 		</div>
 		<div class="tgpages">
 			<if condition="$last">
-			<span class="pageup">上一篇：<a href="lists1.html?id={$last.article_id}#xiangxixingxi" target="_blank">{$last.title}</a></span>
+			<span class="pageup">上一篇：<a style="text-decoration: none;" href="lists1.html?id={$last.article_id}#xiangxixingxi" target="_blank">{$last.title}</a></span>
 			<else />
-			<span class="pageup">上一篇：<a href="javascript:;">没有了</a></span>
+			<span class="pageup">上一篇：<a style="text-decoration: none;" href="javascript:;">没有了</a></span>
 			</if>
 			<if condition="$next">
-			<span class="pagedump">下一篇：<a href="lists1.html?id={$next.article_id}#xiangxixingxi" target="_blank">{$next.title}</a></span>
+			<span class="pagedump">下一篇：<a style="text-decoration: none;" href="lists1.html?id={$next.article_id}#xiangxixingxi" target="_blank">{$next.title}</a></span>
 			<else />
-			<span class="pagedump">下一篇：<a href="javascript:;" >没有了</a></span>
+			<span class="pagedump">下一篇：<a style="text-decoration: none;" href="javascript:;" >没有了</a></span>
 			</if>
 		</div>
 	<script type="text/javascript">
