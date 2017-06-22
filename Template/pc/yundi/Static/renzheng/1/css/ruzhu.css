@@ -126,9 +126,9 @@ ul,li { list-style:none}
 .footer .pr .prc{ display:inline-block;*display:inline;*zoom:1;overflow: hidden;height: 210px;float:left;}
 
 .footer .pr .Tphone{float:left;width:300px;border-left: 1px solid #ccc;height:150px;margin-left: 80px;padding-left: 20px;margin-top:20px;padding-top: 35px;}
-.footer .pr .Tphone h2{color:#1691BD;font-size:18px;font-weight: normal;line-height: 30px;}
+.footer .pr .Tphone h2{color:#f92246;font-size:18px;font-weight: normal;line-height: 30px;}
 .footer .pr .Tphone p{line-height: 30px;}						
-.footer .pr .Tphone a{display:inline-block;width:150px;height:30px;border-radius:5px;line-height: 30px;border:1px solid #1691BD;color:#1691BD;margin-top: 10px;}
+.footer .pr .Tphone a{display:inline-block;width:150px;height:30px;border-radius:5px;line-height: 30px;border:1px solid #f92246;color:#f92246;margin-top: 10px;}
 .footer .pr .Tphone a:hover{color:#fff;background:#1691BD;}
 
 .footer dl{ width: 150px; height:210px; float:left;}
