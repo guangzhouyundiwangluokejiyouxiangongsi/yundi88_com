@@ -8,7 +8,7 @@
     {
         public function findPic()
         {
-            $list = $this->field('link')->where(array('status'=>'1'))->find();
+            $list = $this->field('id,link')->where(array('status'=>'1'))->find();
             return $list;
         }
 

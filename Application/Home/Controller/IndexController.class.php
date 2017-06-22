@@ -65,9 +65,9 @@ class IndexController extends BaseController {
 
             
             // 查询公告
-            $list = M('notice')->field('content,id')->order('addtime desc')->limit(10)->select();
+            // $list = M('notice')->field('content,id')->order('addtime desc')->limit(10)->select();
+            $list = M('store')->field('store_id,store_name')->order('store_time desc')->select();
             $this->assign('list', $list);
-
             // 查询轮播图
             $carouselRes = M('carousel')->field('link,url,bgcolor')->order('addtime desc')->limit(3)->select();
             $this->assign('carouselRes', $carouselRes);

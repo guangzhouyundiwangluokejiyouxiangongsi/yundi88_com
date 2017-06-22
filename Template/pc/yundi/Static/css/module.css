@@ -887,7 +887,7 @@
 
 
 /**
- * 描    述：个人中心左边栏
+ * 描    述：会员中心左边栏
  */
 .zone-left {
 	float: left;
@@ -3793,7 +3793,7 @@ input,textarea,select {
 	height: 78px;
 }
 
-/* 个人中心左边栏广告 */
+/* 会员中心左边栏广告 */
 .a4 {
 	margin: 10px 0;
 	width: 210px;
@@ -3804,7 +3804,7 @@ input,textarea,select {
 	height: 200px;
 }
 
-/* 个人中心右边广告 */
+/* 会员中心右边广告 */
 .a5 {
 	margin: 50px auto 0;
 	width: 728px;
