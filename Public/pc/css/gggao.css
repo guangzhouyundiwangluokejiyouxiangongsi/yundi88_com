@@ -5,7 +5,7 @@ ul,ol li{list-style:none;}
 /*广告页开始*/
 .gaugngaoheader{width:1200px;margin:20px auto;}
 .gaugngaoheader img{display: inline-block;float:left;}
-.gaugngaoheader	.ggtitle{display: inline-block;height:40px;margin-top: 10px;border-left: 1px solid #ccc;line-height: 40px;padding-left: 20px;margin-left:20px;color:#21acd4;font-size:24px;}
+.gaugngaoheader	.ggtitle{display: inline-block;height:40px;margin-top: 10px;border-left: 1px solid #ccc;line-height: 40px;padding-left: 20px;margin-left:20px;color:#f92246;font-size:24px;}
 
 .guanggao{background:url(../images/ggbenner.png)no-repeat center center;width:100%;height:520px;}
 /*广告合作频道*/
