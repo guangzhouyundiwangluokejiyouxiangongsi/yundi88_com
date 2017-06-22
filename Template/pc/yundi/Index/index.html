@@ -1077,7 +1077,7 @@ is_hot('{$k + 1}');
                           <foreach name="goodslist[ $k + 1]" item="vv">
                             <div class="swiper-slide swiper-no-swiping">
                                 <a target="_blank" href="{:U('/Goods/goodsInfo',array('id'=>$vv['goods_id']))}">
-                                    <img src="{:goods_thum_images($vv['goods_id'],111,82)}">
+                                    <img src="{:goods_thum_images_index($vv['goods_id'],111,82)}">
                                     <p>￥{$vv['shop_price']}</p>
                                 </a>
                             </div>
