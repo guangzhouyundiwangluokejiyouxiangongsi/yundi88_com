@@ -13,7 +13,7 @@
 		    <h2>当前导航</h2>
 			<form id="img_form" action="{:U('Pic/upImg')}" method="post" enctype="multipart/form-data">
 				<img src="__PUBLIC__/Pic/{$list.link}" alt="" width="600" id="pic">
-				<input id="upload" type="file" name="path" value="{$list.link}" />
+				<input id="upload" type="file" name="path" value="{$list.link}" /><br />
 			</form>
 			<hr>
 			<h2>以往导航</h2>
@@ -66,6 +66,7 @@
 					'json'
 				);
 			});
+
 	    </script>
 	</body>
 </html>
