@@ -1,17 +1,8 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
- * 使用；不允许对程序代码以任何形式任何目的的再发布。
- * ============================================================================
- * $Author: IT宇宙人 $
- * $Id: index.php   2015-08-10  IT宇宙人 $
-*/ 
-// ini_set('session.cookie_domain', ".yundi88.com");
+
+
+
+ini_set('session.cookie_domain', ".yundi88.com");
 // 应用入口文件
 // 应用入口文件
 if (extension_loaded('zlib')){
@@ -28,7 +19,7 @@ if(file_exists("./Install/") && !file_exists("./Install/install.lock")){
 error_reporting(0); 
 // error_reporting(E_ALL ^ E_NOTICE);//显示除去 E_NOTICE 之外的所有错误信息
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
-define('APP_DEBUG',true);
+define('APP_DEBUG',false);
 // 定义应用目录
 define('APP_PATH','./Application/');
 //  定义插件目录
