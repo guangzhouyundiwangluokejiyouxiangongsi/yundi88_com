@@ -278,7 +278,7 @@ class UserController extends BaseController {
                 $this->error("店铺名称已存在");
             }
             if(!preg_match('/^[a-zA-Z][a-zA-Z0-9_]{5,16}/', $seller_name)){
-                $this->error("账号不合法！");
+                $this->error("账号不合法！5-16数字字母下划线，字母开头！");
             }
             if(M('seller')->where("seller_name='$seller_name'")->count()>0){
                 $this->error("账号已被注册");

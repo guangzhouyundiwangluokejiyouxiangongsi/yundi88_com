@@ -9,6 +9,17 @@ class PurchaseController extends BaseController {
 	public function purchase()
 	{
         if (IS_POST) {
+            $Purchase = D("Purchase"); // 实例化Purchase对象
+            if (!$Purchase->create()){
+                // 如果创建失败 表示验证没有通过 输出错误提示信息
+            exit($Purchase->getError());
+            }
+
+            // $Purchase = D('Purchase');
+            // if (!$Purchase->create()) {
+            //     exit($Purchase->getError());
+            //     exit;
+            // }
             $data2['tab2'] = $_POST['tab2'];
             $data2['tab2']['store_id'] = session('store_id');
             $data2['tab2']['addtime'] = time();
@@ -77,6 +88,8 @@ class PurchaseController extends BaseController {
     		$this->display();
         }
 	}
+
+
 
     public function getData()
     {
@@ -236,7 +249,7 @@ class PurchaseController extends BaseController {
         // dump($id);
         $detailRes = M('purchase_detail')->field('id,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
         // dump(M()->getLastSQL());
-        // dump($detailRes);exit;   
+        // dump($detailRes);exit;
         for ($i=0; $i < count($detailRes); $i++) {
             $detailRes[$i]['purpic'] = explode(',', $detailRes[$i]['purpic']);
             $detailRes[$i]['purcontract'] = explode(',', $detailRes[$i]['purcontract']);
