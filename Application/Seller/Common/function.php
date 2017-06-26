@@ -213,6 +213,7 @@ function getMenuList() {
 		'account' => array('name' => '企业云谱', 'icon' => 'fa-book', 'child' => array(
 			array('name' => '我的云谱', 'act' => 'baike', 'op' => 'Finance'),
 		)),
+
 		'account' => array('name' => '采购管理', 'icon' => 'fa-book', 'child' => array(
 			array('name' => '发布我的需求', 'act' => 'purchase', 'op' => 'Purchase'),
 			array('name' => '我的需求管理', 'act' => 'index', 'op' => 'Purchase'),
