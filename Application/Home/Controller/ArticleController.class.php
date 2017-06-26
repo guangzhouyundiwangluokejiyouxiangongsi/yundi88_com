@@ -1,13 +1,13 @@
 <?php
- 
+
 namespace Home\Controller;
 use Home\Logic\ArticleLogic;
 use Think\Verify;
 
 
 class ArticleController extends BaseController {
-    
-    public function index(){       
+
+    public function index(){
         $article_id = I('article_id',38);
     	$article = D('article')->where("article_id=$article_id")->find();
     	$this->assign('article',$article);
@@ -15,7 +15,7 @@ class ArticleController extends BaseController {
     }
 
     //商会加入多少商户
-   
+
     public function promote()
     {
 
@@ -34,15 +34,15 @@ class ArticleController extends BaseController {
             
         }
     }
- 
+
     /**
      * 文章内列表页
      */
     public function articleList(){
         $article_cat = M('ArticleCat')->where("parent_id  = 0")->select();
-        $this->assign('article_cat',$article_cat);        
+        $this->assign('article_cat',$article_cat);
         $this->display();
-    }    
+    }
     /**
      * 文章内容页
      */
@@ -103,7 +103,7 @@ class ArticleController extends BaseController {
     		$this->assign('article',$article);
     	}
         $this->display('detail_news');
-    } 
+    }
 
     public function detail_news(){
         $article_id = I('article_id',1);
@@ -166,7 +166,7 @@ class ArticleController extends BaseController {
             $this->assign('article',$article);
         }
         $this->display();
-    } 
+    }
 
     public function details()
     {
@@ -197,11 +197,11 @@ class ArticleController extends BaseController {
         sort($this->location);
         return $this->location;
     }
-    
+
 
    // 用户体验
     public function experience()
-    {   
+    {
         if ($_POST) {
             $data = I('post.');
             $data['addtime'] = time();
@@ -236,7 +236,7 @@ class ArticleController extends BaseController {
 
     }
 
-     
+
     public function yzm()
     {
         $Verify = new \Think\Verify();
@@ -247,7 +247,7 @@ class ArticleController extends BaseController {
     }
 
     public function yun_shop()
-    {   
+    {
         header('location:http://association.yundi88.com');
     }
 
@@ -312,7 +312,7 @@ class ArticleController extends BaseController {
 
     //公告栏
     public function noticeList()
-    {   
+    {
         $count      = M('notice')->count();// 查询满足要求的总记录数
         $Page       = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
         $show       = $Page->show();// 分页显示输出

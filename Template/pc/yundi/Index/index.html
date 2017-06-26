@@ -85,8 +85,12 @@
                             <div class="commerce_bulletin" id="demo" style="overflow:hidden;"> 
                                 <div id="demo1">
                                     <ul class="ul2">
-                                    <foreach item="vo" name="list">
-                                        <li><a target="_blank" href="{:U('/Store/index',array('store_id'=>$vo['store_id']))}">恭喜{$vo['store_name']}入驻云狄网</a></li>
+                                    <foreach item="vo" name="list" key="k">
+                                    <php>if($k % 2 == 0){</php>
+                                        <li><a style="color:#f00;" target="_blank" href="{:U('/Store/index',array('store_id'=>$vo['store_id']))}">恭喜{$vo['store_name']}入驻云狄网</a></li>
+                                    <php>}else{</php>
+                                        <li><a style="color:#000;" target="_blank" href="{:U('/Store/index',array('store_id'=>$vo['store_id']))}">恭喜{$vo['store_name']}入驻云狄网</a></li>
+                                    <php>}</php>
                                     </foreach>
                                     </ul>
                                 </div>
@@ -108,24 +112,7 @@
                        var MyMar=setInterval(Marquee,speed)
                        demo.onmouseover=function() {clearInterval(MyMar)}
                        demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
-                       var colorList = ["#f44336","#e91e63","#9c27b0","#673ab7","#3f51b5","#2196f3","#03a9f4","#00bcd4","#009688","#4caf50","#ffc107","#ff9800","#ff5722","#795548","#9e9e9e","#607d8b"]; 
-                       var lineList = $('.ul2  li');
-                        for(var i=0;i<lineList.length;i++){ 
-                            var bgColor = getColorByRandom(colorList); 
-                            if (bgColor){
-                                $('.ul2 li a').eq(i).css('color',bgColor);
-                            }else{
-                                var colorList = ["#f44336","#e91e63","#9c27b0","#673ab7","#3f51b5","#2196f3","#03a9f4","#00bcd4","#009688","#4caf50","#ffc107","#ff9800","#ff5722","#795548","#9e9e9e","#607d8b"];
-                                var bgColor = getColorByRandom(colorList);
-                                $('.ul2 li a').eq(i).css('color',bgColor);
-                            }
-                        } 
-                        function getColorByRandom(colorList){ 
-                        var colorIndex = Math.floor(Math.random()*colorList.length); 
-                        var color = colorList[colorIndex]; 
-                        colorList.splice(colorIndex,1); 
-                        return color; 
-                        } 
+                      
                     })
                     </script>
 

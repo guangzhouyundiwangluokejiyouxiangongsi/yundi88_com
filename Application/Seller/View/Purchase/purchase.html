@@ -1,4 +1,4 @@
-  <include file="Public/min-header"/>
+<include file="Public/min-header"/>
 <link href="__PUBLIC__/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 <style>
     .panel-heading{
@@ -65,25 +65,25 @@
                         <div style="margin: 2px 0;" class="form-group">
                             <label class="control-label" for="input-order-id">QQ</label>
                             <div class="input-group">
-                                <input type="text" name="tab2[qq]" placeholder="QQ" class="input-sm" style="width:100px;" required autocomplete="off" />
+                                <input type="text" name="tab2[qq]" placeholder="QQ" class="input-sm" style="width:100px;" autocomplete="off" />
                             </div>
                         </div>
                         <div style="margin: 2px 0;" class="form-group">
                             <label class="control-label" for="input-order-id">邮箱</label>
                             <div class="input-group">
-                                <input type="email" name="tab2[email]" placeholder="邮箱" class="input-sm" style="width:100px;" required autocomplete="off" />
+                                <input type="email" name="tab2[email]" placeholder="邮箱" class="input-sm" style="width:100px;" autocomplete="off" />
                             </div>
                         </div>
                         <div style="margin: 2px 0;" class="form-group">
                             <label class="control-label" for="input-date-added">采购日期</label>
                             <div class="input-group">
-                                <input type="date" name="tab2[addtime]" placeholder="下单日期" class="input-sm" required autocomplete="off" />
+                                <input type="date" name="tab2[addtime]" placeholder="下单日期" class="input-sm" autocomplete="off" />
                              </div>
                         </div>
                         <div style="margin: 2px 0;" class="form-group">
                             <label class="control-label" for="input-date-added">供货商</label>
                             <div class="input-group">
-                                <input type="text" name="tab2[supplier]" placeholder="供货商" class="input-sm" required autocomplete="off" />
+                                <input type="text" name="tab2[supplier]" placeholder="供货商" class="input-sm" autocomplete="off" />
                              </div>
                         </div>
                         <!-- <button style="margin: 2px 0;" type="submit" class="btn btn-default pull-right"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button> -->
@@ -101,6 +101,7 @@
                                     <td class="text-center">单价</td>
                                     <td class="text-center">金额</td>
                                     <td class="text-center">备注</td>
+                                    <td class="text-center">商品分类</td>
                                     <td class="text-center">操作</td>
                                 </tr>
                             </thead>
@@ -108,14 +109,28 @@
                             <tbody id="tbody">
                                 <tr>
                                     <!-- <td ></td> -->
-                                    <td><input name='tab1[gid][]' type="text" required autocomplete="off" /></td>
-                                    <td><input name='tab1[gname][]' type="text" required autocomplete="off" /></td>
-                                    <td><input name='tab1[model][]' type="text" required autocomplete="off" /></td>
-                                    <td><input id="num0" name='tab1[num][]'  type="number" required autocomplete="off" onchange="total(0)" /></td>
-                                    <td><input name='tab1[unit][]' type="text" required autocomplete="off" /></td>
-                                    <td>￥ <input id="price0" name='tab1[price][]' type="number" required autocomplete="off" onchange="total(0)" /></td>
-                                    <td>￥ <input id="money0" name='tab1[money][]' type="number" readonly required autocomplete="off" /></td>
-                                    <td><input name='tab1[remark][]' type="text" required autocomplete="off" /></td>
+                                    <td><input name='tab1[gid][]' type="text" autocomplete="off" /></td>
+                                    <td><input name='tab1[gname][]' type="text" autocomplete="off" /></td>
+                                    <td><input name='tab1[model][]' type="text" autocomplete="off" /></td>
+                                    <td><input id="num0" name='tab1[num][]'  type="number" autocomplete="off" onchange="total(0)" /></td>
+                                    <td><input name='tab1[unit][]' type="text" autocomplete="off" /></td>
+                                    <td><input id="price0" name='tab1[price][]' type="number" autocomplete="off" onchange="total(0)" /></td>
+                                    <td><input id="money0" name='tab1[money][]' type="number" readonly autocomplete="off" /></td>
+                                    <td><input name='tab1[remark][]' type="text" autocomplete="off" /></td>
+                                    <td>
+                                        <select onchange="class1(this);" class="class1" data-level="2">
+                                            <option>请选择</option>
+                                            <foreach  name="class1" item="vo">
+                                                <option value="{$vo.id}">{$vo.name}</option>
+                                            </foreach>
+                                        </select>
+                                        <select onchange="class2(this);" class="class2" data-level="3">
+                                            <option>请选择</option>
+                                        </select>
+                                        <select class="class3" name="tab1[type][]">
+                                            <option>请选择</option>
+                                        </select>
+                                    </td>
                                     <td><button class='del' type='button'>删除</button></td>
                                 </tr>
                             </tbody>
@@ -171,6 +186,39 @@
 </div>
 </form>
 
+<!-- 三级联动 start -->
+<script type="text/javascript">
+function class1(obj){
+     var val1 = $(obj).parent().find('select').eq(0);
+     var val2 = $(obj).parent().find('select').eq(1);
+        getVal(val1, val2);
+}
+
+function class2(obj){
+    var val2 = $(obj).parent().find('select').eq(1);
+    var val3 = $(obj).parent().find('select').eq(2);
+        getVal(val2, val3);
+}
+
+function getVal(id1, id2) {
+    $(id2).html('');
+    var id = $(id1).val();
+    $.post(
+        '__CONTROLLER__/getData',
+        {'id':id, 'level':$(id1).attr('data-level')},
+        function (data) {
+            var str = '';
+            for (var i = 0; i < data.length; i++) {
+                str += "<option value='" + data[i]['id']+ "'>" + data[i]['name'] + "</option>";
+            }
+            $(id2).append(str);
+        },
+        'json'
+    );
+}
+</script>
+<!-- 三级联动 end -->
+
 <script>
     // 计算金额
     function total(i) {
@@ -223,9 +271,11 @@
 
         var i = $('#tbody tr').length + 1;
         // 定义一行表单
-        var str = "<tr><td><input name='tab1[gid][]' type='text' /></td><td><input name='tab1[gname][]' type='text' /></td><td><input name='tab1[model][]' type='text' /></td><td><input name='tab1[num][]' onchange='total("+i+")' id='num"+i+"' type='number' /></td><td><input name='tab1[unit][]' type='text' /></td><td>￥<input name='tab1[price][]' id='price"+i+"' type='number' onchange='total("+i+")'/></td><td>￥<input name='tab1[money][]' id='money"+i+"' type='number' readonly /></td><td><input name='tab1[remark][]' type='text' /></td><td><button class='del' type='button'>删除</button></td></tr>";
+        var str = "<tr><td><input name='tab1[gid][]' type='text' /></td><td><input name='tab1[gname][]' type='text' /></td><td><input name='tab1[model][]' type='text' /></td><td><input name='tab1[num][]' onchange='total("+i+")' id='num"+i+"' type='number' /></td><td><input name='tab1[unit][]' type='text' /></td><td><input name='tab1[price][]' id='price"+i+"' type='number' onchange='total("+i+")'/></td><td><input name='tab1[money][]' id='money"+i+"' type='number' readonly /></td><td><input name='tab1[remark][]' type='text' /></td><td><select onchange='class1(this);' class='class1' data-level='2'><option>请选择</option><foreach name='class1' item='vo'><option value='{$vo.id}'>{$vo.name}</option></foreach></select><select onchange='class2(this);' class='class2' data-level='3'><option>请选择</option></select><select class='class3' name='tab1[type][]'><option>请选择</option></select></td><td><button class='del' type='button'>删除</button></td></tr>";
         $('#tbody').append(str);
     });
+
+
 
     // 点击删除该行表单
     $(document).on('click', '.del', function () {
@@ -233,12 +283,12 @@
     });
 
     // 验证手机号
-    function checkPhone(){ 
+    function checkPhone(){
     var phone = document.getElementById('phone').value;
-    if(!(/^1[34578]\d{9}$/.test(phone))){ 
-        alert("手机号码有误，请重填");  
-        return false; 
-    } 
+    if(!(/^1[34578]\d{9}$/.test(phone))){
+        alert("手机号码有误，请重填");
+        return false;
+    }
 }
 
 </script>

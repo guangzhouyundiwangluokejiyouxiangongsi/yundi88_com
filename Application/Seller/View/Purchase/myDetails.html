@@ -1,5 +1,4 @@
 <include file="Public/min-header"/>
-
 <div class="wrapper">
     <include file="Public/breadcrumb"/>
     <section class="content">
@@ -24,11 +23,10 @@
                                <th class="sorting" tabindex="0">采购单</th>
                                <th class="sorting" tabindex="0">采购合同</th>
                                <th class="sorting" tabindex="0">其他附件</th>
-                               <th class="sorting" tabindex="0">操作</th>
                            </tr>
                          </thead>
                         <tbody>
-                          <foreach name="list" item="vo" >
+                          <foreach name="detailRes" item="vo" >
                             <tr role="row" align="center">
                              <td>{$vo.gid}</td>
                              <td>{$vo.gname}</td>
@@ -53,9 +51,6 @@
                                      <img src="{$v}">
                                  </foreach>
                              </td>
-                             <td>
-                              <a style="margin: 2px 0;" class="btn btn-danger" href="javascript:void(0)" data-url="__CONTROLLER__/dels" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
-                            </td>
                            </tr>
                           </foreach>
                            </tbody>
@@ -74,35 +69,5 @@
        </div>
    </section>
 </div>
-<script>
-function ajax_re_news(nid){
-    $.post("{:U('news/ajax_re_news')}",{'news_id':nid},function(res){
-        if (res){
-            alert('重新发布成功');
-            location.reload();
-        } else {
-            alert('24小时内只能重新发布5次');
-        }
-    })
-}
-function delfun(obj){
-    if(confirm('确认删除')){
-        $.ajax({
-            type : 'post',
-            url : $(obj).attr('data-url'),
-            data : {act:'dels',id:$(obj).attr('data-id')},
-            dataType : 'json',
-            success : function(data){
-                if(data){
-                    $(obj).parent().parent().remove();
-                }else{
-                    layer.alert('删除失败', {icon: 2});  //alert('删除失败');
-                }
-            }
-        })
-    }
-    return false;
-}
-</script>
 </body>
 </html>

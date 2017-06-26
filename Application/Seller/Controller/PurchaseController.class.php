@@ -11,6 +11,7 @@ class PurchaseController extends BaseController {
         if (IS_POST) {
             $data2['tab2'] = $_POST['tab2'];
             $data2['tab2']['store_id'] = session('store_id');
+            $data2['tab2']['addtime'] = time();
             $res2 = M('purchase')->add($data2['tab2']);
 
             //转换post提交过来的数据为想要的格式
@@ -41,6 +42,7 @@ class PurchaseController extends BaseController {
             }
             $m->startTrans();
             $res1 = $m->addAll($data);
+
             // dump($m->getLastSQL());exit;
             if (!$res1) {
                 $m->rollback();
@@ -51,13 +53,36 @@ class PurchaseController extends BaseController {
                 $m->rollback();
                 $this->error('添加失败');
             } else {
-                $m->commit();
+                // 推送
+                for ($k=0; $k < count($data); $k++) {
+                    $storeRes[] = M('store_bind_class')->field('store_id')->where(array('class_3'=>$data[$k]['type'], 'state'=>1))->select();
+                }
+
+                for ($l=0; $l < count($storeRes); $l++) {
+                    for ($m=0; $m < count($storeRes[$l]); $m++) {
+                        $no = $l+$m;
+                        $storeData[$no]['cid'] = $res2;
+                        $storeData[$no]['sid'] = $storeRes[$l][$m]['store_id'];
+                        $storeData[$no]['addtime'] = time();
+                        M('pur_status')->add($storeData[$no]);
+                    }
+                }
+
+                // $m->commit();
                 $this->success('添加成功');
             }
         } else {
+            $class1 = M('goods_category')->field('id, name')->where(array('level'=>1))->select();
+            $this->assign('class1', $class1);
     		$this->display();
         }
 	}
+
+    public function getData()
+    {
+        $class2 = M('goods_category')->field('id, name')->where(array('level'=>I('post.level'), 'parent_id'=>I('post.id')))->select();
+        $this->ajaxReturn($class2);
+    }
 
     public function _empty()
     {
@@ -90,8 +115,6 @@ class PurchaseController extends BaseController {
     {
 
         if (IS_POST) {
-
-
             $data2['tab2'] = $_POST['tab2'];
             $res2 = M('purchase')->where(array('id'=>I('post.id')))->save($data2['tab2']);
             // dump(M()->getLastSQL());
@@ -118,7 +141,7 @@ class PurchaseController extends BaseController {
             for ($j=0; $j < count($data); $j++) {
                 $id = $data[$j]['id'];
                 unset($data[$j]['id']);
-                $m = M('purchase_detail');
+                // $m = M('purchase_detail');
 
                 // 表单令牌验证
                 if ($m->autoCheckToken($_POST['__hash__'])) {
@@ -143,7 +166,7 @@ class PurchaseController extends BaseController {
                 $m->rollback();
                 $this->error('修改失败');
             } else {
-                $m->commit();
+                // $m->commit();
                 $this->success('修改成功');
             }
         } else {
@@ -190,5 +213,86 @@ class PurchaseController extends BaseController {
     public function showMyPurchase()
     {
         M('purchase')->where(array('store_id'=>session('store_id')))->select();
+    }
+
+    public function purMsg()
+    {
+        $purRes = M('pur_status')->field('cid')->where(array('sid'=>session('store_id'),'status'=>1))->select();
+        $purRes = array_unique($purRes);
+        for ($i=0; $i < count($purRes); $i++) {
+            $purRes2[] = M('purchase')->field('id,person,phone,addtime')->where(array('id'=>$purRes[$i]['cid']))->find();
+        }
+
+        for ($j=0; $j < count($purRes2); $j++) {
+            $purRes2[$j]['addtime'] = date('Y-m-d H:i:s', $purRes2[$j]['addtime']);
+        }
+        $this->assign('purRes', $purRes2);
+        $this->display();
+    }
+
+    public function purDetails()
+    {
+        $id = I('get.id');
+        // dump($id);
+        $detailRes = M('purchase_detail')->field('id,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
+        // dump(M()->getLastSQL());
+        // dump($detailRes);exit;   
+        for ($i=0; $i < count($detailRes); $i++) {
+            $detailRes[$i]['purpic'] = explode(',', $detailRes[$i]['purpic']);
+            $detailRes[$i]['purcontract'] = explode(',', $detailRes[$i]['purcontract']);
+            $detailRes[$i]['purelse'] = explode(',', $detailRes[$i]['purelse']);
+        }
+        $this->assign('detailRes', $detailRes);
+        $this->assign('pid', $id);
+        $this->display();
+    }
+
+    public function haveRead()
+    {
+        $id = I('post.id');
+        $data['status'] = 2;
+        $res = M('pur_status')->where(array('cid'=>$id))->save($data);
+        $this->ajaxReturn($res);
+    }
+
+    public function changeSta()
+    {
+        $id = I('post.id');
+        $status = I('post.status');
+        $data['status'] = $status;
+        $res = M('pur_status')->where(array('cid'=>$id))->save($data);
+        // dump(M()->getLastSQL());exit;
+        $this->ajaxReturn($res);
+    }
+
+    public function myPurchase()
+    {
+        $purRes = M('pur_status')->field('cid')->where(array('sid'=>session('store_id'),'status'=>3))->select();
+        $purRes = array_unique($purRes);
+        for ($i=0; $i < count($purRes); $i++) {
+            $purRes2[] = M('purchase')->field('id,person,phone,addtime')->where(array('id'=>$purRes[$i]['cid']))->find();
+        }
+        for ($j=0; $j < count($purRes2); $j++) {
+            $purRes2[$j]['addtime'] = date('Y-m-d H:i:s', $purRes2[$j]['addtime']);
+        }
+        $this->assign('purRes', $purRes2);
+        $this->display();
+    }
+
+    public function myDetails()
+    {
+        $id = I('get.id');
+        // dump($id);
+        $detailRes = M('purchase_detail')->field('id,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
+        // $detailRes = array_unique($detailRes);
+        // dump(M()->getLastSQL());
+        // dump($detailRes);exit;
+        for ($i=0; $i < count($detailRes); $i++) {
+            $detailRes[$i]['purpic'] = explode(',', $detailRes[$i]['purpic']);
+            $detailRes[$i]['purcontract'] = explode(',', $detailRes[$i]['purcontract']);
+            $detailRes[$i]['purelse'] = explode(',', $detailRes[$i]['purelse']);
+        }
+        $this->assign('detailRes', $detailRes);
+        $this->display();
     }
 }

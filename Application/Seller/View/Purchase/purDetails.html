@@ -1,0 +1,105 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+       <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                 <!-- /.box-header -->
+                 <div class="box-body">
+                    <div class="row">
+                    <div class="col-sm-12">
+                      <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                         <thead>
+                           <tr role="row">
+                               <th class="sorting" tabindex="0">物品编号</th>
+                               <th class="sorting" tabindex="0">物品名称</th>
+                               <th class="sorting" tabindex="0">规格型号</th>
+                               <th class="sorting" tabindex="0">数量</th>
+                               <th class="sorting" tabindex="0">单位</th>
+                               <th class="sorting" tabindex="0">单价</th>
+                               <th class="sorting" tabindex="0">金额</th>
+                               <th class="sorting" tabindex="0">备注</th>
+                           </tr>
+                         </thead>
+                        <tbody>
+                          <foreach name="detailRes" item="vo" >
+                            <tr role="row" align="center">
+                             <td>{$vo.gid}</td>
+                             <td>{$vo.gname}</td>
+                             <td>{$vo.model}</td>
+                             <td>{$vo.num}</td>
+                             <td>{$vo.unit}</td>
+                             <td>{$vo.price}</td>
+                             <td>{$vo.money}</td>
+                             <td>{$vo.remark}</td>
+                           </tr>
+                          </foreach>
+                           </tbody>
+
+                           <tr>
+                            <td>采购单</td>
+                            <td colspan="7">
+                                <foreach name="vo.purpic" item="v">
+                                    <img src="{$v}" width="100px">
+                                </foreach>
+                            </td>
+                           </tr>
+                           <tr>
+                            <td>采购合同</td>
+                            <td colspan="7">
+                                <foreach name="vo.purcontract" item="v">
+                                    <img src="{$v}" width="100px">
+                                </foreach>
+                            </td>
+                           </tr>
+                           <tr>
+                            <td>其他附件</td>
+                            <td colspan="7">
+                                <foreach name="vo.purelse" item="v">
+                                    <img src="{$v}">
+                                </foreach>
+                            </td>
+                           </tr>
+                           <tr>
+                             <td colspan="8" align="center" id="tabHead">
+                                <button data-id='{$pid}' data-status='3' type='button' class='btn btn-success changeSta' style="width: 10%; margin-right: 20px;">接受</button>
+                                <button data-id='{$pid}' data-status='4' type='button' class='btn btn-danger changeSta' style="width: 10%; margin-left: 20px;">拒绝</button>
+                             </td>
+                           </tr>
+                         <tfoot>
+                         </tfoot>
+                       </table>
+                   </div>
+              </div>
+              <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>
+              </div>
+              </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+       </div>
+   </section>
+</div>
+</body>
+<script type="text/javascript">
+    $('#tabHead').on('click', 'button', function () {
+            var id = $(this).attr('data-id');
+            var status = $(this).attr('data-status');
+            $.post(
+                '__CONTROLLER__/changeSta',
+                {'id':id, 'status':status},
+                function (data) {
+                    if (!data) {
+                        alert('操作失败，请重试');
+                    } else {
+                        $(window).attr('location','__CONTROLLER__/purMsg');
+                        // history.go(-1);
+                    }
+                },
+                'json'
+            );
+        });
+</script>
+</html>
