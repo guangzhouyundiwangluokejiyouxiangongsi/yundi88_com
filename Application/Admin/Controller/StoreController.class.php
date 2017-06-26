@@ -303,6 +303,10 @@ class StoreController extends BaseController{
 
 		//yd_store_extend
 		M('store_extend')->where(array('store_id'=>$store_id))->delete();
+
+		//经营类目
+		M('store_bind_class')->where(array('store_id'=>$store_id))->delete();
+
 		respose(1);
 	}
 	
@@ -395,9 +399,11 @@ class StoreController extends BaseController{
 			$bind_class[$i]['class_2_name'] = $goods_class[$bind_class[$i]['class_2']];
 			$bind_class[$i]['class_3_name'] = $goods_class[$bind_class[$i]['class_3']];
 			$store = M('store')->where("store_id=".$bind_class[$i]['store_id'])->find();
+			if(!$store){M('store_bind_class')->where(array('store_id'=>$bind_class[$i]['store_id']))->delete();}
 			$bind_class[$i]['store_name'] = $store['store_name'];
 			$bind_class[$i]['seller_name'] = $store['seller_name'];
 		}
+
 		$this->assign('bind_class',$bind_class);
 		$this->display();
 	}
