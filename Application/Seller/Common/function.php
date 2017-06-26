@@ -214,11 +214,11 @@ function getMenuList() {
 			array('name' => '我的云谱', 'act' => 'baike', 'op' => 'Finance'),
 		)),
 		'account' => array('name' => '采购管理', 'icon' => 'fa-book', 'child' => array(
-			array('name' => '采购单', 'act' => 'purchase', 'op' => 'Purchase'),
-			array('name' => '查看采购单', 'act' => 'index', 'op' => 'Purchase'),
+			array('name' => '发布我的需求', 'act' => 'purchase', 'op' => 'Purchase'),
+			array('name' => '我的需求管理', 'act' => 'index', 'op' => 'Purchase'),
 			// array('name' => '推送采购单', 'act' => 'push', 'op' => 'Purchase'),
-			array('name' => '采购单消息', 'act' => 'purMsg', 'op' => 'Purchase'),
-			array('name' => '查看别人的采购单', 'act' => 'myPurchase', 'op' => 'Purchase'),
+			array('name' => '采购需求通知', 'act' => 'purMsg', 'op' => 'Purchase'),
+			array('name' => '我已接单', 'act' => 'myPurchase', 'op' => 'Purchase'),
 		)),
 		// http://www.tpshop.com/Admin/Distribut/remittance
 		// 'finance' => array('name' => '财务管理', 'icon' => 'fa-book', 'child' => array(
