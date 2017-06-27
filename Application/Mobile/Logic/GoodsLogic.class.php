@@ -407,5 +407,5 @@ class GoodsLogic extends RelationModel
             // "select * from goods inner jion store on store.id = goods.id";
         return $goods_list;
     }
-    
+
 }
