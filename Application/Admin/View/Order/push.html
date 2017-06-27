@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <button id="push">推送</button>
+    </body>
+
+    <script src="__PUBLIC__/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $('#push').click(
+            function () {
+                $(this).attr('disabled', 'true');
+                // $.ajax({
+                //     type: "POST",
+                //     url: "",
+                //     data: '{}',
+                //     contentType: "application/json;charset=utf-8",
+                //     dataType: "json",
+                //     success: function (data) {
+                //     },
+                //     async: true
+                // });
+                $(this).html('推送中，请稍后');
+                $.post(
+                    '__CONTROLLER__/push',
+                    function (data) {
+                        $('$push').html('推送');
+                    },
+                    'json'
+                );
+            }
+        );
+    </script>
+</html>

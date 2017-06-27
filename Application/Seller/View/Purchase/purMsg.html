@@ -1,0 +1,121 @@
+<include file="Public/min-header"/>
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <section class="content">
+       <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+             <!-- /.box-header -->
+             <div class="box-body">
+                <div class="row">
+                <div class="col-sm-12">
+                  <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                     <thead>
+                    <tr>
+                        <th>采购单号</th>
+                        <th>采购人</th>
+                        <th>联系电话</th>
+                        <th>下单时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <foreach name="purRes" item="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.person}</td>
+                            <td>{$vo.phone}</td>
+                            <td>{$vo.addtime}</td>
+                            <td>
+                                <a style="margin: 2px 0;" href="__CONTROLLER__/purDetails/id/{$vo['id']}" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="查看详情"><i class="fa fa-eye"></i></a>
+                                <!-- <button data-id="{$vo.id}" type="button" class="btn btn-primary showModal">查看详情</button> -->
+                            </td>
+                        </tr>
+                    </foreach>
+                </table>
+
+        <!-- 模态框 -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="width: 80%;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">采购单详情</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped" id="tabHead">
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $('.showModal').click(function () {
+            var id = $(this).attr('data-id');
+            $.post(
+                '__CONTROLLER__/haveRead',
+                {'id':id},
+                function (data) {
+                    if (!data) {
+                        alert('操作失败，请重试！');
+                    } else {
+                        $.post(
+                            '__CONTROLLER__/purMsg',
+                            {'id':id},
+                            function (data) {
+                                var str = '<tr><th>物品编号</th><th>物品名称</th><th>规格型号</th><th>数量</th><th>单位</th><th>单价</th><th>金额</th><th>备注</th><th>操作</th></tr>';
+                                for (var i = 0; i < data.length; i++) {
+                                    str += "<tr><td>" + data[i]['id'] + "</td><td>" + data[i]['gname'] + "</td><td>" + data[i]['model'] + "</td><td>" + data[i]['num'] + "</td><td>" + data[i]['unit'] + "</td><td>" + data[i]['price'] + "</td><td>" + data[i]['money'] + "</td><td>" + data[i]['remark'] + "</td><td><button data-id='" + data[i]['id'] + "' data-status='3' type='button' class='btn btn-success changeSta'>接受</button><button data-id='" + data[i]['id'] + "' data-status='4' type='button' class='btn btn-danger changeSta'>拒绝</button></td></tr>";
+                                }
+                                str += '<tr><td>采购单</td><td>';
+                                for (var i = 0; i < data[0]['purpic'].length; i++) {
+                                    str += "<img src='" + data[0]['purpic'][i] + "'>";
+                                }
+                                str += '</td></tr>';
+                                str += '<tr><td>采购合同</td><td>';
+                                for (var j = 0; j < data[0]['purcontract'].length; j++) {
+                                    str += "<img src='" + data[0]['purcontract'][j] + "'>";
+                                }
+                                str += '</td></tr>';
+                                str += '<tr><td>其他附件</td><td>';
+                                for (var k = 0; k < data[0]['purelse'].length; k++) {
+                                    str += "<img src='" + data[0]['purelse'][k] + "'>";
+                                }
+                                str += '</td></tr>';
+                                $('#tabHead').html('');
+                                $('#tabHead').html(str);
+                            },
+                            'json'
+                        );
+                        $('#myModal').modal('show');
+                    }
+                },
+                'json'
+            );
+        });
+
+        $('#tabHead').on('click', 'button', function () {
+            var id = $(this).attr('data-id');
+            var status = $(this).attr('data-status');
+            $.post(
+                '__CONTROLLER__/changeSta',
+                {'id':id, 'status':status},
+                function (data) {
+                    if (!data) {
+                        alert('操作失败，请重试');
+                    } else {
+                        history.go(0);
+                    }
+                },
+                'json'
+            );
+        });
+    </script>
+</html>

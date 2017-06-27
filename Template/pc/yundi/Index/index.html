@@ -20,9 +20,8 @@
 </head>
 <body class="ng-scope">
 
-<include file="Public/redheader"/>
+<include file="Public/header"/>
 <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
-<script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js"></script>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/yun_commerce.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/jquery.bxslider.css">
 <link rel="stylesheet" href="__PUBLIC__/css/swiper.min.css">
@@ -38,95 +37,117 @@
 .swiper-button-prev:hover{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_left_on.png) no-repeat !important;left: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 .swiper-button-next:hover{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_right_on.png) no-repeat !important;right: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 
-
-
+ /*.head{background: #F92246;}
+ #tab .tabList li.cur{background: #F92246;}
+ #tab .tabCon .but{background: #F92246 url(__PUBLIC__/images/but.jpg) center no-repeat;}
+ #tab .tabCon{border: 1px solid #F92246;}
+.pro{border-bottom: 2px solid #F92246;}
+.pro .nav .yi{background: url(__PUBLIC__/images/pro_icon_0.jpg) no-repeat 30px 15px #ffffff;}
+.pro .nav .yi .dyj .one{background: #ffffff;}
+.pro .nav .yi .dyj .one:hover>a{color: #F92246 ;}
+.pro .nav .yi .dyj .one section dl dt a{color: #333333;}
+.pro .nav .yi .dyj .one section dl dd a:hover{color:#F92246;}
+.pro .nav .yi .dyj .one section dl dt{border-bottom: 1px solid #F92246;}
+.pro .nav .yi >a {color: #333333 !important;}
+.pro .nav .yi .dyj .one:hover{color: #F92246 ;}
+.pro .nav .yi a{color: #333333 ;}
+.pro .nav .yi a:hover{color: #F92246;}
+.pro .nav .yi .dyj .one section{top: 46px;}*/
 
 </style>
 <!-- 头部顶栏 start [[-->
 <div class="commerce">
-        
+	<div class="mg">
+        <!-- 内容头部 -->
+        <div class="commerce_head">
+            <div class="commerce_h_left">
+                <div class="commerce_banner">
+                    <!-- <img src="image/commerce_banner.jpg"> -->
+                    <div class="slider1">
+					    <foreach item="vo" name="carouselRes">
+					    <div class="slide" ><a target="_blank" href="{$vo.url}"><img src="__PUBLIC__/Carousel/{$vo.link}" width="700" height="274"></a></div>
+						</foreach>
+					</div>
 
-        <div id="slideBox" class="slideBox">
-           
-
-            <div class="bd">
-                <ul class="bdul">
-                 <foreach item="vo" name="carouselRes">
-                 <notempty name="vo['link']">
-                    <li style="background:{$vo.bgcolor};"><a href="{$vo.url}" target="_blank"><img src="__PUBLIC__/Carousel/{$vo.link}" /></a></li>
-                </notempty>
-                </foreach>
-                </ul>
-                <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-                <div class="p_n_btn">
-                     <a class="prev" href="javascript:void(0)"></a>
-                     <a class="next" href="javascript:void(0)"></a>
-
-                     <div class="commerce_head bulletin">
-                
-                        <div class="commerce_h_right">
-                            <!-- 未登录 -->
-                            <span id="is_login">
-                                
-                                <div class="commerce_login_box">
-                                    <div class="user_img">
-                                        <img src="__PUBLIC__/image/commerce_user_img.png">
-                                    </div>
-                                    <p>云狄网已成功帮助10万企业免费推广受益！</p>
-                                    <h4>赶紧入驻平台吧！！</h4>
-                                    <div class="commerce_btn">
-                                        <a class="commerce_login" target= _blank href="{:U('User/login')}">登录</a>
-                                        <a class="commerce_register" target= _blank href="{:U('User/reg')}">免费注册</a>
-                                    </div>
-                                </div>
-                            </span>
-                            <!-- 公告栏 -->
-                            <div class="commerce_bulletin">
-                                <h3>公告栏</h3>
-                                <ul>
-                                <foreach item="vo" name="list">
-                                    <li><a target="_blank" href="{:U('/Article/notice',array('id'=>$vo['id']))}">公告：{:getsubstr($vo[content],0,16)}</a></li>
-                                </foreach>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                    $(function(){
-
-                        $.post("/index.php/Index/is_login",{},function(data){
-
-                            $('#is_login').html(data);
-                        })
-                    })
-
-                    </script>
                 </div>
-               
-            </div>
-            <div class="hd">
-                <ul>
-                <foreach item="vo" name="carouselRes">
-                 <notempty name="vo['link']">
-                 <li></li>
-                </notempty>
-                </foreach>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+
+                      $('.slider1').bxSlider({
+                        autoHover: true,
+                        slideWidth: 700,
+                        auto: true,
+                        minSlides: 1,
+                        maxSlides: 1,
+
+                      });
+
+                    });
+
+                </script>
+                <!-- 主题 -->
+                <ul class="commerce_theme">
+                    <li>
+                        <a target="_blank" href="<?php $numId = ($k+1).'90'; echo $floorRes[$numId]['link']; ?>">
+                        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'90'; echo $floorRes[$numId]['pic']; ?>">
+                        <span class="commerce_txt">
+                            <span style="color: <?php $numId = ($k+1).'90'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'90'; echo $floorRes[$numId]["title"]; ?></span>
+                            <p style="color: <?php $numId = ($k+1).'90'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'90'; echo $floorRes[$numId]["des"]; ?></p>
+                        </span>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="<?php $numId = ($k+1).'91'; echo $floorRes[$numId]['link']; ?>">
+                        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'91'; echo $floorRes[$numId]['pic']; ?>">
+                        <span class="commerce_txt">
+                             <span style="color: <?php $numId = ($k+1).'91'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'91'; echo $floorRes[$numId]["title"]; ?></span>
+                            <p style="color: <?php $numId = ($k+1).'91'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'91'; echo $floorRes[$numId]["des"]; ?></p>
+                        </span>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="<?php $numId = ($k+1).'92'; echo $floorRes[$numId]['link']; ?>">
+                        <img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'92'; echo $floorRes[$numId]['pic']; ?>">
+                        <span class="commerce_txt">
+                             <span style="color: <?php $numId = ($k+1).'92'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'92'; echo $floorRes[$numId]["title"]; ?></span>
+                            <p style="color: <?php $numId = ($k+1).'92'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'92'; echo $floorRes[$numId]["des"]; ?></p>
+                        </span>
+                    </a>
+                    </li>
                 </ul>
+            </div>
+ <div class="commerce_h_right" style="height: 459px;">
+                <!-- 未登录 -->
+                <span id="is_login"></span>
+                <!-- 公告栏 -->
+                <div class="commerce_bulletin">
+                    <h3>公告栏</h3>
+                    <ul>
+                    <foreach item="vo" name="list">
+                        <li><a target="_blank" href="#">公告：{$vo.content}</a></li>
+                    </foreach>
+                    </ul>
+                </div>
             </div>
         </div>
+<script type="text/javascript">
+$(function(){
 
-        <script type="text/javascript">
-        $(".slideBox").slide({mainCell:".bd ul",autoPlay:true,delayTime:500});
+    $.post("/index.php/Index/is_login",{},function(data){
 
-        </script>
+        $('#is_login').html(data);
+    })
+})
 
-	<div class="mg">
-           
+</script>
+
         <!-- 内容banner -->
         <div class="con_banner">
 
  <adv limit="1" item="v" pid="100005">
-       <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="1200" height="86" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>            
+       <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="1200" height="86" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>
 </adv>
 
         </div>
@@ -162,7 +183,7 @@
             					<!-- </a> -->
             				</div>
                         </a>
-        				
+
         				<div class="com_box_1_l_b">
         					<div class="slider2">
                                 <a target="_blank" href="<?php $numId = ($k+1).'110'; echo $floorRes[$numId]['link']; ?>">
@@ -397,7 +418,7 @@
 $(function(){
 is_hot('{$k + 1}');
 })
-    
+
 
 </script>
         			<!-- 3F内容右 -->
@@ -508,7 +529,7 @@ is_hot('{$k + 1}');
 <script type="text/javascript">
    $(function(){
     is_new('{$k + 1}');
-    
+
    })
 
 </script>
@@ -652,7 +673,7 @@ is_hot('{$k + 1}');
         					</a>
                             </div>
         				</div>
-        				
+
         				<div class="com_box_1_l_b">
         					<div class="slider3">
                                 <a target="_blank" href="<?php $numId = ($k+1).'32'; echo $floorRes[$numId]['link']; ?>">
@@ -818,11 +839,11 @@ is_hot('{$k + 1}');
         			<div class="com_box_1_l">
                         <div class="com_box_1_l_t">
                         <a target="_blank" href="<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['link']; ?>">
-        						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['pic']; ?>">
-        						<div class="commerce_txt_f txt_t_c">
-        							<h3 style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["title"]; ?></h3>
-        							<p style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["des"]; ?></p>
-        						</div>
+    						<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['pic']; ?>">
+    						<div class="commerce_txt_f txt_t_c">
+    							<h3 style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align1']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["title"]; ?></h3>
+    							<p style="text-align: <?php $numId = ($k+1).'47'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'47'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'47'; echo $floorRes[$numId]["des"]; ?></p>
+    						</div>
                     </a>
                         </div>
         			</div>
@@ -839,6 +860,7 @@ is_hot('{$k + 1}');
     							</div>
                                 </a>
     						</li>
+
     						<li class="hover_f">
                             <a target="_blank" href="<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['link']; ?>">
     							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'49'; echo $floorRes[$numId]['pic']; ?>">
@@ -1009,8 +1031,6 @@ is_hot('{$k + 1}');
         							</div>
                                 </a>
         						</li>
-
-
         					</ul>
         				</div>
         			</div>
@@ -1030,7 +1050,7 @@ is_hot('{$k + 1}');
                                 <li class="hover_f">
                                 <a target="_blank" href="<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['link']; ?>">
         							<img src="__PUBLIC__/Floor/Upload/<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['pic']; ?>">
-        							<div class="commerce_txt_s txt_t_l">
+        							<div class="commerce_txt_s txt_t_l com_box_2">
         								<h3 style="text-align: <?php $numId = ($k+1).'63'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['color1']; ?>;"><?php $numId = ($k+1).'63'; echo $floorRes[$numId]["title"]; ?></h3>
         								<p style="text-align: <?php $numId = ($k+1).'63'; echo $floorRes[$numId]['align2']; ?>; color:<?php $numId = ($k+1).'63'; echo $floorRes[$numId]['color2']; ?>;"><?php $numId = ($k+1).'63'; echo $floorRes[$numId]["des"]; ?></p>
         							</div>
@@ -1050,14 +1070,14 @@ is_hot('{$k + 1}');
         				</div>
         			</div>
         			<div class="lun_13">
-        				
+
 
                         <div class="swiper-container">
                         <div class="swiper-wrapper">
                           <foreach name="goodslist[ $k + 1]" item="vv">
                             <div class="swiper-slide swiper-no-swiping">
                                 <a target="_blank" href="{:U('/Goods/goodsInfo',array('id'=>$vv['goods_id']))}">
-                                    <img src="{:goods_thum_images($vv['goods_id'],111,82)}">
+                                    <img src="{:goods_thum_images_index($vv['goods_id'],111,82)}">
                                     <p>￥{$vv['shop_price']}</p>
                                 </a>
                             </div>
@@ -1314,13 +1334,6 @@ is_hot('{$k + 1}');
 				</ul>
 			</div>
 		</div>
-         <!-- 底部banner -->
-        <div class="con_banner">
-             <adv limit="1" item="v" pid="100006">
-                   <a href="{$v.ad_link}" title="{$v['ad_name']}" <if condition="$v['target'] eq 1">target="_blank"</if>><img width="1200" height="86" src="{$v[ad_code]}"  title="{$v['ad_name']}" alt="{$v['ad_name']}" /></a>            
-            </adv>
-        </div>
-
 	</div>
 	<!-- 浮动层 -->
 	<div class="floor_float">
@@ -1430,7 +1443,7 @@ is_hot('{$k + 1}');
 	});
 </script>
 <!-- footer start [[-->
-<include file="Public/redfooter"/>
+<include file="Public/footer"/>
 <!-- footer end ]]-->
 
 

@@ -63,7 +63,7 @@ class IndexController extends BaseController {
             $this->show($file);
         }else{
 
-            
+
             // 查询公告
             $list = M('notice')->field('content,id')->order('addtime desc')->limit(10)->select();
             $this->assign('list', $list);
