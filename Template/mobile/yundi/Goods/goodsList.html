@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<div class="w_header" a="1" b="1" c="1" d="1" e="1" f="1">
+	<div class="w_header" a="1" b="1" c="1" d="1" e="1" f="1" cat_id="{$cat_id}">
 		<div class="w_header_history"><a href="javascript:;" onClick="javascript :history.back(1);"><img src="__STATIC__/images/ify_hsitory.png"></a></div>
 		<h3 class="w_header_title">{$cat_name}</h3>
 		<div class="w_header_search"><a href="/Mobile/index/search.html"><img src="__STATIC__/images/search.png"></a></div>
@@ -112,7 +112,7 @@
      	};
 	},1500)
 	function sales_sum(){
-		var cat_id = '{$cat_id}';
+		var cat_id = parseInt($('.w_header').attr('cat_id'));
 		$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p,'order':'sales_sum'},function(res){
 			if (res){
 				$('.sales_sum').append(res);
@@ -124,7 +124,7 @@
 	}
 
 	function new_goods(){
-		var cat_id = '{$cat_id}';
+		var cat_id = parseInt($('.w_header').attr('cat_id'));
 		$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p2,'order':'last_update'},function(res){
 			if (res){
 				$('.new_goods').append(res);
@@ -139,7 +139,7 @@
 	}
 
 	function shop_price(){
-		var cat_id = '{$cat_id}';
+		var cat_id = parseInt($('.w_header').attr('cat_id'));
 		if ($('.order').attr('o') == 1){
 			$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p3,'order':'shop_price'},function(res){
 				if (res){
@@ -151,6 +151,7 @@
 				}else{
 					$('.p3').html('没有内容了');
 				}
+				
 			})
 		}else{
 			$.post('/Mobile/Goods/getcatgoods',{'cat_id':cat_id,'p':p3,'order':'shop_price desc'},function(res){
@@ -167,7 +168,7 @@
 		}
 	}
 	function sales_sum2(){
-		var cat_id = '{$cat_id}';
+		var cat_id = parseInt($('.w_header').attr('cat_id'));
 		$.post('/Mobile/Goods/getcatgoods2',{'cat_id':cat_id,'p':p4,'order':'sales_sum'},function(res){
 			if (res){
 				$('.sales_sum2').append(res);
@@ -182,7 +183,7 @@
 	}
 
 	function new_goods2(){
-		var cat_id = '{$cat_id}';
+		var cat_id = parseInt($('.w_header').attr('cat_id'));
 		$.post('/Mobile/Goods/getcatgoods2',{'cat_id':cat_id,'p':p5,'order':'last_update'},function(res){
 			if (res){
 				$('.new_goods2').append(res);
@@ -197,7 +198,7 @@
 	}
 
 	function shop_price2(){
-		var cat_id = '{$cat_id}';
+		var cat_id = parseInt($('.w_header').attr('cat_id'));
 		if ($('.order').attr('o') == 1){
 			$.post('/Mobile/Goods/getcatgoods2',{'cat_id':cat_id,'p':p6,'order':'shop_price'},function(res){
 				if (res){
