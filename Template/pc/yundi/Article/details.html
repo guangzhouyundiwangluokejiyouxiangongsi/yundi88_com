@@ -10,9 +10,9 @@
 		<meta http-equiv="content-language" content="zh-cn" />
 		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
 		<meta http-equiv="Cache-control" content="public" max-age="no-cache" />
-		<title>{$article_cat.cat_name}列表页</title>
-		<meta http-equiv="keywords" content="" />
-		<meta name="description" content="" />
+		<title>{$article_cat.cat_name}_云狄网</title>
+		<meta http-equiv="keywords" content="{$article_cat.keywords}" />
+		<meta name="description" content="{$article_cat.cat_desc}" />
 	</head>
 	
 	<include file="Public/header" /> 
@@ -28,7 +28,7 @@
 		
 		<div class="newslist_content">
 			<div class="the_current mg">
-				<span><a href="{:U('/Index/index')}">首页</a></span>
+				<span><a href="http://{$_SERVER['HTTP_HOST']}">首页</a></span>
 				<span>></span>
 				<span><a href="{:U('/Article/details',array('cat_id'=>$article_cat['cat_id']))}">{$article_cat.cat_name}</a></span>
 			</div>

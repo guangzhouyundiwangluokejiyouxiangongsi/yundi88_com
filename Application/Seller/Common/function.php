@@ -145,6 +145,7 @@ function getMenuList() {
 			array('name' => '绑定域名', 'act' => 'domain_whois', 'op' => 'Domain'),
 		)),
 		'news' => array('name' => '新闻推广', 'icon' => 'fa-file', 'child' => array(
+			array('name' => '新闻导航', 'act' => 'navigation_list?nav=news', 'op' => 'Store'),
 			array('name' => '新闻发布', 'act' => 'addNews', 'op' => 'News'), ///index.php/Seller/goods/addEditGoods.html'
 			array('name' => '新闻管理', 'act' => 'newslist', 'op' => 'News'),
 		)),
