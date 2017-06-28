@@ -105,18 +105,6 @@ class PurchaseController extends BaseController {
     }
 
 
-    //指定商户推送
-    public function q_com()
-    {
-        if(IS_AJAX){
-            
-            
-            
-        }else{
-            $this->_empty();
-        }
-    }
-
     public function _empty()
     {
         $this->display('404');
