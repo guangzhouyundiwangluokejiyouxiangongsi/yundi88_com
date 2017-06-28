@@ -296,7 +296,7 @@ class PurchaseController extends BaseController {
         $id = I('post.id');
         $status = I('post.status');
         $data['status'] = $status;
-        $res = M('pur_status')->where(array('cid'=>$id))->save($data);
+        $res = M('pur_status')->where(array('cid'=>$id,'sid'=>session('store_id')))->save($data);
         $this->ajaxReturn($res);
     }
 
