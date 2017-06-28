@@ -20,6 +20,7 @@
                                <th class="sorting" tabindex="0">单价</th>
                                <th class="sorting" tabindex="0">金额</th>
                                <th class="sorting" tabindex="0">备注</th>
+                               <th class="sorting" tabindex="0">商品分类</th>
                                <th class="sorting" tabindex="0">采购单</th>
                                <th class="sorting" tabindex="0">采购合同</th>
                                <th class="sorting" tabindex="0">其他附件</th>
@@ -36,6 +37,7 @@
                              <td>{$vo.price}</td>
                              <td>{$vo.money}</td>
                              <td>{$vo.remark}</td>
+                             <td>你当前选择的是：{$vo.type}</td>
                              <td>
                                  <foreach name="vo.purpic" item="v">
                                      <img src="{$v}" width="100px">

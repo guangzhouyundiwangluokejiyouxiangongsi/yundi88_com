@@ -67,9 +67,9 @@
 			$id = I('get.id');
 			$res = M('notice')->where(array('id'=>$id))->delete();
             if ($res) {
-                $this->success('删除成功', 'notice');exit;
+                $this->success('删除成功');
             } else {
-                $this->error('删除失败','notice');
+                $this->error('删除失败');
             }
 		}
 

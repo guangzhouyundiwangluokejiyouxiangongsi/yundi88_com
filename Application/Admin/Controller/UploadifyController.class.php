@@ -24,7 +24,7 @@ class UploadifyController extends BaseController{
             'title' => '',       	
         	'upload' =>U('Admin/Ueditor/imageUp',array('savepath'=>$path,'pictitle'=>'banner','dir'=>'images')),
             'size' => '4M',
-            'type' =>'jpg,png,gif,jpeg',
+            'type' =>'jpg,png,gif,jpeg,doc,docx,xls,xlsx,pdf',
             'input' => I('input'),
             'func' => empty($func) ? 'undefined' : $func,
         );

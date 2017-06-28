@@ -17,7 +17,7 @@
                                <th class="sorting" tabindex="0">QQ</th>
                                <th class="sorting" tabindex="0">邮箱</th>
                                <th class="sorting" tabindex="0">采购时间</th>
-                               <th class="sorting" tabindex="0">供货商</th>
+                               <!-- <th class="sorting" tabindex="0">供货商</th> -->
                                <th class="sorting" tabindex="0">操作</th>
                            </tr>
                          </thead>
@@ -29,7 +29,7 @@
                              <td>{$vo.qq}</td>
                              <td>{$vo.email}</td>
                              <td>{$vo.addtime|date='Y-m-d',###}</td>
-                             <td>{$vo.supplier}</td>
+                             <!-- <td>{$vo.supplier}</td> -->
                              <td>
                              <a style="margin: 2px 0;" href="__CONTROLLER__/details/id/{$vo['id']}" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="查看详情"><i class="fa fa-eye"></i></a>
                               <a style="margin: 2px 0;"  class="btn btn-primary" href="__CONTROLLER__/editPurchase/id/{$vo['id']}"><i class="fa fa-pencil"></i></a>

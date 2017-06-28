@@ -7,7 +7,7 @@ code,kbd,pre,samp{font-family:courier new,courier,monospace;word-wrap: break-wor
 small{font-size:12px;}
 ul,ol{list-style:none;}
 a{cursor: pointer;text-decoration: none!important;outline: none;border: 0;star:expression(this.onFocus=this.blur());}
-a:link,a:visited{color: deepskyblue;text-decoration:none;}
+a:link,a:visited{text-decoration:none;}
 a:focus {outline:none;}
 a:active{outline: none;star:expression(this.onFocus=this.blur());border: 0;}
 sup{vertical-align:text-top;}

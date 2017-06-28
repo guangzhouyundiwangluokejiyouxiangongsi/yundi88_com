@@ -101,6 +101,7 @@
                                         <td class="text-center">单价</td>
                                         <td class="text-center">金额</td>
                                         <td class="text-center">备注</td>
+                                        <td class="text-center">商品分类</td>
                                     </tr>
                                 </thead>
 
@@ -116,6 +117,21 @@
                                             <td>￥ <input id="money0" name='tab1[money][]' type="number" readonly value="{$vo.money}"  autocomplete="off" /></td>
                                             <td><input name='tab1[remark][]' type="text" value="{$vo.remark}"  autocomplete="off" /></td>
                                             <input type="hidden" name="tab1[id][]" value="{$vo.id}">
+                                            <td>
+                                                你当前选择的是：{$vo.type}
+                                              <!-- <select required onchange="class1(this);" class="class1" data-level="2">
+                                                  <option>请选择</option>
+                                                  <foreach  name="class1" item="vo">
+                                                      <option value="{$vo.id}">{$vo.name}</option>
+                                                  </foreach>
+                                              </select>
+                                              <select required onchange="class2(this);" class="class2" data-level="3">
+                                                  <option>请选择</option>
+                                              </select>
+                                              <select required class="class3" name="tab1[type][]">
+                                                  <option>请选择</option>
+                                              </select> -->
+                                          </td>
                                         </tr>
                                     </foreach>
                                     <tr id="purpic_tr">
@@ -245,6 +261,35 @@
         $(this).parent().parent().remove();
     });
 
+
+ function class1(obj){
+       var val1 = $(obj).parent().find('select').eq(0);
+       var val2 = $(obj).parent().find('select').eq(1);
+          getVal(val1, val2);
+  }
+
+  function class2(obj){
+      var val2 = $(obj).parent().find('select').eq(1);
+      var val3 = $(obj).parent().find('select').eq(2);
+          getVal(val2, val3);
+  }
+
+  function getVal(id1, id2) {
+      $(id2).html('');
+      var id = $(id1).val();
+      $.post(
+          '__CONTROLLER__/getData',
+          {'id':id, 'level':$(id1).attr('data-level')},
+          function (data) {
+              var str = '<option>--请选择--</option>';
+              for (var i = 0; i < data.length; i++) {
+                  str += "<option value='" + data[i]['id']+ "'>" + data[i]['name'] + "</option>";
+              }
+              $(id2).append(str);
+          },
+          'json'
+      );
+  }
 </script>
 </body>
 </html>

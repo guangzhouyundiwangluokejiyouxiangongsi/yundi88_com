@@ -67,7 +67,7 @@ class IndexController extends MobileBaseController {
 
     // 推荐精品
     public function recommend_goods(){
-        $goods_list = M('')->field('g.store_id,g.original_img,g.goods_name,g.shop_price,g.goods_id,s.apply_state,s.commerce_state,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->table('__GOODS__ AS g')->join('INNER JOIN __STORE__ AS s ON s.store_id = g.store_id')->where(array('recommend'=>1,'goods_state'=>1))->limit(6)->cache()->select();
+        $goods_list = M('')->field('g.store_id,g.original_img,g.goods_name,g.shop_price,g.goods_id,s.apply_state,s.commerce_state,IFNULL(commerce_state,0) + IFNULL(apply_state,0) as num')->table('__GOODS__ AS g')->join('INNER JOIN __STORE__ AS s ON s.store_id = g.store_id')->where(array('recommend'=>1,'goods_state'=>1))->limit(6)->select();
         $this->assign('goods_list',$goods_list);
         $this->display('ajaxrecommendgoods');
     }

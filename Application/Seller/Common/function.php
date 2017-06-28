@@ -145,6 +145,7 @@ function getMenuList() {
 			array('name' => '绑定域名', 'act' => 'domain_whois', 'op' => 'Domain'),
 		)),
 		'news' => array('name' => '新闻推广', 'icon' => 'fa-file', 'child' => array(
+			array('name' => '新闻导航', 'act' => 'navigation_list?nav=news', 'op' => 'Store'),
 			array('name' => '新闻发布', 'act' => 'addNews', 'op' => 'News'), ///index.php/Seller/goods/addEditGoods.html'
 			array('name' => '新闻管理', 'act' => 'newslist', 'op' => 'News'),
 		)),
@@ -213,9 +214,17 @@ function getMenuList() {
 		'account' => array('name' => '企业云谱', 'icon' => 'fa-book', 'child' => array(
 			array('name' => '我的云谱', 'act' => 'baike', 'op' => 'Finance'),
 		)),
+<<<<<<< HEAD
 		'Purchase' => array('name' => '采购管理', 'icon' => 'fa-book', 'child' => array(
 			array('name' => '发布我的需求', 'act' => 'purchase', 'op' => 'Purchase'),
 			array('name' => '我的需求管理', 'act' => 'index', 'op' => 'Purchase'),
+=======
+
+		'Purchase' => array('name' => '采购管理', 'icon' => 'fa-book', 'child' => array(
+			array('name' => '发布我的需求', 'act' => 'purchase', 'op' => 'Purchase'),
+			array('name' => '我的需求管理', 'act' => 'index', 'op' => 'Purchase'),
+			// array('name' => '推送采购单', 'act' => 'push', 'op' => 'Purchase'),
+>>>>>>> 53da1d4a0acc6c4030495ab7a8be9674e5553335
 			array('name' => '采购需求通知', 'act' => 'purMsg', 'op' => 'Purchase'),
 			array('name' => '我已接单', 'act' => 'myPurchase', 'op' => 'Purchase'),
 		)),

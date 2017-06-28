@@ -41,6 +41,7 @@ class PurchaseController extends BaseController
         // }
 
     }
+<<<<<<< HEAD
 
     public function ajaxdata()
    {
@@ -59,4 +60,6 @@ class PurchaseController extends BaseController
 
      }
    }
+=======
+>>>>>>> 53da1d4a0acc6c4030495ab7a8be9674e5553335
 }

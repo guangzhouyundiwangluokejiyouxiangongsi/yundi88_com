@@ -1172,8 +1172,11 @@ class StoreController extends BaseController
 	public function navigation_list(){
 		$Model =  M('store_navigation');
 		$res = $Model->where("sn_store_id=".STORE_ID)->order('sn_sort')->page($_GET['p'].',10')->select();
-		$products = M('store')->where(array('store_id'=>STORE_ID))->getField('store_products');
-		$products = unserialize($products);
+		if(I('nav') != 'news'){
+			$products = M('store')->where(array('store_id'=>STORE_ID))->getField('store_products');
+			$products = unserialize($products);
+			
+		}
 		if($res){
 			foreach ($res as $val){
 				$val['sn_new_open'] = $val['sn_new_open']>0 ? '开启' : '关闭';
@@ -1181,7 +1184,9 @@ class StoreController extends BaseController
 				$list[] = $val;
 			}
 		}
+		if(I('nav') == 'news'){
 		$class = $Model->where(array('sn_store_id'=>STORE_ID,'sn_pid'=>0))->getField('sn_id,sn_title',true);
+		}
 		$this->assign('class',$class);
 		$this->assign('products',$products);
 		$this->assign('list',$list);

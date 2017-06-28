@@ -54,20 +54,17 @@ class IndexController extends BaseController {
 
     public function index()
     {
-        // 如果是手机跳转到 手机模块
-        if(true == isMobile()){
-            header("Location: ".U('Mobile/Index/index'));
-        }
-        $file = file_get_contents(PATH.'/index.html');
+        
+        // $file = file_get_contents(PATH.'/index.html');
         if($file){
             $this->show($file);
         }else{
 
 
             // 查询公告
-            $list = M('notice')->field('content,id')->order('addtime desc')->limit(10)->select();
+            // $list = M('notice')->field('content,id')->order('addtime desc')->limit(10)->select();
+            $list = M('store')->field('store_id,store_name')->order('store_time desc')->select();
             $this->assign('list', $list);
-
             // 查询轮播图
             $carouselRes = M('carousel')->field('link,url,bgcolor')->order('addtime desc')->limit(3)->select();
             $this->assign('carouselRes', $carouselRes);

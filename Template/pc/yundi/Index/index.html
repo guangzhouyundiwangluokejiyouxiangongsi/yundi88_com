@@ -37,6 +37,7 @@
 .swiper-button-prev:hover{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_left_on.png) no-repeat !important;left: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 .swiper-button-next:hover{width: 20px  !important;height: 30px  !important;background: url(__PUBLIC__/image/commerce_b_right_on.png) no-repeat !important;right: 0 !important;background-size: 100% !important;margin-top: -15px !important;}
 
+<<<<<<< HEAD
  /*.head{background: #F92246;}
  #tab .tabList li.cur{background: #F92246;}
  #tab .tabCon .but{background: #F92246 url(__PUBLIC__/images/but.jpg) center no-repeat;}
@@ -68,6 +69,90 @@
 					    <div class="slide" ><a target="_blank" href="{$vo.url}"><img src="__PUBLIC__/Carousel/{$vo.link}" width="700" height="274"></a></div>
 						</foreach>
 					</div>
+=======
+.h3 h3{padding: 0 14px;font-size: 16px;color: #f22e00;font-weight: normal;border-bottom: 1px dashed #f3f3f3;line-height: 32px;height: 32px;margin-top: 10px;}
+.h3{background: #ffffff !important}
+.ul2 li a:hover{color: red !important;}
+</style>
+<!-- 头部顶栏 start [[-->
+<div class="commerce">
+        
+
+        <div id="slideBox" class="slideBox">
+           
+
+            <div class="bd">
+                <ul class="bdul">
+                 <foreach item="vo" name="carouselRes">
+                 <notempty name="vo['link']">
+                    <li style="background:{$vo.bgcolor};"><a href="{$vo.url}" target="_blank"><img src="__PUBLIC__/Carousel/{$vo.link}" /></a></li>
+                </notempty>
+                </foreach>
+                </ul>
+                <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+                <div class="p_n_btn">
+                     <a class="prev" href="javascript:void(0)"></a>
+                     <a class="next" href="javascript:void(0)"></a>
+
+                     <div class="commerce_head bulletin">
+                
+                        <div class="commerce_h_right">
+                            <!-- 未登录 -->
+                            <span id="is_login">
+                                
+                                <div class="commerce_login_box">
+                                    <div class="user_img">
+                                        <img src="__PUBLIC__/image/commerce_user_img.png">
+                                    </div>
+                                    <p>云狄网已成功帮助10万企业免费推广受益！</p>
+                                    <h4>赶紧入驻平台吧！！</h4>
+                                    <div class="commerce_btn">
+                                        <a class="commerce_login" target= _blank href="{:U('User/login')}">登录</a>
+                                        <a class="commerce_register" target= _blank href="{:U('User/reg')}">免费注册</a>
+                                    </div>
+                                </div>
+                            </span>
+                            <!-- 公告栏 -->
+                            <div class="h3"><h3>公告栏</h3></div>
+                            <div class="commerce_bulletin" id="demo" style="overflow:hidden;"> 
+                                <div id="demo1">
+                                    <ul class="ul2">
+                                    <foreach item="vo" name="list" key="k">
+                                    <php>if($k % 2 == 0){</php>
+                                        <li><a style="color:#f00;" target="_blank" href="{:U('/Store/index',array('store_id'=>$vo['store_id']))}">恭喜{$vo['store_name']}入驻云狄网</a></li>
+                                    <php>}else{</php>
+                                        <li><a style="color:#000;" target="_blank" href="{:U('/Store/index',array('store_id'=>$vo['store_id']))}">恭喜{$vo['store_name']}入驻云狄网</a></li>
+                                    <php>}</php>
+                                    </foreach>
+                                    </ul>
+                                </div>
+                                <div id="demo2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                    $(document).ready(function(){
+                       var speed=50
+                       demo2.innerHTML=demo1.innerHTML
+                       function Marquee(){
+                           if(demo2.offsetTop-demo.scrollTop<=0)
+                                demo.scrollTop-=demo1.offsetHeight
+                           else{
+                                demo.scrollTop++
+                           }
+                       }
+                       var MyMar=setInterval(Marquee,speed)
+                       demo.onmouseover=function() {clearInterval(MyMar)}
+                       demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+                      
+                    })
+                    </script>
+
+
+
+                    <script type="text/javascript">
+                    $(function(){
+>>>>>>> 53da1d4a0acc6c4030495ab7a8be9674e5553335
 
                 </div>
 

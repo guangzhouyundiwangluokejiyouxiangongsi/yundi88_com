@@ -60,10 +60,10 @@
 		                 <thead>
 		                   <tr role="row">
                                <th>店铺名称</th>
-                               <th>店主卖家账号</th>	
+                               <!-- <th>店主卖家账号</th>	 -->
                                <th>联系人</th>
 			                   <th>所属等级</th>	                   
-			                   <th>店铺类别</th>
+			                   <!-- <th>店铺类别</th> -->
 			                   <th>所在地</th>
                                <th>申请时间</th>
 			                   <th>状态</th>
@@ -73,10 +73,10 @@
 						<tbody>
                           <foreach name="list" item="vo" key="k" >
                              <tr role="row">    
-                             <td>{$vo.store_name}</td>
-		                     <td>{$vo.seller_name}</td>	 
-		                     <td>{$vo.contacts_name}</td>                   
-		                     <td>{$vo.sg_name}</td>
+                             <td>{$vo.company_name}</td>
+		                     <!-- <td>{$vo.contacts_name}</td>	  -->
+		                     <td>{$vo.store_person_name}</td>                   
+		                     <!-- <td>{$vo.sg_name}</td> -->
 		                     <td>{$vo.sc_name}</td>
 		                     <td>{$vo.store_address}</td>                                     
 		                     <td>{$vo.add_time|date='Y-m-d',###}</td>

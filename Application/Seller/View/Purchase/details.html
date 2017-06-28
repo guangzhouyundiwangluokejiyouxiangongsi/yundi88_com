@@ -21,6 +21,7 @@
                                <th class="sorting" tabindex="0">单价</th>
                                <th class="sorting" tabindex="0">金额</th>
                                <th class="sorting" tabindex="0">备注</th>
+                               <th class="sorting" tabindex="0">备注</th>
                                <th class="sorting" tabindex="0">采购单</th>
                                <th class="sorting" tabindex="0">采购合同</th>
                                <th class="sorting" tabindex="0">其他附件</th>
@@ -103,6 +104,37 @@ function delfun(obj){
     }
     return false;
 }
+
+
+  function class1(obj){
+       var val1 = $(obj).parent().find('select').eq(0);
+       var val2 = $(obj).parent().find('select').eq(1);
+          getVal(val1, val2);
+  }
+
+  function class2(obj){
+      var val2 = $(obj).parent().find('select').eq(1);
+      var val3 = $(obj).parent().find('select').eq(2);
+          getVal(val2, val3);
+  }
+
+  function getVal(id1, id2) {
+      $(id2).html('');
+      var id = $(id1).val();
+      $.post(
+          '__CONTROLLER__/getData',
+          {'id':id, 'level':$(id1).attr('data-level')},
+          function (data) {
+              var str = '<option>--请选择--</option>';
+              for (var i = 0; i < data.length; i++) {
+                  str += "<option value='" + data[i]['id']+ "'>" + data[i]['name'] + "</option>";
+              }
+              $(id2).append(str);
+          },
+          'json'
+      );
+  }
+
 </script>
 </body>
 </html>

@@ -18,7 +18,7 @@ class PurchaseController extends BaseController {
             $types = I('post.tab1');
             for ($z=0; $z < count($types['type']); $z++) {
                 if (is_null($types['type'][$z])) {
-                    $thsis->error('请选择产品分类');
+                    $this->error('请选择产品分类');
                 }
             }
             
@@ -76,9 +76,6 @@ class PurchaseController extends BaseController {
                 for ($k=0; $k < count($data); $k++) {
                     $storeRes[] = M('store_bind_class')->field('store_id')->where(array('class_3'=>$data[$k]['type'], 'state'=>1))->select();
                 }
-                // dump(M()->getLastSQL());
-                // dump($data);
-                // dump($storeRes);exit;
 
                 for ($l=0; $l < count($storeRes); $l++) {
                     for ($m=0; $m < count($storeRes[$l]); $m++) {
@@ -88,8 +85,8 @@ class PurchaseController extends BaseController {
                         $storeData[$no]['addtime'] = time();
                         M('pur_status')->add($storeData[$no]);
                     }
-                        // dump($storeData);exit;
                 }
+                
 
                 // $m->commit();
                 $this->success('添加成功');
@@ -107,6 +104,19 @@ class PurchaseController extends BaseController {
         $this->ajaxReturn($class2);
     }
 
+
+    //指定商户推送
+    public function q_com()
+    {
+        if(IS_AJAX){
+            
+            
+            
+        }else{
+            $this->_empty();
+        }
+    }
+
     public function _empty()
     {
         $this->display('404');
@@ -115,7 +125,7 @@ class PurchaseController extends BaseController {
     public function index()
     {
         $store_id =session('store_id');
-        $list = M('purchase')->where(array('store_id'=>$store_id))->getField('id,person,phone,qq,email,supplier,addtime');
+        $list = M('purchase')->where(array('store_id'=>$store_id))->getField('id,person,phone,qq,email,addtime');
         $this->assign('list',$list);
         $this->display();
     }
@@ -124,12 +134,13 @@ class PurchaseController extends BaseController {
     {
         $pid = I('get.id');
         // $store_id =session('store_id');
-        $list = M('purchase_detail')->where(array('pid'=>$pid))->field('id,gid,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->select();
+        $list = M('purchase_detail')->where(array('pid'=>$pid))->field('id,gid,gname,model,num,unit,price,money,remark,type,purpic,purcontract,purelse')->select();
         for ($i=0; $i < count($list); $i++) {
             $list[$i]['purpic'] = explode(',', $list[$i]['purpic']);
             $list[$i]['purcontract'] = explode(',', $list[$i]['purcontract']);
             $list[$i]['purelse'] = explode(',', $list[$i]['purelse']);
         }
+        
         $this->assign('list',$list);
         $this->display();
     }
@@ -140,7 +151,6 @@ class PurchaseController extends BaseController {
         if (IS_POST) {
             $data2['tab2'] = $_POST['tab2'];
             $res2 = M('purchase')->where(array('id'=>I('post.id')))->save($data2['tab2']);
-            // dump(M()->getLastSQL());
 
             //转换post提交过来的数据为想要的格式
             for($i = 0;$i < count($_POST['tab1']['gid']);$i++){
@@ -154,7 +164,6 @@ class PurchaseController extends BaseController {
                 $n++;
             }
             foreach($data as $v){
-                // dump($v);exit;
                 $id = $data[$v]['id'];
                 $m = M('purchase_detail');
                 $res3[] = $m->where(array('id'=>$id))->save($v);
@@ -193,12 +202,18 @@ class PurchaseController extends BaseController {
                 $this->success('修改成功');
             }
         } else {
-            $data1 = M('purchase')->field('person,phone,qq,email,supplier,addtime')->where(array('id'=>I('get.id')))->find();
-            $data2 = M('purchase_detail')->field('id,gid,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>I('get.id')))->select();
+             $class1 = M('goods_category')->field('id, name')->where(array('level'=>1))->select();
+            $this->assign('class1', $class1);
+            $data1 = M('purchase')->field('person,phone,qq,email,addtime')->where(array('id'=>I('get.id')))->find();
+            $data2 = M('purchase_detail')->field('id,gid,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse,type')->where(array('pid'=>I('get.id')))->select();
             for ($i=0; $i < count($data2); $i++) {
                 $data2[$i]['purpic'] = explode(',', $data2[$i]['purpic']);
                 $data2[$i]['purcontract'] = explode(',', $data2[$i]['purcontract']);
                 $data2[$i]['purelse'] = explode(',', $data2[$i]['purelse']);
+            }
+            for ($y=0; $y < count($data2); $y++) { 
+                $nameRes = M('goods_category')->field('name')->where(array('id'=>$data2[$y]['type']))->find();
+                $data2[$y]['type'] = $nameRes['name'];
             }
 
             $this->assign('data1',$data1);
@@ -211,7 +226,6 @@ class PurchaseController extends BaseController {
     public function del()
     {
         $id = I('post.id');
-        // dump($id);exit;
         $res1 = M('purchase')->where(array('id'=>$id))->delete();
         $res2 = M('purchase_detail')->where(array('pid'=>$id))->delete();
         if ($res1 && $res2) {
@@ -224,7 +238,6 @@ class PurchaseController extends BaseController {
     public function dels()
     {
         $id = I('post.id');
-        // dump($id);exit;
         $res = M('purchase_detail')->where(array('id'=>$id))->delete();
         if ($res) {
             echo 1;
@@ -266,15 +279,17 @@ class PurchaseController extends BaseController {
     public function purDetails()
     {
         $id = I('get.id');
-        // dump($id);
-        $detailRes = M('purchase_detail')->field('id,gid,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
-        // dump(M()->getLastSQL());
-        // dump($detailRes);exit;
+        $detailRes = M('purchase_detail')->field('id,gid,gname,model,num,unit,price,money,remark,type,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
         for ($i=0; $i < count($detailRes); $i++) {
             $detailRes[$i]['purpic'] = explode(',', $detailRes[$i]['purpic']);
             $detailRes[$i]['purcontract'] = explode(',', $detailRes[$i]['purcontract']);
             $detailRes[$i]['purelse'] = explode(',', $detailRes[$i]['purelse']);
         }
+
+        for ($y=0; $y < count($detailRes); $y++) { 
+                $nameRes = M('goods_category')->field('name')->where(array('id'=>$detailRes[$y]['type']))->find();
+                $detailRes[$y]['type'] = $nameRes['name'];
+            }
         $this->assign('detailRes', $detailRes);
         $this->assign('pid', $id);
         $this->display();
@@ -294,7 +309,6 @@ class PurchaseController extends BaseController {
         $status = I('post.status');
         $data['status'] = $status;
         $res = M('pur_status')->where(array('cid'=>$id))->save($data);
-        // dump(M()->getLastSQL());exit;
         $this->ajaxReturn($res);
     }
 
@@ -314,15 +328,17 @@ class PurchaseController extends BaseController {
     public function myDetails()
     {
         $id = I('get.id');
-        // dump($id);
-        $detailRes = M('purchase_detail')->field('id,gid,gname,model,num,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
-        // dump(M()->getLastSQL());
-        // dump($datailRes);exit;
+        $detailRes = M('purchase_detail')->field('id,gid,gname,model,num,type,unit,price,money,remark,purpic,purcontract,purelse')->where(array('pid'=>$id))->select();
         for ($i=0; $i < count($detailRes); $i++) {
             $detailRes[$i]['purpic'] = explode(',', $detailRes[$i]['purpic']);
             $detailRes[$i]['purcontract'] = explode(',', $detailRes[$i]['purcontract']);
             $detailRes[$i]['purelse'] = explode(',', $detailRes[$i]['purelse']);
         }
+
+        for ($y=0; $y < count($detailRes); $y++) { 
+                $nameRes = M('goods_category')->field('name')->where(array('id'=>$detailRes[$y]['type']))->find();
+                $detailRes[$y]['type'] = $nameRes['name'];
+            }
         $this->assign('detailRes', $detailRes);
         $this->display();
     }

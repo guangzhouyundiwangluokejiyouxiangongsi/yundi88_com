@@ -54,6 +54,9 @@
 .tab-search-box li{
     list-style: none;
 }
+input{
+    padding: 0 5px;
+}
 </style>
 <form action="" method="post" >
 <div class="wrapper">
@@ -71,13 +74,13 @@
                         <div style="margin: 2px 0;" class="form-group" style="float: left;">
                             <label class="control-label" for="input-order-id">采购联系人</label>
                             <div class="input-group">
-                                <input type="text" name="tab2[person]" placeholder="采购联系人" class="input-sm" style="width:100px;" required autocomplete="off" />
+                                <input type="text" name="tab2[person]" placeholder="必填" class="input-sm" style="width:100px;" required autocomplete="off" />
                             </div>
                         </div>
                         <div style="margin: 2px 0;" class="form-group">
                             <label class="control-label" for="input-order-id">联系电话</label>
                             <div class="input-group">
-                                <input type="text" id="phone" onblur="checkPhone()" name="tab2[phone]" placeholder="联系电话" class="input-sm" style="width:100px;" required autocomplete="off" />
+                                <input type="text" id="phone" onblur="checkPhone()" name="tab2[phone]" placeholder="联系电话 必填" class="input-sm" style="width:100px;" required autocomplete="off" />
                             </div>
                         </div>
                         <div style="margin: 2px 0;" class="form-group">
@@ -98,28 +101,24 @@
                                 <input type="date" name="tab2[addtime]" placeholder="下单日期" class="input-sm" autocomplete="off" />
                              </div>
                         </div>
-                        <div style="margin: 2px 0;" class="form-group">
+                        <!-- <div style="margin: 2px 0;" class="form-group">
                             <label class="control-label" for="input-date-added">供货商</label>
                             <div class="input-group">
                                 <div class="cur">
     					           <form id="sourch_form_com" method="get" action="/index/searchstreet.html">
-        					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" id="q_com" value="" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this)" />
+        					            <input type="text" store='' data-role="input-search" name="tab2[supplier]" autocomplete="off" class="ssk" id="q_com" placeholder="搜索公司关键字 可不填"  onfocus="getdata2(this);" oninput="getdata2(this)" />
                                         <p id="demoo"></p>
-        					             <!-- <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a> -->
-        					            <!-- <input type="hidden" name="__hash__" value="27159e041a99d5464cc8d02536c9b8a8_b5e30518865c4fa0f50519a7d0ce3584" /> -->
+        					            <input type="hidden" name="__hash__" value="27159e041a99d5464cc8d02536c9b8a8_b5e30518865c4fa0f50519a7d0ce3584" />
                                     </form>
                                     <ul class="tab-search-box" onfocus="$('.tab-search-box').show();">
     					        </div>
-                                <!-- <input type="text" name="tab2[supplier]" placeholder="供货商" class="input-sm" autocomplete="off" /> -->
                              </div>
-                        </div>
-                        <!-- <button style="margin: 2px 0;" type="submit" class="btn btn-default pull-right"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button> -->
+                        </div> -->
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover" style="font-size:12px;">
                             <thead>
                                 <tr>
-                                    <!-- <td class="text-center">序号</td> -->
                                     <td class="text-center">物品名称</td>
                                     <td class="text-center">规格型号</td>
                                     <td class="text-center">数量</td>
@@ -134,8 +133,7 @@
 
                             <tbody id="tbody">
                                 <tr>
-                                    <!-- <td ></td> -->
-                                    <td><input name='tab1[gname][]' type="text" required autocomplete="off" /></td>
+                                    <td><input name='tab1[gname][]' type="text" required placeholder="必填" autocomplete="off" /></td>
                                     <td><input name='tab1[model][]' type="text" autocomplete="off" /></td>
                                     <td><input id="num0" name='tab1[num][]'  type="number" autocomplete="off" onchange="total(0)" /></td>
                                     <td><input name='tab1[unit][]' type="text" autocomplete="off" /></td>
@@ -213,6 +211,9 @@
 
 <!-- 三级联动 start -->
 <script type="text/javascript">
+
+
+
 function class1(obj){
      var val1 = $(obj).parent().find('select').eq(0);
      var val2 = $(obj).parent().find('select').eq(1);
@@ -357,6 +358,7 @@ function getVal(id1, id2) {
 
     $(document).on('click', '.companyRes', function () {
         $('#q_com').val($(this).html());
+        $('#q_com').val($(this).html());
     });
 
 
@@ -400,7 +402,6 @@ function getVal(id1, id2) {
 
     			$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
     			var text = $('.tab-search-box .xuanzhong').text();
-
     		}
     	$('input[name=company]').val(text);
     	$('input[name=q]').val(text);
