@@ -148,6 +148,7 @@ class InfoController extends BaseController
         
         $this->assign('quality',$quality);
 
+        shuffle($articlelist);
         $this->assign('articlelist',$articlelist);
         $this->assign('page',$page);// 赋值分页输出
         $this->assign('count',ceil($count / 10));

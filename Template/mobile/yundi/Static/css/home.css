@@ -19,7 +19,7 @@
 .w_sort_on ul li,.w_sort_under ul li{float: left;width: 25%;}
 .w_sort_on ul li a,.w_sort_under ul li a{display: block;width: 100%;text-align: center;}
 .w_sort_on ul li a i,.w_sort_under ul li a i{font-style: normal;height: 0.5558rem;line-height: 0.5558rem;width: 100%;display: block;}
-.w_sort_on ul li a i img,.w_sort_under ul li a i img{vertical-align: middle;max-height: 0.5558rem;}
+.w_sort_on ul li a i img,.w_sort_under ul li a i img{vertical-align: middle;max-height: 0.8rem;}
 .w_sort_on ul li a p,.w_sort_under ul li a p{font-size: 0.2021rem;color: #191a1c;padding-top: 0.2358rem;}
 
 /*同行产品*/
