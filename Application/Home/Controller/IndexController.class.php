@@ -55,7 +55,7 @@ class IndexController extends BaseController {
     public function index()
     {
         
-        // $file = file_get_contents(PATH.'/index.html');
+        $file = file_get_contents(PATH.'/index.html');
         if($file){
             $this->show($file);
         }else{

@@ -186,16 +186,11 @@ class GoodsController extends BaseController {
     }
 
 
-   
-
-
-
     /**
      *  商品列表
      */
     public function ajaxGoodsList(){
         $where = ' 1 = 1 '; // 搜索条件
-       
         I('intro')    && $where = "$where and ".I('intro')." = 1" ;
         I('board') && $where = "$where and ".I('field')." = ".I('board');
         I('brand_id') && $where = "$where and brand_id = ".I('brand_id') ;
