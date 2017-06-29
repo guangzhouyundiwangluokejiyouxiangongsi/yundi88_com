@@ -22,7 +22,7 @@ class BaseController extends Controller {
      * 析构函数
      */
     function __construct() 
-    {
+    {   
         parent::__construct();
         $upgradeLogic = new UpgradeLogic();
         $upgradeMsg = $upgradeLogic->checkVersion(); //升级包消息        
@@ -52,6 +52,8 @@ class BaseController extends Controller {
                 exit;
         	}
         }
+        $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+        if (!$store_art) $this->redirect('/Seller/Storetwo/index');
         $this->public_assign();
     }
     

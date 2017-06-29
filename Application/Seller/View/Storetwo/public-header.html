@@ -1,0 +1,326 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/public-header.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/wangzhandaohan.css">
+<header class="head">
+<style type="text/css">.xuanzhong{background-color: #EDEDED}</style>
+    <!-- <div class="left">Hi，你好  kky</div> -->
+    <style type="text/css">
+     .pro .nav .yi .dyj{
+     	height: 480px;
+     	 box-shadow:-2px 0 2px #e5e5e5, /*左边阴影*/  
+    2px 0 2px #e5e5e5, /*右边阴影*/  
+    0 0 0 #e5e5e5, /*顶部阴影*/  
+    0 2px 2px #e5e5e5; /*底边阴影*/  
+     }
+	    .pro .nav .yi .dyj .one{background:#fff;opacity: 1;}
+	    
+    </style>
+    <nav class="nav nav2">
+	    <ul> 
+	        <li><a href="{:U('/user/reg')}" class='nologin' >注册</a><a href="{:U('/seller/index/index')}" class="islogin userinfo" title="" target="_blank"></a>
+	        </li>
+	        <span>|</span>
+	        <li><a href="{:U('/user/login')}" class='nologin' >登录</a><a href="{:U('/user/logout')}" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+	        <span>|</span>
+	        <li><img src="__PUBLIC__/pc/images/index1.png" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="{:U('/Cart/cart')}" target="_blank">购物车</a></li><span>|</span>
+	        <li><a href="{:U('/User/order_list')}" target="_blank">我的订单</a></li>
+	    </ul>
+	    <p>您好，欢迎来到云狄网！股票代码：366130</p>
+	    <ul>   
+	   		<li><a href="{:U('/User/info')}" target="_blank">会员中心</a></li><span>|</span>
+	        <li><a href="{:U('/user/login')}" target="_blank">免费发布信息</a></li><span>|</span>
+	        <li><a href="/index/index_nav.html" target="_blank">网站导航</a>
+	        	<div class="navss">
+		          <dl>
+		            <dd><a href="/goods/goodsList2.html" target="_blank">万千产品</a></dd>
+	                <dd><a href="/Info/index/" target="_blank">海量信息</a></dd>
+	                <dd><a href="{:U('/seller/index/index',array('nav'=>product))}" target="_blank">产品推广</a></dd>
+	                <dd><a href="{:U('/seller/index/index',array('nav'=>article))}" target="_blank">信息推广</a></dd>
+	                <dd><a href="/index/street/" target="_blank">企业信息</a></dd>
+	                <dd><a href="/article/promote.html" target="_blank">免费推广</a></dd>
+	                <dd><a href="http://association.yundi88.com" target="_blank">云商会</a></dd>
+	                <dd><a href="/index/certification2.html" target="_blank">商城入驻</a></dd>
+	                <dd><a href="/article/detail/article_id/54.html" target="_blank">联系我们</a></dd>
+		          <div class="cl"></div>
+		          </dl>
+        		</div>
+			</li> 
+	    </ul>
+
+    </nav>
+
+</header><!--顶部结束-->
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      var uname= getCookie('uname');
+      if(uname == ''){
+        $('.islogin').remove();
+        $('.nologin').show();
+      }else{
+        $('.nologin').remove();
+        $('.islogin').show();
+        $('.userinfo').html(decodeURIComponent(uname));
+      }
+      	/* 头部定位 */
+     	$(window).scroll(function () {
+			if ($(window).scrollTop() >43) {
+				$('.prof').css({'position':'fixed','top':'0','z-index':'1000','background':'#fff url(__PUBLIC__/pc/images/search_bg.png) repeat-x bottom'});
+
+			}
+			else
+			{
+				$('.prof').css({'position':'','top':'','z-index':'','background':'#fff'});
+			}
+		});
+		/* 搜索信息 */
+        $("#q").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		$("#q_com").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q_com").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		/* 搜索选项卡 */
+		$('.search1 #tab .tabCon .cur').hide();
+		if("<?php echo I('company');?>"){
+			$('.search1 #tab .tabCon .cur').eq(1).show();
+			
+		}else if("<?php echo I('info');?>"){
+
+      $('.search1 #tab .tabCon .cur').eq(2).show();
+    }else{
+			$('.search1 #tab .tabCon .cur').eq(0).show();
+		}
+
+		$('#tab .tabList ul li').click(function(){
+			var q_txt='';
+			var i =$(this).index();
+			$('.search1 #tab .tabList ul li').removeClass('cur');
+			$(this).addClass('cur');
+			$('.search1 #tab .tabCon .cur').hide();
+			$('.search1 #tab .tabCon .cur').eq(i).show();
+			if($('#q').val() != '' || $('#q_com').val() != '' || $('#q_info').val() != '')
+			{	
+				if($('#q').val() != ''){
+					q_txt=$('#q').val();
+				}
+				else if($('#q_com').val() != ''){
+					q_txt=$('#q_com').val();
+				}
+				else{
+					q_txt=$('#q_info').val();
+				}
+				$("#tab .tabCon input[ type='text' ] ").val('');
+			}
+			$('#tab .tabCon>div').eq(i).find('.ssk').val(q_txt);		
+			
+		});
+
+		
+  });
+
+  </script>
+  	<div style="padding: 13px 0;height: 74px;background: #ffffff;">
+  		<div class="prof">
+	  		<div class="prol">
+				<figure>
+			        <a href="/" title="{$tpshop_config['shop_info_store_name']}"> 
+            			<img src="__PUBLIC__/pc/images/pro1.png" width="178" height="52"  alt=""/>
+            		</a>  
+			    </figure>
+			    <section class="search1">
+			       <div id="tab">
+					    <div class="tabList">
+					        <ul>
+					          	<li <?php if(I('q') || (!I('company') && !I('info'))){echo 'class="cur"';} ?>>产品</li>
+					            <li <?php if(I('company')){echo 'class="cur"';} ?>>公司</li>
+                     			<li <?php if(I('info')){echo 'class="cur"';} ?>>信息</li>
+					        </ul>
+					    </div>
+				        
+					    <div class="tabCon">
+					        <div class="cur">
+					           <form name="sourch_form" id="sourch_form" method="post" action="{:U('/Goods/search')}">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="q" id="q" value="<?php echo I('q'); ?>" placeholder="搜索产品关键字"  onfocus="getdata(this);" oninput="getdata(this);"/>
+					             <a data-role="btn" href="javascript:void(0);" class="but" onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();"></a>
+					            </form>
+					        </div>
+					        <div class="cur">
+					           <form id="sourch_form_com" method="get" action="{:U('/index/searchstreet')}">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="company" id="q_com" value="<?php echo I('company'); ?>" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this)" />
+					             <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
+					            </form>
+					        </div>
+							<div class="cur">
+				               <form id="sourch_form_info" method="get" action="{:U('/Info/search')}">
+				                <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="<?php echo I('info'); ?>" placeholder="搜索信息关键字" />
+				                 <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
+				                </form>
+				            </div>
+					    </div>
+					    <ul class="tab-search-box" onfocus="$('.tab-search-box').show();">
+					    </ul>
+			        </div>
+				 </section>
+		    </div>
+	    </div>
+  	</div>
+	<div class="pro">
+      <nav class="nav">
+        <ul>
+            <li class="yi"><a href="{:U('/goods/goodsList')}" >所有分类</a>
+               <ul class="dyj">
+                <tpshop sql="select * from `__PREFIX__goods_category` where is_show = 1 and `level` = 1" key="k" item='v'>
+                  <li class="one">
+                  <!-- <img src="{$v.image}"> -->
+                  <i style="background:url({$v.image}) no-repeat 1px 3px"></i>
+                  <a href="{:U('/Goods/goodsList',array('id'=>$v[id]))}" >{$v.name}</a>
+                      <section>
+                        <foreach name='goods_category_tree[$v[id]]["tmenu"]' item='l'>
+                         <dl>
+                           <dt><a href="{:U('/Goods/goodsList',array('id'=>$l[id]))}" >{$l.name}</a></dt>
+                           <dd>
+                            <foreach name ='l.sub_menu' item = 's'>
+                             <a href="{:U('/Goods/goodsList',array('id'=>$s[id]))}" >{$s.name}</a>
+                             </foreach>   
+                           </dd>
+                         </dl>
+                        </foreach>
+                      </section>                  
+                  </li>
+                 </tpshop>
+               </ul><!--所有宝贝的弹出层-->
+            </li>
+            <script type="text/javascript">
+            		$('.dyj .one').hover(function(){
+            			$(this).find('i').css('background-position','-18px 3px')
+            		},function(){
+            			// alert(1)
+            			$(this).find('i').css('background-position','1px 3px')
+
+            		})
+
+            </script>
+            <!-- #008cba url(../images/pro_icon_1.jpg) no-repeat 10px 7px -->
+            
+             <tpshop sql="SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` DESC limit 0,8" key="k" item='v'>
+               <li class="myli" <php>if($v['id'] == 2){</php> style="position:relative;"   <php>}</php>>
+               <php>if ($v['is_new'] == 1){</php>
+               <a class="snav{$v[id]}" target="_blank" href="{$v[url]}" 
+               <php>} else {</php>
+               <a class="snav{$v[id]}" href="{$v[url]}"
+               <php>}</php>
+               <php> if (I('nav_id') == $v['id']) echo 'style="color: #008CBA"'</php>
+                  <?php  if($_SERVER['REQUEST_URI']==str_replace('&amp;','&',$v[url])){ echo "class='menu-item menu-item-active'";}
+                  else{ echo "class='menu-item'"; } ?>> {$v[name]} </a>
+                  <php>if($v['id'] == 2){</php>
+                  <div class="nav-float"><p>Hot</p><img src="/Public/pc/images/anav-float.png" ></div>
+                  <php>}</php>
+                  </li>
+              </tpshop>
+        </ul>
+      </nav>
+  </div>  
+  
+
+  <script type="text/javascript">
+function getdata(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Goods/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Goods/search/q/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+
+function getdata2(obj){
+
+   var val = $(obj).val();
+   if(!val){return;}
+   var str ='';
+  $.getJSON("/Index/ajaxdata" ,{'val': val} ,function(data){
+
+    $.each(data, function(k,v){
+      str += "<li><a href='/Index/searchstreet/company/"+v+".html'>"+v+"</a></li>";
+    })
+    $('.tab-search-box').html(str);
+    var len=$('.tab-search-box li').length;
+    if (len>9) {
+      for (var i = len; i > 9; i--) {
+          $('.tab-search-box li').eq(i).remove();
+      }
+    }
+  })
+
+}
+
+
+
+$('#tab .tabCon .ssk').keyup(function(event){ 
+
+	if(event.keyCode == 40){
+		var obj = $('.tab-search-box .xuanzhong');
+		if($(obj).text()){
+			$(obj).removeClass('xuanzhong');
+			$(obj).next().addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+			if(!text){
+				$('.tab-search-box li').eq(0).addClass('xuanzhong');
+				var text = $('.tab-search-box .xuanzhong').text();
+
+			}
+		}else{
+
+			$('.tab-search-box li').eq(0).addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+
+		}
+	$('input[name=company]').val(text);
+	$('input[name=q]').val(text);
+		
+	}else if(event.keyCode == 38){
+		var l = $('.tab-search-box li').length;
+		var obj = $('.tab-search-box .xuanzhong');
+		if($(obj).text()){
+			$(obj).removeClass('xuanzhong');
+			$(obj).prev().addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+			if(!text){
+				
+				$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+				var text = $('.tab-search-box .xuanzhong').text();
+
+			}
+		}else{
+
+			$('.tab-search-box li').eq(l-1).addClass('xuanzhong');
+			var text = $('.tab-search-box .xuanzhong').text();
+
+		}
+	$('input[name=company]').val(text);
+	$('input[name=q]').val(text);
+
+	}
+}); 
+
+
+  </script>

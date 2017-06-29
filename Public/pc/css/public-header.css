@@ -57,7 +57,7 @@
 .prof .prol .tab-search-box li a{color: #333333;font-size: 14px;line-height: 30px;padding: 0 10px;display: block;text-decoration: none;}	
 .prof .prol .tab-search-box li a:hover{background: #EDEDED;color: #333333;}
 /*第一级弹出*/    
-.pro .nav .yi .dyj{ margin-top: 1px;width: 250px;height:460px;display:none; }
+.pro .nav .yi .dyj{ width: 250px;height:460px;display:none; }
 /*.pro .nav .yi .dyj .one{width:200px; height:30px; color:#FFF;text-align:left; text-indent:2.5em; line-height:30px; font-size:14px;}*/
 .pro .nav .yi .dyj .one{ height:30px; background:#008CBA;text-align:left;line-height:30px; font-size:14px;background: #ffffff;opacity: 0.8;width: 250px;}
 .pro .nav .yi .dyj .one:hover{ opacity: 1;background: #ffffff;}

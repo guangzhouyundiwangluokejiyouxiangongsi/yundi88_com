@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/company_information.css">
+	<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.9.0.min.js"></script>
+	<script src="__PUBLIC__/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="__PUBLIC__/js/myFormValidate.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src='__PUBLIC__/pc/js/jquery-1.7.2.min.js'></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script><!--弹窗js 参考文档 http://layer.layui.com/-->
+	<script src="__PUBLIC__/js/global.js"></script>
+	<script src="__PUBLIC__/js/pc_common.js"></script>
+	<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+	
+	<include file="header" />
+
+	<div class="ci_content">
+		<div class="ci_mg">
+			<div class="ci_tit">
+				<div class="ci_com_nav">
+					<a href="javascript:;">公司导航</a>
+					<div class="ci_nav_hov">
+						<ul>
+							<li><a href="{:U('/seller/storetwo/information_release')}" target="_blank">发布信息</a></li>
+							<li class="cur"><a href="{:U('/seller/storetwo/company_information')}" target="_blank">公司信息</a></li>
+							<li><a href="{:U('/seller/storetwo/company_status')}" target="_blank">立即建站</a></li>
+							<li><a href="{:U('/seller/storetwo/information_management')}" target="_blank">信息管理</a></li>
+							<li><a href="{:U('/seller/storetwo/information_list',array('store_id'=>$store_id))}" target="_blank">前台列表</a></li>
+						</ul>
+					</div>
+				</div>
+				<h1>公司信息</h1>
+			</div>
+			<div class="ci_detail">
+				<form action="{:U('storetwo/company_save')}" method="post" id="formone">
+					<div class="web_name">
+						<p>官网名称</p>
+						<input class="pl" type="text" placeholder="请输入官网名称" name="store_name" value="{$store.store_name}">
+						<div class="ci_tishi">
+							<p>如：广州XX设备有限公司。</p>
+						</div>
+					</div>
+					<div class="web_title">
+						<p>标题</p>
+						<input class="pl" type="text" placeholder="请输入标题" name="store_title" value="{$store.store_title}">
+						<div class="ci_tishi">
+							<p>SEO网站标题，便于搜索引擎推广您的网站。（对于不懂网站优化的您，建议填写企业名称，如：广州XX设备有限公司。</p>
+						</div>
+					</div>
+					<div class="main_pro">
+						<p>主营商品</p>
+						<foreach name="store['store_zy']" item="vv" key="kk">
+						<div class="main_input">
+							<input type="text" name="zyy[]" value="{$vv}">
+							<i>x</i>
+						</div>
+						</foreach>
+						<div class="main_input">
+							<input type="text" name="zyy[]">
+							<i>x</i>
+						</div>
+						<span class="click_add">点击添加</span>
+						<b></b>
+						<div class="ci_tishi">
+							<p>每个框填写一个关键词，限于6个字内</p>
+						</div>
+					</div>
+					<div class="web_logo">
+						<p>官网LOGO</p>
+						<div class="logo_file"><img id="store_logo" src="{$store.store_logo|default='__PUBLIC__/images/ci_file_bg.png'}"></div>
+						<input class="logo_file_btn" type="button" value="上传LOGO" onClick="GetUploadify(1,'store_logo','seller','callback1')">
+						<b></b>
+						<div class="ci_tishi">
+							<p>每个企业拥有独特性标志。建议使用200KB大小文件，宽度200*高度60的GIF或PNG格式图片，提交后网站前台/全站生效（点击提交生效）</p>
+						</div>
+						<input type="hidden" name="store_logo" value="{$store.store_logo}">
+					</div>
+					<div class="person">
+						<p>联系人</p>
+						<input class="pl" type="text" placeholder="请输入联系人姓名" name="people" value="{$store.people}">
+						<b></b>
+						<div class="ci_tishi">
+							<p>联系人姓名</p>
+						</div>
+					</div>
+					<div class="ci_tel">
+						<p>官网电话</p>
+						<input class="pl" type="text" placeholder="请输入官网电话" name="store_phone"   value="{$store.store_phone}">
+						<b></b>
+						<div class="ci_tishi">
+							<p>格式(区号+电话号码)如020-00000000或400-00000000）</p>
+						</div>
+					</div>
+					<div class="ci_phone">
+						<p>手机</p>
+						<input class="pl" type="text" placeholder="请输入手机号码" name="mobile" value="{$store.mobile}" >
+						<b></b>
+						<div class="ci_tishi">
+							<p>格式(11位数)：如13800000000</p>
+						</div>
+					</div>
+					<div class="ci_mailbox">
+						<p>邮箱</p>
+						<input class="pl" type="text" name="email" value="{$store.email}" placeholder="请输入邮箱号码">
+						<b></b>
+						<div class="ci_tishi">
+							<p>格式：用户名@邮箱网站.com</p>
+						</div>
+					</div>
+					<div class="ci_erweima">
+						<p>二维码</p>
+						<div class="erweima_file"><img id="store_erweima" src="{$store.store_erweima|default='__PUBLIC__/images/ci_erweima_file_bg.png'}"></div>
+						<input class="erweima_file_btn" type="button" value="上传二维码" onClick="GetUploadify(1,'store_erweima','seller','callback3')">
+						<b></b>
+						<div class="ci_tishi">
+							<p>建议使用宽200像素-高200像素内200KB内的GIF或PNG格式图片；显示在网站右边客服区或是底部信息区域，点击下方"提交"按钮后生效</p>
+						</div>
+						<input type="hidden" name="store_erweima" value="{$store.store_erweima}">
+					</div>
+					<div class="ci_address">
+						<p>公司地址</p>
+						<div class="add_city" data-toggle="distpicker">
+							<select onchange="get_city(this)" id="province" name="province_id">
+								<option  value="0">选择省份</option>
+                                <volist name="province" id="vo">
+                                    <option value="{$vo.id}" <if condition="$store[province_id] eq $vo[id]">selected</if>>{$vo.name}</option>
+                                </volist>
+							</select>
+							<select onchange="get_area(this)" id="city" name="city_id">
+								<option value="0">选择城市</option>
+                                <volist name="city" id="vo">
+                                    <option value="{$vo.id}" <if condition="$store[city_id] eq $vo[id]">selected</if>>{$vo.name}</option>
+                                </volist>
+							</select>
+							<select id="district" name="district">
+								<option value="0">选择区域</option>
+                                <volist name="area" id="vo">
+                                    <option value="{$vo.id}" <if condition="$store[district] eq $vo[id]">selected</if>>{$vo.name}</option>
+                                </volist>
+							</select>
+						</div>
+						<input class="pl" type="text" placeholder="请输入详细地址" name="store_address" value="{$store.store_address}">
+					</div>
+					<div class="description">
+						<p>SEO官网描述</p>
+						<textarea class="pl" placeholder="SEO官网描述" name="seo_description">{$store.seo_description}</textarea>
+						<div class="ci_tishi">
+							<p>请详细描述网站相关，编写小技巧，可围绕您企业的核心关键词来描述长尾关键词或品牌词，长度建议在80个字内，不要超出200个字符</p>
+						</div>
+					</div>
+					<div class="ci_copyright">
+						<p>版权信息</p>
+						<input class="pl" type="text" placeholder="版权信息" name="copyright" value="{$store.copyright}">
+						<div class="ci_tishi">
+							<p>只会在独立网站显示</p>
+						</div>
+					</div>
+					<div class="case_num">
+						<p>备案号</p>
+						<input class="pl" type="text" placeholder="备案号" name="record" value="{$store.record}">
+						<div class="ci_tishi">
+							<p>只会在独立网站显示</p>
+						</div>
+					</div>
+					<div class="ci_submit">
+						<input class="ci_submit_btn" type="submit" value="提交">
+					</div>
+				</form> 
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$(".ci_com_nav").mousemove(function(){
+				$(".ci_nav_hov").slideDown(200);
+			})
+			$(".ci_com_nav").mouseleave(function(){
+				$(".ci_nav_hov").stop(true,false).slideUp(200);
+			})
+
+			// 点击添加输入框
+			$(".click_add").click(function(){
+				var addNum = $(".main_input").length;
+				if(addNum > 4){
+					return false;
+				}else{
+					$(this).before('<div class="main_input"><input type="text"><i>x</i></div>');
+					return true;
+				}
+				
+			})
+			// 点击添加输入框 end
+
+			// 给已加载的和未来加载的输入框绑定点击删除
+			$(".main_pro").on("click",".main_input i",function(){
+				var reNum = $(".main_input").length;
+				if(reNum > 1){
+					$(this).parent(".main_input").remove();
+				}else{
+					return false;
+				}
+			});
+			// 给已加载的和未来加载的输入框绑定点击删除 end
+
+			// 验证输入
+			// 验证官网名称
+			$(".web_name>input").blur(function(){
+				if($(this).val() == ""){
+					$(this).parent(".web_name").addClass("cur");
+					return false;
+				}else{
+					$(this).parent(".web_name").removeClass("cur");
+					return true;
+				}
+			})
+			// 验证官网名称 end
+			
+			// 验证标题
+			$(".web_title>input").blur(function(){
+				if($(this).val() == ""){
+					$(this).parent(".web_title").addClass('cur');
+					return false;
+				}else{
+					$(this).parent(".web_title").removeClass('cur');
+					return true;
+				}
+			})
+			// 验证标题 end
+			
+			// 验证主营商品
+			$(".main_pro").on("blur",".main_input input",function(){
+				if($(this).val() == ""){
+					$(this).addClass("cur");
+					$(this).parent(".main_input").parent(".main_pro").addClass("cur");
+					return false;
+				}if($(this).val().length >6){
+					$(this).addClass("cur");
+					$(this).parent(".main_input").parent(".main_pro").addClass("cur");
+					return false;
+				}else{
+					$(this).removeClass("cur");
+					$(this).parent(".main_input").parent(".main_pro").removeClass("cur");
+					return false;
+				}
+			})
+			// 验证主营商品 end
+			
+			// 验证联系人
+			$(".person>input").blur(function(){
+				if($(this).val() == ""){
+					$(this).parent(".person").addClass("cur");
+					return false;
+				}else{
+					$(this).parent(".person").removeClass("cur");
+					return true;
+				}
+			});
+			// 验证联系人 end
+			
+			var tel = /^(((0\d{3}[\-])?\d{7}|(0\d{2}[\-])?\d{8}))([\-]\d{2,4})?$/;// 验证区号+电话号码
+			var phone = /^1[34578]\d{9}$/;// 验证手机号码
+			var email = /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/;// 验证邮箱
+			// 验证官网电话
+			$(".ci_tel>input").blur(function(){
+				if($(this).val() == ""){
+					$(this).parent(".ci_tel").addClass("cur");
+					return false;
+				}if(!tel.test($(this).val())){
+					$(this).parent(".ci_tel").addClass("cur");
+					return false;
+				}else{
+					$(this).parent(".ci_tel").removeClass("cur");
+					return true;
+				}
+			})
+			// 验证官网电话 end
+			
+			// 验证手机号码
+			$(".ci_phone>input").blur(function(){
+				if($(this).val() == ""){
+					$(this).parent(".ci_phone").addClass("cur");
+					return false;
+				}if(!phone.test($(this).val())){
+					$(this).parent(".ci_phone").addClass("cur");
+					return false;
+				}else{
+					$(this).parent(".ci_phone").removeClass("cur");
+					return true;
+				}
+			})
+			// 验证手机号码 end
+			
+			// 验证邮箱
+			$(".ci_mailbox>input").blur(function(){
+				if($(this).val() == ""){
+					$(this).parent(".ci_mailbox").addClass("cur");
+					return false;
+				}if(!email.test($(this).val())){
+					$(this).parent(".ci_mailbox").addClass("cur");
+					return false;
+				}else{
+					$(this).parent(".ci_mailbox").removeClass("cur");
+					return true;
+				}
+			})
+			// 验证邮箱 end
+			
+			// 验证点击提交按钮
+			$(".ci_submit_btn").click(function(){
+				if($(".web_name>input").val() == ""){
+					$(".web_name").addClass("cur");
+					return false;
+				}if($(".web_title>input").val() == ""){
+					$(".web_title").addClass("cur");
+					return false;
+				}if($(".main_input>input").val() == ""){
+					$(".main_input>input").addClass("cur");
+					$(".main_pro").addClass('cur');
+					return false;
+				}if($(".person>input").val() == ""){
+					$(".person").addClass('cur');
+					return false;
+				}if($(".ci_tel>input").val() == ""){
+					$(".ci_tel").addClass("cur");
+					return false;
+				}if(!tel.test($(".ci_tel>input").val())){
+					$(".ci_tel").addClass("cur");
+					return false;
+				}if($(".ci_phone>input").val() == ""){
+					$(".ci_phone").addClass("cur");
+					return false;
+				}if(!phone.test($(".ci_phone>input").val())){
+					$(".ci_phone").addClass("cur");
+					return false;
+				}if($(".ci_mailbox>input").val() == ""){
+					$(".ci_mailbox").addClass('cur');
+					return false;
+				}if(!email.test($(".ci_mailbox>input").val())){
+					$(".ci_mailbox").addClass("cur");
+					return false;
+				}else{
+					$.post('{:U('storetwo/company_save')}',$('#formone').serialize(),function(res){
+						if (res.status==1){
+							alert(res.msg);
+						}else{
+							alert(res.msg);
+						}
+					})
+					return false;
+				}
+
+			})
+			// 验证点击提交按钮 end
+		})
+	
+		function callback1(img_str){
+		    $('input[name="store_logo"]').val(img_str);
+		    $('#store_logo').attr('src',img_str);
+		}
+
+		function callback3(img_str){
+		    $('input[name="store_erweima"]').val(img_str);
+		    $('#store_erweima').attr('src',img_str);
+		}
+	</script>
+
+	<invlude file="footer" />
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/information_management.css">
+	<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+
+	<include file="header" />
+
+	<div class="ci_content">
+		<div class="ci_mg">
+			<div class="ci_tit">
+				<div class="ci_com_nav">
+					<a href="javascript:;">公司导航</a>
+					<div class="ci_nav_hov">
+						<ul>
+							<li><a href="{:U('/seller/storetwo/information_release')}" target="_blank">发布信息</a></li>
+							<li><a href="{:U('/seller/storetwo/company_information')}" target="_blank">公司信息</a></li>
+							<li><a href="{:U('/seller/storetwo/company_status')}" target="_blank">立即建站</a></li>
+							<li><a class="cur" href="{:U('/seller/storetwo/information_management')}" target="_blank">信息管理</a></li>
+							<li><a href="{:U('/article/information_list',array('store_id'=>$store_id))}" target="_blank">前台列表</a></li>
+						</ul>
+					</div>
+				</div>
+				<h1>信息管理</h1>
+			</div>
+			<div class="ci_detail">
+				<div class="im_list_tit">
+					<ul>
+						<li>文章标题</li>
+						<li>更新时间</li>
+						<li>操作</li>
+					</ul>
+				</div>
+				<div class="im_list_con">
+					<ul>
+						<foreach name="link" item="vv">
+						<li id="{$vv['id']}">
+							<ol>
+								<li>{$vv.title}</li>
+								<li>{:date('Y-m-d',$vv['timer']);}<span>{:date('H:i:s',$vv['timer']);}</span></li>
+								<li>
+									<a class="to_view" href="{:U('/article/information_list_details',array('id'=>$vv['id']))}" target="_blank">查看</a>
+									<a class="edit" href="{:U('/seller/storetwo/information_release',array('id'=>$vv['id']))}">编辑</a>
+									<a class="remove" data-id="{$vv['id']}"  href="javascript:;" >删除</a>
+								</li>
+							</ol>
+						</li>
+						</foreach>
+					</ul>
+				</div>
+			</div>
+			<div>
+				{$page}
+			</div>
+			
+		</div>
+	</div>
+	
+	<!-- 删除弹窗 -->
+	<div class="remove_model">
+		<div class="remove_model_con">
+			<a href="javascript:;">x</a>
+			<img src="__PUBLIC__/pc/images/remove_model_icon01.png">
+			<p>确定删除</p>
+			<div class="remove_btn">
+				<a href="javascript:;" class="remove_fix_btn">确定</a>
+				<a href="javascript:;" class="remove_cancen_btn">取消</a>
+			</div>
+		</div>
+	</div>
+	<!-- 删除弹窗 -->
+
+	<script type="text/javascript">
+		$(function(){
+			$(".ci_com_nav").mousemove(function(){
+				$(".ci_nav_hov").slideDown(200);
+			})
+			$(".ci_com_nav").mouseleave(function(){
+				$(".ci_nav_hov").stop(true,false).slideUp(200);
+			})
+
+
+			$(".im_list_con>ul>li>ol>li>.remove").click(function(){
+				$(".remove_model").fadeIn(200);
+				$(this).addClass('cur');
+				$('.remove_fix_btn').attr('href','javascript:del_news('+$(this).attr('data-id')+')');
+			})
+			$(".remove_model_con>a,.remove_cancen_btn").click(function(){
+				$(".remove_model").fadeOut(200);
+				$(".im_list_con>ul>li>ol>li>.remove").removeClass('cur');
+			})
+
+		})
+
+		function del_news(id){
+			$.post('/seller/storetwo/del_news',{'id':id},function(res){
+				if (res){
+					$('#'+id).remove();
+					$(".remove_model").fadeOut(200);
+					$(".im_list_con>ul>li>ol>li>.remove").removeClass('cur');
+				}else{
+					alert('删除失败');
+				}
+			})
+		}
+	</script>
+
+	<include file="footer" />
+
+</body>
+</html>

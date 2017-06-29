@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/information_list.css">
+	<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+	
+	<include file="Public/header" />
+	
+	<div class="il_content">
+		<div class="banner">
+			<div class="il_mg">
+				<div class="il_logo">
+					<img src="{$store.store_logo}">
+				</div>
+				<h3>{$store.store_name}</h3>
+				<h2>{$store.store_zy}</h2>
+				<p>
+					<span>联系人：{$store.people}</span>
+					<span>官网电话：{$store.store_phone}</span>
+					<span>手机：{$store.mobile}</span>
+					<span>邮箱：{$store.email}</span>
+				</p>
+			</div>
+		</div>
+		<div class="il_list">
+			<ul>
+				<foreach name="store_art" item="vv">
+				<li>
+					<a href="{:U('/article/information_list_details',array('id'=>$vv['id']))}" target="_blank" class="il_list_img"><img src="{$vv.id|news_thum_images=285,196}"></a>
+					<a href="{:U('/article/information_list_details',array('id'=>$vv['id']))}" target="_blank" class="il_list_name">{$vv.title}</a>
+					<p>{$vv.description|getSubstr="0,12"}</p>
+					<div class="num_or_time">
+						<div class="il_num">
+							<p>{$vv.pc_click}</p>
+						</div>
+						<div class="il_time">
+							<p>{:date('Y-m-d',$vv['timer']);}</p>
+							<span>{:date('H:i:s',$vv['timer']);}</span>
+						</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<div>
+			{$page}
+		</div>
+		<div class="il_features">
+			<div class="il_features_tit">
+				<p>云狄特色</p>
+			</div>
+			<div class="il_features_con">
+				<ul>
+					<li><a href="" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_01.jpg"></a></li>
+					<li><a href="" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_02.jpg"></a></li>
+					<li><a href="" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_03.jpg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<include file="Public/footer" />
+	
+</body>
+</html>

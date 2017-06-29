@@ -339,4 +339,36 @@ class ArticleController extends BaseController {
         $this->display();
     }
 
+    public function information_list_details()
+    {
+        $id = I('id');
+        $store_art = M('store_art')->where(array('id'=>$id))->find();
+        $rand = $store_art['pc_click']+rand(1,9);
+        M('store_art')->where(array('id'=>$id))->save(array('pc_click'=>$rand));
+        $store = M('store')->field('store_name,store_id,store_logo,people,store_phone,mobile,email,store_zy')->where(array('store_id'=>$store_art['store']))->find();
+        $where['id'] = array('gt',$id);
+        $where['store'] = $store['store_id'];
+        $next = M('store_art')->where($where)->order('id')->find();
+        $where['id'] = array('lt',$id);
+        $last = M('store_art')->where($where)->order('id desc')->find();
+        $this->assign('store_art',$store_art);
+        $this->assign('last',$last);
+        $this->assign('next',$next);
+        $this->assign('store',$store);
+        $this->display();
+    }
+
+    public function information_list()
+    {   
+        $store_id = I('store_id');
+        $count = M('store_art')->where(array('store'=>$store_id))->count();
+        $Page       = new \Think\Page($count,16);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $store_art = M('store_art')->where(array('store'=>$store_id))->order('timer desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $store = M('store')->field('store_name,store_id,store_logo,people,store_phone,mobile,email,store_zy')->where(array('store_id'=>$store_id))->find();
+        $this->assign('store',$store);
+        $this->assign('page',$Page->show());
+        $this->assign('store_art',$store_art);
+        $this->display();
+    }
+
 }
