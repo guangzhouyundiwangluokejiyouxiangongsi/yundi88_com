@@ -457,7 +457,6 @@ class GoodsLogic extends RelationModel
              $brandList[$k] = $v;
         }         
         array_multisort($nameList,SORT_STRING,SORT_ASC,$brandList); 
-
         return $brandList;
     }    
     
@@ -488,7 +487,6 @@ class GoodsLogic extends RelationModel
              $categoryList[$k] = $v;
         }         
        array_multisort($nameList,SORT_STRING,SORT_ASC,$categoryList); 
-
         return $categoryList;
     }                    
 }

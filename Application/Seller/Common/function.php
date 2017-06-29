@@ -229,17 +229,16 @@ function getMenuList() {
 		// 	array('name' => '我的余额','act' => 'recharge','op'=>'Userinfo'),
 		// )),
 		/*
-			                        // http://www.tp-shop.cn/Admin/Distribut/rebate_log     /index.php/Seller/Store/distribut
-						'distribut' => array('name' => '分销管理', 'icon'=>'fa-cubes', 'child' => array(
-								array('name' => '分销商品', 'act'=>'goods_list', 'op'=>'Distribut'),
-								array('name' => '分销设置', 'act'=>'distribut', 'op'=>'Store'),
-			                                        array('name' => '分成记录', 'act'=>'rebate_log', 'op'=>'Distribut'),
-						)),
+            // http://www.tp-shop.cn/Admin/Distribut/rebate_log     /index.php/Seller/Store/distribut
+			'distribut' => array('name' => '分销管理', 'icon'=>'fa-cubes', 'child' => array(
+			array('name' => '分销商品', 'act'=>'goods_list', 'op'=>'Distribut'),
+			array('name' => '分销设置', 'act'=>'distribut', 'op'=>'Store'),
+                                array('name' => '分成记录', 'act'=>'rebate_log', 'op'=>'Distribut'),
+	)),
 		*/
 	);
 	return $menu_list;
 }
-
 
 
 function permissions()

@@ -36,26 +36,43 @@
                     <option value="2">审核失败</option>
                     <option value="3">违规下架</option>
                   </select>
-                </div>                       
+                </div>
+                <div class="form-group">
+                <!-- <label class="control-label" for="input-order-id">关键词</label> -->
+                <input id="field" type="hidden" name="field">
+                    <select id="typeList_select" name="board" class="form-control">
+                        <option value="0">全部</option>
+                        <option field="is_recommend" value="1">推荐</option>
+                        <option field="is_new" value="1">新品</option>
+                        <option field="is_hot" value="1">热卖</option>
+                        <option field="recommend" value="1">推荐(广告)</option>
+                    </select>
+                </div>
                 <div class="form-group">
                   <label class="control-label" for="input-order-id">关键词</label>
                   <div class="input-group">
                     <input type="text" name="key_word" value="" placeholder="搜索词" id="input-order-id" class="form-control">
                   </div>
-                </div>                  
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="input-order-id">ID</label>
+                  <div class="input-group">
+                    <input type="text" name="goods_id" value="" placeholder="搜索词" id="input-order-id" class="form-control">
+                  </div>
+                </div>
                 <!--排序规则-->
                 <input type="hidden" name="orderby1" value="goods_id" />
                 <input type="hidden" name="orderby2" value="desc" />
-                <button type="submit" onclick="ajax_get_table('search-form2',1)" id="button-filter search-order" class="btn btn-primary"><i class="fa fa-search"></i> 筛选</button>
+                <button type="submit" onclick="ajax_get_table('search-form2',1)" id="button-filter search-order" class="btn btn-primary"><i class="fa fa-search"></i>筛选</button>
               </form>
           </div>
           <div id="ajax_return"> </div>
         </div>
       </div>
     </div>
-    <!-- /.row --> 
+    <!-- /.row -->
   </section>
-  <!-- /.content --> 
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 <script>
@@ -63,6 +80,11 @@
         // ajax 加载商品列表
         ajax_get_table('search-form2', 1);
 
+    });
+
+    // 获取分类搜索信息
+    $('#typeList_select').change(function () {
+        $('#field').val($('#typeList_select option:selected').attr('field'));
     });
 
     // ajax 抓取页面 form 为表单id  page 为当前第几页

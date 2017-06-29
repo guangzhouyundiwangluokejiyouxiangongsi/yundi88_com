@@ -48,8 +48,6 @@ class PurchaseController extends BaseController {
             }
 
             $m = M('purchase_detail');
-            // $data['__hash__'] = $_POST['__hash__'];
-            // $data = $m->create($data,1);
 
             // 表单令牌验证
             if ($m->autoCheckToken($_POST['__hash__'])) {
@@ -62,7 +60,6 @@ class PurchaseController extends BaseController {
             $m->startTrans();
             $res1 = $m->addAll($data);
 
-            // dump($m->getLastSQL());exit;
             if (!$res1) {
                 $m->rollback();
                 $this->error('添加失败');
@@ -121,7 +118,6 @@ class PurchaseController extends BaseController {
     public function details()
     {
         $pid = I('get.id');
-        // $store_id =session('store_id');
         $list = M('purchase_detail')->where(array('pid'=>$pid))->field('id,gid,gname,model,num,unit,price,money,remark,type,purpic,purcontract,purelse')->select();
         for ($i=0; $i < count($list); $i++) {
             $list[$i]['purpic'] = explode(',', $list[$i]['purpic']);
@@ -161,8 +157,6 @@ class PurchaseController extends BaseController {
             for ($j=0; $j < count($data); $j++) {
                 $id = $data[$j]['id'];
                 unset($data[$j]['id']);
-                // $m = M('purchase_detail');
-
                 // 表单令牌验证
                 if ($m->autoCheckToken($_POST['__hash__'])) {
                     echo $m->getError();
