@@ -147,6 +147,7 @@ class StoretwoController extends Controller {
             if ($data['id']){
                 $res = M('store_art')->where(array('id'=>$data['id']))->save($data);
             }else{
+                $data['store'] = session('store_id');
                 $res = M('store_art')->add($data);
             }
             $this->ajaxReturn($res);
