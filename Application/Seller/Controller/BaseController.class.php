@@ -53,7 +53,7 @@ class BaseController extends Controller {
         	}
         }
         $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-        if (!$store_art) $this->redirect('/Seller/Storetwo/index');
+        if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
         $this->public_assign();
     }
     
