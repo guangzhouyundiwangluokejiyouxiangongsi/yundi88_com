@@ -80,6 +80,7 @@ class UserController extends BaseController {
     
     public function logout(){
         session(null);
+        session('user',null);
         cookie('uname',null);
         cookie('cn',null);
         cookie('user_id',null);

@@ -10,17 +10,16 @@ class StoreController extends Controller {
 	public $store = array();
 
 	public function _initialize() {
-// dump(session('user'));exit;
 		$this->assign('channel',(session('user.user_id'))?session('user.user_id'):time());
 		$store_id = I('store_id', 1);
 		$this->assign('template',M('shouji')->where(array('userid'=>$store_id))->find());
 		$store_info = M('store')->where(array('store_id' => $store_id))->find();
-		if (!$store_info['status']){
-			$this->error('该公司不存在', U('Index/index'));
+		if ($store_info['status'] != 1){
+			$this->error('该官网不存在或者已关闭', 'http://'.$_SERVER['HTTP_HOST']);
 		}
 		if ($store_info) {
 			if ($store_info['store_state'] == 0) {
-				$this->error('该店铺不存在或者已关闭', U('Index/index'));
+				$this->error('该官网不存在或者已关闭', 'http://'.$_SERVER['HTTP_HOST']);
 			}
 			// zhoufei
 			C('VIEW_PATH', './Merchants_tpl/pc/'); //模板路径
@@ -39,7 +38,7 @@ class StoreController extends Controller {
 			$store_info['store_presales'] = unserialize($store_info['store_presales']);
 			$store_info['store_aftersales'] = unserialize($store_info['store_aftersales']);
 			$store_info['store_products'] = unserialize($store_info['store_products']);
-			$navigation = M('store_navigation')->field('sn_content', true)->where(array('sn_store_id' => $store_id, 'sn_is_show' => 1,'sn_pid'=>0))->order('sn_sort')->select(); //店铺导航
+			$navigation = M('store_navigation')->field('sn_content', true)->where(array('sn_store_id' => $store_id, 'sn_is_show' => 1,'sn_pid'=>0))->order('sn_sort')->select(); //官网导航
 			foreach($navigation as &$navigation_v){
 
 				$navigation_v['son'] = M('store_navigation')->field('sn_content', true)->where(array('sn_store_id' => $store_id, 'sn_is_show' => 1,'sn_pid'=>$navigation_v['sn_id']))->order('sn_sort')->select();
@@ -83,7 +82,7 @@ class StoreController extends Controller {
 			$this->assign('commerce',M('store')->where(array('store_id'=>$store_info['store_id'],'commerce_state'=>1))->getField('commerce_state'));//是否加入云商会
 
 			$store_id = $this->store['store_id'];
-			//店铺内部分类
+			//官网内部分类
 			$store_goods_class_list = M('store_goods_class')->where(array('store_id' => $store_id, 'is_show' => '1'))->order('cat_sort')->select(); //zhoufei 增加了 ,'is_show'=>'1'
 			if ($store_goods_class_list) {
 				$sub_cat = $main_cat = array();
@@ -110,7 +109,7 @@ class StoreController extends Controller {
 
 			// zhoufei
 		} else {
-			$this->error('该店铺不存在或者已关闭', U('Index/index'));
+			$this->error('该官网不存在或者已关闭', U('Index/index'));
 		}
 	}
 
@@ -234,14 +233,14 @@ class StoreController extends Controller {
 	}
 
 	/**
-	 * 收藏店铺
+	 * 收藏官网
 	 */
 	function collect_store() {
 		$user_id = cookie('user_id');
 		$store_id = $this->store['store_id'];
 		$type = I('type', 0);
 		if ($type == 1) {
-			//删除收藏店铺
+			//删除收藏官网
 			M('store_collect')->where(array('user_id' => $user_id, 'store_id' => $store_id))->delete();
 			$store_collect = M('store')->where(array('store_id' => $store_id))->getField('store_collect');
 			if ($store_collect > 0) {
@@ -251,7 +250,7 @@ class StoreController extends Controller {
 		}
 		$count = M('store_collect')->where(array('user_id' => $user_id, 'store_id' => $store_id))->count();
 		if ($count > 0) {
-			exit(json_encode(array('status' => 0, 'msg' => '您已收藏过该店铺', 'result' => array())));
+			exit(json_encode(array('status' => 0, 'msg' => '您已收藏过该官网', 'result' => array())));
 		}
 
 		$data = array(

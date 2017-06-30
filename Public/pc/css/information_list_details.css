@@ -21,9 +21,9 @@ img{border: none;}
 .id_details_tit>h1{line-height: 45px;font-size: 20px;color: #070707;font-weight: normal;max-width: 1200px;height: 45px;overflow: hidden;}
 .id_details_tit>p{line-height: 36px;font-size: 14px;color: #999;}
 .id_details_tit>p>span{line-height: 36px;margin-right: 22px;}
-.id_details_con{background: #fff;padding: 40px 100px;margin-top: 16px;}
+.id_details_con{background: #fff;padding: 40px 50px;margin-top: 16px;}
 .id_details_con img{display: block;margin: 20px auto;}
-.id_details_con p{font-size: 16px;color: #666;line-height: 24px;text-indent: 2em;text-align: justify;}
+.id_details_con p{font-size: 16px;color: #666;line-height: 24px;text-indent: 2em;text-align: justify;word-wrap: break-word;}
 .id_details_con h3{font-size: 16px;color: #070707;margin: 20px 0;line-height: 20px;font-weight: normal;text-align: center;}
 .id_details_page{padding: 0 100px;background: #fff;}
 .id_details_page_con{background: url(../images/id_details_page_bg.png) no-repeat;background-position: top left;clear: both;overflow: hidden;}
