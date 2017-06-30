@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/foreground_information.css">
+	<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+	<include file="header" />
+
+	<div class="fi_content">
+		<div class="fi_mg">
+			<div class="fi_list">
+				<ul>
+					<li class="fi_one">
+						<a href="{:U('/seller/storetwo/information_release')}" target="_blank">
+							<p>信息发布</p>
+						</a>
+					</li>
+					<li class="fi_two">
+						<a href="{:U('/seller/storetwo/company_information')}" target="_blank">
+							<p>公司信息</p>
+						</a>
+					</li>
+					<li class="fi_three">
+						<a href="{:U('/seller/storetwo/company_status')}" target="_blank">
+							<p>立即建站</p>
+						</a>
+					</li>
+					<li class="fi_four">
+						<a href="{:U('/seller/storetwo/information_management')}" target="_blank">
+							<p>信息管理</p>
+						</a>
+					</li>
+					<li class="fi_five">
+						<a href="{:U('/article/information_list',array('store_id'=>$store_id))}" target="_blank">
+							<p>前台列表</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="fi_features">
+				<div class="fi_fea_tit">
+					<p>云狄特色</p>
+				</div>
+				<div class="fi_fea_list">
+					<ul>
+						<li><a href="/article/promote.html" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_01.jpg"></a></li>
+						<li><a href="/Index/street/" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_02.jpg"></a></li>
+						<li><a href="http://association.yundi88.com" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_03.jpg"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<include file="footer" />
+</body>
+</html>

@@ -15,6 +15,9 @@ class StoreController extends Controller {
 		$store_id = I('store_id', 1);
 		$this->assign('template',M('shouji')->where(array('userid'=>$store_id))->find());
 		$store_info = M('store')->where(array('store_id' => $store_id))->find();
+		if (!$store_info['status']){
+			$this->error('该公司不存在', U('Index/index'));
+		}
 		if ($store_info) {
 			if ($store_info['store_state'] == 0) {
 				$this->error('该店铺不存在或者已关闭', U('Index/index'));

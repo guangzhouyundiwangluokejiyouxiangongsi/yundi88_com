@@ -938,7 +938,7 @@ class StoreController extends BaseController
 		if ($store['store_name'] != $_POST['store_name']){
 			$res = M('store')->where(array('store_name'=>$_POST['store_name']))->find();
 			if ($res['store_name']){
-				$this->error('店铺名已存在');
+				$this->error('官网名称已存在');
 				return;
 			}
 		}

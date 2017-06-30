@@ -27,6 +27,10 @@ class IndexController extends BaseController
     }
 
     public function index(){
+        if (session('store_id')){
+            $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+            if (!$store_art) $this->redirect('/Seller/Storetwo/index');
+        }
         $this->pushVersion();
         $seller = session('seller');
         $menu_list = $this->getSellerMenuList($seller['is_admin'],$seller['act_limits']);

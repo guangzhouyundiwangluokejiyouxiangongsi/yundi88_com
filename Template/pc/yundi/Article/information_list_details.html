@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/information_list_details.css">
+	<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+	
+	<include file="Public/header" />
+	
+	<div class="il_content">
+		<div class="banner">
+			<div class="il_mg">
+				<div class="il_logo">
+					<img src="{$store.store_logo}">
+				</div>
+				<h3>{$store.store_name}</h3>
+				<h2>{$store.store_zy}</h2>
+				<p>
+					<span>联系人：{$store.people}</span>
+					<span>官网电话：{$store.store_phone}</span>
+					<span>手机：{$store.mobile}</span>
+					<span>邮箱：{$store.email}</span>
+				</p>
+			</div>
+		</div>
+		<div class="id_details">
+			<div class="id_details_nav">
+				<a href="{:U('/article/information_list',array('store_id'=>$store['store_id']))}" target="_blank">新闻列表</a> > <a href="/article/information_list_details/id/{$store_art.id}.html">文章详情</a>
+			</div>
+			<div class="id_details_tit">
+				<h1>{$store_art.title}</h1>
+				<p>时间：<span>{:date('Y-m-d',$store_art['timer']);}</span>浏览量：<span>{$store_art.pc_click}</span></p>
+			</div>
+			<div class="id_details_con">
+				{$store_art.content|htmlspecialchars_decode}
+			</div>
+			<div class="id_details_page">
+				<div class="id_details_page_con">
+					<if condition="$last">
+					<p class="id_prev">上一篇：<a href="/article/information_list_details/id/{$last.id}.html" target="_blank">{$last.title}</a></p>
+					<else />
+					<p class="id_prev">上一篇：<a href="/article/information_list_details/id/{$store_art.id}.html">没有了</a></p>
+					</if>
+
+					<if condition="$next">
+					<p class="id_next">下一篇：<a href="/article/information_list_details/id/{$next.id}.html" target="_blank">{$next.title}</a></p>
+					<else />
+					<p class="id_next">下一篇：<a href="/article/information_list_details/id/{$store_art.id}.html">没有了</a></p>
+					</if>
+				</div>
+			</div>
+			<div class="id_features">
+				<div class="id_features_tit">
+					<p>云狄特色</p>
+				</div>
+				<div class="id_features_con">
+					<ul>
+						<li><a href="/article/promote.html" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_01.jpg"></a></li>
+						<li><a href="/Index/street/" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_02.jpg"></a></li>
+						<li><a href="http://association.yundi88.com" target="_blank"><img src="__PUBLIC__/pc/images/fi_fea_list_03.jpg"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<include file="Public/footer" />
+	
+</body>
+</html>

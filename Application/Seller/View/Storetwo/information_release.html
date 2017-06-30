@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>{$tpshop_config['shop_info_store_title']}</title>
+	<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/information_release.css">
+	<script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/pc/js/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/pc/js/ueditor.all.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/pc/js/lang/zh-cn/zh-cn.js"></script>
+	<script src="__PUBLIC__/js/global.js"></script>
+	<script src="__PUBLIC__/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="__PUBLIC__/js/myFormValidate.js"></script>
+</head>
+<body>
+	
+	<include file="header" />
+
+	<div class="ci_content">
+		<div class="ci_mg">
+			<div class="ci_tit">
+				<div class="ci_com_nav">
+					<a href="javascript:;">公司导航</a>
+					<div class="ci_nav_hov">
+						<ul>
+							<li><a class="cur" href="{:U('/seller/storetwo/information_release')}" target="_blank">发布信息</a></li>
+							<li><a href="{:U('/seller/storetwo/company_information')}" target="_blank">公司信息</a></li>
+							<li><a href="{:U('/seller/storetwo/company_status')}" target="_blank">立即建站</a></li>
+							<li><a href="{:U('/seller/storetwo/information_management')}" target="_blank">信息管理</a></li>
+							<li><a href="{:U('/article/information_list',array('store_id'=>$store_id))}" target="_blank">前台列表</a></li>
+						</ul>
+					</div>
+				</div>
+				<h1>发布信息</h1>
+			</div>
+			<div class="ci_detail">
+				<form id="formone" onsubmit="return newsave()">
+					<input type="hidden" name="home_is_show" value="1">
+					<input type="hidden" name="id" value="{$info.id}">
+					<div class="article_title">
+						<p>文章标题</p>
+						<input class="pl" type="text" placeholder="文章标题" name="title" value="{$info.title}">
+					</div>
+					<div class="the_author">
+						<p>作者</p>
+						<input class="pl" type="text" placeholder="作者" name="author" value="{$info.author}">
+					</div>
+					<div class="key_words">
+						<p>关键词</p>
+						<input class="pl" type="text" placeholder="关键词" name='keyword' value="{$info.keyword}">
+					</div>
+					<div class="key_words">
+						<p>文章描述</p>
+						<input class="pl" type="text" placeholder="关键词" name='description' value="{$info.description}">
+					</div>
+					<div class="ir_thumbnails">
+						<p>缩略图</p>
+						<div class="ir_thumbnails_file"><img src="{$info['newsimg']|default='__PUBLIC__/images/ci_erweima_file_bg.png'}" id="newsimg"></div>
+						<input type="button" value="上传缩略图" onClick="GetUploadify(1,'newsimg','seller','callback1')">
+						<input type="hidden" name="newsimg" value="{$info[newsimg]}">
+					</div>
+					<script type="text/javascript">
+                    function callback1(img_str){
+                        $('input[name="newsimg"]').val(img_str);
+                        $('#newsimg').attr('src',img_str);
+                    }
+                    </script>
+					<div class="ir_text">
+						<p>内容</p>
+						<script id="editor" name="content" type="text/plain" style="width: 1166px;height: 313px;margin: 0 auto;">{$info.content|htmlspecialchars_decode}</script>
+					</div>
+					<div class="ir_release">
+						<input class="ir_release_btn" type="submit" value="提交">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var ue = UE.getEditor('editor');
+		$(function(){
+			$(".ci_com_nav").mousemove(function(){
+				$(".ci_nav_hov").slideDown(200);
+			})
+			$(".ci_com_nav").mouseleave(function(){
+				$(".ci_nav_hov").stop(true,false).slideUp(200);
+			})
+
+		})
+		function newsave(){
+			$.post('/seller/storetwo/add_news',$('#formone').serialize(),function(res){
+				if (res){
+					alert('提交成功');
+					window.location.href="/seller/storetwo/information_management";
+				}else{
+					alert('提交失败');
+				}
+			})
+			return false;
+		}
+	</script>
+
+	<include file="footer" />
+</body>
+</html>
