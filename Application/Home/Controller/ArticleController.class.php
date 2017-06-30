@@ -346,11 +346,11 @@ class ArticleController extends BaseController {
         $rand = $store_art['pc_click']+rand(1,9);
         M('store_art')->where(array('id'=>$id))->save(array('pc_click'=>$rand));
         $store = M('store')->field('store_name,store_id,store_logo,people,store_phone,mobile,email,store_zy')->where(array('store_id'=>$store_art['store']))->find();
-        $where['id'] = array('gt',$id);
+        $where['timer'] = array('lt',$store_art['timer']);
         $where['store'] = $store['store_id'];
-        $next = M('store_art')->where($where)->order('id')->find();
-        $where['id'] = array('lt',$id);
-        $last = M('store_art')->where($where)->order('id desc')->find();
+        $next = M('store_art')->where($where)->order('timer desc')->find();
+        $where['timer'] = array('gt',$store_art['timer']);
+        $last = M('store_art')->where($where)->order('timer')->find();
         $this->assign('store_art',$store_art);
         $this->assign('last',$last);
         $this->assign('next',$next);
