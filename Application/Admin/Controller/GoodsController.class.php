@@ -207,7 +207,7 @@ class GoodsController extends BaseController {
         $goods_id = I('goods_id');
         if($goods_id)
         {
-            $where = "$where and (goods_id like '%$goods_id%' or goods_id like '%$goods_id%')" ;
+            $where = "$where and goods_id = ".$goods_id ;
         }
 
         if($cat_id > 0)
