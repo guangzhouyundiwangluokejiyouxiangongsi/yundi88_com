@@ -15,6 +15,7 @@ img{border: none;}
     0 10px 10px #d6d6d6; 
 
 }
+
 .fi_list>ul>li>a>p{font-size: 14px;color: #999;text-align: center;line-height: 16px;padding-top: 85px;}
 .fi_list>ul>li:hover>a>p{font-size: 14px;color: #333;}
 .fi_one{background: url(../images/fi_bg01.png) no-repeat;}
