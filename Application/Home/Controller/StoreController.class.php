@@ -14,7 +14,7 @@ class StoreController extends Controller {
 		$store_id = I('store_id', 1);
 		$this->assign('template',M('shouji')->where(array('userid'=>$store_id))->find());
 		$store_info = M('store')->where(array('store_id' => $store_id))->find();
-		if ($store_info['status'] != 1){
+		if ($store_info['status'] == 2){
 			$this->error('该官网不存在或者已关闭', 'http://'.$_SERVER['HTTP_HOST']);
 		}
 		if ($store_info) {
@@ -109,7 +109,7 @@ class StoreController extends Controller {
 
 			// zhoufei
 		} else {
-			$this->error('该官网不存在或者已关闭', U('Index/index'));
+			$this->error('该官网不存在或者已关闭', 'http://'.$_SERVER['HTTP_HOST']);
 		}
 	}
 

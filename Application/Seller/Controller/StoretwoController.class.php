@@ -37,7 +37,7 @@ class StoretwoController extends Controller {
         	}
         }
         $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-        if ($store_art) $this->redirect('/seller/index/index');
+        if ($store_art != 2) $this->redirect('/seller/index/index');
         $this->assign('store_id',session('store_id'));
         $this->public_assign();
     }

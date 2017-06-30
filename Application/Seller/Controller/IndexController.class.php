@@ -18,6 +18,10 @@ class IndexController extends BaseController
 {
     public function _initialize()
     {   
+        if (session('store_id')){
+            $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+            if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
+        }
         define('STORE_ID',session('store_id')); //将当前的session_id保存为常量，供其它方法调用
         $seller = M('seller')->where(array('store_id'=>session('store_id')))->getField('num');
         if(!$seller){
@@ -27,10 +31,7 @@ class IndexController extends BaseController
     }
 
     public function index(){
-        if (session('store_id')){
-            $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-            if (!$store_art) $this->redirect('/Seller/Storetwo/index');
-        }
+
         $this->pushVersion();
         $seller = session('seller');
         $menu_list = $this->getSellerMenuList($seller['is_admin'],$seller['act_limits']);

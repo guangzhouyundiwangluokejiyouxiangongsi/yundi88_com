@@ -314,6 +314,8 @@ class UserController extends BaseController {
                 session('seller',$seller);
                 session('seller_id',$seller['seller_id']);
                 session('store_id',$seller['store_id']);
+                $model = M();
+                $model->query('update __STORE__ set status = 2 where store_id = '.$seller['store_id']);
                 $this->success('注册成功',U('seller/index/index'));
             }else{
                 $this->error("注册失败");

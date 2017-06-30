@@ -14,7 +14,8 @@ class StoreController extends BaseController
   //       flush();
 		$data['num'] = 1;
 		$res = M('seller')->where(array('store_id'=>session('store_id')))->save($data);
-		if($res){
+		$status = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+		if($res && $status != 2){
 			$this->import1(38);
 			if(I('shanghui')){
 				$this->redirect('Commerce/index');
@@ -22,6 +23,9 @@ class StoreController extends BaseController
 			}else{
 				$this->success('初始化数据创建成功！','/Seller/Index/index');			
 			}
+		}else{
+			$data['num'] = '';
+			M('seller')->where(array('store_id'=>session('store_id')))->save($data);
 		}
 		$this->redirect('/Seller/Index/index');
 	}
