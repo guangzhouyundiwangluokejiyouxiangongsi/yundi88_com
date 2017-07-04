@@ -1,7 +1,7 @@
 *{padding: 0;margin: 0;font-family: "Microsoft Yahei";}
 li{list-style: none;}
 a{text-decoration: none !important;}
-a:hover{color: red !important;}
+.il_list a:hover{color: red !important;}
 img{border: none;}
 
 .il_content{background: #f3f3f3;}

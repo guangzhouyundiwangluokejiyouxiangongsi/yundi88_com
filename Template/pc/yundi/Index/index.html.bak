@@ -8,7 +8,7 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand" />
 <meta http-equiv="Cache-control" content="public" max-age="no-cache" />
 <title>{$tpshop_config['shop_info_store_title']} </title>
-<meta http-equiv="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
+<meta name="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
 <meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
  <script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
 <script src="__PUBLIC__/js/global.js"></script>
