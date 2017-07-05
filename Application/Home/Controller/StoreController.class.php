@@ -4,6 +4,8 @@ namespace Home\Controller;
 
 use Seller\Model\StoreDecorationModel;
 use Think\Controller;
+use Home\Controller\TperrorController;
+
 
 class StoreController extends Controller {
 	public $navigation = array();
@@ -446,9 +448,10 @@ class StoreController extends Controller {
 		$text = (empty($_GET['text'])) ? 0 : (int) $_GET['text'];
 		$news = M('store_art')->where('store = ' . $storeid . ' and id = ' . $text)->find();
 		if(!$news){
-			use Think\TperrorController;
+			C('VIEW_PATH','./Template/pc/');
+			C('DEFAULT_THEME','yundi');
 			$error = new TperrorController();
-            $error->tp404();
+            $error->tp404();exit;
 
 		}
 
