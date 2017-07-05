@@ -17,6 +17,7 @@ use Home\Logic\StoreLogic;
 use Think\AjaxPage;
 use Think\Page;
 use Think\Verify;
+use Think\TperrorController;
 class GoodsController extends BaseController {
     public function index(){      
         $this->display();
@@ -33,7 +34,9 @@ class GoodsController extends BaseController {
         $goods = M('Goods')->where(array('goods_id'=>$goods_id))->find();
 
         if(empty($goods) || ($goods['is_on_sale'] == 0)){
-        	$this->error('该商品已经下架',U('Index/index'));
+            $error = new TperrorController();
+            $error->tp404();
+        	// $this->error('该商品已经下架',U('Index/index'));
         }
         if($goods['brand_id']){
             $brnad = M('brand')->where("id =".$goods['brand_id'])->find();

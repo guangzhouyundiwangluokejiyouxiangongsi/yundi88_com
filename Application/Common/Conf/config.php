@@ -36,7 +36,7 @@ return array(
     'SHOW_PAGE_TRACE'           =>0,         //显示调试信息
     //'RBAC_ERROR_PAGE'         => '/Public/tp404.html',
     //'ERROR_PAGE'=>'/Index/Index/error_page.html',
-    'ERROR_PAGE'=>'/index.php/Home/Tperror/tp404.html',    
+    'ERROR_PAGE'=>'/index.php/Tperror/tp404.html',    
     // 表单令牌验证相关的配置参数
     'TOKEN_ON'      =>    true,  // 是否开启令牌验证 默认关闭
     'TOKEN_NAME'    =>    '__hash__',    // 令牌验证的表单隐藏字段名称，默认为__hash__

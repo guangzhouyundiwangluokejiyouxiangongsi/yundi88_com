@@ -445,6 +445,12 @@ class StoreController extends Controller {
 		$sn_id = (empty($_GET['sn'])) ? 0 : (int) $_GET['sn'];
 		$text = (empty($_GET['text'])) ? 0 : (int) $_GET['text'];
 		$news = M('store_art')->where('store = ' . $storeid . ' and id = ' . $text)->find();
+		if(!$news){
+			use Think\TperrorController;
+			$error = new TperrorController();
+            $error->tp404();
+
+		}
 
 		$next = M('store_art')->where('store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ') and id > ' . $text)->order('id ASC')->limit(1)->find();
 		$pre = M('store_art')->where('store = ' . $storeid . ' and  sn_id in (0,' . $sn_id . ') and id < ' . $text)->order('id DESC')->limit(1)->find();
