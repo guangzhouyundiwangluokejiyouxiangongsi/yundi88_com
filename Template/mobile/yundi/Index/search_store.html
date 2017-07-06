@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-	<title>{$infolist['title']}</title>
-	<meta name="keywords" content="{$infolist['keywords']}" />
-	<meta name="description" content="{$infolist['description']}" />
+	<title>{$infolist['title']}<?php if(!$title){echo '搜索 '.$_GET['name'].' 结果';} ?></title>
+	<meta name="keywords" content="{$infolist['keywords']}<?php if(!$title){echo '搜索 '.$_GET['name'].' 结果';} ?>" />
+	<meta name="description" content="{$infolist['description']}<?php if(!$title){echo '搜索 '.$_GET['name'].' 结果';} ?>" />
 	<link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/css/street.css">
