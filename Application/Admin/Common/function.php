@@ -165,7 +165,6 @@ function getAllMenu(){
 					array('name' => '商品评论','act'=>'index','control'=>'Comment'),
 //					array('name' => '商品咨询','act'=>'ask_list','control'=>'Comment'),
 					array('name' => '投诉管理','act'=>'complain_list', 'control'=>'Comment'),
-					array('name' => '推送采购单','act'=>'push', 'control'=>'Order'),
 			)),
 			'Store' => array('name' => '店铺管理', 'icon'=>'fa-home', 'sub_menu' => array(
 					array('name' => '店铺等级', 'act'=>'store_grade', 'control'=>'Store'),

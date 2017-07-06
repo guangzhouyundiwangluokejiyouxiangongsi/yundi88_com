@@ -116,7 +116,114 @@ function respose($res) {
 	exit(json_encode($res));
 }
 
-function getMenuList() {
+
+function getMenuList(){
+
+	$nav = array(
+
+		'userinfo' => array('name' => '会员中心', 'icon' => 'fa-user','child' => array(
+			array('name' => '个人信息','act' => 'info' ,'op'=>'Userinfo'),
+			array('name' => '地址管理','act' => 'address_list','op'=>'Userinfo'),
+			array('name' => '安全中心','act' => 'safety_settings','op'=>'Userinfo'),
+			array('name' => '我的订单','act' => 'order_list','op'=>'Userinfo'),
+		)),
+
+				
+		'tuiguang' => array('name'=>'推广服务', 'icon' => 'fa-flag', 'child' => array(
+			'goods' => array('name' => '产品推广', 'icon' => 'fa-tasks', 'child' => array(
+				array('name' => '产品发布', 'act' => 'addEditGoods', 'op' => 'Goods'), ///index.php/Seller/goods/addEditGoods.html'
+				//array('name' => '淘宝导入', 'act'=>'import', 'op'=>'index'),             //临时屏蔽淘宝商品导入
+				array('name' => '产品分类', 'act' => 'goods_class', 'op' => 'Store'),
+				array('name' => '产品管理', 'act' => 'goodsList?goods_state=1', 'op' => 'Goods'),
+				array('name' => '供应产品banner图', 'act' => 'pro_banner', 'op' => 'store'),
+				// array('name' => '商品规格', 'act' => 'specList', 'op' => 'Goods'),
+				// array('name' => '仓库中的商品', 'act' => 'goodsList?goods_state=0,2,3', 'op' => 'Goods'),
+				//array('name' => '关联版式', 'act'=>'store_plate', 'op'=>'index'),
+				// array('name' => '品牌申请', 'act'=>'brandList', 'op'=>'Goods'),
+				//array('name' => '图片空间', 'act'=>'store_album', 'op'=>'album_cate'),
+			)),
+
+			'Purchase' => array('name' => '采购管理', 'icon' => 'fa-book', 'child' => array(
+				array('name' => '发布我的需求', 'act' => 'purchase', 'op' => 'Purchase'),
+				array('name' => '我的需求管理', 'act' => 'index', 'op' => 'Purchase'),
+				array('name' => '采购需求通知', 'act' => 'purMsg', 'op' => 'Purchase'),
+				array('name' => '我已接单', 'act' => 'myPurchase', 'op' => 'Purchase'),
+			)),
+
+		)),
+		'store' => array('name' => '我的网站', 'icon' => 'fa-cog', 'child' => array(
+			array('name' => '网站设置', 'act' => 'store_setting', 'op' => 'Store'),
+			/*array('name' => '网站装修', 'act'=>'store_decoration', 'op'=>'Store'),*/
+			array('name' => '首页设置', 'act' => 'store_mod', 'op' => 'Store'),
+			// array('name' => '导航分类', 'act' => 'navigation_art_list', 'op' => 'Store'),
+			array('name' => '导航设置', 'act' => 'navigation_list', 'op' => 'Store'),
+			array('name' => '经营类目', 'act'=>'bind_class_list', 'op'=>'Store'),
+			// array('name' => '网站信息', 'act' => 'store_info', 'op' => 'Store'),
+			// array('name' => '网站关注', 'act' => 'store_collect', 'op' => 'Store'),
+			array('name' => '域名绑定', 'act' => 'domain_whois', 'op' => 'Domain'),
+
+			'storee' => array('name' => '网站模板', 'icon' => 'fa-gift','child' => array(
+				array('name' => '手机模板', 'act' => 'store_mtpl', 'op' => 'Store'),
+				array('name' => '官网模板', 'act' => 'store_tpl?t=pc&tpl=fuzhuang&layer=1', 'op' => 'Store'),
+				array('name' => '微商模板', 'act' => 'store_weixin', 'op' => 'Store'),
+			)),
+
+			'news' => array('name' => '新闻推广', 'icon' => 'fa-file', 'child' => array(
+				// array('name' => '新闻导航', 'act' => 'navigation_list?nav=news', 'op' => 'Store'),
+				array('name' => '新闻发布', 'act' => 'addNews', 'op' => 'News'), ///index.php/Seller/goods/addEditGoods.html'
+				array('name' => '新闻管理', 'act' => 'newslist', 'op' => 'News'),
+			)),
+
+			'photo' => array('name' => '相册管理', 'icon' => 'fa-camera', 'child' => array(
+				array('name' => '相册发布', 'act' => 'addphoto', 'op' => 'Photo'), ///index.php/Seller/goods/addEditGoods.html'
+				array('name' => '相册查看', 'act' => 'index', 'op' => 'Photo'),
+				array('name' => '相册banner图', 'act' => 'pho_banner', 'op' => 'Photo'),
+			)),
+
+			'order' => array('name' => '订单物流', 'icon' => 'fa-money', 'child' => array(
+				array('name' => '订单列表', 'act' => 'index', 'op' => 'Order'),
+				array('name' => '发货', 'act' => 'delivery_list', 'op' => 'Order'),
+				array('name' => '发货设置', 'act' => 'index', 'op' => 'Plugin'),
+				//array('name' => '运单模板', 'act'=>'store_waybill', 'op'=>'waybill_manage'),
+				// array('name' => '商品评论', 'act' => 'index', 'op' => 'Comment'),
+				// array('name' => '商品咨询', 'act' => 'ask_list', 'op' => 'Comment'),
+			)),
+
+			'friend_link' => array('name' => '友情链接', 'icon' => 'fa-glass', 'act' => 'Seller/Article/store_linkList'),
+
+			'message' => array('name' => '客服消息', 'icon' => 'fa-comments', 'child' => array(
+				array('name' => '客服设置', 'act' => 'store_service', 'op' => 'Index'),
+				// array('name' => '系统消息', 'act' => 'store_msg', 'op' => 'Index'),
+				array('name' => '客户留言', 'act' => 'store_email', 'op' => 'Index'),
+				array('name' => '留言banner图', 'act' => 'store_mes', 'op' => 'Index'),
+				//array('name' => '聊天记录查询', 'act'=>'store_im', 'op'=>'store'),
+			)),
+		)),
+
+		'account' => array('name' => '企业云谱', 'icon' => 'fa-book', 'child' => array(
+			array('name' => '我的云谱', 'act' => 'baike', 'op' => 'Finance'),
+		)),
+
+		'Newjoin' =>array('name' => '认证服务', 'icon' => 'fa-bell','child' => array(
+			array('name' => '企业认证', 'act' => 'basic_info','op' => 'Newjoin'),
+			array('name' => '个体认证', 'act' => 'basic','op' => 'Newjoin'),
+			)),
+
+		'yunshanghui' =>array('name' => '云商会', 'icon' => 'fa-adjust', 'act' => '/article/yun_shop'),
+
+
+
+		);
+
+return $nav;
+// echo '<pre>';
+// print_r($nav);exit;
+
+
+
+}
+
+function getMenuList2() {
 	$menu_list = array(
 		'userinfo' => array('name' => '会员中心', 'icon' => 'fa-user','child' => array(
 			array('name' => '个人信息','act' => 'info' ,'op'=>'Userinfo'),
