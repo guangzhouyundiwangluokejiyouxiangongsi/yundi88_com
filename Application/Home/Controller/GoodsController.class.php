@@ -379,6 +379,13 @@ class GoodsController extends BaseController {
          if(!$_GET['p']){$_SERVER['REDIRECT_URL'] = '/'.$_SERVER['PATH_INFO'].'/p/1.html';}
         if($_GET['id']){
             $catrgrory = M('goods_category')->where(array('id'=>$_GET['id']))->find();
+            if(!$catrgrory){
+                C('VIEW_PATH','./Template/pc/');
+                C('DEFAULT_THEME','yundi');
+                $error = new TperrorController();
+                $error->tp404();exit;
+
+            }
             $this->assign('title',$catrgrory['title']);
             $this->assign('keywords',$catrgrory['keywords']);
             $this->assign('description',$catrgrory['description']);

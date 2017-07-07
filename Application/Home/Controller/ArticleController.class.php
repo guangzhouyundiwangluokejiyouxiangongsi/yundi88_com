@@ -3,6 +3,7 @@
 namespace Home\Controller;
 use Home\Logic\ArticleLogic;
 use Think\Verify;
+use Home\Controller\TperrorController;
 
 
 class ArticleController extends BaseController {
@@ -48,7 +49,14 @@ class ArticleController extends BaseController {
      */
     public function detail(){
     	$article_id = I('article_id',1);
-    	$article = D('article')->where(array('article_id'=>$article_id))->find();
+        $article = D('article')->where(array('article_id'=>$article_id))->find();
+        if(!$article){
+                C('VIEW_PATH','./Template/pc/');
+                C('DEFAULT_THEME','yundi');
+                $error = new TperrorController();
+                $error->tp404();exit;
+
+            }
     	if($article){
             $data['link_num'] = $article['link_num']+1;
             M('article')->where(array('article_id'=>$article_id))->save($data);

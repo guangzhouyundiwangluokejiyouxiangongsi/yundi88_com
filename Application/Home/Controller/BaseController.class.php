@@ -45,6 +45,8 @@ class BaseController extends Controller {
         }
                 $where['url']  = array('like', '%/'.CONTROLLER_NAME.'/'.ACTION_NAME.'%');
                 $data = M('navigation')->field('title,keywords,description')->where($where)->find();
+                // dump(M()->getLastSQL());
+                // dump($data);exit;
                 if($data){
                 $this->assign('title',$data['title']);
                 $this->assign('keywords',$data['keywords']);

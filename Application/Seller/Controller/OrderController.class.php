@@ -117,7 +117,6 @@ class OrderController extends BaseController {
         // 搜索条件 参数buy存在那么条件为user_id 反之STORE_ID
         $condition = array( 'store_id' => STORE_ID ); // 商家id 
 
-        
         I('consignee') ? $condition['consignee'] = trim(I('consignee')) : false;
         if($begin && $end){
         	$condition['add_time'] = array('between',"$begin,$end");
@@ -145,13 +144,11 @@ class OrderController extends BaseController {
      * 订单详情
      */
     public function order_detail(){
-        
         $id = I('get.id');
         $map['order_id'] = $id;
         $map['user_id'] = session('user.user_id');
         $order_info = M('order')->where($map)->find();
         $order_info = set_btn_order_status($order_info);  // 添加属性  包括按钮显示属性 和 订单状态显示属性
-        
         if(!$order_info){
             $this->error('没有获取到订单信息');
             exit;
