@@ -1,5 +1,5 @@
 <?php
-// ini_set('session.cookie_domain', ".yundi88.com");
+ini_set('session.cookie_domain', ".yundi88.com");
 // 应用入口文件
 // 应用入口文件
 if (extension_loaded('zlib')){
