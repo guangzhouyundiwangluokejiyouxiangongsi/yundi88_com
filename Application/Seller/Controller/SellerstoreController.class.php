@@ -42,12 +42,15 @@ class SellerstoreController extends BaseController{
                 }
 
 				}
-                dump($imagesData);exit;
-				$res3 = M('goods_images')->addAll($imagesData);
-				if (!$res3) {
-					$this->error('图片上传失败');
-					exit;
-				}
+                // dump($imagesData);exit;
+                if ($imagesData) {
+                    $res3 = M('goods_images')->addAll($imagesData);
+                    if (!$res3) {
+                        $this->error('图片上传失败');
+                        exit;
+                    }
+                }
+
 
 				$value2 = array(
 					'sid' => session('store_id'),
@@ -156,11 +159,13 @@ class SellerstoreController extends BaseController{
                     }
 
 				}
-				$res3 = M('goods_images')->addAll($imagesData);
-				if (!$res3) {
-					$this->error('图片上传失败');
-					exit;
-				}
+                if ($imagesData) {
+                    $res3 = M('goods_images')->addAll($imagesData);
+                    if (!$res3) {
+                        $this->error('图片上传失败');
+                        exit;
+                    }
+                }
 
 				$value2 = array(
 					'sid' => session('store_id'),
