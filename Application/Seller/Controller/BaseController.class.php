@@ -61,7 +61,7 @@ class BaseController extends Controller {
 
     public function quanxian($url='/index.php/Seller/Index/index')
     {
-        
+
         $url = str_replace('/', '_', $url);
         $status =  M('store')->where(array('store_id'=>session('store_id')))->getField('status');
         // $status = 2;
@@ -73,13 +73,15 @@ class BaseController extends Controller {
                 '_index.php_Seller_Sellerstore_addpr',
                 '_index.php_Seller_Sellerstore_prList',
                 '_index.php_Seller_Sellerstore_addinfo',
-                '_index.php_Seller_Sellerstore_infolist',
-                '_index.php_Seller_Store_store_setting'
+                '_index.php_Seller_Store_store_setting',
+                '_index.php_Seller_Newjoin_basic',
+                '_index.php_Seller_Newjoin_basic_info'
             );
             $s = "/_index\.php_Seller_Sellerstore_addEditGoods_goods_id_.*?/";
+            $s2 = '/_index.php_Seller_Sellerstore_infolist>*?/';
             // $s = array('/_index\.php\?m=Seller&c=Sellerstore&a=ajaxPrList&p=/','/_index\.php_Seller_Sellerstore_uddinfo_id/');
 
-                if(!in_array($url,$arr) && !preg_match($s,$url) && !$ajax){
+                if(!in_array($url,$arr) && !preg_match($s,$url) && !preg_match($s2,$url) && !$ajax){
                     echo "<script>alert('没有权限！');top.location='http://".$_SERVER['HTTP_HOST']."/seller/index/index';</script>";
                 }
 

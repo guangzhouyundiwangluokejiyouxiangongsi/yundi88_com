@@ -36,9 +36,13 @@ class SellerstoreController extends BaseController{
 			if ($res) {
 				// 处理相册
 				for ($j=0; $j < count(I('post.goods_images')); $j++) {
+                    if(I('post.goods_images')[$j]){
 					$imagesData[$j]['goods_id'] = $res;
 					$imagesData[$j]['image_url'] = I('post.goods_images')[$j];
+                }
+
 				}
+                dump($imagesData);exit;
 				$res3 = M('goods_images')->addAll($imagesData);
 				if (!$res3) {
 					$this->error('图片上传失败');
@@ -138,15 +142,19 @@ class SellerstoreController extends BaseController{
 				'description' => I('post.description'),
 				'content' => I('post.content'),
 				'newsimg' => I('post.newsimg'),
+				'timer' => time(),
+                'is_show' =>1
 			);
 			$res = M('store_art')->add($value1);
-
 
 			if ($res) {
 				// 处理相册
 				for ($j=0; $j < count(I('post.goods_images')); $j++) {
+                    if(I('post.goods_images')[$j]){
 					$imagesData[$j]['goods_id'] = $res;
 					$imagesData[$j]['image_url'] = I('post.goods_images')[$j];
+                    }
+
 				}
 				$res3 = M('goods_images')->addAll($imagesData);
 				if (!$res3) {
@@ -237,7 +245,7 @@ class SellerstoreController extends BaseController{
             delIsBack();
         }
         // $where += 'and __STORE__.status=2';
-        $goodsList = M('goods')->where(array('store_id'=>session('store_id')))->order('sort,on_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsList = M('goods')->where(array('store_id'=>session('store_id')))->order('sort,on_time')->limit($Page->firstRow.','.$Page->listRows)->select();
         // dump(M('goods'));exit;
         cachePage($Page);
         $show = $Page->show();
@@ -398,7 +406,11 @@ class SellerstoreController extends BaseController{
         $_GET['p'] = (empty($_GET['p']))?0:$_GET['p'];
         $where = 'sn_id = '.$id.' and store = '.STORE_ID;
         if($id==0)$where = 'store = '.STORE_ID;
-        $list= M('store_art as a')->where(array('store'=>session('store_id')))->page($_GET['p'].',10')->order('timer desc')->select();
+        $list= M('store_art as a')->where(array('store'=>session('store_id')))->page($_GET['p'].',10')->order('timer')->select();
+        // for ($i = 0; $i < count($list); $i++) {
+        //     $list[$i]['on_time'] = date('Y-m-d', $list[$i]['on_time']);
+        // }
+        // dump($list);exit;
         $count = M('store_art')->where($where)->count();
         $Page = new \Think\Page($count,10);
         $show = $Page->show();

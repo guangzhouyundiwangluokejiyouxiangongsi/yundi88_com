@@ -44,7 +44,7 @@
                 </div>
                 <div class="panel-body ">
                     <!--表单数据-->
-                    <form method="post" id="handleposition" action="__CONTROLLER__/addinfo">
+                    <form method="post" id="handleposition" action="__CONTROLLER__/addinfo" onsubmit="return mysubmit()">
                     <input type="hidden" name="home_is_show" value="1">
                         <!--通用信息-->
                     <div class="tab-content col-md-12">
@@ -54,7 +54,7 @@
                                 <tr>
                                     <td  style="vertical-align: middle;" class="col-sm-2">文章标题：</td>
                                     <td>
-                                        <input type="text" class="form-control" name="title" >
+                                        <input type="text" class="form-control" name="title"  required placeholder="请输入文章标题"  >
                                     </td>
                                 </tr>
 
@@ -108,7 +108,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td style="vertical-align: middle;">内容：<span style="color:red">(图片最少添加三张图片,显得更加美观)</span></td>
+                                    <td style="vertical-align: middle;">内容：</td>
 
                                     <td class="col-xs-10">
                              			<textarea class="span12 ckeditor" id="post_content" name="content" title=""></textarea>
@@ -182,6 +182,17 @@
 <script src="__PUBLIC__/js/seller/extend/distpicker.data.js"></script>
 <script src="__PUBLIC__/js/seller/extend/distpicker.js"></script>
 <script>
+
+    function mysubmit()
+    {
+        var title = $('input[name=title]').val();
+        if(!title){
+            alert('标题不能为空！');
+            return false;
+        }
+    }
+
+
     function callback1(img_str){
         $('input[name="newsimg"]').val(img_str);
         $('#newsimg').attr('src',img_str);

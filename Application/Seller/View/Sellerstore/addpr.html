@@ -136,7 +136,7 @@
                 </div>
                 <div class="panel-body ">
                     <!--表单数据-->
-                    <form method="post" id="handleposition" action="__CONTROLLER__/addpr">
+                    <form method="post" id="handleposition" action="__CONTROLLER__/addpr" onsubmit="return mysubmit()" >
                     <input type="hidden" name="home_is_show" value="1">
                         <!--通用信息-->
                     <div class="tab-content col-md-12">
@@ -322,16 +322,37 @@
 <script src="__PUBLIC__/js/seller/extend/distpicker.data.js"></script>
 <script src="__PUBLIC__/js/seller/extend/distpicker.js"></script>
 <script>
+    function mysubmit()
+    {
+        var title = $('input[name=title]').val();
+        var cat_id1 = $('#goodsType1').val();
+        var cat_id2 = $('#goodsType2').val();
+        var cat_id3 = $('#goodsType3').val();
+        if(!title){
+            alert('产品名不能为空！');
+            return false;
+        }else if (cat_id1 == 0) {
+            alert('一级分类必须选择！');
+            return false;
+        }else if (cat_id2 == 0) {
+            alert('二级分类必须选择！');
+            return false;
+        }else if (cat_id3 == 0) {
+            alert('三级分类必须选择！');
+            return false;
+        }
+
+    }
 
     // 商品二级分类
     $('#goodsType1').change(function () {
-        $('#goodsType2').html('<option value="-1">请选择商品二级分类</option>');
-        $('#goodsType3').html('<option value="-1">请选择商品三级分类</option>');
+        $('#goodsType2').html('<option value="0">请选择商品二级分类</option>');
+        $('#goodsType3').html('<option value="0">请选择商品三级分类</option>');
         $.post(
             '__CONTROLLER__/categoryList',
             {'id':$('#goodsType1').val(), 'level':'2'},
             function (data) {
-                $('#goodsType2').html('<option value="-1">请选择商品二级分类</option>');
+                $('#goodsType2').html('<option value="0">请选择商品二级分类</option>');
                 var str1 = '';
                 for (var i = 0; i < data.length; i++) {
                     str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
@@ -349,7 +370,7 @@
             '__CONTROLLER__/categoryList',
             {'id':$('#goodsType2').val(), 'level':'3'},
             function (data) {
-                $('#goodsType3').html('<option value="-1">请选择商品三级分类</option>');
+                $('#goodsType3').html('<option value="0">请选择商品三级分类</option>');
                 var str2 = '';
                 for (var i = 0; i < data.length; i++) {
                     str2 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
@@ -364,13 +385,13 @@
 
     // 城市三级联动
     $('#privince').change(function () {
-        $('#area').html('<option value="-1">请选择地区</option>');
-        $('#city').html('<option value="-1">请选择城市</option>');
+        $('#area').html('<option value="0">请选择地区</option>');
+        $('#city').html('<option value="0">请选择城市</option>');
         $.post(
             '__CONTROLLER__/getCitys',
             {'id':$('#privince').val(), 'level':'2'},
             function (data) {
-                $('#city').html('<option value="-1">请选择城市</option>');
+                $('#city').html('<option value="0">请选择城市</option>');
                 var str1 = '';
                 for (var i = 0; i < data.length; i++) {
                     str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
