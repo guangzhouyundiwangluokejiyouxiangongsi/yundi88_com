@@ -424,6 +424,26 @@ class SellerstoreController extends BaseController{
         $this->display();
     }
 
+    public function newsHandle(){
+		$data = I('post.');
+		$data['timer'] = time();
+		if($data['act'] == 'del'){
+			$r = M('store_art')->where('id='.$data['id'])->delete();
+			if($r) exit(json_encode(1));
+		}
+		if(empty($data['id'])){
+			$data['store'] = STORE_ID;
+			$r = M('store_art')->add($data);
+		}else{
+			$r = M('store_art')->where('id='.$data['id'])->save($data);
+		}
+		if($r){
+			$this->success("操作成功",U('Sellerstore/infolist'));
+		}else{
+			$this->error("操作失败",U('Sellerstore/infolist'));
+		}
+	}
+
     public function uddinfo()
     {
         $nav = M('store_navigation')->where("sn_is_list = 1 and sn_store_id=".STORE_ID)->select();

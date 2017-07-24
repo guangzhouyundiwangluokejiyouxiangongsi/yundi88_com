@@ -80,9 +80,10 @@ class BaseController extends Controller {
             $s = "/_index\.php_Seller_Sellerstore_addEditGoods_goods_id_.*?/";
             $s2 = '/_index.php_Seller_Sellerstore_infolist.*?/';
             $s3 = '/_index.php_Seller_Sellerstore_uddinfo.*?/';
+            $s4 = '/_index.php_Seller_Sellerstore_newsHandle.*?/';
             // $s = array('/_index\.php\?m=Seller&c=Sellerstore&a=ajaxPrList&p=/','/_index\.php_Seller_Sellerstore_uddinfo_id/');
 
-                if(!in_array($url,$arr) && !preg_match($s,$url) && !preg_match($s2,$url) && !preg_match($s3,$url) && !$ajax){
+                if(!in_array($url,$arr) && !preg_match($s,$url) && !preg_match($s2,$url) && !preg_match($s3,$url) && !preg_match($s4,$url) && !$ajax){
                     echo "<script>alert('没有权限！');top.location='http://".$_SERVER['HTTP_HOST']."/seller/index/index';</script>";
                 }
 
