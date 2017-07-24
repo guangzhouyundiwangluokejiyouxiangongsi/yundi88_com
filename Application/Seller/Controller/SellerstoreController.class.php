@@ -21,6 +21,7 @@ class SellerstoreController extends BaseController{
             // }
 
 			$value1 = array(
+                'store_id' => session('store_id'),
 				'goods_name' => I('post.title'),
 				'keywords' => $keywords,
 				'shop_price' => I('post.price'),
@@ -131,6 +132,7 @@ class SellerstoreController extends BaseController{
 			}
 
 			$value1 = array(
+                'store_id' => session('store_id'),
 				'title' => I('post.title'),
 				'keyword' => $keywords,
 				'description' => I('post.description'),
@@ -235,8 +237,8 @@ class SellerstoreController extends BaseController{
             delIsBack();
         }
         // $where += 'and __STORE__.status=2';
-        $goodsList = M('goods as g')->where(array('store_id'=>session('store_id')))->order('sort,on_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-        // dump(M('goods as g'));exit;
+        $goodsList = M('goods')->where(array('store_id'=>session('store_id')))->order('sort,on_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        // dump(M('goods'));exit;
         cachePage($Page);
         $show = $Page->show();
         $catList = D('goods_category')->select();
