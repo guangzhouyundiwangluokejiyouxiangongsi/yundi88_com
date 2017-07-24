@@ -354,12 +354,13 @@ class SellerstoreController extends BaseController{
         $companyInfo = M('goods_contact')->where(array('sid' => $store['store_id']))->find();
         $this->assign('companyInfo', $companyInfo);
         // 处理省市数据
-        $privinceData = M('region')->field('id, name')->select();
-        $cityData = M('region')->field('id, name')->select();
-        $areaData = M('region')->field('id, name')->select();
+        $privinceData = M('region')->field('id, name')->where(array('level' => 1))->select();
+        $cityData = M('region')->field('id, name')->where(array('level' => 2, 'parent_id'=>$companyInfo['privince']))->select();
+        $areaData = M('region')->field('id, name')->where(array('level' => 3, 'parent_id'=>$companyInfo['city']))->select();
         $this->assign('privinceData', $privinceData);
         $this->assign('cityData', $cityData);
         $this->assign('areaData', $areaData);
+        // dump($areaData);exit;
 
         // 图片集合
         $goodsImages = M('goods_images')->field('image_url')->where(array('goods_id' => $goodsInfo['goods_id']))->select();
@@ -413,9 +414,9 @@ class SellerstoreController extends BaseController{
         $companyInfo = M('goods_contact')->where(array('sid' => $info[0]['store']))->find();
         $this->assign('companyInfo', $companyInfo);
         // 处理省市数据
-        $privinceData = M('region')->field('id, name')->select();
-        $cityData = M('region')->field('id, name')->select();
-        $areaData = M('region')->field('id, name')->select();
+        $privinceData = M('region')->field('id, name')->where(array('level' => 1))->select();
+        $cityData = M('region')->field('id, name')->where(array('level' => 2, 'parent_id'=>$companyInfo['privince']))->select();
+        $areaData = M('region')->field('id, name')->where(array('level' => 3, 'parent_id'=>$companyInfo['city']))->select();
         $this->assign('privinceData', $privinceData);
         $this->assign('cityData', $cityData);
         $this->assign('areaData', $areaData);

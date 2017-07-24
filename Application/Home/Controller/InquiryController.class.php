@@ -86,8 +86,8 @@ class InquiryController extends BaseController
         // dump($goods);exit;
         $goods['img'] = sp_getcontent_imgs($goods['content']);
         $goods['on_time'] = date('Y-m-d', $goods['on_time']);
-        // $goods['goods_content'] = htmlspecialchars_decode($goods['goods_content']);
-        $goods['goods_content'] = sp_getcontent_imgs(htmlspecialchars_decode($goods['goods_content']));
+        $goods['goods_content'] = htmlspecialchars_decode($goods['goods_content']);
+        $goods['img'] = sp_getcontent_imgs(htmlspecialchars_decode($goods['goods_content']));
         // dump($goods);
         // exit;
         $companyInfo = M('goods_contact')->where(array('sid' => session('store_id')))->find();

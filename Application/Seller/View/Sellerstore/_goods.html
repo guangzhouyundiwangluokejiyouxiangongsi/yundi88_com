@@ -257,32 +257,32 @@
                                         <input type="text" class="tel form-control" name="person_wechat" value="{$companyInfo.wechat}">
                                     </td>
                                 </tr>
-                                 <tr>
-                                    <td style="vertical-align: middle;">公司地址：</td>
-                                    <td class="com_address">
-                                        <div data-toggle="distpicker" style="float: left;margin:0 4px 4px 0;">
-                                            <select class="form-control" id="privince" name="privince">
-                                                <option value="-1">请选择省份</option>
-                                                <foreach name="privinceData" item="vo1">
-                                                    <option {$companyInfo['privince'] == $vo1['id'] ? 'selected' : ''} value="{$vo1.id}">{$vo1.name}</option>
-                                                </foreach>
-                                            </select>
-                                            <select class="form-control" id="city" name="city">
-                                                <option value="-1">请选择城市</option>
-                                                <foreach name="cityData" item="vo2">
-                                                    <option {$companyInfo['city'] == $vo2['id'] ? 'selected' : ''} value="{$vo2.id}">{$vo2.name}</option>
-                                                </foreach>
-                                            </select>
-                                            <select class="form-control" id="area" name="area">
-                                                <option value="-1">请选择区</option>
-                                                <foreach name="areaData" item="vo3">
-                                                    <option {$companyInfo['area'] == $vo3['id'] ? 'selected' : ''} value="{$vo3.id}">{$vo3.name}</option>
-                                                </foreach>
-                                            </select>
-                                        </div>
-                                        <input type="text" placeholder="详细地址" class="form-control" name="company_address" value="{$companyInfo.address}" >
-                                    </td>
-                                </tr>
+                                <tr>
+                                   <td style="vertical-align: middle;">公司地址：</td>
+                                   <td class="com_address">
+                                       <div data-toggle="distpicker" style="float: left;margin:0 4px 4px 0;">
+                                           <select class="form-control" id="privince" name="privince">
+                                               <option value="-1">请选择省份</option>
+                                               <foreach name="privinceData" item="vo1">
+                                                   <option {$companyInfo['privince'] == $vo1['id'] ? 'selected' : ''} value="{$vo1.id}">{$vo1.name}</option>
+                                               </foreach>
+                                           </select>
+                                           <select class="form-control" id="city" name="city">
+                                               <option value="-1">请选择城市</option>
+                                               <foreach name="cityData" item="vo2">
+                                                   <option {$companyInfo['city'] == $vo2['id'] ? 'selected' : ''} value="{$vo2.id}">{$vo2.name}</option>
+                                               </foreach>
+                                           </select>
+                                           <select class="form-control" id="area" name="area">
+                                               <option value="-1">请选择区</option>
+                                               <foreach name="areaData" item="vo3">
+                                                   <option {$companyInfo['area'] == $vo3['id'] ? 'selected' : ''} value="{$vo3.id}">{$vo3.name}</option>
+                                               </foreach>
+                                           </select>
+                                       </div>
+                                       <input type="text" placeholder="详细地址" class="form-control" name="company_address" value="{$companyInfo.address}" >
+                                   </td>
+                               </tr>
                                 </tbody>
                                 </table>
                         </div>
@@ -352,7 +352,7 @@
                     </div>
                     <div class="pull-right">
                         <input type="hidden" name="goods_id" value="{$goodsInfo.goods_id}">
-                        <button class="btn btn-primary" onclick="ajax_submit_form('addEditGoodsForm','{:U('Goods/addEditGoods?is_ajax=1')}');" title="" data-toggle="tooltip" type="button" data-original-title="保存">保存</button>
+                        <button class="btn btn-primary" onclick="ajax_submit_form('addEditGoodsForm','{:U('Sellerstore/addEditGoods?is_ajax=1')}');" title="" data-toggle="tooltip" type="button" data-original-title="保存">保存</button>
                     </div>
 			    </form><!--表单数据-->
                 </div>
