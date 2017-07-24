@@ -1,0 +1,114 @@
+<form method="post" enctype="multipart/form-data" target="_blank" id="form-order">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <td style="width: 1px;" class="text-center">
+                </td>
+                <td class="text-right">
+                    <a href="javascript:sort('goods_id');">ID</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('goods_name');">产品名</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('goods_sn');">关键词</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('shop_price');">本店售价</a>
+                </td>
+                <td class="text-left">
+                    <a href="javascript:sort('cat_id');">商品分类</a>
+                </td>
+                <td class="text-right">操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="goodsList" id="list">
+                <tr>
+                    <td class="text-center">
+                        <input type="hidden" name="shipping_code[]" value="flat.flat">
+                    </td>
+                    <td class="text-right">{$list.goods_id}</td>
+                    <td class="text-left">{$list.goods_name|getSubstr=0,33}</td>
+                    <td class="text-left">{$list.keywords}</td>
+                    <td class="text-left">{$list.shop_price}</td>
+                    <td class="text-left">{$catList[$list[cat_id1]][name]}</td>
+
+                    <td class="text-right">
+                        <a style="margin: 2px 0;" target="_blank" href="{:U('/Inquiry/goodDeatil/',array('id'=>$list['goods_id']))}" data-toggle="tooltip" title="查看" class="btn btn-info" data-original-title="查看详情">
+                            <i class="fa fa-eye"></i>
+                        </a>
+
+                        <a style="margin: 2px 0;" href="{:U('Sellerstore/addEditGoods',array('goods_id'=>$list['goods_id']))}" data-toggle="tooltip" title="编辑" class="btn btn-primary" data-original-title="编辑">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+
+                        <a style="margin: 2px 0;" href="javascript:void(0);" onclick="del('{$list[goods_id]}')" id="button-delete6" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="删除">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+
+
+                        <a style="margin: 2px 0;" href="javascript:void(0);" onclick="ClearGoodsThumb('{$list[goods_id]}')" class="btn btn-default" title="清除缩略图缓存">
+                            <i class="glyphicon glyphicon-picture"></i>
+                        </a>
+
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</form>
+<div class="row">
+    <div class="col-sm-3 text-left"></div>
+    <div class="col-sm-9 text-right">{$page}</div>
+</div>
+<script>
+    function ajax_re_shop(sid){
+        $.post("{:U('ajax_re_shop')}",{'shop_id':sid},function(res){
+            if (res){
+                alert('重新发布成功');
+                location.reload();
+            } else {
+                alert('24小时内只能重新发布5次');
+            }
+        })
+    }
+    // 点击分页触发的事件
+    $(".pagination  a").click(function(){
+        cur_page = $(this).data('p');
+        ajax_get_table('search-form2',cur_page);
+    });
+
+    /*
+     * 清除静态页面缓存
+     */
+    function ClearGoodsHtml(goods_id)
+    {
+        $.ajax({
+            type:'GET',
+            url:"{:U('Seller/Admin/ClearGoodsHtml')}",
+            data:{goods_id:goods_id},
+            dataType:'json',
+            success:function(data){
+                layer.alert(data.msg, {icon: 2});
+            }
+        });
+    }
+    /*
+     * 清除商品缩列图缓存
+     */
+    function ClearGoodsThumb(goods_id)
+    {
+        $.ajax({
+            type:'GET',
+            url:"{:U('Seller/Admin/ClearGoodsThumb')}",
+            data:{goods_id:goods_id},
+            dataType:'json',
+            success:function(data){
+                layer.alert(data.msg, {icon: 2});
+            }
+        });
+    }
+</script>

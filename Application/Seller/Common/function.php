@@ -128,7 +128,7 @@ function getMenuList(){
 			array('name' => '我的订单','act' => 'order_list','op'=>'Userinfo'),
 		)),
 
-				
+
 		'tuiguang' => array('name'=>'推广服务', 'icon' => 'fa-flag', 'child' => array(
 			'goods' => array('name' => '产品推广', 'icon' => 'fa-tasks', 'child' => array(
 				array('name' => '产品发布', 'act' => 'addEditGoods', 'op' => 'Goods'), ///index.php/Seller/goods/addEditGoods.html'
@@ -195,6 +195,7 @@ function getMenuList(){
 				array('name' => '客服设置', 'act' => 'store_service', 'op' => 'Index'),
 				// array('name' => '系统消息', 'act' => 'store_msg', 'op' => 'Index'),
 				array('name' => '客户留言', 'act' => 'store_email', 'op' => 'Index'),
+				array('name' => '留言询盘', 'act' => 'store_inquiry', 'op' => 'Index'),
 				array('name' => '留言banner图', 'act' => 'store_mes', 'op' => 'Index'),
 				//array('name' => '聊天记录查询', 'act'=>'store_im', 'op'=>'store'),
 			)),
@@ -213,13 +214,29 @@ function getMenuList(){
 
 
 
+
 		);
 
 return $nav;
+}
 // echo '<pre>';
 // print_r($nav);exit;
-
-
+function getMenuList_()
+    {
+        $nav2 = array(
+            'store' => array('name' => '我的网站', 'icon' => 'fa-cog', 'child' => array(
+    			array('name' => '网站设置', 'act' => 'store_setting', 'op' => 'Store'))),
+            'Newjoin' =>array('name' => '推广服务', 'icon' => 'fa-bell','child' => array(
+    			array('name' => '产品推广', 'act' => 'addpr','op' => 'Sellerstore'),
+    			array('name' => '产品管理', 'act' => 'prList','op' => 'Sellerstore'),
+    			array('name' => '信息推广', 'act' => 'addinfo','op' => 'Sellerstore'),
+    			array('name' => '信息管理', 'act' => 'infolist','op' => 'Sellerstore'),
+    			)),
+            'message' => array('name' => '客服消息', 'icon' => 'fa-comments', 'child' => array(
+                array('name' => '留言询盘', 'act' => 'store_inquiry', 'op' => 'Index'),
+            )),
+        );
+    return $nav2;
 
 }
 

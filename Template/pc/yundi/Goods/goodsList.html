@@ -7,7 +7,7 @@
 <title>{$title}</title>
 <meta name="keywords" content="{$keywords}" />
 <meta name="description" content="{$description}" />
-<link href="__PUBLIC__/pc/css/main2.css" rel="stylesheet" type="text/css">    
+<link href="__PUBLIC__/pc/css/main2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/pc/js/js.js"></script>
 <script type="text/javascript">
@@ -33,7 +33,7 @@
 
 <body>
 <div class="warp">
-<include file="Public/header"/> 
+<include file="Public/header"/>
 
   <style type="text/css">
 
@@ -65,7 +65,7 @@
           <div style="clear:both"></div>
           <div class="btns4">
             <span class="submit" onClick="submitMoreFilter('brand',this);" >提交</span>
-            <span class="cancel">取消</span>            
+            <span class="cancel">取消</span>
           </div>
         </div>
         <div class="foot">
@@ -87,13 +87,13 @@
         <div class="head1">
           <h5><span class="title" title="{$v.name}">{$v.name}</span>:</h5>
         </div>
-                                   
+
         <div class="body">
            <foreach name="v[item]" item="v2" key="k2">
           <a href="{$v2[href]}" class="item" >
             <input class="bginput4" type="checkbox" name="{$v2[key]}" value='{$v2[val]}'>
             <span>{$v2[item]}</span>
-          </a>  
+          </a>
           </foreach>
           <div style="clear:both"></div>
           <div class="btns4">
@@ -107,7 +107,7 @@
           <span class="molls4"><a href="javascript:void(0)">&nbsp;</a><img class="mollch4 moll" src="__PUBLIC__/pc/images/161104143402.png"></span>
           <span class="back4">收起</span>
         </div>
-      </div>  
+      </div>
       </foreach>
 
 
@@ -117,13 +117,13 @@
         <div class="head1">
           <h5><span class="title" title="{$v.attr_name}">{$v.attr_name}</span>:</h5>
         </div>
-                                   
+
         <div class="body">
            <foreach name="v[attr_value]" item="v2" key="k2">
           <a href="{$v2[href]}" class="item" data-key='{$v2[key]}' data-val='{$v2[val]}'>
             <input class="bginput4" type="checkbox" name="{$v2[key]}" value='{$v2[val]}'>
             <span>{$v2[attr_value]}</span>
-          </a>  
+          </a>
           </foreach>
           <div style="clear:both"></div>
           <div class="btns4">
@@ -137,22 +137,22 @@
           <span class="molls4"><a href="javascript:void(0)">&nbsp;</a><img class="mollch4 moll" src="__PUBLIC__/pc/images/161104143402.png"></span>
           <span class="back4">收起</span>
         </div>
-      </div>  
+      </div>
       </foreach>
-    
+
     <if condition="$filter_price neq null">
       <!--属性-->
       <div class="row has-overlay" id="J_NavCommonRowItems_4">
         <div class="head1">
           <h5><span class="title" title="价格">价格</span>:</h5>
         </div>
-                                   
+
         <div class="body">
            <foreach name="filter_price" item="v" key="k">
           <a href="{$v[href]}/p/{$Think.get.p||default=1}.html" class="item">
             <input class="bginput4" type="checkbox" name="{$v[value]}" value='{$v[value]}'>
             <span>{$v[value]}</span>
-          </a>  
+          </a>
           </foreach>
           <div style="margin:9px 40px 9px 0;float:left;" class="thrr">
             <form action="<?php echo urldecode(U("/Goods/goodsList",$filter_param,''));?>" method="post" id="price_form">
@@ -160,10 +160,10 @@
                     -
                     <input type="text" class="u-pri-end" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"  name="end_price" id="end_price" />
                     <span style="cursor:pointer;" class="z-btn ensure03 u-btn-pri" href="javascript:;" onClick="if($('#start_price').val() !='' && $('#end_price').val() !='' ) $('#price_form').submit();">确认</span>
-              </form> 
+              </form>
           </div>
         </div>
-      </div>  
+      </div>
       </if>
 
 
@@ -177,11 +177,11 @@
 
           <foreach name="goods_list" item="v" key="k">
           <li>
-            <figure><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
+            <figure><a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/goodDeatil',array('id'=>$v[goods_id]))}<else />{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}</if>" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
             <div class="one">
-                <p>￥{$v[shop_price]}元</p>
+                <p>￥{$v[shop_price]}元{$v['status']}</p>
             </div>
-            <h1 class="there"><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank">{$v[goods_name]|mb_substr=0,30,'utf-8'}</a></h1>
+            <h1 class="there"><a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/goodDeatil',array('id'=>$v[goods_id]))}<else />{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}</if>" target="_blank">{$v[goods_name]|mb_substr=0,30,'utf-8'}</a></h1>
             <div class="two">
               <h2><!-- 已成交{$v[sales_sum]}笔 --></h2>
               <!-- <span><img src="__PUBLIC__/pc/images/product3.jpg" width="33" height="17"  alt=""/><img src="__PUBLIC__/pc/images/product4.jpg" width="17" height="17"  alt=""/>1年</span> -->
@@ -218,7 +218,7 @@
                       <span class="tipt" >
                         <img src="__PUBLIC__/renzheng/yunshanghui.png" width="100" height="100"  alt=""/>
                         <span>企业联盟商会会员,《权威企业》身份象征为消费者及商家提供100%安全保障,便捷服务(详细查看)!</span>
-                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
                       </span>
                     </span>
                   </a>
@@ -229,7 +229,7 @@
                       <span class="tipt" >
                         <img src="__PUBLIC__/renzheng/yunshanghui2.png" width="100" height="100"  alt=""/>
                         <span style="margin:0 0 0 10px;">未加入！</span>
-                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png"> 
+                        <img class="arrow" src="__PUBLIC__/renzheng/tip_arrow.png">
                       </span>
                     </span>
                   </a>
@@ -247,9 +247,9 @@
             </div>
           </li>
           </foreach>
-         
 
-        </ul> 
+
+        </ul>
         <p>
           <div class="page-box">
             <div class="page-clear">
@@ -283,7 +283,7 @@
 
                   </script>
                 </div>
-              </div>  
+              </div>
             </div>
           </div>
         </p>
@@ -299,7 +299,7 @@
         </div>
         <ul>
           <tpshop sql="select article_id,title,description,add_time from `__PREFIX__article` where cat_id = 32 and is_open = 1 order by add_time desc  limit 15" key="k" item='v'>
-          <li>  
+          <li>
             <span class="point"></span>
             <a target="_blank" href="{:U('/Article/detail_news',array('article_id'=>$v[article_id]))}"><img src="{$v.thumb}"></a>
             <div class="txt">
@@ -321,7 +321,7 @@
         </div>
         <ul>
         <tpshop sql="select article_id,title,description,add_time,thumb from `__PREFIX__article` where cat_id = 33 and is_open = 1 order by add_time desc limit 15" key="k" item='v'>
-          <li>  
+          <li>
             <span class="point"></span>
             <a target="_blank" href="{:U('/Article/detail_news',array('article_id'=>$v[article_id]))}"><img src="{$v.thumb}"></a>
             <div class="txt">
@@ -359,7 +359,7 @@
      <div class="right">
        <h1>优质供应商</h1>
        <span class="there"><a href="{:U('/index/street')}" target="_blank">更多</a></span>
-       <div class="cl"></div> 
+       <div class="cl"></div>
        <div class="one">
         <tpshop sql="select * from `__PREFIX__store` where  store_recommend = 1 limit 10" item="v" key="k">
          <dl>
@@ -370,11 +370,11 @@
         </tpshop>
        </div>
       <h2>热门推荐</h2>
-      <div class="cl"></div>  
+      <div class="cl"></div>
       <ul class="two two-hot">
         <tpshop sql="select * from `__PREFIX__goods` where  recommend = 1" item="v" key="k">
-        <li><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=238,218}" alt="{$v[goods_name]}"/></a></li>
-        </tpshop> 
+        <li><a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/goodDeatil',array('id'=>$v[goods_id]))}<else />{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}</if>" target="_blank"><img src="{$v.goods_id|goods_thum_images=238,218}" alt="{$v[goods_name]}"/></a></li>
+        </tpshop>
       </ul>
      <!-- <h4>相关搜索</h4>
      <div class="four">
@@ -387,24 +387,24 @@
    </div><!--产品右边-->
      <div class="cl"></div>
   </section><!--产品结束-->
-  
+
 
 </div>
 
   <include file="Goods/footer" />
 <script type="text/javascript">
   // $(function(){
-  //     $(document).keydown(function(e){  
-  //       var curKey = e.which; 
-  //       if(curKey == 13){         
-  //         $('#price_form').submit(); 
-  //         return false; 
+  //     $(document).keydown(function(e){
+  //       var curKey = e.which;
+  //       if(curKey == 13){
+  //         $('#price_form').submit();
+  //         return false;
   //       };
-  //     }); 
+  //     });
   // });
 //page 输入框分页数目控制
    $('.page-number input').blur(function(){
-    var num = parseInt($(this).val());  
+    var num = parseInt($(this).val());
       var pagenum=$('.pagination-form .page-total em').html();
       if(num==0||isNaN(num)){
         num = '';
@@ -456,7 +456,7 @@ function linum(num){
       }
   }
   positionis(10);
-  
+
 //新闻上下滚动开始
   var speed=40;
   var colee2=document.getElementById("colee2");
@@ -481,14 +481,14 @@ function linum(num){
   //############   点击多选确定按钮      ############
 // t 为类型  是品牌 还是 规格 还是 属性
 // btn 是点击的确定按钮用于找位置
- get_parment = <?php echo json_encode($_GET); ?>; 
+ get_parment = <?php echo json_encode($_GET); ?>;
 function submitMoreFilter(t,btn)
 {
   // 没有被勾选的时候
  /* if(!$(btn).hasClass("u-confirm01"))
     return false;*/
-    
-  // 获取现有的get参数   
+
+  // 获取现有的get参数
   var key = ''; // 请求的 参数名称
   var val = new Array(); // 请求的参数值
 
@@ -502,7 +502,7 @@ function submitMoreFilter(t,btn)
 
     })
   });
-    
+
   // 品牌
   if(t == 'brand')
   {
@@ -511,37 +511,36 @@ function submitMoreFilter(t,btn)
   // 规格
   if(t == 'spec')
   {
-    if(get_parment.hasOwnProperty('spec'))    
-    {   
+    if(get_parment.hasOwnProperty('spec'))
+    {
       get_parment.spec += '@'+key+'_'+val.join('_');
-    }   
-    else  
-    {   
+    }
+    else
+    {
       get_parment.spec = key+'_'+val.join('_');
-    }   
+    }
   }
   // 属性
   if(t == 'attr')
   {
-    if(get_parment.hasOwnProperty('attr'))    
-    {   
+    if(get_parment.hasOwnProperty('attr'))
+    {
       get_parment.attr += '@'+key+'_'+val.join('_');
-    }   
-    else  
-    {   
+    }
+    else
+    {
       get_parment.attr = key+'_'+val.join('_');
-    }   
+    }
   }
-   // 组装请求的url  
+   // 组装请求的url
   var url = '';
   for ( var k in get_parment )
-  { 
+  {
     url += "&"+k+'='+get_parment[k];
-  } 
+  }
   location.href ="/index.php?m=Home&c=Goods&a=goodsList"+url;
 }
-    
+
 </script>
 </body>
 </html>
-

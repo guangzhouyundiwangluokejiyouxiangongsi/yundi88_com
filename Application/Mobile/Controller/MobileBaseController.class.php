@@ -76,7 +76,9 @@ class MobileBaseController extends Controller {
        }                        
        
        $goods_category_tree = get_goods_category_tree(); 
-       // dump($goods_category_tree);exit;   
+       // echo '<pre>';
+       // print_r(get_goods_category_tree());exit;   
+
        $this->cateTrre = $goods_category_tree;
        $this->assign('goods_category_tree', $goods_category_tree);                     
        $brand_list = M('brand')->cache(true,TPSHOP_CACHE_TIME)->field('id,cat_id1,logo,is_hot')->where("cat_id1>0")->select();         

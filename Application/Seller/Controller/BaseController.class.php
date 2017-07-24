@@ -21,27 +21,28 @@ class BaseController extends Controller {
     /**
      * 析构函数
      */
-    function __construct() 
-    {   
+    function __construct()
+    {
         parent::__construct();
         $upgradeLogic = new UpgradeLogic();
-        $upgradeMsg = $upgradeLogic->checkVersion(); //升级包消息        
-        $this->assign('upgradeMsg',$upgradeMsg);    
+        $upgradeMsg = $upgradeLogic->checkVersion(); //升级包消息
+        $this->assign('upgradeMsg',$upgradeMsg);
         //用户中心面包屑导航
         $navigate_admin = navigate_admin();
         $navigate_admin['后台首页'] = '/seller/index/welcome';
-        $this->assign('navigate_admin',$navigate_admin);
-        tpversion();        
-   }    
-    
+        // $this->assign('navigate_admin',$navigate_admin);
+        tpversion();
+   }
+
     /*
      * 初始化操作
      */
-    public function _initialize() 
-    {   
+    public function _initialize()
+    {
+        // $this->quanxian(__SELF__);
         $this->assign('action',ACTION_NAME);
         //过滤不需要登陆的行为
-        if(in_array(ACTION_NAME,array('login','logout','vertify')) || in_array(CONTROLLER_NAME,array('Ueditor','Uploadify'))){ 
+        if(in_array(ACTION_NAME,array('login','logout','vertify')) || in_array(CONTROLLER_NAME,array('Ueditor','Uploadify'))){
         	return;
         }else{
         	if(session('seller_id') > 0 && session('user') != '' && session('store_id') > 0 && session('seller') !=''){
@@ -52,27 +53,53 @@ class BaseController extends Controller {
                 exit;
         	}
         }
-        $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-        if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
+        // $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+        // if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
         $this->public_assign();
     }
-    
+
+
+    public function quanxian($url='/index.php/Seller/Index/index')
+    {
+        $status =  M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+        // $status = 2;
+        // echo __SELF__;
+        if($status == 2){
+            $arr = array(
+                '/index.php/Seller/Sellerstore/addpr',
+                '/index.php/Seller/Sellerstore/prList',
+                '/index.php/Seller/Sellerstore/addinfo',
+                '/index.php/Seller/Sellerstore/infolist',
+                '/index.php/Seller/Store/store_setting'
+            );
+
+            $s = array('/\/index\.php\?m=Seller&c=Sellerstore&a=ajaxPrList&p=/','/\/index\.php\/Seller\/Sellerstore\/uddinfo\/id/');
+
+                if(!in_array($url,$arr) && !preg_match($s,$url)){
+                    echo "<script>alert('没有权限！');top.location='http://".$_SERVER['HTTP_HOST']."/seller/index/index';</script>";
+                }
+
+        }
+
+    }
+
+
     /**
-     * 保存公告变量到 smarty中 比如 导航 
+     * 保存公告变量到 smarty中 比如 导航
      */
     public function public_assign()
     {
        $tpshop_config = array();
-       $tp_config = M('config')->select();       
+       $tp_config = M('config')->select();
        foreach($tp_config as $k => $v)
        {
           $tpshop_config[$v['inc_type'].'_'.$v['name']] = $v['value'];
        }
-       $this->assign('tpshop_config', $tpshop_config);       
+       $this->assign('tpshop_config', $tpshop_config);
     }
-    
+
     public function check_priv()
-    {	
+    {
         // dump(session());exit;
     	$seller = session('seller');
          $seller['act_limits'] = M('seller_group')->where(array('store_id'=>session('store_id')))->getField('act_limits');
@@ -103,10 +130,10 @@ class BaseController extends Controller {
     				$this->error('您没有操作权限,请联系店铺超级管理员分配权限',U('Index/welcome'));
     			}
 
-              
+
     		}
     	}
     	return true;
     }
-    
+
 }

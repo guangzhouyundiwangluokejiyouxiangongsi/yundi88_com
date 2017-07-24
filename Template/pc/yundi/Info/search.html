@@ -10,7 +10,7 @@
 <style type="text/css">zhoufei{color:#f00;}</style>
 <meta name="keywords" content="{$tpshop_config['shop_info_store_keyword']}" />
 <meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
-<link href="__PUBLIC__/pc/css/main2.css" rel="stylesheet" type="text/css">    
+<link href="__PUBLIC__/pc/css/main2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="__PUBLIC__/pc/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/pc/js/js.js"></script>
 <script type="text/javascript">
@@ -34,11 +34,11 @@
 </style>
 <body>
 <div class="warp">
-  <include file="Goods/header" /> 
+  <include file="Goods/header" />
   <!--导航结束-->
   <section class="prod">
 		<h6><a href="" target="_blank">全部</a> &gt; 找到<span>{$counts}</span>相关信息</h6>
-      
+
   </section><!--多选区域-->
 
   <section class="product">
@@ -48,16 +48,16 @@
         <li>
           <div class="jingjiaTop">
             <img class="jingjialogo" src="{:templogo($v['store'],95,95)}">
-              <h3 class="there"><a title="{$v['title']}" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{:zfgetsubstr($v['title'],0,50,I('info'))}</a></h3>
+              <h3 class="there"><a title="{$v['title']}" href="<if condition='$v[status] eq 2'>{:U('/Inquiry/inquiry',array('id'=>$v[id]))}<else/>{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}</if>">{:zfgetsubstr($v['title'],0,50,I('info'))}</a></h3>
               <p>{:zfgetsubstr($v['description'],0,150,I('info'))}</p>
               <div style="clear:both;"></div>
             </div>
           <div class="jingjiaimg">
            <notempty name="v['newsimg']">
-              <a href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$v['newsimg']}"></a>
+              <a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/inquiry',array('id'=>$v[id]))}<else/>{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}</if>"><img src="{$v['newsimg']}"></a>
               </notempty>
               <foreach name="v['content']" item="vv">
-              <a href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$vv['src']}"></a>
+              <a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/inquiry',array('id'=>$v[id]))}<else/>{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}</if>"><img src="{$vv['src']}"></a>
              </foreach>
           </div>
           <div class="jingjiabootm">
@@ -98,26 +98,26 @@
             <p style="float: right;line-height: 30px;margin-left: 10px;color: #a0a0a0;">浏览次数 : <span>{$v[pc_click]}</span></p>
              <p style="float: right;line-height: 30px;margin-left: 10px;color: #a0a0a0;">{$v[timer]|date="Y-m-d",###}</p>
           </div>
-        </li>  
-        </foreach>       
+        </li>
+        </foreach>
       <div style="clear:both;"></div>
       </ul>
 <!-- 非竞价 -->
-      <ul class="tuiguang">       
+      <ul class="tuiguang">
          <foreach name="articlelist" item="v">
         <li>
           <div class="jingjiaTop">
             <img class="jingjialogo" src="{:templogo($v['store'],95,95)}">
-              <h3><a title="{$v['title']}" target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}">{:zfgetsubstr($v['title'],0,50,I('info'))}</a></h3>
+              <h3><a title="{$v['title']}" target="_blank" href="<if condition='$v[status] eq 2'>{:U('/Inquiry/inquiry',array('id'=>$v[id]))}<else/>{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}</if>">{:zfgetsubstr($v['title'],0,50,I('info'))}</a></h3>
               <p>{:zfgetsubstr($v['description'],0,150,I('info'))}</p>
               <div style="clear:both;"></div>
             </div>
           <div class="jingjiaimg">
               <notempty name="v['newsimg']">
-              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$v['newsimg']}"></a>
+              <a target="_blank" href="<if condition='$v[status] eq 2'>{:U('/Inquiry/inquiry',array('id'=>$v[id]))}<else/>{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}</if>"><img src="{$v['newsimg']}"></a>
               </notempty>
               <foreach name="v['content']" item="vv">
-              <a target="_blank" href="{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}"><img src="{$vv['src']}"></a>
+              <a target="_blank" href="<if condition='$v[status] eq 2'>{:U('/Inquiry/inquiry',array('id'=>$v[id]))}<else/>{$v['domain2']|default=U('Store/newscontent',array('store_id'=>$v['store'],'sn'=>$v['sn_id'],'text'=>$v['id']))}</if>"><img src="{$vv['src']}"></a>
              </foreach>
           </div>
           <div class="jingjiabootm">
@@ -157,12 +157,12 @@
             <p style="margin:0 0 0 10px;">未加入！</p>
             </span></a>
             <php>}</php>
-           
+
             <p style="float: right;line-height: 30px;margin-left: 10px;color: #a0a0a0;">浏览次数 : <span>{$v[pc_click]}</span></p>
              <p style="float: right;line-height: 30px;margin-left: 10px;color: #a0a0a0;">{$v[timer]|date="Y-m-d",###}</p>
           </div>
-        </li>  
-        </foreach>           
+        </li>
+        </foreach>
       <div style="clear:both;"></div>
       </ul>
     </div>
@@ -174,14 +174,14 @@
         },function(){
                 $(this).next("span").hide();
         });
-      }); 
-    </script>   
+      });
+    </script>
       <!--产品左边-->
-     
+
      <div class="right">
        <h1>优质供应商</h1>
        <span class="there"><a href="{:U('/index/street')}" target="_blank">更多</a></span>
-       <div class="cl"></div> 
+       <div class="cl"></div>
        <div class="one">
         <tpshop sql="select * from `__PREFIX__store` where  store_recommend = 1 limit 10" item="v" key="k">
          <dl>
@@ -192,11 +192,11 @@
         </tpshop>
        </div>
       <h2 style="font-size: 100%;font-weight: 500;">热门推荐</h2>
-      <div class="cl"></div>  
+      <div class="cl"></div>
       <ul class="two two-hot">
         <tpshop sql="select * from `__PREFIX__goods` where  recommend = 1" item="v" key="k">
         <li><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=238,218}" alt="{$v[goods_name]}"/></a></li>
-        </tpshop> 
+        </tpshop>
       </ul>
      <!-- <h4>相关搜索</h4>
      <div class="four">
@@ -239,19 +239,19 @@
                       }
                   </script>
                 </div>
-              </div>  
+              </div>
             </div>
           </div>
      <div class="cl"></div>
   </section><!--产品结束-->
-  
+
 </div>
 
  <include file="Goods/footer" />
 <script type="text/javascript">
 //page 输入框分页数目控制
   $('.page-number input').blur(function(){
-    var num = parseInt($(this).val());  
+    var num = parseInt($(this).val());
       var pagenum=$('.pagination-form .page-total em').html();
        if(num==0||isNaN(num)){
         num = '';
@@ -295,14 +295,14 @@ function linum(num){
   //############   点击多选确定按钮      ############
 // t 为类型  是品牌 还是 规格 还是 属性
 // btn 是点击的确定按钮用于找位置
- get_parment = <?php echo json_encode($_GET); ?>; 
+ get_parment = <?php echo json_encode($_GET); ?>;
 function submitMoreFilter(t,btn)
 {
   // 没有被勾选的时候
  /* if(!$(btn).hasClass("u-confirm01"))
     return false;*/
-    
-  // 获取现有的get参数   
+
+  // 获取现有的get参数
   var key = ''; // 请求的 参数名称
   var val = new Array(); // 请求的参数值
 
@@ -316,7 +316,7 @@ function submitMoreFilter(t,btn)
 
     })
   });
-    
+
   // 品牌
   if(t == 'brand')
   {
@@ -325,33 +325,33 @@ function submitMoreFilter(t,btn)
   // 规格
   if(t == 'spec')
   {
-    if(get_parment.hasOwnProperty('spec'))    
-    {   
+    if(get_parment.hasOwnProperty('spec'))
+    {
       get_parment.spec += '@'+key+'_'+val.join('_');
-    }   
-    else  
-    {   
+    }
+    else
+    {
       get_parment.spec = key+'_'+val.join('_');
-    }   
+    }
   }
   // 属性
   if(t == 'attr')
   {
-    if(get_parment.hasOwnProperty('attr'))    
-    {   
+    if(get_parment.hasOwnProperty('attr'))
+    {
       get_parment.attr += '@'+key+'_'+val.join('_');
-    }   
-    else  
-    {   
+    }
+    else
+    {
       get_parment.attr = key+'_'+val.join('_');
-    }   
+    }
   }
-   // 组装请求的url  
+   // 组装请求的url
   var url = '';
   for ( var k in get_parment )
-  { 
+  {
     url += "&"+k+'='+get_parment[k];
-  } 
+  }
   location.href ="/index.php?m=Home&c=Goods&a=goodsList"+url;
 }
 

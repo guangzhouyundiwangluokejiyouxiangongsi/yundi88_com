@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="applicable-device" content="pc">
 <meta name="mobile-agent" content="">
-<meta http-equiv="X-UA-Compatible" content="IE=8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!--<link rel="stylesheet" href="__STATIC__/css/common.css?v=1459218814">-->
 </head>
@@ -18,7 +18,7 @@
   <link href="__PUBLIC__/pc/css/public.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
 <script src="__PUBLIC__/js/global.js"></script>
-<script src="__PUBLIC__/js/layer/layer.js"></script> 
+<script src="__PUBLIC__/js/layer/layer.js"></script>
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/common.min.css">
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/main.min.css">
 
@@ -29,7 +29,7 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/jquery.jqzoom.css">
 <link rel="stylesheet" href="__STATIC__/css/location.css" type="text/css"><!-- 收货地址，物流运费 -->
 <include file="Goods/detail_header"/>
-<script type="text/javascript" src="__STATIC__/js/jquery.jqzoom.js"></script> 
+<script type="text/javascript" src="__STATIC__/js/jquery.jqzoom.js"></script>
 <div class="container" id="tracker_item">
 <!--
 <div id="region-header" style="background-color:;background-image:url();background-repeat:;background-position:;">
@@ -50,13 +50,13 @@
 <!-- 面包屑导航 -->
 <div class="breadcrumb"> <strong><a href="/">首页</a></strong>
   <span>
-  	<foreach name="navigate_goods" key="k" item="v"> 
+  	<foreach name="navigate_goods" key="k" item="v">
   		&nbsp;<i>></i>&nbsp;<a href="{:U('/Goods/goodsList',array('id'=>$k))}">{$v}</a>
    </foreach>
-  </span>&nbsp;<i>></i>&nbsp;<em>{$goods.goods_name}...</em> 
+  </span>&nbsp;<i>></i>&nbsp;<em>{$goods.goods_name}...</em>
 </div>
 
-<!-- 面包屑导航 end ]] --> 
+<!-- 面包屑导航 end ]] -->
 <!-- 商品内容部分头部 start [[-->
 <div class="product-main fn-clear">
   <div class="product-info">
@@ -65,7 +65,7 @@
       <p><if condition="$flash_sale['description'] neq ''">{$flash_sale['description']}<else/>{$goods.goods_remark}</if></p>
     </div>
     <!-- 价格、尺寸&评价 start [[-->
-    <div class="product-info-mian fn-clear"> 
+    <div class="product-info-mian fn-clear">
       <!-- 价格、尺寸 start [[-->
       <form id="buy_goods_form" name="buy_goods_form" method="post" >
         <div class="product-value">
@@ -84,11 +84,11 @@
                 </if>
                 <div class="nett-box fn-clear" id="J_product_value">
                   <div class="nett-box-value"> <q class="fn-rmb">¥</q>
-                    <if condition="$goods['prom_type'] eq 1"> 
-                    <strong class="fn-rmb-num"  id="goods_price"> {$goods['flash_sale']['price']} </strong> 
+                    <if condition="$goods['prom_type'] eq 1">
+                    <strong class="fn-rmb-num"  id="goods_price"> {$goods['flash_sale']['price']} </strong>
                     	 <i class="onlylost">仅剩<em><strong id="countdown" style="color:#db384c">
 	                    	 <script type="text/javascript">
-	                         function GetRTime2(){						
+	                         function GetRTime2(){
 	                             $("#countdown").text(GetRTime('{$goods['flash_sale']['end_time']|date="Y/m/d H:i:s",###}'));
 	                         }
 	                         setInterval(GetRTime2,999);
@@ -100,8 +100,8 @@
 		                     <strong id="second">0</strong>秒
 	                     </i>
                       <else/>
-                     <strong class="fn-rmb-num" id="goods_price"> {$goods.shop_price} </strong> 
-                     <i class="clue" style="display: inline;"></i> 
+                     <strong class="fn-rmb-num" id="goods_price"> {$goods.shop_price} </strong>
+                     <i class="clue" style="display: inline;"></i>
                     </if>
                   </div>
                 </div>
@@ -147,7 +147,7 @@
           </div>
           <div class="product-norm" id="productNorm">
             <div class="product-minheight">
-              <div id="J_color_format"> 
+              <div id="J_color_format">
                 <!-- 颜色 start [[-->
                 <foreach name="filter_spec" item="v" key="k" >
                    <if condition="$v[0][src] neq ''">
@@ -156,10 +156,10 @@
                       <dd class="product-color-info">
                         <ul class="selectCtrl matchProduct fn-clear J_color " data-v="color_select">
                           <foreach name="v" item="v2" key="k2" >
-                            <li <if condition="$k2 eq 0 "> class="select" </if>> 
+                            <li <if condition="$k2 eq 0 "> class="select" </if>>
                               <input type="radio" style="display:none;" rel="{$v2[item]}" name="goods_spec[{$k}]" value="{$v2[item_id]}"  <if condition="$k2 eq 0 ">checked="checked"</if>/>
                               <span data-spec="" data-id="{$v2[item_id]}" title="{$v2[item]}"><img src="{$v2['src']}"></span>
-                              <b class="ok"></b> <i></i> 
+                              <b class="ok"></b> <i></i>
                             </li>
                           </foreach>
                         </ul>
@@ -173,7 +173,7 @@
                       <dd class="product-format-info fn-clear">
                         <ul class="selectCtrl matchProduct fn-clear J_etalon " data-v="size_select">
                           <foreach name="v" item="v2" key="k2" >
-                            <li <if condition="$k2 eq 0 "> class="select" </if>> 
+                            <li <if condition="$k2 eq 0 "> class="select" </if>>
                             <input type="radio" style="display:none;" rel="{$v2[item]}" name="goods_spec[{$k}]" value="{$v2[item_id]}" <if condition="$k2 eq 0 ">checked="checked"</if>/>
                               <span data-spec="35" data-id="{$v2[item_id]}" title="{$v2[item]}">{$v2[item]}</span>
                               <b class="ok"></b> </li>
@@ -196,10 +196,10 @@
               </notempty>
               <!-- 预约 start ]]-->
               <div id="J_reservation"> </div>
-              <!-- 预约 end ]]--> 
+              <!-- 预约 end ]]-->
               <!-- 预售 start ]]-->
               <div id="J_pre_sale"> </div>
-              <!-- 预售 end [[--> 
+              <!-- 预售 end [[-->
               <!-- 数量 start [[-->
               <dl class="product-number public-pl67 fn-clear hide marginFR25" style="display: block;">
                 <dt class="attr">购买数量</dt>
@@ -220,8 +220,8 @@
                   </ul>
                 </dd>
               </dl>
-             
-              <!-- 数量 end ]]--> 
+
+              <!-- 数量 end ]]-->
               <!-- 提交按钮 start [[-->
               <div class="product-button public-pl67 fn-clear marginFR25">
                 <p class="beforebuy-txt create-txt"></p>
@@ -233,7 +233,7 @@
                    <a id="addCart_f" href="{:U('Store/index',array('store_id'=>$store[store_id]))}"  class="btn btn-fastpay2" style="margin-left: 10px;">进入企业网</a>
                   <a id="btnAvailableInform" href="javascript:void(0)" class="btn hide">到货通知</a> </div>
               </div>
-              <!-- 提交按钮 end ]]--> 
+              <!-- 提交按钮 end ]]-->
             </div>
             <!-- 服务承诺 start [[-->
            <!--  <dl class="sevice public-pl67 marginFR25">
@@ -244,63 +244,63 @@
                 <span>正品保证</span>
                 </a> <a><i class="fn-icon"></i>
                 <span>假一赔三</span>
-                </a>               
+                </a>
                 </dd>
             </dl> -->
             <!-- 服务承诺 end ]]-->
             <!-- 温馨提示 start -->
             <dl class="sevice public-pl67 marginFR25">
               <dt class="attr">温馨提示</dt>
-              <dd> 由 <font>{$store.store_name}</font> 
+              <dd> 由 <font>{$store.store_name}</font>
               <span style="color:#aaa;">发货并提供售后服务。</span>
-              <span style="color:#aaa;">             
+              <span style="color:#aaa;">
 
                 <if condition="$store['store_aftersales']['qq_account'] neq ''">
                 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$store['store_aftersales']['qq_account']}&amp;site=云狄B2B&Menu&amp;menu=yes"><img src="__PUBLIC__/pc/images/product5.jpg" width="27" height="25"  alt=""/></a></if>
                 <!-- <a href="tencent://message/?uin={$store.store_aliwangwang}&Site=云狄B2B&Menu=yes" target="_blank"><img src="__PUBLIC__/pc/images/ww.png" width="27" height="25"  alt=""/></a>
-                <a href="tencent://message/?uin={$store.store_qq}&Site=TPshop商城&Menu=yes"> <img src="__PUBLIC__/images/qq.gif" />  </a> -->  
+                <a href="tencent://message/?uin={$store.store_qq}&Site=TPshop商城&Menu=yes"> <img src="__PUBLIC__/images/qq.gif" />  </a> -->
               </span>
               </dd>
             </dl>
-            <!-- 温馨提示 end ]]-->  
+            <!-- 温馨提示 end ]]-->
           </div>
         </div>
         <!-- 价格、尺寸 end ]]-->
       </form>
       <!-- 官网信息&评价 start [[-->
-      <div class="product-evaluate"> 
+      <div class="product-evaluate">
         <!-- 看了又看 start [[-->
         <div class="side-public side-look item-cf">
           <div class="side-title fn-clear">
             <span class="title">看了又看</span>
-            <div class="side-barter"> <a href="javascript:;" class="renovate"></a> 
+            <div class="side-barter"> <a href="javascript:;" class="renovate"></a>
             <a href="javascript:;" class="barter" onclick="replace_look()">换一批</a> </div>
           </div>
           <ul id="see_and_see">
 
           </ul>
         </div>
-        <!-- 看了又看 end ]]--> 
+        <!-- 看了又看 end ]]-->
       </div>
-      <!-- 官网信息&评价  end ]]--> 
+      <!-- 官网信息&评价  end ]]-->
     </div>
-    <!-- 价格、尺寸&评价 end ]]--> 
+    <!-- 价格、尺寸&评价 end ]]-->
   </div>
   <!-- 商品大图&小图展示  start [[-->
   <div class="product-gallery">
-    <div class="product-photo" id="photoBody"> 
+    <div class="product-photo" id="photoBody">
       <!-- 商品大图介绍 start [[-->
-      <div class="product-img jqzoom"> 
-      	<img id="zoomimg" src="{$goods.goods_id|goods_thum_images=400,400}" jqimg="{$goods.goods_id|goods_thum_images=800,800}"> 
+      <div class="product-img jqzoom">
+      	<img id="zoomimg" src="{$goods.goods_id|goods_thum_images=400,400}" jqimg="{$goods.goods_id|goods_thum_images=800,800}">
       </div>
-      <!-- 商品大图介绍 end ]]--> 
+      <!-- 商品大图介绍 end ]]-->
       <!-- 商品小图介绍 start [[-->
       <div class="product-small-img fn-clear"> <a href="javascript:;" class="next-left next-btn fl disabled"></a>
         <div class="pic-hide-box fl">
           <ul class="small-pic" style="left:0;">
             <foreach name="goods_images_list" item="v" key="k" >
-               <li class="small-pic-li <if condition="$k eq 0">active</if>"> 
-               	 <a href="javascript:;"><img src="{$v|get_sub_images=$v[goods_id],60,60}" data-img="{$v|get_sub_images=$v[goods_id],400,400}" data-big="{$v|get_sub_images=$v[goods_id],800,800}"> <i></i></a> 
+               <li class="small-pic-li <if condition="$k eq 0">active</if>">
+               	 <a href="javascript:;"><img src="{$v|get_sub_images=$v[goods_id],60,60}" data-img="{$v|get_sub_images=$v[goods_id],400,400}" data-big="{$v|get_sub_images=$v[goods_id],800,800}"> <i></i></a>
                </li>
             </foreach>
           </ul>
@@ -309,11 +309,11 @@
       <!-- 商品小图介绍 end ]]-->
     </div>
     <!-- 收藏商品 start [[-->
-    <div class="collect"> 
+    <div class="collect">
     	<a href="javascript:void(0);" id="collectLink"><i class="collect-ico collect-ico-null"></i>
       	<span class="collect-text">收藏商品</span>
-      	<em class="J_FavCount"></em></a> 
-      	<!--<a href="javascript:void(0);" id="collectLink"><i class="collect-ico collect-ico-ok"></i>已收藏<em class="J_FavCount">(20)</em></a>--> 
+      	<em class="J_FavCount"></em></a>
+      	<!--<a href="javascript:void(0);" id="collectLink"><i class="collect-ico collect-ico-ok"></i>已收藏<em class="J_FavCount">(20)</em></a>-->
     </div>
     <!-- 分享商品 -->
     <div class="share">
@@ -323,31 +323,31 @@
 		<script>
          var jiathis_config = {
                                 url:"http://{$_SERVER[HTTP_HOST]}/index.php?m=Home&c=Goods&a=goodsInfo&id={$_GET[id]}",
-                                pic:"http://{$_SERVER[HTTP_HOST]}{$goods[goods_id]|goods_thum_images=400,400}", 
+                                pic:"http://{$_SERVER[HTTP_HOST]}{$goods[goods_id]|goods_thum_images=400,400}",
                             }
         var is_distribut = getCookie('is_distribut');
         var user_id = getCookie('user_id');
         // 如果已经登录了, 并且是分销商
         if(parseInt(is_distribut) == 1 && parseInt(user_id) > 0)
-        {									
-            jiathis_config.url = jiathis_config.url + "&first_leader="+user_id;									
+        {
+            jiathis_config.url = jiathis_config.url + "&first_leader="+user_id;
         }
-        </script>        
-		<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script> 
+        </script>
+		<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 	 </div>
   </div>
-  <!-- 商品大图&小图展示  end ]]--> 
+  <!-- 商品大图&小图展示  end ]]-->
 </div>
-<!-- 商品内容部分头部 end ]]--> 
+<!-- 商品内容部分头部 end ]]-->
 <!-- 商品内容部分左侧侧边栏 start [[-->
 <div class="product-about fn-clear">
 <!-- 商品内容部分左侧侧边栏 相关分类&同类其他品牌&看了又看&picadd start [[-->
-<div class="product-side fl"> 
-<div class="dp-middleContentLeft"> 
-          <!-- 装修左栏 --> 
+<div class="product-side fl">
+<div class="dp-middleContentLeft">
+          <!-- 装修左栏 -->
           <!-- 评分  -->
           <div class="module fstore-sysdetail-business-info">
-            <div class="pro-buiness clearfix"> 
+            <div class="pro-buiness clearfix">
               <!--详情页商家信息-->
               <div class="bus-name">
                 <p class="title"><a target="_blank" href="{:U('Store/index',array('store_id'=>$store[store_id]))}" class="seller-name">{$store.store_name}</a></p>
@@ -414,7 +414,7 @@
                 </table>
               </div>
               <div class="enterShop">
-                <div class="shopBtn"> <a class="enter-Shop" href="{:U('Store/index',array('store_id'=>$store[store_id]))}" rel="nofollow" target="_blank">进入官网</a> 
+                <div class="shopBtn"> <a class="enter-Shop" href="{:U('Store/index',array('store_id'=>$store[store_id]))}" rel="nofollow" target="_blank">进入官网</a>
                 <a class="collect-Shop" id="favoriteStore" data-id="{$store['store_id']}" target="_blank">收藏官网</a> </div>
               </div>
             </div>
@@ -451,12 +451,12 @@
                      window.location.href="{:U('Home/Store/search')}?store_id={$store[store_id]}&keywords="+keywords;
                     }
                   </script>
-                  <li class="hotkeys"> 
+                  <li class="hotkeys">
                   	<foreach name="main_cat" key="ko" item="vo">
                   	  <if condition="$ko lt 3">
 	                  <a href="{:U('Store/goods_list',array('cat_id'=>$vo[cat_id],'store_id'=>$store[store_id]))}" class="search-keyword-btn" target="_blank">{$vo.cat_name}</a>
 	                  </if>
-	                 </foreach> 
+	                 </foreach>
                   </li>
                 </ul>
               </div>
@@ -471,7 +471,7 @@
 					</div>
 				</div>
 			</div>
-		  </div> 
+		  </div>
           <div class="module fstore-sysdetail-category-tree">
             <div class="module-hd">
               <h3>商品分类</h3>
@@ -480,10 +480,10 @@
               <div class="cates-tree">
                 <div class="node-expand">
                   <div class="node-hd"><i></i><a target="_blank" href="">所有商品分类</a></div>
-                  <div class="node-sub treesort"> 
-	                  <a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'key'=>'sales_sum'))}" target="_blank">按综合</a> 
-	                  <a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'key'=>'is_new'))}" target="_blank">按新品</a> 
-	                  <a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'key'=>'shop_price'))}" target="_blank">按价格</a> 
+                  <div class="node-sub treesort">
+	                  <a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'key'=>'sales_sum'))}" target="_blank">按综合</a>
+	                  <a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'key'=>'is_new'))}" target="_blank">按新品</a>
+	                  <a href="{:U('Store/goods_list',array('store_id'=>$store[store_id],'key'=>'shop_price'))}" target="_blank">按价格</a>
                   </div>
                 </div>
                 <foreach name="main_cat" item="vo">
@@ -507,7 +507,7 @@
 	          <div class="module-hd"><h3>新品推荐</h3></div>
 	          <div class="module-bd module-bd-bdr">
 				<div class="itemlist item4line1 fix">
-					<tpshop sql="select * from `__PREFIX__goods` where is_recommend=1 and store_id=$goods[store_id] order by goods_id desc limit 10" item="vo">				
+					<tpshop sql="select * from `__PREFIX__goods` where is_recommend=1 and store_id=$goods[store_id] order by goods_id desc limit 10" item="vo">
 					<dl class="item ">
 						<dt class="photo">
 							<a target="_blank" href="{:U('Goods/goodsInfo',array('id'=>$vo[goods_id]))}"><img src="{$vo.goods_id|goods_thum_images=400,400}" title="{$vo.goods_name|getSubstr=0,30}" alt=""></a>
@@ -525,40 +525,40 @@
 			</div>
         </div>
 </div>
-<!-- 商品内容部分左侧侧边栏 相关分类&同类其他品牌&看了又看&picadd end ]]--> 
+<!-- 商品内容部分左侧侧边栏 相关分类&同类其他品牌&看了又看&picadd end ]]-->
 <!-- 商品内容主题部分 start [[-->
 <div class="product-detail fl">
 <!-- 优惠套餐&任意搭配 start [[-->
 <div class="detail-package detail-tabcont">
 <div id="J_package_list"> </div>
-<!-- 优惠套餐&任意搭配 end ]]--> 
+<!-- 优惠套餐&任意搭配 end ]]-->
 <!-- 商品介绍&规格包装&评价&售后服务 start [[-->
 <div class="product-article detail-tabcont fn-clear">
 <!-- tab切换 start [[-->
 <div class="detail-tab">
   <ul class="tab fn-clear J_tabFixed">
     <li class="tab-bottn"> <a href="javascript:;"></a> </li>
-    <li class="tab-inner" id="tabInner"> 
-    	<a href="javascript:void(0);" class="tab-toggle  tab-cur">商品介绍</a> 
-    	<a href="javascript:void(0);" class="tab-toggle">属性参数</a> 
-      	<a href="javascript:void(0);" class="tab-toggle">评价（<em class="total_comment">{$commentStatistics['c0']}</em>）</a> 
+    <li class="tab-inner" id="tabInner">
+    	<a href="javascript:void(0);" class="tab-toggle  tab-cur">商品介绍</a>
+    	<a href="javascript:void(0);" class="tab-toggle">属性参数</a>
+      	<a href="javascript:void(0);" class="tab-toggle">评价（<em class="total_comment">{$commentStatistics['c0']}</em>）</a>
       	<!-- <a href="javascript:void(0);" class="tab-toggle">售后服务</a> -->
-      	<div class="addshop-tab" id="J_addshop_tab"> 
+      	<div class="addshop-tab" id="J_addshop_tab">
       	</div>
     </li>
   </ul>
 </div>
-<!-- tab切换 end ]]--> 
+<!-- tab切换 end ]]-->
 <!-- 商品介绍&规格包装&评价&售后服务 内容部分 start [[-->
 <div class="detail-public" id="detailTop">
 <!-- 商品介绍 start [[-->
-<div class="detail-depict detail-box fn-clear show"> 
+<div class="detail-depict detail-box fn-clear show">
   <!-- 商品介绍内容部分 start [[-->
-  <div class="depict-left fl"> 
+  <div class="depict-left fl">
     <!-- 商品介绍内容部分__规格参数 start [[ -->
     <div class="depict-text">
     <p class="depict-text-title" id="p1">商品名称：{$goods.goods_name}</p>
-      <ul class="depict-list fn-clear"> 
+      <ul class="depict-list fn-clear">
         <li>
           <span>品牌：</span>
           <span><a href="" title="">{$goods['brand_name']}</a></span>
@@ -578,8 +578,8 @@
       </ul>
     </div>
     <div class="u-rmd-slide slide hide" id="todayRec"></div>
-    {$goods.goods_content|htmlspecialchars_decode} 
-    <!--  商品介绍内容部分__规格参数 end ]] --> 
+    {$goods.goods_content|htmlspecialchars_decode}
+    <!--  商品介绍内容部分__规格参数 end ]] -->
   </div>
   <!-- 商品介绍内容部分__右导航部分 end ]]-->
   <div class="depict-right fr">
@@ -589,9 +589,9 @@
       </ul>
     </div>
   </div>
-  <!-- 商品介绍内容部分 end ]]--> 
+  <!-- 商品介绍内容部分 end ]]-->
 </div>
-<!-- 商品介绍 end ]]--> 
+<!-- 商品介绍 end ]]-->
 <!-- 规格包装 start [[-->
 <div class="detail-norm detail-box hide">
   <table class="norm-table">
@@ -608,7 +608,7 @@
     </tbody>
   </table>
 </div>
-<!-- 规格包装 end ]]--> 
+<!-- 规格包装 end ]]-->
 <!-- 评价 start [[-->
 <div class="detail-assess detail-box hide">
   <div class="fn-comment" id="comment" style="">
@@ -660,7 +660,7 @@
           </p>
         </div>
       </div>
-      <!-- /.fn-mc --> 
+      <!-- /.fn-mc -->
     </div>
     <div class="fn-comment-list">
       <div class="fn-mt fix">
@@ -683,7 +683,7 @@
     </span>
   </div>
 </div>
-<!-- 评价 end ]]--> 
+<!-- 评价 end ]]-->
 <!-- 售后服务 start [[-->
 <div class="detail-service detail-box hide">
 
@@ -697,7 +697,7 @@
 </div>
 <!-- 商品介绍&规格包装&评价&售后服务 内容部分 end ]]-->
 </div>
-<!-- 商品介绍&规格包装&评价&售后服务 end ]]--> 
+<!-- 商品介绍&规格包装&评价&售后服务 end ]]-->
 </div>
 <!-- 商品内容主题部分 end ]]-->
 </div>
@@ -705,7 +705,7 @@
 </div>
 </div>
 
-<!-- 弹层内容块 start [[--> 
+<!-- 弹层内容块 start [[-->
 <!-- 看了又看 -->
 <div style="display:none">
       <ul id="look_see">
@@ -728,7 +728,7 @@
 
     //input 输入框分页数目控制
     $('.buyNum').blur(function(){
-        var num = parseInt($(this).val());  
+        var num = parseInt($(this).val());
         var pagenum=$('.buy-maxnum span').html();
         if (num==0||isNaN(num)) {
           num=1;
@@ -746,8 +746,8 @@ $(document).ready(function(){
 	$(".jqzoom").jqueryzoom({
 		xzoom: 500,
 		yzoom: 500,
-		offset: 1, 
-		position: "right", 
+		offset: 1,
+		position: "right",
 		preload:1,
 		lens:1
 	});
@@ -757,7 +757,7 @@ $(document).ready(function(){
     ajaxComment(1,1);// ajax 加载评价列表
 });
 
-var store_count = {$goods.store_count}; // 商品起始库存	
+var store_count = {$goods.store_count}; // 商品起始库存
 //缩略图切换
 $('.small-pic-li').each(function(i,o){
 	var lilength = $('.small-pic-li').length;
@@ -766,7 +766,7 @@ $('.small-pic-li').each(function(i,o){
 		$(o).addClass('active');
 		$('#zoomimg').attr('src',$(o).find('img').attr('data-img'));
 		$('#zoomimg').attr('jqimg',$(o).find('img').attr('data-big'));
-		
+
 		$('.next-btn').removeClass('disabled');
 		if(i==0){
 			$('.next-left').addClass('disabled');
@@ -847,18 +847,18 @@ $('.selectCtrl>li').each(function(){
 		$(this).click(function(){
 			$(this).siblings().removeClass('select');
 			$(this).siblings().children('input').prop('checked',false);
-			$(this).children('input').prop('checked',true);	
+			$(this).children('input').prop('checked',true);
 			$(this).addClass('select');
 			get_goods_price();
 		})
 	}
 })
 
- /*** 查询商品价格*/  
+ /*** 查询商品价格*/
  function get_goods_price()
- {	 	 	
+ {
 	var goods_price = {$goods.shop_price}; // 商品起始价
-	var spec_goods_price = {$spec_goods_price};  // 规格 对应 价格 库存表   //alert(spec_goods_price['28_100']['price']);	
+	var spec_goods_price = {$spec_goods_price};  // 规格 对应 价格 库存表   //alert(spec_goods_price['28_100']['price']);
 	// 如果有属性选择项
 	if(spec_goods_price != null)
 	{
@@ -870,32 +870,32 @@ $('.selectCtrl>li').each(function(){
 		});
 		$('.product-opt-info').children().empty().html(select_str);
 		var spec_key = goods_spec_arr.sort(sortNumber).join('_');  //排序后组合成 key
-		var goods_price = spec_goods_price[spec_key]['price']; // 找到对应规格的价格		
+		var goods_price = spec_goods_price[spec_key]['price']; // 找到对应规格的价格
 		var store_count = spec_goods_price[spec_key]['store_count']; // 找到对应规格的库存
 	}
 	var flash_sale_price = parseFloat("{$goods['flash_sale']['price']}");
-        (flash_sale_price > 0) && (goods_price = flash_sale_price);            
-        
+        (flash_sale_price > 0) && (goods_price = flash_sale_price);
+
          $("#goods_price").html(goods_price); // 变动价格显示
  }
- 
+
 //用作 sort 排序用
-function sortNumber(a,b) 
-{ 
-	return a - b; 
-} 
+function sortNumber(a,b)
+{
+	return a - b;
+}
 
 // 好评差评 切换
 $("#fy-comment-list").children().each(function(i,o){
 	$(o).click(function(){
-		$(o).siblings().removeClass('on');	
+		$(o).siblings().removeClass('on');
 		$(o).addClass('on');
 		commentType = $(o).data('t');// 评价类型   好评 中评  差评
 		$('.fn-mt-bor').css('left',(commentType-1)*115);
 		ajaxComment(commentType,1);
 	});
 });
-								
+
 // 用ajax分页显示评论
 function ajaxComment(commentType,page){
      $.ajax({
@@ -907,9 +907,9 @@ function ajaxComment(commentType,page){
          }
      });
 }
- 
+
 //看了又看切换
-var tmpindex = 0; 
+var tmpindex = 0;
 var look_see_length = $('#look_see').children().length;
 function replace_look(){
 	var listr='';
@@ -922,7 +922,7 @@ function replace_look(){
 	});
 	tmpindex++;
 	$('#see_and_see').empty().append(listr);
-} 
+}
 //收藏商品
 $('#collectLink').click(function(){
 	if(getCookie('user_id') == ''){
@@ -932,7 +932,7 @@ $('#collectLink').click(function(){
 			type:'post',
 			dataType:'json',
 			data:{goods_id:$('input[name="goods_id"]').val()},
-			url:"{:U('/Goods/collect_goods')}", 
+			url:"{:U('/Goods/collect_goods')}",
 			success:function(res){
 				if(res.status == 1){
 					layer.msg('成功添加至收藏夹', {icon: 1});
@@ -984,7 +984,7 @@ function pop_login(){
         shadeClose: true,
         shade: 0.5,
         area: ['490px', '460px'],
-        content: "{:U('/User/pop_login')}", 
+        content: "{:U('/User/pop_login')}",
     });
 }
 </script>

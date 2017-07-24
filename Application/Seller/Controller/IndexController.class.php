@@ -8,19 +8,19 @@
  * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
  * 不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
- * Author: 当燃      
+ * Author: 当燃
  * Date: 2016-06-09
  */
 namespace Seller\Controller;
 use Think\Page;
 
-class IndexController extends BaseController 
+class IndexController extends BaseController
 {
     public function _initialize()
-    {   
+    {
         if (session('store_id')){
-            $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-            if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
+            // $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+            // if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
         }
         define('STORE_ID',session('store_id')); //将当前的session_id保存为常量，供其它方法调用
         $seller = M('seller')->where(array('store_id'=>session('store_id')))->getField('num');
@@ -39,11 +39,11 @@ class IndexController extends BaseController
         $this->assign('seller',$seller);
         $this->display();
     }
-   
+
     public function welcome(){
-    	// $seller = session('seller');    	
+    	// $seller = session('seller');
     	// $count['handle_order'] = M('order')->where("store_id = ".STORE_ID.C('WAITSEND'))->count();//待处理订单
-    	// $order_list =  M('order')->where("store_id = ".STORE_ID." and add_time>".strtotime("-7 day"))->select();//最近7天订单统计    	
+    	// $order_list =  M('order')->where("store_id = ".STORE_ID." and add_time>".strtotime("-7 day"))->select();//最近7天订单统计
     	// $count['wait_shipping'] = $count['wait_pay'] = $count['wait_confirm'] = $count['refund_pay'] = 0;
     	// $count['refund_goods'] = $count['part_shipping'] = $count['order_sum'] = 0;
     	// $count['refund_pay'] = M('return_goods')->where("store_id = ".STORE_ID." and type=0")->count();
@@ -62,7 +62,7 @@ class IndexController extends BaseController
     	// 		}
     	// 	}
     	// }
-    	
+
     	// $store_goods = M('goods')->where(array('store_id'=>STORE_ID))->select();
     	// $count['goods_sum'] = $count['pass_goods'] = $count['warning_goods'] = $count['new_goods'] = 0;
     	// $count['prom_goods'] = $count['off_sale_goods']  = $count['below_goods'] = $count['verify_goods'] = 0;
@@ -86,7 +86,7 @@ class IndexController extends BaseController
     	// 		}
     	// 	}
     	// }
-    	
+
     	// $count['article'] =  M('article')->where(array('store_id'=>STORE_ID))->count();//文章总数
     	// $users = M('users')->where(array('user_id'=>$seller['user_id']))->find();
     	// $seller['user_name'] = empty($users['email']) ? $users['mobile'] : $users['email'];
@@ -104,7 +104,7 @@ class IndexController extends BaseController
         $this->assign('lunbo',$lunbo);
         $this->display();
     }
-    
+
     /**
      * 商家查看消息
      */
@@ -113,7 +113,7 @@ class IndexController extends BaseController
         $count = M('store_msg')->where($where)->count();
         $Page  = new Page($count,10);
         $show = $Page->show();
-        
+
     	$msg_list = M('store_msg')->where($where)->order('sm_id DESC')->limit($Page->firstRow.','.$Page->listRows)->select();
     	$this->assign('msg_list',$msg_list);
         $this->assign('page',$show);// 赋值分页输出
@@ -123,7 +123,7 @@ class IndexController extends BaseController
      * 删除操作
      */
     public function del_store_msg()
-    {        
+    {
         $sm_id = I('sm_id',0);
         $where = "sm_id in($sm_id) and store_id=".STORE_ID;
         M('store_msg')->where($where)->delete();
@@ -133,10 +133,10 @@ class IndexController extends BaseController
      * 消息批量操作
      */
     public function store_msg_batch()
-    {        
+    {
         $action = I('action',0);
         $sm_id = I('sm_id');
-        
+
         // 如果是标记已读
         if($action == 'del' && !empty($sm_id))
         {
@@ -147,16 +147,16 @@ class IndexController extends BaseController
         if($action == 'open' && !empty($sm_id))
         {
             $where = "sm_id in(".  implode(',',$sm_id).") and store_id=".STORE_ID;
-            M('store_msg')->where($where)->save(array('open'=>1));       
+            M('store_msg')->where($where)->save(array('open'=>1));
         }
         $this->success('操作成功!');
-    }    
-    
+    }
+
     /**
      *  添加修改客服
      */
     public function store_service(){
-        
+
         // post提交
         if(IS_POST)
         {
@@ -165,11 +165,11 @@ class IndexController extends BaseController
             $working_time = I('working_time');
             foreach ($pre['name'] as $key => $v1) {
                 $arr[$key]['name'] = $v1;
-                
+
             }
             foreach ($pre['type'] as $key => $v2) {
                 $arr[$key]['type'] = $v2;
-                   
+
             }
             foreach ($pre['account'] as $key => $v3) {
                 $arr[$key]['account'] = $v3;
@@ -183,7 +183,7 @@ class IndexController extends BaseController
                 'store_presales'=>serialize($arr),
                 'store_aftersales'=>serialize($after),
                 'store_workingtime'=>$working_time,
-            );            
+            );
 
             M('store')->where(array('store_id'=>STORE_ID))->save($data);
             $this->success('修改成功');
@@ -192,48 +192,48 @@ class IndexController extends BaseController
         //
         $store = M('store')->where("store_id = ".STORE_ID)->find();
         $store['store_presales']    = unserialize($store['store_presales']);
-        $store['store_aftersales']  = unserialize($store['store_aftersales']);   
-        $this->assign('store',$store);        
+        $store['store_aftersales']  = unserialize($store['store_aftersales']);
+        $this->assign('store',$store);
     	$this->display();
     }
-    
+
     public function pushVersion()
-    {            
+    {
         if(!empty($_SESSION['isset_push']))
-            return false;    
-        $_SESSION['isset_push'] = 1;    
+            return false;
+        $_SESSION['isset_push'] = 1;
         error_reporting(0);//关闭所有错误报告
         $app_path = dirname($_SERVER['SCRIPT_FILENAME']).'/';
         $version_txt_path = $app_path.'/Application/Admin/Conf/version.txt';
         $curent_version = file_get_contents($version_txt_path);
 
-        $vaules = array(            
-                'domain'=>$_SERVER['SERVER_NAME'], 
-                'last_domain'=>$_SERVER['SERVER_NAME'], 
-                'key_num'=>$curent_version, 
-                'install_time'=>INSTALL_DATE, 
+        $vaules = array(
+                'domain'=>$_SERVER['SERVER_NAME'],
+                'last_domain'=>$_SERVER['SERVER_NAME'],
+                'key_num'=>$curent_version,
+                'install_time'=>INSTALL_DATE,
                 'cpu'=>'0001',
                 'mac'=>'0002',
                 'serial_number'=>SERIALNUMBER,
-         );     
+         );
          $url = "http://service.tp".'-'."shop".'.'."cn/index.php?m=Home&c=Index&a=user_push&".http_build_query($vaules);
          stream_context_set_default(array('http' => array('timeout' => 3)));
-         file_get_contents($url);         
+         file_get_contents($url);
     }
-    
+
     /**
      * ajax 修改指定表数据字段  一般修改状态 比如 是否推荐 是否开启 等 图标切换的
      * table,id_name,id_value,field,value
      */
-    public function changeTableVal(){  
+    public function changeTableVal(){
             $table = I('table'); // 表名
             $id_name = I('id_name'); // 表主键id名
             $id_value = I('id_value'); // 表主键id值
             $field  = I('field'); // 修改哪个字段
-            $value  = I('value'); // 修改字段值                        
+            $value  = I('value'); // 修改字段值
             M($table)->where("$id_name = $id_value and store_id = ".STORE_ID)->save(array($field=>$value)); // 根据条件保存修改的数据
-    }	
-    
+    }
+
     private function _getSellerFunctionList($menu_list) {
     	$format_menu = array();
     	foreach ($menu_list as $key => $menu_value) {
@@ -249,21 +249,21 @@ class IndexController extends BaseController
     	}
     	return $format_menu;
     }
-    
+
     protected function getSellerMenuList($is_admin, $limits) {
     	$seller_menu = array();
     	// if (intval($is_admin) !== 1) {
     	// 	$menu_list = permissions();
      //        $arr_limits =  explode(',', $limits);
      //        foreach ($menu_list as $key => $value) {
-               
+
      //            foreach ($value['child'] as $child_key => $child_value) {
      //                if (!in_array($child_value['act'].'@'.$child_value['op'], $arr_limits)) {
      //                    unset($menu_list[$key]['child'][$child_key]);
      //                }
 
      //            }
-              
+
     	// 		if(count($menu_list[$key]['child']) > 0) {
     	// 			$seller_menu[$key] = $menu_list[$key];
 
@@ -271,16 +271,22 @@ class IndexController extends BaseController
     	// 	}
 
      //        // echo $child_key;
-    
+
 
     	// } else {
-    		$seller_menu = getMenuList();
+        $status =  M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+        if ($status == 2) {
+            $seller_menu = getMenuList_();
+        }else{
+            $seller_menu = getMenuList();
+        }
+
     	// }
     	$seller_function_list = $this->_getSellerFunctionList($seller_menu);
         // exit;
     	return array('seller_menu' => $seller_menu, 'seller_function_list' => $seller_function_list);
     }
-    
+
     private function _getCurrentMenu($seller_function_list) {
     	$current_menu = $seller_function_list[$_GET['act']];
     	if(empty($current_menu)) {
@@ -291,12 +297,12 @@ class IndexController extends BaseController
     	}
     	return $current_menu;
     }
-    
+
     /*
      * 获取商品分类
      */
     public function get_category(){
-        $parent_id = I('get.parent_id',0); // 商品分类 父id  
+        $parent_id = I('get.parent_id',0); // 商品分类 父id
         empty($parent_id) && exit('');
         $list = M('goods_category')->where(array('parent_id'=>$parent_id))->select();
         // 店铺id
@@ -305,14 +311,14 @@ class IndexController extends BaseController
         if($store_id)
         {
             $store = M('store')->where("store_id = $store_id")->find();
-               
+
             if($store['bind_all_gc'] == 0)
-            {                            
+            {
                 $class_id1 = M('store_bind_class')->where("store_id = $store_id and state = 1")->getField('class_1',true);
                 $class_id2 = M('store_bind_class')->where("store_id = $store_id and state = 1")->getField('class_2',true);
                 $class_id3 = M('store_bind_class')->where("store_id = $store_id and state = 1")->getField('class_3',true);
                 $class_id = array_merge($class_id1,$class_id2,$class_id3);
-                $class_id = array_unique($class_id);          
+                $class_id = array_unique($class_id);
             }
         }
         foreach($list as $k => $v)
@@ -322,9 +328,9 @@ class IndexController extends BaseController
                 continue;
             $html .= "<option value='{$v['id']}' rel='{$v['commission']}'>{$v['name']}</option>";
         }
-            
+
         exit($html);
-    }     
+    }
 
 
     /**
@@ -337,7 +343,7 @@ class IndexController extends BaseController
         $count = $message->where(array('store_id'=>session('store_id')))->count();
         $num        = 10;//每页显示条数
         $number     = ceil($count / $num);//页数
-        $page       = new \Think\Page($count,$num);// 
+        $page       = new \Think\Page($count,$num);//
         $show       = $page->show();// 分页显示输出
         $messages    = $message->where(array('store_id'=>session('store_id')))->limit($page->firstRow.','.$page->listRows)->select();
         $this->assign('show',$show);//分页
@@ -372,12 +378,30 @@ class IndexController extends BaseController
         $this->display();
      }
 
+    //  留言询盘
+    public function store_inquiry()
+    {
+        $data = M('store_inquiry')->where(array('store_id' => session('store_id')))->select();
+        $this->assign('data', $data);
+        $this->display();
+    }
+
+    public function delItem()
+    {
+        $res = M('store_inquiry')->where(array('id' => I('post.id')))->delete();
+        if ($res) {
+            $this->ajaxReturn(1);
+        } else {
+            $this->ajaxReturn(0);
+        }
+    }
+
 
      public function delete_mes(){
         $data['mes_banner'] = '';
         $res = M('store')->where(array('store_id'=>session('store_id')))->save($data);
         if ($res){
-            $this->ajaxReturn(true); 
+            $this->ajaxReturn(true);
         } else {
             $this->ajaxReturn(false);
         }
@@ -396,7 +420,7 @@ class IndexController extends BaseController
             }else{
                 $this->error('删除失败！');
             }
-            
+
     }
 
 }

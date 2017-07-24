@@ -44,7 +44,6 @@ class NewsController extends BaseController {
 	public function addNews()
 	{
 		$nav = M('store_navigation')->where("sn_is_list = 1 and sn_store_id=".STORE_ID)->select();
-		
 		$this->initEditor();//2016/12/01
 		$this->assign('nav',$nav);
 		$this->assign('all',0);
@@ -55,7 +54,7 @@ class NewsController extends BaseController {
 		$nav = M('store_navigation')->where("sn_is_list = 1 and sn_store_id=".STORE_ID)->select();
 
 		$info = M('store_art')->where('id = '.$_GET['id'].' and store = '.STORE_ID)->select();
-		
+
 		$this->initEditor();//2016/12/01
 		$this->assign('info',$info[0]);
 		$this->assign('nav',$nav);

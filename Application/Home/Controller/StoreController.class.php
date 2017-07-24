@@ -54,7 +54,7 @@ class StoreController extends Controller {
 				$this->navigation[] = array('sn_title' => $store_info['store_products']['2'], 'sn_is_list' => 2);
 
 			}
-			
+
 			// dump($this->navigation);die;
 			$this->navigation[] = array('sn_title' => $store_info['store_products']['3'], 'sn_is_list' => 3);
 			$this->assign('user', session('user'));
@@ -73,10 +73,10 @@ class StoreController extends Controller {
 			$config3 = M('config')->where(array('name' => 'store_name'))->find();
 			$config4 = M('config')->where(array('name' => 'erweima'))->find();
 			$store_info['copyright'] = $config['value'];
-			$store_info['record'] = $config2['value']; 
-			$store_info['name'] = "<a style='color:#CCCCCC;' target='_blank' href='http://".$_SERVER['HTTP_HOST']."'>".$config3['value'].'</a>'; 
-			$store_info['erweima'] = $config4['value']; 
-			$store_info['store'] = $store_info['store_id']; 
+			$store_info['record'] = $config2['value'];
+			$store_info['name'] = "<a style='color:#CCCCCC;' target='_blank' href='http://".$_SERVER['HTTP_HOST']."'>".$config3['value'].'</a>';
+			$store_info['erweima'] = $config4['value'];
+			$store_info['store'] = $store_info['store_id'];
 			$this->store = $store_info;
 			$this->assign('store', $store_info);
 			$this->assign('action', ACTION_NAME);
@@ -462,7 +462,6 @@ class StoreController extends Controller {
 		M('store_art')->where('id=' . $text)->setInc('pc_click', $num);
 		$banner = M('store')->where(array('store_id' => $this->store['store_id']))->getField('store_banner');
 		$this->assign('banner', $banner);
-
 		$this->assign('pre', $pre);
 		$this->assign('next', $next);
 		$this->assign('sn_id', $sn_id);
@@ -513,7 +512,7 @@ class StoreController extends Controller {
 
 	//前端启动模板
 	public function homestarttpl()
-	{	
+	{
 		die;
 		$id = I('tplid',9);
 		$store = M('store');
@@ -554,7 +553,7 @@ class StoreController extends Controller {
 
 		if($store_id){
 		echo "<script>window.location.href='".U('index',array('store_id'=>$store_id[0]['store_id']))."'</script>";
-			
+
 		}else{
 		echo "<script>alert('没有了！');window.history.go(-1);</script>";
 
@@ -581,7 +580,7 @@ class StoreController extends Controller {
 
 		if($store_id){
 		echo "<script>window.location.href='".U('index',array('store_id'=>$store_id[0]['store_id']))."'</script>";
-			
+
 		}else{
 		echo "<script>alert('没有了！');window.history.go(-1);</script>";
 
@@ -589,4 +588,4 @@ class StoreController extends Controller {
 	}
 }
 
-//2,4,5,7,8,10,14,17,146,327,330,333,335,336,337,338,339,340,341,342,343,345,347,348,350,352,353,360,368,372,383,384,388 
+//2,4,5,7,8,10,14,17,146,327,330,333,335,336,337,338,339,340,341,342,343,345,347,348,350,352,353,360,368,372,383,384,388

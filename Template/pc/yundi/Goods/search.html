@@ -155,11 +155,11 @@
         <ul style="overflow: hidden;">
           <foreach name="goods_list" item="v" key="k">
           <li>
-            <figure><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
+            <figure><a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/goodDeatil',array('id'=>$v[goods_id]))}<else />{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}</if>" target="_blank"><img src="{$v.goods_id|goods_thum_images=220,220}" /></a></figure>
             <div class="one">
-              	<p>￥{$v[shop_price]}元</p>
+              	<p>￥{$v[shop_price]}元{$v['status']}</p>
             </div>
-            <h1 style='min-height:36px;' class="there"><a href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank">{:zfgetsubstr($v[goods_name],0,30,I(q))}</a></h1>
+            <h1 style='min-height:36px;' class="there"><a href="<if condition='$v[status] eq 2'>{:U('/Inquiry/goodDeatil',array('id'=>$v[goods_id]))}<else />{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}</if>" target="_blank">{:zfgetsubstr($v[goods_name],0,30,I(q))}</a></h1>
             <div class="two">
               <h2><!-- 已成交{$v[sales_sum]}笔 --></h2>
             </div>

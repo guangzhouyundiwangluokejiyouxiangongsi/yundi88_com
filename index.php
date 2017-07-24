@@ -1,5 +1,5 @@
 <?php
-ini_set('session.cookie_domain', ".yundi88.com");
+// ini_set('session.cookie_domain', ".yundi88.com");
 // 应用入口文件
 // 应用入口文件
 if (extension_loaded('zlib')){
@@ -11,12 +11,12 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 //检测是否已安装TPshop系统
 if(file_exists("./Install/") && !file_exists("./Install/install.lock")){
 	header('Location:/Install/index.php');
-	exit(); 
+	exit();
 }
-error_reporting(0); 
+error_reporting(0);
 // error_reporting(E_ALL ^ E_NOTICE);//显示除去 E_NOTICE 之外的所有错误信息
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
-define('APP_DEBUG',false);
+define('APP_DEBUG',true);
 // 定义应用目录
 define('APP_PATH','./Application/');
 //  定义插件目录
@@ -30,7 +30,7 @@ define('PLUGIN_PATH','plugins/');
 $arr    =    explode('/',$_SERVER['PHP_SELF']);
  if(count($arr) > 2 && $arr[2]!=='Admin' && $arr[2]!=='admin' && $arr[2]!=='mobile' && $arr[2]!=='Mobile' && $arr[2]!=='Seller' && $arr[2]!=='seller'){
     define('BIND_MODULE','Home');
-    
+
  }
 
 
@@ -40,17 +40,17 @@ define('TPSHOP_CACHE_TIME',1); // TPshop 缓存时间  31104000
 define('SITE_URL','http://'.$_SERVER['HTTP_HOST']); // 网站域名
 define('PATH',__DIR__); // 网站根目录
 
-define('HTML_PATH','./Application/Runtime/Html/'); //静态缓存文件目录，HTML_PATH可任意设置，此处设为当前项目下新建的html目录  
+define('HTML_PATH','./Application/Runtime/Html/'); //静态缓存文件目录，HTML_PATH可任意设置，此处设为当前项目下新建的html目录
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 
-/* 
- //系统常量定义  
-//去THinkPHP手册中进行查找  
-echo "<br>"."网站的根目录地址".__ROOT__." ";  
-echo "<br>"."入口文件地址".__APP__." "; 
-echo "<br>"."当前模块地址".__URL__." "; 
+/*
+ //系统常量定义
+//去THinkPHP手册中进行查找
+echo "<br>"."网站的根目录地址".__ROOT__." ";
+echo "<br>"."入口文件地址".__APP__." ";
+echo "<br>"."当前模块地址".__URL__." ";
 echo "<br>"."当前url地址".__SELF__." ";
 echo "<br>"."当前操作地址".__ACTION__." ";
 echo "<br>"."当前模块的模板目录".__CURRENT__." ";
@@ -71,5 +71,5 @@ echo "<br>"." ".LOG_PATH."";
 echo "<br>"." ".LANG_PATH."";
 echo "<br>"." ".TMPL_PATH."";
 //js放入的位置，供多个应用的公共资源
-echo "<br>"." ".WEB_PUBLIC_PATH.""; 
+echo "<br>"." ".WEB_PUBLIC_PATH."";
 */

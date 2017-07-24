@@ -1,0 +1,529 @@
+<include file="Public/min-header" />
+<script type="text/javascript">
+    window.UEDITOR_Admin_URL = "__ROOT__/Public/plugins/Ueditor/";
+    var URL_upload = "{$URL_upload}";
+    var URL_fileUp = "{$URL_fileUp}";
+    var URL_scrawlUp = "{$URL_scrawlUp}";
+    var URL_getRemoteImage = "{$URL_getRemoteImage}";
+    var URL_imageManager = "{$URL_imageManager}";
+    var URL_imageUp = "{$URL_imageUp}";
+    var URL_getMovie = "{$URL_getMovie}";
+    var URL_home = "{$URL_home}";
+</script>
+ <script src="/Public/js/global.js"></script>
+
+<load href="__ROOT__/Public/plugins/Ueditor/ueditor.config.js"/>
+<load href="__ROOT__/Public/plugins/Ueditor/ueditor.all.js"/>
+
+<div class="wrapper">
+    <include file="Public/breadcrumb"/>
+    <style type="text/css">
+        /*关键词*/
+          input:focus,button:focus,textarea:focus{outline:none;border:1px solid #0182de;}
+        .Main-word{height:95px;border: 1px solid gray;}
+        .Main-word>.Mc-list{overflow:hidden;}
+        .Main-word>.Mc-list .Mc-item .inp{float: left;border:1px solid #d2d6de;margin-bottom:5px;padding-left:3px;padding-right:20px;margin-right: 10px;width:110px;height:24px;line-height: 24px;text-align:left;overflow:hidden;}
+
+        .Mc-btn{width:72px;float:left;height:24px;line-height:22px;text-align:center;overflow: hidden;color:red;border:1px solid red;cursor: pointer;margin-right: 2%;color:#fff;background:#f22e00;border:1px solid #f00;border-radius: 2px;}
+        .Remove-btn{float:left;width:13px;height:14px;background:url(/Public/images/seller/extend_remove.png)no-repeat center;margin-top:5px;margin-left:-28px;cursor: pointer;}
+        .Mc-item{float: left;}
+
+        .uesr_name,.mobile,.tel{width: 250px;}
+
+        .com_address select{width: 150px;}
+        .com_address input{float: left;width: 30%;min-width: 300px;}
+
+
+
+        .img_list{float: left;overflow: hidden;padding: 0 4px;}
+        .img_list img{float: left;}
+        .add_btn{float: left;margin: 45px 10px;background: #f22e00;color: #FFF;font-size: 14px;display: block;width: 90px;height: 30px;line-height: 30px;text-align: center;border-radius: 2px;cursor: pointer;}
+
+        /*遮罩层*/
+        .remaker_box {width:100%; height:100%;  background-color:#333333;  filter:alpha(opacity=80);  -moz-opacity:0.8; opacity:0.8; position:fixed; left:0px; top:0px;z-index:1300;display: none;}
+        .remaker {width: 760px; height: 490px;position: fixed;top: 50%;left: 50%;margin-top: -245px;margin-left: -380px;background-color: #f1f1f1;z-index: 1500;overflow: hidden;display: none;}
+        .remaker_header{height:40px; overflow: hidden;width: 100%;line-height: 40px;background: #f7f7f7;border-bottom: 1px solid #d8d8d8;}
+        .remaker_header span{float: left;padding-left: 20px;}
+        .remaker_header a{display: block;float: right;width: 40px;height: 40px;text-align: center;}
+
+        .remaker_body #div_imgfile{margin: 180px auto;width: 200px;height: 90px;cursor: pointer;}
+        .img_list ul{margin: 0;padding: 0;}
+        .img_list li{list-style: none;float: left;position: relative;}
+        .img_list li p{position: absolute;bottom: 0;background: rgba(0,0,0,0.5);margin: 0;width: 100%;height: 20px;line-height: 20px;display: none;}
+        .img_list li:hover p{display: block;}
+        .img_list li p i{color: #FFF;float: right;margin: 3px 6px 0 0;}
+
+        .remaker_body .img_list{padding:20px; }
+        .remaker_body .img_list li{margin:0 5px;}
+        .remaker_body .re_btn a{width: 100px;height: 30px;line-height: 30px;font-size: 16px;display: inline-block;}
+        .remaker_body .re_btn .save{color:#FFF;background: #3c8dbc;margin-right: 10px;}
+        .remaker_body .re_btn .quexiao{border: 1px solid #ccc;width: 98px;height: 28x;color: #ccc;}
+        .remaker2{display: none;}
+    </style>
+    <!-- 遮罩 -->
+    <div class="remaker_box" id="remaker_box"></div>
+
+    <div class="remaker" id="remaker">
+       <div class="remaker_header">
+           <span>上传图片</span>
+           <a href="javascript:;" class="text-right remaker_close"><img src="__PUBLIC__/images/seller/extend_remove.png"></a>
+       </div>
+       <!-- 选择 -->
+       <div class="remaker_body remaker1">
+            <div id="div_imgfile"><img src="__PUBLIC__/images/seller/choose.png"></div>
+       </div>
+       <!-- 保存 -->
+       <div class="remaker_body remaker2">
+        <div style="height: 400px;width: 100%;">
+           <div class="img_list">
+                <ul>
+                    <li>
+                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                        <p>
+                            <i class="fa fa-trash-o"></i>
+                        </p>
+                    </li>
+                    <li>
+                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                        <p>
+                            <i class="fa fa-trash-o"></i>
+                        </p>
+                    </li>
+                    <li>
+                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                        <p>
+                            <i class="fa fa-trash-o"></i>
+                        </p>
+                    </li>
+                    <li>
+                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                        <p>
+                            <i class="fa fa-trash-o"></i>
+                        </p>
+                    </li>
+                    <li>
+                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                        <p>
+                            <i class="fa fa-trash-o"></i>
+                        </p>
+                    </li>
+                    <li>
+                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                        <p>
+                            <i class="fa fa-trash-o"></i>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center re_btn">
+            <a href="javascript:;" class="save">保存</a>
+            <a href="javascript:;" class="quexiao">取消</a>
+        </div>
+       </div>
+    </div>
+
+
+    <section class="content " style="padding:0;">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" style="height:39px;" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-file" style="padding-left: 14px;padding-right: 6px;"></i>产品推广</h3>
+                </div>
+                <div class="panel-body ">
+                    <!--表单数据-->
+                    <form method="post" id="handleposition" action="__CONTROLLER__/addpr">
+                    <input type="hidden" name="home_is_show" value="1">
+                        <!--通用信息-->
+                    <div class="tab-content col-md-12">
+                        <div class="tab-pane active" id="tab_tongyong">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td  style="vertical-align: middle;" class="col-sm-2">产品名：</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="title" >
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="line-height: 80px;vertical-align: middle;">关键词：</td>
+                                    <td class="Main-word">
+                                        <div class="Mc-list">
+                                            <div class="Mc-items">
+                                                <div class='Mc-item'>
+                                                    <input type='text' class='inp' name="keywords[]">
+                                                    <span class='Remove-btn'></span>
+                                                </div>
+                                            </div>
+                                            <span class="Mc-btn">点击添加</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td  style="vertical-align: middle;" class="col-sm-2">本店售价：</td>
+                                    <td>
+                                        <input type="number" class="form-control" name="price" >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: middle;" >商品分类：</td>
+                                    <td>
+                                      <div style="margin: 2px 0;" class="col-xs-3">
+                                        <select id="goodsType1" name="cat_id1" class="form-control" style="width:250px;margin-left:-15px;">
+                                            <option value="0">请选择商品一级分类</option>
+                                            <foreach name="goodsTypeData" item="vo">
+                                                <option value="{$vo.id}">{$vo.name}</option>
+                                            </foreach>
+                                        </select>
+                                      </div>
+                                      <div style="margin: 2px 0;" class="col-xs-3">
+                                          <select id="goodsType2" name="cat_id2" class="form-control" style="width:250px;margin-left:-15px;">
+                                            <option value="0">请选择商品二级分类</option>
+                                          </select>
+                                      </div>
+                                      <div style="margin: 2px 0;" class="col-xs-3">
+                                          <select id="goodsType3" name="cat_id3" class="form-control" style="width:250px;margin-left:-15px;">
+                                            <option value="0">请选择商品三级分类</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="vertical-align: middle;">商品简介：</td>
+                                    <td>
+                                        <textarea class="form-control" name='description' rows="3"></textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="vertical-align: middle;">缩略图：<span style="color:red">(限一张)</span></td>
+                                    <td>
+                                        <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);"  id="newsimg" src="<empty name='info[newsimg]'><else/>{$info[newsimg]}</empty>" nc_type="store_label">
+                                      <input type="hidden" name="newsimg" value="{$info[newsimg]}">
+                                        <input type="button" class="button" onClick="GetUploadify(1,'newsimg','seller','callback1')"  value="上传缩略图"/>
+                                        <!-- <div class="img_list">
+
+                                            <ul>
+                                                <li>
+                                                    <img width="110" height="120" style="background: url(__PUBLIC__/images/pro_extend1.jpg);" >
+                                                    <p>
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <span class="add_btn">上传缩略图</span> -->
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: middle;">相册：<span style="color:red">(限五张)</span></td>
+                                    <td>
+                                    <foreach name="goodsImages" item="vo" key="k" >
+                                        <div style="width:100px; text-align:center; margin: 5px; display:inline-block;" class="goods_xc">
+                                            <input type="hidden" value="{$vo['image_url']}" name="goods_images[]">
+                                            <a onclick="" href="{$vo['image_url']}" target="_blank"><img width="100" height="100" src="{$vo['image_url']}"></a>
+                                            <br>
+                                            <a href="javascript:void(0)" onclick="ClearPicArr2(this,'{$vo['image_url']}')">删除</a>
+                                        </div>
+                                    </foreach>
+
+                                        <div class="goods_xc" style="width:100px; text-align:center; margin: 5px; display:inline-block;">
+                                            <input type="hidden" name="goods_images[]" value="" />
+                                            <a href="javascript:void(0);" onclick="GetUploadify(10,'','goods','call_back2');"><img src="/Public/images/add-button.jpg" width="100" height="100" /></a>
+                                            <br/>
+                                            <a href="javascript:void(0)">&nbsp;&nbsp;</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: middle;">商品详情：<span style="color:red">(图片最少添加三张图片,显得更加美观)</span></td>
+
+                                    <td class="col-xs-10">
+                             			<textarea class="span12 ckeditor" id="post_content" name="content" title="">
+							            {$info.content}
+							        </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  style="vertical-align: middle;" class="col-sm-2">公司名称：</td>
+                                    <td>
+                                        <input type="text" class="company_name form-control" name="company_name" value="{$companyInfo.name}">
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td  style="vertical-align: middle;" class="col-sm-2">联系人：</td>
+                                    <td>
+                                        <input type="text" class="uesr_name form-control" name="connect_person" value="{$companyInfo.person}" >
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td style="vertical-align: middle;"  class="col-sm-2">手机：</td>
+                                    <td>
+                                        <input type="text" class="mobile form-control" onblur="checkPhone()" id="phone" name="person_phone" value="{$companyInfo.phone}">
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td style="vertical-align: middle;" class="col-sm-2">电话/微信：</td>
+                                    <td>
+                                        <input type="text" class="tel form-control" name="person_wechat" value="{$companyInfo.wechat}">
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td style="vertical-align: middle;">公司地址：</td>
+                                    <td class="com_address">
+                                        <div data-toggle="distpicker" style="float: left;margin:0 4px 4px 0;">
+                                            <select class="form-control" id="privince" name="privince">
+                                                <option value="-1">请选择省份</option>
+                                                <foreach name="privinceData" item="vo1">
+                                                    <option {$companyInfo['privince'] == $vo1['id'] ? 'selected' : ''} value="{$vo1.id}">{$vo1.name}</option>
+                                                </foreach>
+                                            </select>
+                                            <select class="form-control" id="city" name="city">
+                                                <option value="-1">请选择城市</option>
+                                                <foreach name="cityData" item="vo2">
+                                                    <option {$companyInfo['city'] == $vo2['id'] ? 'selected' : ''} value="{$vo2.id}">{$vo2.name}</option>
+                                                </foreach>
+                                            </select>
+                                            <select class="form-control" id="area" name="area">
+                                                <option value="-1">请选择区</option>
+                                                <foreach name="areaData" item="vo3">
+                                                    <option {$companyInfo['area'] == $vo3['id'] ? 'selected' : ''} value="{$vo3.id}">{$vo3.name}</option>
+                                                </foreach>
+                                            </select>
+                                        </div>
+                                        <input type="text" placeholder="详细地址" class="form-control" name="company_address" value="{$companyInfo.address}" >
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                                </table>
+                                <div class="text-center" style="margin: 30px 0;">
+                                    <input style="width: 100px;" class="btn btn-primary" type="button" onclick="adsubmit()" value="提交">
+                                </div>
+
+                        </div>
+                    </div>
+			    	</form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="__PUBLIC__/js/seller/extend/distpicker.data.js"></script>
+<script src="__PUBLIC__/js/seller/extend/distpicker.js"></script>
+<script>
+
+    // 商品二级分类
+    $('#goodsType1').change(function () {
+        $('#goodsType2').html('<option value="-1">请选择商品二级分类</option>');
+        $('#goodsType3').html('<option value="-1">请选择商品三级分类</option>');
+        $.post(
+            '__CONTROLLER__/categoryList',
+            {'id':$('#goodsType1').val(), 'level':'2'},
+            function (data) {
+                $('#goodsType2').html('<option value="-1">请选择商品二级分类</option>');
+                var str1 = '';
+                for (var i = 0; i < data.length; i++) {
+                    str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                }
+                // console.log($('#privince'));
+                $('#goodsType2').append(str1);
+            },
+            'json'
+        );
+    });
+
+    // 商品三级分类
+    $('#goodsType2').change(function () {
+        $.post(
+            '__CONTROLLER__/categoryList',
+            {'id':$('#goodsType2').val(), 'level':'3'},
+            function (data) {
+                $('#goodsType3').html('<option value="-1">请选择商品三级分类</option>');
+                var str2 = '';
+                for (var i = 0; i < data.length; i++) {
+                    str2 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                }
+                // console.log($('#city'));
+                $('#goodsType3').append(str2);
+            },
+            'json'
+        );
+    });
+
+
+    // 城市三级联动
+    $('#privince').change(function () {
+        $('#area').html('<option value="-1">请选择地区</option>');
+        $('#city').html('<option value="-1">请选择城市</option>');
+        $.post(
+            '__CONTROLLER__/getCitys',
+            {'id':$('#privince').val(), 'level':'2'},
+            function (data) {
+                $('#city').html('<option value="-1">请选择城市</option>');
+                var str1 = '';
+                for (var i = 0; i < data.length; i++) {
+                    str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                }
+                // console.log($('#privince'));
+                $('#city').append(str1);
+            },
+            'json'
+        );
+    });
+
+    // 地区三级联动
+    $('#city').change(function () {
+        $.post(
+            '__CONTROLLER__/getCitys',
+            {'id':$('#city').val(), 'level':'3'},
+            function (data) {
+                $('#area').html('<option value="-1">请选择地区</option>');
+                var str2 = '';
+                for (var i = 0; i < data.length; i++) {
+                    str2 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                }
+                // console.log($('#city'));
+                $('#area').append(str2);
+            },
+            'json'
+        );
+    });
+
+
+    function callback1(img_str){
+        $('input[name="newsimg"]').val(img_str);
+        $('#newsimg').attr('src',img_str);
+    }
+
+   $(function(){
+        // 关键词
+        $('.Mc-btn').click(function() {
+            $(this).prev().append("<div class='Mc-item'><input type='text' name='keywords[]' class='inp'><span class='Remove-btn'></span></div>")
+        });
+      $('.Mc-items').on('click','.Remove-btn',function(e){
+            $(this).parent().remove();
+      })
+
+      $('.add_btn').click(function(){
+        $('.remaker_box').show();
+        $('.remaker').show();
+      })
+
+      $('.remaker .remaker_close').click(function() {
+            $('.remaker_box').hide();
+            $('.remaker').hide();
+      });
+
+   })
+
+</script>
+<script>
+function adsubmit(){
+	$('#handleposition').submit();
+}
+
+/*
+     * 以下是图片上传方法
+     */
+
+    // 上传商品图片成功回调函数
+    function call_back(fileurl_tmp){
+        $("#original_img").val(fileurl_tmp);
+        $("#original_img2").attr('href', fileurl_tmp);
+    }
+
+    // 上传商品相册回调函数
+    function call_back2(paths){
+
+        //alert(paths.length);
+
+        var  last_div = $(".goods_xc:last").prop("outerHTML");
+        for (i=0;i<paths.length ;i++ )
+        {
+            $(".goods_xc:eq(0)").before(last_div);  // 插入一个 新图片
+                $(".goods_xc:eq(0)").find('a:eq(0)').attr('href',paths[i]).attr('onclick','').attr('target', "_blank");// 修改他的链接地址
+            $(".goods_xc:eq(0)").find('img').attr('src',paths[i]);// 修改他的图片路径
+                $(".goods_xc:eq(0)").find('a:eq(1)').attr('onclick',"ClearPicArr2(this,'"+paths[i]+"')").text('删除');
+            $(".goods_xc:eq(0)").find('input').val(paths[i]); // 设置隐藏域 要提交的值
+        }
+    }
+
+     /*
+     * 上传之后删除组图input
+     * @access   public
+     * @val      string  删除的图片input
+     */
+    function ClearPicArr2(obj,path)
+    {
+        $(obj).parent().remove(); // 删除完服务器的, 再删除 html上的图片
+        /*
+        $.ajax({
+                    type:'GET',
+                    url:"{:U('Admin/Uploadify/delupload')}",
+                    data:{action:"del", filename:path},
+                    success:function(){
+                      $(obj).parent().remove(); // 删除完服务器的, 再删除 html上的图片
+                    }
+        });
+        */
+        // 删除数据库记录
+        $.ajax({
+                    type:'GET',
+                    url:"{:U('Seller/Goods/del_goods_images')}",
+                    data:{filename:path},
+                    success:function(){
+                          //
+                    }
+        });
+    }
+var editor;
+$(function () {
+    //具体参数配置在  editor_config.js 中
+    var options = {
+        zIndex: 999,
+        initialFrameWidth: "100%", //初化宽度
+        initialFrameHeight: 350, //初化高度
+        focus: false, //初始化时，是否让编辑器获得焦点true或false
+        maximumWords: 99999, removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',//允许的最大字符数 'fullscreen',
+        pasteplain: true, autoHeightEnabled: true,
+        autotypeset: {
+            mergeEmptyline: true,        //合并空行
+            removeClass: true,           //去掉冗余的class
+            removeEmptyline: false,      //去掉空行
+            textAlign: "left",           //段落的排版方式，可以是 left,right,center,justify 去掉这个属性表示不执行排版
+            imageBlockLine: 'center',    //图片的浮动方式，独占一行剧中,左右浮动，默认: center,left,right,none 去掉这个属性表示不执行排版
+            pasteFilter: false,          //根据规则过滤没事粘贴进来的内容
+            clearFontSize: false,        //去掉所有的内嵌字号，使用编辑器默认的字号
+            clearFontFamily: false,      //去掉所有的内嵌字体，使用编辑器默认的字体
+            removeEmptyNode: false,      //去掉空节点
+            removeTagNames: {"font": 1},
+            indent: false,               //行首缩进
+            indentValue: '0em'           //行首缩进的大小
+        }
+    };
+    editor = new UE.ui.Editor(options);
+    editor.render("post_content");
+});
+
+
+ // 验证手机号
+    function checkPhone(){
+        var phone = document.getElementById('phone').value;
+        if(!(/^1[34578]\d{9}$/.test(phone))){
+            alert("手机号码有误，请重填");
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

@@ -17,15 +17,15 @@ namespace Seller\Controller;
 use Think\Controller;
 class StoretwoController extends Controller {
 
-    
+
     /*
      * 初始化操作
      */
-    public function _initialize() 
-    {   
+    public function _initialize()
+    {
         $this->assign('action',ACTION_NAME);
         //过滤不需要登陆的行为
-        if(in_array(ACTION_NAME,array('login','logout','vertify')) || in_array(CONTROLLER_NAME,array('Ueditor','Uploadify'))){ 
+        if(in_array(ACTION_NAME,array('login','logout','vertify')) || in_array(CONTROLLER_NAME,array('Ueditor','Uploadify'))){
         	return;
         }else{
         	if(session('seller_id') > 0 && session('user') != '' && session('store_id') > 0 && session('seller') !=''){
@@ -41,31 +41,31 @@ class StoretwoController extends Controller {
         $this->assign('store_id',session('store_id'));
         $this->public_assign();
     }
-    
+
     public function public_assign()
     {
-        
+
        $tpshop_config = array();
-       $tp_config = M('config')->cache(true,TPSHOP_CACHE_TIME)->select();       
+       $tp_config = M('config')->cache(true,TPSHOP_CACHE_TIME)->select();
        foreach($tp_config as $k => $v)
        {
           if($v['name'] == 'hot_keywords'){
              $tpshop_config['hot_keywords'] = explode('|', $v['value']);
-          }           
+          }
           $tpshop_config[$v['inc_type'].'_'.$v['name']] = $v['value'];
-       }                        
-       $goods_category_tree = get_goods_category_tree();    
+       }
+       $goods_category_tree = get_goods_category_tree();
        $this->cateTrre = $goods_category_tree;
-       $this->assign('goods_category_tree', $goods_category_tree);                     
-       $brand_list = M('brand')->cache(true,TPSHOP_CACHE_TIME)->field('id,cat_id1,logo,is_hot')->where("cat_id1>0")->select();              
+       $this->assign('goods_category_tree', $goods_category_tree);
+       $brand_list = M('brand')->cache(true,TPSHOP_CACHE_TIME)->field('id,cat_id1,logo,is_hot')->where("cat_id1>0")->select();
        $this->assign('brand_list', $brand_list);
        $this->assign('tpshop_config', $tpshop_config);
 
-    }  
+    }
 
     public function index()
     {
-        
+
         $this->display();
     }
 
@@ -86,12 +86,12 @@ class StoretwoController extends Controller {
         $this->assign('store',$store);
         $this->display();
     }
-    
+
     /*
      *ajax提交修改
      */
     public function company_save()
-    {   
+    {
         if (IS_AJAX){
             $store = M('store')->where(array('store_id'=>session('store_id')))->find();
             if ($store['store_name'] != $_POST['store_name']){
@@ -103,7 +103,7 @@ class StoretwoController extends Controller {
             $zyy = I('zyy');
             foreach ($zyy as $k => $v) {
                 if($v == ''){
-                    unset($zyy[$k]); 
+                    unset($zyy[$k]);
                 }
                 if ($v != ''){
                     $vv .= $v.',';
@@ -124,15 +124,15 @@ class StoretwoController extends Controller {
     }
 
     //立即建站
-    public function company_status()
-    {   
-        $model = M();
-        $model->query('update __STORE__ set status = 1 where store_id = '.session('store_id'));
-        $this->success('恭喜您建站成功','/seller/index/index');
-    }
+    // public function company_status()
+    // {
+    //     $model = M();
+    //     $model->query('update __STORE__ set status = 1 where store_id = '.session('store_id'));
+    //     $this->success('恭喜您建站成功','/seller/index/index');
+    // }
 
     public function information_release()
-    {   
+    {
         $id = I('id');
         $info = M('store_art')->where(array('id'=>$id))->find();
         $this->assign('info',$info);
@@ -163,7 +163,7 @@ class StoretwoController extends Controller {
         }
     }
     public function information_management()
-    {   
+    {
         $count = M('store_art')->where(array('store'=>session('store_id')))->count();
         $Page       = new \Think\Page($count,10);
         $link = M('store_art')->where(array('store'=>session('store_id')))->order('timer desc')->limit($Page->firstRow.','.$Page->listRows)->select();
@@ -171,6 +171,6 @@ class StoretwoController extends Controller {
         $this->assign('link',$link);
         $this->display();
     }
-    
-    
+
+
 }

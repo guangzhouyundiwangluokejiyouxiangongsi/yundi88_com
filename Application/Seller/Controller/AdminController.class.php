@@ -8,7 +8,7 @@
  * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
  * 不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
- * Author: 当燃      
+ * Author: 当燃
  * Date: 2016-05-09
  */
 
@@ -40,9 +40,9 @@ class AdminController extends BaseController {
     	$this->assign('list',$list);
         $this->display();
     }
-    
+
     public function admin_info(){
-    	$seller_id = I('get.seller_id');   	
+    	$seller_id = I('get.seller_id');
     	if($seller_id>0){
     		$info = D('seller')->where(array('seller_id'=>$seller_id,'store_id'=>STORE_ID))->find();
     		if($info){
@@ -57,7 +57,7 @@ class AdminController extends BaseController {
     	$this->assign('role',$role);
     	$this->display();
     }
-    
+
     public function adminHandle(){
     	$data = I('post.');
 
@@ -71,8 +71,8 @@ class AdminController extends BaseController {
     			exit(json_encode(0));//只能删除本店的管理员
     		}
     		exit(json_encode(1));
-    	}  
-    	
+    	}
+
     	if($data['seller_id']>0){
     		$seller = session('seller');//修改密码
     		if($data['seller_id'] == $seller['seller_id']){
@@ -89,7 +89,7 @@ class AdminController extends BaseController {
     			$this->error("非法操作",U('Index/welcome'));//只能修改自己的密码
     		}
     	}else{
-    		//验证商家后台登陆账号是否有同名	
+    		//验证商家后台登陆账号是否有同名
     		if(M('seller')->where("seller_name='".$data['seller_name']."'")->count()){
     			$this->error("此登陆账号名已被注册，请更换",U('Admin/admin_info'));
     		}
@@ -119,8 +119,8 @@ class AdminController extends BaseController {
     		$this->error("操作失败",U('Admin/index'));
     	}
     }
-    
-    
+
+
     /*
      * 管理员登陆
      */
@@ -128,7 +128,7 @@ class AdminController extends BaseController {
         if(session('?seller_id') && session('seller_id')>0 && session('user') != ''){
              $this->error("您已登录",U('Index/index'));
         }
-      
+
         if(IS_POST){
             $verify = new Verify();
             if (!$verify->check(I('post.vertify'), "seller_login")) {
@@ -179,7 +179,7 @@ class AdminController extends BaseController {
         }
         $this->display();
     }
-   
+
 
     /**
      * 退出登陆
@@ -192,7 +192,7 @@ class AdminController extends BaseController {
         cookie('referurl',null);
         $this->success("退出成功",'http://'.$_SERVER['HTTP_HOST'].'/User/login.html');
     }
-    
+
     /**
      * 验证码获取
      */
@@ -204,17 +204,17 @@ class AdminController extends BaseController {
             'useCurve' => true,
             'useNoise' => false,
         	'reset' => false
-        );    
+        );
         $Verify = new Verify($config);
         $Verify->entry("seller_login");
     }
-    
+
     public function role(){
     	$list = D('seller_group')->where(array('store_id'=>STORE_ID))->order('group_id desc')->select();
     	$this->assign('list',$list);
     	$this->display();
     }
-    
+
     public function role_info(){
     	$role_id = I('get.group_id');
     	if($role_id){
@@ -234,14 +234,14 @@ class AdminController extends BaseController {
     	$this->assign('smt_list', $smt_list);
     	$this->display();
     }
-    
+
     public function roleSave(){
     	$data = I('post.');
     	$data['act_limits'] = is_array($data['act_limits']) ? implode(',', $data['act_limits']) : '';
     	$data['smt_limits'] = is_array($data['smt_limits']) ? implode(',', $data['smt_limits']) : '';
         // dump($data);exit;
         // dump($data);exit;
-        
+
     	if(empty($data['group_id'])){
     		$data['store_id'] = STORE_ID;
     		$r = M('seller_group')->add($data);
@@ -295,30 +295,30 @@ class AdminController extends BaseController {
 		$this->assign('page', $show);
 		$this->display();
 	}
-    
+
     /**
      *  商家登录后 处理相关操作
-     */        
+     */
      public function login_task()
      {
-                
-        // 多少天后自动分销记录自动分成                  
+
+        // 多少天后自动分销记录自动分成
          if(file_exists(APP_PATH.'Common/Logic/DistributLogic.class.php')){
             $distributLogic = new \Common\Logic\DistributLogic();
             $distributLogic->auto_confirm(STORE_ID); // 自动确认分成
-         }         
-         
-        // 商家结算 
+         }
+
+        // 商家结算
         $storeLogic = new StoreLogic();
         $storeLogic->auto_transfer(STORE_ID); // 自动结算
-              
-     }    
-     
+
+     }
+
 	/**
 	 * 清空系统缓存
 	 */
 	public function cleanCache()
-	{  
+	{
 
         // 首页
         S(md5(U('/Store/index',array('store_id'=>session('store_id')))),null);

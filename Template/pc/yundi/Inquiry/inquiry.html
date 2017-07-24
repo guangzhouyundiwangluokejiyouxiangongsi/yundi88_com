@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="/Public/favicon.ico" type="image/x-icon" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+		<title>{$news.title}</title>
+		<meta name="keywords" content="{$news['keyword']}" />
+		<meta name="description" content="{$news['description']}" />
+		<link rel="stylesheet" href="__ROOT__/Public/css/Inquiry.css" />
+	</head>
+	<body>
+		<header class="head">
+    <nav class="nav nav2">
+	    <ul>
+	        <li><a href="{:U('User/reg')}" class='nologin' >注册</a><a href="/seller/index/index.html" class="islogin userinfo" title="" target="_blank"></a>
+	        </li>
+	        <span>|</span>
+	        <li><a href="{:U('User/login')}" class='nologin' >登录</a><a href="/user/logout.html" class='islogin' style="margin:0 10px;" title="退出" target="_self">退出</a></li>
+
+	        <span>|</span>
+	        <li><img src="__ROOT__/Public/image/Inquiry/index1.png" width="15" height="30"  alt=""/>&nbsp;&nbsp;<a href="/Cart/cart.html" target="_blank">购物车</a></li><span>|</span>
+	        <li><a href="/User/order_list.html" target="_blank">我的订单</a></li>
+	    </ul>
+	    <p>您好，欢迎来到云狄网！股票代码：366130</p>
+	    <ul>
+	   		<li><a href="/User/info.html" target="_blank">会员中心</a></li><span>|</span>
+	        <li><a href="/user/login.html" target="_blank">免费发布信息</a></li><span>|</span>
+	        <li><a href="/index/index_nav.html" target="_blank" id="iqn">网站导航</a>
+	        	<div class="navss">
+		          <dl>
+		            <dd><a href="/goods/goodsList2.html" target="_blank">万千产品</a></dd>
+	                <dd><a href="/Info/index/" target="_blank">海量信息</a></dd>
+	                <dd><a href="/seller/index/index/nav/product.html" target="_blank">产品推广</a></dd>
+	                <dd><a href="/seller/index/index/nav/article.html" target="_blank">信息推广</a></dd>
+	                <dd><a href="/index/street/" target="_blank">企业信息</a></dd>
+	                <dd><a href="/article/promote.html" target="_blank">免费推广</a></dd>
+	                <dd><a href="http://association.yundi88.com" target="_blank">云商会</a></dd>
+	                <dd><a href="/index/certification2.html" target="_blank">商城入驻</a></dd>
+	                <dd><a href="/article/detail/article_id/54.html" target="_blank">联系我们</a></dd>
+		          <div class="cl"></div>
+		          </dl>
+        		</div>
+			</li>
+	    </ul>
+
+    </nav>
+
+</header><!--顶部结束-->
+
+
+     	<div style="padding: 13px 0;height: 74px;background: #ffffff;">
+  		<div class="prof">
+	  		<div class="prol">
+				<figure>
+			        <a href="/" title="云狄网">
+            			<img src="__PUBLIC__/image/Inquiry/pro1.png" width="178" height="52"  alt=""/>
+            		</a>
+			    </figure>
+			    <section class="search1">
+			       <div id="tab">
+					    <div class="tabList">
+					        <ul>
+					          	<li >产品</li>
+					            <li >公司</li>
+                     			<li class="cur">信息</li>
+					        </ul>
+					    </div>
+
+					    <div class="tabCon">
+					        <div class="cur">
+					           <form name="sourch_form" id="sourch_form" method="post" action="/Goods/search.html">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="q" id="q" value="" placeholder="搜索产品关键字"  onfocus="getdata(this);" oninput="getdata(this);"/>
+					             <a data-role="btn" href="javascript:void(0);" class="but" onclick="if($.trim($('#q').val()) != '') $('#sourch_form').submit();"></a>
+					            </form>
+					        </div>
+					        <div class="cur">
+					           <form id="sourch_form_com" method="get" action="/index/searchstreet.html">
+					            <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="company" id="q_com" value="" placeholder="搜索公司关键字" onfocus="getdata2(this);" oninput="getdata2(this)" />
+					             <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_com').val()) != '') $('#sourch_form_com').submit();"></a>
+					            </form>
+					        </div>
+							<div class="cur">
+				               <form id="sourch_form_info" method="get" action="/Info/search.html">
+				                <input type="text" data-role="input-search" autocomplete="off" class="ssk" name="info" id="q_info" value="" placeholder="搜索信息关键字" />
+				                 <a data-role="btn" href="javascript:void(0);" class="but"  onclick="if($.trim($('#q_info').val()) != '') $('#sourch_form_info').submit();"></a>
+				                </form>
+				            </div>
+					    </div>
+					    <ul class="tab-search-box" onfocus="$('.tab-search-box').show();">
+					    </ul>
+			        </div>
+
+
+				 </section>
+				        <div class="Inq-tabl">
+			        	<a class="Inq-btnf" href="">
+			        		免费推广产品
+			        	</a>
+			        	<a class="Inq-btns" href="">
+			        		免费建站
+			        	</a>
+			        </div>
+		    </div>
+	    </div>
+  	</div>
+  	 <!--content-->
+     <div class="Inq-content">
+   <!--  breadN	-->
+     	<div class="Inq-breadN clearfix">
+            <foreach name="navigate_goods" key="k" item="v">
+          		&nbsp;<i></i>&nbsp;<a href="{:U('/Goods/goodsList',array('id'=>$k))}">{$v}</a>
+           </foreach>
+
+     	</div>
+        <!-- <div class="breadcrumb"> <strong><a href="/">首页</a></strong>
+          <span>
+          	<foreach name="navigate_goods" key="k" item="v">
+          		&nbsp;<i>></i>&nbsp;<a href="{:U('/Goods/goodsList',array('id'=>$k))}">{$v}</a>
+           </foreach>
+          </span>&nbsp;<i>></i>&nbsp;<em>{$goods.goods_name}...</em>
+        </div> -->
+   <!---->
+     <div class="Inq-cont clearfix">
+
+     	<div class="Inq-left clearfix">
+
+     		<div class="Inq-lhd">
+
+     			<div class="Inq-ltle">
+     				{$news.title}
+     			</div>
+
+     			<div class="Inq-lb clearfix">
+     				<div class="Inq-ltime clearfix">
+     					<span>时间:</span>
+     					<span style="width: 79px;height:20px;text-overflow: ellipsis;overflow: hidden;white-space:nowrap;">{$news.timer}</span>
+     				</div>
+     				<div class="Inq-flow clearfix">
+     					<span>浏览量：</span>
+     					<span style="width:87px;height:20px;text-overflow: ellipsis;overflow: hidden;white-space:nowrap;">{$news.pc_click}</span>
+     				</div>
+     			</div>
+
+     		</div>
+     	<!---->
+    <div class="Inq-lcont clearfix">
+     <!---->
+    <div class="cont-l">
+    <div id="magnifier">
+    <div class="small-box">
+    	<!--默认第一张-->
+    <img src="{$news.newsimg}" alt="#">
+    <span class="hover"></span>
+    </div>
+    <div class="thumbnail-box">
+      <a href="javascript:;" class="btn btn-prev"></a>
+      <a href="javascript:;" class="btn btn-next"></a>
+      <div class="list">
+        <ul class="wrapper">
+            <!-- 遍历图片列表 -->
+            <foreach name="news['img']" item="vo">
+                <li class="item" data-src="{$vo.src}"><img src="{$vo.src}" alt="#" /></li>
+            </foreach>
+        </ul>
+      </div>
+    </div>
+    <div class="big-box">
+        <img src="{$news.newsimg}" >
+    </div>
+  </div>
+  </div>
+  <!---->
+     			<div class="cont-r">
+     			<div class="In-badge clearfix">
+     				<img src="__PUBLIC__/image/Inquiry/badge2.png" alt=""  class="m12"/>
+     				<img src="__PUBLIC__/image/Inquiry/badge1.png" alt=""  />
+     			</div>
+     			<ul class="clearfix cont-ul">
+     				<li>
+     					<!-- <div class="details-l">
+     						价格
+     					</div>
+     					<div class="details-r f20" style="white-space:nowrap;">
+     						￥{$news.shop_price}
+     					</div> -->
+     				</li>
+
+     				<li>
+     					<div class="details-l">
+     						关键词
+     					</div>
+     					<div class="details-r f16" style="white-space:nowrap;">
+     						{$news.keyword}
+     					</div>
+     				</li>
+
+     				<li>
+     					<div class="details-l">
+     						联系人
+     					</div>
+     					<div class="details-r f16" style="white-space:nowrap;">
+     						{$companyInfo.person}
+     					</div>
+     				</li>
+
+     				<li>
+     					<div class="details-l">
+     						联系方式
+     					</div>
+     					<div class="details-r f20" style="white-space:nowrap;">
+     						{$companyInfo.phone}
+     					</div>
+     				</li>
+
+     				<li>
+     					<div class="details-l">
+     					公司名称
+     					</div>
+     					<div class="details-r f16" style="white-space:nowrap;">
+     						{$companyInfo.name}
+     					</div>
+     				</li>
+
+     				<li style="height:40px;">
+     					<div class="details-l">
+     						公司地址
+     					</div>
+     					<div class="details-r f16" style="height:40px;line-height:1.2;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;word-break: break-all;">
+                            {$companyInfo.privince} {$companyInfo.city} {$companyInfo.area}
+     					</div>
+     				</li>
+
+     			</ul>
+
+     			<div class="cont-btnd clearfix">
+     				<a href="javascript:;" class="cont-btnf">
+     					立即询盘
+     				</a>
+     				<a href="" class="cont-btns">
+     					<img src="__PUBLIC__/image/Inquiry/qq.png" alt="" />
+     					<span>QQ咨询</span>
+     				</a>
+     			</div>
+
+
+     			<div class="Inq-share">
+     				<div class="Ir-share clearfix">
+     					<div>分享到:</div>
+     					<a href=""><img src="__PUBLIC__/image/Inquiry/s1.png" alt="" /></a>
+     					<a href=""><img src="__PUBLIC__/image/Inquiry/s2.png" alt="" /></a>
+     					<a href=""><img src="__PUBLIC__/image/Inquiry/s3.png" alt="" /></a>
+     					<a href=""><img src="__PUBLIC__/image/Inquiry/s4.png" alt="" /></a>
+     					<a href=""><img src="__PUBLIC__/image/Inquiry/s5.png" alt="" /></a>
+     					<a href=""><img src="__PUBLIC__/image/Inquiry/s6.png" alt="" /></a>
+
+     				</div>
+     			</div>
+
+
+
+     			</div>
+     		</div>
+     		<!---->
+     		<div class="Article-details">
+                {$news.content|htmlspecialchars_decode}
+     	    </div>
+     	<!--page-->
+     	<div class="Inq-page clearfix">
+
+     		<a class="ifl clearfix" href="{:U('Store/newscontent',array('store_id'=>$store[store_id],'sn'=>$pre[sn_id],'text'=>$pre[id]))}">
+     			<div class="ifl">
+     			上一篇：
+     			</div>
+     		    <span class="ifl">
+     		    	{$pre.title|getSubstr=0,30}
+     		    </span>
+
+     		</a>
+
+     		<a class="ifl clearfix" href="{:U('Store/newscontent',array('store_id'=>$store[store_id],'sn'=>$next[sn_id],'text'=>$next[id]))}">
+
+     		    <span class="ifr">
+     		    	{$next.title|getSubstr=0,30}
+     		    </span>
+
+     				<div class="ifr">
+     			下一篇：
+     			</div>
+     		</a>
+     	</div>
+
+     	<!---->
+     	<div style="width:100%;height:20px;background-color:#f3f3f3"></div>
+     	<div class="re-re">
+     		<div class="re-tle">
+     			相关推荐
+     		</div>
+     		<div class="re-list">
+     		    <!---->
+     		     <div class="re-item">
+                     <div class="item-name">
+      		    		产品名称
+      		    	</div>
+
+      		    	<div class="item-price">
+      		    		价格
+      		    	</div>
+
+      		    	<div class="item-cname">
+      		    		公司名称
+      		    	</div>
+
+      		        <div class="item-time">
+      		        	报价日期
+      		        </div>
+
+     		         <div class="item-btn">
+     		        	<a href="javascript:;" class="Inqxp">询盘</a>
+     		        </div>
+
+     		    </div>
+     		    <!---->
+                <foreach name="tuijian" item="vo">
+                <div class="re-item">
+                   <div class="item-name">
+                       {$vo.goods_name}
+                    </div>
+
+               <div class="item-price red">
+                   {$vo.shop_price}元
+               </div>
+
+               <div class="item-cname">
+                   {$vo.store_name}
+               </div>
+
+               <div class="item-time">
+                   {$vo.on_time}
+               </div>
+               <div class="item-btn">
+                   <a href="javascript:;" data-id="{$vo.goods_id}" data-name="{$vo.goods_name}" data-people="{$vo.people}" data-store-id="{$vo.store_id}" data-store-name="{$vo.store_name}" data-mobile="{$vo.mobile}" class="Inqxp">询盘</a>
+              </div>
+             </div>
+           </foreach>
+     		</div>
+     	</div>
+
+
+     	</div>
+
+
+     	<div class="Inq-right">
+            <div class="right">
+              <h1>优质供应商</h1>
+              <span class="there" style="float:right"><a href="{:U('/index/street')}" target="_blank" style="display: block;">更多</a></span>
+              <!-- <span class="there"><a href="{:U('/index/street')}" target="_blank">更多</a></span> -->
+              <div class="cl"></div>
+              <div class="one">
+               <tpshop sql="select * from `__PREFIX__store` where  store_recommend = 1 limit 10" item="v" key="k">
+                <dl>
+                  <dt><a onmouseenter="this.style.color='#ff9416'" onmouseleave="this.style.color='#666666'" target="_blank" href="{:U('Store/index',array('store_id'=>$v[store_id]))}" target="_blank">{:getSubstr($v[store_name],0,14)}</a></dt>
+                  <dd>主营：{$v.store_zy|getSubstr=0,14}</dd>
+                  <dd>地址：{:getSubstr($v[store_address],0,14)} </dd>
+                </dl>
+               </tpshop>
+              </div>
+             <h2 style="font-size: 100%;font-weight: 500;">热门推荐</h2>
+
+             <div class="cl"></div>
+             <ul class="two two-hot">
+               <tpshop sql="select * from `__PREFIX__goods` where  recommend = 1" item="v" key="k">
+               <li><a target="_blank" href="{:U('/Goods/goodsInfo',array('id'=>$v[goods_id]))}" target="_blank"><img src="{$v.goods_id|goods_thum_images=238,218}" alt="{$v[goods_name]}"/></a></li>
+               </tpshop>
+             </ul>
+          </div>
+       <!--产品右边-->
+     <div class="cl"></div>
+     	</div>
+
+     </div>
+
+     </div>
+
+      <footer class="footer">
+<style>
+.pr a:hover{color: red}
+</style>
+    <div class="pr">
+    	<div class="prc">
+	     	<dl>
+		          <dt>新手指南</dt>
+		          		              <dd><a target="_blank" href="/Article/detail/article_id/26.html">关于云狄</a></dd>
+		              		              <dd><a target="_blank" href="/User/regstore.html">免费注册</a></dd>
+		              		              <dd><a target="_blank" href="/Article/detail/article_id/28.html">买家入门</a></dd>
+		              		              <dd><a target="_blank" href="/Index/certification">认证信息</a></dd>
+		              		              <dd><a target="_blank" href="/User/forget_pwd.html">找回密码</a></dd>
+		              		        </dl><dl>
+		          <dt>采购商城服务</dt>
+		          		              <dd><a target="_blank" href="/goods/goodsList2.html">采购平台</a></dd>
+		              		              <dd><a target="_blank" href="/info/index">企业商铺</a></dd>
+		              		              <dd><a target="_blank" href="http://association.yundi88.com/">云商会</a></dd>
+		              		        </dl><dl>
+		          <dt>供应商服务</dt>
+		          		              <dd><a target="_blank" href="/info/index">供应信息</a></dd>
+		              		              <dd><a target="_blank" href="/User/login.html ">供应管理</a></dd>
+		              		        </dl><dl>
+		          <dt>企业服务</dt>
+		          		              <dd><a target="_blank" href="/index/zixun">广告服务</a></dd>
+		              		              <dd><a target="_blank" href="/index/certification2">商城入驻</a></dd>
+		              		              <dd><a target="_blank" href="/seller/index/index.html?nav=article">发布信息</a></dd>
+		              		              <dd><a target="_blank" href="/seller/index/index.html?nav=articleclass">信息管理</a></dd>
+		              		        </dl><dl>
+		          <dt>安全交易</dt>
+		          		              <dd><a target="_blank" href="/Article/detail/article_id/41.html">如何下单</a></dd>
+		              		              <dd><a target="_blank" href="/Article/detail/article_id/42.html">如何付款</a></dd>
+		              		              <dd><a target="_blank" href="/User/order_list">订单管理</a></dd>
+		              		              <dd><a target="_blank" href="/Article/detail/article_id/44.html">交易保障</a></dd>
+		              		              <dd><a target="_blank" href="/Article/detail/article_id/45.html">如何评价</a></dd>
+		              		        </dl>        </div>
+
+        <div class="Tphone">
+	    	<h2>020-81000500</h2>
+			<p>周一至周日 9:00-18:00</p>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3404902361&amp;site=qq&amp;menu=yes">QQ24小时在线客服</a>
+	    	</div>
+    </div><!--
+     <h6>有情链接：<a href="#" target="_blank">百度</a>   <a href="#" target="_blank">  盛大在线</a></h6> -->
+     <style>
+    .btn_5{margin-left:10px;}
+    .btn_6 a:hover{color: red;}
+    .footer h6{font-size: 14px;text-align: left;}
+    .footer footer{padding-bottom: 40px;}
+    </style>
+
+         <h6 class="btn_6">友情链接：
+     <a href="http://www.yundi88.com/"       target="_blank"       > 云狄网</a>     </h6>
+          <footer style="text-align: center;">云狄网版权所有 备案号:粤ICP备16076354号</footer>
+</footer>
+
+     <div class="Inq-ml">
+     <div class="I1"></div>
+      <div class="I2"></div>
+       <div class="I3"></div>
+        <div class="I4"></div>
+     <div class="Inq-popup clearfix" style="left: 0;
+    right: 0;
+    margin: 0 auto;">
+    <form id="model-post-form">
+      <div class="pop-rc">
+      	<a  href="javascript:;" id="cal2"><img src="__PUBLIC__/image/Inquiry/cp.png" alt="" /></a>
+      </div>
+
+      <div class="pop-con">
+      	<ul>
+      		<li style="padding-left: 42.5px;
+    border-bottom: 1px solid #f1f1f1;
+    padding-right: 42.5px;">
+                <div class="pconf">
+                    <div>供应商：</div>
+                    <div id="people"></div>
+                    <div id="people-phone"></div>
+                    <div id="store-name"></div>
+                </div>
+                </li>
+
+                <li class="clearfix" style="margin:40px auto 0px auto">
+                    <div class="pconin clearfix" style="margin-left:7px;">
+                    <div class="pconin-name">联系人：</div>
+                    <div class="pconin-input">
+                        <div><img src="__PUBLIC__/image/Inquiry/cp1.png"/><input type="text" name="person" onblur="checkName()" id="name1"/></div>
+                        <div class="warn-t"></div>
+                    </div>
+
+                    </div>
+                    <div class="pconin clearfix" style="margin-left: 32px;">
+                    <div class="pconin-name">采购数量：</div>
+                    <div class="pconin-input">
+                        <div><img src="__PUBLIC__/image/Inquiry/cp1.png"/><input name="cnum" type="number" id="num1" onblur="checknum1()" /></div>
+                        <div class="warn-t">采购数量不能为空</div>
+                    </div>
+
+                    </div>
+                </li>
+
+                <li class="clearfix" style="margin:14px auto 0px auto;">
+                    <div class="pconin clearfix" style="margin-left: 7px;">
+                    <div class="pconin-name">联系电话：</div>
+                    <div class="pconin-input">
+                        <div><img src="__PUBLIC__/image/Inquiry/cp1.png"/><input name="phone" type="text" id="tel1" onblur="checktel2()" /></div>
+                <div class="warn-t">联系电话不能为空</div>
+                    </div>
+
+                    </div>
+                    <div class="pconin clearfix" style="margin-left: 54px;
+            width: 43%;">
+                    <div class="pconin-name" style="text-align: left;
+            width: 44px;
+            margin-left: 16px;">QQ：</div>
+                    <div class="pconin-input">
+                        <div><input name="qq" type="text" style="margin-left: 19px;"/></div>
+
+                    </div>
+
+                    </div>
+                </li>
+                <input type="hidden" id="data-id-input" name="cid" value="" />
+                <input type="hidden" id="data-name-input" name="cname" value="" />
+                <input type="hidden" id="data-store-id-input" name="store_id" value="" />
+
+      		<li style="margin:0 auto">
+      			<div class="pcoin-btn">
+
+                    <input type="button" value="确定" id="submit"/>
+                    <input type="button" value="取消" id="cal1"/>
+
+      			</div>
+      		</li>
+      	</ul>
+      </div>
+      </form>
+
+     </div>
+     </div>
+
+  </body>
+	<script src="__ROOT__/Public/js/Inquiry.js"></script>
+  <script src="__ROOT__/Public/js/jquery-1.9.1.min.js"></script>
+  <script src="__ROOT__/Public/js/magnifier.js"></script>
+  <script type="text/javascript">
+      $("#submit").click(function () {
+          $.ajax({
+              cache: true,
+              type: "POST",
+              url:'__CONTROLLER__/modelGetIn',
+              data:$('#model-post-form').serialize(),// 你的formid
+              async: true,
+              error: function(request) {
+                  alert("数据请求失败");
+              },
+              success: function(data) {
+                  if (data) {
+                      alert('询盘成功');
+                      $('.Inq-ml').hide();
+                  } else {
+                      alert('询盘失败，请重试')
+                  }
+              }
+          });
+      });
+  </script>
+  <script>
+    $(function () {
+
+      $('#magnifier').magnifier();
+
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+//    var uname= getCookie('uname');
+//    if(uname == ''){
+//      $('.islogin').remove();
+//      $('.nologin').show();
+//    }else{
+//      $('.nologin').remove();
+//      $('.islogin').show();
+//      $('.userinfo').html(decodeURIComponent(uname));
+//    }
+      	/* 头部定位 */
+     	$(window).scroll(function () {
+			if ($(window).scrollTop() >43) {
+				$('.prof').css({'position':'fixed','top':'0','z-index':'1000','background':'#fff url(__PUBLIC__/image/Inquiry/search_bg.png) repeat-x bottom'});
+
+			}
+			else
+			{
+				$('.prof').css({'position':'','top':'','z-index':'','background':'#fff'});
+			}
+		});
+		/* 搜索信息 */
+        $("#q").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		$("#q_com").focus(function(){
+		   $('.tab-search-box').show();
+		});
+		$("#q_com").blur(function(){
+		   $('.tab-search-box').fadeOut(200);
+		});
+		/* 搜索选项卡 */
+		$('.search1 #tab .tabCon .cur').hide();
+		if(""){
+			$('.search1 #tab .tabCon .cur').eq(1).show();
+
+		}else if(""){
+
+      $('.search1 #tab .tabCon .cur').eq(2).show();
+    }else{
+			$('.search1 #tab .tabCon .cur').eq(0).show();
+		}
+
+		$('#tab .tabList ul li').click(function(){
+			var q_txt='';
+			var i =$(this).index();
+			$('.search1 #tab .tabList ul li').removeClass('cur');
+			$(this).addClass('cur');
+			$('.search1 #tab .tabCon .cur').hide();
+			$('.search1 #tab .tabCon .cur').eq(i).show();
+			if($('#q').val() != '' || $('#q_com').val() != '' || $('#q_info').val() != '')
+			{
+				if($('#q').val() != ''){
+					q_txt=$('#q').val();
+				}
+				else if($('#q_com').val() != ''){
+					q_txt=$('#q_com').val();
+				}
+				else{
+					q_txt=$('#q_info').val();
+				}
+				$("#tab .tabCon input[ type='text' ] ").val('');
+			}
+			$('#tab .tabCon>div').eq(i).find('.ssk').val(q_txt);
+
+		});
+
+
+  });
+
+  </script>
+</html>
