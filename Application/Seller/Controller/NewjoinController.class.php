@@ -125,6 +125,7 @@ class NewjoinController extends BaseController {
 				$this->error('请填写店铺负责人手机号码');
 			}
 			$data = I('post.');
+			$data['company_name'] = M('store')->where(array('store_id'=>session('store_id')))->getField('store_name');
 			$data['user_id'] = session('user')['user_id'];
 			$data['add_time'] = time();
 			$data2['sc_id'] = $data['sc_id'];
@@ -204,6 +205,7 @@ class NewjoinController extends BaseController {
 		if(IS_POST){
 			$tmp = array();
 			$data = I('post.');
+			$data['company_name'] = M('store')->where(array('store_id'=>session('store_id')))->getField('store_name');
 			$data['user_id'] = session('user')['user_id'];
 			$data3['add_time'] = time();
 			$data3['apply_state'] = '0';

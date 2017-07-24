@@ -39,7 +39,7 @@ class BaseController extends Controller {
      */
     public function _initialize()
     {
-        // $this->quanxian(__SELF__);
+        $this->quanxian(__SELF__);
         $this->assign('action',ACTION_NAME);
         //过滤不需要登陆的行为
         if(in_array(ACTION_NAME,array('login','logout','vertify')) || in_array(CONTROLLER_NAME,array('Ueditor','Uploadify'))){
@@ -61,21 +61,25 @@ class BaseController extends Controller {
 
     public function quanxian($url='/index.php/Seller/Index/index')
     {
+        
+        $url = str_replace('/', '_', $url);
         $status =  M('store')->where(array('store_id'=>session('store_id')))->getField('status');
         // $status = 2;
         // echo __SELF__;
         if($status == 2){
+            // echo $url;exit;
+            $ajax = (IS_AJAX)?1:null;
             $arr = array(
-                '/index.php/Seller/Sellerstore/addpr',
-                '/index.php/Seller/Sellerstore/prList',
-                '/index.php/Seller/Sellerstore/addinfo',
-                '/index.php/Seller/Sellerstore/infolist',
-                '/index.php/Seller/Store/store_setting'
+                '_index.php_Seller_Sellerstore_addpr',
+                '_index.php_Seller_Sellerstore_prList',
+                '_index.php_Seller_Sellerstore_addinfo',
+                '_index.php_Seller_Sellerstore_infolist',
+                '_index.php_Seller_Store_store_setting'
             );
+            $s = "/_index\.php_Seller_Sellerstore_addEditGoods_goods_id_.*?/";
+            // $s = array('/_index\.php\?m=Seller&c=Sellerstore&a=ajaxPrList&p=/','/_index\.php_Seller_Sellerstore_uddinfo_id/');
 
-            $s = array('/\/index\.php\?m=Seller&c=Sellerstore&a=ajaxPrList&p=/','/\/index\.php\/Seller\/Sellerstore\/uddinfo\/id/');
-
-                if(!in_array($url,$arr) && !preg_match($s,$url)){
+                if(!in_array($url,$arr) && !preg_match($s,$url) && !$ajax){
                     echo "<script>alert('没有权限！');top.location='http://".$_SERVER['HTTP_HOST']."/seller/index/index';</script>";
                 }
 

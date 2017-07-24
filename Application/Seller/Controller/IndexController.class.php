@@ -99,6 +99,8 @@ class IndexController extends BaseController
     	// $store = M('store')->where(array('store_id'=>STORE_ID))->find();
     	// $this->assign('store',$store);
     	// $this->assign('seller',$seller);
+        $status = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+        $this->assign('status',$status);
         $lunbo = M('lunbo')->where(array('id'=>1))->getField('store_lunbo');
         $lunbo = explode(',', $lunbo);
         $this->assign('lunbo',$lunbo);

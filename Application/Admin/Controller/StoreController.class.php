@@ -522,8 +522,10 @@ class StoreController extends BaseController{
 							}
 						}
 					}
+					M('store')->where(array('store_id'=>session('store_id')))->save(array('status'=>1));
 					adminLog($apply['store_name'].'开店申请审核通过',1);
 				}else if($data['apply_state'] == 2){
+					M('store')->where(array('store_id'=>session('store_id')))->save(array('status'=>2));
 					adminLog($apply['store_name'].'开店申请审核未通过，备注信息：'.$data['review_msg'],1);
 				}
 

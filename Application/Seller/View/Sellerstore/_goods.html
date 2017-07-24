@@ -154,13 +154,41 @@
                                         <span id="err_shop_price" style="color:#F00; display:none;"></span>
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td style="vertical-align: middle;" >商品分类：</td>
+                                    <td>
+                                      <div style="margin: 2px 0;" class="col-xs-3">
+                                        <select id="goodsType1" onchange="goodstype2()" name="cat_id1" class="form-control" style="width:250px;margin-left:-15px;">
+                                            <option value="0">请选择商品一级分类</option>
+                                            <foreach name="goodsTypeData" item="vo">
+                                                <option <php>if($vo['id'] == $goodsInfo['cat_id1']){echo 'selected';}</php> value="{$vo.id}">{$vo.name}</option>
+                                            </foreach>
+                                        </select>
+                                      </div>
+                                      <div style="margin: 2px 0;" class="col-xs-3">
+                                          <select id="goodsType2" onchange="goodstype3()" name="cat_id2" class="form-control" style="width:250px;margin-left:-15px;">
+                                            <option value="0">请选择商品二级分类</option>
+                                          </select>
+                                      </div>
+                                      <div style="margin: 2px 0;" class="col-xs-3">
+                                          <select id="goodsType3" name="cat_id3" class="form-control" style="width:250px;margin-left:-15px;">
+                                            <option value="0">请选择商品三级分类</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                </tr>
+
+<!-- 
+
+
                                 <tr>
                                     <td>商品分类：</td>
                                     <td>
                                       <div style="margin: 2px 0;" class="col-xs-3">
                                       <select name="cat_id1" id="cat_id1" onchange="get_category2(this.value,'cat_id2','0');" class="form-control" style="width:250px;margin-left:-15px;">
                                         <option value="0">请选择商品分类</option>
-                                             <foreach name="cat_list" item="v" key="k" >
+                                             <foreach name="goodsTypeData" item="v" key="k" >
                                                <option value="{$v['id']}" <if condition="$v['id'] eq $goodsInfo['cat_id1']">selected="selected"</if> >
                                                		{$v['name']}
                                                </option>
@@ -183,7 +211,7 @@
                                       <span id="err_cat_id3" style="color:#F00; display:none;"></span>
 
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td>缩略图:</td>
                                     <td>
@@ -386,9 +414,12 @@
     }
 
     // 商品二级分类
-    $('#goodsType1').change(function () {
+
+
+    function goodstype2() {
         $('#goodsType2').html('<option value="-1">请选择商品二级分类</option>');
         $('#goodsType3').html('<option value="-1">请选择商品三级分类</option>');
+        var cat_id2 = "<?php echo $goodsInfo['cat_id2']; ?>"
         $.post(
             '__CONTROLLER__/categoryList',
             {'id':$('#goodsType1').val(), 'level':'2'},
@@ -396,33 +427,48 @@
                 $('#goodsType2').html('<option value="-1">请选择商品二级分类</option>');
                 var str1 = '';
                 for (var i = 0; i < data.length; i++) {
-                    str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                  if(data[i]['id'] == cat_id2){
+                    var select = 'selected';
+                  }
+
+                    str1 += '<option '+ select +'  value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                    select = '';
                 }
                 // console.log($('#privince'));
                 $('#goodsType2').append(str1);
             },
             'json'
         );
-    });
+    }
 
     // 商品三级分类
-    $('#goodsType2').change(function () {
+   function goodstype3() {
+        var cat_id3 = "<?php echo $goodsInfo['cat_id3']; ?>";
+        var cat_id2 = ($('#goodsType2').val() < 1)?"<?php echo $goodsInfo['cat_id2']; ?>":$('#goodsType2').val();
         $.post(
             '__CONTROLLER__/categoryList',
-            {'id':$('#goodsType2').val(), 'level':'3'},
+            {'id':cat_id2, 'level':'3'},
             function (data) {
                 $('#goodsType3').html('<option value="-1">请选择商品三级分类</option>');
                 var str2 = '';
                 for (var i = 0; i < data.length; i++) {
-                    str2 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                  if(data[i]['id'] == cat_id3){
+                    var select = 'selected';
+                  }
+                    str2 += '<option '+ select +' value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                    select = '';
                 }
                 // console.log($('#city'));
                 $('#goodsType3').append(str2);
             },
             'json'
         );
-    });
+    }
 
+    
+    goodstype2();
+    goodstype3();
+    
     // 城市三级联动
     $('#privince').change(function () {
         $('#area').html('<option value="-1">请选择地区</option>');
@@ -436,7 +482,7 @@
                 for (var i = 0; i < data.length; i++) {
                     str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
                 }
-                // console.log($('#privince'));
+                console.log($('#privince'));
                 $('#city').append(str1);
             },
             'json'

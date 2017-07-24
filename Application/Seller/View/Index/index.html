@@ -5,56 +5,7 @@
 <section class="content-wrapper right-side" id="riframe" style="margin:0px;padding:0px;margin-left:230px;">
     <iframe id='rightContent' name='rightContent' src="{:U('Seller/Index/welcome')}" width='100%' frameborder="0"></iframe>
 </section>
-<style type="text/css">
-/*遮罩层*/
-.remaker_box {width:100%; height:100%;  background-color:#000;  filter:alpha(opacity=60);  -moz-opacity:0.6; opacity:0.6; position:fixed; left:0px; top:0px;z-index:1300;}
-.remaker1 {width: 460px; height: 300px;position: fixed;top: 50%;left: 50%;margin-top: -150px;margin-left: -230px;background-color: #FFFFFF;z-index: 1500;border-radius: 10px;overflow: hidden;}
-.remaker1 a{width: 230px;display:block;height: 300px;float: left;text-decoration: none;text-align: center;font-family: "微软雅黑";}
-.remaker1 a span{color: #000000;font-size: 18px;display: block;margin-top: 30px;}
-.remaker1 a img{width: 80px;height: 80px;margin-top: 90px;}
-</style>
-<!-- 遮罩 -->
-<!-- <div class="remaker_box" id="remaker_box"></div> -->
 
-<div class="remaker1 false" id="remaker1">
-	<a href="{:U('Sellerstore/addpr')}" style="background: #9dffcb;">
-		<img src="__PUBLIC__/images/remaker1.png">
-		<span>免费发布信息</span>
-	</a>
-	<a href="" data-toggle="modal" data-target="#myModal">
-		<img src="__PUBLIC__/images/remaker2.png">
-		<span>免费建设网站</span>
-	</a>
-</div>
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-	<div class="modal-dialog">
-		<div class="modal-content" style="height:200px;">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel" style="text-align:center">
-					认证服务
-				</h4>
-			</div>
-			<div class="modal-body" style="margin-top:5%;">
-                    <a href="{:U('Newjoin/basic_info')}" style="margin-left:20%;"><button type="button" class="btn btn-warning" name="button">企业认证</button></a>
-                <a href="{:U('Newjoin/basic')}" style="margin-left:20%;"><button type="button" class="btn btn-primary" name="button">个人认证</button></a>
-                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">企业认证
-                <button type="button" class="btn btn-default" data-dismiss="modal">个人认证 -->
-			</div>
-			<!-- <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
-				</button>
-			</div> -->
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
-</div>
 <include file="Public:footer" />
 
 	<!-- 前端启动模板 -->

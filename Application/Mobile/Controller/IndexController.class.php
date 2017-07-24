@@ -278,4 +278,63 @@ class IndexController extends MobileBaseController {
         $this->assign('apply',$apply);
         $this->display();
     }
+
+
+//     public function classss()
+//     {
+//         $id = I('id',1);
+//         if(I('get.id')){
+
+//        $class = M('goods_category')->where(array('parent_id'=>$id,'level'=>2))->select();
+//        foreach($class as &$v){
+//         $v['class3'] = M('goods_category')->where(array('parent_id'=>$v['id'],'level'=>3))->select();
+//        }
+//     }else{
+//         $class = M('goods_category')->where(array('parent_id'=>0,'level'=>1))->select();
+//     }
+//         echo json_encode($class);
+
+
+
+//     }
+
+
+
+//     public function goodslists(){
+//         $id = I('id',1);
+//         $level = I('level',1);
+//         $p = I('p',0);
+//         $model=M('goods');
+//         $goodslist = $model->field('goods_id,goods_name,original_img,shop_price,store_name')->where(array('cat_id'.$level=>$id))->join('__STORE__ on __STORE__.store_id=__GOODS__.store_id')->limit($p*10,10)->select();
+//         // dump($goodslist);
+//         echo json_encode($goodslist);
+
+
+//     }
+
+
+    public function goodsinfo()
+    {
+//         $id = I('id',1063);
+//         $goods = M('goods')->where(array('goods_id'=>$id))->find();
+//         $img = M('goods_images')->where(array('goods_id'=>$id))->select();
+//         $img[]['image_url'] = $goods['original_img'];
+//         $goods['original_img'] = $img;
+
+// dump($goods);exit;
+
+
+        $str = file_get_contents('https://xiaochengxu.yundi88.com/index.php/Home/Index/carousel');
+        $str = json_decode($str,true);
+
+        // print_r($xml);
+        // $str['goods']['goods_content'] = strip_tags($str['goods']['goods_content']);
+        // $str['goods']['goods_content'] = str_replace('div', 'view', $str['goods']['goods_content']);
+        echo '<pre>';
+        dump($str);
+        // echo json_encode($str);
+    }
+
+
+
 }

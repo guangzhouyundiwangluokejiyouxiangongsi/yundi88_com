@@ -357,6 +357,7 @@ class SellerstoreController extends BaseController{
         $this->assign('companyInfo', $companyInfo);
         // 处理省市数据
         $privinceData = M('region')->field('id, name')->where(array('level' => 1))->select();
+
         $cityData = M('region')->field('id, name')->where(array('level' => 2, 'parent_id'=>$companyInfo['privince']))->select();
         $areaData = M('region')->field('id, name')->where(array('level' => 3, 'parent_id'=>$companyInfo['city']))->select();
         $this->assign('privinceData', $privinceData);
@@ -373,7 +374,9 @@ class SellerstoreController extends BaseController{
         // dump($store);
         // dump($cat_list);
         // dump($brandList);
-        // dump($goodsType);exit;
+        // dump($goodsInfo);exit;
+        $goodsTypeData = M('goods_category')->field('id, name')->where(array('level' => 1))->select();
+        $this->assign('goodsTypeData', $goodsTypeData);
         $shipping_area = D('shipping_area')->getShippingArea(STORE_ID);//配送区域
         $goods_shipping_area_ids = explode(',',$goodsInfo['shipping_area_ids']);
         $this->assign('goods_shipping_area_ids',$goods_shipping_area_ids);
