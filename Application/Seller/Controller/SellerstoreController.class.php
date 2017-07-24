@@ -132,7 +132,7 @@ class SellerstoreController extends BaseController{
 			}
 
 			$value1 = array(
-                'store_id' => session('store_id'),
+                'store' => session('store_id'),
 				'title' => I('post.title'),
 				'keyword' => $keywords,
 				'description' => I('post.description'),

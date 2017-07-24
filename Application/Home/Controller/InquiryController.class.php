@@ -44,14 +44,15 @@ class InquiryController extends BaseController
 		}
         $tuijian = M('goods')->field('goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' => $goods.store_cat_id2))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
-            $companyInfo['store'][] = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();
-            $tuijian[$z]['store_name'] = $companyInfo['store_name'];
-            $tuijian[$z]['people'] = $companyInfo['people'];
-            $tuijian[$z]['mobile'] = $companyInfo['mobile'];
+            $companyInfo2 = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();
+            $tuijian[$z]['store_name'] = $companyInfo2['store_name'];
+            $tuijian[$z]['people'] = $companyInfo2['people'];
+            $tuijian[$z]['mobile'] = $companyInfo2['mobile'];
         }
         for ($i = 0; $i < count($tuijian); $i++) {
             $tuijian[$i]['on_time'] = date('Y-m-d', $tuijian[$i]['on_time']);
         }
+        // dump($tuijian);exit;
 
 
 		$next = M('store_art')->where('store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ') and id > ' . $text)->order('id ASC')->limit(1)->find();
