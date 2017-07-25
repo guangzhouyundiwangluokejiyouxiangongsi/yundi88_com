@@ -52,15 +52,11 @@ class InquiryController extends BaseController
         for ($i = 0; $i < count($tuijian); $i++) {
             $tuijian[$i]['on_time'] = date('Y-m-d', $tuijian[$i]['on_time']);
         }
-        // dump($tuijian);exit;
+        // 上一篇下一篇
+        $id = $news['id'];
+		$next = M('store_art')->where('id <'.$id)->order('id DESC')->find();
+		$pre = M('store_art')->where('id' > $id)->limit(1)->find();
 
-
-		$next = M('store_art')->where('store = ' . $storeid . ' and sn_id in (0,' . $sn_id . ') and id > ' . $text)->order('id ASC')->limit(1)->find();
-		$pre = M('store_art')->where('store = ' . $storeid . ' and  sn_id in (0,' . $sn_id . ') and id < ' . $text)->order('id DESC')->limit(1)->find();
-		//点击量
-		$num = mt_rand(1,9);
-		M('store_art')->where('id=' . $text)->setInc('pc_click', $num);
-		// $banner = M('store')->where(array('store_id' => $this->store['store_id']))->getField('store_banner');
 		$this->assign('banner', $banner);
 		$this->assign('pre', $pre);
 		$this->assign('next', $next);
@@ -89,9 +85,10 @@ class InquiryController extends BaseController
         $goods['on_time'] = date('Y-m-d', $goods['on_time']);
         $goods['goods_content'] = htmlspecialchars_decode($goods['goods_content']);
         $goods['img'] = sp_getcontent_imgs(htmlspecialchars_decode($goods['goods_content']));
+        // dump(M()->getLastSQL());
         // dump($goods);
         // exit;
-        $companyInfo = M('goods_contact')->where(array('sid' => session('store_id')))->find();
+
 
         // 处理省市数据
         $privinceData = M('region')->field('name')->where(array('id' => $companyInfo['privince']))->find();
@@ -114,15 +111,16 @@ class InquiryController extends BaseController
 
 
         $imagesList = M('goods_images')->field('image_url')->where(array('goods_id' => $goods['goods_id']))->select();
-        // dump(M()->getLastSQL());
         // dump($imagesList);
         $this->assign('imagesList', $imagesList);
 
-        if(empty($goods) || ($goods['is_on_sale'] == 0)){
-            $error = new TperrorController();
-            $error->tp404();
-        	// $this->error('该商品已经下架',U('Index/index'));
-        }
+        if(!$goods){
+			C('VIEW_PATH','./Template/pc/');
+			C('DEFAULT_THEME','yundi');
+			$error = new TperrorController();
+            $error->tp404();exit;
+
+		}
         if($goods['brand_id']){
             $brnad = M('brand')->where("id =".$goods['brand_id'])->find();
             $goods['brand_name'] = $brnad['name'];
@@ -139,6 +137,12 @@ class InquiryController extends BaseController
             $flash_sale = M('flash_sale')->where("id = {$goods['prom_id']}")->find();
             $this->assign('flash_sale',$flash_sale);
         }
+        $id = $goods['goods_id'];
+        // dump($id);
+		$next = M('goods')->where("goods_id < $id")->order('goods_id DESC')->find();
+		$pre = M('goods')->where("goods_id > $id")->find();
+        // dump($pre);
+        $companyInfo = M('goods_contact')->where(array('sid' => session('store_id')))->find();
         $point_rate = tpCache('shopping.point_rate');
         $freight_free = tpCache('shopping.freight_free'); // 全场满多少免运费
         $spec_goods_price  = M('spec_goods_price')->where(array('goods_id'=>$goods_id))->getField("key,price,store_count"); // 规格 对应 价格 库存表
@@ -165,6 +169,8 @@ class InquiryController extends BaseController
         $this->assign('look_see',$goodsLogic->get_look_see($goods));//看了又看
         $this->assign('goods',$goods);
         $this->assign('tuijian',$tuijian);
+        $this->assign('next',$next);
+        $this->assign('pre',$pre);
         $this->assign('companyInfo',$companyInfo);
         $this->assign('point_rate',$point_rate);
         $this->assign('goodsTotalComment',$goodsTotalComment);

@@ -258,7 +258,7 @@
      	<!--page-->
      	<div class="Inq-page clearfix">
 
-     		<a class="ifl clearfix" href="{:U('Store/newscontent',array('store_id'=>$store[store_id],'sn'=>$pre[sn_id],'text'=>$pre[id]))}">
+     		<a class="ifl clearfix" href="{:U('Inquiry/inquiry',array('id'=>$pre['id']))}">
      			<div class="ifl">
      			上一篇：
      			</div>
@@ -268,7 +268,7 @@
 
      		</a>
 
-     		<a class="ifl clearfix" href="{:U('Store/newscontent',array('store_id'=>$store[store_id],'sn'=>$next[sn_id],'text'=>$next[id]))}">
+     		<a class="ifl clearfix" href="{:U('Inquiry/inquiry',array('id'=>$next['id']))}">
 
      		    <span class="ifr">
      		    	{$next.title|getSubstr=0,30}

@@ -266,29 +266,29 @@
                 {$goods.goods_content|htmlspecialchars_decode}
      	    </div>
      	<!--page-->
-     	<!-- <div class="Inq-page clearfix">
+     	<div class="Inq-page clearfix">
 
-     		<a class="ifl clearfix" href="">
+     		<a class="ifl clearfix" href="{:U('Inquiry/goodDeatil',array('id'=>$pre['goods_id']))}">
      			<div class="ifl">
      			上一篇：
      			</div>
      		    <span class="ifl">
-     		    	春季郊游拍照全攻略 寻找你最满意的角度
+     		    	{$pre.goods_name|getSubstr=0,30}
      		    </span>
 
      		</a>
 
-     		<a class="ifl clearfix" href="">
+     		<a class="ifl clearfix" href="{:U('Inquiry/goodDeatil',array('id'=>$next['goods_id']))}">
 
      		    <span class="ifr">
-     		    	受尺寸和电池限制 LTE版Apple Watch不会带实体SSS
+     		    	{$next.goods_name|getSubstr=0,30}
      		    </span>
 
      				<div class="ifr">
      			下一篇：
      			</div>
      		</a>
-     	</div> -->
+     	</div>
 
      	<!---->
      	<div style="width:100%;height:20px;background-color:#f3f3f3"></div>
