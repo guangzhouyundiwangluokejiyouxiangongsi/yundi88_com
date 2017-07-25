@@ -54,12 +54,16 @@ class InquiryController extends BaseController
         }
         // 上一篇下一篇
         $id = $news['id'];
-		$next = M('store_art')->where('id <'.$id)->order('id DESC')->find();
-		$pre = M('store_art')->where('id' > $id)->limit(1)->find();
+        $where['id'] = array('gt',$id);
+        $where['store'] = $news['store'];
+        $next = M('store_art')->where($where)->find();
+        $where['id'] = array('lt',$id);
+        $pre = M('store_art')->where($where)->order('id desc')->find();
+        // dump($news);exit;
 
 		$this->assign('banner', $banner);
-		$this->assign('pre', $pre);
-		$this->assign('next', $next);
+		$this->assign('pre', $pre?$pre:array('title'=>'没有了','id'=>$news['id']));
+		$this->assign('next', $next?$next:array('title'=>'没有了','id'=>$news['id']));
 		$this->assign('sn_id', $sn_id);
 		$this->assign('navigation', $this->navigation);
         // dump($companyInfo);exit;
@@ -139,8 +143,12 @@ class InquiryController extends BaseController
         }
         $id = $goods['goods_id'];
         // dump($id);
-		$next = M('goods')->where("goods_id < $id")->order('goods_id DESC')->find();
-		$pre = M('goods')->where("goods_id > $id")->find();
+        $where['goods_id'] = array('gt',$id);
+        $where['store_id'] = $goods['store_id'];
+        $next = M('goods')->where($where)->find();
+        $where['goods_id'] = array('lt',$id);
+        $pre = M('goods')->where($where)->order('goods_id desc')->find();
+
         // dump($pre);
         $companyInfo = M('goods_contact')->where(array('sid' => session('store_id')))->find();
         $point_rate = tpCache('shopping.point_rate');
@@ -169,8 +177,8 @@ class InquiryController extends BaseController
         $this->assign('look_see',$goodsLogic->get_look_see($goods));//看了又看
         $this->assign('goods',$goods);
         $this->assign('tuijian',$tuijian);
-        $this->assign('next',$next);
-        $this->assign('pre',$pre);
+        $this->assign('next',$next?$next:array('goods_id'=>$goods['goods_id'],'goods_name'=>'没有了'));
+        $this->assign('pre',$pre?$pre:array('goods_id'=>$goods['goods_id'],'goods_name'=>'没有了'));
         $this->assign('companyInfo',$companyInfo);
         $this->assign('point_rate',$point_rate);
         $this->assign('goodsTotalComment',$goodsTotalComment);
