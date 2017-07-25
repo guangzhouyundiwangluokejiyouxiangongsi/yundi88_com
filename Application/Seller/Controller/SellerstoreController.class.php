@@ -30,7 +30,8 @@ class SellerstoreController extends BaseController{
 				'cat_id3' => I('post.cat_id3'),
 				'goods_remark' => I('post.description'),
 				'original_img' => I('post.newsimg'),
-				'goods_content' => I('post.content'),
+                'goods_content' => I('post.content'),
+				'on_time' => time(),
 			);
 			$res = M('goods')->add($value1);
 			if ($res) {
@@ -250,7 +251,7 @@ class SellerstoreController extends BaseController{
             delIsBack();
         }
         // $where += 'and __STORE__.status=2';
-        $goodsList = M('goods')->where(array('store_id'=>session('store_id')))->order('sort,on_time')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsList = M('goods')->where(array('store_id'=>session('store_id')))->order('on_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
         // dump(M('goods'));exit;
         cachePage($Page);
         $show = $Page->show();
@@ -411,7 +412,7 @@ class SellerstoreController extends BaseController{
         $_GET['p'] = (empty($_GET['p']))?0:$_GET['p'];
         $where = 'sn_id = '.$id.' and store = '.STORE_ID;
         if($id==0)$where = 'store = '.STORE_ID;
-        $list= M('store_art as a')->where(array('store'=>session('store_id')))->page($_GET['p'].',10')->order('timer')->select();
+        $list= M('store_art as a')->where(array('store'=>session('store_id')))->page($_GET['p'].',10')->order('timer desc')->select();
         // for ($i = 0; $i < count($list); $i++) {
         //     $list[$i]['on_time'] = date('Y-m-d', $list[$i]['on_time']);
         // }
