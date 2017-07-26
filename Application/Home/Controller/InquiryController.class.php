@@ -25,7 +25,7 @@ class InquiryController extends BaseController
         $news['timer'] = date('Y-m-d', $news['timer']);
         $news['content'] = htmlspecialchars_decode($news['content']);
         $news['img'] = sp_getcontent_imgs($news['content']);
-        $companyInfo = M('goods_contact')->where(array('sid' => session('store_id')))->find();
+        $companyInfo = M('goods_contact')->where(array('sid' => 'a'.$news['id']))->find();
 
         // 处理省市数据
         $privinceData = M('region')->field('name')->where(array('id' => $companyInfo['privince']))->find();
@@ -39,8 +39,9 @@ class InquiryController extends BaseController
 			C('DEFAULT_THEME','yundi');
 			$error = new TperrorController();
             $error->tp404();exit;
-
 		}
+        //浏览量
+        M('store_art')->where(array('id'=>$storeid))->setInc('pc_click',1);
         $tuijian = M('goods')->field('goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' =>$goods.store_cat_id2))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
             $companyInfo2 = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();
@@ -91,15 +92,16 @@ class InquiryController extends BaseController
         // dump(M()->getLastSQL());
         // dump($goods);
         // exit;
-        $companyInfo3 = M('goods_contact')->where(array('sid' => session('store_id')))->find();
+        $companyInfo3 = $companyInfo_ = M('goods_contact')->where(array('sid' => 'g'.$goods['goods_id']))->find();
         // 处理省市数据
-        $privinceData = M('region')->field('name')->where(array('id' => $companyInfo3['privince']))->find();
+        $privinceData = M('region')->field('name')->where(array('id' => $companyInfo_['privince']))->find();
         $companyInfo3['privince'] = $privinceData['name'];
-        $cityData = M('region')->field('name')->where(array('id' => $companyInfo3['city']))->find();
+        $cityData = M('region')->field('name')->where(array('id' => $companyInfo_['city']))->find();
         $companyInfo3['city'] = $cityData['name'];
-        $areaData = M('region')->field('name')->where(array('id' => $companyInfo3['area']))->find();
+        $areaData = M('region')->field('name')->where(array('id' => $companyInfo_['area']))->find();
         $companyInfo3['area'] = $areaData['name'];
-        // dump($companyInfo);exit;
+        
+        // dump($companyInfo3);exit;
         $tuijian = M('goods')->field('goods_id, goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' => $goods.'store_cat_id2'))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
             $companyInfo2 = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();

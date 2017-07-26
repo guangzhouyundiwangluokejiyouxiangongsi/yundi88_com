@@ -200,7 +200,7 @@
      						联系人
      					</div>
      					<div class="details-r f16" style="white-space:nowrap;">
-     						{$companyInfo.person}
+     						{$companyInfo3.person}
      					</div>
      				</li>
 
@@ -209,7 +209,7 @@
      						联系方式
      					</div>
      					<div class="details-r f20" style="white-space:nowrap;">
-     						{$companyInfo.phone}
+     						{$companyInfo3.phone}
      					</div>
      				</li>
 
@@ -218,7 +218,7 @@
      					公司名称
      					</div>
      					<div class="details-r f16" style="white-space:nowrap;">
-     						{$companyInfo.name}
+     						{$companyInfo3.name}
      					</div>
      				</li>
 
@@ -227,7 +227,7 @@
      						公司地址
      					</div>
      					<div class="details-r f16" style="height:40px;line-height:1.2; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; word-break: break-all;">
-                            {$companyInfo3.privince} {$companyInfo3.city} {$companyInfo3.area}
+                            {$companyInfo3.privince} {$companyInfo3.city} {$companyInfo3.area} {$companyInfo3.address}
      					</div>
      				</li>
 
@@ -237,7 +237,7 @@
      				<a href="javascript:;" class="cont-btnf Inqxp" data-id="{$goods.goods_id}" data-name="{$goods.goods_name}" data-people="{$companyInfo.person}" data-store-name="{$companyInfo.name}" data-store-id="{$companyInfo.sid}" data-mobile="{$companyInfo.phone}">
      					立即询盘
      				</a>
-     				<a href="" class="cont-btns">
+     				<a href="http://wpa.qq.com/msgrd?v=3&uin={$companyInfo3.wechat}&site=qq&menu=yes" class="cont-btns">
      					<img src="__PUBLIC__/image/Inquiry/qq.png" alt="" />
      					<span>QQ咨询</span>
      				</a>

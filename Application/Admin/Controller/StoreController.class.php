@@ -476,6 +476,7 @@ class StoreController extends BaseController{
 			$this->assign('bind_class_list',$bind_class_list);
 		}
 		$this->assign('apply',$apply);
+		$this->assign('store_id',M('store')->where(array('user_id'=>$apply['user_id']))->getField('store_id'));
 		$this->assign('province',M('region')->where(array('parent_id'=>0))->select());
 		$this->assign('city',M('region')->where(array('city_id'=>0))->select());
 		$this->assign('district',M('region')->where(array('district_id'=>0))->select());
@@ -488,6 +489,7 @@ class StoreController extends BaseController{
 	//审核店铺开通申请
 	public function review(){
 		$data = I('post.');
+		// dump($data);exit;
 		if($data['id']){
 			$apply = M('store_apply')->where(array('id'=>$data['id']))->find();
 			if(M('store_apply')->where("id=".$data['id'])->save($data)){
@@ -522,10 +524,11 @@ class StoreController extends BaseController{
 							}
 						}
 					}
-					M('store')->where(array('store_id'=>session('store_id')))->save(array('status'=>1));
+					//通过审核状态值改为1 表示建立官网
+					M('store')->where(array('store_id'=>$data['store_id']))->save(array('status'=>1));
 					adminLog($apply['store_name'].'开店申请审核通过',1);
 				}else if($data['apply_state'] == 2){
-					M('store')->where(array('store_id'=>session('store_id')))->save(array('status'=>2));
+					M('store')->where(array('store_id'=>$data['store_id']))->save(array('status'=>0));
 					adminLog($apply['store_name'].'开店申请审核未通过，备注信息：'.$data['review_msg'],1);
 				}
 

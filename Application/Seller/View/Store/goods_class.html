@@ -66,6 +66,8 @@ function delfun(obj){
 			data : {act:'del',cat_id:$(obj).attr('data-id')},
 			dataType : 'json',
 			success : function(data){
+				if(data.stat == 'no'){alert('请先删除下级分类！');return;}
+
 				if(data.stat=='ok'){
 					$(obj).parent().parent().remove();
 				}else{

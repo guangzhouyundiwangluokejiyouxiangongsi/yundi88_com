@@ -435,6 +435,7 @@ class SellerstoreController extends BaseController{
 			$data['store'] = STORE_ID;
 			$r = M('store_art')->add($data);
 		}else{
+
             $data2['name'] = I('post.company_name');
             $data2['person'] = I('post.connect_person');
             $data2['phone'] = I('post.person_phone');
@@ -444,6 +445,7 @@ class SellerstoreController extends BaseController{
             $data2['area'] = I('post.area');
             $data2['address'] = I('post.company_address');
             $data2['update_time'] = time();
+
             M('goods_contact')->where(array('sid'=>'a'.I('post.id')))->save($data2);
 			$r = M('store_art')->where('id='.$data['id'])->save($data);
 		}

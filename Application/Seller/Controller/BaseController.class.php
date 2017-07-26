@@ -75,7 +75,8 @@ class BaseController extends Controller {
                 '_index.php_Seller_Sellerstore_addinfo',
                 '_index.php_Seller_Store_store_setting',
                 '_index.php_Seller_Newjoin_basic',
-                '_index.php_Seller_Newjoin_basic_info'
+                '_index.php_Seller_Newjoin_basic_info',
+                '_index.php_Seller_Newjoin_info_edit'
             );
             $s = "/_index\.php_Seller_Sellerstore_addEditGoods_goods_id_.*?/";
             $s2 = '/_index.php_Seller_Sellerstore_infolist.*?/';

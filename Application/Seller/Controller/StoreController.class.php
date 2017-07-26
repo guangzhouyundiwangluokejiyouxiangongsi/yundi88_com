@@ -1293,7 +1293,7 @@ class StoreController extends BaseController
 			$info = M('store_goods_class')->where("cat_id=$cat_id")->find();
 		}
 		$this->assign('info',$info);
-		$parent = M('store_goods_class')->where("parent_id=0 and is_show=1 and store_id=".STORE_ID)->select();
+		$parent = M('store_goods_class')->where("parent_id=0  and store_id=".STORE_ID)->select();
 		$this->assign('parent',$parent);
 		$this->display();
 	}
@@ -1301,7 +1301,13 @@ class StoreController extends BaseController
 	public function goods_class_save(){
 		$data = I('post.');
 		if($data['act'] == 'del'){
-			$r = M('store_goods_class')->where('cat_id='.$data['cat_id'].' or parent_id='.$data['cat_id'])->delete();
+			if(M('store_goods_class')->where(array('parent_id'=>$data['cat_id']))->find()){
+				$res = array('stat'=>'no');
+				$this->ajaxReturn($res);exit;
+				
+			}
+			$r = M('store_goods_class')->where('cat_id='.$data['cat_id'])->delete();
+
 		}else{
 			if(empty($data['cat_id'])){
 				$data['store_id'] = STORE_ID;
@@ -1315,6 +1321,7 @@ class StoreController extends BaseController
 		}else{
 			$res = array('stat'=>'fail','msg'=>'操作失败');
 		}
+
 		respose($res);
 	}
 

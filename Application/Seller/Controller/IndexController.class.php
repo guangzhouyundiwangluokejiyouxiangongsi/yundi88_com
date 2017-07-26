@@ -18,17 +18,25 @@ class IndexController extends BaseController
 {
     public function _initialize()
     {
-        if (session('store_id')){
-            // $store_art = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-            // if ($store_art == 2) $this->redirect('/Seller/Storetwo/index');
-        }
+       
         define('STORE_ID',session('store_id')); //将当前的session_id保存为常量，供其它方法调用
-        $seller = M('seller')->where(array('store_id'=>session('store_id')))->getField('num');
-        if(!$seller){
-            $shanghui = I('shanghui',0);
-        $this->redirect('Seller/Store/initdata',array('shanghui'=>$shanghui));
-        }
+
+         //判断有没有创建官网
+         $store_status = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+         // dump($store_status);exit;
+         if($store_status != 2){
+                    //判断条件给默认数据
+                    $seller = M('seller')->where(array('store_id'=>session('store_id')))->getField('num');
+                    if(!$seller){
+                        $shanghui = I('shanghui',0);
+                        $this->redirect('Seller/Store/initdata',array('shanghui'=>$shanghui));
+                    }
+         }
+                   
+
+
     }
+
 
     public function index(){
 
