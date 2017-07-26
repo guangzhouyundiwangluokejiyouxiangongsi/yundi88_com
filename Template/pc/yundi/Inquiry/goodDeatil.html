@@ -227,14 +227,14 @@
      						公司地址
      					</div>
      					<div class="details-r f16" style="height:40px;line-height:1.2; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; word-break: break-all;">
-                            {$companyInfo.privince} {$companyInfo.city} {$companyInfo.area}
+                            {$companyInfo3.privince} {$companyInfo3.city} {$companyInfo3.area}
      					</div>
      				</li>
 
      			</ul>
 
      			<div class="cont-btnd clearfix">
-     				<a href="javascript:;" class="cont-btnf">
+     				<a href="javascript:;" class="cont-btnf Inqxp" data-id="{$goods.goods_id}" data-name="{$goods.goods_name}" data-people="{$companyInfo.person}" data-store-name="{$companyInfo.name}" data-store-id="{$companyInfo.sid}" data-mobile="{$companyInfo.phone}">
      					立即询盘
      				</a>
      				<a href="" class="cont-btns">
@@ -506,9 +506,9 @@
 
       			</div>
       		</li>
-            <input type="hidden" id="data-id-input" name="cid" value="" />
-            <input type="hidden" id="data-name-input" name="cname" value="" />
-            <input type="hidden" id="data-store-id-input" name="store_id" value="" />
+            <input type="hidden" id="data-id-input" name="cid" value="{$goods.goods_id}" />
+            <input type="hidden" id="data-name-input" name="cname" value="{$goods.goods_name}" />
+            <input type="hidden" id="data-store-id-input" name="store_id" value="{$goods.store_id}" />
 
       		<li style="margin:0 auto">
       			<div class="pcoin-btn">

@@ -94,26 +94,7 @@
                                     	<p class="text-warning">请填写包含http://的完整URL地址</p>
                                     </td>
                                 </tr> -->
-                                <tr>
-                                    <td style="vertical-align: middle;">相册：<span style="color:red">(限五张)</span></td>
-                                    <td>
-                                    <foreach name="goodsImages" item="vo" key="k" >
-                                        <div style="width:100px; text-align:center; margin: 5px; display:inline-block;" class="goods_xc">
-                                            <input type="hidden" value="{$vo['image_url']}" name="goods_images[]">
-                                            <a onclick="" href="{$vo['image_url']}" target="_blank"><img width="100" height="100" src="{$vo['image_url']}"></a>
-                                            <br>
-                                            <a href="javascript:void(0)" onclick="ClearPicArr2(this,'{$vo['image_url']}')">删除</a>
-                                        </div>
-                                    </foreach>
-
-                                        <div class="goods_xc" style="width:100px; text-align:center; margin: 5px; display:inline-block;">
-                                            <input type="hidden" name="goods_images[]" value="" />
-                                            <a href="javascript:void(0);" onclick="GetUploadify(5,'','goods','call_back2');"><img src="/Public/images/add-button.jpg" width="100" height="100" /></a>
-                                            <br/>
-                                            <a href="javascript:void(0)">&nbsp;&nbsp;</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                
                                 <tr>
                                     <td>内容(最少添加三张图片,显得更加美观)：</td>
                                     <td class="col-xs-10">
@@ -188,6 +169,53 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+
+    // 城市三级联动
+    $('#privince').change(function () {
+        $('#area').html('<option value="-1">请选择地区</option>');
+        $('#city').html('<option value="-1">请选择城市</option>');
+        $.post(
+            '__CONTROLLER__/getCitys',
+            {'id':$('#privince').val(), 'level':'2'},
+            function (data) {
+                $('#city').html('<option value="-1">请选择城市</option>');
+                var str1 = '';
+                for (var i = 0; i < data.length; i++) {
+                    str1 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                }
+                console.log($('#privince'));
+                $('#city').append(str1);
+            },
+            'json'
+        );
+    });
+
+    // 地区三级联动
+    $('#city').change(function () {
+        $.post(
+            '__CONTROLLER__/getCitys',
+            {'id':$('#city').val(), 'level':'3'},
+            function (data) {
+                $('#area').html('<option value="-1">请选择地区</option>');
+                var str2 = '';
+                for (var i = 0; i < data.length; i++) {
+                    str2 += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+                }
+                // console.log($('#city'));
+                $('#area').append(str2);
+            },
+            'json'
+        );
+    });
+
+
+</script>
+
+
+
+
+
 <script>
 function adsubmit(){
 	$('#handleposition').submit();

@@ -134,10 +134,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>关键词:</td>
+                                    <td>商品关键词:</td>
                                     <td>
-	                                    <textarea rows="3" cols="80" name="goods_remark">{$goodsInfo.keywords}</textarea>
-                                        <span id="err_goods_remark" style="color:#F00; display:none;"></span>
+                                        <input type="text" class="form-control" style="width:550px;" value="{$goodsInfo.keywords}" name="keywords"/>
+                                        <span id="err_keywords" style="color:#F00; display:none;"></span>
                                     </td>
                                 </tr>
                                 <!-- <tr>
@@ -179,7 +179,7 @@
                                     </td>
                                 </tr>
 
-<!-- 
+<!--
 
 
                                 <tr>
@@ -247,13 +247,6 @@
                                     </td>
                                 </tr>
                                 <input type="hidden" name="home_is_show" value="1">
-                                <tr>
-                                    <td>商品关键词:</td>
-                                    <td>
-                                        <input type="text" class="form-control" style="width:550px;" value="{$goodsInfo.keywords}" name="keywords"/>用空格分隔
-                                        <span id="err_keywords" style="color:#F00; display:none;"></span>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td>商品详情描述:</td>
                                     <td width="85%">
@@ -465,10 +458,10 @@
         );
     }
 
-    
+
     goodstype2();
     goodstype3();
-    
+
     // 城市三级联动
     $('#privince').change(function () {
         $('#area').html('<option value="-1">请选择地区</option>');

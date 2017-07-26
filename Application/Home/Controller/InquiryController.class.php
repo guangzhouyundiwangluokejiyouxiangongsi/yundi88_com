@@ -34,7 +34,6 @@ class InquiryController extends BaseController
         $companyInfo['city'] = $cityData['name'];
         $areaData = M('region')->field('name')->where(array('id' => $companyInfo['area']))->find();
         $companyInfo['area'] = $areaData['name'];
-        // dump($news);exit;
 		if(!$news){
 			C('VIEW_PATH','./Template/pc/');
 			C('DEFAULT_THEME','yundi');
@@ -42,7 +41,7 @@ class InquiryController extends BaseController
             $error->tp404();exit;
 
 		}
-        $tuijian = M('goods')->field('goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' => $goods.store_cat_id2))->limit(5)->order('rand()')->select();
+        $tuijian = M('goods')->field('goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' =>$goods.store_cat_id2))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
             $companyInfo2 = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();
             $tuijian[$z]['store_name'] = $companyInfo2['store_name'];
@@ -92,17 +91,16 @@ class InquiryController extends BaseController
         // dump(M()->getLastSQL());
         // dump($goods);
         // exit;
-
-
+        $companyInfo3 = M('goods_contact')->where(array('sid' => session('store_id')))->find();
         // 处理省市数据
-        $privinceData = M('region')->field('name')->where(array('id' => $companyInfo['privince']))->find();
-        $companyInfo['privince'] = $privinceData['name'];
-        $cityData = M('region')->field('name')->where(array('id' => $companyInfo['city']))->find();
-        $companyInfo['city'] = $cityData['name'];
-        $areaData = M('region')->field('name')->where(array('id' => $companyInfo['area']))->find();
-        $companyInfo['area'] = $areaData['name'];
-
-        $tuijian = M('goods')->field('goods_id, goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' => $goods.store_cat_id2))->limit(5)->order('rand()')->select();
+        $privinceData = M('region')->field('name')->where(array('id' => $companyInfo3['privince']))->find();
+        $companyInfo3['privince'] = $privinceData['name'];
+        $cityData = M('region')->field('name')->where(array('id' => $companyInfo3['city']))->find();
+        $companyInfo3['city'] = $cityData['name'];
+        $areaData = M('region')->field('name')->where(array('id' => $companyInfo3['area']))->find();
+        $companyInfo3['area'] = $areaData['name'];
+        // dump($companyInfo);exit;
+        $tuijian = M('goods')->field('goods_id, goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' => $goods.'store_cat_id2'))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
             $companyInfo2 = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();
             $tuijian[$z]['store_name'] = $companyInfo2['store_name'];
@@ -149,8 +147,9 @@ class InquiryController extends BaseController
         $where['goods_id'] = array('lt',$id);
         $pre = M('goods')->where($where)->order('goods_id desc')->find();
 
-        // dump($pre);
         $companyInfo = M('goods_contact')->where(array('sid' => session('store_id')))->find();
+        // dump($companyInfo);
+
         $point_rate = tpCache('shopping.point_rate');
         $freight_free = tpCache('shopping.freight_free'); // 全场满多少免运费
         $spec_goods_price  = M('spec_goods_price')->where(array('goods_id'=>$goods_id))->getField("key,price,store_count"); // 规格 对应 价格 库存表
@@ -180,6 +179,7 @@ class InquiryController extends BaseController
         $this->assign('next',$next?$next:array('goods_id'=>$goods['goods_id'],'goods_name'=>'没有了'));
         $this->assign('pre',$pre?$pre:array('goods_id'=>$goods['goods_id'],'goods_name'=>'没有了'));
         $this->assign('companyInfo',$companyInfo);
+        $this->assign('companyInfo3',$companyInfo3);
         $this->assign('point_rate',$point_rate);
         $this->assign('goodsTotalComment',$goodsTotalComment);
         if($goods['store_id']>0){
@@ -240,7 +240,7 @@ class InquiryController extends BaseController
         }
 	}
 
-    // 轮询
+    // 询盘
     public function modelGetIn()
     {
         $arr = I('post.');

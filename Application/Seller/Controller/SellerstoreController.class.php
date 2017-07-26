@@ -23,7 +23,7 @@ class SellerstoreController extends BaseController{
 			$value1 = array(
                 'store_id' => session('store_id'),
 				'goods_name' => I('post.title'),
-				'keywords' => $keywords,
+				'keywords' => substr($keywords,0,-1),
 				'shop_price' => I('post.price'),
 				'cat_id1' => I('post.cat_id1'),
 				'cat_id2' => I('post.cat_id2'),
@@ -54,7 +54,7 @@ class SellerstoreController extends BaseController{
 
 
 				$value2 = array(
-					'sid' => session('store_id'),
+					'sid' => 'g'.$res,
 					'name' => I('post.company_name'),
 					'person' => I('post.connect_person'),
 					'phone' => I('post.person_phone'),
@@ -82,7 +82,8 @@ class SellerstoreController extends BaseController{
 			}
 		} else {
             // 如果存在公司信息，直接查询遍历
-            $companyInfo = M('goods_contact')->field('name, person, phone, wechat, privince, city, area, address')->where(array('sid' => session('store_id')))->find();
+            $aid = M('goods')->where(array('store_id'=>session('store_id')))->order('goods_id desc')->getField('goods_id');
+            $companyInfo = M('goods_contact')->where(array('sid' => 'g'.$aid))->find();
             if ($companyInfo) {
                 $this->assign('companyInfo', $companyInfo);
                 $cityData = M('region')->field('id, name')->where(array('level' => 2, 'parent_id'=>$companyInfo['privince']))->select();
@@ -142,7 +143,7 @@ class SellerstoreController extends BaseController{
 			$value1 = array(
                 'store' => session('store_id'),
 				'title' => I('post.title'),
-				'keyword' => $keywords,
+				'keyword' => substr($keywords,0,-1),
 				'description' => I('post.description'),
 				'content' => I('post.content'),
 				'newsimg' => I('post.newsimg'),
@@ -152,24 +153,8 @@ class SellerstoreController extends BaseController{
 			$res = M('store_art')->add($value1);
 
 			if ($res) {
-				// 处理相册
-				for ($j=0; $j < count(I('post.goods_images')); $j++) {
-                    if(I('post.goods_images')[$j]){
-					$imagesData[$j]['goods_id'] = $res;
-					$imagesData[$j]['image_url'] = I('post.goods_images')[$j];
-                    }
-
-				}
-                if ($imagesData) {
-                    $res3 = M('goods_images')->addAll($imagesData);
-                    if (!$res3) {
-                        $this->error('图片上传失败');
-                        exit;
-                    }
-                }
-
 				$value2 = array(
-					'sid' => session('store_id'),
+					'sid' => 'a'.$res,
 					'name' => I('post.company_name'),
 					'person' => I('post.connect_person'),
 					'phone' => I('post.person_phone'),
@@ -179,14 +164,7 @@ class SellerstoreController extends BaseController{
                     'area' => I('post.area'),
 					'address' => I('post.company_address'),
 				);
-                // 判断是否填写过公司信息
-                $companyInfo = M('goods_contact')->field('id')->where(array('sid' => session('store_id')))->find();
-                if ($companyInfo) {
-                    $value2['update_time'] = time();
-                    $res2 = M('goods_contact')->where(array('sid' => session('store_id')))->save($value2);
-                } else {
                     $res2 = M('goods_contact')->add($value2);
-                }
 
                 if ($res2) {
 					$this->success('操作成功');
@@ -198,7 +176,8 @@ class SellerstoreController extends BaseController{
 			}
 		} else {
 			// 如果存在公司信息，直接查询遍历
-            $companyInfo = M('goods_contact')->field('name, person, phone, wechat, privince, city, area, address')->where(array('sid' => session('store_id')))->find();
+            $aid = M('store_art')->where(array('store'=>session('store_id')))->order('id desc')->getField('id');
+            $companyInfo = M('goods_contact')->where(array('sid' => 'a'.$aid))->find();
             if ($companyInfo) {
             	// dump($companyInfo);exit;
                 $this->assign('companyInfo', $companyInfo);
@@ -252,7 +231,7 @@ class SellerstoreController extends BaseController{
         }
         // $where += 'and __STORE__.status=2';
         $goodsList = M('goods')->where(array('store_id'=>session('store_id')))->order('on_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-        // dump(M('goods'));exit;
+        // dump($goodsList);exit;
         cachePage($Page);
         $show = $Page->show();
         $catList = D('goods_category')->select();
@@ -268,6 +247,7 @@ class SellerstoreController extends BaseController{
      */
     public function addEditGoods()
     {
+
         $GoodsLogic = new GoodsLogic();
         $Goods = D('Admin/Goods'); //
         $goods_id = I('goods_id',0);
@@ -285,6 +265,7 @@ class SellerstoreController extends BaseController{
         if(($_GET['is_ajax'] == 1) && IS_POST)
         {
             C('TOKEN_ON',false);
+            // dump($Goods->create(NULL,$type));
             if(!$Goods->create(NULL,$type))// 根据表单提交的POST数据创建数据对象
             {
                 //  编辑
@@ -297,6 +278,23 @@ class SellerstoreController extends BaseController{
                 );
                 $this->ajaxReturn(json_encode($return_arr));
             }else {
+
+
+                $data2['name'] = I('post.company_name');
+                $data2['person'] = I('post.connect_person');
+                $data2['phone'] = I('post.person_phone');
+                $data2['wechat'] = I('post.person_wechat');
+
+                $data2['privince'] = I('post.privince');
+                $data2['city'] = I('post.city');
+                $data2['area'] = I('post.area');
+                $data2['address'] = I('post.company_address');
+                $data2['update_time'] = time();
+
+                M('goods_contact')->where(array('sid'=>'g'.I('post.goods_id')))->save($data2);
+
+                // $this->ajaxReturn(M('goods_contact')->where(array('sid'=>'g'.I('post.goods_id')))->save());exit;
+
                // form表单提交
                // C('TOKEN_ON',true);
                 $Goods->on_time = time(); // 上架时间
@@ -330,6 +328,7 @@ class SellerstoreController extends BaseController{
                                 'member_goods_price'=>$_POST['shop_price'], // 会员折扣价
                                 ));
                 		$Goods->save(); // 编辑数据到数据库
+                        // dump(M()->getLastSQL());exit;
                 	}else{
                 		$this->ajaxReturn(array('status' => -1,'msg'=> '非法操作'),'JSON');
                 	}
@@ -367,7 +366,7 @@ class SellerstoreController extends BaseController{
 
 
         // 查询公司信息
-        $companyInfo = M('goods_contact')->where(array('sid' => $store['store_id']))->find();
+        $companyInfo = M('goods_contact')->where(array('sid' => 'g'.$goods_id))->find();
         $this->assign('companyInfo', $companyInfo);
         // 处理省市数据
         $privinceData = M('region')->field('id, name')->where(array('level' => 1))->select();
@@ -436,6 +435,16 @@ class SellerstoreController extends BaseController{
 			$data['store'] = STORE_ID;
 			$r = M('store_art')->add($data);
 		}else{
+            $data2['name'] = I('post.company_name');
+            $data2['person'] = I('post.connect_person');
+            $data2['phone'] = I('post.person_phone');
+            $data2['wechat'] = I('post.person_wechat');
+            $data2['privince'] = I('post.privince');
+            $data2['city'] = I('post.city');
+            $data2['area'] = I('post.area');
+            $data2['address'] = I('post.company_address');
+            $data2['update_time'] = time();
+            M('goods_contact')->where(array('sid'=>'a'.I('post.id')))->save($data2);
 			$r = M('store_art')->where('id='.$data['id'])->save($data);
 		}
 		if($r){
@@ -454,7 +463,7 @@ class SellerstoreController extends BaseController{
         // dump($info);dump($nav);exit;
 
         // 查询公司信息
-        $companyInfo = M('goods_contact')->where(array('sid' => $info[0]['store']))->find();
+        $companyInfo = M('goods_contact')->where(array('sid' =>'a'.$info[0]['id']))->find();
         $this->assign('companyInfo', $companyInfo);
         // 处理省市数据
         $privinceData = M('region')->field('id, name')->where(array('level' => 1))->select();
@@ -467,7 +476,6 @@ class SellerstoreController extends BaseController{
         // 图片集合
         $goodsImages = M('goods_images')->field('image_url')->where(array('goods_id' => $goodsInfo['goods_id']))->select();
         $this->assign('goodsImages', $goodsImages);
-
         $this->initEditor();
         $this->assign('info',$info[0]);
         $this->assign('nav',$nav);
@@ -486,6 +494,7 @@ class SellerstoreController extends BaseController{
             $data['store'] = STORE_ID;
             $r = M('store_art')->add($data);
         }else{
+
             $r = M('store_art')->where('id='.$data['id'])->save($data);
         }
         if($r){
