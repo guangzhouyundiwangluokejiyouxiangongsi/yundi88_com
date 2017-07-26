@@ -159,8 +159,8 @@
       <div class="list">
         <ul class="wrapper">
             <!-- 遍历图片列表 -->
-            <foreach name="goods['img']" item="vo">
-                <li class="item" data-src="{$vo.src}"><img src="{$vo.src}" alt="#" /></li>
+            <foreach name="imgDate" item="vo">
+                <li class="item" data-src="{$vo.image_url}"><img src="{$vo.image_url}" alt="#" /></li>
             </foreach>
         </ul>
       </div>

@@ -92,6 +92,7 @@ class InquiryController extends BaseController
         // dump(M()->getLastSQL());
         // dump($goods);
         // exit;
+        $imgDate = M('goods_images')->where(array('goods_id'=>$goods_id))->select();
         $companyInfo3 = $companyInfo_ = M('goods_contact')->where(array('sid' => 'g'.$goods['goods_id']))->find();
         // 处理省市数据
         $privinceData = M('region')->field('name')->where(array('id' => $companyInfo_['privince']))->find();
@@ -100,7 +101,7 @@ class InquiryController extends BaseController
         $companyInfo3['city'] = $cityData['name'];
         $areaData = M('region')->field('name')->where(array('id' => $companyInfo_['area']))->find();
         $companyInfo3['area'] = $areaData['name'];
-        
+
         // dump($companyInfo3);exit;
         $tuijian = M('goods')->field('goods_id, goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' => $goods.'store_cat_id2'))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
@@ -177,6 +178,7 @@ class InquiryController extends BaseController
         $this->assign('siblings_cate',$goodsLogic->get_siblings_cate($goods['cat_id2']));//相关分类
         $this->assign('look_see',$goodsLogic->get_look_see($goods));//看了又看
         $this->assign('goods',$goods);
+        $this->assign('imgDate',$imgDate);
         $this->assign('tuijian',$tuijian);
         $this->assign('next',$next?$next:array('goods_id'=>$goods['goods_id'],'goods_name'=>'没有了'));
         $this->assign('pre',$pre?$pre:array('goods_id'=>$goods['goods_id'],'goods_name'=>'没有了'));
