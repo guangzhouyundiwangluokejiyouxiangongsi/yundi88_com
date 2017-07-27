@@ -108,7 +108,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-file" style="padding-left: 14px;padding-right: 6px;"></i>信息推广</h3>
+                    <h3 class="panel-title"><i class="fa fa-file" style="padding-left: 14px;padding-right: 6px;"></i><span style="color:#f00;">信息推广</span><i class="fa fa-print" style="padding-left: 14px;padding-right: 6px;"></i><a href="{:U('addpr')}">产品推广</a></h3>
                 </div>
                 <div class="panel-body ">
                     <!--表单数据-->
@@ -272,8 +272,12 @@ $('#city').change(function () {
     function mysubmit()
     {
         var title = $('input[name=title]').val();
+        var company_name = $('input[name=company_name]').val();
         if(!title){
             alert('标题不能为空！');
+            return false;
+        }else if(!company_name){
+           alert('公司名称不能为空！');
             return false;
         }
     }

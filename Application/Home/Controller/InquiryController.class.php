@@ -41,7 +41,8 @@ class InquiryController extends BaseController
             $error->tp404();exit;
 		}
         //浏览量
-        M('store_art')->where(array('id'=>$storeid))->setInc('pc_click',1);
+        $nu = mt_rand(1,10);
+        M('store_art')->where(array('id'=>$storeid))->setInc('pc_click',$nu);
         $tuijian = M('goods')->field('goods_name,shop_price,on_time,store_id')->where(array('store_cat_id2' =>$goods.store_cat_id2))->limit(5)->order('rand()')->select();
         for ($z=0; $z < count($tuijian); $z++) {
             $companyInfo2 = M('store')->field('store_name, people, mobile')->where(array('store_id' => $tuijian[$z]['store_id']))->find();
@@ -82,6 +83,8 @@ class InquiryController extends BaseController
         C('TOKEN_ON',true);
         $goodsLogic = new GoodsLogic();
         $goods_id = I("get.id");
+        $nu = mt_rand(1,10);
+        M('goods')->where(array('goods_id'=>$goods_id))->setInc('click_count',$nu);
         // dump($goods_id);
         $goods = M('Goods')->where(array('goods_id'=>$goods_id))->find();
         // dump($goods);exit;

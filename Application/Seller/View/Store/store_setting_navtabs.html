@@ -1,10 +1,13 @@
 <ul class="nav nav-tabs">
     <li <if condition="ACTION_NAME eq 'store_setting'">class="active"</if>><a href="javascript:void(0)" data-url="{:U('Store/store_setting')}" onclick="goset(this)" data-toggle="tab">官网设置</a></li> 
+
+    <php>if($status != 2){</php>
     <li <if condition="ACTION_NAME eq 'store_slide'">class="active"</if>><a href="javascript:void(0)" data-url="{:U('Store/store_slide')}" onclick="goset(this)" data-toggle="tab">幻灯片设置</a></li> 
    <!--  <li <if condition="ACTION_NAME eq 'theme'">class="active"</if>><a href="javascript:void(0)" data-url="{:U('Store/theme')}" onclick="goset(this)" data-toggle="tab">官网主题</a></li>  -->
     <li <if condition="ACTION_NAME eq 'mobile_slide'">class="active"</if>><a href="javascript:void(0)" data-url="{:U('Store/mobile_slide')}" onclick="goset(this)" data-toggle="tab">手机/微官网设置</a></li>
-   <php>if($_GET['tpl'] == 'm'){</php> 
-   <script type="text/javascript">window.location.href="{:U('Store/mobile_slide')}";</script>  
+		   <php>if($_GET['tpl'] == 'm'){</php> 
+		   <script type="text/javascript">window.location.href="{:U('Store/mobile_slide')}";</script>  
+		   <php>}</php>         
    <php>}</php>         
 </ul>
 

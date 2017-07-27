@@ -203,7 +203,8 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-file" style="padding-left: 14px;padding-right: 6px;"></i>产品推广</h3>
+                    <h3 class="panel-title"><i class="fa fa-print" style="padding-left: 14px;padding-right: 6px;"></i><span style="color:#f00">产品推广</span> 
+                    <i class="fa fa-file" style="padding-left: 14px;padding-right: 6px;"></i><a href="{:U('addinfo')}">信息推广</a></h3>
                 </div>
                 <div class="panel-body ">
                     <!--表单数据-->
@@ -396,6 +397,7 @@
     function mysubmit()
     {
         var title = $('input[name=title]').val();
+        var company_name = $('input[name=company_name]').val();
         var cat_id1 = $('#goodsType1').val();
         var cat_id2 = $('#goodsType2').val();
         var cat_id3 = $('#goodsType3').val();
@@ -410,6 +412,9 @@
             return false;
         }else if (cat_id3 == 0) {
             alert('三级分类必须选择！');
+            return false;
+        }else if(!company_name){
+           alert('公司名称不能为空！');
             return false;
         }
 

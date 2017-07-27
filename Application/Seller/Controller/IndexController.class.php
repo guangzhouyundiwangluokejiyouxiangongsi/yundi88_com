@@ -23,6 +23,7 @@ class IndexController extends BaseController
 
          //判断有没有创建官网
          $store_status = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
+        $this->assign('status',$store_status);
          // dump($store_status);exit;
          if($store_status != 2){
                     //判断条件给默认数据
@@ -107,8 +108,7 @@ class IndexController extends BaseController
     	// $store = M('store')->where(array('store_id'=>STORE_ID))->find();
     	// $this->assign('store',$store);
     	// $this->assign('seller',$seller);
-        $status = M('store')->where(array('store_id'=>session('store_id')))->getField('status');
-        $this->assign('status',$status);
+        
         $lunbo = M('lunbo')->where(array('id'=>1))->getField('store_lunbo');
         $lunbo = explode(',', $lunbo);
         $this->assign('lunbo',$lunbo);

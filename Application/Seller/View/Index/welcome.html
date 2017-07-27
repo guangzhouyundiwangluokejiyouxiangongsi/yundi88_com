@@ -8,10 +8,10 @@
 <style type="text/css">
 /*遮罩层*/
 .remaker_box {width:100%; height:100%;  background-color:#000;  filter:alpha(opacity=60);  -moz-opacity:0.6; opacity:0.6; position:fixed; left:0px; top:0px;z-index:1300;}
-.remaker1 {width: 460px; height: 300px;position: fixed;top: 50%;left: 50%;margin-top: -150px;margin-left: -230px;background-color: #FFFFFF;z-index: 1500;border-radius: 10px;overflow: hidden;}
-.remaker1 a{width: 230px;display:block;height: 300px;float: left;text-decoration: none;text-align: center;font-family: "微软雅黑";}
+.remaker1 {width: 100%; height: 400px;position: fixed;top: 30%;/*left: 50%;*/margin-top: -150px;margin-left: -230px;background-color: #FFFFFF;z-index: 1500;border-radius: 10px;overflow: hidden;margin:0 auto;}
+.remaker1 a{width: 50%;display:block;height: 400px;float: left;text-decoration: none;text-align: center;font-family: "微软雅黑";}
 .remaker1 a span{color: #000000;font-size: 18px;display: block;margin-top: 30px;}
-.remaker1 a img{width: 80px;height: 80px;margin-top: 90px;}
+.remaker1 a img{width: 80px;height: 80px;margin-top: 130px;}
 </style>
 <!-- 遮罩 -->
 <!-- <div class="remaker_box" id="remaker_box"></div> -->
@@ -28,7 +28,7 @@
 </div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<div style="z-index: 9999;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	<div class="modal-dialog">
 		<div class="modal-content" style="height:200px;">
 			<div class="modal-header">
@@ -171,6 +171,10 @@ function banner(){
 			</ul>
 		</div>
 
+
+
+<php>if($status != 2){</php>
+
 		<div class="banner" id="banner" >
 			<a href="javascript:" class="d1" style="background:url(__PUBLIC__/images/adminbenner1.jpg) center no-repeat;"><div class="id11" onclick="window.open('http://www.yundi88.com/index.php/article/yun_shop')">了解详情&gt;&gt;&gt;</div><div class="id12" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" >立即加入</div></a>
 			<a href="javascript:" class="d1" style="background:url(__PUBLIC__/images/adminbenner2.jpg) center no-repeat;"><div class="id21" onclick="window.open('http://www.yundi88.com/Index/certification.html')"></div></a>
@@ -183,6 +187,11 @@ function banner(){
 		</ul>
 	</div>
 </div>
+
+<php>}</php>
+
+
+
 <script type="text/javascript">banner()</script>
             
 

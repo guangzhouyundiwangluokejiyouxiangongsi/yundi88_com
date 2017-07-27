@@ -6,6 +6,12 @@ use Seller\Logic\GoodsLogic;
 
 class SellerstoreController extends BaseController{
 
+    public function _initialize()
+    {
+        parent::_initialize();
+        C('TMPL_ACTION_SUCCESS','Public:dispatch_jump2');
+    }
+
 	public function addpr()
 	{
 		if (IS_POST) {
